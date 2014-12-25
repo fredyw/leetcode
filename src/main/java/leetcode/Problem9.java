@@ -34,9 +34,4 @@ public class Problem9 {
         }
         return true;
     }
-    
-    public static void main(String[] args) {
-        Problem9 prob = new Problem9();
-        System.out.println(prob.isPalindrome(101011));
-    }
 }
