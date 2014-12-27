@@ -1,10 +1,10 @@
 package leetcode;
 
 /**
- * https://oj.leetcode.com/problems/maximum-depth-of-binary-tree/
+ * https://oj.leetcode.com/problems/minimum-depth-of-binary-tree/
  */
 public class Problem111 {
-    public class TreeNode {
+    public static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
@@ -13,13 +13,21 @@ public class Problem111 {
             val = x;
         }
     }
-
-    public int maxDepth(TreeNode root) {
+    
+    public int minDepth(TreeNode root) {
         if (root == null) {
             return 0;
         }
-        int left = maxDepth(root.left) + 1;
-        int right = maxDepth(root.right) + 1;
-        return Math.max(left, right);
+
+        if (root.left == null && root.right == null) {
+            return 1;
+        }
+
+        if (root.left == null && root.right != null) {
+            return minDepth(root.right) + 1;
+        } else if (root.left != null && root.right == null) {
+            return minDepth(root.left) + 1;
+        }
+        return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
     }
 }
