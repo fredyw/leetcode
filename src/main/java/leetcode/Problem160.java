@@ -42,37 +42,4 @@ public class Problem160 {
         }
         return null;
     }
-
-    public static void main(String[] args) {
-        Problem160 prob = new Problem160();
-        
-        ListNode intersection = new ListNode(3);
-        intersection.next = new ListNode(4);
-        intersection.next.next = new ListNode(5);
-        
-        ListNode list1 = new ListNode(1);
-        list1.next = new ListNode(2);
-        list1.next.next = intersection;
-        
-        for (ListNode n = list1; n != null; n = n.next) {
-            System.out.print(n.val + " ");
-        }
-        System.out.println();
-        
-        ListNode list2 = new ListNode(100);
-        list2.next = new ListNode(200);
-        list2.next.next = new ListNode(300);
-        list2.next.next.next = intersection;
-        
-        for (ListNode n = list2; n != null; n = n.next) {
-            System.out.print(n.val + " ");
-        }
-        System.out.println();
-        
-        ListNode result = prob.getIntersectionNode(list1, list2);
-        for (ListNode n = result; n != null; n = n.next) {
-            System.out.print(n.val + " ");
-        }
-        System.out.println();
-    }
 }
