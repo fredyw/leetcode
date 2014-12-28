@@ -20,7 +20,7 @@ public class Problem118 {
     }
     
     private void pascalsTriangle(int numRows, int n, List<List<Integer>> result) {
-        if (n >= numRows) {
+        if (n == numRows) {
             return;
         }
         List<Integer> prevList = (result.size() == 0) ?
