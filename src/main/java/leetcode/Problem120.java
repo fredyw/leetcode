@@ -2,6 +2,7 @@ package leetcode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -9,23 +10,27 @@ import java.util.List;
  */
 public class Problem120 {
     public int minimumTotal(List<List<Integer>> triangle) {
-        int result = 0;
-        int idx = 0;
-        for (int i = 0; i < triangle.size(); i++) {
-            if (i == 0) {
-                result = triangle.get(i).get(idx);
-            } else {
-                int a = triangle.get(i).get(idx);
-                int b = triangle.get(i).get(idx+1);
-                if (a <= b) {
-                    result += a;
-                } else {
-                    result += b;
-                    idx = idx + 1;
-                }
+        List<Integer> result = new ArrayList<>();
+        minimumTotal(triangle, 0, 0, 0, result);
+        return Collections.min(result);
+    }
+    
+    private void minimumTotal(List<List<Integer>> triangle, int idx1, int idx2,
+        int sum, List<Integer> result) {
+        if (idx1 == triangle.size()) {
+            result.add(sum);
+            return;
+        }
+        if (idx1 < triangle.size()) {
+            if (idx2 < triangle.get(idx1).size()) {
+                minimumTotal(triangle, idx1+1, idx2,
+                    triangle.get(idx1).get(idx2)+sum, result);
+            }
+            if (idx2+1 < triangle.get(idx1).size()) {
+                minimumTotal(triangle, idx1+1, idx2+1,
+                    triangle.get(idx1).get(idx2+1)+sum, result);
             }
         }
-        return result;
     }
     
     public static void main(String[] args) {
@@ -36,7 +41,7 @@ public class Problem120 {
         triangle.add(Arrays.asList(6, 5, 7));
         triangle.add(Arrays.asList(4, 1, 8, -3));
         System.out.println(prob.minimumTotal(triangle));
-        
+
         triangle = new ArrayList<>();
         triangle.add(Arrays.asList(-1));
         triangle.add(Arrays.asList(2, 3));
