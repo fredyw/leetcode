@@ -15,10 +15,4 @@ public class Problem151 {
         }
         return sb.toString();
     }
-    
-    public static void main(String[] args) {
-        Problem151 prob = new Problem151();
-        System.out.println(prob.reverseWords("the sky is blue"));
-        System.out.println(prob.reverseWords("hello world"));
-    }
 }
