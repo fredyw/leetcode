@@ -15,10 +15,4 @@ public class Problem191 {
         }
         return result;
     }
-    
-    public static void main(String[] args) {
-        Problem191 prob = new Problem191();
-        System.out.println(prob.hammingWeight(11));
-        System.out.println(prob.hammingWeight((int) 2147483648L));
-    }
 }
