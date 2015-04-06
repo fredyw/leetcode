@@ -1,8 +1,10 @@
 package leetcode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -34,48 +36,28 @@ public class Problem133 {
         if (node == null) {
             return node;
         }
+        Map<Integer, UndirectedGraphNode> copyMap = new HashMap<>();
         UndirectedGraphNode copy = new UndirectedGraphNode(node.label);
+        copyMap.put(node.label, copy);
         Set<Integer> marked = new HashSet<>();
-        dfs(node, copy, marked);
+        dfs(node, copy, marked, copyMap);
         return copy;
     }
     
-    private void dfs(UndirectedGraphNode source, UndirectedGraphNode copy, Set<Integer> marked) {
+    private void dfs(UndirectedGraphNode source, UndirectedGraphNode copy,
+        Set<Integer> marked, Map<Integer, UndirectedGraphNode> copyMap) {
         marked.add(source.label);
         for (UndirectedGraphNode n : source.neighbors) {
             UndirectedGraphNode nCopy = new UndirectedGraphNode(n.label);
+            if (copyMap.containsKey(n.label)) {
+                nCopy = copyMap.get(n.label);
+            } else {
+                copyMap.put(n.label, nCopy);
+            }
             copy.neighbors.add(nCopy);
             if (!marked.contains(n.label)) {
-                UndirectedGraphNode nCopy = new UndirectedGraphNode(n.label);
-                copy.neighbors.add(nCopy);
-                dfs(n, nCopy, marked);
+                dfs(n, nCopy, marked, copyMap);
             }
         }
-    }
-    
-    public static void main(String[] args) {
-        Problem133 prob = new Problem133();
-        
-//        UndirectedGraphNode n0 = new UndirectedGraphNode(0);
-//        UndirectedGraphNode n1 = new UndirectedGraphNode(1);
-//        UndirectedGraphNode n2 = new UndirectedGraphNode(2);
-//        
-//        n0.neighbors.add(n1);
-//        n0.neighbors.add(n2);
-//        
-//        n1.neighbors.add(n0);
-//        n1.neighbors.add(n2);
-//        
-//        n2.neighbors.add(n0);
-//        n2.neighbors.add(n1);
-//        n2.neighbors.add(n2);
-//        
-//        UndirectedGraphNode cp0 = prob.cloneGraph(n0);
-        
-        UndirectedGraphNode n0 = new UndirectedGraphNode(0);
-        n0.neighbors.add(n0);
-        
-        UndirectedGraphNode cp0 = prob.cloneGraph(n0);
-        System.out.println(cp0.neighbors.get(0));
     }
 }
