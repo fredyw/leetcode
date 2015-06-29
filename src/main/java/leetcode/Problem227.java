@@ -85,19 +85,4 @@ public class Problem227 {
             return a / b;
         }
     }
-    
-    public static void main(String[] args) {
-        Problem227 prob = new Problem227();
-        System.out.println(prob.calculate("3+2*2")); // 7
-        System.out.println(prob.calculate(" 3/2 ")); // 1
-        System.out.println(prob.calculate(" 3+5 / 2 ")); // 5
-        System.out.println(prob.calculate("1*4+5+2-3/6*8")); // 11
-        System.out.println(prob.calculate("0-2147483648")); // -2147483648
-        System.out.println(prob.calculate("530+194/2/2*3/25*2/5*6/5*8-22/2*2*4+24*11+120/6/2/2*13*62")); // 4752
-        System.out.println(prob.calculate("1-1+1")); // 1
-        System.out.println(prob.calculate("14/3*2")); // 8
-        System.out.println(prob.calculate("1*2-3/4+5*6-7*8+9/10")); // -24
-        System.out.println(prob.calculate("282-1*2*13-30-2*2*2/2-95/5*2+55+804+3024")); // 4067
-        System.out.println(prob.calculate("1-95/5*2+3")); // -34
-    }
 }
