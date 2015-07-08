@@ -37,20 +37,4 @@ public class Problem225 {
             return list1.isEmpty();
         }
     }
-    
-    public static void main(String[] args) {
-        MyStack stack = new MyStack();
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        
-        stack.pop();
-        stack.pop();
-        stack.pop();
-        
-        stack.push(1);
-        stack.push(2);
-        
-        System.out.println(stack.top());
-    }
 }
