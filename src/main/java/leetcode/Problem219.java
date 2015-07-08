@@ -22,9 +22,4 @@ public class Problem219 {
         }
         return false;
     }
-
-    public static void main(String[] args) {
-        Problem219 prob = new Problem219();
-        System.out.println(prob.containsNearbyDuplicate(new int[]{99, 99}, 2));
-    }
 }
