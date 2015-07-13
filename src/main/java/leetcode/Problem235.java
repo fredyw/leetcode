@@ -50,8 +50,6 @@ public class Problem235 {
         List<TreeNode> newPath = new ArrayList<>(path);
         newPath.add(root);
         getPath(root.left, n, newPath, result);
-        newPath = new ArrayList<>(path);
-        newPath.add(root);
         getPath(root.right, n, newPath, result);
     }
 }
