@@ -49,7 +49,10 @@ public class Problem235 {
         }
         List<TreeNode> newPath = new ArrayList<>(path);
         newPath.add(root);
-        getPath(root.left, n, newPath, result);
-        getPath(root.right, n, newPath, result);
+        if (root.val >= n.val) {
+            getPath(root.left, n, newPath, result);
+        } else {
+            getPath(root.right, n, newPath, result);
+        }
     }
 }
