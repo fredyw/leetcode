@@ -33,23 +33,21 @@ public class Problem105 {
         int preOrderIdx, int fromInOrderIdx, int toInOrderIdx, Map<Integer, Integer> map) {
         int inOrderIdx = map.get(preorder[preOrderIdx]);
         if (inOrderIdx > 0) {
-            toInOrderIdx = inOrderIdx;
             System.out.print("Left: ");
-            for (int i = fromInOrderIdx; i < toInOrderIdx; i++) {
+            for (int i = fromInOrderIdx; i < inOrderIdx; i++) {
                 System.out.print(inorder[i] + " ");
             }
             System.out.println();
             buildTree(null, preorder, inorder, preOrderIdx+1, fromInOrderIdx,
-                toInOrderIdx, map);
+                inOrderIdx, map);
         }
         if (inorder.length-inOrderIdx > 0) {
             System.out.print("Right: ");
-            fromInOrderIdx = inOrderIdx;
-            for (int i = fromInOrderIdx; i < toInOrderIdx; i++) {
+            for (int i = inOrderIdx+1; i < toInOrderIdx; i++) {
                 System.out.print(inorder[i] + " ");
             }
             System.out.println();
-            buildTree(null, preorder, inorder, preOrderIdx+1, fromInOrderIdx, toInOrderIdx,
+            buildTree(null, preorder, inorder, preOrderIdx+1, inOrderIdx+1, toInOrderIdx,
                 map);
         }
     }
