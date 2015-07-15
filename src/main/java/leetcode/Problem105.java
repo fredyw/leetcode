@@ -1,9 +1,6 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,77 +18,53 @@ public class Problem105 {
     }
     
     public TreeNode buildTree(int[] preorder, int[] inorder) {
+        if (preorder.length == 0) {
+            return null;
+        }
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < inorder.length; i++) {
             map.put(inorder[i], i);
         }
-        buildTree(null, preorder, inorder, 0, 0, inorder.length, map);
-        return null;
+        TreeNode node = new TreeNode(preorder[0]);
+        PreOrder po = new PreOrder();
+        buildTree(node, preorder, inorder, po, 0, inorder.length, map, Direction.CENTER);
+        return node;
+    }
+
+    private class PreOrder {
+        int idx;
+    }
+    
+    private enum Direction {
+        LEFT, RIGHT, CENTER
     }
     
     private void buildTree(TreeNode node, int[] preorder, int[] inorder,
-        int preOrderIdx, int fromInOrderIdx, int toInOrderIdx, Map<Integer, Integer> map) {
-        int inOrderIdx = map.get(preorder[preOrderIdx]);
-        if (inOrderIdx > 0) {
-            System.out.print("Left: ");
-            for (int i = fromInOrderIdx; i < inOrderIdx; i++) {
-                System.out.print(inorder[i] + " ");
-            }
-            System.out.println();
-            buildTree(null, preorder, inorder, preOrderIdx+1, fromInOrderIdx,
-                inOrderIdx, map);
-        }
-        if (inorder.length-inOrderIdx > 0) {
-            System.out.print("Right: ");
-            for (int i = inOrderIdx+1; i < toInOrderIdx; i++) {
-                System.out.print(inorder[i] + " ");
-            }
-            System.out.println();
-            buildTree(null, preorder, inorder, preOrderIdx+1, inOrderIdx+1, toInOrderIdx,
-                map);
-        }
-    }
-    
-    private void inOrder(TreeNode root) {
-        if (root == null) {
+        PreOrder po, int fromInOrderIdx, int toInOrderIdx, Map<Integer, Integer> map,
+        Direction direction) {
+        if (po.idx >= preorder.length) {
             return;
         }
-        inOrder(root.left);
-        System.out.print(root.val + " ");
-        inOrder(root.right);
-    }
-    
-    private void preOrder(TreeNode root) {
-        if (root == null) {
-            return;
+        int inOrderIdx = map.get(preorder[po.idx]);
+        TreeNode newNode = null;
+        if (direction == Direction.LEFT) {
+            node.left = new TreeNode(preorder[po.idx]);
+            newNode = node.left;
+        } else if (direction == Direction.RIGHT) {
+            node.right = new TreeNode(preorder[po.idx]);
+            newNode = node.right;
+        } else {
+            newNode = node;
         }
-        System.out.print(root.val + " ");
-        preOrder(root.left);
-        preOrder(root.right);
-    }
-    
-    public static void main(String[] args) {
-        Problem105 prob = new Problem105();
-        
-        TreeNode root = new TreeNode(3);
-        root.left = new TreeNode(5);
-        root.left.left = new TreeNode(6);
-        root.left.right = new TreeNode(2);
-        root.left.right.left = new TreeNode(7);
-        root.left.right.right = new TreeNode(4);
-        root.right = new TreeNode(1);
-        root.right.left = new TreeNode(0);
-        root.right.right = new TreeNode(8);
-
-        System.out.println("Pre-order:");
-        prob.preOrder(root);
-        System.out.println();
-        System.out.println("In-order:");
-        prob.inOrder(root);
-        System.out.println();
-        
-        prob.buildTree(
-            new int[]{3, 5, 6, 2, 7, 4, 1, 0, 8},
-            new int[]{6, 5, 7, 2, 4, 3, 0, 1, 8});
+        if (fromInOrderIdx < inOrderIdx) {
+            po.idx++;
+            buildTree(newNode, preorder, inorder, po, fromInOrderIdx,
+                inOrderIdx, map, Direction.LEFT);
+        }
+        if (inOrderIdx+1 < toInOrderIdx) {
+            po.idx++;
+            buildTree(newNode, preorder, inorder, po, inOrderIdx+1, toInOrderIdx,
+                map, Direction.RIGHT);
+        }
     }
 }
