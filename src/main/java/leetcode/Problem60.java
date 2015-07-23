@@ -9,17 +9,13 @@ import java.util.Set;
 public class Problem60 {
     public String getPermutation(int n, int k) {
         int f = factorial(n);
-        int chunk = f / n;
-        int prev = 0;
-        int idx = 0;
-        for (int i = 1; i <= f; i++) {
-            if (prev < k && k <= (i * chunk)) {
-                idx = i;
-            }
-            prev = i * chunk;
+        int segment = f / n;
+        int idx = k / segment;
+        if (k % segment != 0) {
+            idx++;
         }
         IntRef intRef = new IntRef();
-        intRef.k = (idx-1) * chunk;
+        intRef.k = (idx-1) * segment;
         Set<Integer> set = new HashSet<>();
         set.add(idx);
         return getPermutation(n, k, n-1, intRef, set, "" + idx);
@@ -59,9 +55,15 @@ public class Problem60 {
     
     public static void main(String[] args) {
         Problem60 prob = new Problem60();
-        for (int i = 1 ; i <= 6; i++) {
-            System.out.println(prob.getPermutation(3, i));
-        }
-        System.out.println(prob.getPermutation(7, 991));
+//        for (int i = 1 ; i <= 9; i++) {
+//            System.out.println(prob.getPermutation(i, 1));
+//        }
+//        for (int i = 1 ; i <= 6; i++) {
+//            System.out.println(prob.getPermutation(3, i));
+//        }
+        long start = System.currentTimeMillis();
+        System.out.println(prob.getPermutation(8, 33856));
+        System.out.println(prob.getPermutation(9, 94626));
+        System.out.println(System.currentTimeMillis() - start);
     }
 }
