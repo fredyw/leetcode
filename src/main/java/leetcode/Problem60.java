@@ -8,7 +8,21 @@ import java.util.Set;
  */
 public class Problem60 {
     public String getPermutation(int n, int k) {
-        return getPermutation(n, k, n, new IntRef(), new HashSet<>(), "");
+        int f = factorial(n);
+        int chunk = f / n;
+        int prev = 0;
+        int idx = 0;
+        for (int i = 1; i <= f; i++) {
+            if (prev < k && k <= (i * chunk)) {
+                idx = i;
+            }
+            prev = i * chunk;
+        }
+        IntRef intRef = new IntRef();
+        intRef.k = (idx-1) * chunk;
+        Set<Integer> set = new HashSet<>();
+        set.add(idx);
+        return getPermutation(n, k, n-1, intRef, set, "" + idx);
     }
     
     private static class IntRef {
@@ -36,8 +50,18 @@ public class Problem60 {
         return null;
     }
     
+    private int factorial(int n) {
+        if (n == 1) {
+            return n;
+        }
+        return n * factorial(n-1);
+    }
+    
     public static void main(String[] args) {
         Problem60 prob = new Problem60();
-        System.out.println(prob.getPermutation(9, 171669));
+        for (int i = 1 ; i <= 6; i++) {
+            System.out.println(prob.getPermutation(3, i));
+        }
+        System.out.println(prob.getPermutation(7, 991));
     }
 }
