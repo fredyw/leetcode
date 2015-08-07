@@ -1,19 +1,35 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * https://leetcode.com/problems/set-matrix-zeroes/
  */
 public class Problem73 {
     public void setZeroes(int[][] matrix) {
+        List<Zero> zeroes = new ArrayList<>();
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 if (matrix[i][j] == 0) {
-                    setRowZeroes(matrix, i);
-                    setColZeroes(matrix, j);
+                    zeroes.add(new Zero(i, j));
                 }
             }
+        }
+        for (Zero zero : zeroes) {
+            setRowZeroes(matrix, zero.row);
+            setColZeroes(matrix, zero.col);
+        }
+    }
+    
+    private static class Zero {
+        private final int row;
+        private final int col;
+        
+        public Zero(int row, int col) {
+            this.row = row;
+            this.col = col;
         }
     }
     
@@ -26,19 +42,6 @@ public class Problem73 {
     private void setColZeroes(int[][] matrix, int col) {
         for (int i = 0; i < matrix.length; i++) {
             matrix[i][col] = 0;
-        }
-    }
-    
-    public static void main(String[] args) {
-        Problem73 prob = new Problem73();
-        int[][] matrix = new int[][] {
-            new int[]{1, 0, 1, 1},
-            new int[]{0, 1, 1, 1},
-            new int[]{1, 1, 1, 1}
-        };
-        prob.setZeroes(matrix);
-        for (int i = 0; i < matrix.length; i++) {
-            System.out.println(Arrays.toString(matrix[i]));
         }
     }
 }
