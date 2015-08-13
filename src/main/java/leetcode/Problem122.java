@@ -5,14 +5,32 @@ package leetcode;
  */
 public class Problem122 {
     public int maxProfit(int[] prices) {
-        return 0;
-    }
-    
-    public static void main(String[] args) {
-        Problem122 prob = new Problem122();
-        System.out.println(prob.maxProfit(new int[]{1, 2, 4, 2, 1, 3}));
-        System.out.println(prob.maxProfit(new int[]{3, 2, 6, 5, 0, 3}));
-        System.out.println(prob.maxProfit(new int[]{3, 1, 2, 6, 1, 6, 8}));
-        
+        boolean buy = true;
+        int profit = 0;
+        int buyPrice = Integer.MAX_VALUE;
+        int sellPrice = Integer.MIN_VALUE;
+        for (int i = 0; i < prices.length; i++) {
+            if (buy) {
+                if (buyPrice < prices[i]) {
+                    sellPrice = prices[i];
+                    buy = false;
+                } else {
+                    buyPrice = prices[i];
+                }
+            } else { // sell
+                if (sellPrice > prices[i]) {
+                    profit += sellPrice - buyPrice;
+                    buy = true;
+                    buyPrice = prices[i];
+                    sellPrice = Integer.MIN_VALUE;
+                } else {
+                    sellPrice = prices[i];
+                }
+            }
+        }
+        if (buyPrice < sellPrice) {
+            profit += sellPrice - buyPrice;
+        }
+        return profit;
     }
 }
