@@ -1,34 +1,35 @@
 package leetcode;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * https://leetcode.com/problems/count-primes/
  */
 public class Problem204 {
     public int countPrimes(int n) {
-        // https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
-        int prime = 0;
-        Set<Integer> set = new HashSet<>();
-        for (int i = 2; i <= n; i++) {
-            set.add(i);
+        if (n <= 2) {
+            return 0;
         }
-        for (int i = 2; i <= n; i++) {
-            if (!set.contains(i)) {
+        // https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+        boolean[] primes = new boolean[n];
+        for (int i = 2; i < n; i++) {
+            primes[i] = true;
+        }
+        for (int i = 2; i * i < n; i++) {
+            if (!primes[i]) {
                 continue;
             }
-            for (int j = i; j <= n; j += i) {
-                set.remove(j);
+            int k = i * i;
+            int l = 0;
+            for (int j = k; j < n; j = k + (l * i)) {
+                primes[j] = false;
+                l++;
             }
-            prime++;
         }
-        return prime;
-    }
-    
-    public static void main(String[] args) {
-        Problem204 prob = new Problem204();
-        System.out.println(prob.countPrimes(20));
-        System.out.println(prob.countPrimes(999983));
+        int result = 0;
+        for (int i = 2; i < n; i++) {
+            if (primes[i]) {
+                result++;
+            }
+        }
+        return result;
     }
 }
