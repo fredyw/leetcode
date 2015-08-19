@@ -1,17 +1,28 @@
 package leetcode;
 
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * https://leetcode.com/problems/single-number-iii/
  */
 public class Problem260 {
     public int[] singleNumber(int[] nums) {
-        return null;
-    }
-    
-    public static void main(String[] args) {
-        Problem260 prob = new Problem260();
-        System.out.println(Arrays.toString(prob.singleNumber(new int[]{1, 2, 1, 3, 2, 5}))); // [3, 5]
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            if (map.containsKey(num)) {
+                map.put(num, map.get(num) + 1);
+            } else {
+                map.put(num, 1);
+            }
+        }
+        int[] result = new int[2];
+        int i = 0;
+        for (Map.Entry<Integer, Integer> e : map.entrySet()) {
+            if (e.getValue() == 1) {
+                result[i++] = e.getKey(); 
+            }
+        }
+        return result;
     }
 }
