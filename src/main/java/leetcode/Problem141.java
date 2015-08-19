@@ -3,7 +3,7 @@ package leetcode;
 /**
  * https://oj.leetcode.com/problems/linked-list-cycle/
  */
-public class Problem142 {
+public class Problem141 {
     static class ListNode {
         int val;
         ListNode next;
