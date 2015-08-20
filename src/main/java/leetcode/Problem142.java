@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * https://leetcode.com/problems/linked-list-cycle-ii/
  */
@@ -15,24 +18,13 @@ public class Problem142 {
     }
 
     public ListNode detectCycle(ListNode head) {
+        Set<ListNode> set = new HashSet<>();
+        for (ListNode node = head; node != null; node = node.next) {
+            if (set.contains(node)) {
+                return node;
+            }
+            set.add(node);
+        }
         return null;
-    }
-    
-    public static void main(String[] args) {
-        Problem142 prob = new Problem142();
-        
-        ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(2);
-        ListNode node3 = new ListNode(3);
-        ListNode node4 = new ListNode(4);
-        ListNode node5 = new ListNode(5);
-        
-        node1.next = node2;
-        node2.next = node3;
-        node3.next = node4;
-        node4.next = node5;
-        node5.next = node3;
-        
-        System.out.println(prob.detectCycle(node1).val);
     }
 }
