@@ -5,6 +5,22 @@ package leetcode;
  */
 public class Problem42 {
     public int trap(int[] height) {
+        boolean zero = true;
+        int prev = 0;
+        int prevIdx = 0;
+        for (int i = 0; i < height.length; i++) {
+            if (height[i] == 0 && zero) {
+                continue;
+            }
+            zero = false;
+            if (prev >= height[i]) {
+                prevIdx = i;
+                prev = height[i];
+                if (prev > 0) {
+                    // to be continued
+                }
+            }
+        }
         return 0;
     }
     
