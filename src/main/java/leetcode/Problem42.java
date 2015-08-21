@@ -5,27 +5,36 @@ package leetcode;
  */
 public class Problem42 {
     public int trap(int[] height) {
-        boolean zero = true;
-        int prev = 0;
-        int prevIdx = 0;
-        for (int i = 0; i < height.length; i++) {
-            if (height[i] == 0 && zero) {
-                continue;
+        int left = 0;
+        int right = height.length - 1;
+        boolean leftTurn = false;
+        int result = 0;
+        while (left < right) {
+            if (height[left] <= height[right]) {
+                leftTurn = true;
+            } else {
+                leftTurn = false;
             }
-            zero = false;
-            if (prev >= height[i]) {
-                prevIdx = i;
-                prev = height[i];
-                if (prev > 0) {
-                    // to be continued
+            if (leftTurn) {
+                int i = left + 1;
+                int area = 0;
+                while (height[i] < height[left] && i < right) {
+                    area += height[left] - height[i];
+                    i++;
                 }
+                result += area;
+                left = i;
+            } else {
+                int i = right - 1;
+                int area = 0;
+                while (height[i] < height[right] && i > left) {
+                    area += height[right] - height[i];
+                    i--;
+                }
+                result += area;
+                right = i;
             }
         }
-        return 0;
-    }
-    
-    public static void main(String[] args) {
-        Problem42 prob = new Problem42();
-        System.out.println(prob.trap(new int[]{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1})); // 6
+        return result;
     }
 }
