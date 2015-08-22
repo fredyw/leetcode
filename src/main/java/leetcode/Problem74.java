@@ -5,16 +5,32 @@ package leetcode;
  */
 public class Problem74 {
     public boolean searchMatrix(int[][] matrix, int target) {
+        // binary search
+        int nRow = matrix.length;
+        int nCol = matrix[0].length;
+        int size = nRow * nCol;
+        int lo = 0;
+        int hi = size;
+        while (lo <= hi) {
+            int mid = (lo + hi) / 2;
+            if (mid == size) {
+                return false;
+            }
+            int val = getValue(matrix, mid, nCol);
+            if (target == val) {
+                return true;
+            } else if (val > target) {
+                hi = mid - 1;
+            } else { // val < target
+                lo = mid + 1;
+            }
+        }
         return false;
     }
     
-    public static void main(String[] args) {
-        Problem74 prob = new Problem74();
-        int[][] matrix = new int[][] {
-            new int[]{1,   3,  5,  7},
-            new int[]{10, 11, 16, 20},
-            new int[]{23, 30, 34, 50}
-        };
-        System.out.println(prob.searchMatrix(matrix, 3));
+    private int getValue(int[][] matrix, int idx, int nCol) {
+        int row = idx / nCol;
+        int col = idx % nCol;
+        return matrix[row][col];
     }
 }
