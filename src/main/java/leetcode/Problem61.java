@@ -14,14 +14,15 @@ public class Problem61 {
     }
 
     public ListNode rotateRight(ListNode head, int k) {
-        if (head == null || k == 0) {
+        if (head == null) {
             return head;
         }
         int size = 0;
         for (ListNode node = head; node != null; node = node.next) {
             size++;
         }
-        if (size <= k) {
+        k = k % size;
+        if (k == 0) {
             return head;
         }
         int n = size - k - 1;
@@ -43,22 +44,5 @@ public class Problem61 {
             newHead.next = head;
         }
         return newHead;
-    }
-    
-    public static void main(String[] args) {
-        Problem61 prob = new Problem61();
-        
-        for (int i = 1; i <= 5; i++) {
-            ListNode node = new ListNode(1);
-            node.next = new ListNode(2);
-            node.next.next = new ListNode(3);
-            node.next.next.next = new ListNode(4);
-            node.next.next.next.next = new ListNode(5);
-            node = prob.rotateRight(node, i);
-            for (ListNode n = node; n != null; n = n.next) {
-                System.out.print(n.val + " ");
-            }
-            System.out.println();
-        }
     }
 }
