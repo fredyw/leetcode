@@ -5,15 +5,12 @@ package leetcode;
  */
 public class Problem201 {
     public int rangeBitwiseAnd(int m, int n) {
-        int result = m;
-        for (int i = m+1; i <= n; i++) {
-            result &= i;
+        int step = 0;
+        while (m != n) {
+            m >>= 1;
+            n >>= 1;
+            step++;
         }
-        return result;
-    }
-    
-    public static void main(String[] args) {
-        Problem201 prob = new Problem201();
-        System.out.println(prob.rangeBitwiseAnd(5, 7)); // 4
+        return m << step;
     }
 }
