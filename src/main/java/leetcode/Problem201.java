@@ -5,7 +5,11 @@ package leetcode;
  */
 public class Problem201 {
     public int rangeBitwiseAnd(int m, int n) {
-        return 0;
+        int result = m;
+        for (int i = m+1; i <= n; i++) {
+            result &= i;
+        }
+        return result;
     }
     
     public static void main(String[] args) {
