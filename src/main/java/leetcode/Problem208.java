@@ -1,13 +1,23 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * https://leetcode.com/problems/implement-trie-prefix-tree/
  */
 public class Problem208 {
     static class TrieNode {
+        Map<Character, TrieNode> children = new HashMap<>();
+        char value;
+        boolean complete;
+        
         // Initialize your data structure here.
         public TrieNode() {
-            
+        }
+        
+        public TrieNode(char value) {
+            this.value = value;
         }
     }
 
@@ -20,30 +30,67 @@ public class Problem208 {
 
         // Inserts a word into the trie.
         public void insert(String word) {
-            // TODO: implement this
+            insert(root, word, 0);
+        }
+        
+        private void insert(TrieNode node, String word, int idx) {
+            if (word.length() == idx) {
+                node.complete = true;
+                return;
+            }
+            char c = word.charAt(idx);
+            TrieNode n;
+            if (node.children.containsKey(c)) {
+                n = node.children.get(c);
+            } else {
+                n = new TrieNode(c);
+                node.children.put(c, n);
+            }
+            insert(n, word, idx+1);
         }
 
         // Returns if the word is in the trie.
         public boolean search(String word) {
-            // TODO: implement this
-            return false;
+            return search(root, word, 0);
+        }
+        
+        private boolean search(TrieNode node, String word, int idx) {
+            if (node == null) {
+                return false;
+            }
+            if (word.length() == idx) {
+                if (node.complete) {
+                    return true;
+                }
+                return false;
+            }
+            char c = word.charAt(idx);
+            if (!node.children.containsKey(c)) {
+                return false;
+            }
+            TrieNode n = node.children.get(c);
+            return search(n, word, idx+1);
         }
 
         // Returns if there is any word in the trie
         // that starts with the given prefix.
         public boolean startsWith(String prefix) {
-            // TODO: implement this
-            return false;
+            return startsWith(root, prefix, 0);
         }
-    }
-    
-    public static void main(String[] args) {
-        Trie trie = new Trie();
-        trie.insert("something");
-        System.out.println(trie.search("something"));
-        System.out.println(trie.search("some"));
-        System.out.println(trie.search("blah"));
-        System.out.println(trie.startsWith("some"));
-        System.out.println(trie.startsWith("foo"));
+        
+        private boolean startsWith(TrieNode node, String prefix, int idx) {
+            if (node == null) {
+                return false;
+            }
+            if (prefix.length() == idx) {
+                return true;
+            }
+            char c = prefix.charAt(idx);
+            if (!node.children.containsKey(c)) {
+                return false;
+            }
+            TrieNode n = node.children.get(c);
+            return startsWith(n, prefix, idx+1);
+        }
     }
 }
