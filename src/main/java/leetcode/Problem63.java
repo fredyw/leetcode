@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * https://leetcode.com/problems/unique-paths-ii/
  */
@@ -8,34 +11,30 @@ public class Problem63 {
         if (obstacleGrid.length == 0) {
             return 0;
         }
+        Map<String, Integer> memo = new HashMap<>();
         return findPaths(obstacleGrid, obstacleGrid.length-1, obstacleGrid[0].length-1,
-            0, 0);
+            0, 0, memo);
     }
     
-    private int findPaths(int[][] grid, int destRow, int destCol, int row, int col) {
-        if (row == destRow && col == destCol) {
-            return 1;
-        } 
+    private int findPaths(int[][] grid, int destRow, int destCol, int row, int col,
+        Map<String, Integer> memo) {
         if (row > destRow || col > destCol) {
             return 0;
         }
         if (grid[row][col] == 1) {
             return 0;
         }
-        int a = findPaths(grid, destRow, destCol, row+1, col);
-        int b = findPaths(grid, destRow, destCol, row, col+1);
-        return a + b;
-    }
-    
-    public static void main(String[] args) {
-        Problem63 prob = new Problem63();
-        int[][] grid = new int[][]{
-            new int[]{0, 0, 0},
-            new int[]{0, 1, 0},
-            new int[]{0, 0, 0},
-            new int[]{0, 0, 0},
-            new int[]{0, 0, 0},
-        };
-        System.out.println(prob.uniquePathsWithObstacles(grid));
+        if (row == destRow && col == destCol) {
+            return 1;
+        }
+        String key = row + "|" + col;
+        if (memo.containsKey(key)) {
+            return memo.get(key);
+        }
+        int a = findPaths(grid, destRow, destCol, row+1, col, memo);
+        int b = findPaths(grid, destRow, destCol, row, col+1, memo);
+        int result = a + b;
+        memo.put(key, result);
+        return result;
     }
 }
