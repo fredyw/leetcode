@@ -1,7 +1,7 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
@@ -17,56 +17,58 @@ public class Problem106 {
         }
     }
 
-    public TreeNode buildTree(int[] inorder, int[] postorder) {
-        return null;
+    private class PostOrder {
+        int idx;
+
+        public PostOrder(int idx) {
+            this.idx = idx;
+        }
     }
 
-    private static void postOrder(TreeNode node, List<Integer> list) {
-        if (node == null) {
+    private enum Direction {
+        LEFT, RIGHT, CENTER
+    }
+
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        if (inorder.length == 0) {
+            return null;
+        }
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < inorder.length; i++) {
+            map.put(inorder[i], i);
+        }
+        TreeNode node = new TreeNode(postorder[postorder.length-1]);
+        PostOrder po = new PostOrder(postorder.length-1);
+        buildTree(node, inorder, postorder, po, 0, inorder.length, map, Direction.CENTER);
+        return node;
+    }
+
+    private void buildTree(TreeNode node, int[] inorder, int[] postorder,
+                           PostOrder po, int fromInOrderIdx, int toInOrderIdx,
+                           Map<Integer, Integer> map, Direction direction) {
+        if (po.idx < 0) {
             return;
         }
-        postOrder(node.left, list);
-        postOrder(node.right, list);
-        list.add(node.val);
-    }
-    
-    private static void inOrder(TreeNode node, List<Integer> list) {
-        if (node == null) {
-            return;
+        int inOrderIdx = map.get(postorder[po.idx]);
+        TreeNode newNode = null;
+        if (direction == Direction.LEFT) {
+            node.left = new TreeNode(postorder[po.idx]);
+            newNode = node.left;
+        } else if (direction == Direction.RIGHT) {
+            node.right = new TreeNode(postorder[po.idx]);
+            newNode = node.right;
+        } else {
+            newNode = node;
         }
-        inOrder(node.left, list);
-        list.add(node.val);
-        inOrder(node.right, list);
-    }
-    
-    public static void main(String[] args) {
-        Problem106 prob = new Problem106();
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.left.left = new TreeNode(3);
-        root.left.right = new TreeNode(4);
-        root.left.right.left = new TreeNode(5);
-        root.right = new TreeNode(6);
-        root.right.right = new TreeNode(7);
-        root.right.right.left = new TreeNode(8);
-        root.right.right.right = new TreeNode(9);
-        
-        List<Integer> inOrderList = new ArrayList<>();
-        inOrder(root, inOrderList);
-        int[] inOrder = new int[inOrderList.size()];
-        for (int i = 0; i < inOrderList.size(); i++) {
-            inOrder[i] = inOrderList.get(i);
+        if (inOrderIdx+1 < toInOrderIdx) {
+            po.idx--;
+            buildTree(newNode, inorder, postorder, po, inOrderIdx+1, toInOrderIdx,
+                map, Direction.RIGHT);
         }
-        System.out.println("In-order  : " + inOrderList);
-        
-        List<Integer> postOrderList = new ArrayList<>();
-        postOrder(root, postOrderList);
-        int[] postOrder = new int[postOrderList.size()];
-        for (int i = 0; i < postOrderList.size(); i++) {
-            postOrder[i] = postOrderList.get(i);
+        if (fromInOrderIdx < inOrderIdx) {
+            po.idx--;
+            buildTree(newNode, inorder, postorder, po, fromInOrderIdx,
+                inOrderIdx, map, Direction.LEFT);
         }
-        System.out.println("Post-order: " + postOrderList);
-        
-        TreeNode newTree = prob.buildTree(inOrder, postOrder);
     }
 }
