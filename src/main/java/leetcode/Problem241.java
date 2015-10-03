@@ -1,7 +1,6 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -9,44 +8,30 @@ import java.util.List;
  */
 public class Problem241 {
     public List<Integer> diffWaysToCompute(String input) {
-        List<Integer> result = new ArrayList<>();
-
-        return result;
-    }
-
-    private List<Integer> generate(List<Integer> list) {
-        if (list.size() == 1) {
-            List<Integer> newList = new ArrayList<>();
-            newList.add(list.get(0));
-            return newList;
-        }
-        if (list.size() == 2) {
-            List<Integer> newList = new ArrayList<>();
-            newList.add(list.get(0) + list.get(1));
-            return newList;
+        if (input.length() == 1) {
+            List<Integer> list = new ArrayList<>();
+            list.add(Integer.valueOf(input));
+            return list;
         }
         List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            List<Integer> left = generate(list.subList(0, i));
-            List<Integer> right = generate(list.subList(i + 1, list.size()));
-            if (left.size() > right.size()) {
-//                int total = 0;
+        for (int i = 0; i < input.length()-1; i++) {
+            if (input.charAt(i) == '+' || input.charAt(i) == '-'
+                || input.charAt(i) == '*') {
+//                System.out.println("left: " + input.substring(0, i+1));
+                List<Integer> left = diffWaysToCompute(input.substring(0, i+1));
+//                System.out.println("right: " + input.substring(i+1, input.length()));
+                List<Integer> right = diffWaysToCompute(input.substring(i+1, input.length()));
                 for (int l : left) {
                     for (int r : right) {
-//                        total += l + r;
-                        result.add(l + r + list.get(i));
+                        if (input.charAt(i) == '+') {
+                            result.add(l + r);
+                        } else if (input.charAt(i) == '-') {
+                            result.add(l - r);
+                        } else if (input.charAt(i) == '*') {
+                            result.add(l * r);
+                        }
                     }
                 }
-//                newList.add(total);
-            } else {
-//                int total = 0;
-                for (int r : right) {
-                    for (int l : left) {
-                        result.add(l + r + list.get(i));
-//                        total += l + r;
-                    }
-                }
-//                newList.add(total);
             }
         }
         return result;
@@ -54,11 +39,8 @@ public class Problem241 {
 
     public static void main(String[] args) {
         Problem241 prob = new Problem241();
-        System.out.println(prob.generate(Arrays.asList(1, 2, 3, 4)));
-//        System.out.println(prob.diffWaysToCompute("2-1-1"));
-//        System.out.println(prob.diffWaysToCompute("2*3-4*5"));
-//        for (List<String> list : prob.generate(Arrays.asList("1", "2", "3", "4"))) {
-//            System.out.println(list);
-//        }
+        for (int i : prob.diffWaysToCompute("2-1-1")) {
+            System.out.println(i);
+        }
     }
 }
