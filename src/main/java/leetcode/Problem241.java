@@ -14,12 +14,10 @@ public class Problem241 {
             return list;
         }
         List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < input.length()-1; i++) {
+        for (int i = 1; i < input.length(); i += 2) {
             if (input.charAt(i) == '+' || input.charAt(i) == '-'
                 || input.charAt(i) == '*') {
-//                System.out.println("left: " + input.substring(0, i+1));
-                List<Integer> left = diffWaysToCompute(input.substring(0, i+1));
-//                System.out.println("right: " + input.substring(i+1, input.length()));
+                List<Integer> left = diffWaysToCompute(input.substring(0, i));
                 List<Integer> right = diffWaysToCompute(input.substring(i+1, input.length()));
                 for (int l : left) {
                     for (int r : right) {
@@ -40,6 +38,14 @@ public class Problem241 {
     public static void main(String[] args) {
         Problem241 prob = new Problem241();
         for (int i : prob.diffWaysToCompute("2-1-1")) {
+            System.out.println(i);
+        }
+        System.out.println("----------------------------");
+        for (int i : prob.diffWaysToCompute("2*3-4*5")) {
+            System.out.println(i);
+        }
+        System.out.println("----------------------------");
+        for (int i : prob.diffWaysToCompute("11")) {
             System.out.println(i);
         }
     }
