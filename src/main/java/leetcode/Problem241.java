@@ -8,13 +8,13 @@ import java.util.List;
  */
 public class Problem241 {
     public List<Integer> diffWaysToCompute(String input) {
-        if (input.length() == 1) {
+        if (!input.contains("+") && !input.contains("-") && !input.contains("*")) {
             List<Integer> list = new ArrayList<>();
             list.add(Integer.valueOf(input));
             return list;
         }
         List<Integer> result = new ArrayList<>();
-        for (int i = 1; i < input.length(); i += 2) {
+        for (int i = 0; i < input.length(); i++) {
             if (input.charAt(i) == '+' || input.charAt(i) == '-'
                 || input.charAt(i) == '*') {
                 List<Integer> left = diffWaysToCompute(input.substring(0, i));
@@ -33,20 +33,5 @@ public class Problem241 {
             }
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        Problem241 prob = new Problem241();
-        for (int i : prob.diffWaysToCompute("2-1-1")) {
-            System.out.println(i);
-        }
-        System.out.println("----------------------------");
-        for (int i : prob.diffWaysToCompute("2*3-4*5")) {
-            System.out.println(i);
-        }
-        System.out.println("----------------------------");
-        for (int i : prob.diffWaysToCompute("11")) {
-            System.out.println(i);
-        }
     }
 }
