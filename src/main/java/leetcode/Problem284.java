@@ -7,32 +7,40 @@ import java.util.Iterator;
  */
 public class Problem284 {
     private static class PeekingIterator implements Iterator<Integer> {
+        private final Iterator<Integer> iterator;
+        private Integer peek;
+
         public PeekingIterator(Iterator<Integer> iterator) {
-            // initialize any member here.
+            this.iterator = iterator;
+            if (iterator.hasNext()) {
+                peek = iterator.next();
+            }
         }
 
         // Returns the next element in the iteration without advancing the iterator.
         public Integer peek() {
-            // TODO
-            return null;
+            return peek;
         }
 
         // hasNext() and next() should behave the same as in the Iterator interface.
         // Override them if needed.
         @Override
         public Integer next() {
-            // TODO
-            return null;
+            Integer oldPeek = peek;
+            if (iterator.hasNext()) {
+                peek = iterator.next();
+            } else {
+                peek = null;
+            }
+            return oldPeek;
         }
 
         @Override
         public boolean hasNext() {
-            // TODO
-            return false;
+            if (peek == null) {
+                return false;
+            }
+            return true;
         }
-    }
-
-    public static void main(String[] args) {
-
     }
 }
