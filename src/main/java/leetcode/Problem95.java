@@ -1,7 +1,11 @@
 package leetcode;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
+import java.util.Set;
 
 /**
  * https://leetcode.com/problems/unique-binary-search-trees-ii/
@@ -14,15 +18,14 @@ public class Problem95 {
         TreeNode(int x) {
             val = x;
         }
-
-        @Override
-        public String toString() {
-            return Integer.toString(val);
-        }
     }
 
     public List<TreeNode> generateTrees(int n) {
         List<TreeNode> result = new ArrayList<>();
+        if (n == 0) {
+            result.add(null);
+        }
+        Set<String> treeNodes = new HashSet<>();
         for (int i = 1; i <= n; i++) {
             TreeNode root = new TreeNode(i);
             List<Integer> numbers = new ArrayList<>();
@@ -32,15 +35,19 @@ public class Problem95 {
                 }
                 numbers.add(j);
             }
-            generate(numbers, root, result);
+            generate(numbers, root, treeNodes, result);
         }
         return result;
     }
 
-    private void generate(List<Integer> numbers, TreeNode root, List<TreeNode> result) {
+    private void generate(List<Integer> numbers, TreeNode root, Set<String> treeNodes,
+                          List<TreeNode> result) {
         if (numbers.size() == 0) {
-            System.out.println("hey");
-            result.add(root);
+            String str = toString(root);
+            if (!treeNodes.contains(str)) {
+                result.add(root);
+            }
+            treeNodes.add(str);
             return;
         }
         for (int i = 0; i < numbers.size(); i++) {
@@ -54,7 +61,7 @@ public class Problem95 {
                 }
                 newNumbers.add(numbers.get(j));
             }
-            generate(newNumbers, r, result);
+            generate(newNumbers, r, treeNodes, result);
         }
     }
 
@@ -92,24 +99,20 @@ public class Problem95 {
         return node;
     }
 
-    public static void main(String[] args) {
-        Problem95 prob = new Problem95();
-        List<TreeNode> result = prob.generateTrees(3);
-        for (TreeNode node : result) {
-            System.out.println(node);
+    private String toString(TreeNode node) {
+        StringBuilder sb = new StringBuilder();
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(node);
+        while (!queue.isEmpty()) {
+            TreeNode n = queue.remove();
+            sb.append(n.val + ",");
+            if (n.left != null) {
+                queue.add(n.left);
+            }
+            if (n.right != null) {
+                queue.add(n.right);
+            }
         }
-//        TreeNode root = prob.add(null, 1);
-//        root = prob.add(root, 3);
-//        root = prob.add(root, 2);
-//
-//        System.out.println(root);
-//        System.out.println(root.right);
-//        System.out.println(root.right.left);
-//
-//        TreeNode copy = prob.copy(root);
-//
-//        System.out.println(copy);
-//        System.out.println(copy.right);
-//        System.out.println(copy.right.left);
+        return sb.toString();
     }
 }
