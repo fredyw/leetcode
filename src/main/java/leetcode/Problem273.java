@@ -1,7 +1,5 @@
 package leetcode;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Stack;
 
 /**
@@ -9,76 +7,53 @@ import java.util.Stack;
  */
 public class Problem273 {
     public String numberToWords(int num) {
-        System.out.println("* num=" + num + " *");
-        if (num <= 20) {
-            if (num == 0) {
-                return "Zero";
-            }
-            return getName(num);
-        }
-        int length = 0;
-        int x = num;
-        while (x  > 0) {
-            x /= 10;
-            length++;
+        System.out.println("Input: " + num);
+        if (num == 0) {
+            return "Zero";
         }
         StringBuilder sb = new StringBuilder();
-        int val = num;
-        length--;
-        while (length >= 0) {
-            int divisor = (int) Math.pow(10, length);
-            if (val < divisor) {
-                length--;
-                continue;
+        String str = Integer.toString(num);
+        Stack<String> stack = new Stack<>();
+        for (int i = str.length()-1; i >= 0; i -= 3) {
+            if (i-2 < 0) {
+                String s = str.substring(0, i+1);
+                stack.push(s);
+                break;
             }
-            System.out.println("- divisor="  + divisor + ", val=" + val);
-            if (divisor == 10000000) {
-                System.out.println("block 1");
-                length -= 2;
-                divisor = 1000000;
-                int z = val / divisor;
-                sb.append(numberToWords(z) + " " + getName(divisor) + " ");
-            } else if (divisor == 10000) {
-                System.out.println("block 2");
-                length -= 2;
-                divisor = 1000;
-                int z = val / divisor;
-                sb.append(numberToWords(z) + " " + getName(divisor) + " ");
-            } else if (divisor == 10 || divisor == 1) {
-                System.out.println("block 3");
-                String s = getName(val);
-                if (s.isEmpty()) {
-                    length--;
-                    int z = val / divisor;
-                    s = getName(z * divisor);
+            String s = str.substring(i-2, i+1);
+            stack.push(s);
+        }
+        int size = stack.size()-1;
+        while (!stack.isEmpty()) {
+            String s = stack.pop();
+            String tmp = s;
+            int remainder = Integer.parseInt(tmp);
+            while (remainder > 0) {
+                int val = Integer.parseInt(tmp);
+                int a = (int) Math.pow(10, tmp.length()-1);
+                if (val <= 20) {
+                    sb.append(getName(val)).append(" ");
+                    break;
                 } else {
-                    length -= 2;
-                }
-                System.out.println("s=" + s);
-                sb.append(s + " ");
-            } else {
-                System.out.println("block 4");
-                length--;
-                int z = val / divisor;
-                String s = getName(divisor);
-                String t = "";
-                if (s.isEmpty()) {
-                    int div = divisor;
-                    s = "";
-                    int y = 0;
-                    while (s.isEmpty()) {
-                        div /= 1000;
-                        s = getName(div);
-                        y++;
-                    }
-                    if (val % divisor == 0) {
-                        t = getName((int) Math.pow(1000, y));
+                    int b = val / a;
+                    if (val <= 99) {
+                        if (b > 0) {
+                            sb.append(getName(b * a)).append(" ");
+                        }
+                    } else {
+                        sb.append(getName(b)).append(" ").append(getName(a)).append(" ");
                     }
                 }
-                System.out.println("s=" + s);
-                sb.append(getName(z) + " " + s + " " + t);
+                remainder = val % a;
+                tmp = Integer.toString(remainder);
             }
-            val = val % divisor;
+            if (Integer.parseInt(s) > 0) {
+                if (size > 0) {
+                    int a = (int) Math.pow(1000, size);
+                    sb.append(getName(a)).append(" ");
+                }
+            }
+            size--;
         }
         return sb.toString().trim();
     }
@@ -152,23 +127,26 @@ public class Problem273 {
 
     public static void main(String[] args) {
         Problem273 prob = new Problem273();
-//        System.out.println(prob.numberToWords(0));
-//        System.out.println(prob.numberToWords(100));
-//        System.out.println(prob.numberToWords(2012));
-//        System.out.println(prob.numberToWords(100000));
-        System.out.println(prob.numberToWords(100000000));
-//        System.out.println(prob.numberToWords(2));
-//        System.out.println(prob.numberToWords(23));
-//        System.out.println(prob.numberToWords(923));
-//        System.out.println(prob.numberToWords(9234));
-//        System.out.println(prob.numberToWords(92345));
-//        System.out.println(prob.numberToWords(923456));
-//        System.out.println(prob.numberToWords(9234567));
-//        System.out.println(prob.numberToWords(92345678));
-//        System.out.println(prob.numberToWords(923456789));
-//        System.out.println(prob.numberToWords(1234567890));
-//        System.out.println(prob.numberToWords(Integer.MAX_VALUE));
-//        System.out.println(prob.numberToWords(12345));
-//        System.out.println(prob.numberToWords(12));
+        System.out.println("Output: " + prob.numberToWords(0));
+        System.out.println("Output: " + prob.numberToWords(100));
+        System.out.println("Output: " + prob.numberToWords(2012));
+        System.out.println("Output: " + prob.numberToWords(2002));
+        System.out.println("Output: " + prob.numberToWords(100000));
+        System.out.println("Output: " + prob.numberToWords(100000000));
+        System.out.println("Output: " + prob.numberToWords(2));
+        System.out.println("Output: " + prob.numberToWords(23));
+        System.out.println("Output: " + prob.numberToWords(923));
+        System.out.println("Output: " + prob.numberToWords(9234));
+        System.out.println("Output: " + prob.numberToWords(92345));
+        System.out.println("Output: " + prob.numberToWords(923456));
+        System.out.println("Output: " + prob.numberToWords(9234567));
+        System.out.println("Output: " + prob.numberToWords(92345678));
+        System.out.println("Output: " + prob.numberToWords(923456789));
+        System.out.println("Output: " + prob.numberToWords(1234567890));
+        System.out.println("Output: " + prob.numberToWords(1200000001));
+        System.out.println("Output: " + prob.numberToWords(Integer.MAX_VALUE));
+        System.out.println("Output: " + prob.numberToWords(12345));
+        System.out.println("Output: " + prob.numberToWords(12));
+        System.out.println("Output: " + prob.numberToWords(1099));
     }
 }
