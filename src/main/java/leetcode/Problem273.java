@@ -124,29 +124,4 @@ public class Problem273 {
         }
         return "";
     }
-
-    public static void main(String[] args) {
-        Problem273 prob = new Problem273();
-        System.out.println("Output: " + prob.numberToWords(0));
-        System.out.println("Output: " + prob.numberToWords(100));
-        System.out.println("Output: " + prob.numberToWords(2012));
-        System.out.println("Output: " + prob.numberToWords(2002));
-        System.out.println("Output: " + prob.numberToWords(100000));
-        System.out.println("Output: " + prob.numberToWords(100000000));
-        System.out.println("Output: " + prob.numberToWords(2));
-        System.out.println("Output: " + prob.numberToWords(23));
-        System.out.println("Output: " + prob.numberToWords(923));
-        System.out.println("Output: " + prob.numberToWords(9234));
-        System.out.println("Output: " + prob.numberToWords(92345));
-        System.out.println("Output: " + prob.numberToWords(923456));
-        System.out.println("Output: " + prob.numberToWords(9234567));
-        System.out.println("Output: " + prob.numberToWords(92345678));
-        System.out.println("Output: " + prob.numberToWords(923456789));
-        System.out.println("Output: " + prob.numberToWords(1234567890));
-        System.out.println("Output: " + prob.numberToWords(1200000001));
-        System.out.println("Output: " + prob.numberToWords(Integer.MAX_VALUE));
-        System.out.println("Output: " + prob.numberToWords(12345));
-        System.out.println("Output: " + prob.numberToWords(12));
-        System.out.println("Output: " + prob.numberToWords(1099));
-    }
 }
