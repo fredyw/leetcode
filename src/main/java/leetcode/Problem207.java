@@ -69,20 +69,4 @@ public class Problem207 {
         }
         onStack.put(source, false);
     }
-
-    public static void main(String[] args) {
-        Problem207 prob = new Problem207();
-//        int[][] adjList = new int[][]{
-//            new int[]{1, 0},
-//        };
-        int[][] adjList = new int[][]{
-            new int[]{1, 0},
-            new int[]{0, 1},
-        };
-//        int[][] adjList = new int[][]{
-//            new int[]{1, 0},
-//            new int[]{2, 0},
-//        };
-        System.out.println(prob.canFinish(3, adjList));
-    }
 }
