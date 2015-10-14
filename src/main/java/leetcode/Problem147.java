@@ -24,16 +24,18 @@ public class Problem147 {
             size++;
         }
         ListNode newHead = head;
-        for (int x = 0; x <= size-2; x++) {
-            for (int i = x; i >= 0; i--) {
-                ListNode prev = null;
-                ListNode current = newHead;
-                for (int j = 0; j < i; j++) {
-                    prev = current;
-                    current = current.next;
-                }
+        int x = 1;
+        for (ListNode n = head; n != null; n = n.next) {
+            System.out.println("swapping head: " + newHead + " with " + n);
+            newHead = swapWithHead(newHead, n);
+            print(newHead);
+//        System.out.println("newhead=" + newHead + ", tmp=" + tmp);
+            ListNode prev = null;
+            ListNode current = newHead;
+            for (int i = 0; i < x; i++) {
+//            System.out.println("current=" + current);
                 if (prev == null) {
-                    if (head.val > current.next.val) {
+                    if (newHead.val > current.next.val) {
                         newHead = swap(newHead, prev, current);
                     }
                 } else {
@@ -41,8 +43,31 @@ public class Problem147 {
                         newHead = swap(newHead, prev, current);
                     }
                 }
+                prev = current;
+                current = current.next;
             }
+            x++;
         }
+
+//        for (int x = 0; x <= size-2; x++) {
+//            for (int i = x; i >= 0; i--) {
+//                ListNode prev = null;
+//                ListNode current = newHead;
+//                for (int j = 0; j < i; j++) {
+//                    prev = current;
+//                    current = current.next;
+//                }
+//                if (prev == null) {
+//                    if (head.val > current.next.val) {
+//                        newHead = swap(newHead, prev, current);
+//                    }
+//                } else {
+//                    if (prev.next.val > current.next.val) {
+//                        newHead = swap(newHead, prev, current);
+//                    }
+//                }
+//            }
+//        }
         return newHead;
     }
 
@@ -67,22 +92,53 @@ public class Problem147 {
         return head;
     }
 
+    private ListNode swapWithHead(ListNode head, ListNode n1) {
+        if (head == n1) {
+            return swap(head, null, n1);
+        }
+        ListNode n1Swap = n1.next;
+        ListNode n1Rest = n1Swap.next;
+        n1.next = null;
+        ListNode tmpHead = head;
+        n1Swap.next = head.next;
+        n1.next = tmpHead;
+        tmpHead.next = n1Rest;
+        return n1Swap;
+
+//        ListNode tmp1 = n1.next;
+//        ListNode tmp2 = head.next;
+//        ListNode tmp3 = tmp1.next;
+//        tmp2.next = tmp1.next;
+//        head.next = null;
+//        n1.next = head;
+//        tmp1.next = tmp2;
+//        head.next = tmp3;
+//        return tmp1;
+    }
+
+    private void print(ListNode node) {
+        for (ListNode n = node; n != null; n = n.next) {
+            System.out.print(n + " ");
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         Problem147 prob = new Problem147();
 
-//        ListNode head = new ListNode(1);
-//        head.next = new ListNode(2);
-//        head.next.next = new ListNode(3);
-//        head.next.next.next = new ListNode(4);
-//        head.next.next.next.next = new ListNode(0);
+        ListNode head = new ListNode(4);
+        head.next = new ListNode(3);
+        head.next.next = new ListNode(2);
+        head.next.next.next = new ListNode(1);
+        head.next.next.next.next = new ListNode(0);
 
-//        ListNode head = new ListNode(4);
-//        head.next = new ListNode(3);
+//        ListNode head = new ListNode(3);
+//        head.next = new ListNode(4);
 //        head.next.next = new ListNode(2);
 //        head.next.next.next = new ListNode(1);
 //        head.next.next.next.next = new ListNode(0);
 //
-        ListNode head = new ListNode(0);
+//        ListNode head = new ListNode(0);
 //        head.next = new ListNode(1);
 //        head.next.next = new ListNode(2);
 //        head.next.next.next = new ListNode(3);
@@ -94,17 +150,14 @@ public class Problem147 {
 //        head = prob.swap(head, head.next.next, head.next.next.next);
 //        head = prob.swap(head, head.next.next.next, head.next.next.next.next);
 
-        for (ListNode n = head; n != null; n = n.next) {
-            System.out.print(n + " ");
-        }
-        System.out.println();
+//        prob.print(head);
+//        System.out.println("swapping...");
+//        head = prob.swapWithHead(head, head);
+//        prob.print(head);
 
+        prob.print(head);
         System.out.println("sorting...");
         ListNode newHead = prob.insertionSortList(head);
-
-        for (ListNode n = newHead; n != null; n = n.next) {
-            System.out.print(n + " ");
-        }
-        System.out.println();
+        prob.print(newHead);
     }
 }
