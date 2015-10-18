@@ -22,8 +22,4 @@ public class Problem275 {
         }
         return binarySearch(citations, mid+1, hi);
     }
-
-    public static void main(String[] args) {
-        Problem275 prob = new Problem275();
-    }
 }
