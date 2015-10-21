@@ -5,24 +5,17 @@ package leetcode;
  */
 public class Problem209 {
     public int minSubArrayLen(int s, int[] nums) {
-        for (int i = 1; i < nums.length; i++) {
-            for (int j = 0; j < nums.length; j++) {
-                int sum = 0;
-                for (int x = j; x < j+i && x < nums.length; x++) {
-                    sum += nums[x];
-                }
-                if (sum >= s) {
-                    return i;
-                }
+        int min = Integer.MAX_VALUE;
+        int left = 0;
+        int sum = 0;
+        for (int right = 0; right < nums.length; right++) {
+            sum += nums[right];
+            while (sum >= s) {
+                min = Math.min(min, right - left + 1);
+                sum -= nums[left];
+                left++;
             }
         }
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem209 prob = new Problem209();
-//        System.out.println(prob.minSubArrayLen(7, new int[]{2, 3, 1, 2, 4, 3}));
-//        System.out.println(prob.minSubArrayLen(3, new int[]{2, 3, 1, 2, 4, 5}));
-        System.out.println(prob.minSubArrayLen(7, new int[]{2, 3, 1, 2, 4, 5}));
+        return (min == Integer.MAX_VALUE) ? 0 : min;
     }
 }
