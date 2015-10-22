@@ -51,23 +51,4 @@ public class Problem213 {
         memo.put(idx, value);
         return value;
     }
-
-    public static void main(String[] args) {
-        Problem213 prob = new Problem213();
-        System.out.println(prob.rob(new int[]{})); // 0
-        System.out.println(prob.rob(new int[]{2, 1})); // 2
-        System.out.println(prob.rob(new int[]{1, 2})); // 2
-        System.out.println(prob.rob(new int[]{1, 1, 1})); // 1
-        System.out.println(prob.rob(new int[]{1})); // 1
-        System.out.println(prob.rob(new int[]{6, 6, 4, 8, 4, 3, 3, 10})); // 27
-        System.out.println(prob.rob(new int[]{2, 1, 1, 2})); // 3
-        System.out.println(prob.rob(new int[]{2, 1, 1, 1})); // 3
-        System.out.println(prob.rob(new int[]{2, 1, 1, 4})); // 5
-        System.out.println(prob.rob(new int[]{1, 1, 3, 6, 7, 10, 7, 1, 8, 5, 9, 1, 6, 4, 3})); // 43
-        System.out.println(prob.rob(new int[]{1, 3, 1, 3, 100})); // 103
-        System.out.println(prob.rob(new int[]{1, 2, 3, 4, 5, 1, 2, 3, 4, 5})); // 16
-        System.out.println(prob.rob(new int[]{1, 2, 3, 4, 6, 1, 2, 3, 4, 5})); // 17
-        System.out.println(prob.rob(new int[]{1, 7, 3})); // 7
-        System.out.println(prob.rob(new int[]{2, 7, 7, 7, 4})); // 14
-    }
 }
