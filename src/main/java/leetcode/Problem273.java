@@ -7,7 +7,6 @@ import java.util.Stack;
  */
 public class Problem273 {
     public String numberToWords(int num) {
-        System.out.println("Input: " + num);
         if (num == 0) {
             return "Zero";
         }
