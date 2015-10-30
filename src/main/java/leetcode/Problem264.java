@@ -1,67 +1,63 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * https://leetcode.com/problems/ugly-number-ii/
  */
 public class Problem264 {
     public int nthUglyNumber(int n) {
-        int i = 0;
-        int count = 0;
-        while (count < n) {
-            if (isUgly(i)) {
-                count++;
+        int x = (int) (Math.log10(n) / Math.log10(3)) + 3;
+        Set<Integer> processed = new HashSet<>();
+        Set<Integer> uglyNumbers = new TreeSet<>();
+        uglyNumbers.add(1);
+        List<Integer> level = new ArrayList<>();
+        level.add(1);
+        for (int i = 0; i < x; i++) {
+            List<Integer> tmp = new ArrayList<>();
+            for (int num : level) {
+                int a = num * 2;
+                if (!processed.contains(a)) {
+                    tmp.add(a);
+                    processed.add(a);
+                    uglyNumbers.add(a);
+                }
+                int b = num * 3;
+                if (!processed.contains(b)) {
+                    tmp.add(b);
+                    processed.add(b);
+                    uglyNumbers.add(b);
+                }
+                int c = num * 5;
+                if (!processed.contains(c)) {
+                    tmp.add(c);
+                    processed.add(c);
+                    uglyNumbers.add(c);
+                }
+            }
+            level = tmp;
+            System.out.println(level);
+        }
+        System.out.println(uglyNumbers);
+        int i = 1;
+        for (int num : uglyNumbers) {
+            if (i == n) {
+                return num;
             }
             i++;
         }
-        if (i-1 < 0) {
-            return 0;
-        }
-        return i-1;
-    }
-
-    private boolean isUgly(int num) {
-        if (num == 0) {
-            return false;
-        }
-        if (num == 1) {
-            return true;
-        }
-        int[] primes = new int[]{2, 3, 5};
-        Set<Integer> pf = new HashSet<>();
-        isUgly(num, primes, pf);
-        for (int prime : primes) {
-            pf.remove(prime);
-        }
-        return pf.isEmpty();
-    }
-
-    private void isUgly(int num, int[] primes, Set<Integer> pf) {
-        for (int prime : primes) {
-            if (num == prime) {
-                pf.add(prime);
-                return;
-            }
-        }
-        boolean found = false;
-        for (int prime : primes) {
-            if (num % prime == 0) {
-                pf.add(prime);
-                isUgly(num / prime, primes, pf);
-                found = true;
-                break;
-            }
-        }
-        if (!found) {
-            pf.add(num);
-        }
+        return 0;
     }
 
     public static void main(String[] args) {
         Problem264 prob = new Problem264();
-        System.out.println(prob.nthUglyNumber(9));
-        System.out.println(prob.nthUglyNumber(312));
+//        System.out.println(prob.nthUglyNumber(7)); // 8
+//        System.out.println(prob.nthUglyNumber(9)); // 10
+        System.out.println(prob.nthUglyNumber(19)); // 32
+//        System.out.println(prob.nthUglyNumber(312));
     }
 }
