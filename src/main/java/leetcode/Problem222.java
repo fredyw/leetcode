@@ -16,42 +16,39 @@ public class Problem222 {
 
     private static class Count {
         int count;
+        int level;
         boolean done;
     }
 
     public int countNodes(TreeNode root) {
-        int maxLevel = getNumLevel(root, 0);
-//        System.out.println("maxlevel=" + maxLevel);
-        Count incomplete = new Count();
-        countIncomplete(root, maxLevel, 0, incomplete);
-//        System.out.println("countIncomplete=" + countIncomplete);
-        return (int) (Math.pow(2, maxLevel) - 1) - incomplete.count;
+        Count count = new Count();
+        countIncomplete(root, 0, count);
+        int maxLevel = count.level + 1;
+//        System.out.println("countIncomplete=" + count.count);
+        return (int) (Math.pow(2, maxLevel) - 1) - count.count;
     }
 
-    private void countIncomplete(TreeNode node, int maxLevel, int level, Count count) {
+    private void countIncomplete(TreeNode node, int level, Count count) {
         if (node == null) {
-            if (maxLevel > level) {
+            if (count.level == 0) {
+                count.count++;
+                count.level = level;
+                return;
+            } else if (count.level == level) {
                 count.count++;
                 return;
             }
             count.done = true;
             return;
         }
-        countIncomplete(node.right, maxLevel, level + 1, count);
+        countIncomplete(node.right, level + 1, count);
         if (count.done) {
             return;
         }
-        countIncomplete(node.left, maxLevel, level + 1, count);
+        countIncomplete(node.left, level + 1, count);
         if (count.done) {
             return;
         }
-    }
-
-    private int getNumLevel(TreeNode node, int level) {
-        if (node == null) {
-            return level;
-        }
-        return getNumLevel(node.left, level + 1);
     }
 
     public static void main(String[] args) {
