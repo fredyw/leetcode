@@ -14,72 +14,33 @@ public class Problem222 {
         }
     }
 
-    private static class Count {
-        int count;
-        int level;
-        boolean done;
-    }
-
     public int countNodes(TreeNode root) {
-//        int maxLevel = getNumLevel(root, 0);
-//        System.out.println("maxlevel=" + maxLevel);
-        Count count = new Count();
-        countIncomplete(root, 0, count);
-        int maxLevel = count.level + 1;
-//        System.out.println("countIncomplete=" + count.count);
-        return (int) (Math.pow(2, maxLevel) - 1) - count.count;
+        int leftLevel = countLeftLevel(root, 0);
+        int rightLevel = countRightLevel(root, 0);
+        if (leftLevel == rightLevel) {
+            // 2^h - 1
+            return (1 << leftLevel) - 1;
+        }
+        return 1 + countNodes(root.left) + countNodes(root.right);
     }
 
-    private void countIncomplete(TreeNode node, int level, Count count) {
-        if (node == null) {
-            if (count.level == 0) {
-                count.count++;
-                count.level = level;
-                return;
-            } else if (count.level == level) {
-                count.count++;
-                return;
-            }
-//            if (maxLevel > level) {
-//                count.count++;
-//                return;
-//            }
-            count.done = true;
-            return;
+    private int countLeftLevel(TreeNode node, int level) {
+        int count = 0;
+        TreeNode n = node;
+        while (n != null) {
+            count++;
+            n = n.left;
         }
-        countIncomplete(node.right, level + 1, count);
-        if (count.done) {
-            return;
-        }
-        countIncomplete(node.left, level + 1, count);
-        if (count.done) {
-            return;
-        }
+        return count;
     }
 
-    private int getNumLevel(TreeNode node, int level) {
-        if (node == null) {
-            return level;
+    private int countRightLevel(TreeNode node, int level) {
+        int count = 0;
+        TreeNode n = node;
+        while (n != null) {
+            count++;
+            n = n.right;
         }
-        return getNumLevel(node.left, level + 1);
-    }
-
-    public static void main(String[] args) {
-        Problem222 prob = new Problem222();
-
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.left.left = new TreeNode(3);
-        root.left.left.left = new TreeNode(4);
-        root.left.left.right = new TreeNode(5);
-        root.left.right = new TreeNode(6);
-        root.left.right.left = new TreeNode(7);
-        root.left.right.right = new TreeNode(8);
-        root.right = new TreeNode(9);
-        root.right.left = new TreeNode(10);
-        root.right.left.left = new TreeNode(11);
-        root.right.right = new TreeNode(12);
-
-        System.out.println(prob.countNodes(root));
+        return count;
     }
 }
