@@ -15,5 +15,8 @@ public class Problem187 {
 
     public static void main(String[] args) {
         Problem187 prob = new Problem187();
+//                                                             CCCCCAAAAA CCCCCAAAAA
+//                                                       AAAAACCCCC AAAAACCCCC
+        System.out.println(prob.findRepeatedDnaSequences("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"));
     }
 }
