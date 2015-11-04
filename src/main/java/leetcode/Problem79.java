@@ -8,14 +8,12 @@ import java.util.Set;
  */
 public class Problem79 {
     public boolean exist(char[][] board, String word) {
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                if (word.charAt(0) == board[i][j]) {
-//                    System.out.println("processing " + i + ", " + j);
+        for (int row = 0; row < board.length; row++) {
+            for (int col = 0; col < board[row].length; col++) {
+                if (word.charAt(0) == board[row][col]) {
                     Set<String> set = new HashSet<>();
-                    boolean found = exist(board, word, board.length, board[i].length,
-                        set, 0, i, j);
-//                    System.out.println("  - found=" + found);
+                    boolean found = exist(board, word, board.length, board[row].length,
+                        set, 0, row, col);
                     if (found) {
                         return true;
                     }
@@ -44,39 +42,19 @@ public class Problem79 {
         if (board[row][col] == word.charAt(idx) && idx == word.length() - 1) {
             return true;
         }
-//        System.out.println("  - val=" + board[row][col]);
-        Set<String> newSet = new HashSet<>(set);
-        newSet.add(key);
+        set.add(key);
         // left
-        boolean a = exist(board, word, maxRow, maxCol, newSet, idx + 1, row, col - 1);
+        boolean a = exist(board, word, maxRow, maxCol, set, idx + 1, row, col - 1);
         // up
-        boolean b = exist(board, word, maxRow, maxCol, newSet, idx + 1, row - 1, col);
+        boolean b = exist(board, word, maxRow, maxCol, set, idx + 1, row - 1, col);
         // right
-        boolean c = exist(board, word, maxRow, maxCol, newSet, idx + 1, row, col + 1);
+        boolean c = exist(board, word, maxRow, maxCol, set, idx + 1, row, col + 1);
         // down
-        boolean d = exist(board, word, maxRow, maxCol, newSet, idx + 1, row + 1, col);
-
-        return a | b | c | d;
-    }
-
-    public static void main(String[] args) {
-        Problem79 prob = new Problem79();
-//        char[][] board = new char[][]{
-//            {'A', 'B', 'C', 'E'},
-//            {'S', 'F', 'C', 'S'},
-//            {'A', 'D', 'E', 'E'},
-//        };
-//        System.out.println(prob.exist(board, "ABCCED")); // true
-//        System.out.println(prob.exist(board, "SEE")); // true
-//        System.out.println(prob.exist(board, "ABCB")); // false
-
-        char[][] board = new char[][]{
-            {'a', 'a', 'a', 'a'},
-            {'a', 'a', 'a', 'a'},
-            {'a', 'a', 'a', 'a'},
-            {'a', 'a', 'a', 'a'},
-            {'a', 'a', 'a', 'b'},
-        };
-        System.out.println(prob.exist(board, "aaaaaaaaaaaaaaaaaaaa")); // false
+        boolean d = exist(board, word, maxRow, maxCol, set, idx + 1, row + 1, col);
+        boolean result = a | b | c | d;
+        if (!result) {
+            set.remove(key);
+        }
+        return result;
     }
 }
