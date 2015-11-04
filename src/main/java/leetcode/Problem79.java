@@ -45,21 +45,15 @@ public class Problem79 {
             return true;
         }
 //        System.out.println("  - val=" + board[row][col]);
-        // left
         Set<String> newSet = new HashSet<>(set);
         newSet.add(key);
+        // left
         boolean a = exist(board, word, maxRow, maxCol, newSet, idx + 1, row, col - 1);
         // up
-        newSet = new HashSet<>(set);
-        newSet.add(key);
         boolean b = exist(board, word, maxRow, maxCol, newSet, idx + 1, row - 1, col);
         // right
-        newSet = new HashSet<>(set);
-        newSet.add(key);
         boolean c = exist(board, word, maxRow, maxCol, newSet, idx + 1, row, col + 1);
         // down
-        newSet = new HashSet<>(set);
-        newSet.add(key);
         boolean d = exist(board, word, maxRow, maxCol, newSet, idx + 1, row + 1, col);
 
         return a | b | c | d;
@@ -83,6 +77,6 @@ public class Problem79 {
             {'a', 'a', 'a', 'a'},
             {'a', 'a', 'a', 'b'},
         };
-        System.out.println(prob.exist(board, "aaaaaaaaaaaaaaaaaaaa"));
+        System.out.println(prob.exist(board, "aaaaaaaaaaaaaaaaaaaa")); // false
     }
 }
