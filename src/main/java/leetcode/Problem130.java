@@ -1,8 +1,9 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * https://leetcode.com/problems/surrounded-regions/
@@ -19,9 +20,8 @@ public class Problem130 {
                     continue;
                 }
                 if (board[row][col] == 'O') {
-//                    System.out.println("found O at " + row + ", " + col);
-                    Result result = new Result();
-                    solve(board, visited, board.length, board[row].length, row, col, result);
+                    Result result = solve(board, visited, board.length, board[row].length,
+                        row, col);
                     if (result.surrounded) {
                         for (RowCol rc : result.rowCols) {
                             board[rc.row][rc.col] = 'X';
@@ -49,45 +49,38 @@ public class Problem130 {
         private final List<RowCol> rowCols = new ArrayList<>();
     }
 
-    private void solve(char[][] board, boolean[][] visited, int maxRow, int maxCol,
-                       int row, int col, Result result) {
-        if (row < 0 || row >= maxRow || col < 0 || col >= maxCol) {
-            return;
-        }
-        if (visited[row][col]) {
-            return;
-        }
-        visited[row][col] = true;
-        if (board[row][col] != 'O') {
-            return;
-        } else {
-            if (row == 0 || row == maxRow - 1 || col == 0 || col == maxCol - 1) {
-                result.surrounded = false;
+    private Result solve(char[][] board, boolean[][] visited, int maxRow, int maxCol,
+                       int row, int col) {
+        Result result = new Result();
+        Queue<RowCol> rowCols = new LinkedList<>();
+        rowCols.add(new RowCol(row, col));
+        while (!rowCols.isEmpty()) {
+            RowCol rc = rowCols.remove();
+            if (rc.row < 0 || rc.row >= maxRow ||
+                rc.col < 0 || rc.col >= maxCol) {
+                continue;
             }
-//            System.out.println("  - adding " + row + ", " + col);
-            result.rowCols.add(new RowCol(row, col));
+            if (visited[rc.row][rc.col]) {
+                continue;
+            }
+            visited[rc.row][rc.col] = true;
+            if (board[rc.row][rc.col] != 'O') {
+                continue;
+            } else {
+                if (rc.row == 0 || rc.row == maxRow - 1 || rc.col == 0 || rc.col == maxCol - 1) {
+                    result.surrounded = false;
+                }
+                result.rowCols.add(new RowCol(rc.row, rc.col));
+            }
+            // left
+            rowCols.add(new RowCol(rc.row, rc.col - 1));
+            // up
+            rowCols.add(new RowCol(rc.row - 1, rc.col));
+            // right
+            rowCols.add(new RowCol(rc.row, rc.col + 1));
+            // down
+            rowCols.add(new RowCol(rc.row + 1, rc.col));
         }
-        // left
-        solve(board, visited, maxRow, maxCol, row, col - 1, result);
-        // up
-        solve(board, visited, maxRow, maxCol, row - 1, col, result);
-        // right
-        solve(board, visited, maxRow, maxCol, row, col + 1, result);
-        // down
-        solve(board, visited, maxRow, maxCol, row + 1, col, result);
-    }
-
-    public static void main(String[] args) {
-        Problem130 prob = new Problem130();
-        char[][] board = new char[][]{
-            {'X', 'X', 'X', 'X'},
-            {'X', 'O', 'O', 'X'},
-            {'X', 'X', 'O', 'X'},
-            {'X', 'O', 'X', 'X'},
-        };
-        prob.solve(board);
-        for (char[] row : board) {
-            System.out.println(Arrays.toString(row));
-        }
+        return result;
     }
 }
