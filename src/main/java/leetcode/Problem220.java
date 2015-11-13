@@ -15,9 +15,6 @@ public class Problem220 {
 //                }
 //            }
 //        }
-        if (nums.length <= k || k <= 0 || t < 0) {
-            return false;
-        }
         if (k <= 0 || t < 0 || nums.length <= 1) {
             return false;
         }
@@ -38,8 +35,8 @@ public class Problem220 {
         if (set.size() > 1) {
             b = set.higher(set.first());
         }
-        int diff = Math.abs(a - b);
-        if (diff <= t) {
+        long diff = Math.abs((long) a - (long) b);
+        if (diff <= (long) t) {
             return true;
         }
         int j = 0;
@@ -55,11 +52,20 @@ public class Problem220 {
             if (set.size() > 1) {
                 b = set.higher(set.first());
             }
-            diff = Math.abs(a - b);
-            if (diff <= t) {
+            diff = Math.abs((long) a - (long) b);
+            if (diff <= (long) t) {
                 return true;
             }
             j++;
+        }
+        a = set.pollFirst();
+        while (!set.isEmpty()) {
+            b = set.pollFirst();
+            diff = (long) Math.abs((long) a - (long) b);
+            if (diff <= (long) t) {
+                return true;
+            }
+            a = b;
         }
         return false;
     }
@@ -77,6 +83,8 @@ public class Problem220 {
 //        System.out.println(prob.containsNearbyAlmostDuplicate(new int[]{2, 6, 4, 2}, 3, 1)); // true
 //        System.out.println(prob.containsNearbyAlmostDuplicate(new int[]{2, 6, 4, 2}, 2, 1)); // false
 //        System.out.println(prob.containsNearbyAlmostDuplicate(new int[]{2, 2}, 3, 0)); // true
-        System.out.println(prob.containsNearbyAlmostDuplicate(new int[]{3, 6, 0, 4}, 2, 2)); // true
+//        System.out.println(prob.containsNearbyAlmostDuplicate(new int[]{3, 6, 0, 4}, 2, 2)); // true
+//        System.out.println(prob.containsNearbyAlmostDuplicate(new int[]{2, 2}, 3, 0)); // true
+//        System.out.println(prob.containsNearbyAlmostDuplicate(new int[]{-1, 2147483647}, 1, 2147483647)); // false
     }
 }
