@@ -12,8 +12,8 @@ public class Problem166 {
         if ((numerator < 0 && denominator > 0) || (numerator > 0 && denominator < 0)) {
             sb.append("-");
         }
-        long num = Math.abs(numerator);
-        long denom = Math.abs(denominator);
+        long num = Math.abs((long) numerator);
+        long denom = Math.abs((long) denominator);
         long quotient = num / denom;
         num = num - (quotient * denom);
         sb.append(quotient);
@@ -45,25 +45,5 @@ public class Problem166 {
             sb.append(tmp);
         }
         return sb.toString();
-    }
-
-    public static void main(String[] args) {
-        Problem166 prob = new Problem166();
-//        System.out.println(prob.fractionToDecimal(-1, 2)); // -0.5
-//        System.out.println(prob.fractionToDecimal(1, -2)); // -0.5
-//        System.out.println(prob.fractionToDecimal(-1, -2)); // 0.5
-//        System.out.println(prob.fractionToDecimal(1, 2)); // 0.5
-//        System.out.println(prob.fractionToDecimal(2, 1)); // 2
-//        System.out.println(prob.fractionToDecimal(2, 3)); // 0.(6)
-//        System.out.println(prob.fractionToDecimal(22, 7)); // 3.(142857)
-//        System.out.println(prob.fractionToDecimal(1, 400)); // 0.0025
-//        System.out.println(prob.fractionToDecimal(1, 9)); // 0.(1)
-//        System.out.println(prob.fractionToDecimal(1, 3)); // 0.(3)
-//        System.out.println(prob.fractionToDecimal(9, 11)); // 0.(81)
-//        System.out.println(prob.fractionToDecimal(7, 12)); // 0.58(3)
-//        System.out.println(prob.fractionToDecimal(700, 12)); // 58.(3)
-//        System.out.println(prob.fractionToDecimal(1, 81)); // 0.(0123456798)
-//        System.out.println(prob.fractionToDecimal(1, 214748364)); // 0.00(000000465661289042462740251655654056577585848337359161441621040707904997124914069194026549138227660723878669455195477065427143370461252966751355553982241280310754777158628319049732085502639731402098131932683780538602845887105337854867197032523144157689601770377165713821223802198558308923834223016478952081795603341592860749337303449725)
-        System.out.println(prob.fractionToDecimal(-1, -2147483648)); // 0.0000000004656612873077392578125
     }
 }
