@@ -1,79 +1,57 @@
 package leetcode;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * https://leetcode.com/problems/fraction-to-recurring-decimal/
  */
 public class Problem166 {
     public String fractionToDecimal(int numerator, int denominator) {
-        if (numerator % denominator == 0) {
-            return Integer.toString(numerator / denominator);
+        StringBuilder sb = new StringBuilder();
+        if ((numerator < 0 && denominator > 0) || (numerator > 0 && denominator < 0)) {
+            sb.append("-");
         }
-        String val = Double.toString((double) numerator / (double) denominator);
-//        System.out.println("val=" + val);
-        String[] splitNum = val.split("\\.");
-        String num = splitNum[0];
-        String fraction = splitNum[1];
-        String prev = "";
-        int idx = 0;
-        long frac = Long.parseLong(fraction);
-        if (isPrimeFactor(frac)) {
-            return val;
+        long num = Math.abs(numerator);
+        long denom = Math.abs(denominator);
+        long quotient = num / denom;
+        num = num - (quotient * denom);
+        sb.append(quotient);
+        while (num > denom) {
+            quotient = num / denom;
+            sb.append(quotient);
+            num = num - (quotient * denom);
         }
-        for (char c : fraction.toCharArray()) {
-            if (!prev.isEmpty()) {
-                if (idx == prev.length()) {
-                    break;
-                }
-                if (prev.charAt(idx) == c) {
+        if (num > 0) {
+            sb.append(".");
+            Map<Long, Integer> map = new HashMap<>();
+            StringBuilder tmp = new StringBuilder();
+            int idx = 0;
+            while (num > 0) {
+                if (!map.containsKey(num)) {
+                    map.put(num, idx);
+                    num = num * 10;
+                    quotient = num / denom;
+                    num = num - (quotient * denom);
                     idx++;
                 } else {
-                    idx = 0;
-                    prev += c;
+                    int endIdx = map.get(num);
+                    sb.append(tmp.substring(0, endIdx));
+                    sb.append("(").append(tmp.substring(endIdx)).append(")");
+                    return sb.toString();
                 }
-            } else {
-                prev += c;
+                tmp.append(quotient);
             }
+            sb.append(tmp);
         }
-        return num + ".(" + prev + ")";
-    }
-
-    private boolean isPrimeFactor(long num) {
-        // https://en.wikipedia.org/wiki/Repeating_decimal
-        long[] primes = new long[]{2, 5};
-        Set<Long> pf = new HashSet<>();
-        isPrimeFactor(num, primes, pf);
-        for (long prime : primes) {
-            pf.remove(prime);
-        }
-        return pf.isEmpty();
-    }
-
-    private void isPrimeFactor(long num, long[] primes, Set<Long> pf) {
-        for (long prime : primes) {
-            if (num == prime) {
-                pf.add(prime);
-                return;
-            }
-        }
-        boolean found = false;
-        for (long prime : primes) {
-            if (num % prime == 0) {
-                pf.add(prime);
-                isPrimeFactor(num / prime, primes, pf);
-                found = true;
-                break;
-            }
-        }
-        if (!found) {
-            pf.add(num);
-        }
+        return sb.toString();
     }
 
     public static void main(String[] args) {
         Problem166 prob = new Problem166();
+//        System.out.println(prob.fractionToDecimal(-1, 2)); // -0.5
+//        System.out.println(prob.fractionToDecimal(1, -2)); // -0.5
+//        System.out.println(prob.fractionToDecimal(-1, -2)); // 0.5
 //        System.out.println(prob.fractionToDecimal(1, 2)); // 0.5
 //        System.out.println(prob.fractionToDecimal(2, 1)); // 2
 //        System.out.println(prob.fractionToDecimal(2, 3)); // 0.(6)
@@ -83,7 +61,9 @@ public class Problem166 {
 //        System.out.println(prob.fractionToDecimal(1, 3)); // 0.(3)
 //        System.out.println(prob.fractionToDecimal(9, 11)); // 0.(81)
 //        System.out.println(prob.fractionToDecimal(7, 12)); // 0.58(3)
+//        System.out.println(prob.fractionToDecimal(700, 12)); // 58.(3)
 //        System.out.println(prob.fractionToDecimal(1, 81)); // 0.(0123456798)
-        System.out.println(prob.fractionToDecimal(1, 214748364)); // 0.00(000000465661289042462740251655654056577585848337359161441621040707904997124914069194026549138227660723878669455195477065427143370461252966751355553982241280310754777158628319049732085502639731402098131932683780538602845887105337854867197032523144157689601770377165713821223802198558308923834223016478952081795603341592860749337303449725)
+//        System.out.println(prob.fractionToDecimal(1, 214748364)); // 0.00(000000465661289042462740251655654056577585848337359161441621040707904997124914069194026549138227660723878669455195477065427143370461252966751355553982241280310754777158628319049732085502639731402098131932683780538602845887105337854867197032523144157689601770377165713821223802198558308923834223016478952081795603341592860749337303449725)
+        System.out.println(prob.fractionToDecimal(-1, -2147483648)); // 0.0000000004656612873077392578125
     }
 }
