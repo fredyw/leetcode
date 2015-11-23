@@ -5,26 +5,54 @@ package leetcode;
  */
 public class Problem307 {
     public static class NumArray {
+        private final int[] binaryIndexTree;
+        private final int[] nums;
 
         public NumArray(int[] nums) {
-
+            // https://en.wikipedia.org/wiki/Fenwick_tree
+            this.nums = new int[nums.length];
+            binaryIndexTree = new int[nums.length + 1];
+            for (int i = 0; i < nums.length; i++) {
+                update(i, nums[i]);
+            }
         }
 
         void update(int i, int val) {
+            int delta = val - nums[i];
+            nums[i] = val;
+            int idx = i + 1;
+            while (idx <= nums.length) {
+                binaryIndexTree[idx] += delta;
+                idx += idx & (-idx);
+            }
+        }
 
+        private int sum(int i) {
+            int sum = 0;
+            int idx = i + 1;
+            while (idx > 0) {
+                sum += binaryIndexTree[idx];
+                idx -= idx & (-idx);
+            }
+            return sum;
         }
 
         public int sumRange(int i, int j) {
-            // TODO:
-            return 0;
+            return sum(j) - sum(i - 1);
         }
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 3, 5};
+        int[] nums = new int[]{2, 1, 1, 3, 2, 3, 4, 5, 6, 7, 8, 9};
         NumArray numArray = new NumArray(nums);
-        numArray.sumRange(0, 1);
-        numArray.update(1, 10);
-        numArray.sumRange(1, 2);
+        System.out.println(numArray.sum(2)); // 3
+        numArray.update(1, 2);
+        System.out.println(numArray.sum(2)); // 5
+
+//        int[] nums = new int[]{1, 3, 5};
+//        NumArray numArray = new NumArray(nums);
+//        System.out.println(numArray.sumRange(0, 2)); // 9
+//        numArray.update(1, 2);
+//        System.out.println(numArray.sumRange(0, 2)); // 8
     }
 }
