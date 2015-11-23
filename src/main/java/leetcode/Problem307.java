@@ -41,18 +41,4 @@ public class Problem307 {
             return sum(j) - sum(i - 1);
         }
     }
-
-    public static void main(String[] args) {
-        int[] nums = new int[]{2, 1, 1, 3, 2, 3, 4, 5, 6, 7, 8, 9};
-        NumArray numArray = new NumArray(nums);
-        System.out.println(numArray.sum(2)); // 3
-        numArray.update(1, 2);
-        System.out.println(numArray.sum(2)); // 5
-
-//        int[] nums = new int[]{1, 3, 5};
-//        NumArray numArray = new NumArray(nums);
-//        System.out.println(numArray.sumRange(0, 2)); // 9
-//        numArray.update(1, 2);
-//        System.out.println(numArray.sumRange(0, 2)); // 8
-    }
 }
