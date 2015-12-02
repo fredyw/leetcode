@@ -1,9 +1,7 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.TreeMap;
 
 /**
@@ -14,7 +12,7 @@ public class Problem310 {
         if (n <= 1) {
             return new ArrayList<>();
         }
-        Map<Integer, List<Integer>> adjList = buildAdjList(edges);
+        List<Integer>[] adjList = buildAdjList(n, edges);
         TreeMap<Integer, List<Integer>> result = new TreeMap<>();
         for (int i = 0; i < n; i++) {
             boolean[] visited = new boolean[n];
@@ -30,11 +28,11 @@ public class Problem310 {
         return result.firstEntry().getValue();
     }
 
-    private int countHeight(int node, Map<Integer, List<Integer>> adjList, boolean[] visited,
+    private int countHeight(int node, List<Integer>[] adjList, boolean[] visited,
                             int accu) {
         visited[node] = true;
         int maxHeight = accu;
-        for (int n : adjList.get(node)) {
+        for (int n : adjList[node]) {
             if (!visited[n]) {
                 int height = countHeight(n, adjList, visited, accu + 1);
                 maxHeight = Math.max(maxHeight, height);
@@ -43,26 +41,16 @@ public class Problem310 {
         return maxHeight;
     }
 
-    private Map<Integer, List<Integer>> buildAdjList(int[][] edges) {
-        Map<Integer, List<Integer>> adjList = new HashMap<>();
+    private List<Integer>[] buildAdjList(int n, int[][] edges) {
+        List<Integer>[] adjList = new List[n];
+        for (int i = 0; i < n; i++) {
+            adjList[i] = new ArrayList<>();
+        }
         for (int i = 0; i < edges.length; i++) {
             int x = edges[i][0];
             int y = edges[i][1];
-            if (!adjList.containsKey(x)) {
-                List<Integer> list = new ArrayList<>();
-                list.add(y);
-                adjList.put(x, list);
-            } else {
-                adjList.get(x).add(y);
-            }
-
-            if (!adjList.containsKey(y)) {
-                List<Integer> list = new ArrayList<>();
-                list.add(x);
-                adjList.put(y, list);
-            } else {
-                adjList.get(y).add(x);
-            }
+            adjList[x].add(y);
+            adjList[y].add(x);
         }
         return adjList;
     }
