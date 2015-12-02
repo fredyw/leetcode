@@ -1,8 +1,12 @@
 package leetcode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.TreeMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * https://leetcode.com/problems/minimum-height-trees/
@@ -10,63 +14,50 @@ import java.util.TreeMap;
 public class Problem310 {
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
         if (n <= 1) {
-            return new ArrayList<>();
+            return Arrays.asList(0);
         }
-        List<Integer>[] adjList = buildAdjList(n, edges);
-        TreeMap<Integer, List<Integer>> result = new TreeMap<>();
-        for (int i = 0; i < n; i++) {
-            boolean[] visited = new boolean[n];
-            int height = countHeight(i, adjList, visited, 0);
-            if (!result.containsKey(height)) {
-                List<Integer> list = new ArrayList<>();
-                list.add(i);
-                result.put(height, list);
-            } else {
-                result.get(height).add(i);
+        Map<Integer, Set<Integer>> adjList = buildAdjList(edges);
+        while (adjList.size() > 2) {
+            List<Integer> removedNodes = new ArrayList<>();
+            for (Map.Entry<Integer, Set<Integer>> e : adjList.entrySet()) {
+                if (e.getValue().size() == 1) {
+                    removedNodes.add(e.getKey());
+                }
+            }
+            for (int i : removedNodes) {
+                for (int j : adjList.get(i)) {
+                    adjList.get(j).remove(i);
+                }
+                adjList.remove(i);
             }
         }
-        return result.firstEntry().getValue();
+
+        List<Integer> result = new ArrayList<>();
+        result.addAll(adjList.keySet());
+        return result;
     }
 
-    private int countHeight(int node, List<Integer>[] adjList, boolean[] visited,
-                            int accu) {
-        visited[node] = true;
-        int maxHeight = accu;
-        for (int n : adjList[node]) {
-            if (!visited[n]) {
-                int height = countHeight(n, adjList, visited, accu + 1);
-                maxHeight = Math.max(maxHeight, height);
-            }
-        }
-        return maxHeight;
-    }
-
-    private List<Integer>[] buildAdjList(int n, int[][] edges) {
-        List<Integer>[] adjList = new List[n];
-        for (int i = 0; i < n; i++) {
-            adjList[i] = new ArrayList<>();
-        }
+    private Map<Integer, Set<Integer>> buildAdjList(int[][] edges) {
+        Map<Integer, Set<Integer>> adjList = new HashMap<>();
         for (int i = 0; i < edges.length; i++) {
             int x = edges[i][0];
             int y = edges[i][1];
-            adjList[x].add(y);
-            adjList[y].add(x);
+            if (!adjList.containsKey(x)) {
+                Set<Integer> set = new HashSet<>();
+                set.add(y);
+                adjList.put(x, set);
+            } else {
+                adjList.get(x).add(y);
+            }
+
+            if (!adjList.containsKey(y)) {
+                Set<Integer> set = new HashSet<>();
+                set.add(x);
+                adjList.put(y, set);
+            } else {
+                adjList.get(y).add(x);
+            }
         }
         return adjList;
-    }
-
-    public static void main(String[] args) {
-        Problem310 prob = new Problem310();
-        System.out.println(prob.findMinHeightTrees(4, new int[][]{
-            {1, 0}, {1, 2}, {1, 3}
-        })); // 1
-        System.out.println(prob.findMinHeightTrees(6, new int[][]{
-            {0, 3}, {1, 3}, {2, 3}, {4, 3}, {5, 4}
-        })); // 3, 4
-        System.out.println(prob.findMinHeightTrees(7, new int[][]{
-            {0, 3}, {1, 3}, {2, 3}, {4, 3}, {5, 4}, {0, 6}
-        })); // 3
-        System.out.println(prob.findMinHeightTrees(1, new int[][]{
-        })); // 0
     }
 }
