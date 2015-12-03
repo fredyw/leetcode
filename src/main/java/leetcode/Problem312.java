@@ -15,10 +15,10 @@ public class Problem312 {
             list.add(num);
         }
         Map<String, Integer> memo = new HashMap<>();
-        return maxCoins(list, 0, memo);
+        return maxCoins(list, memo);
     }
 
-    private int maxCoins(List<Integer> nums, int accu, Map<String, Integer> memo) {
+    private int maxCoins(List<Integer> nums, Map<String, Integer> memo) {
         if (nums.size() == 1) {
             return nums.get(0);
         }
@@ -44,7 +44,7 @@ public class Problem312 {
 //            System.out.println(" - before=" + nums);
 //            System.out.println(" - val=" + val + " (" + left + " * " + nums.get(i) + " * " + right + ")");
 //            System.out.println(" - after=" + newNums);
-            max = Math.max(max, maxCoins(newNums, accu, memo) + val);
+            max = Math.max(max, maxCoins(newNums, memo) + val);
         }
         memo.put(key, max);
         return max;
@@ -54,6 +54,7 @@ public class Problem312 {
         Problem312 prob = new Problem312();
 //        System.out.println(prob.maxCoins(new int[]{3, 1, 5, 8})); // 167
 //        System.out.println(prob.maxCoins(new int[]{2, 4, 8})); // 88
-        System.out.println(prob.maxCoins(new int[]{2, 4, 8, 4, 0, 7, 8, 9, 1, 2, 4, 7, 1, 7, 3, 6})); // 3304
+//        System.out.println(prob.maxCoins(new int[]{2, 4, 8, 4, 0, 7, 8, 9, 1, 2, 4, 7, 1, 7, 3, 6})); // 3304
+        System.out.println(prob.maxCoins(new int[]{8, 2, 6, 8, 9, 8, 1, 4, 1, 5, 3, 0, 7, 7, 0, 4, 2})); // 3414
     }
 }
