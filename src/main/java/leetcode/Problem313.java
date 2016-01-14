@@ -17,13 +17,12 @@ public class Problem313 {
         int primeIdx = -1;
         while (i < n) {
             result = set.pollFirst();
-//            System.out.println("i = " + i);
-//            System.out.println("  - popping " + result);
             for (int j = 0; j <= primeIdx; j++) {
-//                System.out.println("  - adding " + (result * primes[j]));
-                set.add(result * primes[j]);
-//                System.out.println("  - set: " + set);
-//                i++;
+                long newElement = result * primes[j];
+                if (newElement > set.last() && set.size() + i > n) {
+                    break;
+                }
+                set.add(newElement);
             }
             i++;
             if (primeIdx < primes.length - 1) {
@@ -31,15 +30,5 @@ public class Problem313 {
             }
         }
         return (int) result;
-    }
-
-    public static void main(String[] args) {
-        Problem313 prob = new Problem313();
-//        System.out.println(prob.nthSuperUglyNumber(8, new int[]{2, 19})); // 38
-//        System.out.println(prob.nthSuperUglyNumber(12, new int[]{2, 7, 13, 19})); // 32
-        System.out.println(prob.nthSuperUglyNumber(13, new int[]{2, 7, 13, 19})); // 38
-        System.out.println(prob.nthSuperUglyNumber(14, new int[]{2, 7, 13, 19})); // 49
-//        System.out.println(prob.nthSuperUglyNumber(15, new int[]{3, 5, 7, 11, 19, 23, 29, 41, 43, 47})); // 35
-//        System.out.println(prob.nthSuperUglyNumber(100000, new int[]{7, 19, 29, 37, 41, 47, 53, 59, 61, 79, 83, 89, 101, 103, 109, 127, 131, 137, 139, 157, 167, 179, 181, 199, 211, 229, 233, 239, 241, 251})); // 1092889481
     }
 }
