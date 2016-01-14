@@ -19,7 +19,7 @@ public class Problem313 {
             result = set.pollFirst();
             for (int j = 0; j <= primeIdx; j++) {
                 long newElement = result * primes[j];
-                if (newElement > set.last() && set.size() + i > n) {
+                if (set.size() > 0 && newElement > set.last() && set.size() + i > n) {
                     break;
                 }
                 set.add(newElement);
