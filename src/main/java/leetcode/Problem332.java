@@ -26,16 +26,36 @@ public class Problem332 {
             }
         }
         List<String> result = new ArrayList<>();
-        String from = "JFK";
-        result.add(from);
-        TreeSet<Ticket> set = map.get(from);
-        while (set != null && set.size() > 0) {
-            Ticket ticket = set.pollFirst();
-            from = ticket.to;
-            result.add(from);
-            set = map.get(from);
+//        String from = "JFK";
+//        result.add(from);
+//        TreeSet<Ticket> set = map.get(from);
+//        while (set != null && set.size() > 0) {
+//            Ticket ticket = set.pollFirst();
+//            from = ticket.to;
+//            result.add(from);
+//            set = map.get(from);
+//        }
+        result.add("JFK");
+        return findItinerary(map, tickets.length, "JFK", 0, result);
+    }
+
+    private List<String> findItinerary(Map<String, TreeSet<Ticket>> map, int max, String name,
+                                       int count, List<String> result) {
+        if (count == max) {
+            return result;
         }
-        return result;
+        TreeSet<Ticket> tickets = map.get(name);
+        if (tickets != null) {
+            for (Ticket ticket : tickets) {
+                List<String> newList = new ArrayList<>(result);
+                newList.add(ticket.to);
+                List<String> r = findItinerary(map, max, ticket.to, count + 1, newList);
+                if (!r.isEmpty()) {
+                    return r;
+                }
+            }
+        }
+        return new ArrayList<>();
     }
 
     private static class Ticket implements Comparable<Ticket> {
@@ -79,11 +99,11 @@ public class Problem332 {
 //        System.out.println(prob.findItinerary(new String[][]{
 //            {"MUC", "LHR"}, {"JFK", "MUC"}, {"SFO", "SJC"}, {"LHR", "SFO"}
 //        }));
-//        System.out.println(prob.findItinerary(new String[][]{
-//            {"JFK", "SFO"}, {"JFK", "ATL"}, {"SFO", "ATL"}, {"ATL", "JFK"}, {"ATL", "SFO"}
-//        }));
         System.out.println(prob.findItinerary(new String[][]{
-            {"JFK", "KUL"}, {"JFK", "NRT"}, {"NRT", "JFK"}
+            {"JFK", "SFO"}, {"JFK", "ATL"}, {"SFO", "ATL"}, {"ATL", "JFK"}, {"ATL", "SFO"}
         }));
+//        System.out.println(prob.findItinerary(new String[][]{
+//            {"JFK", "KUL"}, {"JFK", "NRT"}, {"NRT", "JFK"}
+//        }));
     }
 }
