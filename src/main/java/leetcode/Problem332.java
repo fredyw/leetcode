@@ -2,9 +2,11 @@ package leetcode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import java.util.TreeSet;
 
 /**
@@ -26,30 +28,26 @@ public class Problem332 {
             }
         }
         List<String> result = new ArrayList<>();
-//        String from = "JFK";
-//        result.add(from);
-//        TreeSet<Ticket> set = map.get(from);
-//        while (set != null && set.size() > 0) {
-//            Ticket ticket = set.pollFirst();
-//            from = ticket.to;
-//            result.add(from);
-//            set = map.get(from);
-//        }
         result.add("JFK");
-        return findItinerary(map, tickets.length, "JFK", 0, result);
+        return findItinerary(map, tickets.length, "JFK", 0, new HashSet<>(), result);
     }
 
     private List<String> findItinerary(Map<String, TreeSet<Ticket>> map, int max, String name,
-                                       int count, List<String> result) {
+                                       int count, Set<Ticket> visited, List<String> result) {
         if (count == max) {
             return result;
         }
         TreeSet<Ticket> tickets = map.get(name);
         if (tickets != null) {
             for (Ticket ticket : tickets) {
+                if (visited.contains(ticket)) {
+                    continue;
+                }
                 List<String> newList = new ArrayList<>(result);
                 newList.add(ticket.to);
-                List<String> r = findItinerary(map, max, ticket.to, count + 1, newList);
+                Set<Ticket> newVisited = new HashSet<>(visited);
+                newVisited.add(ticket);
+                List<String> r = findItinerary(map, max, ticket.to, count + 1, newVisited, newList);
                 if (!r.isEmpty()) {
                     return r;
                 }
@@ -96,14 +94,14 @@ public class Problem332 {
 
     public static void main(String[] args) {
         Problem332 prob = new Problem332();
-//        System.out.println(prob.findItinerary(new String[][]{
-//            {"MUC", "LHR"}, {"JFK", "MUC"}, {"SFO", "SJC"}, {"LHR", "SFO"}
-//        }));
+        System.out.println(prob.findItinerary(new String[][]{
+            {"MUC", "LHR"}, {"JFK", "MUC"}, {"SFO", "SJC"}, {"LHR", "SFO"}
+        }));
         System.out.println(prob.findItinerary(new String[][]{
             {"JFK", "SFO"}, {"JFK", "ATL"}, {"SFO", "ATL"}, {"ATL", "JFK"}, {"ATL", "SFO"}
         }));
-//        System.out.println(prob.findItinerary(new String[][]{
-//            {"JFK", "KUL"}, {"JFK", "NRT"}, {"NRT", "JFK"}
-//        }));
+        System.out.println(prob.findItinerary(new String[][]{
+            {"JFK", "KUL"}, {"JFK", "NRT"}, {"NRT", "JFK"}
+        }));
     }
 }
