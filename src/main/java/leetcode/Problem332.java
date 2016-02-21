@@ -1,6 +1,7 @@
 package leetcode;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -28,14 +29,16 @@ public class Problem332 {
             }
         }
         List<String> result = new ArrayList<>();
+        findItinerary(map, tickets.length, "JFK", 0, new HashSet<>(), result);
         result.add("JFK");
-        return findItinerary(map, tickets.length, "JFK", 0, new HashSet<>(), result);
+        Collections.reverse(result);
+        return result;
     }
 
-    private List<String> findItinerary(Map<String, TreeSet<Ticket>> map, int max, String name,
-                                       int count, Set<Ticket> visited, List<String> result) {
+    private boolean findItinerary(Map<String, TreeSet<Ticket>> map, int max, String name,
+                                  int count, Set<Ticket> visited, List<String> result) {
         if (count == max) {
-            return result;
+            return true;
         }
         TreeSet<Ticket> tickets = map.get(name);
         if (tickets != null) {
@@ -43,17 +46,16 @@ public class Problem332 {
                 if (visited.contains(ticket)) {
                     continue;
                 }
-                List<String> newList = new ArrayList<>(result);
-                newList.add(ticket.to);
                 Set<Ticket> newVisited = new HashSet<>(visited);
                 newVisited.add(ticket);
-                List<String> r = findItinerary(map, max, ticket.to, count + 1, newVisited, newList);
-                if (!r.isEmpty()) {
-                    return r;
+                boolean add = findItinerary(map, max, ticket.to, count + 1, newVisited, result);
+                if (add) {
+                    result.add(ticket.to);
+                    return true;
                 }
             }
         }
-        return new ArrayList<>();
+        return false;
     }
 
     private static class Ticket implements Comparable<Ticket> {
@@ -96,12 +98,12 @@ public class Problem332 {
         Problem332 prob = new Problem332();
         System.out.println(prob.findItinerary(new String[][]{
             {"MUC", "LHR"}, {"JFK", "MUC"}, {"SFO", "SJC"}, {"LHR", "SFO"}
-        }));
+        })); // [JFK, MUC, LHR, SFO, SJC]
         System.out.println(prob.findItinerary(new String[][]{
             {"JFK", "SFO"}, {"JFK", "ATL"}, {"SFO", "ATL"}, {"ATL", "JFK"}, {"ATL", "SFO"}
-        }));
+        })); // [JFK, ATL, JFK, SFO, ATL, SFO]
         System.out.println(prob.findItinerary(new String[][]{
             {"JFK", "KUL"}, {"JFK", "NRT"}, {"NRT", "JFK"}
-        }));
+        })); // [JFK, NRT, JFK, KUL]
     }
 }
