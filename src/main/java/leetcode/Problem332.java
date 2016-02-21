@@ -46,12 +46,13 @@ public class Problem332 {
                 if (visited.contains(ticket)) {
                     continue;
                 }
-                Set<Ticket> newVisited = new HashSet<>(visited);
-                newVisited.add(ticket);
-                boolean add = findItinerary(map, max, ticket.to, count + 1, newVisited, result);
+                visited.add(ticket);
+                boolean add = findItinerary(map, max, ticket.to, count + 1, visited, result);
                 if (add) {
                     result.add(ticket.to);
                     return true;
+                } else {
+                    visited.remove(ticket);
                 }
             }
         }
