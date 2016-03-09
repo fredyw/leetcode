@@ -1,78 +1,65 @@
 package leetcode;
 
-import java.util.Objects;
-import java.util.TreeSet;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * https://leetcode.com/problems/minimum-window-substring/
  */
 public class Problem76 {
     public String minWindow(String s, String t) {
-        TreeSet<Character> charSet = new TreeSet<>();
+        Map<Character, Integer> needed = new HashMap<>();
         for (char c : t.toCharArray()) {
-            charSet.add(c);
+            needed.put(c, needed.getOrDefault(c, 1) + 1);
         }
-        TreeSet<CharIdx> charIdxSet = new TreeSet<>();
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (charSet.contains(c)) {
-                charIdxSet.add(new CharIdx(c, i));
+        Map<Character, Integer> found = new HashMap<>();
+        int count = 0;
+        int minWindow = Integer.MAX_VALUE;
+        int beginIdx = 0;
+        int endIdx = 0;
+        int begin = 0;
+        for (int end = 0; end < s.length(); end++) {
+            char endChar = s.charAt(end);
+            System.out.println("end: " + end + " --> " + endChar);
+            if (!needed.containsKey(endChar)) {
+                continue;
+            }
+            found.put(endChar, found.getOrDefault(endChar, 1) + 1);
+//                System.out.println("- incrementing count: " + count);
+            count++;
+            if (count >= t.length()) {
+                char begChar = s.charAt(begin);
+//                System.out.println("- end: " + end + " --> " + needed.get(begChar) + " < " + found.get(begChar));
+                while (!found.containsKey(begChar) || needed.get(begChar) < found.get(begChar)) {
+                    if (!found.containsKey(begChar)) {
+                        begChar = s.charAt(begin);
+                        begin++;
+                    } else {
+                        if (needed.get(begChar) < found.get(begChar)) {
+                            found.put(begChar, found.get(begChar) - 1);
+                            begChar = s.charAt(begin);
+                            begin++;
+                        }
+                    }
+                }
+                int window = end - begin + 1;
+                if (window < minWindow) {
+                    beginIdx = begin;
+                    endIdx = end;
+                    minWindow = window;
+                }
             }
         }
-        charIdxSet.forEach(System.out::println);
-        int min = Integer.MAX_VALUE;
-        for (CharIdx ci : charIdxSet) {
-
+        System.out.println(beginIdx + " " + endIdx);
+        if (beginIdx == endIdx) {
+            return "";
         }
-        return "";
-    }
-
-    private static class CharIdx implements Comparable<CharIdx> {
-        private final char character;
-        private final int idx;
-
-        public CharIdx(char character, int idx) {
-            this.character = character;
-            this.idx = idx;
-        }
-
-        @Override
-        public int compareTo(CharIdx o) {
-            return Integer.valueOf(idx).compareTo(Integer.valueOf(o.idx));
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            CharIdx charIdx = (CharIdx) o;
-            return character == charIdx.character;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(character);
-        }
-
-        @Override
-        public String toString() {
-            final StringBuilder sb = new StringBuilder("CharIdx{");
-            sb.append("character=").append(character);
-            sb.append(", idx=").append(idx);
-            sb.append('}');
-            return sb.toString();
-        }
-    }
-
-    private static class Foo {
-        Foo doSomething(String a) {
-            String b = a.substring(0);
-            return this;
-        }
+        return s.substring(beginIdx - 1, endIdx + 1);
     }
 
     public static void main(String[] args) {
         Problem76 prob = new Problem76();
         System.out.println(prob.minWindow("ADOBECODEBANC", "ABC")); // BANC
+//        System.out.println(prob.minWindow("ADOBECODEBANC", "ABCX")); //
     }
 }
