@@ -31,8 +31,8 @@ public class Problem76 {
                     if (needed[begChar] < found[begChar]) {
                         found[begChar]--;
                     }
-                    begChar = s.charAt(begin);
                     begin++;
+                    begChar = s.charAt(begin);
                 }
                 int window = end - begin + 1;
                 if (window < minWindow) {
@@ -42,17 +42,9 @@ public class Problem76 {
                 }
             }
         }
-        System.out.println(beginIdx + " " + endIdx);
-        if (beginIdx == endIdx) {
+        if (beginIdx == endIdx && count != t.length()) {
             return "";
         }
         return s.substring(beginIdx, endIdx + 1);
-    }
-
-    public static void main(String[] args) {
-        Problem76 prob = new Problem76();
-        System.out.println(prob.minWindow("ADOBECODEBANC", "ABC")); // BANC
-        System.out.println(prob.minWindow("ADOBECODEBANC", "ABCX")); //
-        System.out.println(prob.minWindow("AA", "AA")); // AA
     }
 }
