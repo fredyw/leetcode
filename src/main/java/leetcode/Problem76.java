@@ -8,11 +8,15 @@ import java.util.Map;
  */
 public class Problem76 {
     public String minWindow(String s, String t) {
-        Map<Character, Integer> needed = new HashMap<>();
+//        Map<Character, Integer> needed = new HashMap<>();
+        int size = 128;
+        int[] needed = new int[size];
         for (char c : t.toCharArray()) {
-            needed.put(c, needed.getOrDefault(c, 1) + 1);
+//            needed.put(c, needed.getOrDefault(c, 1) + 1);
+            needed[c] += 1;
         }
-        Map<Character, Integer> found = new HashMap<>();
+//        Map<Character, Integer> found = new HashMap<>();
+        int[] found = new int[size];
         int count = 0;
         int minWindow = Integer.MAX_VALUE;
         int beginIdx = 0;
@@ -20,16 +24,15 @@ public class Problem76 {
         int begin = 0;
         for (int end = 0; end < s.length(); end++) {
             char endChar = s.charAt(end);
-            System.out.println("end: " + end + " --> " + endChar);
             if (!needed.containsKey(endChar)) {
                 continue;
             }
             found.put(endChar, found.getOrDefault(endChar, 1) + 1);
-//                System.out.println("- incrementing count: " + count);
-            count++;
-            if (count >= t.length()) {
+            if (found.get(endChar) <= needed.get(endChar)) {
+                count++;
+            }
+            if (count == t.length()) {
                 char begChar = s.charAt(begin);
-//                System.out.println("- end: " + end + " --> " + needed.get(begChar) + " < " + found.get(begChar));
                 while (!found.containsKey(begChar) || needed.get(begChar) < found.get(begChar)) {
                     if (!found.containsKey(begChar)) {
                         begChar = s.charAt(begin);
@@ -50,7 +53,6 @@ public class Problem76 {
                 }
             }
         }
-        System.out.println(beginIdx + " " + endIdx);
         if (beginIdx == endIdx) {
             return "";
         }
@@ -60,6 +62,6 @@ public class Problem76 {
     public static void main(String[] args) {
         Problem76 prob = new Problem76();
         System.out.println(prob.minWindow("ADOBECODEBANC", "ABC")); // BANC
-//        System.out.println(prob.minWindow("ADOBECODEBANC", "ABCX")); //
+        System.out.println(prob.minWindow("ADOBECODEBANC", "ABCX")); //
     }
 }
