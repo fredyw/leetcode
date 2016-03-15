@@ -15,6 +15,14 @@ public class Problem337 {
         TreeNode(int x) {
             val = x;
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder("TreeNode{");
+            sb.append("val=").append(val);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
     public int rob(TreeNode root) {
@@ -24,7 +32,7 @@ public class Problem337 {
         Map<String, Integer> memo = new HashMap<>();
         int a = rob(root, false, memo);
         int b = rob(root, true, memo);
-        System.out.println("a: " + a + " vs b: " + b);
+//        System.out.println("a: " + a + " vs b: " + b);
         return Math.max(a, b);
     }
 
@@ -44,9 +52,9 @@ public class Problem337 {
 
             max = maxLeft + maxRight;
         } else { // not skipped
-            int left = rob(node.left, skipped, memo); // start skipping
-            int right = rob(node.right, skipped, memo); // start skipping
-            max = left + right;
+            int maxLeft = rob(node.left, !skipped, memo); // start skipping
+            int maxRight = rob(node.right, !skipped, memo); // start skipping
+            max = maxLeft + maxRight;
         }
         if (!skipped) {
             max += node.val;
@@ -58,33 +66,33 @@ public class Problem337 {
         Problem337 prob = new Problem337();
 
         TreeNode root = new TreeNode(3);
-//        root.left = new TreeNode(2);
-//        root.left.right = new TreeNode(3);
-//        root.right = new TreeNode(3);
-//        root.right.right = new TreeNode(1);
-//        System.out.println(prob.rob(root)); // 7
-//
-//        root = new TreeNode(3);
-//        root.left = new TreeNode(4);
-//        root.left.left = new TreeNode(1);
-//        root.left.right = new TreeNode(3);
-//        root.right = new TreeNode(5);
-//        root.right.right = new TreeNode(1);
-//        System.out.println(prob.rob(root)); // 9
-//
-//        root = new TreeNode(4);
-//        root.left = new TreeNode(1);
-//        root.left.left = new TreeNode(2);
-//        root.left.left.left = new TreeNode(3);
-//        System.out.println(prob.rob(root)); // 7
-//
-//        root = new TreeNode(3);
-//        System.out.println(prob.rob(root)); // 3
-//
-//        root = new TreeNode(3);
-//        root.left = new TreeNode(1);
-//        root.right = new TreeNode(3);
-//        System.out.println(prob.rob(root)); // 4
+        root.left = new TreeNode(2);
+        root.left.right = new TreeNode(3);
+        root.right = new TreeNode(3);
+        root.right.right = new TreeNode(1);
+        System.out.println(prob.rob(root)); // 7
+
+        root = new TreeNode(3);
+        root.left = new TreeNode(4);
+        root.left.left = new TreeNode(1);
+        root.left.right = new TreeNode(3);
+        root.right = new TreeNode(5);
+        root.right.right = new TreeNode(1);
+        System.out.println(prob.rob(root)); // 9
+
+        root = new TreeNode(4);
+        root.left = new TreeNode(1);
+        root.left.left = new TreeNode(2);
+        root.left.left.left = new TreeNode(3);
+        System.out.println(prob.rob(root)); // 7
+
+        root = new TreeNode(3);
+        System.out.println(prob.rob(root)); // 3
+
+        root = new TreeNode(3);
+        root.left = new TreeNode(1);
+        root.right = new TreeNode(3);
+        System.out.println(prob.rob(root)); // 4
 
         root = new TreeNode(2);
         root.left = new TreeNode(1);
