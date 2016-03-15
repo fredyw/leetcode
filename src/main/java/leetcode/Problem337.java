@@ -34,18 +34,18 @@ public class Problem337 {
         }
         int max;
         if (skipped) {
-            int left1 = rob(node.left, skipped, memo);
-            int left2 = rob(node.left, !skipped, memo);
+            int left1 = rob(node.left, skipped, memo); // continue skipping
+            int left2 = rob(node.left, !skipped, memo); // start processing
             int maxLeft = Math.max(left1, left2);
 
-            int right1 = rob(node.right, skipped, memo);
-            int right2 = rob(node.right, !skipped, memo);
+            int right1 = rob(node.right, skipped, memo); // continue skipping
+            int right2 = rob(node.right, !skipped, memo); // start processing
             int maxRight = Math.max(right1, right2);
 
             max = maxLeft + maxRight;
         } else { // not skipped
-            int left = rob(node.left, skipped, memo);
-            int right = rob(node.right, skipped, memo);
+            int left = rob(node.left, skipped, memo); // start skipping
+            int right = rob(node.right, skipped, memo); // start skipping
             max = left + right;
         }
         if (!skipped) {
