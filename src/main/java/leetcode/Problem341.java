@@ -1,10 +1,11 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 /**
- * @author fredy
+ * https://leetcode.com/problems/flatten-nested-list-iterator/
  */
 public class Problem341 {
     public interface NestedInteger {
@@ -21,27 +22,32 @@ public class Problem341 {
     }
 
     public static class NestedIterator implements Iterator<Integer> {
+        private final Iterator<Integer> iterator;
+
         public NestedIterator(List<NestedInteger> nestedList) {
-            // TODO
+            List<Integer> list = new ArrayList<>();
+            populateIntegerList(nestedList, list);
+            iterator = list.iterator();
+        }
+
+        private void populateIntegerList(List<NestedInteger> nestedList, List<Integer> list) {
+            for (NestedInteger ni : nestedList) {
+                if (ni.isInteger()) {
+                    list.add(ni.getInteger());
+                } else {
+                    populateIntegerList(ni.getList(), list);
+                }
+            }
         }
 
         @Override
         public Integer next() {
-            // TODO:
-            return null;
+            return iterator.next();
         }
 
         @Override
         public boolean hasNext() {
-            // TODO:
-            return false;
-        }
-    }
-
-    public static void main(String[] args) {
-        NestedIterator i = new NestedIterator(null);
-        while (i.hasNext()) {
-            System.out.println(i.next());
+            return iterator.hasNext();
         }
     }
 }
