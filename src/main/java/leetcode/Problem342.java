@@ -5,13 +5,8 @@ package leetcode;
  */
 public class Problem342 {
     public boolean isPowerOfFour(int num) {
-        // TODO:
-        return false;
-    }
-
-    public static void main(String[] args) {
-        Problem342 prob = new Problem342();
-        System.out.println(prob.isPowerOfFour(16)); // true
-        System.out.println(prob.isPowerOfFour(5)); // false
+        double dval = Math.log10(num) / Math.log10(4);
+        int ival = (int) dval;
+        return (dval - ival == 0);
     }
 }
