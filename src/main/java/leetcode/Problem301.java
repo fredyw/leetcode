@@ -51,10 +51,8 @@ public class Problem301 {
             // keep
             remove(idx + 1, str, numOpen, pair - 1, numClose, accu + c, set);
             if (numClose - 1 >= 0) {
-                if (pair > 0) {
-                    // remove
-                    remove(idx + 1, str, pair - 1, numOpen, numClose - 1, accu, set);
-                }
+                // remove
+                remove(idx + 1, str, pair - 1, numOpen, numClose - 1, accu, set);
             }
         } else {
             remove(idx + 1, str, numOpen, pair, numClose, accu + c, set);
@@ -67,5 +65,7 @@ public class Problem301 {
 //        System.out.println(prob.removeInvalidParentheses("(a)())()")); // (a)()(), (a())()
 //        System.out.println(prob.removeInvalidParentheses(")(")); //
         System.out.println(prob.removeInvalidParentheses("(()(")); // ()
+//        System.out.println(prob.removeInvalidParentheses("))")); //
+//        System.out.println(prob.removeInvalidParentheses("((")); //
     }
 }
