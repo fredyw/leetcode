@@ -11,8 +11,7 @@ import java.util.Stack;
  */
 public class Problem301 {
     public List<String> removeInvalidParentheses(String s) {
-        int numOpen = 0;
-        int numClose = 0;
+        int removeClose = 0;
         Stack<Character> stack = new Stack<>();
         for (char c : s.toCharArray()) {
             if (c == '(') {
@@ -21,20 +20,20 @@ public class Problem301 {
                 if (stack.size() > 0) {
                     stack.pop();
                 } else {
-                    numClose++;
+                    removeClose++;
                 }
             }
         }
-        numOpen = stack.size();
+        int removeOpen = stack.size();
         Set<String> result = new HashSet<>();
-        remove(0, s, 0, numOpen, numClose, "", result);
+        remove(0, s, 0, removeOpen, removeClose, "", result);
         return new ArrayList<>(result);
     }
 
-    private void remove(int idx, String str, int pair, int numOpen, int numClose, String accu,
-                        Set<String> set) {
+    private void remove(int idx, String str, int matching, int removeOpen, int removeClose,
+                        String accu, Set<String> set) {
         if (idx == str.length()) {
-            if (numOpen == 0 && numClose == 0) {
+            if (removeOpen == 0 && removeClose == 0 && matching == 0) {
                 set.add(accu);
             }
             return;
@@ -42,30 +41,22 @@ public class Problem301 {
         char c = str.charAt(idx);
         if (c == '(') {
             // keep
-            remove(idx + 1, str, pair + 1, numOpen, numClose, accu + c, set);
-            if (numOpen - 1 >= 0) {
+            remove(idx + 1, str, matching + 1, removeOpen, removeClose, accu + c, set);
+            if (removeOpen - 1 >= 0) {
                 // remove
-                remove(idx + 1, str, pair + 1, numOpen - 1, numClose, accu, set);
+                remove(idx + 1, str, matching, removeOpen - 1, removeClose, accu, set);
             }
         } else if (c == ')') {
-            // keep
-            remove(idx + 1, str, numOpen, pair - 1, numClose, accu + c, set);
-            if (numClose - 1 >= 0) {
+            if (matching - 1 >= 0) {
+                // keep
+                remove(idx + 1, str, matching - 1, removeOpen, removeClose, accu + c, set);
+            }
+            if (removeClose - 1 >= 0) {
                 // remove
-                remove(idx + 1, str, pair - 1, numOpen, numClose - 1, accu, set);
+                remove(idx + 1, str, matching, removeOpen, removeClose - 1, accu, set);
             }
         } else {
-            remove(idx + 1, str, numOpen, pair, numClose, accu + c, set);
+            remove(idx + 1, str, matching, removeOpen, removeClose, accu + c, set);
         }
-    }
-
-    public static void main(String[] args) {
-        Problem301 prob = new Problem301();
-//        System.out.println(prob.removeInvalidParentheses("()())()")); // ()()(), (())()
-//        System.out.println(prob.removeInvalidParentheses("(a)())()")); // (a)()(), (a())()
-//        System.out.println(prob.removeInvalidParentheses(")(")); //
-        System.out.println(prob.removeInvalidParentheses("(()(")); // ()
-//        System.out.println(prob.removeInvalidParentheses("))")); //
-//        System.out.println(prob.removeInvalidParentheses("((")); //
     }
 }
