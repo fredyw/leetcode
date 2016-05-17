@@ -15,5 +15,8 @@ public class Problem301 {
 
     public static void main(String[] args) {
         Problem301 prob = new Problem301();
+        System.out.println(prob.removeInvalidParentheses("()())()"));
+        System.out.println(prob.removeInvalidParentheses("(a)())()"));
+        System.out.println(prob.removeInvalidParentheses(")("));
     }
 }
