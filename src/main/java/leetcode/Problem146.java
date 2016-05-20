@@ -1,7 +1,6 @@
 package leetcode;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
 
 /**
@@ -9,8 +8,21 @@ import java.util.Map;
  */
 public class Problem146 {
     public static class LRUCache {
-        private final Map<Integer, Integer> map = new HashMap<>();
-        private final LinkedList<Integer> list = new LinkedList<>();
+        private static class Node {
+            private final int key;
+            private int value;
+            private Node previous;
+            private Node next;
+
+            public Node(int key, int value) {
+                this.key = key;
+                this.value = value;
+            }
+        }
+
+        private final Map<Integer, Node> map = new HashMap<>();
+        private Node head;
+        private Node tail;
         private final int capacity;
 
         public LRUCache(int capacity) {
@@ -18,57 +30,65 @@ public class Problem146 {
         }
 
         public int get(int key) {
-            if (map.containsKey(key)) {
-                list.addLast(key);
-                list.removeFirst();
+            Node node = getNode(key);
+            if (node == null) {
+                return -1;
             }
-            return map.getOrDefault(key, -1);
+            return node.value;
+        }
+
+        private Node getNode(int key) {
+            if (map.containsKey(key)) {
+                Node node = map.get(key);
+                Node nodePrev = node.previous;
+                Node nodeNext = node.next;
+                if (nodeNext != null) {
+                    node.previous = null;
+                    node.next = null;
+                    if (nodePrev == null) {
+                        head = nodeNext;
+                        nodeNext.previous = null;
+                    } else {
+                        nodePrev.next = nodeNext;
+                        nodeNext.previous = nodePrev;
+                    }
+                    node.previous = tail;
+                    tail.next = node;
+                    tail = tail.next;
+                }
+                return node;
+            }
+            return null;
         }
 
         public void set(int key, int value) {
-            if (!map.containsKey(key)) {
-                list.addLast(key);
+            Node node = getNode(key);
+            if (node == null) {
+                if (map.size() == capacity) {
+                    if (head != null) {
+                        map.remove(head.key);
+                        Node tmp = head.next;
+                        head = tmp;
+                        if (head != null) {
+                            head.previous = null;
+                        }
+                    }
+                }
+                node = new Node(key, value);
+                if (head == null) {
+                    head = node;
+                }
+                if (tail == null) {
+                    tail = node;
+                } else {
+                    tail.next = node;
+                    node.previous = tail;
+                    tail = node;
+                }
+            } else {
+                node.value = value;
             }
-            map.put(key, value);
-            if (map.size() -1 == capacity) {
-                int removedKey = list.removeFirst();
-                map.remove(removedKey);
-            }
+            map.put(key, node);
         }
-    }
-
-    public static void main(String[] args) {
-        LRUCache lru = new LRUCache(2);
-//        lru.set(2, 1);
-//        lru.set(1, 1);
-//        System.out.println(lru.get(2)); // 1
-//        lru.set(4, 1);
-//        System.out.println(lru.get(1)); // -1
-//        System.out.println(lru.get(2)); // 1
-//        lru.set(5, 1);
-//        lru.set(6, 1);
-//        System.out.println(lru.get(1)); // -1
-//        System.out.println(lru.get(2)); // -1
-//        System.out.println(lru.get(3)); // -1
-//        System.out.println(lru.get(4)); // -1
-//        System.out.println(lru.get(5)); // 1
-//        System.out.println(lru.get(6)); // 1
-
-        lru.set(2, 1);
-        System.out.println("1. " + lru.map);
-        System.out.println("1. " + lru.list);
-        lru.set(1, 1);
-        System.out.println("2. " + lru.map);
-        System.out.println("2. " + lru.list);
-        lru.set(2, 3);
-        System.out.println("3. " + lru.map);
-        System.out.println("3. " + lru.list);
-        lru.set(4, 1);
-        System.out.println("4. " + lru.map);
-        System.out.println("4. " + lru.list);
-        System.out.println(lru.get(1)); // -1
-        System.out.println(lru.get(2)); // 3
-        System.out.println("5. " + lru.map);
-        System.out.println("5. " + lru.list);
     }
 }
