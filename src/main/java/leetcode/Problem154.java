@@ -35,12 +35,4 @@ public class Problem154 {
             return findMin(nums, mid + 1, right);
         }
     }
-
-    private static String debug(int[] nums, int left, int right) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = left; i <= right; i++) {
-            sb.append(nums[i] + " ");
-        }
-        return sb.toString();
-    }
 }
