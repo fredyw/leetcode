@@ -23,7 +23,11 @@ public class Problem154 {
         }
         int min = Math.min(minLeft, Math.min(nums[mid], minRight));
         if (min == nums[mid]) {
-            return nums[mid];
+            if (minLeft < minRight) {
+                return findMin(nums, left, right - 1);
+            } else {
+                return findMin(nums, left + 1, right);
+            }
         }
         if (minLeft < minRight) {
             return findMin(nums, left, mid - 1);
@@ -32,11 +36,11 @@ public class Problem154 {
         }
     }
 
-    public static void main(String[] args) {
-        Problem154 prob = new Problem154();
-        System.out.println(prob.findMin(new int[]{4, 5, 6, 7, 0, 1, 2})); // 0
-//        System.out.println(prob.findMin(new int[]{4, 4, 5, 6, 7, 0, 1, 2, 2})); // 0
-//        System.out.println(prob.findMin(new int[]{4, 4, 5, 6, 7, 2, 2, 3})); // 2
-//        System.out.println(prob.findMin(new int[]{3, 3, 3, 3, 3, 3, 3, 3, 1, 3})); // 1
+    private static String debug(int[] nums, int left, int right) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = left; i <= right; i++) {
+            sb.append(nums[i] + " ");
+        }
+        return sb.toString();
     }
 }
