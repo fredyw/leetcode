@@ -1,45 +1,50 @@
 package leetcode;
 
-import java.util.TreeSet;
+import java.util.PriorityQueue;
 
 /**
  * https://leetcode.com/problems/find-median-from-data-stream/
  */
 public class Problem295 {
     static class MedianFinder {
-        private final TreeSet<Integer> set = new TreeSet<>((a, b) -> {
-            if (a.intValue() <= b.intValue()) {
-                return -1;
-            } else {
-                return 1;
-            }
+        private final PriorityQueue<Integer> maxQueue = new PriorityQueue<>((a, b) -> {
+            return b.compareTo(a);
+        });
+        private final PriorityQueue<Integer> minQueue = new PriorityQueue<>((a, b) -> {
+            return a.compareTo(b);
         });
 
         // Adds a number into the data structure.
         public void addNum(int num) {
-            set.add(num);
+            Integer max = maxQueue.peek();
+            Integer min = minQueue.peek();
+            if (minQueue.size() == maxQueue.size()) {
+                if (max != null && num < max) {
+                    Integer a = maxQueue.poll();
+                    minQueue.add(a);
+                    maxQueue.add(num);
+                } else {
+                    minQueue.add(num);
+                }
+            } else {
+                if (num <= min) {
+                    maxQueue.add(num);
+                } else {
+                    Integer a = minQueue.poll();
+                    maxQueue.add(a);
+                    minQueue.add(num);
+                }
+            }
         }
 
         // Returns the median of current data stream
         public double findMedian() {
-            Integer[] array = set.toArray(new Integer[0]);
-            int mid = array.length / 2;
-            if (array.length % 2 == 0) {
-                int a = array[mid - 1];
-                int b = array[mid];
-                return (a + b) / 2.0;
+            if (maxQueue.size() == minQueue.size()) {
+                int max = maxQueue.peek();
+                int min = minQueue.peek();
+                return (max + min) / 2.0;
             }
-            return array[mid];
+            return minQueue.peek();
         }
-    }
-
-    public static void main(String[] args) {
-        MedianFinder med = new MedianFinder();
-        med.addNum(1);
-        System.out.println(med.findMedian()); // 1
-        med.addNum(2);
-        System.out.println(med.findMedian()); // 1.5
-        med.addNum(3);
-        System.out.println(med.findMedian()); // 2
     }
 }
