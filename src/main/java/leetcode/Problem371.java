@@ -5,13 +5,13 @@ package leetcode;
  */
 public class Problem371 {
     public int getSum(int a, int b) {
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem371 prob = new Problem371();
-        System.out.println(prob.getSum(1, 3)); // 4
-        System.out.println(prob.getSum(1, -3)); // -2
-        System.out.println(prob.getSum(1, 1)); // 2
+        int result = a ^ b;
+        int carry = a & b;
+        while (carry != 0) {
+            int shiftedCarry = carry << 1;
+            carry = result & shiftedCarry;
+            result ^= shiftedCarry;
+        }
+        return result;
     }
 }
