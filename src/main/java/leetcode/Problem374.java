@@ -30,9 +30,4 @@ public class Problem374 {
         }
         throw new RuntimeException("Number not found");
     }
-
-    public static void main(String[] args) {
-        Problem374 prob = new Problem374();
-        System.out.println(prob.guessNumber(2126753390));
-    }
 }
