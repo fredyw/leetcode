@@ -52,9 +52,4 @@ public class Problem52 {
         }
         return true;
     }
-
-    public static void main(String[] args) {
-        Problem52 prob = new Problem52();
-        System.out.println(prob.totalNQueens(8));
-    }
 }
