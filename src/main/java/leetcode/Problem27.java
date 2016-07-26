@@ -23,7 +23,6 @@ public class Problem27 {
                 break;
             }
         }
-        System.out.println(idx);
         return idx + 1;
     }
 }
