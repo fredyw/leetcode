@@ -34,10 +34,10 @@ public class Problem36 {
                     continue;
                 }
                 if (!rowMap.containsKey(i)) {
-                    rowMap.put(i, new HashSet<Character>());
+                    rowMap.put(i, new HashSet<>());
                 }
                 if (!colMap.containsKey(j)) {
-                    colMap.put(j, new HashSet<Character>());
+                    colMap.put(j, new HashSet<>());
                 }
                 Set<Character> rowSet = rowMap.get(i);
                 if (rowSet.contains(c)) {
