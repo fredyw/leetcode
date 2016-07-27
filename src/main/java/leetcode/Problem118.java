@@ -24,7 +24,7 @@ public class Problem118 {
             return;
         }
         List<Integer> prevList = (result.size() == 0) ?
-            new ArrayList<Integer>() : result.get(result.size()-1);
+            new ArrayList<>() : result.get(result.size()-1);
         List<Integer> currentList = new ArrayList<>();
         currentList.add(1);
         for (int i = 0; i < prevList.size()-1; i++) {

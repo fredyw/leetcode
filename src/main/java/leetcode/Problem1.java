@@ -14,7 +14,7 @@ public class Problem1 {
         Map<Integer, List<Integer>> map = new HashMap<>();
         for (int i = 0; i < numbers.length; i++) {
             if (!map.containsKey(numbers[i])) {
-                map.put(numbers[i], new ArrayList<Integer>());
+                map.put(numbers[i], new ArrayList<>());
             }
             map.get(numbers[i]).add(i);
         }

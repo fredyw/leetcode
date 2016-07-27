@@ -11,7 +11,7 @@ import java.util.Set;
 public class Problem46 {
     public List<List<Integer>> permute(int[] num) {
         List<List<Integer>> result = new ArrayList<>();
-        permute(result, new ArrayList<Integer>(), new HashSet<Integer>(), 0, num);
+        permute(result, new ArrayList<>(), new HashSet<>(), 0, num);
         return result;
     }
     
