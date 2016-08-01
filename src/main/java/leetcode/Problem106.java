@@ -39,13 +39,17 @@ public class Problem106 {
         }
         TreeNode node = new TreeNode(postorder[postorder.length-1]);
         PostOrder po = new PostOrder(postorder.length-1);
-        buildTree(node, inorder, postorder, po, 0, inorder.length, map, Direction.CENTER);
+        buildTree(node, postorder, po, 0, inorder.length, map, Direction.CENTER);
         return node;
     }
 
-    private void buildTree(TreeNode node, int[] inorder, int[] postorder,
-                           PostOrder po, int fromInOrderIdx, int toInOrderIdx,
-                           Map<Integer, Integer> map, Direction direction) {
+    private void buildTree(TreeNode node,
+                           int[] postorder,
+                           PostOrder po,
+                           int fromInOrderIdx,
+                           int toInOrderIdx,
+                           Map<Integer, Integer> map,
+                           Direction direction) {
         if (po.idx < 0) {
             return;
         }
@@ -62,12 +66,12 @@ public class Problem106 {
         }
         if (inOrderIdx+1 < toInOrderIdx) {
             po.idx--;
-            buildTree(newNode, inorder, postorder, po, inOrderIdx+1, toInOrderIdx,
+            buildTree(newNode, postorder, po, inOrderIdx+1, toInOrderIdx,
                 map, Direction.RIGHT);
         }
         if (fromInOrderIdx < inOrderIdx) {
             po.idx--;
-            buildTree(newNode, inorder, postorder, po, fromInOrderIdx,
+            buildTree(newNode, postorder, po, fromInOrderIdx,
                 inOrderIdx, map, Direction.LEFT);
         }
     }

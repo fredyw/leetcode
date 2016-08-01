@@ -27,7 +27,7 @@ public class Problem105 {
         }
         TreeNode node = new TreeNode(preorder[0]);
         PreOrder po = new PreOrder();
-        buildTree(node, preorder, inorder, po, 0, inorder.length, map, Direction.CENTER);
+        buildTree(node, preorder, po, 0, inorder.length, map, Direction.CENTER);
         return node;
     }
 
@@ -38,10 +38,14 @@ public class Problem105 {
     private enum Direction {
         LEFT, RIGHT, CENTER
     }
-    
-    private void buildTree(TreeNode node, int[] preorder, int[] inorder,
-        PreOrder po, int fromInOrderIdx, int toInOrderIdx, Map<Integer, Integer> map,
-        Direction direction) {
+
+    private void buildTree(TreeNode node,
+                           int[] preorder,
+                           PreOrder po,
+                           int fromInOrderIdx,
+                           int toInOrderIdx,
+                           Map<Integer, Integer> map,
+                           Direction direction) {
         if (po.idx >= preorder.length) {
             return;
         }
@@ -58,12 +62,12 @@ public class Problem105 {
         }
         if (fromInOrderIdx < inOrderIdx) {
             po.idx++;
-            buildTree(newNode, preorder, inorder, po, fromInOrderIdx,
+            buildTree(newNode, preorder, po, fromInOrderIdx,
                 inOrderIdx, map, Direction.LEFT);
         }
-        if (inOrderIdx+1 < toInOrderIdx) {
+        if (inOrderIdx + 1 < toInOrderIdx) {
             po.idx++;
-            buildTree(newNode, preorder, inorder, po, inOrderIdx+1, toInOrderIdx,
+            buildTree(newNode, preorder, po, inOrderIdx + 1, toInOrderIdx,
                 map, Direction.RIGHT);
         }
     }
