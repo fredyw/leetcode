@@ -27,7 +27,7 @@ public class Problem74 {
         }
         return false;
     }
-    
+
     private int getValue(int[][] matrix, int idx, int nCol) {
         int row = idx / nCol;
         int col = idx % nCol;

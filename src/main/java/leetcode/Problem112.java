@@ -20,7 +20,7 @@ public class Problem112 {
         }
         return hasPathSum(root, sum, 0, !(root.left != null || root.right != null));
     }
-    
+
     private boolean hasPathSum(TreeNode node, int sum, int accu, boolean isLeaf) {
         if (node == null) {
             if (accu == sum && isLeaf) {

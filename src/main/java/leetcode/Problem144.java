@@ -22,7 +22,7 @@ public class Problem144 {
         preOrderTraversal(root, result);
         return result;
     }
-    
+
     private void preOrderTraversal(TreeNode node, List<Integer> result) {
         if (node == null) {
             return;

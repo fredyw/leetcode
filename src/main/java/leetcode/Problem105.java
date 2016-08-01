@@ -16,7 +16,7 @@ public class Problem105 {
             val = x;
         }
     }
-    
+
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         if (preorder.length == 0) {
             return null;
@@ -34,7 +34,7 @@ public class Problem105 {
     private class PreOrder {
         int idx;
     }
-    
+
     private enum Direction {
         LEFT, RIGHT, CENTER
     }

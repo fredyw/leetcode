@@ -33,7 +33,7 @@ public class Problem216 {
             int val = numbers.get(i);
             List<Integer> newAccu = new ArrayList<>(accu);
             newAccu.add(val);
-            combination(numbers, k-1, n, i+1, sum+val, newAccu, result);
+            combination(numbers, k - 1, n, i + 1, sum + val, newAccu, result);
         }
     }
 }

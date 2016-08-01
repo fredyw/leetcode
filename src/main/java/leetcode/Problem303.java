@@ -18,7 +18,7 @@ public class Problem303 {
 
         public int sumRange(int i, int j) {
             if (i - 1 >= 0) {
-                return nums[j] - nums[i -1];
+                return nums[j] - nums[i - 1];
             }
             return nums[j];
         }

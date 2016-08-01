@@ -16,7 +16,7 @@ public class Problem198 {
         }
         return max2;
     }
-    
+
     private int rob(int[] num, int idx, Map<Integer, Integer> memo) {
         if (memo.containsKey(idx)) {
             return memo.get(idx);
@@ -27,8 +27,8 @@ public class Problem198 {
         if (idx >= num.length) {
             return 0;
         }
-        int m1 = rob(num, idx+2, memo);
-        int m2 = rob(num, idx+3, memo);
+        int m1 = rob(num, idx + 2, memo);
+        int m2 = rob(num, idx + 3, memo);
         int val = num[idx];
         if (m1 > m2) {
             memo.put(idx, val + m1);

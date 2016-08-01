@@ -14,10 +14,10 @@ public class Problem168 {
         while (x != 0) {
             int y = x % alphabets.length;
             if (y == 0) {
-                result = alphabets[alphabets.length-1] + result;
+                result = alphabets[alphabets.length - 1] + result;
                 x = (x / alphabets.length) - 1;
             } else {
-                result = alphabets[y-1] + result;
+                result = alphabets[y - 1] + result;
                 x = x / alphabets.length;
             }
         }

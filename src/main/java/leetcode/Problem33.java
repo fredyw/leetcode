@@ -17,7 +17,7 @@ public class Problem33 {
         if (current == nums.length) {
             startIdx = 0;
         }
-        return binarySearch(nums, target, 0, nums.length-1, startIdx);
+        return binarySearch(nums, target, 0, nums.length - 1, startIdx);
     }
 
     private int binarySearch(int[] nums, int target, int lo, int hi, int startIdx) {
@@ -33,8 +33,8 @@ public class Problem33 {
             return midIdx;
         }
         if (nums[midIdx] > target) {
-            return binarySearch(nums, target, lo, mid-1, startIdx);
+            return binarySearch(nums, target, lo, mid - 1, startIdx);
         }
-        return binarySearch(nums, target, mid+1, hi, startIdx);
+        return binarySearch(nums, target, mid + 1, hi, startIdx);
     }
 }

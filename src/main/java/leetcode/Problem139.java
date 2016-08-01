@@ -10,7 +10,7 @@ public class Problem139 {
     public boolean wordBreak(String s, Set<String> dict) {
         return wordBreak(s, dict, new HashSet<>());
     }
-    
+
     private boolean wordBreak(String s, Set<String> dict, Set<String> memo) {
         for (String d : dict) {
             if (s.equals(d)) {

@@ -21,22 +21,22 @@ public class Problem17 {
         numbers.put(7, Arrays.asList('p', 'q', 'r', 's'));
         numbers.put(8, Arrays.asList('t', 'u', 'v'));
         numbers.put(9, Arrays.asList('w', 'x', 'y', 'z'));
-        
+
         letterCombinations(digits, numbers, 0, "", result);
-        
+
         return result;
     }
 
     private void letterCombinations(String digits,
-        Map<Integer, List<Character>> numbers, int n, String accu,
-        List<String> result) {
+                                    Map<Integer, List<Character>> numbers, int n, String accu,
+                                    List<String> result) {
         if (n == digits.length()) {
             result.add(accu);
             return;
         }
         int digit = Integer.parseInt(Character.toString(digits.charAt(n)));
         for (Character c : numbers.get(digit)) {
-            letterCombinations(digits, numbers, n+1, accu+c, result);
+            letterCombinations(digits, numbers, n + 1, accu + c, result);
         }
     }
 }

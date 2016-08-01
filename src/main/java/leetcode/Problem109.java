@@ -28,7 +28,7 @@ public class Problem109 {
     }
 
     private TreeNode root;
-    
+
     public TreeNode sortedListToBST(ListNode head) {
         List<ListNode> listNodes = new ArrayList<>();
         for (ListNode n = head; n != null; n = n.next) {
@@ -37,7 +37,7 @@ public class Problem109 {
         sortedListToBST(listNodes, 0, listNodes.size());
         return root;
     }
-    
+
     private void sortedListToBST(List<ListNode> listNodes, int lo, int hi) {
         if (lo >= hi) {
             return;
@@ -50,9 +50,9 @@ public class Problem109 {
             add(root, val);
         }
         sortedListToBST(listNodes, lo, mid);
-        sortedListToBST(listNodes, mid+1, hi);
+        sortedListToBST(listNodes, mid + 1, hi);
     }
-    
+
     private TreeNode add(TreeNode node, int val) {
         if (node == null) {
             return new TreeNode(val);

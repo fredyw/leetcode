@@ -29,7 +29,7 @@ public class Problem19 {
         }
         if (maxSize) {
             return head.next;
-        } else {   
+        } else {
             ListNode toBeRemoved = head;
             for (ListNode node = tmp; node != null; node = node.next) {
                 toBeRemoved = toBeRemoved.next;

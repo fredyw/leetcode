@@ -31,10 +31,10 @@ public class Problem279 {
         }
         int min = Integer.MAX_VALUE;
         for (int square : squares) {
-            int val = numSquares(n-square, squares, memo);
+            int val = numSquares(n - square, squares, memo);
             min = Math.min(min, val);
         }
-        memo.put(n, min+1);
+        memo.put(n, min + 1);
         return min + 1;
     }
 }

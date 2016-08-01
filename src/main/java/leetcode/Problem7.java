@@ -15,7 +15,7 @@ public class Problem7 {
         long newValue = 0;
         for (int i = n; i > 0; i--) {
             int y = x % 10;
-            newValue += y * (long) Math.pow(10, i-1);
+            newValue += y * (long) Math.pow(10, i - 1);
             x /= 10;
         }
         if (newValue > Integer.MAX_VALUE || newValue < Integer.MIN_VALUE) {

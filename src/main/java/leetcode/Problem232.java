@@ -9,7 +9,7 @@ public class Problem232 {
     static class MyQueue {
         private Stack<Integer> stack1 = new Stack<>();
         private Stack<Integer> stack2 = new Stack<>();
-        
+
         // Push element x to the back of queue.
         public void push(int x) {
             stack1.push(x);

@@ -14,13 +14,13 @@ public class Problem49 {
         class Anagram {
             String sorted;
             String original;
-            
+
             Anagram(String sorted, String original) {
                 this.sorted = sorted;
                 this.original = original;
             }
         }
-        
+
         List<Anagram> sortedStrings = new ArrayList<>();
         for (String s : strs) {
             if (s.isEmpty()) {
@@ -31,7 +31,7 @@ public class Problem49 {
                 sortedStrings.add(new Anagram(new String(chars), s));
             }
         }
-        
+
         List<String> result = new ArrayList<>();
         Set<Integer> ignored = new HashSet<>();
         for (int i = 0; i < sortedStrings.size(); i++) {

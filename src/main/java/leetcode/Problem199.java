@@ -19,12 +19,12 @@ public class Problem199 {
             val = x;
         }
     }
-    
+
     public List<Integer> rightSideView(TreeNode root) {
         class TreeNodeLevel {
             TreeNode node;
             int level;
-            
+
             public TreeNodeLevel(TreeNode node, int level) {
                 this.node = node;
                 this.level = level;
@@ -41,10 +41,10 @@ public class Problem199 {
             TreeNodeLevel n = list.remove();
             map.put(n.level, n.node.val);
             if (n.node.left != null) {
-                list.add(new TreeNodeLevel(n.node.left, n.level+1));
+                list.add(new TreeNodeLevel(n.node.left, n.level + 1));
             }
             if (n.node.right != null) {
-                list.add(new TreeNodeLevel(n.node.right, n.level+1));
+                list.add(new TreeNodeLevel(n.node.right, n.level + 1));
             }
         }
         for (int i = 1; i <= map.size(); i++) {

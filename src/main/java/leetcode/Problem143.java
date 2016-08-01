@@ -10,6 +10,7 @@ public class Problem143 {
     public static class ListNode {
         int val;
         ListNode next;
+
         ListNode(int x) {
             val = x;
         }
@@ -31,7 +32,7 @@ public class Problem143 {
         ListNode n1 = head;
         ListNode n2 = null;
         x = 0;
-        for (int i = nodes.size()-1; i >= 0; i--) {
+        for (int i = nodes.size() - 1; i >= 0; i--) {
             n2 = nodes.get(i);
             ListNode newTmp = n1.next;
             n1.next = n2;

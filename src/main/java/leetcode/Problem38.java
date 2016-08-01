@@ -14,7 +14,7 @@ public class Problem38 {
         }
         return str;
     }
-    
+
     private String countAndSay(String str) {
         char c = str.charAt(0);
         StringBuilder newString = new StringBuilder();

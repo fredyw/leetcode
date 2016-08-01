@@ -20,7 +20,7 @@ public class Problem101 {
         }
         return isSymmetric(root.left, root.right);
     }
-    
+
     private boolean isSymmetric(TreeNode p, TreeNode q) {
         if (p == null && q == null) {
             return true;

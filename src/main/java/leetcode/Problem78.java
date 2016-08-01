@@ -24,7 +24,7 @@ public class Problem78 {
         result.add(numList);
         return result;
     }
-    
+
     private void subsets(List<Integer> nums, Set<List<Integer>> set) {
         if (nums.size() == 0) {
             return;
@@ -38,7 +38,7 @@ public class Problem78 {
             subsets(newList, set);
         }
     }
-    
+
     private List<Integer> createList(List<Integer> nums, int idx) {
         List<Integer> newList = new ArrayList<>();
         for (int i = 0; i < nums.size(); i++) {

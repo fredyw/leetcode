@@ -2,13 +2,13 @@ package leetcode;
 
 /**
  * https://oj.leetcode.com/problems/balanced-binary-tree/
- * 
+ * <p>
  * Definition for binary tree
  * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode(int x) { val = x; }
  * }
  */
 public class Problem110 {
@@ -16,9 +16,12 @@ public class Problem110 {
         int val;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
-    
+
     public boolean isBalanced(TreeNode root) {
         if (root == null) {
             return true;
@@ -31,7 +34,7 @@ public class Problem110 {
             return false;
         }
     }
-    
+
     private int getHeight(TreeNode node) {
         if (node == null) {
             return 0;

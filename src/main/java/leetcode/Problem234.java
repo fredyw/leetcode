@@ -38,7 +38,7 @@ public class Problem234 {
         }
         return true;
     }
-    
+
     private ListNode reverse(ListNode a, ListNode b) {
         ListNode c = b.next;
         b.next = a;

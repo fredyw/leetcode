@@ -27,42 +27,42 @@ public class Problem54 {
                 dirIdx = 0;
             }
             switch (directions[dirIdx]) {
-            case LEFT:
-                row = rowBegin;
-                col = colBegin;
-                while (col < colEnd) {
-                    result.add(matrix[row][col]);
-                    col++;
-                }
-                rowBegin++;
-                col--;
-                break;
-            case DOWN:
-                row++;
-                while (row < rowEnd) {
-                    result.add(matrix[row][col]);
-                    row++;
-                }
-                colEnd--;
-                row--;
-                break;
-            case RIGHT:
-                col--;
-                while (col >= colBegin) {
-                    result.add(matrix[row][col]);
+                case LEFT:
+                    row = rowBegin;
+                    col = colBegin;
+                    while (col < colEnd) {
+                        result.add(matrix[row][col]);
+                        col++;
+                    }
+                    rowBegin++;
                     col--;
-                }
-                rowEnd--;
-                col++;
-                break;
-            case UP:
-                row--;
-                while (row >= rowBegin) {
-                    result.add(matrix[row][col]);
+                    break;
+                case DOWN:
+                    row++;
+                    while (row < rowEnd) {
+                        result.add(matrix[row][col]);
+                        row++;
+                    }
+                    colEnd--;
                     row--;
-                }
-                colBegin++;
-                break;
+                    break;
+                case RIGHT:
+                    col--;
+                    while (col >= colBegin) {
+                        result.add(matrix[row][col]);
+                        col--;
+                    }
+                    rowEnd--;
+                    col++;
+                    break;
+                case UP:
+                    row--;
+                    while (row >= rowBegin) {
+                        result.add(matrix[row][col]);
+                        row--;
+                    }
+                    colBegin++;
+                    break;
             }
             dirIdx++;
         } while (rowBegin != rowEnd && colBegin != colEnd);

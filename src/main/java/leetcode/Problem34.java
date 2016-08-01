@@ -21,10 +21,10 @@ public class Problem34 {
                     result[0] = left + 1;
                 }
                 int right = mid;
-                while (right <= nums.length-1 && nums[right] == target) {
+                while (right <= nums.length - 1 && nums[right] == target) {
                     right++;
                 }
-                if (right == nums.length-1 && nums[right] == target) {
+                if (right == nums.length - 1 && nums[right] == target) {
                     result[1] = right;
                 } else {
                     result[1] = right - 1;

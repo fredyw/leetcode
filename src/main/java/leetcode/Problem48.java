@@ -14,7 +14,7 @@ public class Problem48 {
         }
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                matrix[j][i] = tmp[n-1-i][j];
+                matrix[j][i] = tmp[n - 1 - i][j];
             }
         }
     }

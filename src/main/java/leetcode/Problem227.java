@@ -57,7 +57,7 @@ public class Problem227 {
         }
         return (int) operands.pop().longValue();
     }
-    
+
     private void evaluate(Stack<Long> operands, Stack<Character> operators) {
         char op = operators.pop();
         long a = operands.pop();
@@ -65,7 +65,7 @@ public class Problem227 {
         long val = evaluate(b, a, op);
         operands.add(val);
     }
-    
+
     private void evaluateLeftToRight(Stack<Long> operands, Stack<Character> operators) {
         char op = operators.pop();
         long a = operands.pop();
@@ -73,7 +73,7 @@ public class Problem227 {
         long val = evaluate(a, b, op);
         operands.add(val);
     }
-    
+
     private long evaluate(long a, long b, char op) {
         if (op == '+') {
             return a + b;

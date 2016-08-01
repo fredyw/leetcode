@@ -19,13 +19,13 @@ public class Problem230 {
         int val;
         boolean found;
     }
-    
+
     public int kthSmallest(TreeNode root, int k) {
         Result result = new Result();
         kthSmallest(root, k, result);
         return result.val;
     }
-    
+
     private void kthSmallest(TreeNode node, int k, Result result) {
         if (result.n == k) {
             result.found = true;

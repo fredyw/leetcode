@@ -25,7 +25,7 @@ public class Problem257 {
         binaryTreePaths(root, "", paths);
         return paths;
     }
-    
+
     private void binaryTreePaths(TreeNode node, String path, List<String> paths) {
         if (node == null) {
             paths.add(path);

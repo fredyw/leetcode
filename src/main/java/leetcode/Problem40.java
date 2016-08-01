@@ -37,7 +37,7 @@ public class Problem40 {
             List<Integer> newAccu = new ArrayList<>(accu);
             int val = candidateList.get(i);
             newAccu.add(val);
-            combination(candidateList, target, i+1, sum+val, newAccu, result);
+            combination(candidateList, target, i + 1, sum + val, newAccu, result);
         }
     }
 }

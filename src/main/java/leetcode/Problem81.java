@@ -17,7 +17,7 @@ public class Problem81 {
         if (current == nums.length) {
             startIdx = 0;
         }
-        int result = binarySearch(nums, target, 0, nums.length-1, startIdx);
+        int result = binarySearch(nums, target, 0, nums.length - 1, startIdx);
         return result != -1;
     }
 
@@ -34,8 +34,8 @@ public class Problem81 {
             return midIdx;
         }
         if (nums[midIdx] > target) {
-            return binarySearch(nums, target, lo, mid-1, startIdx);
+            return binarySearch(nums, target, lo, mid - 1, startIdx);
         }
-        return binarySearch(nums, target, mid+1, hi, startIdx);
+        return binarySearch(nums, target, mid + 1, hi, startIdx);
     }
 }

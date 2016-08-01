@@ -42,7 +42,7 @@ public class Problem211 {
                 n = new Node(ch, false);
                 node.children.put(ch, n);
             }
-            addWord(n, word, idx+1);
+            addWord(n, word, idx + 1);
         }
 
         // Returns if the word is in the data structure. A word could
@@ -60,14 +60,14 @@ public class Problem211 {
                 if (ch == '.') {
                     boolean found = false;
                     for (Map.Entry<Character, Node> e : node.children.entrySet()) {
-                        found |= search(e.getValue(), word, idx+1);
+                        found |= search(e.getValue(), word, idx + 1);
                     }
                     return found;
                 }
                 return false;
             }
             Node n = node.children.get(ch);
-            return search(n, word, idx+1);
+            return search(n, word, idx + 1);
         }
     }
 }

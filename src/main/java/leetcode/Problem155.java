@@ -9,7 +9,7 @@ public class Problem155 {
     public static class MinStack {
         Stack<Integer> stack = new Stack<>();
         Stack<Integer> minStack = new Stack<>();
-        
+
         public void push(int x) {
             stack.push(x);
             if (minStack.isEmpty()) {

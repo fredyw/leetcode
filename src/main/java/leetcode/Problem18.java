@@ -16,13 +16,13 @@ public class Problem18 {
     private static class Indices {
         int i;
         int j;
-        
+
         public Indices(int i, int j) {
             this.i = i;
             this.j = j;
         }
     }
-    
+
     public List<List<Integer>> fourSum(int[] num, int target) {
         List<List<Integer>> result = new ArrayList<>();
         if (num.length < 4) {
@@ -31,7 +31,7 @@ public class Problem18 {
         Arrays.sort(num);
         Map<Integer, List<Indices>> map = new HashMap<>();
         for (int i = 0; i < num.length; i++) {
-            for (int j = i+1; j < num.length; j++) {
+            for (int j = i + 1; j < num.length; j++) {
                 if (!map.containsKey(num[i] + num[j])) {
                     map.put(num[i] + num[j], new ArrayList<>());
                 }
@@ -40,7 +40,7 @@ public class Problem18 {
         }
         Set<String> set = new HashSet<>();
         for (int i = 0; i < num.length; i++) {
-            for (int j = i+1; j < num.length; j++) {
+            for (int j = i + 1; j < num.length; j++) {
                 int expected = target - (num[i] + num[j]);
                 if (map.containsKey(expected)) {
                     List<Indices> indices = map.get(expected);

@@ -10,8 +10,8 @@ public class Problem274 {
         Arrays.sort(citations);
         int n = citations.length;
         for (int h = n; h >= 0; h--) {
-            int idx = binarySearch(citations, h, 0, n-1);
-            System.out.println("h=" + h+ ", n-h=" + (n-h) + ", idx=" + idx);
+            int idx = binarySearch(citations, h, 0, n - 1);
+            System.out.println("h=" + h + ", n-h=" + (n - h) + ", idx=" + idx);
             int x = n - idx;
             System.out.println("x=" + x);
             if (x >= h) {
@@ -34,8 +34,8 @@ public class Problem274 {
             return ++newMid;
         }
         if (citations[mid] > val) {
-            return binarySearch(citations, val, lo, mid-1);
+            return binarySearch(citations, val, lo, mid - 1);
         }
-        return binarySearch(citations, val, mid+1, hi);
+        return binarySearch(citations, val, mid + 1, hi);
     }
 }

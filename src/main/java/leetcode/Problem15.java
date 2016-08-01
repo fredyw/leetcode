@@ -20,7 +20,7 @@ public class Problem15 {
                     continue;
                 }
                 int val = -(num[i] + num[j]);
-                int k = Arrays.binarySearch(num, j+1, num.length, val);
+                int k = Arrays.binarySearch(num, j + 1, num.length, val);
                 if (k < 0 || j >= k) {
                     continue;
                 }

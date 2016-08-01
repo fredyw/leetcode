@@ -40,10 +40,10 @@ public class Problem103 {
                 map.get(ltn.level).add(ltn.node.val);
             }
             if (ltn.node.left != null) {
-                queue.add(new LevelTreeNode(ltn.level+1, ltn.node.left));
+                queue.add(new LevelTreeNode(ltn.level + 1, ltn.node.left));
             }
             if (ltn.node.right != null) {
-                queue.add(new LevelTreeNode(ltn.level+1, ltn.node.right));
+                queue.add(new LevelTreeNode(ltn.level + 1, ltn.node.right));
             }
         }
         boolean leftToRight = true;
@@ -64,7 +64,7 @@ public class Problem103 {
     private static class LevelTreeNode {
         private final int level;
         private final TreeNode node;
-        
+
         public LevelTreeNode(int level, TreeNode node) {
             this.level = level;
             this.node = node;

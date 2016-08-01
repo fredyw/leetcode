@@ -10,7 +10,7 @@ public class Problem50 {
         }
         return powNegative(x, n);
     }
-    
+
     private double powPositive(double x, int n) {
         if (n == 0) {
             return 1;
@@ -23,7 +23,7 @@ public class Problem50 {
         }
         return x * powPositive(x * x, n / 2);
     }
-    
+
     private double powNegative(double x, int n) {
         if (n == 0) {
             return 1;

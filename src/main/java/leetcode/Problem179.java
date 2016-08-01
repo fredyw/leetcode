@@ -19,8 +19,8 @@ public class Problem179 {
             Integer s2 = Integer.valueOf(o2.toString() + o1.toString());
             return s1.compareTo(s2);
         });
-        int zero = numbers.size()-1;
-        for (int i = numbers.size()-1; i >= 0; i--) {
+        int zero = numbers.size() - 1;
+        for (int i = numbers.size() - 1; i >= 0; i--) {
             if (i == zero && i != 0 && numbers.get(i).equals(0)) {
                 zero--;
                 continue;

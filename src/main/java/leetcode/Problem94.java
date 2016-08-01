@@ -22,7 +22,7 @@ public class Problem94 {
         inOrderTraversal(root, result);
         return result;
     }
-    
+
     private void inOrderTraversal(TreeNode node, List<Integer> result) {
         if (node == null) {
             return;

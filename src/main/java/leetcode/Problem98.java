@@ -18,7 +18,7 @@ public class Problem98 {
             val = x;
         }
     }
-    
+
     public boolean isValidBST(TreeNode root) {
         List<Integer> values = new ArrayList<>();
         inOrder(root, values);
@@ -28,7 +28,7 @@ public class Problem98 {
         }
         return values.equals(new ArrayList<>(sortedValues));
     }
-    
+
     private void inOrder(TreeNode node, List<Integer> values) {
         if (node == null) {
             return;

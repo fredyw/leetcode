@@ -37,8 +37,8 @@ public class Problem106 {
         for (int i = 0; i < inorder.length; i++) {
             map.put(inorder[i], i);
         }
-        TreeNode node = new TreeNode(postorder[postorder.length-1]);
-        PostOrder po = new PostOrder(postorder.length-1);
+        TreeNode node = new TreeNode(postorder[postorder.length - 1]);
+        PostOrder po = new PostOrder(postorder.length - 1);
         buildTree(node, postorder, po, 0, inorder.length, map, Direction.CENTER);
         return node;
     }
@@ -64,9 +64,9 @@ public class Problem106 {
         } else {
             newNode = node;
         }
-        if (inOrderIdx+1 < toInOrderIdx) {
+        if (inOrderIdx + 1 < toInOrderIdx) {
             po.idx--;
-            buildTree(newNode, postorder, po, inOrderIdx+1, toInOrderIdx,
+            buildTree(newNode, postorder, po, inOrderIdx + 1, toInOrderIdx,
                 map, Direction.RIGHT);
         }
         if (fromInOrderIdx < inOrderIdx) {

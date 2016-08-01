@@ -44,7 +44,7 @@ public class Problem224 {
         }
         return operands.pop();
     }
-    
+
     private void evaluate(Stack<Integer> operands, Stack<Character> operators) {
         char op = operators.pop();
         if (op == '(') {
@@ -55,7 +55,7 @@ public class Problem224 {
         int val = evaluate(b, a, op);
         operands.add(val);
     }
-    
+
     private int evaluate(int a, int b, char op) {
         if (op == '+') {
             return a + b;

@@ -12,9 +12,9 @@ public class Problem93 {
         restoreIpAddresses(s, "", 0, 1, result);
         return result;
     }
-    
+
     public void restoreIpAddresses(String s, String accu, int nLength, int nSegment,
-        List<String> result) {
+                                   List<String> result) {
         if (nSegment == 5) {
             result.add(accu);
             return;
@@ -27,7 +27,7 @@ public class Problem93 {
             if (!(min <= j && j <= max)) {
                 continue;
             }
-            String substr = s.substring(nLength, nLength+i);
+            String substr = s.substring(nLength, nLength + i);
             if (substr.startsWith("0") && substr.length() >= 2) {
                 continue;
             }
@@ -36,7 +36,7 @@ public class Problem93 {
                 continue;
             }
             String newAccu = (accu.isEmpty()) ? Integer.toString(val) : accu + "." + val;
-            restoreIpAddresses(s, newAccu, nLength+i, nSegment+1, result);
+            restoreIpAddresses(s, newAccu, nLength + i, nSegment + 1, result);
         }
     }
 }

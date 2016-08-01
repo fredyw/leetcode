@@ -11,7 +11,7 @@ public class Problem202 {
         Set<Integer> set = new HashSet<>();
         return isHappy(n, set);
     }
-    
+
     private boolean isHappy(int n, Set<Integer> set) {
         if (n == 1) {
             return true;

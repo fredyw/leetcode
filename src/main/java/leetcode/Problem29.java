@@ -35,7 +35,7 @@ public class Problem29 {
         if (tmpDividend == longDivisor) {
             result += 1;
         }
-        
+
         result = (negative) ? ~result + 1 : result;
         if (result >= Integer.MAX_VALUE) {
             return Integer.MAX_VALUE;

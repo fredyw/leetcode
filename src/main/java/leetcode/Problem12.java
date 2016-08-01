@@ -49,23 +49,23 @@ public class Problem12 {
                         roman.append(r.roman);
                     }
                     x = x % r.integer;
-                    
+
                 }
             }
         }
         return roman.toString();
     }
-    
+
     private static class Roman {
         private Integer integer;
         private String roman;
-        
+
         public Roman(Integer integer, String roman) {
             this.integer = integer;
             this.roman = roman;
         }
     }
-    
+
     private Roman find(int number, Map<Integer, String> map, Set<Integer> keys) {
         Integer integer = null;
         String roman = null;
@@ -78,7 +78,7 @@ public class Problem12 {
         }
         return new Roman(integer, roman);
     }
-    
+
     private Map<Integer, String> buildRomanNumerals() {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, "I");
@@ -94,7 +94,7 @@ public class Problem12 {
         map.put(500, "D");
         map.put(900, "CM");
         map.put(1000, "M");
-        
+
         return map;
     }
 }

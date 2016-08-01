@@ -50,7 +50,7 @@ public class Problem130 {
     }
 
     private Result solve(char[][] board, boolean[][] visited, int maxRow, int maxCol,
-                       int row, int col) {
+                         int row, int col) {
         Result result = new Result();
         Queue<RowCol> rowCols = new LinkedList<>();
         rowCols.add(new RowCol(row, col));

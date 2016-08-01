@@ -27,7 +27,7 @@ public class Problem71 {
         List<String> paths = new ArrayList<>(stack);
         for (int i = 0; i < paths.size(); i++) {
             sb.append(paths.get(i));
-            if (i < paths.size()-1) {
+            if (i < paths.size() - 1) {
                 sb.append("/");
             }
         }

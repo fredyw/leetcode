@@ -18,7 +18,7 @@ public class Problem226 {
         invert(root);
         return root;
     }
-    
+
     private void invert(TreeNode node) {
         if (node == null) {
             return;

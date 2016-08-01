@@ -14,9 +14,9 @@ public class Problem46 {
         permute(result, new ArrayList<>(), new HashSet<>(), 0, num);
         return result;
     }
-    
+
     private void permute(List<List<Integer>> result, List<Integer> accu,
-        Set<Integer> indices, int n, int[] num) {
+                         Set<Integer> indices, int n, int[] num) {
         if (n == num.length) {
             result.add(accu);
             return;
@@ -35,7 +35,7 @@ public class Problem46 {
                 newIndices.add(idx);
             }
             newIndices.add(i);
-            permute(result, newAccu, newIndices, n+1, num);
+            permute(result, newAccu, newIndices, n + 1, num);
         }
     }
 }

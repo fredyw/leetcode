@@ -13,7 +13,7 @@ public class Problem111 {
             val = x;
         }
     }
-    
+
     public int minDepth(TreeNode root) {
         if (root == null) {
             return 0;

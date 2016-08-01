@@ -13,7 +13,7 @@ public class Problem141 {
             next = null;
         }
     }
-     
+
     public boolean hasCycle(ListNode head) {
         if (head == null) {
             return false;

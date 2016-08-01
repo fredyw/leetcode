@@ -20,7 +20,7 @@ public class Problem260 {
         int i = 0;
         for (Map.Entry<Integer, Integer> e : map.entrySet()) {
             if (e.getValue() == 1) {
-                result[i++] = e.getKey(); 
+                result[i++] = e.getKey();
             }
         }
         return result;

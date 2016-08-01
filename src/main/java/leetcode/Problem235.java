@@ -31,7 +31,7 @@ public class Problem235 {
         }
         return lca;
     }
-    
+
     private List<TreeNode> getPath(TreeNode root, TreeNode n) {
         List<TreeNode> result = new ArrayList<>();
         getPath(root, n, new ArrayList<>(), result);

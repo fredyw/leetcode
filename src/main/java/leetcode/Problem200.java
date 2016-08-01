@@ -40,10 +40,10 @@ public class Problem200 {
             return;
         }
         ones.remove(key);
-        numIslands(grid, row-1, col, zeroes, ones); // up
-        numIslands(grid, row+1, col, zeroes, ones); // down
-        numIslands(grid, row, col-1, zeroes, ones); // left
-        numIslands(grid, row, col+1, zeroes, ones); // right
+        numIslands(grid, row - 1, col, zeroes, ones); // up
+        numIslands(grid, row + 1, col, zeroes, ones); // down
+        numIslands(grid, row, col - 1, zeroes, ones); // left
+        numIslands(grid, row, col + 1, zeroes, ones); // right
     }
 
     private String buildKey(int row, int col) {

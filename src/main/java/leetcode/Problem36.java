@@ -16,7 +16,7 @@ public class Problem36 {
         }
         for (int i = 0; i < board.length; i += 3) {
             for (int j = 0; j < board.length; j += 3) {
-                if (!isValidSudokuSubGrid(board, i, i+3, j, j+3)) {
+                if (!isValidSudokuSubGrid(board, i, i + 3, j, j + 3)) {
                     return false;
                 }
             }
@@ -55,9 +55,9 @@ public class Problem36 {
         }
         return true;
     }
-    
+
     private boolean isValidSudokuSubGrid(char[][] board, int startRow, int endRow,
-        int startCol, int endCol) {
+                                         int startCol, int endCol) {
         Set<Character> set = new HashSet<>();
         for (int i = startRow; i < endRow; i++) {
             for (int j = startCol; j < endCol; j++) {

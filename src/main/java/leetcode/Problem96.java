@@ -13,7 +13,7 @@ public class Problem96 {
     public int numTrees(int n) {
         return numTrees(n, new HashMap<>());
     }
-    
+
     private int numTrees(int n, Map<Integer, Integer> memo) {
         if (n == 0) {
             return 1;

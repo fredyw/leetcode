@@ -17,7 +17,7 @@ public class Problem206 {
 
     public ListNode reverseList(ListNode head) {
         Stack<ListNode> stack = new Stack<>();
-        for (ListNode node = head ; node != null; node = node.next) {
+        for (ListNode node = head; node != null; node = node.next) {
             stack.push(node);
         }
         ListNode n1 = null;

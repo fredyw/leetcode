@@ -25,14 +25,14 @@ public class Problem90 {
         }
         return result;
     }
-    
+
     private void subsets(int[] nums, Set<List<Integer>> result) {
         if (nums.length == 0) {
             return;
         }
         for (int i = 0; i < nums.length; i++) {
             List<Integer> list = new ArrayList<>();
-            int[] newArray = new int[nums.length-1];
+            int[] newArray = new int[nums.length - 1];
             int idx = 0;
             for (int j = 0; j < nums.length; j++) {
                 if (i == j) {

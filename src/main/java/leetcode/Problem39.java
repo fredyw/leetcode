@@ -19,21 +19,21 @@ public class Problem39 {
         }
         return result;
     }
-    
+
     private void combinationSum(int[] candidates, int target, List<Integer> accu,
-        Set<List<Integer>> result) {
+                                Set<List<Integer>> result) {
         if (target == 0) {
             Collections.sort(accu);
             result.add(accu);
             return;
-        }    
+        }
         if (target < 0) {
             return;
         }
         for (int i = 0; i < candidates.length; i++) {
             List<Integer> newAccu = new ArrayList<>(accu);
             newAccu.add(candidates[i]);
-            combinationSum(candidates, target-candidates[i], newAccu, result);
+            combinationSum(candidates, target - candidates[i], newAccu, result);
         }
     }
 }

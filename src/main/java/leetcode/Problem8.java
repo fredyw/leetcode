@@ -27,7 +27,7 @@ public class Problem8 {
         }
         int j = 0;
         // from the start to the end, there should only be numbers
-        for (int i = end-1; i >= start; i--) {
+        for (int i = end - 1; i >= start; i--) {
             result += getNum(trimmedStr.charAt(i)) * Math.pow(10, j);
             j++;
         }
@@ -41,8 +41,8 @@ public class Problem8 {
         }
         return (int) result;
     }
-    
+
     private int getNum(char c) {
-        return c - 48; 
+        return c - 48;
     }
 }

@@ -17,7 +17,7 @@ public class Problem114 {
     public void flatten(TreeNode root) {
         flatten(null, root);
     }
-    
+
     private TreeNode flatten(TreeNode parent, TreeNode node) {
         if (node == null) {
             return node;
@@ -38,7 +38,7 @@ public class Problem114 {
             TreeNode l = flatten(node, left);
             return flatten(l, right);
         } else {
-            return node; 
+            return node;
         }
     }
 }

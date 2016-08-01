@@ -28,17 +28,17 @@ public class Problem113 {
         }
         return result;
     }
-    
+
     private static class Path {
         int sum;
         List<Integer> path;
-        
+
         public Path(int sum, List<Integer> path) {
             this.sum = sum;
             this.path = path;
         }
     }
-    
+
     private void pathSum(TreeNode node, int sum, List<Integer> path, List<Path> paths) {
         if (node == null) {
             paths.add(new Path(sum, path));

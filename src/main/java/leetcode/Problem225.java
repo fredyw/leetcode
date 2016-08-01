@@ -10,7 +10,7 @@ public class Problem225 {
     static class MyStack {
         private Queue<Integer> list1 = new LinkedList<>();
         private Queue<Integer> list2 = new LinkedList<>();
-            
+
         // Push element x onto stack.
         public void push(int x) {
             while (!list1.isEmpty()) {

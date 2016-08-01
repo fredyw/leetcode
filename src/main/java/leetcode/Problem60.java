@@ -17,7 +17,7 @@ public class Problem60 {
             numbers.add(i);
         }
         StringBuilder sb = new StringBuilder();
-        for (int i = n-1; i >= 0; i--) {
+        for (int i = n - 1; i >= 0; i--) {
             int idx = k / factorials[i];
             if (k % factorials[i] == 0) {
                 idx -= 1;
@@ -33,6 +33,6 @@ public class Problem60 {
         if (n == 0 || n == 1) {
             return 1;
         }
-        return n * factorial(n-1);
+        return n * factorial(n - 1);
     }
 }

@@ -13,7 +13,7 @@ public class Problem21 {
             next = null;
         }
     }
-    
+
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode tmp = null;
         ListNode result = null;

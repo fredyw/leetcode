@@ -30,7 +30,9 @@ public class Problem133 {
             builder.append("]");
             return builder.toString();
         }
-    };
+    }
+
+    ;
 
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
         if (node == null) {
@@ -43,9 +45,9 @@ public class Problem133 {
         dfs(node, copy, marked, copyMap);
         return copy;
     }
-    
+
     private void dfs(UndirectedGraphNode source, UndirectedGraphNode copy,
-        Set<Integer> marked, Map<Integer, UndirectedGraphNode> copyMap) {
+                     Set<Integer> marked, Map<Integer, UndirectedGraphNode> copyMap) {
         marked.add(source.label);
         for (UndirectedGraphNode n : source.neighbors) {
             UndirectedGraphNode nCopy = new UndirectedGraphNode(n.label);

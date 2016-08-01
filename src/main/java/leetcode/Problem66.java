@@ -9,9 +9,9 @@ public class Problem66 {
     public int[] plusOne(int[] digits) {
         Stack<Integer> stack = new Stack<>();
         boolean carry = false;
-        for (int i = digits.length-1; i >= 0; i--) {
+        for (int i = digits.length - 1; i >= 0; i--) {
             int val = digits[i];
-            if (i == digits.length-1) {
+            if (i == digits.length - 1) {
                 val += 1;
             }
             if (carry) {

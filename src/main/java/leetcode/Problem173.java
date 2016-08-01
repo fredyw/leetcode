@@ -18,21 +18,25 @@ public class Problem173 {
 
     public static class BSTIterator {
         private LinkedList<Integer> list = new LinkedList<>();
-        
+
         public BSTIterator(TreeNode root) {
             inOrder(root, list);
         }
-        
-        /** @return whether we have a next smallest number */
+
+        /**
+         * @return whether we have a next smallest number
+         */
         public boolean hasNext() {
             return !list.isEmpty();
         }
 
-        /** @return the next smallest number */
+        /**
+         * @return the next smallest number
+         */
         public int next() {
             return list.remove();
         }
-        
+
         private void inOrder(TreeNode node, LinkedList<Integer> list) {
             if (node == null) {
                 return;

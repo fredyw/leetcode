@@ -10,7 +10,7 @@ public class Problem205 {
     public boolean isIsomorphic(String s, String t) {
         return transform(s).equals(transform(t));
     }
-    
+
     private String transform(String s) {
         StringBuilder str = new StringBuilder();
         Map<Character, Integer> map = new HashMap<>();

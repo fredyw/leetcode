@@ -16,16 +16,16 @@ public class Problem13 {
         romans.put('C', 100);
         romans.put('D', 500);
         romans.put('M', 1000);
-        
+
         String upperCaseStr = s.toUpperCase();
         char[] chars = upperCaseStr.toCharArray();
         int result = 0;
         for (int i = 0; i < chars.length; i++) {
-            if (i+1 == chars.length) {
+            if (i + 1 == chars.length) {
                 result += romans.get(chars[i]);
                 break;
             }
-            if (romans.get(chars[i]) >= romans.get(chars[i+1])) {
+            if (romans.get(chars[i]) >= romans.get(chars[i + 1])) {
                 result += romans.get(chars[i]);
             } else {
                 result -= romans.get(chars[i]);

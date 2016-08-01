@@ -12,7 +12,7 @@ public class Problem278 {
             return false;
         }
     }
-    
+
     public static class Solution extends VersionControl {
         public int firstBadVersion(int n) {
             int left = 1;
@@ -26,14 +26,14 @@ public class Problem278 {
                     // go right
                     left = mid + 1;
                 }
-                if (mid-1 >= 1) {
-                    boolean b = isBadVersion(mid-1) ^ isBadVersion(mid);
+                if (mid - 1 >= 1) {
+                    boolean b = isBadVersion(mid - 1) ^ isBadVersion(mid);
                     if (b) {
                         return mid;
                     }
                 }
-                if (mid+1 <= n) {
-                    boolean b = isBadVersion(mid+1) ^ isBadVersion(mid);
+                if (mid + 1 <= n) {
+                    boolean b = isBadVersion(mid + 1) ^ isBadVersion(mid);
                     if (b) {
                         return mid + 1;
                     }

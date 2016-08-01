@@ -16,16 +16,16 @@ public class Problem22 {
     }
 
     private void generateParenthesis(int n, int open, int close,
-        String accu, List<String> result) {
+                                     String accu, List<String> result) {
         if (close == n) {
             result.add(accu);
             return;
         }
         if (open > close) {
-            generateParenthesis(n, open, close+1, accu + ")", result);
+            generateParenthesis(n, open, close + 1, accu + ")", result);
         }
         if (open < n) {
-            generateParenthesis(n, open+1, close, accu + "(", result);
+            generateParenthesis(n, open + 1, close, accu + "(", result);
         }
     }
 }

@@ -26,10 +26,10 @@ public class Problem148 {
         for (ListNode n = head; n != null; n = n.next) {
             nodes.add(n);
         }
-        Collections.sort(nodes, (a, b) -> Integer.valueOf(a.val).compareTo(Integer .valueOf(b.val)));
+        Collections.sort(nodes, (a, b) -> Integer.valueOf(a.val).compareTo(Integer.valueOf(b.val)));
         ListNode newHead = null;
         ListNode node = null;
-        nodes.get(nodes.size()-1).next = null;
+        nodes.get(nodes.size() - 1).next = null;
         for (int i = 0; i < nodes.size(); i++) {
             if (i == 0) {
                 newHead = nodes.get(i);

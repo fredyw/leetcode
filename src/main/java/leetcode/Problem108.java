@@ -13,14 +13,14 @@ public class Problem108 {
             val = x;
         }
     }
-    
+
     private TreeNode root;
-    
+
     public TreeNode sortedArrayToBST(int[] num) {
         sortedArrayToBST(num, 0, num.length);
         return root;
     }
-    
+
     private void sortedArrayToBST(int[] num, int lo, int hi) {
         if (lo >= hi) {
             return;
@@ -33,9 +33,9 @@ public class Problem108 {
             add(root, val);
         }
         sortedArrayToBST(num, lo, mid);
-        sortedArrayToBST(num, mid+1, hi);
+        sortedArrayToBST(num, mid + 1, hi);
     }
-    
+
     private TreeNode add(TreeNode node, int val) {
         if (node == null) {
             return new TreeNode(val);

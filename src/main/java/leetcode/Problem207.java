@@ -51,8 +51,8 @@ public class Problem207 {
     }
 
     private void dfs(Map<Integer, List<Integer>> graph, int source,
-                        Map<Integer, Boolean> onStack, Set<Integer> marked,
-                        Cycle cycle) {
+                     Map<Integer, Boolean> onStack, Set<Integer> marked,
+                     Cycle cycle) {
         if (!graph.containsKey(source)) {
             return;
         }

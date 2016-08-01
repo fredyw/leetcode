@@ -13,23 +13,23 @@ public class Problem273 {
         StringBuilder sb = new StringBuilder();
         String str = Integer.toString(num);
         Stack<String> stack = new Stack<>();
-        for (int i = str.length()-1; i >= 0; i -= 3) {
-            if (i-2 < 0) {
-                String s = str.substring(0, i+1);
+        for (int i = str.length() - 1; i >= 0; i -= 3) {
+            if (i - 2 < 0) {
+                String s = str.substring(0, i + 1);
                 stack.push(s);
                 break;
             }
-            String s = str.substring(i-2, i+1);
+            String s = str.substring(i - 2, i + 1);
             stack.push(s);
         }
-        int size = stack.size()-1;
+        int size = stack.size() - 1;
         while (!stack.isEmpty()) {
             String s = stack.pop();
             String tmp = s;
             int remainder = Integer.parseInt(tmp);
             while (remainder > 0) {
                 int val = Integer.parseInt(tmp);
-                int a = (int) Math.pow(10, tmp.length()-1);
+                int a = (int) Math.pow(10, tmp.length() - 1);
                 if (val <= 20) {
                     sb.append(getName(val)).append(" ");
                     break;
@@ -58,7 +58,7 @@ public class Problem273 {
     }
 
     private String getName(int n) {
-        if  (n == 1) {
+        if (n == 1) {
             return "One";
         } else if (n == 2) {
             return "Two";

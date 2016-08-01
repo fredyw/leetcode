@@ -24,7 +24,7 @@ public class Problem129 {
         sumNumbers(root, "", result);
         return result[0];
     }
-    
+
     private void sumNumbers(TreeNode node, String accu, int[] result) {
         if (node == null) {
             return;

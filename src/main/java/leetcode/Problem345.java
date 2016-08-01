@@ -42,6 +42,6 @@ public class Problem345 {
 
     private boolean isVowel(char c) {
         return (c == 'a' || c == 'i' || c == 'u' || c == 'e' || c == 'o' ||
-                c == 'A' || c == 'I' || c == 'U' || c == 'E' || c == 'O');
+            c == 'A' || c == 'I' || c == 'U' || c == 'E' || c == 'O');
     }
 }

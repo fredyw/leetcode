@@ -21,13 +21,13 @@ public class Problem116 {
     private static class LevelNode {
         final int level;
         final TreeLinkNode node;
-        
+
         public LevelNode(int level, TreeLinkNode node) {
             this.level = level;
             this.node = node;
         }
     }
-    
+
     public void connect(TreeLinkNode root) {
         if (root == null) {
             return;
@@ -43,14 +43,14 @@ public class Problem116 {
             if (left == null || right == null) {
                 continue;
             }
-            queue.add(new LevelNode(level+1, left));
-            queue.add(new LevelNode(level+1, right));
-            if (map.containsKey(level+1)) {
-                TreeLinkNode node = map.get(level+1);
+            queue.add(new LevelNode(level + 1, left));
+            queue.add(new LevelNode(level + 1, right));
+            if (map.containsKey(level + 1)) {
+                TreeLinkNode node = map.get(level + 1);
                 node.next = left;
             }
             left.next = right;
-            map.put(level+1, right);
+            map.put(level + 1, right);
         }
     }
 }

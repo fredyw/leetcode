@@ -21,23 +21,23 @@ public class Problem73 {
             setColZeroes(matrix, zero.col);
         }
     }
-    
+
     private static class Zero {
         private final int row;
         private final int col;
-        
+
         public Zero(int row, int col) {
             this.row = row;
             this.col = col;
         }
     }
-    
+
     private void setRowZeroes(int[][] matrix, int row) {
         for (int i = 0; i < matrix[row].length; i++) {
             matrix[row][i] = 0;
         }
     }
-    
+
     private void setColZeroes(int[][] matrix, int col) {
         for (int i = 0; i < matrix.length; i++) {
             matrix[i][col] = 0;

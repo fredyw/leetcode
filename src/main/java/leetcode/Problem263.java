@@ -22,7 +22,7 @@ public class Problem263 {
         }
         return pf.isEmpty();
     }
-    
+
     private void isUgly(int num, int[] primes, Set<Integer> pf) {
         for (int prime : primes) {
             if (num == prime) {

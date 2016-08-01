@@ -20,7 +20,7 @@ public class Problem67 {
         Stack<Integer> stack = new Stack<>();
         boolean carry = false;
         // by now a's length should be the same as b's length
-        for (int i = a.length()-1; i >= 0; i--) {
+        for (int i = a.length() - 1; i >= 0; i--) {
             int x = (a.charAt(i) == '1') ? 1 : 0;
             int y = (b.charAt(i) == '1') ? 1 : 0;
             int val = x + y;

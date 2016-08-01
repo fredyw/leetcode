@@ -20,8 +20,8 @@ public class Problem9 {
             int y = x;
             for (int i = 0; i < n; i++) {
                 if (i == 0) {
-                    a = y % 10; 
-                } else if (i == n-1) {
+                    a = y % 10;
+                } else if (i == n - 1) {
                     b = y % 10;
                 }
                 y /= 10;

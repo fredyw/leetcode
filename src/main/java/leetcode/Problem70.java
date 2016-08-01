@@ -11,7 +11,7 @@ public class Problem70 {
         Map<Integer, Integer> memo = new HashMap<>();
         return climbStairs(n, 1, memo) + climbStairs(n, 2, memo);
     }
-    
+
     private int climbStairs(int n, int accu, Map<Integer, Integer> memo) {
         if (accu == n) {
             return 1;

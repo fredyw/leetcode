@@ -18,7 +18,7 @@ public class Problem92 {
         int i = 1;
         ListNode left = null;
         for (ListNode node = head; node != null; node = node.next) {
-            if (i+1 == m) {
+            if (i + 1 == m) {
                 left = node;
                 i++;
             } else if (i == m) {

@@ -18,7 +18,7 @@ public class Problem241 {
             if (input.charAt(i) == '+' || input.charAt(i) == '-'
                 || input.charAt(i) == '*') {
                 List<Integer> left = diffWaysToCompute(input.substring(0, i));
-                List<Integer> right = diffWaysToCompute(input.substring(i+1, input.length()));
+                List<Integer> right = diffWaysToCompute(input.substring(i + 1, input.length()));
                 for (int l : left) {
                     for (int r : right) {
                         if (input.charAt(i) == '+') {

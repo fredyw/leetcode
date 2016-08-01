@@ -24,13 +24,13 @@ public class Problem102 {
         class LevelNode {
             int level;
             TreeNode node;
-            
+
             public LevelNode(int level, TreeNode node) {
                 this.level = level;
                 this.node = node;
             }
         }
-        
+
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) {
             return result;
@@ -48,10 +48,10 @@ public class Problem102 {
                 map.get(n.level).add(n.node.val);
             }
             if (n.node.left != null) {
-                linkedList.addLast(new LevelNode(n.level+1, n.node.left));
+                linkedList.addLast(new LevelNode(n.level + 1, n.node.left));
             }
             if (n.node.right != null) {
-                linkedList.addLast(new LevelNode(n.level+1, n.node.right));
+                linkedList.addLast(new LevelNode(n.level + 1, n.node.right));
             }
         }
         for (int i = 0; i < map.size(); i++) {

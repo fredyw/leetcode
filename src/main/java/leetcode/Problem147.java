@@ -27,16 +27,16 @@ public class Problem147 {
         for (int i = 0; i < nodes.size(); i++) {
             for (int j = i; j >= 1; j--) {
                 ListNode n1 = nodes.get(j);
-                ListNode n2 = nodes.get(j-1);
+                ListNode n2 = nodes.get(j - 1);
                 if (n1.val < n2.val) {
                     nodes.set(j, n2);
-                    nodes.set(j-1, n1);
+                    nodes.set(j - 1, n1);
                 }
             }
         }
         ListNode newHead = null;
         ListNode node = null;
-        nodes.get(nodes.size()-1).next = null;
+        nodes.get(nodes.size() - 1).next = null;
         for (int i = 0; i < nodes.size(); i++) {
             if (i == 0) {
                 newHead = nodes.get(i);

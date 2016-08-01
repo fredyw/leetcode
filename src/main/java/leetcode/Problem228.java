@@ -15,7 +15,7 @@ public class Problem228 {
         int n = nums[0];
         int tmp = n;
         for (int i = 1; i < nums.length; i++) {
-            if (tmp+1 != nums[i]) {
+            if (tmp + 1 != nums[i]) {
                 if (n == tmp) {
                     result.add("" + n);
                 } else {

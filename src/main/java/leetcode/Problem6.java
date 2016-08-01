@@ -18,7 +18,7 @@ public class Problem6 {
             while (next1 < chars.length) {
                 result += chars[next1];
                 next1 += step1;
-                
+
                 if (step2 != step1 && step2 > 0) {
                     next2 += step2;
                     if (next2 < chars.length) {

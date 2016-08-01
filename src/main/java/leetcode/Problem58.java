@@ -5,7 +5,7 @@ package leetcode;
  */
 public class Problem58 {
     public int lengthOfLastWord(String s) {
-        int idx = s.length()-1;
+        int idx = s.length() - 1;
         while (idx >= 0 && s.charAt(idx) == ' ') {
             idx--;
         }

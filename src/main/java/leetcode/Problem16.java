@@ -29,7 +29,7 @@ public class Problem16 {
         }
         return threeSum;
     }
-    
+
     private int modifiedBinarySearch(int[] num, int target) {
         int left = 0;
         int right = num.length - 1;

@@ -11,7 +11,7 @@ public class Problem62 {
         Map<String, Integer> memo = new HashMap<>();
         return uniquePaths(m, n, 1, 1, memo);
     }
-    
+
     private int uniquePaths(int m, int n, int x, int y, Map<String, Integer> memo) {
         if (x > m || y > n) {
             return 0;
@@ -22,8 +22,8 @@ public class Problem62 {
         if (memo.containsKey(x + "|" + y)) {
             return memo.get(x + "|" + y);
         }
-        int a = uniquePaths(m, n, x+1, y, memo);
-        int b = uniquePaths(m, n, x, y+1, memo);
+        int a = uniquePaths(m, n, x + 1, y, memo);
+        int b = uniquePaths(m, n, x, y + 1, memo);
         int result = a + b;
         memo.put(x + "|" + y, result);
         return result;

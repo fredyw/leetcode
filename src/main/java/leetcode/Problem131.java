@@ -11,27 +11,27 @@ public class Problem131 {
         List<List<String>> result = new ArrayList<>();
         List<String> accu = new ArrayList<>();
         partition(s, accu, result);
-        return result; 
+        return result;
     }
-    
+
     private void partition(String s, List<String> accu, List<List<String>> result) {
         if (s.length() == 0) {
             result.add(accu);
             return;
         }
         for (int i = 0; i < s.length(); i++) {
-            String leftSubstr = s.substring(0, i+1);
+            String leftSubstr = s.substring(0, i + 1);
             if (!isPalindrome(leftSubstr)) {
                 continue;
             } else {
                 List<String> newAccu = new ArrayList<>(accu);
                 newAccu.add(leftSubstr);
-                String rightSubstr = s.substring(i+1);
+                String rightSubstr = s.substring(i + 1);
                 partition(rightSubstr, newAccu, result);
             }
         }
     }
-    
+
     private boolean isPalindrome(String s) {
         char[] chars = s.toCharArray();
         int left = 0;

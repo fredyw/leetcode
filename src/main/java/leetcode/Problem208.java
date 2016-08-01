@@ -11,11 +11,11 @@ public class Problem208 {
         Map<Character, TrieNode> children = new HashMap<>();
         char value;
         boolean complete;
-        
+
         // Initialize your data structure here.
         public TrieNode() {
         }
-        
+
         public TrieNode(char value) {
             this.value = value;
         }
@@ -32,7 +32,7 @@ public class Problem208 {
         public void insert(String word) {
             insert(root, word, 0);
         }
-        
+
         private void insert(TrieNode node, String word, int idx) {
             if (word.length() == idx) {
                 node.complete = true;
@@ -46,14 +46,14 @@ public class Problem208 {
                 n = new TrieNode(c);
                 node.children.put(c, n);
             }
-            insert(n, word, idx+1);
+            insert(n, word, idx + 1);
         }
 
         // Returns if the word is in the trie.
         public boolean search(String word) {
             return search(root, word, 0);
         }
-        
+
         private boolean search(TrieNode node, String word, int idx) {
             if (node == null) {
                 return false;
@@ -69,7 +69,7 @@ public class Problem208 {
                 return false;
             }
             TrieNode n = node.children.get(c);
-            return search(n, word, idx+1);
+            return search(n, word, idx + 1);
         }
 
         // Returns if there is any word in the trie
@@ -77,7 +77,7 @@ public class Problem208 {
         public boolean startsWith(String prefix) {
             return startsWith(root, prefix, 0);
         }
-        
+
         private boolean startsWith(TrieNode node, String prefix, int idx) {
             if (node == null) {
                 return false;
@@ -90,7 +90,7 @@ public class Problem208 {
                 return false;
             }
             TrieNode n = node.children.get(c);
-            return startsWith(n, prefix, idx+1);
+            return startsWith(n, prefix, idx + 1);
         }
     }
 }

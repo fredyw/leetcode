@@ -32,7 +32,7 @@ public class Problem236 {
         }
         return lca;
     }
-    
+
     private Stack<TreeNode> getPath(TreeNode root, TreeNode n) {
         if (root == null) {
             return null;

@@ -25,48 +25,48 @@ public class Problem59 {
                 dirIdx = 0;
             }
             switch (directions[dirIdx]) {
-            case LEFT:
-                row = rowBegin;
-                col = colBegin;
-                while (col < colEnd) {
-                    matrix[row][col] = number++;
-                    col++;
-                }
-                rowBegin++;
-                col--;
-                break;
-            case DOWN:
-                row++;
-                while (row < rowEnd) {
-                    matrix[row][col] = number++;
-                    row++;
-                }
-                colEnd--;
-                row--;
-                break;
-            case RIGHT:
-                col--;
-                while (col >= colBegin) {
-                    matrix[row][col] = number++;
+                case LEFT:
+                    row = rowBegin;
+                    col = colBegin;
+                    while (col < colEnd) {
+                        matrix[row][col] = number++;
+                        col++;
+                    }
+                    rowBegin++;
                     col--;
-                }
-                rowEnd--;
-                col++;
-                break;
-            case UP:
-                row--;
-                while (row >= rowBegin) {
-                    matrix[row][col] = number++;
+                    break;
+                case DOWN:
+                    row++;
+                    while (row < rowEnd) {
+                        matrix[row][col] = number++;
+                        row++;
+                    }
+                    colEnd--;
                     row--;
-                }
-                colBegin++;
-                break;
+                    break;
+                case RIGHT:
+                    col--;
+                    while (col >= colBegin) {
+                        matrix[row][col] = number++;
+                        col--;
+                    }
+                    rowEnd--;
+                    col++;
+                    break;
+                case UP:
+                    row--;
+                    while (row >= rowBegin) {
+                        matrix[row][col] = number++;
+                        row--;
+                    }
+                    colBegin++;
+                    break;
             }
             dirIdx++;
         } while (rowBegin != rowEnd && colBegin != colEnd);
         return matrix;
     }
-    
+
     private static enum Direction {
         LEFT, RIGHT, UP, DOWN
     }

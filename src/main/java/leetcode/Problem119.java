@@ -15,19 +15,19 @@ public class Problem119 {
         }
         return pascalsTriangle(rowIndex, 1, result);
     }
-    
+
     private List<Integer> pascalsTriangle(int rowIndex, int n, List<Integer> result) {
-        if (n == rowIndex+1) {
+        if (n == rowIndex + 1) {
             return result;
         }
         List<Integer> currentList = new ArrayList<>();
         currentList.add(1);
-        for (int i = 0; i < result.size()-1; i++) {
-            int value = result.get(i) + result.get(i+1);
+        for (int i = 0; i < result.size() - 1; i++) {
+            int value = result.get(i) + result.get(i + 1);
             currentList.add(value);
         }
         currentList.add(1);
-        
-        return pascalsTriangle(rowIndex, n+1, currentList);
+
+        return pascalsTriangle(rowIndex, n + 1, currentList);
     }
 }
