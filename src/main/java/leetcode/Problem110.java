@@ -2,14 +2,6 @@ package leetcode;
 
 /**
  * https://oj.leetcode.com/problems/balanced-binary-tree/
- * <p>
- * Definition for binary tree
- * public class TreeNode {
- * int val;
- * TreeNode left;
- * TreeNode right;
- * TreeNode(int x) { val = x; }
- * }
  */
 public class Problem110 {
     public static class TreeNode {
