@@ -15,8 +15,8 @@ public class Problem222 {
     }
 
     public int countNodes(TreeNode root) {
-        int leftLevel = countLeftLevel(root, 0);
-        int rightLevel = countRightLevel(root, 0);
+        int leftLevel = countLeftLevel(root);
+        int rightLevel = countRightLevel(root);
         if (leftLevel == rightLevel) {
             // 2^h - 1
             return (1 << leftLevel) - 1;
@@ -24,7 +24,7 @@ public class Problem222 {
         return 1 + countNodes(root.left) + countNodes(root.right);
     }
 
-    private int countLeftLevel(TreeNode node, int level) {
+    private int countLeftLevel(TreeNode node) {
         int count = 0;
         TreeNode n = node;
         while (n != null) {
@@ -34,7 +34,7 @@ public class Problem222 {
         return count;
     }
 
-    private int countRightLevel(TreeNode node, int level) {
+    private int countRightLevel(TreeNode node) {
         int count = 0;
         TreeNode n = node;
         while (n != null) {
