@@ -11,9 +11,7 @@ public class Problem274 {
         int n = citations.length;
         for (int h = n; h >= 0; h--) {
             int idx = binarySearch(citations, h, 0, n - 1);
-            System.out.println("h=" + h + ", n-h=" + (n - h) + ", idx=" + idx);
             int x = n - idx;
-            System.out.println("x=" + x);
             if (x >= h) {
                 return h;
             }
