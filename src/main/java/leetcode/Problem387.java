@@ -24,10 +24,4 @@ public class Problem387 {
         }
         return -1;
     }
-
-    public static void main(String[] args) {
-        Problem387 prob = new Problem387();
-        System.out.println(prob.firstUniqChar("leetcode"));
-        System.out.println(prob.firstUniqChar("loveleetcode"));
-    }
 }
