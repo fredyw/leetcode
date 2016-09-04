@@ -10,26 +10,31 @@ public class Problem386 {
     public List<Integer> lexicalOrder(int n) {
         List<Integer> result = new ArrayList<>();
         for (int i = 1; i <= 9; i++) {
-            lexicalOrder(n, "" + i, result);
+            if (i > n) {
+                break;
+            }
+            lexicalOrder(n, 1, 1, new IntRef(), result);
         }
         return result;
     }
 
-    private void lexicalOrder(int n, String accu, List<Integer> result) {
-        int num = Integer.parseInt(accu);
-        if (num > n) {
-            return;
-        }
-        result.add(num);
-        for (int i = 0; i <= 9; i++) {
-            lexicalOrder(n, accu + i, result);
-        }
+    private static class IntRef {
+        int counter;
     }
 
-    public static void main(String[] args) {
-        Problem386 prob = new Problem386();
-        System.out.println(prob.lexicalOrder(13));
-        System.out.println(prob.lexicalOrder(5000));
-        System.out.println(prob.lexicalOrder(5000000));
+    private void lexicalOrder(int n, int multiplier, int accu, IntRef ref, List<Integer> result) {
+        int newNumber = multiplier * accu;
+        if (newNumber > n) {
+            return;
+        }
+        for (int i = 0; i <= 9; i++) {
+            int newAccu = newNumber + i;
+            if (newAccu > n || ref.counter == n) {
+                break;
+            }
+            result.add(newAccu);
+            ref.counter++;
+            lexicalOrder(n, 10, newAccu, ref, result);
+        }
     }
 }
