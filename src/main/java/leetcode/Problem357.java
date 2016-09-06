@@ -22,13 +22,4 @@ public class Problem357 {
         }
         return count;
     }
-
-    public static void main(String[] args) {
-        Problem357 prob = new Problem357();
-        System.out.println(prob.countNumbersWithUniqueDigits(4)); // 5275
-        System.out.println(prob.countNumbersWithUniqueDigits(3)); // 739
-        System.out.println(prob.countNumbersWithUniqueDigits(2)); // 91
-//        System.out.println(prob.countNumbersWithUniqueDigits(1)); // 10
-//        System.out.println(prob.countNumbersWithUniqueDigits(0)); // 1
-    }
 }
