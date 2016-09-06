@@ -20,12 +20,4 @@ public class Problem392 {
         }
         return count == s.length();
     }
-
-    public static void main(String[] args) {
-        Problem392 prob = new Problem392();
-        System.out.println(prob.isSubsequence("ace", "abcde")); // true
-        System.out.println(prob.isSubsequence("aec", "abcde")); // false
-        System.out.println(prob.isSubsequence("abc", "ahbgdc")); // true
-        System.out.println(prob.isSubsequence("axc", "ahbgdc")); // false
-    }
 }
