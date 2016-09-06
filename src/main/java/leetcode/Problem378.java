@@ -22,5 +22,20 @@ public class Problem378 {
                 {12, 13, 15}
             }, i + 1));
         }
+
+        for (int i = 0; i < 4; i++) {
+            System.out.println(prob.kthSmallest(new int[][]{
+                {1, 2},
+                {1, 3},
+            }, i + 1));
+        }
+
+        for (int i = 0; i < 4; i++) {
+            System.out.println(prob.kthSmallest(new int[][]{
+                {1, 1, 1},
+                {1, 1, 3},
+                {1, 2, 3},
+            }, i + 1));
+        }
     }
 }
