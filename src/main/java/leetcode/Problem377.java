@@ -28,9 +28,4 @@ public class Problem377 {
         memo.put(target, count);
         return count;
     }
-
-    public static void main(String[] args) {
-        Problem377 prob = new Problem377();
-        System.out.println(prob.combinationSum4(new int[]{1, 2, 3}, 4)); // 7
-    }
 }
