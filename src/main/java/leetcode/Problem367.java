@@ -6,8 +6,10 @@ package leetcode;
 public class Problem367 {
     public boolean isPerfectSquare(int num) {
         double sqrt = sqrt(num);
+        int isqrt = (int) sqrt(num);
+        System.out.println(sqrt + " vs " + isqrt);
         double diff = Math.abs((int) sqrt - sqrt);
-        System.out.println("diff: " + diff + " --> " + sqrt + " --> " + (int) (diff * 100));
+//        System.out.println("diff: " + diff + " --> " + sqrt + " --> " + (int) (diff * 100));
         // TODO:
         return (int) (diff * 100) <= 5;
     }
@@ -41,13 +43,13 @@ public class Problem367 {
 
     public static void main(String[] args) {
         Problem367 prob = new Problem367();
-//        System.out.println(prob.isPerfectSquare(100));
-//        System.out.println(prob.isPerfectSquare(4));
-//        System.out.println(prob.isPerfectSquare(3));
-//        System.out.println(prob.isPerfectSquare(25));
-//        System.out.println(prob.isPerfectSquare(26));
-//        System.out.println(prob.isPerfectSquare(681));
-//        System.out.println(prob.isPerfectSquare(36));
+        System.out.println(prob.isPerfectSquare(100));
+        System.out.println(prob.isPerfectSquare(4));
+        System.out.println(prob.isPerfectSquare(3));
+        System.out.println(prob.isPerfectSquare(25));
+        System.out.println(prob.isPerfectSquare(26));
+        System.out.println(prob.isPerfectSquare(681));
+        System.out.println(prob.isPerfectSquare(36));
         System.out.println(prob.isPerfectSquare(362));
     }
 }
