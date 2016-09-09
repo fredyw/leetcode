@@ -36,16 +36,4 @@ public class Problem367 {
     private double sqrt(double x, double y) {
         return x - (fx(x, y) / dfx(x));
     }
-
-    public static void main(String[] args) {
-        Problem367 prob = new Problem367();
-        System.out.println(prob.isPerfectSquare(100));
-        System.out.println(prob.isPerfectSquare(4));
-        System.out.println(prob.isPerfectSquare(3));
-        System.out.println(prob.isPerfectSquare(25));
-        System.out.println(prob.isPerfectSquare(26));
-        System.out.println(prob.isPerfectSquare(681));
-        System.out.println(prob.isPerfectSquare(36));
-        System.out.println(prob.isPerfectSquare(362));
-    }
 }
