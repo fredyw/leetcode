@@ -6,12 +6,8 @@ package leetcode;
 public class Problem367 {
     public boolean isPerfectSquare(int num) {
         double sqrt = sqrt(num);
-        int isqrt = (int) sqrt(num);
-        System.out.println(sqrt + " vs " + isqrt);
-        double diff = Math.abs((int) sqrt - sqrt);
-//        System.out.println("diff: " + diff + " --> " + sqrt + " --> " + (int) (diff * 100));
-        // TODO:
-        return (int) (diff * 100) <= 5;
+        int isqrt = (int) sqrt;
+        return (isqrt * isqrt) == num;
     }
 
     private double sqrt(int x) {
