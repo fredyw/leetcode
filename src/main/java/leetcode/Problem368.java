@@ -55,7 +55,7 @@ public class Problem368 {
 //        System.out.println(prob.largestDivisibleSubset(new int[]{1, 2, 4, 8})); // [1, 2, 4, 8]
 //        System.out.println(prob.largestDivisibleSubset(new int[]{1, 2, 4, 8, 9, 72})); // [1, 2, 4, 8, 72]
 //        System.out.println(prob.largestDivisibleSubset(new int[]{1, 2, 3, 4, 6, 24})); // [1, 2, 4, 24]
-        System.out.println(prob.largestDivisibleSubset(new int[]{3, 4, 16, 8})); // [4, 8, 16]
-        // TODO: [1,3,9,18,54,108,972] vs [1,3,9,18,90,180,360,720]
+//        System.out.println(prob.largestDivisibleSubset(new int[]{3, 4, 16, 8})); // [4, 8, 16]
+        System.out.println(prob.largestDivisibleSubset(new int[]{1, 3, 9, 18, 54, 90, 108, 180, 720, 972})); // [1, 3, 9, 18, 90, 180, 360, 720]
     }
 }
