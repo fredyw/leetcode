@@ -31,20 +31,27 @@ public class Problem368 {
         if (memo.containsKey(key)) {
             return memo.get(key);
         }
+        List<Integer> largest = new ArrayList<>();
         int newPrev = prev;
-        boolean found = false;
-        if (prev > 0) {
-            if (nums[cur] % prev == 0) {
-                found = true;
-                newPrev = nums[cur];
+        for (int i = cur; i < nums.length; i++) {
+            boolean found = false;
+            if (prev > 0) {
+                if (nums[i] % prev == 0) {
+                    found = true;
+                    newPrev = nums[i];
+                }
+            }
+            List<Integer> result = largestDivisibleSubset(nums, i + 1, newPrev, memo);
+            List<Integer> newResult = new ArrayList<>(result);
+            if (found) {
+                newResult.add(nums[i]);
+            }
+            if (largest.size() < newResult.size()) {
+                largest = newResult;
             }
         }
-        List<Integer> result = largestDivisibleSubset(nums, cur + 1, newPrev, memo);
-        if (found) {
-            result.add(nums[cur]);
-        }
-        memo.put(key, result);
-        return result;
+        memo.put(key, largest);
+        return largest;
     }
 
     public static void main(String[] args) {
@@ -56,6 +63,6 @@ public class Problem368 {
 //        System.out.println(prob.largestDivisibleSubset(new int[]{1, 2, 4, 8, 9, 72})); // [1, 2, 4, 8, 72]
 //        System.out.println(prob.largestDivisibleSubset(new int[]{1, 2, 3, 4, 6, 24})); // [1, 2, 4, 24]
 //        System.out.println(prob.largestDivisibleSubset(new int[]{3, 4, 16, 8})); // [4, 8, 16]
-        System.out.println(prob.largestDivisibleSubset(new int[]{1, 3, 9, 18, 54, 90, 108, 180, 720, 972})); // [1, 3, 9, 18, 90, 180, 360, 720]
+        System.out.println(prob.largestDivisibleSubset(new int[]{1, 3, 9, 18, 54, 90, 108, 180, 360, 720, 972})); // [1, 3, 9, 18, 90, 180, 360, 720]
     }
 }
