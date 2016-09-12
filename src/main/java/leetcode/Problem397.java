@@ -5,13 +5,18 @@ package leetcode;
  */
 public class Problem397 {
     public int integerReplacement(int n) {
-        // TODO
-        return 0;
+        return (int) longReplacement(n);
     }
 
-    public static void main(String[] args) {
-        Problem397 prob = new Problem397();
-        System.out.println(prob.integerReplacement(8)); // 3
-        System.out.println(prob.integerReplacement(7)); // 4
+    private long longReplacement(long n) {
+        if (n == 1) {
+            return 0;
+        }
+        if (n % 2 == 0) {
+            return longReplacement(n / 2) + 1;
+        }
+        long a = longReplacement(n - 1) + 1;
+        long b = longReplacement(n + 1) + 1;
+        return Math.min(a, b);
     }
 }
