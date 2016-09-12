@@ -23,13 +23,12 @@ public class Problem368 {
     }
 
     private List<Integer> largestDivisibleSubset(int[] nums, int cur, int prev,
-                                                 Map<String, List<Integer>> memo) {
+                                                 Map<Integer, List<Integer>> memo) {
         if (cur == nums.length) {
             return new ArrayList<>();
         }
-        String key = cur + "|" + prev;
-        if (memo.containsKey(key)) {
-            return memo.get(key);
+        if (memo.containsKey(cur)) {
+            return memo.get(cur);
         }
         List<Integer> largest = new ArrayList<>();
         int newPrev = prev;
@@ -50,19 +49,19 @@ public class Problem368 {
                 largest = newResult;
             }
         }
-        memo.put(key, largest);
+        memo.put(cur, largest);
         return largest;
     }
 
     public static void main(String[] args) {
         Problem368 prob = new Problem368();
-//        System.out.println(prob.largestDivisibleSubset(new int[]{546, 669})); // [546]
-//        System.out.println(prob.largestDivisibleSubset(new int[]{1, 2, 3})); // [1, 2]
-//        System.out.println(prob.largestDivisibleSubset(new int[]{1, 2, 3, 6})); // [1, 2, 6]
-//        System.out.println(prob.largestDivisibleSubset(new int[]{1, 2, 4, 8})); // [1, 2, 4, 8]
-//        System.out.println(prob.largestDivisibleSubset(new int[]{1, 2, 4, 8, 9, 72})); // [1, 2, 4, 8, 72]
-//        System.out.println(prob.largestDivisibleSubset(new int[]{1, 2, 3, 4, 6, 24})); // [1, 2, 4, 24]
-//        System.out.println(prob.largestDivisibleSubset(new int[]{3, 4, 16, 8})); // [4, 8, 16]
+        System.out.println(prob.largestDivisibleSubset(new int[]{546, 669})); // [546]
+        System.out.println(prob.largestDivisibleSubset(new int[]{1, 2, 3})); // [1, 2]
+        System.out.println(prob.largestDivisibleSubset(new int[]{1, 2, 3, 6})); // [1, 2, 6]
+        System.out.println(prob.largestDivisibleSubset(new int[]{1, 2, 4, 8})); // [1, 2, 4, 8]
+        System.out.println(prob.largestDivisibleSubset(new int[]{1, 2, 4, 8, 9, 72})); // [1, 2, 4, 8, 72]
+        System.out.println(prob.largestDivisibleSubset(new int[]{1, 2, 3, 4, 6, 24})); // [1, 2, 4, 24]
+        System.out.println(prob.largestDivisibleSubset(new int[]{3, 4, 16, 8})); // [4, 8, 16]
         System.out.println(prob.largestDivisibleSubset(new int[]{1, 3, 9, 18, 54, 90, 108, 180, 360, 720, 972})); // [1, 3, 9, 18, 90, 180, 360, 720]
     }
 }
