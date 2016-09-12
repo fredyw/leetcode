@@ -16,7 +16,6 @@ public class Problem368 {
         Arrays.sort(nums);
         int[] count = new int[nums.length];
         int[] pre = new int[nums.length];
-        Arrays.sort(nums);
         int max = 0, index = -1;
         for (int i = 0; i < nums.length; i++) {
             count[i] = 1;
