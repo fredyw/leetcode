@@ -5,12 +5,20 @@ package leetcode;
  */
 public class Problem396 {
     public int maxRotateFunction(int[] A) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem396 prob = new Problem396();
-        System.out.println(prob.maxRotateFunction(new int[]{4, 3, 2, 6})); // 26
+        if (A.length == 0) {
+            return 0;
+        }
+        long max = Long.MIN_VALUE;
+        for (int i = 0; i < A.length; i++) {
+            long tmpMax = 0;
+            for (int j = 0, k = i; j < A.length; j++, k++) {
+                if (k == A.length) {
+                    k = 0;
+                }
+                tmpMax += A[k] * j;
+            }
+            max = Math.max(max, tmpMax);
+        }
+        return (int) max;
     }
 }
