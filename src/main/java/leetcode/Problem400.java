@@ -13,5 +13,6 @@ public class Problem400 {
         Problem400 prob = new Problem400();
         System.out.println(prob.findNthDigit(3)); // 3
         System.out.println(prob.findNthDigit(11)); // 0
+        System.out.println(prob.findNthDigit(15)); // 2
     }
 }
