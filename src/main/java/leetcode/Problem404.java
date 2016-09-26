@@ -15,17 +15,31 @@ public class Problem404 {
     }
 
     public int sumOfLeftLeaves(TreeNode root) {
-        // TODO
-        return 0;
+        Sum sum = new Sum();
+        if (root == null) {
+            return sum.sum;
+        }
+        sumOfLeftLeaves(root, sum, Direction.CENTER);
+        return sum.sum;
     }
 
-    public static void main(String[] args) {
-        Problem404 prob = new Problem404();
-        TreeNode root = new TreeNode(3);
-        root.left = new TreeNode(9);
-        root.right = new TreeNode(20);
-        root.right.left = new TreeNode(15);
-        root.right.right = new TreeNode(7);
-        System.out.println(prob.sumOfLeftLeaves(root));
+    private static class Sum {
+        private int sum;
+    }
+
+    private enum Direction {
+        LEFT, RIGHT, CENTER
+    }
+
+    private void sumOfLeftLeaves(TreeNode root, Sum sum, Direction direction) {
+        if (root.left == null && root.right == null && direction == Direction.LEFT) {
+            sum.sum += root.val;
+        }
+        if (root.left != null) {
+            sumOfLeftLeaves(root.left, sum, Direction.LEFT);
+        }
+        if (root.right != null) {
+            sumOfLeftLeaves(root.right, sum, Direction.RIGHT);
+        }
     }
 }
