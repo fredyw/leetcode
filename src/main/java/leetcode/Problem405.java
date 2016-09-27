@@ -5,13 +5,34 @@ package leetcode;
  */
 public class Problem405 {
     public String toHex(int num) {
-        // TODO
-        return "";
+        StringBuilder result = new StringBuilder();
+        int n = num;
+        do {
+            int m = n & 0xf;
+            result.append(hex(m));
+            n >>>= 4;
+        } while (n > 0);
+        result.reverse();
+        return result.toString();
     }
 
-    public static void main(String[] args) {
-        Problem405 prob = new Problem405();
-        System.out.println(prob.toHex(26)); // 1a
-        System.out.println(prob.toHex(-1)); // ffffffff
+    private String hex(int n) {
+        if (n >= 0 && n <= 9) {
+            return Integer.toString(n);
+        }
+        if (n == 10) {
+            return "a";
+        } else if (n == 11) {
+            return "b";
+        } else if (n == 12) {
+            return "c";
+        } else if (n == 13) {
+            return "d";
+        } else if (n == 14) {
+            return "e";
+        } else if (n == 15) {
+            return "f";
+        }
+        throw new RuntimeException("Not a hex value");
     }
 }
