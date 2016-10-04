@@ -1,6 +1,8 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -9,41 +11,57 @@ import java.util.Map;
 public class Problem388 {
     public int lengthLongestPath(String input) {
         String[] split = input.split("\\n");
-        Map<Integer, Integer> levelToLengthMap = new HashMap<>();
-        // TODO
+        Map<Integer, Node> levelNodes = new HashMap<>();
+        List<Node> roots = new ArrayList<>();
         for (String s : split) {
             int idx = 0;
             int currentLevel = 0;
             while (s.charAt(idx++) == '\t') {
                 currentLevel++;
             }
-            int parentLevel = currentLevel - 1;
-            int length = 0;
-            if (parentLevel >= 0) {
-                length = levelToLengthMap.get(parentLevel) + 1;
+            boolean file = s.contains(".");
+            Node node = new Node(s.length() - currentLevel, file);
+            if (currentLevel > 0) {
+                Node parent = levelNodes.get(currentLevel - 1);
+                parent.children.add(node);
+            } else {
+                roots.add(node);
             }
-            length += s.length() - currentLevel;
-            levelToLengthMap.put(currentLevel, length);
+            levelNodes.put(currentLevel, node);
         }
+        return max(roots);
+    }
+
+    private static int max(List<Node> roots) {
         int max = 0;
-        for (int length : levelToLengthMap.values()) {
-            max = Math.max(max, length);
+        for (Node root : roots) {
+            max = Math.max(max, max(root, root.length));
         }
         return max;
     }
 
-    private static class LevelLength {
-        private final int level;
-        private final int length;
-
-        public LevelLength(int level, int length) {
-            this.level = level;
-            this.length = length;
+    private static int max(Node root, int accu) {
+        if (root.children.isEmpty()) {
+            if (root.file) {
+                return accu;
+            }
+            return 0;
         }
+        int m = 0;
+        for (Node child : root.children) {
+            m = Math.max(m, max(child, accu + child.length + 1));
+        }
+        return m;
     }
 
-    public static void main(String[] args) {
-        Problem388 prob = new Problem388();
-        System.out.println(prob.lengthLongestPath("dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext")); // 32
+    private static class Node {
+        private final int length;
+        private final boolean file;
+        private final List<Node> children = new ArrayList<>();
+
+        public Node(int length, boolean file) {
+            this.length = length;
+            this.file = file;
+        }
     }
 }
