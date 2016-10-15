@@ -36,13 +36,4 @@ public class Problem393 {
         }
         return true;
     }
-
-    public static void main(String[] args) {
-        Problem393 prob = new Problem393();
-        System.out.println(prob.validUtf8(new int[]{197, 130, 1})); // true
-        System.out.println(prob.validUtf8(new int[]{235, 140, 4})); // false
-        System.out.println(prob.validUtf8(new int[]{127})); // true
-        System.out.println(prob.validUtf8(new int[]{255})); // false
-        System.out.println(prob.validUtf8(new int[]{145})); // false
-    }
 }
