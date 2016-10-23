@@ -30,6 +30,7 @@ public class Problem437 {
         root.left.right.right = new TreeNode(1);
         root.right = new TreeNode(-3);
         root.right.right = new TreeNode(11);
+        root.right.right.left = new TreeNode(4);
 
         System.out.println(prob.pathSum(root, 8)); // 3
     }
