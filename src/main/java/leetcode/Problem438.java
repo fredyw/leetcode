@@ -1,6 +1,7 @@
 package leetcode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -9,7 +10,18 @@ import java.util.List;
 public class Problem438 {
     public List<Integer> findAnagrams(String s, String p) {
         List<Integer> result = new ArrayList<>();
-        // TODO
+        char[] sortedP = p.toCharArray();
+        Arrays.sort(sortedP);
+        for (int i = 0; i < s.length(); i++) {
+            if (i + p.length() > s.length()) {
+                break;
+            }
+            char[] sortedSub = s.substring(i, i + p.length()).toCharArray();
+            Arrays.sort(sortedSub);
+            if (Arrays.equals(sortedP, sortedSub)) {
+                result.add(i);
+            }
+        }
         return result;
     }
 
