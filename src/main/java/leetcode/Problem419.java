@@ -5,16 +5,28 @@ package leetcode;
  */
 public class Problem419 {
     public int countBattleships(char[][] board) {
-        // TODO
-        return 0;
-    }
+        boolean[][] marked = new boolean[board.length][board[0].length];
+        int count = 0;
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (board[i][j] == 'X' && !marked[i][j]) {
+                    marked[i][j] = true;
+                    count++;
 
-    public static void main(String[] args) {
-        Problem419 prob = new Problem419();
-        System.out.println(prob.countBattleships(new char[][]{
-            new String("X..X").toCharArray(),
-            new String("...X").toCharArray(),
-            new String("...X").toCharArray()
-        })); // 2
+                    int right = j + 1;
+                    while (right < board[i].length && board[i][right] == 'X') {
+                        marked[i][right] = true;
+                        right++;
+                    }
+
+                    int down = i + 1;
+                    while (down < board.length && board[down][j] == 'X') {
+                        marked[down][j] = true;
+                        down++;
+                    }
+                }
+            }
+        }
+        return count;
     }
 }
