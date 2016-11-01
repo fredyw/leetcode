@@ -52,5 +52,6 @@ public class Problem424 {
 //        System.out.println(prob.characterReplacement("AABAABBA", 1)); // 5
 //        System.out.println(prob.characterReplacement("ACABD", 2)); // 4
         System.out.println(prob.characterReplacement("ABBB", 2)); // 4
+        System.out.println(prob.characterReplacement("ABBBBABABBC", 2)); // 9
     }
 }
