@@ -12,5 +12,7 @@ public class Problem453 {
     public static void main(String[] args) {
         Problem453 prob = new Problem453();
         System.out.println(prob.minMoves(new int[]{1, 2, 3})); // 3
+        System.out.println(prob.minMoves(new int[]{1, 2, 3})); // 6
+        System.out.println(prob.minMoves(new int[]{1, 2, 3, 4, 5})); // 10
     }
 }
