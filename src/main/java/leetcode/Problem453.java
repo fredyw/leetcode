@@ -5,14 +5,14 @@ package leetcode;
  */
 public class Problem453 {
     public int minMoves(int[] nums) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem453 prob = new Problem453();
-        System.out.println(prob.minMoves(new int[]{1, 2, 3})); // 3
-        System.out.println(prob.minMoves(new int[]{1, 2, 3})); // 6
-        System.out.println(prob.minMoves(new int[]{1, 2, 3, 4, 5})); // 10
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            min = Math.min(nums[i], min);
+        }
+        int result = 0;
+        for (int i = 0; i < nums.length; i++) {
+            result += nums[i] - min;
+        }
+        return result;
     }
 }
