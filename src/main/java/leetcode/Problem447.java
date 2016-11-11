@@ -1,26 +1,35 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * https://leetcode.com/problems/number-of-boomerangs/
  */
 public class Problem447 {
     public int numberOfBoomerangs(int[][] points) {
+        Map<String, Integer> distanceCounts = new HashMap<>();
+        for (int i = 0; i < points.length; i++) {
+            for (int j = 0; j < points.length; j++) {
+                if (i == j) {
+                    continue;
+                }
+                String key = i + "|" + getDistance(points, i, j);
+                if (!distanceCounts.containsKey(key)) {
+                    distanceCounts.put(key, 1);
+                } else {
+                    distanceCounts.put(key, distanceCounts.get(key) + 1);
+                }
+            }
+        }
         int result = 0;
         for (int i = 0; i < points.length; i++) {
             for (int j = 0; j < points.length; j++) {
                 if (i == j) {
                     continue;
                 }
-                int distance1 = getDistance(points, i, j);
-                for (int k = 0; k < points.length; k++) {
-                    if (k == i || k == j) {
-                        continue;
-                    }
-                    int distance2 = getDistance(points, i, k);
-                    if (distance1 == distance2) {
-                        result++;
-                    }
-                }
+                int distance = getDistance(points, i, j);
+                result += distanceCounts.get(i + "|" + distance) - 1;
             }
         }
         return result;
