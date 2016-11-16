@@ -33,6 +33,7 @@ public class Problem459 {
 //        System.out.println(prob.repeatedSubstringPattern("")); // false
 //        System.out.println(prob.repeatedSubstringPattern("abac")); // false
 //        System.out.println(prob.repeatedSubstringPattern("a")); // false
-        System.out.println(prob.repeatedSubstringPattern("abababaaba")); // false
+//        System.out.println(prob.repeatedSubstringPattern("abababaaba")); // false
+        System.out.println(prob.repeatedSubstringPattern("aaaabaaaab")); // true
     }
 }
