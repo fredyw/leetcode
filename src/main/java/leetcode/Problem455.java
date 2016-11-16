@@ -1,17 +1,26 @@
 package leetcode;
 
+import java.util.Arrays;
+
 /**
  * https://leetcode.com/problems/assign-cookies/
  */
 public class Problem455 {
     public int findContentChildren(int[] g, int[] s) {
-        // TODO
-        return 0;
-    }
+        Arrays.sort(g);
+        Arrays.sort(s);
 
-    public static void main(String[] args) {
-        Problem455 prob = new Problem455();
-        System.out.println(prob.findContentChildren(new int[]{1, 2, 3}, new int[]{1, 1})); // 1
-        System.out.println(prob.findContentChildren(new int[]{1, 2}, new int[]{1, 2, 3})); // 2
+        int result = 0;
+        int size = 0;
+        for (int greed = 0; greed < g.length; greed++) {
+            for (; size < s.length; size++) {
+                if (s[size] >= g[greed]) {
+                    result++;
+                    size++;
+                    break;
+                }
+            }
+        }
+        return result;
     }
 }
