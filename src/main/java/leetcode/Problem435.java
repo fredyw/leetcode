@@ -19,6 +19,11 @@ public class Problem435 {
             start = s;
             end = e;
         }
+
+        @Override
+        public String toString() {
+            return "(" + start + ", " + end + ")";
+        }
     }
 
     public int eraseOverlapIntervals(Interval[] intervals) {
@@ -39,7 +44,7 @@ public class Problem435 {
                 j++;
                 result++;
             } else {
-                i++;
+                i = j;
                 j++;
             }
         }
