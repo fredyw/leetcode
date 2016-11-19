@@ -19,18 +19,13 @@ public class Problem435 {
             start = s;
             end = e;
         }
-
-        @Override
-        public String toString() {
-            return "(" + start + ", " + end + ")";
-        }
     }
 
     public int eraseOverlapIntervals(Interval[] intervals) {
         Arrays.sort(intervals, (a, b) -> {
             int cmp = Integer.compare(a.start, b.start);
             if (cmp == 0) {
-                return Integer.compare(a.end, b.end);
+                return Integer.compare(a.start, b.start);
             }
             return cmp;
         });
@@ -41,7 +36,12 @@ public class Problem435 {
             Interval a = intervals[i];
             Interval b = intervals[j];
             if (b.start < a.end) {
-                j++;
+                if (a.end < b.end) {
+                    j++;
+                } else {
+                    i = j;
+                    j++;
+                }
                 result++;
             } else {
                 i = j;
@@ -49,26 +49,5 @@ public class Problem435 {
             }
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        Problem435 prob = new Problem435();
-        System.out.println(prob.eraseOverlapIntervals(new Interval[] {
-            new Interval(1, 2), new Interval(2, 3), new Interval(3, 4), new Interval(1, 3)
-        })); // 1
-        System.out.println(prob.eraseOverlapIntervals(new Interval[] {
-            new Interval(1, 2), new Interval(1, 2), new Interval(1, 2)
-        })); // 2
-        System.out.println(prob.eraseOverlapIntervals(new Interval[] {
-            new Interval(1, 2), new Interval(2, 3)
-        })); // 0
-        System.out.println(prob.eraseOverlapIntervals(new Interval[] {
-            new Interval(1, 2), new Interval(2, 3), new Interval(3, 4), new Interval(1, 3),
-            new Interval(2, 5), new Interval(4, 5), new Interval(3, 5)
-        })); // 3
-        System.out.println(prob.eraseOverlapIntervals(new Interval[] {
-            new Interval(0, 2), new Interval(1, 3), new Interval(2, 4), new Interval(3, 5),
-            new Interval(4, 6)
-        })); // 2
     }
 }
