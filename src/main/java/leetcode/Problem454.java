@@ -1,18 +1,33 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * https://leetcode.com/problems/4sum-ii/
  */
 public class Problem454 {
     public int fourSumCount(int[] A, int[] B, int[] C, int[] D) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem454 prob = new Problem454();
-        System.out.println(prob.fourSumCount(
-            new int[]{1, 2}, new int[]{-2, -1}, new int[]{-1, 2}, new int[]{0, 2}
-        )); // 2
+        Map<Long, Integer> map = new HashMap<>();
+        for (int i = 0; i < A.length; i++) {
+            for (int j = 0; j < B.length; j++) {
+                long sum = A[i] + B[j];
+                if (!map.containsKey(sum)) {
+                    map.put(sum, 1);
+                } else {
+                    map.put(sum, map.get(sum) + 1);
+                }
+            }
+        }
+        int result = 0;
+        for (int i = 0; i < C.length; i++) {
+            for (int j = 0; j < D.length; j++) {
+                long sum = C[i] + D[j];
+                if (map.containsKey(-sum)) {
+                    result += map.get(-sum);
+                }
+            }
+        }
+        return result;
     }
 }
