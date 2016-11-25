@@ -14,15 +14,18 @@ public class Problem464 {
         for (int i = 1; i <= maxChoosableInteger; i++) {
             nums.add(i);
         }
+        int bits = 0;
         Set<Integer> newNums = new HashSet<>(nums);
         for (int num : nums) {
             newNums.remove(num);
-            Map<String, Player> memo = new HashMap<>();
-            Player win = canIWin(newNums, desiredTotal, num, Player.P1, memo);
+            bits |= 1 << num;
+            Map<Integer, Player> memo = new HashMap<>();
+            Player win = canIWin(newNums, desiredTotal, num, Player.P1, memo, bits);
             if (win == Player.P1) {
                 return true;
             }
             newNums.add(num);
+            bits &= ~(1 << num);
         }
         return false;
     }
@@ -32,34 +35,36 @@ public class Problem464 {
     }
 
     private static Player canIWin(Set<Integer> nums, int desired, int accu, Player player,
-                                  Map<String, Player> memo) {
+                                  Map<Integer, Player> memo, int bits) {
         if (accu >= desired) {
             return player;
         }
         // TODO: the memo isn't optimized
-        String key = nums.toString();
-        if (memo.containsKey(key)) {
-            return memo.get(key);
+        if (memo.containsKey(bits)) {
+            return memo.get(bits);
         }
         Set<Integer> newNums = new HashSet<>(nums);
+        int newBits = bits;
         Player win = player;
         for (int num : nums) {
             newNums.remove(num);
+            newBits |= 1 << num;
             Player nextPlayer = (player == Player.P1) ? Player.P2 : Player.P1;
             if (player == Player.P1) {
-                win = canIWin(newNums, desired, accu + num, nextPlayer, memo);
+                win = canIWin(newNums, desired, accu + num, nextPlayer, memo, newBits);
                 if (win == Player.P2) {
                     break;
                 }
             } else if (player == Player.P2) {
-                win = canIWin(newNums, desired, accu + num, nextPlayer, memo);
+                win = canIWin(newNums, desired, accu + num, nextPlayer, memo, newBits);
                 if (win == Player.P1) {
                     break;
                 }
             }
             newNums.add(num);
+            newBits &= ~(1 << num);
         }
-        memo.put(key, win);
+        memo.put(bits, win);
         return win;
     }
 
