@@ -63,21 +63,6 @@ public class Problem464 {
         return win;
     }
 
-    private static class Debug {
-        private final Player player;
-        private final int number;
-
-        public Debug(Player player, int number) {
-            this.player = player;
-            this.number = number;
-        }
-
-        @Override
-        public String toString() {
-            return "(" + player + ": " + number + ")";
-        }
-    }
-
     public static void main(String[] args) {
         Problem464 prob = new Problem464();
         System.out.println(prob.canIWin(10, 11)); // false
