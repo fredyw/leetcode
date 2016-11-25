@@ -17,7 +17,8 @@ public class Problem464 {
         Set<Integer> newNums = new HashSet<>(nums);
         for (int num : nums) {
             newNums.remove(num);
-            Player win = canIWin(newNums, desiredTotal, num, Player.P1, new HashMap<>());
+            Map<String, Player> memo = new HashMap<>();
+            Player win = canIWin(newNums, desiredTotal, num, Player.P1, memo);
             if (win == Player.P1) {
                 return true;
             }
@@ -35,7 +36,8 @@ public class Problem464 {
         if (accu >= desired) {
             return player;
         }
-        String key = accu + "|" + player + "|" + nums;
+        // TODO: the memo isn't optimized
+        String key = accu + "|" + player;
         if (memo.containsKey(key)) {
             return memo.get(key);
         }
@@ -92,5 +94,8 @@ public class Problem464 {
         System.out.println(prob.canIWin(20, 200)); // false
         System.out.println(prob.canIWin(11, 25)); // true
         System.out.println(prob.canIWin(18, 79)); // true
+        System.out.println(prob.canIWin(10, 40)); // false
+        System.out.println(prob.canIWin(20, 54)); // true
+        System.out.println(prob.canIWin(20, 210)); // false
     }
 }
