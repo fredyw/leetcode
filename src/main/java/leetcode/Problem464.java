@@ -37,7 +37,7 @@ public class Problem464 {
             return player;
         }
         // TODO: the memo isn't optimized
-        String key = accu + "|" + player;
+        String key = nums.toString();
         if (memo.containsKey(key)) {
             return memo.get(key);
         }
