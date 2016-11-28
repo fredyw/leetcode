@@ -1,7 +1,6 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,11 +34,5 @@ public class Problem167 {
             }
         }
         return array;
-    }
-
-    public static void main(String[] args) {
-        Problem167 prob = new Problem167();
-        System.out.println(Arrays.toString(prob.twoSum(new int[]{2, 7, 11, 15}, 9)));
-        System.out.println(Arrays.toString(prob.twoSum(new int[]{0, 0, 3, 4}, 0)));
     }
 }
