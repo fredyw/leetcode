@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.stream.Collectors;
 
 /**
  * https://leetcode.com/problems/data-stream-as-disjoint-intervals/
@@ -27,18 +26,24 @@ public class Problem352 {
     }
 
     public static class SummaryRanges {
-        private final Map<Integer, Interval> hashMap = new HashMap<>();
-        private final Map<Integer, Interval> treeMap = new TreeMap<>((a, b) -> Integer.compare(a, b));
+        private final HashMap<Integer, Interval> hashMap = new HashMap<>();
+        private final TreeMap<Integer, Interval> treeMap = new TreeMap<>((a, b) -> Integer.compare(a, b));
 
         /** Initialize your data structure here. */
         public SummaryRanges() {
         }
 
         public void addNum(int val) {
-            System.out.println("adding " + val);
             if (hashMap.containsKey(val)) {
                 return;
             }
+            Map.Entry<Integer, Interval> lowerEntry = treeMap.lowerEntry(val);
+            if (lowerEntry != null) {
+                if (val < lowerEntry.getValue().end) {
+                    return;
+                }
+            }
+
             int left = val - 1;
             int right = val + 1;
             if (hashMap.containsKey(left) && hashMap.containsKey(right)) {
@@ -94,86 +99,5 @@ public class Problem352 {
         public List<Interval> getIntervals() {
             return new ArrayList<>(treeMap.values());
         }
-    }
-
-    private static void print(List<Interval> intervals) {
-        System.out.println(intervals.stream()
-            .map(i -> "[" + i.start + "," + i.end + "]")
-            .collect(Collectors.joining(", ")));
-    }
-
-    public static void main(String[] args) {
-        SummaryRanges sr = new SummaryRanges();
-
-        sr.addNum(1);
-        print(sr.getIntervals());
-
-        sr.addNum(2);
-        print(sr.getIntervals());
-
-        sr.addNum(3);
-        print(sr.getIntervals());
-
-        sr.addNum(4);
-        print(sr.getIntervals());
-
-        sr.addNum(5);
-        print(sr.getIntervals());
-
-        sr.addNum(3);
-        print(sr.getIntervals());
-
-
-//        sr.addNum(6);
-//        print(sr.getIntervals());
-//
-//        sr.addNum(6);
-//        print(sr.getIntervals());
-//
-//        sr.addNum(0);
-//        print(sr.getIntervals());
-//
-//        sr.addNum(4);
-//        print(sr.getIntervals());
-//
-//        sr.addNum(8);
-//        print(sr.getIntervals());
-//
-//        sr.addNum(7);
-//        print(sr.getIntervals());
-//
-//        sr.addNum(6);
-//        print(sr.getIntervals());
-//
-//        sr.addNum(4);
-//        print(sr.getIntervals());
-//
-//        sr.addNum(7);
-//        print(sr.getIntervals());
-//
-//        sr.addNum(5);
-//        print(sr.getIntervals());
-
-
-//        sr.addNum(1);
-//        print(sr.getIntervals());
-//
-//        sr.addNum(3);
-//        print(sr.getIntervals());
-//
-//        sr.addNum(7);
-//        print(sr.getIntervals());
-//
-//        sr.addNum(2);
-//        print(sr.getIntervals());
-//
-//        sr.addNum(6);
-//        print(sr.getIntervals());
-//
-//        sr.addNum(4);
-//        print(sr.getIntervals());
-//
-//        sr.addNum(5);
-//        print(sr.getIntervals());
     }
 }
