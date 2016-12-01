@@ -105,6 +105,25 @@ public class Problem352 {
     public static void main(String[] args) {
         SummaryRanges sr = new SummaryRanges();
 
+        sr.addNum(1);
+        print(sr.getIntervals());
+
+        sr.addNum(2);
+        print(sr.getIntervals());
+
+        sr.addNum(3);
+        print(sr.getIntervals());
+
+        sr.addNum(4);
+        print(sr.getIntervals());
+
+        sr.addNum(5);
+        print(sr.getIntervals());
+
+        sr.addNum(3);
+        print(sr.getIntervals());
+
+
 //        sr.addNum(6);
 //        print(sr.getIntervals());
 //
@@ -134,6 +153,7 @@ public class Problem352 {
 //
 //        sr.addNum(5);
 //        print(sr.getIntervals());
+
 
 //        sr.addNum(1);
 //        print(sr.getIntervals());
