@@ -5,12 +5,9 @@ package leetcode;
  */
 public class Problem434 {
     public int countSegments(String s) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem434 prob = new Problem434();
-        System.out.println(prob.countSegments("Hello, my name is John")); // 5
+        if (s.trim().isEmpty()) {
+            return 0;
+        }
+        return s.trim().split("\\s+").length;
     }
 }
