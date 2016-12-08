@@ -10,11 +10,11 @@ public class Problem395 {
     public int longestSubstring(String s, int k) {
         int max = 0;
         for (int i = 0; i < s.length(); i++) {
-            String sub = "";
-            Map<Character, Integer> map = new HashMap<>();
+            int len = 0;
+            Map<Character, Integer> map = new HashMap<>(26);
             for (int j = i; j < s.length(); j++) {
                 char c = s.charAt(j);
-                sub += c;
+                len++;
                 if (!map.containsKey(c)) {
                     map.put(c, 1);
                 } else {
@@ -28,7 +28,7 @@ public class Problem395 {
                     }
                 }
                 if (valid) {
-                    max = Math.max(max, sub.length());
+                    max = Math.max(max, len);
                 }
             }
         }
