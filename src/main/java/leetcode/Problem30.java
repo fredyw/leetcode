@@ -41,7 +41,7 @@ public class Problem30 {
             }
             if (map.isEmpty()) {
                 result.add(i);
-                i = j + wordSize;
+                i = i + wordSize;
             } else {
                 i++;
             }
@@ -59,12 +59,12 @@ public class Problem30 {
 
     public static void main(String[] args) {
         Problem30 prob = new Problem30();
-//        System.out.println(prob.findSubstring("barfoothefoobarman", new String[]{"foo", "bar"})); // [0, 9]
-//        System.out.println(prob.findSubstring("foobarthefoobarman", new String[]{"foo", "bar"})); // [0, 9]
-//        System.out.println(prob.findSubstring("barbazthebarbarfoobaz", new String[]{"foo", "bar"})); // [12]
-//        System.out.println(prob.findSubstring("barbazbebarbarfoobaz", new String[]{"foo", "bar"})); // [11]
-//        System.out.println(prob.findSubstring("barbazthebarbarfoobaz", new String[]{"foo", "bar", "baz"})); // [12]
-//        System.out.println(prob.findSubstring("barbazthebarbarfoobaz", new String[]{"foo", "bar", "bar"})); // [9]
+        System.out.println(prob.findSubstring("barfoothefoobarman", new String[]{"foo", "bar"})); // [0, 9]
+        System.out.println(prob.findSubstring("foobarthefoobarman", new String[]{"foo", "bar"})); // [0, 9]
+        System.out.println(prob.findSubstring("barbazthebarbarfoobaz", new String[]{"foo", "bar"})); // [12]
+        System.out.println(prob.findSubstring("barbazbebarbarfoobaz", new String[]{"foo", "bar"})); // [11]
+        System.out.println(prob.findSubstring("barbazthebarbarfoobaz", new String[]{"foo", "bar", "baz"})); // [12]
+        System.out.println(prob.findSubstring("barbazthebarbarfoobaz", new String[]{"foo", "bar", "bar"})); // [9]
         System.out.println(prob.findSubstring("barfoofoobarthefoobarman", new String[]{"bar", "foo", "the"})); // [6, 9, 12]
     }
 }
