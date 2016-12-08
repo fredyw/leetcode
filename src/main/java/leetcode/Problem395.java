@@ -29,7 +29,7 @@ public class Problem395 {
                 boolean valid = true;
                 for (int val : map.values()) {
                     if (val < k) {
-                        valid = false;g
+                        valid = false;
                         break;
                     }
                 }
