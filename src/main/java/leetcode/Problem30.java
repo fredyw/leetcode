@@ -10,6 +10,12 @@ import java.util.Map;
  */
 public class Problem30 {
     public List<Integer> findSubstring(String s, String[] words) {
+        List<Integer> result = new ArrayList<>();
+        int wordSize = words[0].length();
+        int totalSize = wordSize * words.length;
+        if (totalSize > s.length()) {
+            return result;
+        }
         Map<String, Integer> map = new HashMap<>();
         for (String word : words) {
             if (!map.containsKey(word)) {
@@ -18,11 +24,9 @@ public class Problem30 {
                 map.put(word, map.get(word) + 1);
             }
         }
-        List<Integer> result = new ArrayList<>();
-        int wordSize = words[0].length();
         List<String> removedWords = new ArrayList<>();
         int i = 0;
-        while (i < s.length()) {
+        while (i + totalSize <= s.length()) {
             int j = i;
             for (; j + wordSize <= s.length(); j++) {
                 String sub = s.substring(j, j + wordSize);
@@ -41,9 +45,6 @@ public class Problem30 {
             }
             if (map.isEmpty()) {
                 result.add(i);
-                i = i + wordSize;
-            } else {
-                i++;
             }
             for (String word : removedWords) {
                 if (map.containsKey(word)) {
@@ -53,6 +54,7 @@ public class Problem30 {
                 }
             }
             removedWords.clear();
+            i++;
         }
         return result;
     }
@@ -66,5 +68,7 @@ public class Problem30 {
         System.out.println(prob.findSubstring("barbazthebarbarfoobaz", new String[]{"foo", "bar", "baz"})); // [12]
         System.out.println(prob.findSubstring("barbazthebarbarfoobaz", new String[]{"foo", "bar", "bar"})); // [9]
         System.out.println(prob.findSubstring("barfoofoobarthefoobarman", new String[]{"bar", "foo", "the"})); // [6, 9, 12]
+        System.out.println(prob.findSubstring("aaaaaaaa", new String[]{"aa", "aa", "aa"})); // [0, 1, 2]
+        System.out.println(prob.findSubstring("a", new String[]{"a"})); // [0]
     }
 }
