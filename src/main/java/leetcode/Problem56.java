@@ -1,7 +1,7 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -21,25 +21,33 @@ public class Problem56 {
             start = s;
             end = e;
         }
-
-        @Override
-        public String toString() {
-            return "[" + start + ", " + end + "]";
-        }
     }
 
     public List<Interval> merge(List<Interval> intervals) {
-        // TODO
-        return new ArrayList<>();
-    }
-
-    public static void main(String[] args) {
-        Problem56 prob = new Problem56();
-        System.out.println(prob.merge(Arrays.asList(new Interval[]{
-            new Interval(1, 3),
-            new Interval(2, 6),
-            new Interval(8, 10),
-            new Interval(15, 18)
-        }))); // [1,6], [8,10], [15,18]
+        Collections.sort(intervals, (a, b) -> {
+            int cmp = Integer.compare(a.start, b.start);
+            if (cmp == 0) {
+                return Integer.compare(a.end, b.end);
+            }
+            return cmp;
+        });
+        List<Interval> result = new ArrayList<>();
+        result.add(intervals.get(0));
+        for (int i = 1; i < intervals.size(); i++) {
+            Interval prev = null;
+            if (result.isEmpty()) {
+                prev = intervals.get(i - 1);
+            } else {
+                prev = result.get(result.size() - 1);
+            }
+            Interval curr = intervals.get(i);
+            if (prev.end >= curr.start) {
+                Interval newInterval = new Interval(prev.start, Math.max(curr.end, prev.end));
+                result.set(result.size() - 1, newInterval);
+            } else {
+                result.add(curr);
+            }
+        }
+        return result;
     }
 }
