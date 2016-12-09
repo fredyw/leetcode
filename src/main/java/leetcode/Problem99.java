@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * https://leetcode.com/problems/recover-binary-search-tree/
  */
@@ -14,38 +17,38 @@ public class Problem99 {
         }
     }
 
-    public void recoverTree(TreeNode root) {
-        // TODO
+    private static class Ref {
+        private TreeNode node;
     }
 
-    private static void inOrder(TreeNode root) {
+    public void recoverTree(TreeNode root) {
+        List<TreeNode> swappedNodes = new ArrayList<>();
+        Ref ref = new Ref();
+        recoverTree(root, ref, swappedNodes);
+        swap(swappedNodes.get(0), swappedNodes.get(1));
+    }
+
+    public void recoverTree(TreeNode root, Ref ref, List<TreeNode> swappedNodes) {
         if (root == null) {
             return;
         }
-        inOrder(root.left);
-        System.out.print(root.val + " ");
-        inOrder(root.right);
+        recoverTree(root.left, ref, swappedNodes);
+        if (ref.node != null && ref.node.val > root.val) {
+            if (swappedNodes.size() == 0) {
+                swappedNodes.add(ref.node);
+                swappedNodes.add(root);
+            } else {
+                swappedNodes.remove(1);
+                swappedNodes.add(root);
+            }
+        }
+        ref.node = root;
+        recoverTree(root.right, ref, swappedNodes);
     }
 
-    private static void print(TreeNode root) {
-        inOrder(root);
-        System.out.println();
-    }
-
-    public static void main(String[] args) {
-        Problem99 prob = new Problem99();
-
-        TreeNode root = new TreeNode(7);
-        root.left = new TreeNode(2);
-        root.left.left = new TreeNode(1);
-        root.left.right = new TreeNode(3);
-        root.left.right.right = new TreeNode(4);
-        root.right = new TreeNode(8);
-        root.right.left = new TreeNode(6);
-        root.right.left.right = new TreeNode(5);
-        root.right.right = new TreeNode(9);
-
-        prob.recoverTree(root);
-        print(root);
+    private static void swap(TreeNode node1, TreeNode node2) {
+        int tmp = node1.val;
+        node1.val = node2.val;
+        node2.val = tmp;
     }
 }
