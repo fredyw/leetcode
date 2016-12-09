@@ -24,51 +24,29 @@ public class Problem30 {
                 map.put(word, map.get(word) + 1);
             }
         }
-        List<String> removedWords = new ArrayList<>();
         int i = 0;
         while (i + totalSize <= s.length()) {
             int j = i;
+            Map<String, Integer> copy = new HashMap<>(map);
             for (; j + wordSize <= s.length(); j++) {
                 String sub = s.substring(j, j + wordSize);
-                if (!map.containsKey(sub)) {
+                if (!copy.containsKey(sub)) {
                     break;
                 } else {
-                    int newCount = map.get(sub) - 1;
+                    int newCount = copy.get(sub) - 1;
                     if (newCount == 0) {
-                        map.remove(sub);
+                        copy.remove(sub);
                     } else {
-                        map.put(sub, newCount);
+                        copy.put(sub, newCount);
                     }
-                    removedWords.add(sub);
                 }
                 j += wordSize - 1;
             }
-            if (map.isEmpty()) {
+            if (copy.isEmpty()) {
                 result.add(i);
             }
-            for (String word : removedWords) {
-                if (map.containsKey(word)) {
-                    map.put(word, map.get(word) + 1);
-                } else {
-                    map.put(word, 1);
-                }
-            }
-            removedWords.clear();
             i++;
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        Problem30 prob = new Problem30();
-        System.out.println(prob.findSubstring("barfoothefoobarman", new String[]{"foo", "bar"})); // [0, 9]
-        System.out.println(prob.findSubstring("foobarthefoobarman", new String[]{"foo", "bar"})); // [0, 9]
-        System.out.println(prob.findSubstring("barbazthebarbarfoobaz", new String[]{"foo", "bar"})); // [12]
-        System.out.println(prob.findSubstring("barbazbebarbarfoobaz", new String[]{"foo", "bar"})); // [11]
-        System.out.println(prob.findSubstring("barbazthebarbarfoobaz", new String[]{"foo", "bar", "baz"})); // [12]
-        System.out.println(prob.findSubstring("barbazthebarbarfoobaz", new String[]{"foo", "bar", "bar"})); // [9]
-        System.out.println(prob.findSubstring("barfoofoobarthefoobarman", new String[]{"bar", "foo", "the"})); // [6, 9, 12]
-        System.out.println(prob.findSubstring("aaaaaaaa", new String[]{"aa", "aa", "aa"})); // [0, 1, 2]
-        System.out.println(prob.findSubstring("a", new String[]{"a"})); // [0]
     }
 }
