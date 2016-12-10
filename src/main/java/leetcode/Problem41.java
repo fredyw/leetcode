@@ -14,5 +14,11 @@ public class Problem41 {
         System.out.println(prob.firstMissingPositive(new int[]{1, 2, 0})); // 3
         System.out.println(prob.firstMissingPositive(new int[]{3, 4, -1, 1})); // 2
         System.out.println(prob.firstMissingPositive(new int[]{1, 2, 6, 5})); // 3
+        System.out.println(prob.firstMissingPositive(new int[]{3, 2, 5, -3, -1})); // 1
+        System.out.println(prob.firstMissingPositive(new int[]{})); // 1
+        System.out.println(prob.firstMissingPositive(new int[]{0})); // 1
+        System.out.println(prob.firstMissingPositive(new int[]{2})); // 1
+        System.out.println(prob.firstMissingPositive(new int[]{1})); // 2
+        System.out.println(prob.firstMissingPositive(new int[]{1, 1})); // 2
     }
 }
