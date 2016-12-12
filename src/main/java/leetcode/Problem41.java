@@ -7,19 +7,20 @@ public class Problem41 {
     public int firstMissingPositive(int[] nums) {
         int i = 0;
         while (i < nums.length) {
-            if (nums[i] == i + 1 || nums[i] <= 0 || nums[i] >= nums.length) {
+            if (nums[i] <= 0 || nums[i] >= nums.length) {
                 i++;
             } else if (nums[nums[i] - 1] != nums[i]) {
-                swap(nums, i, nums[i] - 1);
+                swap(nums, nums[i] - 1, i);
             } else {
                 i++;
             }
         }
         i = 0;
-        for (; i < nums.length; i++) {
+        while (i < nums.length) {
             if (nums[i] != i + 1) {
                 return i + 1;
             }
+            i++;
         }
         return i + 1;
     }
