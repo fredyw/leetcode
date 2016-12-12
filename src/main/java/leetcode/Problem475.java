@@ -18,5 +18,6 @@ public class Problem475 {
         System.out.println(prob.findRadius(new int[]{1, 2, 3}, new int[]{1})); // 2
         System.out.println(prob.findRadius(new int[]{1, 2, 3, 4, 5, 6}, new int[]{3})); // 3
         System.out.println(prob.findRadius(new int[]{1, 2, 6}, new int[]{1})); // 5
+        System.out.println(prob.findRadius(new int[]{1, 6, 11}, new int[]{5, 12})); // 4
     }
 }
