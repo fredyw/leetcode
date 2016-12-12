@@ -68,10 +68,5 @@ public class Problem475 {
             this.position = position;
             this.heater = heater;
         }
-
-        @Override
-        public String toString() {
-            return "(" + position + ", " + heater + ", " + radius + ")";
-        }
     }
 }
