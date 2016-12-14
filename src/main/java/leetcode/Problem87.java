@@ -32,14 +32,19 @@ public class Problem87 {
             String sub2 = str.substring(i);
             Set<String> set1 = scramble(sub1, memo);
             Set<String> set2 = scramble(sub2, memo);
-            for (String s1 : set1) {
-                for (String s2 : set2) {
-                    set.add(s1 + s2);
-                }
-            }
-            for (String s2 : set2) {
+            if (set1.size() > set2.size()) {
                 for (String s1 : set1) {
-                    set.add(s2 + s1);
+                    for (String s2 : set2) {
+                        set.add(s1 + s2);
+                        set.add(s2 + s1);
+                    }
+                }
+            } else {
+                for (String s2 : set2) {
+                    for (String s1 : set1) {
+                        set.add(s1 + s2);
+                        set.add(s2 + s1);
+                    }
                 }
             }
         }
