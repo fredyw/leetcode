@@ -18,10 +18,12 @@ public class Problem417 {
         }
         int maxRow = matrix.length;
         int maxCol = matrix[0].length;
+        Set<RowCol> memo = new HashSet<>();
         for (int row = 0; row < maxRow; row++) {
             for (int col = 0; col < maxCol; col++) {
-                boolean found = pacificAtlantic(matrix, maxRow, maxCol, row, col);
+                boolean found = pacificAtlantic(matrix, maxRow, maxCol, row, col, memo);
                 if (found) {
+                    memo.add(new RowCol(row, col));
                     result.add(new int[]{row, col});
                 }
             }
@@ -30,7 +32,7 @@ public class Problem417 {
     }
 
     private static boolean pacificAtlantic(int[][] matrix, int maxRow, int maxCol,
-                                           int row, int col) {
+                                           int row, int col, Set<RowCol> memo) {
         boolean pacific = false;
         boolean atlantic = false;
         Set<RowCol> visited = new HashSet<>();
@@ -55,6 +57,9 @@ public class Problem417 {
                 RowCol up = new RowCol(rc.row - 1, rc.col);
                 if (!visited.contains(up)) {
                     if (up.row < 0 || matrix[up.row][up.col] <= val) {
+                        if (memo.contains(up)) {
+                            return true;
+                        }
                         queue.add(up);
                         visited.add(up);
                     }
@@ -62,6 +67,9 @@ public class Problem417 {
                 RowCol right = new RowCol(rc.row, rc.col + 1);
                 if (!visited.contains(right)) {
                     if (right.col >= maxCol || matrix[right.row][right.col] <= val) {
+                        if (memo.contains(right)) {
+                            return true;
+                        }
                         queue.add(right);
                         visited.add(right);
                     }
@@ -69,6 +77,9 @@ public class Problem417 {
                 RowCol down = new RowCol(rc.row + 1, rc.col);
                 if (!visited.contains(down)) {
                     if (down.row >= maxRow || matrix[down.row][down.col] <= val) {
+                        if (memo.contains(down)) {
+                            return true;
+                        }
                         queue.add(down);
                         visited.add(down);
                     }
@@ -76,6 +87,9 @@ public class Problem417 {
                 RowCol left = new RowCol(rc.row, rc.col - 1);
                 if (!visited.contains(left)) {
                     if (left.col < 0 || matrix[left.row][left.col] <= val) {
+                        if (memo.contains(left)) {
+                            return true;
+                        }
                         queue.add(left);
                         visited.add(left);
                     }
@@ -107,25 +121,5 @@ public class Problem417 {
         public int hashCode() {
             return Objects.hash(row, col);
         }
-
-        @Override
-        public String toString() {
-            return "(" + row + ", " + col + ")";
-        }
-    }
-
-    public static void main(String[] args) {
-        Problem417 prob = new Problem417();
-        // [[0, 4], [1, 3], [1, 4], [2, 2], [3, 0], [3, 1], [4, 0]]
-        prob.pacificAtlantic(new int[][]{
-            {1, 2, 2, 3, 5},
-            {3, 2, 3, 4, 4},
-            {2, 4, 5, 3, 1},
-            {6, 7, 1, 4, 5},
-            {5, 1, 1, 2, 4}
-        }).forEach(e -> {
-            System.out.print("[" + e[0] + ", " + e[1] + "] ");
-        });
-        System.out.println();
     }
 }
