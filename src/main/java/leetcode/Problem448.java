@@ -8,12 +8,28 @@ import java.util.List;
  */
 public class Problem448 {
     public List<Integer> findDisappearedNumbers(int[] nums) {
-        // TODO
-        return new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != i + 1) {
+                int to = nums[i] - 1;
+                swap(nums, to);
+            }
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != i + 1) {
+                result.add(i + 1);
+            }
+        }
+        return result;
     }
 
-    public static void main(String[] args) {
-        Problem448 prob = new Problem448();
-        System.out.println(prob.findDisappearedNumbers(new int[]{4, 3, 2, 7, 8, 2, 3, 1})); // [5, 6]
+    private static void swap(int[] nums, int from) {
+        if (nums[from] == from + 1) {
+            return;
+        }
+        int val = nums[from];
+        int to = nums[val - 1];
+        nums[from] = from + 1;
+        swap(nums, val - 1);
     }
 }
