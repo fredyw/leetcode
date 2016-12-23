@@ -8,35 +8,51 @@ import java.util.Map;
  */
 public class Problem32 {
     public int longestValidParentheses(String s) {
-        return longestValidParentheses(s, 0, 0, 0, 0, new HashMap<>()) * 2;
+        return longestValidParentheses(s, 0, s.length(), new HashMap<>());
     }
 
-    private static int longestValidParentheses(String s, int idx, int begin, int end,
-                                               int accu, Map<String, Integer> memo) {
-        if (idx >= s.length()) {
-            return accu;
+    private static int longestValidParentheses(String s, int i, int j, Map<String, Integer> memo) {
+        if (i >= j) {
+            return 0;
         }
-        String key = idx + "|" + begin + "|" + end;
+        String key = i + "|" + j;
         if (memo.containsKey(key)) {
             return memo.get(key);
         }
-        int c = s.charAt(idx);
-        int newBegin = begin;
-        int newEnd = end;
-        if (c == '(') {
-            newBegin++;
-        } else { // c == ')'
-            newEnd++;
+        String sub = s.substring(i, j);
+        int max = 0;
+        if (isValid(sub)) {
+            max = sub.length();
+        } else {
+            int a = longestValidParentheses(s, i + 1, j, memo);
+            int b = 0;
+            if (a < sub.length() - 1) {
+                b = longestValidParentheses(s, i, j - 1, memo);
+            }
+            int c = 0;
+            if (a < sub.length() - 2 && b < sub.length() - 2) {
+                c = longestValidParentheses(s, i + 1, j - 1, memo);
+            }
+            max = Math.max(a, Math.max(b, c));
         }
-        int a = longestValidParentheses(s, idx + 1, begin, end, accu, memo); // skip
-        int b = 0;
-        if (newBegin >= newEnd) {
-            int newAccu = newEnd;
-            b = longestValidParentheses(s, idx + 1, newBegin, newEnd, newAccu, memo);
-        }
-        int max = Math.max(a, b);
         memo.put(key, max);
         return max;
+    }
+
+    private static boolean isValid(String sub) {
+        int count = 0;
+        for (int i = 0; i < sub.length(); i++) {
+            char c = sub.charAt(i);
+            if (c == '(') {
+                count++;
+            } else {
+                if (count <= 0) {
+                    return false;
+                }
+                count--;
+            }
+        }
+        return count == 0;
     }
 
     public static void main(String[] args) {
@@ -47,5 +63,7 @@ public class Problem32 {
         System.out.println(prob.longestValidParentheses("()(())")); // 6
         System.out.println(prob.longestValidParentheses("((())))")); // 6
         System.out.println(prob.longestValidParentheses("()(()")); // 2
+        System.out.println(prob.longestValidParentheses("()()(()(((()))()))()))))()(())))()(()())()()()))())))())())))(()()()))))()((()(())(())))((()())(()()()((((()(())))))((()()((())(())(()(())))))()()())(())(()())((()())()(((())))()(()()))")); // 96
+        System.out.println(prob.longestValidParentheses(")((()()((((()((((())(())(((()((((())(()((())())())(()))))))))))))(())(()())((())))))(((((()))())))(()()))(())))((()()(()()()()())))()(())((())()(())(((()())((())))(())))()())))))())()())())(((()")); // 108
     }
 }
