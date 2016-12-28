@@ -38,19 +38,4 @@ public class Problem32 {
         max = Math.max(max, a);
         return max;
     }
-
-    public static void main(String[] args) {
-        Problem32 prob = new Problem32();
-        System.out.println(prob.longestValidParentheses("(()")); // 2
-        System.out.println(prob.longestValidParentheses(")()())")); // 4
-        System.out.println(prob.longestValidParentheses("(")); // 0
-        System.out.println(prob.longestValidParentheses("()(())")); // 6
-        System.out.println(prob.longestValidParentheses("((())))")); // 6
-        System.out.println(prob.longestValidParentheses("()(()(")); // 2
-        System.out.println(prob.longestValidParentheses(")()()(")); // 4
-        System.out.println(prob.longestValidParentheses("()((())")); // 4
-        System.out.println(prob.longestValidParentheses("()(())")); // 6
-        System.out.println(prob.longestValidParentheses("()()(()(((()))()))()))))()(())))()(()())()()()))())))())())))(()()()))))()((()(())(())))((()())(()()()((((()(())))))((()()((())(())(()(())))))()()())(())(()())((()())()(((())))()(()()))")); // 96
-        System.out.println(prob.longestValidParentheses(")((()()((((()((((())(())(((()((((())(()((())())())(()))))))))))))(())(()())((())))))(((((()))())))(()()))(())))((()()(()()()()())))()(())((())()(())(((()())((())))(())))()())))))())()())())(((()")); // 108
-    }
 }
