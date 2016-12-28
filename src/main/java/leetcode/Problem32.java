@@ -1,46 +1,41 @@
 package leetcode;
 
+import java.util.Stack;
+
 /**
  * https://leetcode.com/problems/longest-valid-parentheses/
  */
 public class Problem32 {
     public int longestValidParentheses(String s) {
-        int[] nCloses = new int[s.length()];
-        int n = 0;
-        for (int j = s.length() - 1; j >= 0; j--) {
-            char c = s.charAt(j);
-            if (c == ')') {
-                nCloses[j] = ++n;
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(') {
+                stack.add(i);
             } else {
-                nCloses[j] = n;
-            }
-        }
-//        System.out.println(Arrays.toString(nCloses));
-        int max = 0;
-        int i = 0;
-        while (i < s.length()) {
-            int count = 0;
-            int nextI = i + 1;
-            for (int j = i; j < s.length(); j++) {
-                char c = s.charAt(j);
-                if (c == '(') {
-                    count++;
-                    if (nCloses[j] < count) {
-                        break;
+                if (!stack.isEmpty()) {
+                    int idx = stack.peek();
+                    if (s.charAt(idx) == '(') {
+                        stack.pop();
+                    } else {
+                        stack.push(i);
                     }
                 } else {
-                    if (count <= 0) {
-                        break;
-                    }
-                    count--;
-                }
-                if (count == 0) {
-                    max = Math.max(max, j - i + 1);
-                    nextI = j + 1;
+                    stack.push(i);
                 }
             }
-            i = nextI;
         }
+        if (stack.isEmpty()) {
+            return s.length();
+        }
+        int max = 0;
+        int a = s.length();
+        while (!stack.isEmpty()) {
+            int b = stack.pop();
+            max = Math.max(max, a - b - 1);
+            a = b;
+        }
+        max = Math.max(max, a);
         return max;
     }
 
