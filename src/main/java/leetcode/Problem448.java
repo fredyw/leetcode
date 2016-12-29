@@ -28,7 +28,6 @@ public class Problem448 {
             return;
         }
         int val = nums[from];
-        int to = nums[val - 1];
         nums[from] = from + 1;
         swap(nums, val - 1);
     }
