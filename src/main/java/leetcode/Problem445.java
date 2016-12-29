@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.math.BigInteger;
+
 /**
  * https://leetcode.com/problems/add-two-numbers-ii/
  */
@@ -16,16 +18,26 @@ public class Problem445 {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         Num n1 = getNumber(l1);
         Num n2 = getNumber(l2);
-        long sum = n1.n + n2.n;
-        // TODO
-        return null;
+        char[] sum = n1.n.add(n2.n).toString().toCharArray();
+        ListNode head = null;
+        ListNode node = null;
+        for (int i = 0; i < sum.length; i++) {
+            if (i == 0) {
+                head = new ListNode(sum[i] - '0');
+                node = head;
+            } else {
+                node.next = new ListNode(sum[i] - '0');
+                node = node.next;
+            }
+        }
+        return head;
     }
 
     private static class Num {
-        private long n;
-        private int digit;
+        private BigInteger n;
+        private BigInteger digit;
 
-        public Num(long n, int digit) {
+        public Num(BigInteger n, BigInteger digit) {
             this.n = n;
             this.digit = digit;
         }
@@ -33,25 +45,11 @@ public class Problem445 {
 
     private static Num getNumber(ListNode node) {
         if (node == null) {
-            return new Num(0, 1);
+            return new Num(BigInteger.ZERO, BigInteger.ONE);
         }
         Num num = getNumber(node.next);
-        num.n += (node.val * num.digit);
-        num.digit *= 10;
+        num.n = num.n.add(BigInteger.valueOf(node.val).multiply(num.digit));
+        num.digit = num.digit.multiply(BigInteger.TEN);
         return num;
-    }
-
-    public static void main(String[] args) {
-        Problem445 prob = new Problem445();
-        ListNode l1 = new ListNode(7);
-        l1.next = new ListNode(2);
-        l1.next.next = new ListNode(4);
-        l1.next.next.next = new ListNode(3);
-
-        ListNode l2 = new ListNode(5);
-        l2.next = new ListNode(6);
-        l2.next.next = new ListNode(4);
-
-        System.out.println(prob.addTwoNumbers(l1, l2));
     }
 }
