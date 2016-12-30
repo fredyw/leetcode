@@ -56,6 +56,7 @@ public class Problem449 {
         root.right.left.right.right = new TreeNode(8);
         root.right.right = new TreeNode(10);
 
-        System.out.println(equals(root, prob.deserialize(prob.serialize(root))));
+        TreeNode newRoot = prob.deserialize(prob.serialize(root));
+        System.out.println(equals(root, newRoot));
     }
 }
