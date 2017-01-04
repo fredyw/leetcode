@@ -69,11 +69,11 @@ public class Problem474 {
 
     public static void main(String[] args) {
         Problem474 prob = new Problem474();
-//        System.out.println(prob.findMaxForm(new String[]{"10", "0001", "111001", "1", "0"}, 5, 3)); // 4
-//        System.out.println(prob.findMaxForm(new String[]{"10", "0", "1"}, 1, 1)); // 2
-//        System.out.println(prob.findMaxForm(new String[]{"10", "0", "1"}, 3, 1)); // 2
-//        System.out.println(prob.findMaxForm(new String[]{"10","0001","111001","1","0"}, 3, 4)); // 3
-//        System.out.println(prob.findMaxForm(new String[]{"111","1000","1000","1000"}, 9, 3)); // 3
-        System.out.println(prob.findMaxForm(new String[]{"0","11","1000","01","0","101","1","1","1","0","0","0","0","1","0","0110101","0","11","01","00","01111","0011","1","1000","0","11101","1","0","10","0111"}, 9, 80)); // 17
+        System.out.println(prob.findMaxForm(new String[]{"10", "0001", "111001", "1", "0"}, 5, 3)); // 4
+        System.out.println(prob.findMaxForm(new String[]{"10", "0", "1"}, 1, 1)); // 2
+        System.out.println(prob.findMaxForm(new String[]{"10", "0", "1"}, 3, 1)); // 2
+        System.out.println(prob.findMaxForm(new String[]{"10","0001","111001","1","0"}, 3, 4)); // 3
+        System.out.println(prob.findMaxForm(new String[]{"111","1000","1000","1000"}, 9, 3)); // 3
+        System.out.println(prob.findMaxForm(new String[]{"0", "11", "1000", "01", "0", "101", "1", "1", "1", "0", "0", "0", "0", "1", "0", "0110101", "0", "11", "01", "00", "01111", "0011", "1", "1000", "0", "11101", "1", "0", "10", "0111"}, 9, 80)); // 17
     }
 }
