@@ -22,11 +22,9 @@ public class Problem474 {
             }
             array[i] = new ZeroOne(nZero, nOne);
         }
-        int max = 0;
         Map<String, Integer> memo = new HashMap<>();
-        for (int i = 0; i < array.length; i++) {
-            max = Math.max(max, findMaxFrom(array, m, n, i, memo));
-        }
+        int max = findMaxFrom(array, m, n, 0, memo);
+        System.out.println("memo size: " + memo.size());
         return max;
     }
 
