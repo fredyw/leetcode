@@ -53,13 +53,27 @@ public class Problem450 {
                     ref.node = null;
                 }
             } else if (node.left == null && node.right != null) {
+                if (parent != null) {
+                    if (direction == Direction.LEFT) {
+                        parent.left = node.right;
+                    } else {
+                        parent.right = node.right;
+                    }
+                } else {
+                    ref.node = node.right;
+                }
+            } else if (node.left != null && node.right == null) {
+                if (parent != null) {
+                    if (direction == Direction.LEFT) {
+                        parent.left = node.left;
+                    } else {
+                        parent.right = node.left;
+                    }
+                } else {
+                    ref.node = node.left;
+                }
+            } else {
                 TreeNode smallest = getSmallest(node.right, node, Direction.RIGHT);
-                if (node.left != null) {
-                    smallest.left = node.left;
-                }
-                if (node.right != null) {
-                    smallest.right = node.right;
-                }
                 if (parent != null) {
                     if (direction == Direction.LEFT) {
                         parent.left = smallest;
@@ -69,22 +83,11 @@ public class Problem450 {
                 } else {
                     ref.node = smallest;
                 }
-            } else {
-                TreeNode largest = getLargest(node.left, node, Direction.LEFT);
-                if (parent != null) {
-                    if (direction == Direction.LEFT) {
-                        parent.left = largest;
-                    } else {
-                        parent.right = largest;
-                    }
-                } else {
-                    ref.node = largest;
-                }
                 if (node.left != null) {
-                    largest.left = node.left;
+                    smallest.left = node.left;
                 }
                 if (node.right != null) {
-                    largest.right = node.right;
+                    smallest.right = node.right;
                 }
             }
         } else if (key < node.val) {
@@ -128,11 +131,10 @@ public class Problem450 {
 //        root.left.right = new TreeNode(4);
 //        root.right = new TreeNode(6);
 //        root.right.right = new TreeNode(7);
-
+//
 //        root = prob.deleteNode(root, 3);
 //        root = prob.deleteNode(root, 5);
 //        root = prob.deleteNode(root, 1);
-
 //        System.out.println(root);
 //        System.out.println(root.left);
 //        System.out.println(root.left.left);
@@ -141,14 +143,47 @@ public class Problem450 {
 //        System.out.println(root.right);
 //        System.out.println(root.right.right);
 
-        TreeNode root = new TreeNode(3);
-        root.left = new TreeNode(1);
-        root.left.right = new TreeNode(2);
-        root.right = new TreeNode(4);
+//        TreeNode root = new TreeNode(3);
+//        root.left = new TreeNode(1);
+//        root.left.right = new TreeNode(2);
+//        root.right = new TreeNode(4);
+//
+//        root = prob.deleteNode(root, 1);
+//        System.out.println(root);
+//        System.out.println(root.left);
+//        System.out.println(root.right);
 
-        root = prob.deleteNode(root, 1);
+        TreeNode root = new TreeNode(3);
+        root.right = new TreeNode(5);
+        root.right.left = new TreeNode(4);
+        root.right.right = new TreeNode(10);
+        root.right.right.left = new TreeNode(7);
+        root.right.right.left.right = new TreeNode(8);
+        root.right.right.left.right.right = new TreeNode(9);
+        root.right.right.right = new TreeNode(11);
+
+        root = prob.deleteNode(root, 5);
         System.out.println(root);
-        System.out.println(root.left);
         System.out.println(root.right);
+        System.out.println(root.right.right);
+        System.out.println(root.right.right.left);
+        System.out.println(root.right.right.left.right);
+        System.out.println(root.right.right.right);
+
+//        TreeNode root = new TreeNode(5);
+//        root.right = new TreeNode(10);
+//        root.right.left = new TreeNode(7);
+//        root.right.right = new TreeNode(15);
+//        root.right.right.left = new TreeNode(12);
+//        root.right.right.left.right = new TreeNode(13);
+//        root.right.right.right = new TreeNode(16);
+//
+//        root = prob.deleteNode(root, 15);
+//        System.out.println(root);
+//        System.out.println(root.right);
+//        System.out.println(root.right.left);
+//        System.out.println(root.right.right);
+//        System.out.println(root.right.right.left);
+//        System.out.println(root.right.right.left.right);
     }
 }
