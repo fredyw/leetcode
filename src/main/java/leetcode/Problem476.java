@@ -5,13 +5,17 @@ package leetcode;
  */
 public class Problem476 {
     public int findComplement(int num) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem476 prob = new Problem476();
-        System.out.println(prob.findComplement(5)); // 2
-        System.out.println(prob.findComplement(1)); // 0
+        if (num == 0) {
+            return 1;
+        }
+        int result = 0;
+        for (int i = 0; i < 32; i++) {
+            if (num >> i == 0) {
+                break;
+            }
+            int b = (num >> i) & 1;
+            result |= ((b == 0) ? 1 : 0) << i;
+        }
+        return result;
     }
 }
