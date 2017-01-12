@@ -11,6 +11,8 @@ public class Problem375 {
 
     public static void main(String[] args) {
         Problem375 prob = new Problem375();
-        System.out.println(prob.getMoneyAmount(10)); // 21
+        System.out.println(prob.getMoneyAmount(10)); // 16
+        System.out.println(prob.getMoneyAmount(15)); // 30
+        System.out.println(prob.getMoneyAmount(5)); // 6
     }
 }
