@@ -5,13 +5,17 @@ package leetcode;
  */
 public class Problem482 {
     public String licenseKeyFormatting(String S, int K) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem482 prob = new Problem482();
-        System.out.println(prob.licenseKeyFormatting("2-4A0r7-4k", 4)); // 24A0-R74K
-        System.out.println(prob.licenseKeyFormatting("2-4A0r7-4k", 3)); // 24-A0R-74K
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
+        S = S.replaceAll("-", "");
+        for (int i = S.length() - 1; i >= 0; i--) {
+            sb.append(S.charAt(i));
+            count++;
+            if (count == K && i != 0) {
+                sb.append('-');
+                count = 0;
+            }
+        }
+        return sb.reverse().toString().toUpperCase();
     }
 }
