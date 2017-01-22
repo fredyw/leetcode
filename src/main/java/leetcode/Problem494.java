@@ -5,12 +5,14 @@ package leetcode;
  */
 public class Problem494 {
     public int findTargetSumWays(int[] nums, int S) {
-        // TODO
-        return 0;
+        return findTargetSumWays(nums, S, 0);
     }
 
-    public static void main(String[] args) {
-        Problem494 prob = new Problem494();
-        System.out.println(prob.findTargetSumWays(new int[]{1, 1, 1, 1, 1}, 3)); // 5
+    private static int findTargetSumWays(int[] nums, int s, int idx) {
+        if (idx == nums.length) {
+            return (s == 0) ? 1 : 0;
+        }
+        return findTargetSumWays(nums, s - nums[idx], idx + 1) +
+            findTargetSumWays(nums, s + nums[idx], idx + 1);
     }
 }
