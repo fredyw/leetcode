@@ -45,5 +45,6 @@ public class Problem491 {
         System.out.println(prob.findSubsequences(new int[]{4, 6, 7, 7})); // [[4, 6], [4, 7], [4, 6, 7], [4, 6, 7, 7], [6, 7], [6, 7, 7], [7,7], [4,7,7]]
         System.out.println(prob.findSubsequences(new int[]{4, 3, 2, 1})); // []
         System.out.println(prob.findSubsequences(new int[]{4, 3, 1, 2})); // [[1, 2]]
+        System.out.println(prob.findSubsequences(new int[]{4, 1, 3, 2})); // [[1, 2], [1, 3]]
     }
 }
