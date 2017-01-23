@@ -1,7 +1,6 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,40 +10,31 @@ import java.util.Set;
  */
 public class Problem491 {
     public List<List<Integer>> findSubsequences(int[] nums) {
-        Arrays.sort(nums);
         List<Integer> list = new ArrayList<>();
         for (int num : nums) {
             list.add(num);
         }
         Set<List<Integer>> result = new HashSet<>();
-        findSubsequences(list, result);
+        findSubsequences(list, 0, new ArrayList<>(), result);
         return new ArrayList<>(result);
     }
 
-    private static void findSubsequences(List<Integer> nums, Set<List<Integer>> result) {
-        if (nums.size() <= 1) {
-            return;
+    private static void findSubsequences(List<Integer> nums, int idx, List<Integer> accu, Set<List<Integer>> result) {
+        if (accu.size() >= 2) {
+            result.add(accu);
         }
-        result.add(nums);
-        for (int i = 0; i < nums.size(); i++) {
-            List<Integer> newList = new ArrayList<>();
-            if (i - 1 >= 0) {
-                newList.addAll(nums.subList(0, i));
+        for (int i = idx; i < nums.size(); i++) {
+            if (!accu.isEmpty()) {
+                if (accu.get(accu.size() - 1) <= nums.get(i)) {
+                    List<Integer> newAccu = new ArrayList<>(accu);
+                    newAccu.add(nums.get(i));
+                    findSubsequences(nums, i + 1, newAccu, result);
+                }
+            } else {
+                List<Integer> newAccu = new ArrayList<>();
+                newAccu.add(nums.get(i));
+                findSubsequences(nums, i + 1, newAccu, result);
             }
-            if (i + 1 <= nums.size() - 1) {
-                newList.addAll(nums.subList(i + 1, nums.size()));
-            }
-            findSubsequences(newList, result);
         }
-    }
-
-    public static void main(String[] args) {
-        Problem491 prob = new Problem491();
-        System.out.println(prob.findSubsequences(new int[]{1, 1, 1})); // [[1, 1], [1, 1, 1]]
-        System.out.println(prob.findSubsequences(new int[]{1, 2, 2})); // [[1, 2], [2, 2], [1, 2, 2]]
-        System.out.println(prob.findSubsequences(new int[]{4, 6, 7, 7})); // [[4, 6], [4, 7], [4, 6, 7], [4, 6, 7, 7], [6, 7], [6, 7, 7], [7,7], [4,7,7]]
-        System.out.println(prob.findSubsequences(new int[]{4, 3, 2, 1})); // []
-        System.out.println(prob.findSubsequences(new int[]{4, 3, 1, 2})); // [[1, 2]]
-        System.out.println(prob.findSubsequences(new int[]{4, 1, 3, 2})); // [[1, 2], [1, 3]]
     }
 }
