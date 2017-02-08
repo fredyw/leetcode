@@ -1,7 +1,6 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,16 +58,5 @@ public class Problem501 {
         }
         findMode(node.left, map, max);
         findMode(node.right, map, max);
-    }
-
-    public static void main(String[] args) {
-        Problem501 prob = new Problem501();
-
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(1);
-        root.right = new TreeNode(2);
-        root.right.left = new TreeNode(2);
-
-        System.out.println(Arrays.toString(prob.findMode(root))); // [1,2]
     }
 }
