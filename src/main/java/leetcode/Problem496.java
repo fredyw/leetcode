@@ -1,21 +1,35 @@
 package leetcode;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * https://leetcode.com/problems/next-greater-element-i/
  */
 public class Problem496 {
     public int[] nextGreaterElement(int[] findNums, int[] nums) {
-        // TODO
-        return new int[0];
-    }
-
-    public static void main(String[] args) {
-        Problem496 prob = new Problem496();
-        System.out.println(Arrays.toString(prob.nextGreaterElement(new int[]{4, 1, 2}, new int[]{1, 3, 4, 2}))); // [-1,3,-1]
-        System.out.println(Arrays.toString(prob.nextGreaterElement(new int[]{4, 1, 3}, new int[]{1, 3, 2, 4}))); // [-1,3,4]
-        System.out.println(Arrays.toString(prob.nextGreaterElement(new int[]{4, 1, 3}, new int[]{4, 3, 2, 1}))); // [-1,-1,-1]
-        System.out.println(Arrays.toString(prob.nextGreaterElement(new int[]{2, 4}, new int[]{1, 2, 3, 4}))); // [3,-1]
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int num = nums[i];
+            int nextGreater = -1;
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] < nums[j]) {
+                    nextGreater = nums[j];
+                    break;
+                }
+            }
+            map.put(nums[i], nextGreater);
+        }
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < findNums.length; i++) {
+            list.add(map.get(findNums[i]));
+        }
+        int[] result = new int[list.size()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = list.get(i);
+        }
+        return result;
     }
 }
