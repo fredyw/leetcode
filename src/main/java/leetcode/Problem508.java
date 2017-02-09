@@ -1,6 +1,9 @@
 package leetcode;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * https://leetcode.com/problems/most-frequent-subtree-sum/
@@ -17,21 +20,42 @@ public class Problem508 {
     }
 
     public int[] findFrequentTreeSum(TreeNode root) {
-        // TODO
-        return new int[0];
+        Map<Integer, Integer> map = new HashMap<>();
+        IntRef max = new IntRef();
+        findFrequentTreSum(root, map, max);
+        List<Integer> list = new ArrayList<>();
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (entry.getValue() == max.val) {
+                list.add(entry.getKey());
+            }
+        }
+        int[] result = new int[list.size()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = list.get(i);
+        }
+        return result;
     }
 
-    public static void main(String[] args) {
-        Problem508 prob = new Problem508();
+    private static class IntRef {
+        private int val;
+    }
 
-        TreeNode root = new TreeNode(5);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(-3);
-        System.out.println(Arrays.toString(prob.findFrequentTreeSum(root))); // [2, -3, 4]
-
-        root = new TreeNode(5);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(-5);
-        System.out.println(Arrays.toString(prob.findFrequentTreeSum(root))); // [2]
+    private static int findFrequentTreSum(TreeNode node, Map<Integer, Integer> map, IntRef max) {
+        if (node == null) {
+            return 0;
+        }
+        int left = findFrequentTreSum(node.left, map, max);
+        int right = findFrequentTreSum(node.right, map, max);
+        int sum = node.val + left + right;
+        if (!map.containsKey(sum)) {
+            int newCount = 1;
+            max.val = Math.max(max.val, newCount);
+            map.put(sum, newCount);
+        } else {
+            int newCount = map.get(sum) + 1;
+            max.val = Math.max(max.val, newCount);
+            map.put(sum, newCount);
+        }
+        return sum;
     }
 }
