@@ -1,27 +1,51 @@
 package leetcode;
 
-import java.util.Arrays;
-
 /**
  * https://leetcode.com/problems/diagonal-traverse/
  */
 public class Problem498 {
     public int[] findDiagonalOrder(int[][] matrix) {
-        // TODO
-        return new int[0];
-    }
-
-    public static void main(String[] args) {
-        Problem498 prob = new Problem498();
-        System.out.println(Arrays.toString(prob.findDiagonalOrder(new int[][]{
-            {1, 2, 3},
-            {4, 5, 6},
-            {7, 8, 9}
-        }))); // [1,2,4,7,5,3,6,8,9]
-        System.out.println(Arrays.toString(prob.findDiagonalOrder(new int[][]{
-            {1, 2, 3, 4},
-            {5, 6, 7, 8},
-            {9, 10, 11, 12}
-        }))); // [1,2,5,9,6,3,4,7,10,11,8,12]
+        int maxRow = matrix.length;
+        if (maxRow == 0) {
+            return new int[0];
+        }
+        int maxCol = matrix[0].length;
+        int[] result = new int[maxRow * maxCol];
+        boolean up = false;
+        int idx = 0;
+        int row = 0;
+        int col = 0;
+        result[idx++] = matrix[row][col];
+        while (idx < maxRow * maxCol) {
+            if (up) {
+                if (row + 1 < maxRow) {
+                    row++;
+                } else {
+                    col++;
+                }
+                while (0 <= row && row < maxRow && 0 <= col && col < maxCol) {
+                    result[idx++] = matrix[row][col];
+                    row--;
+                    col++;
+                }
+                row++;
+                col--;
+            } else { // down
+                if (col + 1 < maxCol) {
+                    col++;
+                } else {
+                    row++;
+                }
+                while (0 <= row && row < maxRow && 0 <= col && col < maxCol) {
+                    result[idx++] = matrix[row][col];
+                    row++;
+                    col--;
+                }
+                row--;
+                col++;
+            }
+            up = !up;
+        }
+        return result;
     }
 }
