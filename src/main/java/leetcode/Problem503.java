@@ -5,12 +5,28 @@ package leetcode;
  */
 public class Problem503 {
     public int[] nextGreaterElements(int[] nums) {
-        // TODO
-        return new int[0];
-    }
-
-    public static void main(String[] args) {
-        Problem503 prob = new Problem503();
-        System.out.println(prob.nextGreaterElements(new int[]{1, 2, 1})); // [2,-1,2]
+        int[] result = new int[nums.length];
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            max = Math.max(nums[i], max);
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == max) {
+                result[i] = -1;
+                continue;
+            }
+            int j = i + 1;
+            if (j == nums.length) {
+                j = 0;
+            }
+            while (nums[i] >= nums[j]) {
+                j++;
+                if (j == nums.length) {
+                    j = 0;
+                }
+            }
+            result[i] = nums[j];
+        }
+        return result;
     }
 }
