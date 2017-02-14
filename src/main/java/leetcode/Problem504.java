@@ -5,13 +5,23 @@ package leetcode;
  */
 public class Problem504 {
     public String convertToBase7(int num) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem504 prob = new Problem504();
-        System.out.println(prob.convertToBase7(100)); // 202
-        System.out.println(prob.convertToBase7(-7)); // -10
+        if (num == 0) {
+            return "0";
+        }
+        StringBuilder result = new StringBuilder();
+        boolean negative = false;
+        if (num < 0) {
+            num *= -1;
+            negative = true;
+        }
+        while (num > 0) {
+            result.append(num % 7);
+            num /= 7;
+        }
+        if (negative) {
+            result.append("-");
+            return result.reverse().toString();
+        }
+        return result.reverse().toString();
     }
 }
