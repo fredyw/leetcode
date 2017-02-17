@@ -1,5 +1,11 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
 /**
  * https://leetcode.com/problems/find-bottom-left-tree-value/
  */
@@ -15,25 +21,37 @@ public class Problem513 {
     }
 
     public int findBottomLeftValue(TreeNode root) {
-        // TODO
-        return 0;
+        LinkedList<TreeNodeLevel> queue = new LinkedList<>();
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        queue.add(new TreeNodeLevel(root, 1));
+        int max = 0;
+        while (!queue.isEmpty()) {
+            TreeNodeLevel current = queue.remove();
+            max = Math.max(max, current.level);
+            if (!map.containsKey(current.level)) {
+                List<Integer> list = new ArrayList<>();
+                list.add(current.node.val);
+                map.put(current.level, list);
+            } else {
+                map.get(current.level).add(current.node.val);
+            }
+            if (current.node.left != null) {
+                queue.add(new TreeNodeLevel(current.node.left, current.level + 1));
+            }
+            if (current.node.right != null) {
+                queue.add(new TreeNodeLevel(current.node.right, current.level + 1));
+            }
+        }
+        return map.get(max).get(0);
     }
 
-    public static void main(String[] args) {
-        Problem513 prob = new Problem513();
+    private static class TreeNodeLevel {
+        private final TreeNode node;
+        private final int level;
 
-        TreeNode root = new TreeNode(2);
-        root.left = new TreeNode(1);
-        root.right = new TreeNode(3);
-        System.out.println(prob.findBottomLeftValue(root)); // 1
-
-        root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.left.left = new TreeNode(4);
-        root.right = new TreeNode(3);
-        root.right.left = new TreeNode(5);
-        root.right.right = new TreeNode(6);
-        root.right.left.left = new TreeNode(7);
-        System.out.println(prob.findBottomLeftValue(root)); // 7
+        public TreeNodeLevel(TreeNode node, int level) {
+            this.node = node;
+            this.level = level;
+        }
     }
 }
