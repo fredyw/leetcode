@@ -2,7 +2,6 @@ package leetcode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,37 +20,30 @@ public class Problem513 {
     }
 
     public int findBottomLeftValue(TreeNode root) {
-        LinkedList<TreeNodeLevel> queue = new LinkedList<>();
+        IntRef max = new IntRef();
         Map<Integer, List<Integer>> map = new HashMap<>();
-        queue.add(new TreeNodeLevel(root, 1));
-        int max = 0;
-        while (!queue.isEmpty()) {
-            TreeNodeLevel current = queue.remove();
-            max = Math.max(max, current.level);
-            if (!map.containsKey(current.level)) {
-                List<Integer> list = new ArrayList<>();
-                list.add(current.node.val);
-                map.put(current.level, list);
-            } else {
-                map.get(current.level).add(current.node.val);
-            }
-            if (current.node.left != null) {
-                queue.add(new TreeNodeLevel(current.node.left, current.level + 1));
-            }
-            if (current.node.right != null) {
-                queue.add(new TreeNodeLevel(current.node.right, current.level + 1));
-            }
-        }
-        return map.get(max).get(0);
+        findBottomLeftValue(root, 1, max, map);
+        return map.get(max.ref).get(0);
     }
 
-    private static class TreeNodeLevel {
-        private final TreeNode node;
-        private final int level;
+    private static class IntRef {
+        private int ref;
+    }
 
-        public TreeNodeLevel(TreeNode node, int level) {
-            this.node = node;
-            this.level = level;
+    private static void findBottomLeftValue(TreeNode node, int level, IntRef max,
+                                            Map<Integer, List<Integer>> map) {
+        if (node == null) {
+            return;
         }
+        max.ref = Math.max(max.ref, level);
+        if (!map.containsKey(level)) {
+            List<Integer> list = new ArrayList<>();
+            list.add(node.val);
+            map.put(level, list);
+        } else {
+            map.get(level).add(node.val);
+        }
+        findBottomLeftValue(node.left, level + 1, max, map);
+        findBottomLeftValue(node.right, level + 1, max, map);
     }
 }
