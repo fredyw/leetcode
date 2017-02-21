@@ -16,51 +16,54 @@ public class Problem488 {
                 handMap.put(c, handMap.get(c) + 1);
             }
         }
-        return findMinStep(board, handMap, 0);
+        int result = findMinStep(board + ".", handMap);
+        return (result == 6) ? -1 : result;
     }
 
-    private static int findMinStep(String board, Map<Character, Integer> hand, int idx) {
-        if (idx >= board.length()) {
-            return Integer.MAX_VALUE;
+    private static int findMinStep(String board, Map<Character, Integer> hand) {
+        board = remove(board);
+        if (board.equals(".")) {
+            return 0;
         }
-        int i = idx;
-        int j = i + 1;
-        while (i < board.length() && j < board.length() && board.charAt(i) == board.charAt(j)) {
-            j++;
-        }
-        int min = Integer.MAX_VALUE;
-        if (j - i >= 2) {
-            if (j - i == 2) {
-                if (hand.containsKey(board.charAt(i))) {
-                    int count = hand.get(board.charAt(i)) - 1;
-                    if (count == 0) {
-                        hand.remove(board.charAt(i));
-                    } else {
-                        hand.put(board.charAt(i), count);
-                    }
+        int min = 6;
+        for (int i = 0, j = 0; j < board.length(); j++) {
+            if (board.charAt(i) == board.charAt(j)) {
+                continue;
+            }
+            int need = 3 - (j - i);
+            if (hand.containsKey(board.charAt(i))) {
+                int count = hand.get(board.charAt(i));
+                if (count >= need) {
+                    hand.put(board.charAt(i), count - need);
+                    String newBoard = board.substring(0, i) + board.substring(j);
+                    min = Math.min(min, need + findMinStep(newBoard, hand));
+                    // backtrack
+                    hand.put(board.charAt(i), count + need);
                 }
             }
-            String left = board.substring(0, idx);
-            String right = board.substring(j);
-            int val = findMinStep(left + right, hand, 0);
-            if (val == Integer.MIN_VALUE) {
-                val = 0;
-            }
-            if (j - 1 == 2) {
-                val =+ 1;
-            }
-            min = Math.min(min, val);
+            i = j;
         }
-        min = Math.min(min, findMinStep(board, hand, j));
-        return min;
+        return  min;
+    }
+
+    private static String remove(String board) {
+        for (int i = 0, j = 0; j < board.length(); j++) {
+            if (board.charAt(j) == board.charAt(i)) {
+                continue;
+            }
+            if (j - i >= 3) {
+                return remove(board.substring(0, i) + board.substring(j));
+            }
+            i = j;
+        }
+        return board;
     }
 
     public static void main(String[] args) {
         Problem488 prob = new Problem488();
-//        System.out.println(prob.findMinStep("WRRBBW", "RB")); // -1
-//        System.out.println(prob.findMinStep("WWRRBBWW", "WRBRW")); // 2
+        System.out.println(prob.findMinStep("WRRBBW", "RB")); // -1
         System.out.println(prob.findMinStep("WWRRBBWW", "WRBRW")); // 2
-//        System.out.println(prob.findMinStep("G", "GGGGG")); // 2
-//        System.out.println(prob.findMinStep("RBYYBBRRB", "YRBGB")); // 3
+        System.out.println(prob.findMinStep("G", "GGGGG")); // 2
+        System.out.println(prob.findMinStep("RBYYBBRRB", "YRBGB")); // 3
     }
 }
