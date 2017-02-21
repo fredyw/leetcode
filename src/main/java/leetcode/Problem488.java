@@ -58,13 +58,4 @@ public class Problem488 {
         }
         return board;
     }
-
-    public static void main(String[] args) {
-        Problem488 prob = new Problem488();
-        System.out.println(prob.findMinStep("WRRBBW", "RB")); // -1
-        System.out.println(prob.findMinStep("WWRRBBWW", "WRBRW")); // 2
-        System.out.println(prob.findMinStep("G", "GGGGG")); // 2
-        System.out.println(prob.findMinStep("RBYYBBRRB", "YRBGB")); // 3
-        System.out.println(prob.findMinStep("RRWWRRW", "WR")); // -1
-    }
 }
