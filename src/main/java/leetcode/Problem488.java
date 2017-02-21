@@ -33,12 +33,12 @@ public class Problem488 {
             int need = 3 - (j - i);
             if (hand.containsKey(board.charAt(i))) {
                 int count = hand.get(board.charAt(i));
-                if (count >= need) {
+                if (count >= need && count - need >= 0) {
                     hand.put(board.charAt(i), count - need);
                     String newBoard = board.substring(0, i) + board.substring(j);
                     min = Math.min(min, need + findMinStep(newBoard, hand));
                     // backtrack
-                    hand.put(board.charAt(i), count + need);
+                    hand.put(board.charAt(i), hand.get(board.charAt(i)) + need);
                 }
             }
             i = j;
@@ -65,5 +65,6 @@ public class Problem488 {
         System.out.println(prob.findMinStep("WWRRBBWW", "WRBRW")); // 2
         System.out.println(prob.findMinStep("G", "GGGGG")); // 2
         System.out.println(prob.findMinStep("RBYYBBRRB", "YRBGB")); // 3
+        System.out.println(prob.findMinStep("RRWWRRW", "WR")); // -1
     }
 }
