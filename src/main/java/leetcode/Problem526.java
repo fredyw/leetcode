@@ -44,12 +44,4 @@ public class Problem526 {
             }
         }
     }
-
-    public static void main(String[] args) {
-        Problem526 prob = new Problem526();
-        System.out.println(prob.countArrangement(2)); // 2
-        System.out.println(prob.countArrangement(3)); // 2
-        System.out.println(prob.countArrangement(10)); // 700
-        System.out.println(prob.countArrangement(15)); // 24679
-    }
 }
