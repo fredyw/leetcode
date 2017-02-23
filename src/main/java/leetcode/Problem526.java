@@ -1,21 +1,16 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 /**
  * https://leetcode.com/problems/beautiful-arrangement/
  */
 public class Problem526 {
     public int countArrangement(int N) {
-        List<Integer> numbers = new ArrayList<>();
+        boolean[] processed = new boolean[N + 1];
         for (int i = 1; i <= N; i++) {
-            numbers.add(i);
+            processed[i - 1] = false;
         }
         IntRef result = new IntRef();
-        countArrangement(numbers, new HashSet<>(), 1, result);
+        countArrangement(N, processed, 1, result);
         return result.ref;
     }
 
@@ -23,24 +18,23 @@ public class Problem526 {
         int ref;
     }
 
-    private static void countArrangement(List<Integer> numbers,
-                                         Set<Integer> processed,
+    private static void countArrangement(int n,
+                                         boolean[] processed,
                                          int count,
                                          IntRef result) {
-        if (count > numbers.size()) {
+        if (count > n) {
             result.ref++;
             return;
         }
-        for (int i = 0; i < numbers.size(); i++) {
-            int val = numbers.get(i);
-            if (processed.contains(val)) {
+        for (int i = 1; i <= n; i++) {
+            if (processed[i]) {
                 continue;
             }
-            if (val % count == 0 || count % val == 0) {
-                processed.add(val);
-                countArrangement(numbers, processed, count + 1, result);
+            if (i % count == 0 || count % i == 0) {
+                processed[i] = true;
+                countArrangement(n, processed, count + 1, result);
                 // backtracking
-                processed.remove(val);
+                processed[i] = false;
             }
         }
     }
