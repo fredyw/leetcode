@@ -13,30 +13,96 @@ public class Problem529 {
             board[row][col] = 'X';
             return board;
         }
-        // TODO
+        int maxRow = board.length;
+        int maxCol = 0;
+        if (board.length > 0) {
+            maxCol = board[0].length;
+        }
+        boolean[][] visited = new boolean[maxRow][maxCol];
+        updateBoard(board, maxRow, maxCol, row, col, visited);
         return board;
     }
 
-    private static void updateBoard(char[][] board, int maxRow, int maxCol, int row, int col) {
+    private static void updateBoard(char[][] board, int maxRow, int maxCol, int row, int col,
+                                    boolean[][] visited) {
         if (row < 0 || row >= maxRow || col < 0 || col >= maxCol) {
             return;
         }
+        if (visited[row][col]) {
+            return;
+        }
+        visited[row][col] = true;
+        int count = 0;
         // top
-        updateBoard(board, maxRow, maxCol, row - 1, col);
+        if (row - 1 >= 0) {
+            if (board[row - 1][col] == 'M') {
+                count++;
+            }
+        }
         // top right
-        updateBoard(board, maxRow, maxCol, row - 1, col + 1);
+        if (row - 1 >= 0 && col + 1 < maxCol) {
+            if (board[row - 1][col + 1] == 'M') {
+                count++;
+            }
+        }
         // right
-        updateBoard(board, maxRow, maxCol, row, col + 1);
+        if (col + 1 < maxCol) {
+            if (board[row][col + 1] == 'M') {
+                count++;
+            }
+        }
         // bottom right
-        updateBoard(board, maxRow, maxCol, row + 1, col + 1);
+        if (row + 1 < maxRow && col + 1 < maxCol) {
+            if (board[row + 1][col + 1] == 'M') {
+                count++;
+            }
+        }
         // bottom
-        updateBoard(board, maxRow, maxCol, row + 1, col);
+        if (row + 1 < maxRow) {
+            if (board[row + 1][col] == 'M') {
+                count++;
+            }
+        }
         // bottom left
-        updateBoard(board, maxRow, maxCol, row + 1, col - 1);
+        if (row + 1 < maxRow && col - 1 >= 0) {
+            if (board[row + 1][col - 1] == 'M') {
+                count++;
+            }
+        }
         // left
-        updateBoard(board, maxRow, maxCol, row, col - 1);
+        if (col - 1 >= 0) {
+            if (board[row][col - 1] == 'M') {
+                count++;
+            }
+        }
         // top left
-        updateBoard(board, maxRow, maxCol, row - 1, col - 1);
+        if (row - 1 >= 0 && col - 1 >= 0) {
+            if (board[row - 1][col - 1] == 'M') {
+                count++;
+            }
+        }
+
+        if (count == 0) {
+            board[row][col] = 'B';
+            // top
+            updateBoard(board, maxRow, maxCol, row - 1, col, visited);
+            // top right
+            updateBoard(board, maxRow, maxCol, row - 1, col + 1, visited);
+            // right
+            updateBoard(board, maxRow, maxCol, row, col + 1, visited);
+            // bottom right
+            updateBoard(board, maxRow, maxCol, row + 1, col + 1, visited);
+            // bottom
+            updateBoard(board, maxRow, maxCol, row + 1, col, visited);
+            // bottom left
+            updateBoard(board, maxRow, maxCol, row + 1, col - 1, visited);
+            // left
+            updateBoard(board, maxRow, maxCol, row, col - 1, visited);
+            // top left
+            updateBoard(board, maxRow, maxCol, row - 1, col - 1, visited);
+        } else {
+            board[row][col] = (char) (count + 48); // ascii code
+        }
     }
 
     private static void print(char[][] board) {
@@ -44,39 +110,5 @@ public class Problem529 {
             System.out.println(Arrays.toString(board[i]));
         }
         System.out.println();
-    }
-
-    public static void main(String[] args) {
-        Problem529 prob = new Problem529();
-
-        // [['B', '1', 'E', '1', 'B'],
-        //  ['B', '1', 'X', '1', 'B'],
-        //  ['B', '1', '1', '1', 'B'],
-        //  ['B', 'B', 'B', 'B', 'B']]
-        print(prob.updateBoard(new char[][]{
-            {'E', 'E', 'E', 'E', 'E'},
-            {'E', 'E', 'M', 'E', 'E'},
-            {'E', 'E', 'E', 'E', 'E'},
-            {'E', 'E', 'E', 'E', 'E'}}, new int[]{3, 0}));
-
-        // [['B', '1', 'E', '1', 'B'],
-        //  ['B', '1', 'X', '1', 'B'],
-        //  ['B', '1', '1', '1', 'B'],
-        //  ['B', 'B', 'B', 'B', 'B']]
-        print(prob.updateBoard(new char[][]{
-            {'B', '1', 'E', '1', 'B'},
-            {'B', '1', 'M', '1', 'B'},
-            {'B', '1', '1', '1', 'B'},
-            {'B', 'B', 'B', 'B', 'B'}}, new int[]{1, 2}));
-
-        // [['E', 'M', 'E', '1', 'B'],
-        //  ['1', '2', 'M', '1', 'B'],
-        //  ['B', '1', '1', '1', 'B'],
-        //  ['B', 'B', 'B', 'B', 'B']]
-        print(prob.updateBoard(new char[][]{
-            {'E', 'M', 'E', 'E', 'E'},
-            {'E', 'E', 'M', 'E', 'E'},
-            {'E', 'E', 'E', 'E', 'E'},
-            {'E', 'E', 'E', 'E', 'E'}}, new int[]{3, 0}));
     }
 }
