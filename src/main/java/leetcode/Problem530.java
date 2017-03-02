@@ -15,17 +15,25 @@ public class Problem530 {
     }
 
     public int getMinimumDifference(TreeNode root) {
-        // TODO
-        return 0;
+        MinDiff minDiff = new MinDiff();
+        getMinimumDifference(root, minDiff);
+        return minDiff.min;
     }
 
-    public static void main(String[] args) {
-        Problem530 prob = new Problem530();
+    private static class MinDiff {
+        TreeNode node;
+        int min = Integer.MAX_VALUE;
+    }
 
-        TreeNode root = new TreeNode(1);
-        root.right = new TreeNode(3);
-        root.right.left = new TreeNode(2);
-
-        System.out.println(prob.getMinimumDifference(root)); // 1
+    private static void getMinimumDifference(TreeNode node, MinDiff minDiff) {
+        if (node == null) {
+            return;
+        }
+        getMinimumDifference(node.left, minDiff);
+        if (minDiff.node != null) {
+            minDiff.min = Math.min(minDiff.min, Math.abs(minDiff.node.val - node.val));
+        }
+        minDiff.node = node;
+        getMinimumDifference(node.right, minDiff);
     }
 }
