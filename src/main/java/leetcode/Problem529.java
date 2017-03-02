@@ -1,7 +1,5 @@
 package leetcode;
 
-import java.util.Arrays;
-
 /**
  * https://leetcode.com/problems/minesweeper/
  */
@@ -103,12 +101,5 @@ public class Problem529 {
         } else {
             board[row][col] = (char) (count + 48); // ascii code
         }
-    }
-
-    private static void print(char[][] board) {
-        for (int i = 0; i < board.length; i++) {
-            System.out.println(Arrays.toString(board[i]));
-        }
-        System.out.println();
     }
 }
