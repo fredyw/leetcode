@@ -40,6 +40,7 @@ public class Problem467 {
         System.out.println(prob.findSubstringInWraproundString("cab")); // 4
         System.out.println(prob.findSubstringInWraproundString("dabd")); // 4
         System.out.println(prob.findSubstringInWraproundString("zaba")); // 6
+        System.out.println(prob.findSubstringInWraproundString("abcd")); // 10
         System.out.println(prob.findSubstringInWraproundString("abcdefghijklmnopqrstuvwxyz")); // 351
         System.out.println(prob.findSubstringInWraproundString("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz")); // 11843
     }
