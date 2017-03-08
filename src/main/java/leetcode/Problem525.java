@@ -13,5 +13,6 @@ public class Problem525 {
         Problem525 prob = new Problem525();
         System.out.println(prob.findMaxLength(new int[]{0, 1})); // 2
         System.out.println(prob.findMaxLength(new int[]{0, 1, 0})); // 2
+        System.out.println(prob.findMaxLength(new int[]{0, 1, 1, 0, 1})); // 4
     }
 }
