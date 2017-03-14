@@ -47,5 +47,6 @@ public class Problem410 {
         System.out.println(prob.splitArray(new int[]{7, 2, 5, 10, 8}, 4)); // 10
         System.out.println(prob.splitArray(new int[]{7, 2, 5, 10, 8}, 5)); // 10
         System.out.println(prob.splitArray(new int[]{1, 2, 4, 5, 6, 10, 2, 4, 10, 4}, 8)); // 10
+        System.out.println(prob.splitArray(new int[]{1, 2, 3, 4}, 3)); // 4
     }
 }
