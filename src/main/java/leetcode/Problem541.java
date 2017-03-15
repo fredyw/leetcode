@@ -46,15 +46,4 @@ public class Problem541 {
         }
         return sb.toString();
     }
-
-    public static void main(String[] args) {
-        Problem541 prob = new Problem541();
-        System.out.println(prob.reverseStr("abcdefg", 2)); // bacdfeg
-        System.out.println(prob.reverseStr("abcdefghij", 2)); // bacdfeghji
-        System.out.println(prob.reverseStr("abcdefghij", 3)); // cbadefihgj
-        System.out.println(prob.reverseStr("abcdefghij", 20)); // jihgfedcba
-        System.out.println(prob.reverseStr("abc", 3)); // cba
-        System.out.println(prob.reverseStr("abcdefg", 3)); // cbadefg
-        System.out.println(prob.reverseStr("hyzqyljrnigxvdtneasepfahmtyhlohwxmkqcdfehybknvdmfrfvtbsovjbdhevlfxpdaovjgunjqlimjkfnqcqnajmebeddqsgl", 39)); // fdcqkmxwholhytmhafpesaentdvxginrjlyqzyhehybknvdmfrfvtbsovjbdhevlfxpdaovjgunjqllgsqddebemjanqcqnfkjmi
-    }
 }
