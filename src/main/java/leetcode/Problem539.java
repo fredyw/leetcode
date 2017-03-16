@@ -1,6 +1,6 @@
 package leetcode;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -8,12 +8,34 @@ import java.util.List;
  */
 public class Problem539 {
     public int findMinDifference(List<String> timePoints) {
-        // TODO:
-        return 0;
+        // I can use some Java time library, but that feels cheating.
+        Collections.sort(timePoints, (a, b) -> {
+            String[] aSplit = a.split(":");
+            int aHour = Integer.parseInt(aSplit[0]);
+            int aMinute = Integer.parseInt(aSplit[1]);
+
+            String[] bSplit = b.split(":");
+            int bHour = Integer.parseInt(bSplit[0]);
+            int bMinute = Integer.parseInt(bSplit[1]);
+
+            int cmp = Integer.compare(aHour, bHour);
+            if (cmp == 0) {
+                return Integer.compare(aMinute, bMinute);
+            }
+            return cmp;
+        });
+        int min = Integer.MAX_VALUE;
+        for (int i = 1; i < timePoints.size(); i++) {
+            int diff = toMinutes(timePoints.get(i)) - toMinutes(timePoints.get(i - 1));
+            min = Math.min(min, diff);
+        }
+        int diff = toMinutes(timePoints.get(0)) + (60 * 24) - toMinutes(timePoints.get(timePoints.size() - 1));
+        min = Math.min(min, diff);
+        return min;
     }
 
-    public static void main(String[] args) {
-        Problem539 prob = new Problem539();
-        System.out.println(prob.findMinDifference(Arrays.asList("23:59", "00:00"))); // 1
+    private static int toMinutes(String time) {
+        String[] timeSplit = time.split(":");
+        return (Integer.parseInt(timeSplit[0]) * 60) + Integer.parseInt(timeSplit[1]);
     }
 }
