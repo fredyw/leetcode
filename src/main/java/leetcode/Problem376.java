@@ -12,26 +12,26 @@ public class Problem376 {
             return 0;
         }
         Map<String, Integer> memo = new HashMap<>();
-        int a = wiggleMaxLength(nums, 1, 0, true, 1, memo);
-        int b = wiggleMaxLength(nums, 1, 0, false, 1, memo);
+        int a = wiggleMaxLength(nums, 1, 0, true, memo);
+        int b = wiggleMaxLength(nums, 1, 0, false, memo);
         return Math.max(a, b);
     }
 
     private static int wiggleMaxLength(int[] nums, int idx, int prevIdx, boolean positive,
-                                       int accu, Map<String, Integer> memo) {
+                                       Map<String, Integer> memo) {
         if (idx == nums.length) {
-            return accu;
+            return 1;
         }
-        String key = idx + "|" + prevIdx + "|" + positive + "|" + accu;
+        String key = idx + "|" + prevIdx + "|" + positive;
         if (memo.containsKey(key)) {
             return memo.get(key);
         }
         int max = 0;
         if ((nums[idx] - nums[prevIdx] > 0 && positive) ||
             (nums[idx] - nums[prevIdx] < 0 && !positive)) {
-            max = Math.max(max, wiggleMaxLength(nums, idx + 1, idx, !positive, accu + 1, memo));
+            max = Math.max(max, wiggleMaxLength(nums, idx + 1, idx, !positive, memo) + 1);
         }
-        max = Math.max(max, wiggleMaxLength(nums, idx + 1, prevIdx, positive, accu, memo));
+        max = Math.max(max, wiggleMaxLength(nums, idx + 1, prevIdx, positive, memo));
         memo.put(key, max);
         return max;
     }
