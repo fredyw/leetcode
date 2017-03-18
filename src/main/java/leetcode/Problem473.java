@@ -13,5 +13,6 @@ public class Problem473 {
         Problem473 prob = new Problem473();
         System.out.println(prob.makesquare(new int[]{1, 1, 2, 2, 2})); // true
         System.out.println(prob.makesquare(new int[]{3, 3, 3, 3, 4})); // false
+        System.out.println(prob.makesquare(new int[]{1, 1, 1, 1, 1, 1, 1, 1})); // true
     }
 }
