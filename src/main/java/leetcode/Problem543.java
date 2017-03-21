@@ -12,22 +12,33 @@ public class Problem543 {
         TreeNode(int x) {
             val = x;
         }
+
+        @Override
+        public String toString() {
+            return Integer.toString(val);
+        }
     }
 
     public int diameterOfBinaryTree(TreeNode root) {
-        // TODO
-        return 0;
+        Max max = new Max();
+        diameterOfBinaryTree(root, max);
+        return max.max;
     }
 
-    public static void main(String[] args) {
-        Problem543 prob = new Problem543();
+    private static class Max {
+        int max;
+    }
 
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        root.left.left = new TreeNode(4);
-        root.left.right = new TreeNode(5);
-
-        System.out.println(prob.diameterOfBinaryTree(root));
+    private static int diameterOfBinaryTree(TreeNode node, Max max) {
+        if (node == null) {
+            return 0;
+        }
+        if (node.left == null && node.right == null) {
+            return 1;
+        }
+        int a = diameterOfBinaryTree(node.left, max);
+        int b = diameterOfBinaryTree(node.right, max);
+        max.max = Math.max(max.max, a + b);
+        return Math.max(a, b) + 1;
     }
 }
