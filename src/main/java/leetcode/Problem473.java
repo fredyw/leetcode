@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.Arrays;
+
 /**
  * https://leetcode.com/problems/matchsticks-to-square/
  */
@@ -11,33 +13,38 @@ public class Problem473 {
         }
         int length = sum / 4;
         int remainder = sum % 4;
-        if (remainder != 0) {
+        if (remainder != 0 || nums.length < 4) {
             return false;
         }
-
-        return true;
+        Arrays.sort(nums);
+        reverse(nums);
+        return makeSquare(nums, 0, length, length, length, length);
     }
 
-    private static boolean makeSquare(int[] nums, int length) {
-        if (length < 0) {
+    private static void reverse(int[] nums) {
+        int i = 0, j = nums.length - 1;
+        while (i < j) {
+            int temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+            i++; j--;
+        }
+    }
+
+    private static boolean makeSquare(int[] nums, int idx, int length1, int length2, int length3,
+                                      int length4) {
+        if (length1 < 0 || length2 < 0 || length3 < 0 || length4 < 0) {
             return false;
         }
-        if (length == 0) {
-            return true;
+        if (idx == nums.length) {
+            if (length1 == 0 && length2 == 0 && length3 == 0 && length4 == 0) {
+                return true;
+            }
+            return false;
         }
-        boolean valid = false;
-        for (int i = 0; i < nums.length; i++) {
-            valid |= makeSquare(nums, length - nums[i]);
-        }
-        return valid;
-    }
-
-    public static void main(String[] args) {
-        Problem473 prob = new Problem473();
-        System.out.println(prob.makesquare(new int[]{1, 1, 2, 2, 2})); // true
-        System.out.println(prob.makesquare(new int[]{3, 3, 3, 3, 4})); // false
-        System.out.println(prob.makesquare(new int[]{3, 3, 3, 3, 3})); // false
-        System.out.println(prob.makesquare(new int[]{1, 1, 1, 1, 1, 1, 1, 1})); // true
-        System.out.println(prob.makesquare(new int[]{3, 5, 4, 4, 6, 2, 1, 1, 1, 5})); // true
+        return makeSquare(nums, idx + 1, length1 - nums[idx], length2, length3, length4) ||
+            makeSquare(nums, idx + 1, length1, length2 - nums[idx], length3, length4) ||
+            makeSquare(nums, idx + 1, length1, length2, length3 - nums[idx], length4) ||
+            makeSquare(nums, idx + 1, length1, length2, length3, length4 - nums[idx]);
     }
 }
