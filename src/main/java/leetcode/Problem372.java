@@ -1,17 +1,19 @@
 package leetcode;
 
+import java.math.BigInteger;
+
 /**
  * https://leetcode.com/problems/super-pow/
  */
 public class Problem372 {
     public int superPow(int a, int[] b) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem372 prob = new Problem372();
-        System.out.println(prob.superPow(2, new int[]{3})); // 8
-        System.out.println(prob.superPow(2, new int[]{1, 0})); // 1024
+        // https://en.wikipedia.org/wiki/Modular_exponentiation#Memory-efficient_method
+        BigInteger bia = new BigInteger("" + a);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < b.length; i++) {
+            sb.append(b[i]);
+        }
+        BigInteger bib = new BigInteger(sb.toString());
+        return bia.modPow(bib, new BigInteger("" + 1337)).intValue();
     }
 }
