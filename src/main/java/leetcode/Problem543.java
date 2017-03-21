@@ -12,11 +12,6 @@ public class Problem543 {
         TreeNode(int x) {
             val = x;
         }
-
-        @Override
-        public String toString() {
-            return Integer.toString(val);
-        }
     }
 
     public int diameterOfBinaryTree(TreeNode root) {
@@ -32,9 +27,6 @@ public class Problem543 {
     private static int diameterOfBinaryTree(TreeNode node, Max max) {
         if (node == null) {
             return 0;
-        }
-        if (node.left == null && node.right == null) {
-            return 1;
         }
         int a = diameterOfBinaryTree(node.left, max);
         int b = diameterOfBinaryTree(node.right, max);
