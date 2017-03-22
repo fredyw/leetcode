@@ -39,5 +39,23 @@ public class Problem542 {
             Arrays.asList(0, 1, 0),
             Arrays.asList(1, 1, 1)
         )));
+
+        // 0 0 0
+        // 1 1 1
+        // 2 2 2
+        print(prob.updateMatrix(Arrays.asList(
+            Arrays.asList(0, 0, 0),
+            Arrays.asList(1, 1, 1),
+            Arrays.asList(1, 1, 1)
+        )));
+
+        // 0 1 0
+        // 1 2 1
+        // 2 3 2
+        print(prob.updateMatrix(Arrays.asList(
+            Arrays.asList(0, 1, 0),
+            Arrays.asList(1, 1, 1),
+            Arrays.asList(1, 1, 1)
+        )));
     }
 }
