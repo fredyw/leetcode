@@ -2,7 +2,9 @@ package leetcode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * https://leetcode.com/problems/01-matrix/
@@ -19,54 +21,59 @@ public class Problem542 {
         for (int i = 0; i < maxRow; i++) {
             result.add(new ArrayList<>());
             for (int j = 0; j < maxCol; j++) {
-                if (matrix.get(i).get(j) == 0) {
-                    result.get(i).add(j);
-                } else {
-                    result.get(i).add(min(matrix, new boolean[maxRow][maxCol], maxRow, maxCol, i, j));
-                }
+                int val = matrix.get(i).get(j);
+                result.get(i).add(
+                    shortest(matrix, new boolean[maxRow][maxCol], maxRow, maxCol, i, j));
             }
         }
-//        System.out.println(min(matrix, new boolean[maxRow][maxCol], maxRow, maxCol, 2, 1));
-//        System.out.println(min(matrix, new boolean[maxRow][maxCol], maxRow, maxCol, 1, 1));
+
         return result;
     }
 
-    private static int min(List<List<Integer>> matrix, boolean[][] visited, int maxRow, int maxCol, int row, int col) {
-        if (row < 0 || row >= maxRow || col < 0 || col >= maxCol) {
-            return 0;
+    private static class RowCol {
+        private final int row;
+        private final int col;
+        private final int distance;
+
+        public RowCol(int row, int col, int distance) {
+            this.row = row;
+            this.col = col;
+            this.distance = distance;
         }
-        if (matrix.get(row).get(col) == 0) {
-            return 0;
+    }
+
+    private static int shortest(List<List<Integer>> matrix, boolean[][] visited,
+                                int maxRow, int maxCol, int row, int col) {
+        Queue<RowCol> rowCols = new LinkedList<>();
+        rowCols.add(new RowCol(row, col, 0));
+        while (!rowCols.isEmpty()) {
+            RowCol rowCol = rowCols.remove();
+            int val = matrix.get(rowCol.row).get(rowCol.col);
+            if (val == 0) {
+                return rowCol.distance;
+            }
+            if (visited[rowCol.row][rowCol.col]) {
+                continue;
+            }
+            visited[rowCol.row][rowCol.col] = true;
+            // up
+            if (rowCol.row - 1 >= 0) {
+                rowCols.add(new RowCol(rowCol.row - 1, rowCol.col, rowCol.distance + 1));
+            }
+            // right
+            if (rowCol.col + 1 < maxCol) {
+                rowCols.add(new RowCol(rowCol.row, rowCol.col + 1, rowCol.distance + 1));
+            }
+            // down
+            if (rowCol.row + 1 < maxRow) {
+                rowCols.add(new RowCol(rowCol.row + 1, rowCol.col, rowCol.distance + 1));
+            }
+            // left
+            if (rowCol.col - 1 >= 0) {
+                rowCols.add(new RowCol(rowCol.row, rowCol.col - 1, rowCol.distance + 1));
+            }
         }
-        if (visited[row][col]) {
-            return 0;
-        }
-        visited[row][col] = true;
-        int min = Integer.MAX_VALUE;
-        // up
-        int a = min(matrix, visited, maxRow, maxCol, row - 1, col);
-        // right
-        int b = min(matrix, visited, maxRow, maxCol, row, col + 1);
-        // down
-        int c = min(matrix, visited, maxRow, maxCol, row + 1, col);
-        // left
-        int d = min(matrix, visited, maxRow, maxCol, row, col - 1);
-        if (a > 0) {
-            min = Math.min(min, a);
-        }
-        if (b > 0) {
-            min = Math.min(min, b);
-        }
-        if (c > 0) {
-            min = Math.min(min, c);
-        }
-        if (d > 0) {
-            min = Math.min(min, d);
-        }
-        if (min == Integer.MAX_VALUE) {
-            return 1;
-        }
-        return min + 1;
+        return 0;
     }
 
     private static void print(List<List<Integer>> matrix) {
@@ -79,32 +86,32 @@ public class Problem542 {
     public static void main(String[] args) {
         Problem542 prob = new Problem542();
 
-//        // 0 0 0
-//        // 0 1 0
-//        // 0 0 0
-//        print(prob.updateMatrix(Arrays.asList(
-//            Arrays.asList(0, 0, 0),
-//            Arrays.asList(0, 1, 0),
-//            Arrays.asList(0, 0, 0)
-//        )));
-//
-//        // 0 0 0
-//        // 0 1 0
-//        // 1 2 1
-//        print(prob.updateMatrix(Arrays.asList(
-//            Arrays.asList(0, 0, 0),
-//            Arrays.asList(0, 1, 0),
-//            Arrays.asList(1, 1, 1)
-//        )));
-//
-//        // 0 0 0
-//        // 1 1 1
-//        // 2 2 2
-//        print(prob.updateMatrix(Arrays.asList(
-//            Arrays.asList(0, 0, 0),
-//            Arrays.asList(1, 1, 1),
-//            Arrays.asList(1, 1, 1)
-//        )));
+        // 0 0 0
+        // 0 1 0
+        // 0 0 0
+        print(prob.updateMatrix(Arrays.asList(
+            Arrays.asList(0, 0, 0),
+            Arrays.asList(0, 1, 0),
+            Arrays.asList(0, 0, 0)
+        )));
+
+        // 0 0 0
+        // 0 1 0
+        // 1 2 1
+        print(prob.updateMatrix(Arrays.asList(
+            Arrays.asList(0, 0, 0),
+            Arrays.asList(0, 1, 0),
+            Arrays.asList(1, 1, 1)
+        )));
+
+        // 0 0 0
+        // 1 1 1
+        // 2 2 2
+        print(prob.updateMatrix(Arrays.asList(
+            Arrays.asList(0, 0, 0),
+            Arrays.asList(1, 1, 1),
+            Arrays.asList(1, 1, 1)
+        )));
 
         // 0 1 0
         // 1 2 1
@@ -113,6 +120,26 @@ public class Problem542 {
             Arrays.asList(0, 1, 0),
             Arrays.asList(1, 1, 1),
             Arrays.asList(1, 1, 1)
+        )));
+
+        // 0 1 0
+        // 0 1 0
+        // 0 1 0
+        // 0 1 0
+        // 0 1 0
+        print(prob.updateMatrix(Arrays.asList(
+            Arrays.asList(0, 1, 0),
+            Arrays.asList(0, 1, 0),
+            Arrays.asList(0, 1, 0),
+            Arrays.asList(0, 1, 0),
+            Arrays.asList(0, 1, 0)
+        )));
+        
+        // 0 0 1 0 1 2 1 0 1 2
+        // 1 1 2 1 0 1 2 1 2 3
+        print(prob.updateMatrix(Arrays.asList(
+            Arrays.asList(0, 0, 1, 0, 1, 1, 1, 0, 1, 1),
+            Arrays.asList(1, 1, 1, 1, 0, 1, 1, 1, 1, 1)
         )));
     }
 }
