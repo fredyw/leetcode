@@ -17,16 +17,18 @@ public class Problem542 {
             maxCol = matrix.get(0).size();
         }
         List<List<Integer>> result = new ArrayList<>();
-
         for (int i = 0; i < maxRow; i++) {
             result.add(new ArrayList<>());
             for (int j = 0; j < maxCol; j++) {
                 int val = matrix.get(i).get(j);
-                result.get(i).add(
-                    shortest(matrix, new boolean[maxRow][maxCol], maxRow, maxCol, i, j));
+                if (val == 0) {
+                    result.get(i).add(0);
+                } else {
+                    int distance = shortest(matrix, new boolean[maxRow][maxCol], maxRow, maxCol, i, j);
+                    result.get(i).add(distance);
+                }
             }
         }
-
         return result;
     }
 
