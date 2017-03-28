@@ -1,10 +1,5 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  * https://leetcode.com/problems/convert-bst-to-greater-tree/
  */
@@ -23,53 +18,31 @@ public class Problem538 {
         if (root == null) {
             return root;
         }
-        List<Integer> list = new ArrayList<>();
-        sortedList(root, list);
-        int sum = 0;
-        int[] sums = new int[list.size()];
-        for (int i = 0; i < list.size(); i++) {
-            sum += list.get(i);
-            if (i == 0) {
-                sums[i] = 0;
-            } else {
-                sums[i] = sums[i - 1] + list.get(i - 1);
-            }
-        }
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < list.size(); i++) {
-            if (i == 0) {
-                map.put(list.get(i), sum);
-            } else {
-                map.put(list.get(i), sum - sums[i]);
-            }
-        }
-        return convert(root, map);
+        return convert(root, new Sum());
     }
 
-    private static TreeNode convert(TreeNode node, Map<Integer, Integer> map) {
-        TreeNode left = null;
-        TreeNode right = null;
+    private static class Sum {
+        private int val;
+    }
+
+    private static TreeNode convert(TreeNode node, Sum sum) {
         if (node.left == null && node.right == null) {
-            return new TreeNode(map.get(node.val));
+            sum.val += node.val;
+            return new TreeNode(sum.val);
         }
-        if (node.left != null) {
-            left = convert(node.left, map);
-        }
+        TreeNode right = null;
         if (node.right != null) {
-            right = convert(node.right, map);
+            right = convert(node.right, sum);
         }
-        TreeNode parent = new TreeNode(map.get(node.val));
+        sum.val += node.val;
+        int val = sum.val;
+        TreeNode left = null;
+        if (node.left != null) {
+            left = convert(node.left, sum);
+        }
+        TreeNode parent = new TreeNode(val);
         parent.left = left;
         parent.right = right;
         return parent;
-    }
-
-    private static void sortedList(TreeNode node, List<Integer> list) {
-        if (node == null) {
-            return;
-        }
-        sortedList(node.left, list);
-        list.add(node.val);
-        sortedList(node.right, list);
     }
 }
