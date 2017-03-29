@@ -5,13 +5,14 @@ package leetcode;
  */
 public class Problem537  {
     public String complexNumberMultiply(String a, String b) {
-        // TODO
-        return "";
-    }
+        String[] aSplit = a.split("\\+");
+        int ar = Integer.parseInt(aSplit[0]);
+        int ai = Integer.parseInt(aSplit[1].substring(0, aSplit[1].length() - 1));
 
-    public static void main(String[] args) {
-        Problem537 prob = new Problem537();
-        System.out.println(prob.complexNumberMultiply("1+1i", "1+1i")); // "0+2i"
-        System.out.println(prob.complexNumberMultiply("1+-1i", "1+-1i")); // "0+-2i"
+        String[] bSplit = b.split("\\+");
+        int br = Integer.parseInt(bSplit[0]);
+        int bi = Integer.parseInt(bSplit[1].substring(0, bSplit[1].length() - 1));
+
+        return ((ar * br) + (ai * bi * -1)) + "+" + ((ar * bi) + (br * ai)) + "i";
     }
 }
