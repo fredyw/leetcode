@@ -53,6 +53,35 @@ public class Problem385 {
         }
     }
 
+    public NestedInteger deserialize(String s) {
+        Token token = new Token(s);
+        char c = token.peek();
+        if (isNumber(c)) {
+            return parseNumber(token);
+        }
+        token.next();
+        return deserialize(token);
+    }
+
+    private static NestedInteger deserialize(Token token) {
+        NestedInteger ni = new NestedInteger();
+        while (!token.end()) {
+            char c = token.peek();
+            if (isNumber(c)) {
+                ni.add(parseNumber(token));
+            } else if (c == '[') {
+                token.next();
+                ni.add(deserialize(token));
+            } else if (c == ',') {
+                token.next();
+            } else if (c == ']') {
+                token.next();
+                break;
+            }
+        }
+        return ni;
+    }
+
     private static class Token {
         private final String string;
         private int idx;
@@ -74,48 +103,15 @@ public class Problem385 {
         }
     }
 
-    public NestedInteger deserialize(String s) {
-        return deserialize(new Token(s));
-    }
-
-    private static NestedInteger deserialize(Token token) {
-        NestedInteger ni = new NestedInteger();
-        while (!token.end()) {
-            char c = token.peek();
-            if (isNumber(c)) {
-                Integer number = parseNumber(token);
-                ni.add(new NestedInteger(number));
-            } else if (c == '[') {
-                token.next();
-                ni.add(deserialize(token));
-            } else if (c == ',') {
-                token.next();
-            } else if (c == ']') {
-                token.next();
-                break;
-            }
-        }
-        return ni;
-    }
-
     private static boolean isNumber(char c) {
         return c == '-' || (c >= '0' && c <= '9');
     }
 
-    private static Integer parseNumber(Token token) {
+    private static NestedInteger parseNumber(Token token) {
         StringBuilder sb = new StringBuilder();
         while (!token.end() && isNumber(token.peek())) {
             sb.append(token.next());
         }
-        return Integer.valueOf(sb.toString());
-    }
-
-    public static void main(String[] args) {
-        Problem385 prob = new Problem385();
-
-        System.out.println(prob.deserialize("324").getList());
-        System.out.println(prob.deserialize("[123,324]").getList());
-        System.out.println(prob.deserialize("[123,[456,[789]]]").getList());
-        System.out.println(prob.deserialize("[123,345,[67,8,[9,10]],11]").getList());
+        return new NestedInteger(Integer.valueOf(sb.toString()));
     }
 }
