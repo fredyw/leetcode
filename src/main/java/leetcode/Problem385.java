@@ -55,11 +55,10 @@ public class Problem385 {
 
     public NestedInteger deserialize(String s) {
         Token token = new Token(s);
-        char c = token.peek();
+        char c = token.next();
         if (isNumber(c)) {
             return parseNumber(token);
         }
-        token.next();
         return deserialize(token);
     }
 
