@@ -1,4 +1,4 @@
 leetcode
 ========
 
-My solutions to LeetCode (https://oj.leetcode.com/) problems.
+My solutions to LeetCode (https://leetcode.com/) problems.
