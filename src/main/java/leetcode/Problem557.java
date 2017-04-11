@@ -25,11 +25,4 @@ public class Problem557 {
         }
         return new String(chars);
     }
-
-    public static void main(String[] args) {
-        Problem557 prob = new Problem557();
-        System.out.println(prob.reverseWords("Let's take LeetCode contest"));
-        System.out.println(prob.reverseWords("Hello"));
-        System.out.println(prob.reverseWords(""));
-    }
 }
