@@ -10,6 +10,10 @@ public class Problem45 {
         while (i < nums.length - 1) {
             int idx = 0;
             int nextIdx = 0;
+            if (i + nums[i] >= nums.length - 1) {
+                result++;
+                break;
+            }
             for (int j = i; j <= i + nums[i] && j < nums.length; j++) {
                 if (j + nums[j] > nextIdx) {
                     idx = j;
@@ -24,18 +28,5 @@ public class Problem45 {
             }
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        Problem45 prob = new Problem45();
-//        System.out.println(prob.jump(new int[]{2, 3, 1, 1, 4})); // 2
-//        System.out.println(prob.jump(new int[]{2, 6, 1, 1, 4})); // 2
-//        System.out.println(prob.jump(new int[]{2, 2, 3, 1, 2, 4, 1})); // 3
-//        System.out.println(prob.jump(new int[]{100, 5, 1, 1, 4})); // 1
-//        System.out.println(prob.jump(new int[]{5})); // 0
-        System.out.println(prob.jump(new int[]{2, 3, 1})); // 1
-//        System.out.println(prob.jump(new int[]{1, 2, 1, 1, 1})); // 3
-//        System.out.println(prob.jump(new int[]{10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1, 0})); // 2
-//        System.out.println(prob.jump(new int[]{10, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0})); // 2
     }
 }
