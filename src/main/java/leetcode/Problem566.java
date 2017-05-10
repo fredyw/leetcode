@@ -5,23 +5,27 @@ package leetcode;
  */
 public class Problem566 {
     public int[][] matrixReshape(int[][] nums, int r, int c) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem566 prob = new Problem566();
-        System.out.println(prob.matrixReshape(new int[][]{
-            {1, 2},
-            {3, 4}
-        }, 1, 2)); // [[1,2,3,4]]
-        System.out.println(prob.matrixReshape(new int[][]{
-            {1, 2},
-            {3, 4}
-        }, 2, 4)); // [[1],[2],[3],[4]]
-        System.out.println(prob.matrixReshape(new int[][]{
-            {1, 2},
-            {3, 4}
-        }, 2, 2)); // [[1,2], [3,4]]
+        int rowSize = nums.length;
+        int colSize = 0;
+        if (rowSize > 0) {
+            colSize = nums[0].length;
+        }
+        if (r * c > rowSize * colSize) {
+            return nums;
+        }
+        int row = 0;
+        int col = 0;
+        int[][] result = new int[r][c];
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j < nums[i].length; j++) {
+                if (col == c) {
+                    col = 0;
+                    row++;
+                }
+                result[row][col] = nums[i][j];
+                col++;
+            }
+        }
+        return result;
     }
 }
