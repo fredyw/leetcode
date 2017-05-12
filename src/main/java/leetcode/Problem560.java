@@ -32,5 +32,6 @@ public class Problem560 {
         System.out.println(prob.subarraySum(new int[]{-1, -1, 1}, 0)); // 1
         System.out.println(prob.subarraySum(new int[]{-1, -1, 1, -1, -1}, 0)); // 2
         System.out.println(prob.subarraySum(new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 0)); // 55
+        System.out.println(prob.subarraySum(new int[]{3, 4, 7, 2, -3, 1, 4, 2}, 7)); // 4
     }
 }
