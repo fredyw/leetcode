@@ -29,6 +29,7 @@ public class Problem560 {
         Problem560 prob = new Problem560();
 //        System.out.println(prob.subarraySum(new int[]{1, 1, 1}, 2)); // 2
 //        System.out.println(prob.subarraySum(new int[]{1, 1, 1, 2, 1, 1, 1}, 2)); // 5
-        System.out.println(prob.subarraySum(new int[]{-1, -1, 1}, 0)); // 1
+//        System.out.println(prob.subarraySum(new int[]{-1, -1, 1}, 0)); // 1
+        System.out.println(prob.subarraySum(new int[]{-1, -1, 1, -1, -1}, 0)); // 2
     }
 }
