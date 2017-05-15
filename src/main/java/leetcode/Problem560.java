@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * https://leetcode.com/problems/subarray-sum-equals-k/
  */
@@ -7,31 +10,19 @@ public class Problem560 {
     public int subarraySum(int[] nums, int k) {
         int result = 0;
         int sum = 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, 1);
         for (int i = 0; i < nums.length; i++) {
-            if (sum + nums[i] < k) {
-                sum += nums[i];
-            } else if (sum + nums[i] == k) {
-                if (nums[i] != k) {
-                    sum = nums[i];
-                }
-                result++;
-            } else if (nums[i] == k) {
-                result++;
-                sum = 0;
+            sum += nums[i];
+            if (map.containsKey(sum - k)) {
+                result += map.get(sum - k);
+            }
+            if (!map.containsKey(sum)) {
+                map.put(sum, 1);
             } else {
-                sum = nums[i];
+                map.put(sum, map.get(sum) + 1);
             }
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        Problem560 prob = new Problem560();
-        System.out.println(prob.subarraySum(new int[]{1, 1, 1}, 2)); // 2
-        System.out.println(prob.subarraySum(new int[]{1, 1, 1, 2, 1, 1, 1}, 2)); // 5
-        System.out.println(prob.subarraySum(new int[]{-1, -1, 1}, 0)); // 1
-        System.out.println(prob.subarraySum(new int[]{-1, -1, 1, -1, -1}, 0)); // 2
-        System.out.println(prob.subarraySum(new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 0)); // 55
-        System.out.println(prob.subarraySum(new int[]{3, 4, 7, 2, -3, 1, 4, 2}, 7)); // 4
     }
 }
