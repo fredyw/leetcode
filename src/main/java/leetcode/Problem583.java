@@ -12,5 +12,7 @@ public class Problem583 {
     public static void main(String[] args) {
         Problem583 prob = new Problem583();
         System.out.println(prob.minDistance("sea", "eat")); // 2
+        System.out.println(prob.minDistance("abdm", "yxabcd")); // 4
+        System.out.println(prob.minDistance("abdm", "cyxabcd")); // 5
     }
 }
