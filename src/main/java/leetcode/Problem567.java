@@ -8,9 +8,17 @@ import java.util.Arrays;
 public class Problem567 {
     public boolean checkInclusion(String s1, String s2) {
         int[] counts1 = charCount(s1);
-        for (int i = 0; i + s1.length() <= s2.length(); i++) {
-            String sub = s2.substring(i, i + s1.length());
-            int[] counts2 = charCount(sub);
+        if (s1.length() > s2.length()) {
+            return false;
+        }
+        int[] counts2 = charCount(s2.substring(0, s1.length()));
+        if (Arrays.equals(counts1, counts2)) {
+            return true;
+        }
+        for (int i = s1.length(); i < s2.length(); i++) {
+            // some optimization to not construct counts2
+            counts2[s2.charAt(i - s1.length()) - 'a']--;
+            counts2[s2.charAt(i) - 'a']++;
             if (Arrays.equals(counts1, counts2)) {
                 return true;
             }
@@ -24,13 +32,5 @@ public class Problem567 {
             counts[s.charAt(i) - 'a']++;
         }
         return counts;
-    }
-
-    public static void main(String[] args) {
-        Problem567 prob = new Problem567();
-        System.out.println(prob.checkInclusion("ab", "eidbaooo")); // true
-        System.out.println(prob.checkInclusion("ab", "eidboaoo")); // false
-        System.out.println(prob.checkInclusion("dinitrophenylhydrazine", "acetylphenylhydrazine")); // false
-        System.out.println(prob.checkInclusion("adc", "dcda")); // true
     }
 }
