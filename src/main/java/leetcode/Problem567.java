@@ -1,44 +1,41 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * https://leetcode.com/problems/permutation-in-string/
  */
 public class Problem567 {
     public boolean checkInclusion(String s1, String s2) {
-        return checkInclusion(s1.toCharArray(), 0, s1.length() - 1, s2);
-    }
-
-    private static void swap(char[] chars, int i, int j) {
-        if (j >= chars.length) {
-            return;
-        }
-        char tmp = chars[i];
-        chars[i] = chars[j];
-        chars[j] = tmp;
-    }
-
-    private static boolean checkInclusion(char[] chars, int left, int right, String string) {
-        if (left == right) {
-            if (string.contains(new String(chars))) {
+        Map<Character, Integer> map1 = charCount(s1);
+        for (int i = 0; i + s1.length() <= s2.length(); i++) {
+            String sub = s2.substring(i, i + s1.length());
+            Map<Character, Integer> map2 = charCount(sub);
+            if (map1.equals(map2)) {
                 return true;
             }
         }
-        boolean found = false;
-        for (int i = left; i <= right; i++) {
-            swap(chars, left, i);
-            found |= checkInclusion(chars, left + 1, right, string);
-            if (found) {
-                return found;
+        return false;
+    }
+
+    private static Map<Character, Integer> charCount(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (!map.containsKey(s.charAt(i))) {
+                map.put(s.charAt(i), 1);
+            } else {
+                map.put(s.charAt(i), map.get(s.charAt(i)) + 1);
             }
-            swap(chars, left, i);
         }
-        return found;
+        return map;
     }
 
     public static void main(String[] args) {
         Problem567 prob = new Problem567();
-        System.out.println(prob.checkInclusion("ab", "eidbaooo")); // true
-        System.out.println(prob.checkInclusion("ab", "eidboaoo")); // false
-        System.out.println(prob.checkInclusion("dinitrophenylhydrazine", "acetylphenylhydrazine")); // false
+//        System.out.println(prob.checkInclusion("ab", "eidbaooo")); // true
+//        System.out.println(prob.checkInclusion("ab", "eidboaoo")); // false
+//        System.out.println(prob.checkInclusion("dinitrophenylhydrazine", "acetylphenylhydrazine")); // false
+        System.out.println(prob.checkInclusion("adc", "dcda")); // true
     }
 }
