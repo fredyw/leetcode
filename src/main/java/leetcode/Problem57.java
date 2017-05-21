@@ -24,7 +24,7 @@ public class Problem57 {
 
         @Override
         public String toString() {
-            return "[" + start + ", " + end "]";
+            return "[" + start + ", " + end + "]";
         }
     }
 
