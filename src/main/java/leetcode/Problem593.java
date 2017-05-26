@@ -60,19 +60,4 @@ public class Problem593 {
     private boolean isRightAngled(double a, double b, double c) {
         return toInt(((a * a) + (b * b))) == toInt((c * c));
     }
-
-    public static void main(String[] args) {
-        Problem593 prob = new Problem593();
-        System.out.println(prob.validSquare(new int[]{0, 0}, new int[]{1, 1}, new int[]{1, 0}, new int[]{0, 1})); // true
-        System.out.println(prob.validSquare(new int[]{0, 0}, new int[]{1, 1}, new int[]{1, 5}, new int[]{0, 1})); // false
-        System.out.println(prob.validSquare(new int[]{0, 1}, new int[]{0, 0}, new int[]{1, 1}, new int[]{1, 0})); // true
-        System.out.println(prob.validSquare(new int[]{0, 1}, new int[]{0, 0}, new int[]{1, -1}, new int[]{1, 0})); // false
-        System.out.println(prob.validSquare(new int[]{1, 0}, new int[]{-1, 0}, new int[]{0, 1}, new int[]{0, -1})); // true
-        System.out.println(prob.validSquare(new int[]{0, 0}, new int[]{-1, 0}, new int[]{1, 0}, new int[]{0, 1})); // false
-        System.out.println(prob.validSquare(new int[]{0, 0}, new int[]{0, 0}, new int[]{0, 0}, new int[]{0, 0})); // false
-        System.out.println(prob.validSquare(new int[]{0, 1}, new int[]{1, 2}, new int[]{0, 2}, new int[]{0, 0})); // false
-        System.out.println(prob.validSquare(new int[]{1, 0}, new int[]{0, 1}, new int[]{-1, 0}, new int[]{0, -1})); // true
-        System.out.println(prob.validSquare(new int[]{1, 1}, new int[]{5, 3}, new int[]{3, 5}, new int[]{7, 7})); // false
-        System.out.println(prob.validSquare(new int[]{-2009, 2747}, new int[]{-1566, 2436}, new int[]{-2320, 2304}, new int[]{-1877, 1993})); // true
-    }
 }
