@@ -1,13 +1,12 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
- * https://leetcode.com/problems/minimum-index-sum-of-two-lists/#/description
+ * https://leetcode.com/problems/minimum-index-sum-of-two-lists/
  */
 public class Problem577 {
     public String[] findRestaurant(String[] list1, String[] list2) {
