@@ -40,5 +40,8 @@ public class Problem598 {
         })); // 1
         System.out.println(prob.maxCount(3, 3, new int[][]{
         })); // 9
+        System.out.println(prob.maxCount(39999, 39999, new int[][]{
+            {19999,  19999}
+        })); // 399960001
     }
 }
