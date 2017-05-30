@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * https://leetcode.com/problems/range-addition-ii/#/description
+ * https://leetcode.com/problems/range-addition-ii/
  */
 public class Problem598 {
     public int maxCount(int m, int n, int[][] ops) {
