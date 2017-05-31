@@ -8,43 +8,17 @@ public class Problem598 {
         if (ops.length == 0) {
             return m * n;
         }
-        int[][] matrix = new int[m][n];
-        int max = 0;
-        int count = 0;
-        for (int x = 0; x < ops.length; x++) {
-            int[] op = ops[x];
-            for (int i = 0; i < op[0]; i++) {
-                for (int j = 0; j < op[1]; j++) {
-                    matrix[i][j]++;
-                    if (max < matrix[i][j]) {
-                        max = matrix[i][j];
-                        count = 1;
-                    } else if (max == matrix[i][j]) {
-                        count++;
-                    }
-                }
+        int rowSize = 0;
+        int colSize = 0;
+        for (int i = 0; i < ops.length; i++) {
+            if (i == 0) {
+                rowSize = ops[i][0];
+                colSize = ops[i][1];
+            } else {
+                rowSize = Math.min(rowSize, ops[i][0]);
+                colSize = Math.min(colSize, ops[i][1]);
             }
         }
-        return count;
-    }
-
-    public static void main(String[] args) {
-        Problem598 prob = new Problem598();
-//        System.out.println(prob.maxCount(3, 3, new int[][]{
-//            {2, 2},
-//            {3, 3}
-//        })); // 4
-//        System.out.println(prob.maxCount(3, 3, new int[][]{
-//            {2, 1},
-//            {1, 3}
-//        })); // 1
-//        System.out.println(prob.maxCount(3, 3, new int[][]{
-//        })); // 9
-        System.out.println(prob.maxCount(6, 3, new int[][]{
-            {2, 2}, {5, 2}, {5, 1}
-        })); // 2
-//        System.out.println(prob.maxCount(39999, 39999, new int[][]{
-//            {19999,  19999}
-//        })); // 399960001
+        return rowSize * colSize;
     }
 }
