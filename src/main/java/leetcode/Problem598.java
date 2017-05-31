@@ -30,18 +30,21 @@ public class Problem598 {
 
     public static void main(String[] args) {
         Problem598 prob = new Problem598();
-        System.out.println(prob.maxCount(3, 3, new int[][]{
-            {2, 2},
-            {3, 3}
-        })); // 4
-        System.out.println(prob.maxCount(3, 3, new int[][]{
-            {2, 1},
-            {1, 3}
-        })); // 1
-        System.out.println(prob.maxCount(3, 3, new int[][]{
-        })); // 9
-        System.out.println(prob.maxCount(39999, 39999, new int[][]{
-            {19999,  19999}
-        })); // 399960001
+//        System.out.println(prob.maxCount(3, 3, new int[][]{
+//            {2, 2},
+//            {3, 3}
+//        })); // 4
+//        System.out.println(prob.maxCount(3, 3, new int[][]{
+//            {2, 1},
+//            {1, 3}
+//        })); // 1
+//        System.out.println(prob.maxCount(3, 3, new int[][]{
+//        })); // 9
+        System.out.println(prob.maxCount(6, 3, new int[][]{
+            {2, 2}, {5, 2}, {5, 1}
+        })); // 2
+//        System.out.println(prob.maxCount(39999, 39999, new int[][]{
+//            {19999,  19999}
+//        })); // 399960001
     }
 }
