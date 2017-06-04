@@ -15,23 +15,22 @@ public class Problem606 {
     }
 
     public String tree2str(TreeNode t) {
-        // TODO
-        return "";
-    }
+        if (t == null) {
+            return "";
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append(t.val);
 
-    public static void main(String[] args) {
-        Problem606 prob = new Problem606();
+        String left = tree2str(t.left);
+        String right = tree2str(t.right);
 
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.left.left = new TreeNode(4);
-        root.right = new TreeNode(3);
-        System.out.println(prob.tree2str(root)); // 1(2(4))(3)
-
-        root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.left.right = new TreeNode(4);
-        root.right = new TreeNode(3);
-        System.out.println(prob.tree2str(root)); // 1(2()(4))(3)
+        if (left.equals("") && right.equals("")) {
+            return sb.toString();
+        }
+        sb = sb.append("(").append(left).append(")");
+        if (!right.equals("")) {
+            sb.append("(").append(right).append(")");
+        }
+        return sb.toString();
     }
 }
