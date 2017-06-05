@@ -13,5 +13,7 @@ public class Problem605 {
         Problem605 prob = new Problem605();
         System.out.println(prob.canPlaceFlowers(new int[]{1, 0, 0, 0, 1}, 1)); // true
         System.out.println(prob.canPlaceFlowers(new int[]{1, 0, 0, 0, 1}, 2)); // false
+        System.out.println(prob.canPlaceFlowers(new int[]{1, 0, 1, 0, 1}, 2)); // false
+        System.out.println(prob.canPlaceFlowers(new int[]{1, 0, 1, 0, 1}, 3)); // false
     }
 }
