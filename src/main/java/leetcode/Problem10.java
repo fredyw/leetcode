@@ -16,11 +16,11 @@ public class Problem10 {
             return false;
         }
         boolean match = false;
-        if (p.charAt(j) == '*') {
-            if (s.charAt(i) == p.charAt(j - 1)) {
+        if (j + 1 < p.length() && p.charAt(j + 1) == '*') {
+            if (s.charAt(i) == p.charAt(j)) {
                 match |= isMatch(s, p, i + 1, j);
             }
-            match |= isMatch(s, p, i + 1, j + 1);
+            match |= isMatch(s, p, i + 1, j + 2);
         } else {
             if (s.charAt(i) != p.charAt(j)) {
                 return false;
@@ -32,13 +32,13 @@ public class Problem10 {
 
     public static void main(String[] args) {
         Problem10 prob = new Problem10();
-//        System.out.println(prob.isMatch("aa", "a")); // false
-//        System.out.println(prob.isMatch("aa", "aa")); // true
-//        System.out.println(prob.isMatch("aaa", "aa")); // false
-//        System.out.println(prob.isMatch("aa", "a*")); // true
+        System.out.println(prob.isMatch("aa", "a")); // false
+        System.out.println(prob.isMatch("aa", "aa")); // true
+        System.out.println(prob.isMatch("aaa", "aa")); // false
+        System.out.println(prob.isMatch("aa", "a*")); // true
 //        System.out.println(prob.isMatch("aa", ".*")); // true
 //        System.out.println(prob.isMatch("ab", ".*")); // true
-//        System.out.println(prob.isMatch("aab", "c*a*b")); // true
+        System.out.println(prob.isMatch("aab", "c*a*b")); // true
         System.out.println(prob.isMatch("caab", "c*a*b")); // true
 //        System.out.println(prob.isMatch("abb", "a.*b")); // true
     }
