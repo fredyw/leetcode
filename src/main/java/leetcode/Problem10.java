@@ -22,7 +22,7 @@ public class Problem10 {
             }
             match |= isMatch(s, p, i + 1, j + 2);
         } else {
-            if (s.charAt(i) != p.charAt(j)) {
+            if (s.charAt(i) != p.charAt(j) && p.charAt(j) != '.') {
                 return false;
             }
             match |= isMatch(s, p, i + 1, j + 1);
@@ -36,10 +36,11 @@ public class Problem10 {
         System.out.println(prob.isMatch("aa", "aa")); // true
         System.out.println(prob.isMatch("aaa", "aa")); // false
         System.out.println(prob.isMatch("aa", "a*")); // true
+        System.out.println(prob.isMatch("caab", "c.a.")); // true
+//        System.out.println(prob.isMatch("aab", "c*a*b")); // true
+//        System.out.println(prob.isMatch("caab", "c*a*b")); // true
 //        System.out.println(prob.isMatch("aa", ".*")); // true
 //        System.out.println(prob.isMatch("ab", ".*")); // true
-        System.out.println(prob.isMatch("aab", "c*a*b")); // true
-        System.out.println(prob.isMatch("caab", "c*a*b")); // true
 //        System.out.println(prob.isMatch("abb", "a.*b")); // true
     }
 }
