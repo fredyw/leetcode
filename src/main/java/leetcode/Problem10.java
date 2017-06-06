@@ -30,22 +30,4 @@ public class Problem10 {
         }
         return match;
     }
-
-    public static void main(String[] args) {
-        Problem10 prob = new Problem10();
-        System.out.println(prob.isMatch("aa", "a")); // false
-        System.out.println(prob.isMatch("aa", "aa")); // true
-        System.out.println(prob.isMatch("aaa", "aa")); // false
-        System.out.println(prob.isMatch("aa", "a*")); // true
-        System.out.println(prob.isMatch("caab", "c.a.")); // true
-        System.out.println(prob.isMatch("aab", "c*a*b")); // true
-        System.out.println(prob.isMatch("caab", "c*a*b")); // true
-        System.out.println(prob.isMatch("aa", ".*")); // true
-        System.out.println(prob.isMatch("ab", ".*")); // true
-        System.out.println(prob.isMatch("abb", "a.*b")); // true
-        System.out.println(prob.isMatch("abb", "a.*b")); // true
-        System.out.println(prob.isMatch("abb", "a.*")); // true
-        System.out.println(prob.isMatch("aaa", "ab*a")); // false
-        System.out.println(prob.isMatch("", "c*c*")); // true
-    }
 }
