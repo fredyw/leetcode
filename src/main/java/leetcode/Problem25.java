@@ -19,21 +19,32 @@ public class Problem25 {
     }
 
     public ListNode reverseKGroup(ListNode head, int k) {
-        // TODO
-        return null;
+        ListNodeRef ref = new ListNodeRef();
+        ListNode n = reverse(head, k, 1, ref);
+        n.next = ref.second;
+        return ref.first;
     }
 
     private static class ListNodeRef {
-        private ListNode ref;
+        private ListNode first;
+        private ListNode second;
     }
 
-    private static void reverse(ListNode node, int k, int i, ListNodeRef ref) {
-
+    private static ListNode reverse(ListNode node, int k, int i, ListNodeRef ref) {
+        if (i == k) {
+            ref.first = node;
+            ref.second = node.next;
+            return node;
+        }
+        ListNode n = reverse(node.next, k, i + 1, ref);
+        n.next = node;
+        node.next = null;
+        return node;
     }
 
     private static void print(ListNode node) {
-        for (ListNode n = node; n != null; n = node.next) {
-            System.out.print(n);
+        for (ListNode n = node; n != null; n = n.next) {
+            System.out.print(n + " ");
         }
         System.out.println();
     }
@@ -46,13 +57,13 @@ public class Problem25 {
         head.next.next = new ListNode(3);
         head.next.next.next = new ListNode(4);
         head.next.next.next.next = new ListNode(5);
-        System.out.println(prob.reverseKGroup(head, 2));
+        print(prob.reverseKGroup(head, 2)); // 2 1 4 3 5
 
         head = new ListNode(1);
         head.next = new ListNode(2);
         head.next.next = new ListNode(3);
         head.next.next.next = new ListNode(4);
         head.next.next.next.next = new ListNode(5);
-        System.out.println(prob.reverseKGroup(head, 3));
+        print(prob.reverseKGroup(head, 3)); // 3 2 1 4 5 
     }
 }
