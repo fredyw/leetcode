@@ -12,40 +12,31 @@ public class Problem124 {
         TreeNode(int x) {
             val = x;
         }
-
-        @Override
-        public String toString() {
-            return "" + val;
-        }
     }
 
     public int maxPathSum(TreeNode root) {
-        return 0;
+        Max max = new Max();
+        maxPathSum(root, max);
+        return max.value;
     }
 
-    public static void main(String[] args) {
-        Problem124 prob = new Problem124();
+    private static class Max {
+        private int value = Integer.MIN_VALUE;
+    }
 
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        System.out.println(prob.maxPathSum(root)); // 6
-
-        root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.left.left = new TreeNode(4);
-        root.left.right = new TreeNode(5);
-        root.right = new TreeNode(3);
-        root.right.right = new TreeNode(6);
-        System.out.println(prob.maxPathSum(root)); // 17
-
-        root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.left.left = new TreeNode(10);
-        root.left.right = new TreeNode(10);
-        root.right = new TreeNode(1);
-        root.right.left = new TreeNode(1);
-        root.right.right = new TreeNode(1);
-        System.out.println(prob.maxPathSum(root)); // 22
+    private static int maxPathSum(TreeNode node, Max max) {
+        if (node == null) {
+            return 0;
+        }
+        int a = maxPathSum(node.left, max);
+        int b = maxPathSum(node.right, max);
+        if (a + node.val < node.val) {
+            a = 0;
+        }
+        if (b + node.val < node.val) {
+            b = 0;
+        }
+        max.value = Math.max(max.value, a + b + node.val);
+        return Math.max(node.val + a, node.val + b);
     }
 }
