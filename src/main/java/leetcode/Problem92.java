@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * https://oj.leetcode.com/problems/reverse-linked-list-ii/
+ * https://leetcode.com/problems/reverse-linked-list-ii/
  */
 public class Problem92 {
     public static class ListNode {

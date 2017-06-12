@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * https://oj.leetcode.com/problems/linked-list-cycle/
+ * https://leetcode.com/problems/linked-list-cycle/
  */
 public class Problem141 {
     static class ListNode {

@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * https://oj.leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
+ * https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
  */
 public class Problem108 {
     static class TreeNode {

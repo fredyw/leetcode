@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * https://oj.leetcode.com/problems/path-sum/
+ * https://leetcode.com/problems/path-sum/
  */
 public class Problem112 {
     public static class TreeNode {

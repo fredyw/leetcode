@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * https://oj.leetcode.com/problems/pascals-triangle/
+ * https://leetcode.com/problems/pascals-triangle/
  */
 public class Problem118 {
     public List<List<Integer>> generate(int numRows) {

@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * https://oj.leetcode.com/problems/length-of-last-word/
+ * https://leetcode.com/problems/length-of-last-word/
  */
 public class Problem58 {
     public int lengthOfLastWord(String s) {

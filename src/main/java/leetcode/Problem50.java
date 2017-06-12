@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * https://oj.leetcode.com/problems/powx-n/
+ * https://leetcode.com/problems/powx-n/
  */
 public class Problem50 {
     public double pow(double x, int n) {

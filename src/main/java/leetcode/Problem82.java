@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * https://oj.leetcode.com/problems/remove-duplicates-from-sorted-list-ii/
+ * https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/
  */
 public class Problem82 {
     public static class ListNode {

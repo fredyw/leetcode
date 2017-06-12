@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * https://oj.leetcode.com/problems/simplify-path/
+ * https://leetcode.com/problems/simplify-path/
  */
 public class Problem71 {
     public String simplifyPath(String path) {

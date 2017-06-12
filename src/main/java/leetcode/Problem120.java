@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * https://oj.leetcode.com/problems/triangle/
+ * https://leetcode.com/problems/triangle/
  */
 public class Problem120 {
     public int minimumTotal(List<List<Integer>> triangle) {

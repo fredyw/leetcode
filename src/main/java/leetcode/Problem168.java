@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * https://oj.leetcode.com/problems/excel-sheet-column-title/
+ * https://leetcode.com/problems/excel-sheet-column-title/
  */
 public class Problem168 {
     public String convertToTitle(int n) {

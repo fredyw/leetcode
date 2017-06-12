@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * https://oj.leetcode.com/problems/binary-tree-level-order-traversal/
+ * https://leetcode.com/problems/binary-tree-level-order-traversal/
  */
 public class Problem102 {
     public static class TreeNode {

@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * https://oj.leetcode.com/problems/divide-two-integers/
+ * https://leetcode.com/problems/divide-two-integers/
  */
 public class Problem29 {
     public int divide(int dividend, int divisor) {

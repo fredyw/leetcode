@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * https://oj.leetcode.com/problems/restore-ip-addresses/
+ * https://leetcode.com/problems/restore-ip-addresses/
  */
 public class Problem93 {
     public List<String> restoreIpAddresses(String s) {

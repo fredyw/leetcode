@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * https://oj.leetcode.com/problems/convert-sorted-list-to-binary-search-tree/
+ * https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/
  */
 public class Problem109 {
     static class ListNode {

@@ -3,7 +3,7 @@ package leetcode;
 import java.util.Stack;
 
 /**
- * https://oj.leetcode.com/problems/valid-parentheses/
+ * https://leetcode.com/problems/valid-parentheses/
  */
 public class Problem20 {
     public boolean isValid(String s) {

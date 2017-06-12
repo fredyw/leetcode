@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * https://oj.leetcode.com/problems/largest-number/
+ * https://leetcode.com/problems/largest-number/
  */
 public class Problem179 {
     public String largestNumber(int[] num) {

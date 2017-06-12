@@ -3,7 +3,7 @@ package leetcode;
 import java.util.Stack;
 
 /**
- * https://oj.leetcode.com/problems/min-stack/
+ * https://leetcode.com/problems/min-stack/
  */
 public class Problem155 {
     public static class MinStack {

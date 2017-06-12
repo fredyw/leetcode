@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * https://oj.leetcode.com/problems/word-ladder/
+ * https://leetcode.com/problems/word-ladder/
  */
 public class Problem127 {
     public int ladderLength(String start, String end, Set<String> dict) {

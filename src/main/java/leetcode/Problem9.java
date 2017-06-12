@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * https://oj.leetcode.com/problems/palindrome-number/
+ * https://leetcode.com/problems/palindrome-number/
  */
 public class Problem9 {
     public boolean isPalindrome(int x) {

@@ -3,7 +3,7 @@ package leetcode;
 import java.util.Stack;
 
 /**
- * https://oj.leetcode.com/problems/largest-rectangle-in-histogram/
+ * https://leetcode.com/problems/largest-rectangle-in-histogram/
  */
 public class Problem84 {
     public int largestRectangleArea(int[] height) {

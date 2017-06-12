@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * https://oj.leetcode.com/problems/two-sum/
+ * https://leetcode.com/problems/two-sum/
  */
 public class Problem1 {
     public int[] twoSum(int[] numbers, int target) {

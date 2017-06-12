@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * https://oj.leetcode.com/problems/valid-sudoku/
+ * https://leetcode.com/problems/valid-sudoku/
  */
 public class Problem36 {
     public boolean isValidSudoku(char[][] board) {

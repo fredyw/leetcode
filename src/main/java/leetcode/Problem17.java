@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * https://oj.leetcode.com/problems/letter-combinations-of-a-phone-number/
+ * https://leetcode.com/problems/letter-combinations-of-a-phone-number/
  */
 public class Problem17 {
     public List<String> letterCombinations(String digits) {

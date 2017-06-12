@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * https://oj.leetcode.com/problems/3sum/
+ * https://leetcode.com/problems/3sum/
  */
 public class Problem15 {
     public List<List<Integer>> threeSum(int[] num) {

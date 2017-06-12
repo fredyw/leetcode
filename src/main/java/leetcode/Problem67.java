@@ -3,7 +3,7 @@ package leetcode;
 import java.util.Stack;
 
 /**
- * https://oj.leetcode.com/problems/add-binary/
+ * https://leetcode.com/problems/add-binary/
  */
 public class Problem67 {
     public String addBinary(String a, String b) {

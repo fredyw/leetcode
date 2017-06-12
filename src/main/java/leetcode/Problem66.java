@@ -3,7 +3,7 @@ package leetcode;
 import java.util.Stack;
 
 /**
- * https://oj.leetcode.com/problems/plus-one/
+ * https://leetcode.com/problems/plus-one/
  */
 public class Problem66 {
     public int[] plusOne(int[] digits) {

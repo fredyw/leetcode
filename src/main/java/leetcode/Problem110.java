@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * https://oj.leetcode.com/problems/balanced-binary-tree/
+ * https://leetcode.com/problems/balanced-binary-tree/
  */
 public class Problem110 {
     public static class TreeNode {

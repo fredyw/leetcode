@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * https://oj.leetcode.com/problems/pascals-triangle-ii/
+ * https://leetcode.com/problems/pascals-triangle-ii/
  */
 public class Problem119 {
     public List<Integer> getRow(int rowIndex) {

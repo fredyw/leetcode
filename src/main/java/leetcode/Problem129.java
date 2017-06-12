@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * https://oj.leetcode.com/problems/sum-root-to-leaf-numbers/
+ * https://leetcode.com/problems/sum-root-to-leaf-numbers/
  */
 public class Problem129 {
     public static class TreeNode {

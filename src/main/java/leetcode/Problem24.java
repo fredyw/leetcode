@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * https://oj.leetcode.com/problems/swap-nodes-in-pairs/
+ * https://leetcode.com/problems/swap-nodes-in-pairs/
  */
 public class Problem24 {
     static class ListNode {

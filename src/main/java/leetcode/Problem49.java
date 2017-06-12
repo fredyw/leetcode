@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * https://oj.leetcode.com/problems/anagrams/
+ * https://leetcode.com/problems/anagrams/
  */
 public class Problem49 {
     public List<String> anagrams(String[] strs) {

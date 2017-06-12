@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * https://oj.leetcode.com/problems/string-to-integer-atoi/
+ * https://leetcode.com/problems/string-to-integer-atoi/
  */
 public class Problem8 {
     public int atoi(String str) {

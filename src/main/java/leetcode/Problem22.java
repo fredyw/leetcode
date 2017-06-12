@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * https://oj.leetcode.com/problems/generate-parentheses/
+ * https://leetcode.com/problems/generate-parentheses/
  */
 public class Problem22 {
     public List<String> generateParenthesis(int n) {

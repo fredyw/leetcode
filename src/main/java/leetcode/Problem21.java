@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * https://oj.leetcode.com/problems/merge-two-sorted-lists/
+ * https://leetcode.com/problems/merge-two-sorted-lists/
  */
 public class Problem21 {
     public static class ListNode {

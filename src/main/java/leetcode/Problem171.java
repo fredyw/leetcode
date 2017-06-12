@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * https://oj.leetcode.com/problems/excel-sheet-column-number/
+ * https://leetcode.com/problems/excel-sheet-column-number/
  */
 public class Problem171 {
     public int titleToNumber(String s) {
