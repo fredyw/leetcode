@@ -1,10 +1,5 @@
 package leetcode;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
 /**
  * https://leetcode.com/problems/valid-sudoku/
  */
@@ -25,31 +20,24 @@ public class Problem36 {
     }
 
     private boolean isValidSudokuFullGrid(char[][] board) {
-        Map<Integer, Set<Character>> rowMap = new HashMap<>();
-        Map<Integer, Set<Character>> colMap = new HashMap<>();
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                char c = board[i][j];
-                if (c == '.') {
-                    continue;
+        for (int row = 0; row < board.length; row++) {
+            boolean[] rows = new boolean[9];
+            boolean[] cols = new boolean[9];
+            for (int col = 0; col < board[row].length; col++) {
+                char c = board[row][col];
+                if (c != '.') {
+                    if (rows[board[row][col] - '0']) {
+                        return false;
+                    }
+                    rows[board[row][col] - '0'] = true;
                 }
-                if (!rowMap.containsKey(i)) {
-                    rowMap.put(i, new HashSet<>());
-                }
-                if (!colMap.containsKey(j)) {
-                    colMap.put(j, new HashSet<>());
-                }
-                Set<Character> rowSet = rowMap.get(i);
-                if (rowSet.contains(c)) {
-                    return false;
-                } else {
-                    rowSet.add(c);
-                }
-                Set<Character> colSet = colMap.get(j);
-                if (colSet.contains(c)) {
-                    return false;
-                } else {
-                    colSet.add(c);
+
+                c = board[col][row];
+                if (c != '.') {
+                    if (cols[board[col][row] - '0']) {
+                        return false;
+                    }
+                    cols[board[col][row] - '0'] = true;
                 }
             }
         }
@@ -58,18 +46,17 @@ public class Problem36 {
 
     private boolean isValidSudokuSubGrid(char[][] board, int startRow, int endRow,
                                          int startCol, int endCol) {
-        Set<Character> set = new HashSet<>();
+        boolean[] nums = new boolean[9];
         for (int i = startRow; i < endRow; i++) {
             for (int j = startCol; j < endCol; j++) {
                 char c = board[i][j];
                 if (c == '.') {
                     continue;
                 }
-                if (set.contains(c)) {
+                if (nums[board[i][j] - '0']) {
                     return false;
-                } else {
-                    set.add(c);
                 }
+                nums[board[i][j] - '0'] = true;
             }
         }
         return true;
