@@ -26,18 +26,18 @@ public class Problem36 {
             for (int col = 0; col < board[row].length; col++) {
                 char c = board[row][col];
                 if (c != '.') {
-                    if (rows[board[row][col] - '0']) {
+                    if (rows[board[row][col] - '0' - 1]) {
                         return false;
                     }
-                    rows[board[row][col] - '0'] = true;
+                    rows[board[row][col] - '0' - 1] = true;
                 }
 
                 c = board[col][row];
                 if (c != '.') {
-                    if (cols[board[col][row] - '0']) {
+                    if (cols[board[col][row] - '0' - 1]) {
                         return false;
                     }
-                    cols[board[col][row] - '0'] = true;
+                    cols[board[col][row] - '0' - 1] = true;
                 }
             }
         }
@@ -53,10 +53,10 @@ public class Problem36 {
                 if (c == '.') {
                     continue;
                 }
-                if (nums[board[i][j] - '0']) {
+                if (nums[board[i][j] - '0' - 1]) {
                     return false;
                 }
-                nums[board[i][j] - '0'] = true;
+                nums[board[i][j] - '0' - 1] = true;
             }
         }
         return true;
