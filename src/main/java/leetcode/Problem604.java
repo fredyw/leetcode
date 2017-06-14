@@ -44,17 +44,17 @@ public class Problem604 {
 
     public static void main(String[] args) {
         StringIterator iter = new StringIterator("L1e2t1C1o1d1e1");
-//        System.out.println(iter.next()); // L
-//        System.out.println(iter.next()); // e
-//        System.out.println(iter.next()); // e
-//        System.out.println(iter.next()); // t
-//        System.out.println(iter.next()); // C
-//        System.out.println(iter.next()); // o
-//        System.out.println(iter.next()); // d
-//        System.out.println(iter.hasNext()); // true
-//        System.out.println(iter.next()); // e
-//        System.out.println(iter.hasNext()); // false
-//        System.out.println(iter.next()); // ' '
+        System.out.println(iter.next()); // L
+        System.out.println(iter.next()); // e
+        System.out.println(iter.next()); // e
+        System.out.println(iter.next()); // t
+        System.out.println(iter.next()); // C
+        System.out.println(iter.next()); // o
+        System.out.println(iter.next()); // d
+        System.out.println(iter.hasNext()); // true
+        System.out.println(iter.next()); // e
+        System.out.println(iter.hasNext()); // false
+        System.out.println(iter.next()); // ' '
 
         iter = new StringIterator("a10b11c1d5e12");
         while (iter.hasNext()) {
