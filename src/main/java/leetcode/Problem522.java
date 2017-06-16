@@ -12,5 +12,7 @@ public class Problem522 {
     public static void main(String[] args) {
         Problem522 prob = new Problem522();
         System.out.println(prob.findLUSlength(new String[]{"aba", "cdc", "eae"})); // 3
+        System.out.println(prob.findLUSlength(new String[]{"aba", "eae"})); // 2
+        System.out.println(prob.findLUSlength(new String[]{"aabbcc", "aabbcc","cb","abc"})); // 2
     }
 }
