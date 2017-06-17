@@ -12,24 +12,22 @@ public class Problem522 {
 //        Set<String> set = new HashSet<>();
         Set<String> ignored =  new HashSet<>();
         for (int i = 0; i < strs.length; i++) {
-//            if (ignored.contains(strs[i])) {
-//                continue;
-//            }
+            if (ignored.contains(strs[i])) {
+                continue;
+            }
             for (int j = i + 1; j < strs.length; j++) {
-//                if (ignored.contains(strs[j])) {
-//                    break;
-//                }
+                if (ignored.contains(strs[j])) {
+                    continue;
+                }
                 if (strs[i].equals(strs[j])) {
                     ignored.add(strs[i]);
-                    break;
                 } else if (strs[i].contains(strs[j])) {
                     ignored.add(strs[i]);
-                    break;
                 } else if (strs[j].contains(strs[i])) {
                     ignored.add(strs[j]);
                 } else {
 //                    set.add(strs[j]);
-                    max = Math.max(max, Math.max(strs[i].length(), strs[j].length()));
+                    max = Math.max(max, strs[j].length());
                 }
             }
         }
@@ -49,9 +47,9 @@ public class Problem522 {
 //        System.out.println(prob.findLUSlength(new String[]{"aba", "cdc", "eae"})); // 3
 //        System.out.println(prob.findLUSlength(new String[]{"aba", "eae"})); // 3
 //        System.out.println(prob.findLUSlength(new String[]{"xbc", "acd"})); // 3
-//        System.out.println(prob.findLUSlength(new String[]{"abc", "x"})); // 3
+        System.out.println(prob.findLUSlength(new String[]{"abc", "x"})); // 3
 //        System.out.println(prob.findLUSlength(new String[]{"aabbcc", "aabbcc", "cb", "abc"})); // 2
-        System.out.println(prob.findLUSlength(new String[]{"aabbcc", "aabbcc", "abc"})); // -1
+//        System.out.println(prob.findLUSlength(new String[]{"aabbcc", "aabbcc", "abc"})); // -1
 //        System.out.println(prob.findLUSlength(new String[]{"abc", "abc", "xyzdef", "xyzd"})); // 6
 //        System.out.println(prob.findLUSlength(new String[]{"aaa", "aaa", "aa"})); // -1
 //        System.out.println(prob.findLUSlength(new String[]{"aabbcc", "aabbcc", "cb"})); // 2
