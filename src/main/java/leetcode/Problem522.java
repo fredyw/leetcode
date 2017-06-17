@@ -1,36 +1,46 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * https://leetcode.com/problems/longest-uncommon-subsequence-ii/
  */
 public class Problem522 {
     public int findLUSlength(String[] strs) {
-        Map<String, Integer> map = new HashMap<>();
-        for (int i = 0; i < strs.length; i++) {
-            if (!map.containsKey(strs[i])) {
-                map.put(strs[i], 1);
-            } else {
-                map.put(strs[i], map.get(strs[i]) + 1);
-            }
-        }
-        List<String> list = new ArrayList<>();
-        for (String str : strs) {
-            int count = map.get(str);
-            if (count == 1) {
-                list.add(str);
-            }
-        }
         int max = -1;
-        for (int i = 0; i < list.size(); i++) {
-            for (int j = i + 1; j < list.size(); j++) {
-                max = Math.max(max, Math.max(list.get(i).length(), list.get(j).length()));
+//        Set<String> set = new HashSet<>();
+        Set<String> ignored =  new HashSet<>();
+        for (int i = 0; i < strs.length; i++) {
+//            if (ignored.contains(strs[i])) {
+//                continue;
+//            }
+            for (int j = i + 1; j < strs.length; j++) {
+//                if (ignored.contains(strs[j])) {
+//                    break;
+//                }
+                if (strs[i].equals(strs[j])) {
+                    ignored.add(strs[i]);
+                    break;
+                } else if (strs[i].contains(strs[j])) {
+                    ignored.add(strs[i]);
+                    break;
+                } else if (strs[j].contains(strs[i])) {
+                    ignored.add(strs[j]);
+                } else {
+//                    set.add(strs[j]);
+                    max = Math.max(max, Math.max(strs[i].length(), strs[j].length()));
+                }
             }
         }
+//        int max = 0;
+//        for (int i = 0; i < set.size(); i++) {
+//            max = Math.max(max, set.get(i).length());
+//            for (int j = i + 1; j < set.size(); j++) {
+//                max = Math.max(max, set.get(j).length());
+//            }
+//        }
+//        return max;
         return max;
     }
 
@@ -41,8 +51,9 @@ public class Problem522 {
 //        System.out.println(prob.findLUSlength(new String[]{"xbc", "acd"})); // 3
 //        System.out.println(prob.findLUSlength(new String[]{"abc", "x"})); // 3
 //        System.out.println(prob.findLUSlength(new String[]{"aabbcc", "aabbcc", "cb", "abc"})); // 2
+        System.out.println(prob.findLUSlength(new String[]{"aabbcc", "aabbcc", "abc"})); // -1
 //        System.out.println(prob.findLUSlength(new String[]{"abc", "abc", "xyzdef", "xyzd"})); // 6
 //        System.out.println(prob.findLUSlength(new String[]{"aaa", "aaa", "aa"})); // -1
-        System.out.println(prob.findLUSlength(new String[]{"aabbcc", "aabbcc", "cb"})); // 2
+//        System.out.println(prob.findLUSlength(new String[]{"aabbcc", "aabbcc", "cb"})); // 2
     }
 }
