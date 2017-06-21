@@ -1,16 +1,19 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Set;
 
 /**
  * https://leetcode.com/problems/task-scheduler/
  */
 public class Problem621 {
     public int leastInterval(char[] tasks, int n) {
+        int result = 0;
         Map<Character, Integer> charCountMap = new HashMap<>();
         for (int i = 0; i < tasks.length; i++) {
             if (!charCountMap.containsKey(tasks[i])) {
@@ -19,39 +22,46 @@ public class Problem621 {
                 charCountMap.put(tasks[i], charCountMap.get(tasks[i]) + 1);
             }
         }
-        List<CharCount> charCountList = new ArrayList<>();
-        charCountMap.forEach((key, value) -> {
-            charCountList.add(new CharCount(key, value));
+        PriorityQueue<CharCount> queue = new PriorityQueue<>((a, b) -> {
+            int cmp = Integer.compare(b.count, a.count);
+            if (cmp == 0) {
+                return Integer.compare(a.ch, b.ch);
+            }
+            return cmp;
         });
-        Collections.sort(charCountList, (a, b) -> Integer.compare(b.count, a.count));
-        int result = 0;
-        int i = 0;
-        List<Character> list = new ArrayList<>();
-        while (!charCountList.isEmpty()) {
-            CharCount charCount = charCountList.get(i);
-            int size = list.size();
-            for (int j = size - 1; j >= (size - n) && j >= 0; j--) {
-                if (list.get(j) == charCount.ch) {
-                    for (int k = 0; k < n - (size - j - 1); k++) {
-                        list.add(' ');
-                        result++;
-                    }
-                    break;
+        charCountMap.forEach((ch, count) -> queue.add(new CharCount(ch, count)));
+        Set<Character> processed = new HashSet<>();
+        List<CharCount> tmp = new ArrayList<>();
+        while (!queue.isEmpty()) {
+            boolean found = false;
+            CharCount charCount = null;
+            while (!queue.isEmpty()) {
+                charCount = queue.poll();
+                if (processed.contains(charCount.ch)) {
+                    tmp.add(charCount);
+                    continue;
                 }
-            }
-
-            list.add(charCount.ch);
-            charCount.count--;
-            if (charCount.count == 0) {
-                charCountList.remove(i);
-                i--;
-            }
-            result++;
-            i++;
-            if (i == 0) {
+                found = true;
                 break;
             }
-            i = i % charCountList.size();
+            if (!found) {
+                result += n - processed.size() + 1;
+                processed.clear();
+            } else {
+                charCount.count--;
+                if (charCount.count > 0) {
+                    queue.add(charCount);
+                }
+                processed.add(charCount.ch);
+                if (processed.size() == n + 1) {
+                    processed.clear();
+                }
+                result++;
+            }
+            for (CharCount cc : tmp) {
+                queue.add(cc);
+            }
+            tmp.clear();
         }
         return result;
     }
@@ -81,7 +91,7 @@ public class Problem621 {
         System.out.println(prob.leastInterval(new char[]{'A','B','C'}, 1)); // 3
         System.out.println(prob.leastInterval(new char[]{'A','B','C'}, 2)); // 3
         System.out.println(prob.leastInterval(new char[]{'A','B','C'}, 3)); // 3
-        System.out.println(prob.leastInterval(new char[]{'A','B','C','A'}, 3)); // 4
+        System.out.println(prob.leastInterval(new char[]{'A','B','C','A'}, 3)); // 5
         System.out.println(prob.leastInterval(new char[]{'A','B','C','A','C'}, 3)); // 6
         System.out.println(prob.leastInterval(new char[]{'A','B','C','D','C'}, 3)); // 5
         System.out.println(prob.leastInterval(new char[]{'A','B','B','C','C','D','D','D','E'}, 3)); // 9
