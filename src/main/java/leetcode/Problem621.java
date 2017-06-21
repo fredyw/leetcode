@@ -25,16 +25,27 @@ public class Problem621 {
         });
         Collections.sort(charCountList, (a, b) -> Integer.compare(b.count, a.count));
         int result = 0;
-        int count = 0;
         int i = 0;
+        List<Character> list = new ArrayList<>();
         while (!charCountList.isEmpty()) {
             CharCount charCount = charCountList.get(i);
+            int size = list.size();
+            for (int j = size - 1; j >= (size - n) && j >= 0; j--) {
+                if (list.get(j) == charCount.ch) {
+                    for (int k = 0; k < n - (size - j - 1); k++) {
+                        list.add(' ');
+                        result++;
+                    }
+                    break;
+                }
+            }
+
+            list.add(charCount.ch);
             charCount.count--;
             if (charCount.count == 0) {
                 charCountList.remove(i);
                 i--;
             }
-            count++;
             result++;
             i++;
             if (i == 0) {
@@ -62,18 +73,18 @@ public class Problem621 {
 
     public static void main(String[] args) {
         Problem621 prob = new Problem621();
-//        System.out.println(prob.leastInterval(new char[]{'A','A','A','B','B','B'}, 2)); // 8
-//        System.out.println(prob.leastInterval(new char[]{'A','A','A','B','B','B'}, 1)); // 6
-//        System.out.println(prob.leastInterval(new char[]{'A','A','A','B','B','B'}, 3)); // 10
-//        System.out.println(prob.leastInterval(new char[]{'A','B','B','B'}, 2)); // 7
-//        System.out.println(prob.leastInterval(new char[]{'A','B','B','B'}, 1)); // 5
-//        System.out.println(prob.leastInterval(new char[]{'A','B','C'}, 1)); // 3
-//        System.out.println(prob.leastInterval(new char[]{'A','B','C'}, 2)); // 3
-//        System.out.println(prob.leastInterval(new char[]{'A','B','C'}, 3)); // 3
-//        System.out.println(prob.leastInterval(new char[]{'A','B','C','A'}, 3)); // 4
-//        System.out.println(prob.leastInterval(new char[]{'A','B','C','A','C'}, 3)); // 6
-//        System.out.println(prob.leastInterval(new char[]{'A','B','C','D','C'}, 3)); // 5
-//        System.out.println(prob.leastInterval(new char[]{'A','B','B','C','C','D','D','D','E'}, 3)); // 9
+        System.out.println(prob.leastInterval(new char[]{'A','A','A','B','B','B'}, 2)); // 8
+        System.out.println(prob.leastInterval(new char[]{'A','A','A','B','B','B'}, 1)); // 6
+        System.out.println(prob.leastInterval(new char[]{'A','A','A','B','B','B'}, 3)); // 10
+        System.out.println(prob.leastInterval(new char[]{'A','B','B','B'}, 2)); // 7
+        System.out.println(prob.leastInterval(new char[]{'A','B','B','B'}, 1)); // 5
+        System.out.println(prob.leastInterval(new char[]{'A','B','C'}, 1)); // 3
+        System.out.println(prob.leastInterval(new char[]{'A','B','C'}, 2)); // 3
+        System.out.println(prob.leastInterval(new char[]{'A','B','C'}, 3)); // 3
+        System.out.println(prob.leastInterval(new char[]{'A','B','C','A'}, 3)); // 4
+        System.out.println(prob.leastInterval(new char[]{'A','B','C','A','C'}, 3)); // 6
+        System.out.println(prob.leastInterval(new char[]{'A','B','C','D','C'}, 3)); // 5
+        System.out.println(prob.leastInterval(new char[]{'A','B','B','C','C','D','D','D','E'}, 3)); // 9
         System.out.println(prob.leastInterval(new char[]{'A','B','B','C','C','D','D','D','E'}, 4)); // 11
     }
 }
