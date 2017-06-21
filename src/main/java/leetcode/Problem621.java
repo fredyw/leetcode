@@ -2,11 +2,9 @@ package leetcode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
-import java.util.Set;
 
 /**
  * https://leetcode.com/problems/task-scheduler/
@@ -30,14 +28,15 @@ public class Problem621 {
             return cmp;
         });
         charCountMap.forEach((ch, count) -> queue.add(new CharCount(ch, count)));
-        Set<Character> processed = new HashSet<>();
+        boolean[] processed = new boolean[26];
+        int processedCount = 0;
         List<CharCount> tmp = new ArrayList<>();
         while (!queue.isEmpty()) {
             boolean found = false;
             CharCount charCount = null;
             while (!queue.isEmpty()) {
                 charCount = queue.poll();
-                if (processed.contains(charCount.ch)) {
+                if (processed[charCount.ch - 'A']) {
                     tmp.add(charCount);
                     continue;
                 }
@@ -45,16 +44,19 @@ public class Problem621 {
                 break;
             }
             if (!found) {
-                result += n - processed.size() + 1;
-                processed.clear();
+                result += n - processedCount + 1;
+                processed = new boolean[26];
+                processedCount = 0;
             } else {
                 charCount.count--;
                 if (charCount.count > 0) {
                     queue.add(charCount);
                 }
-                processed.add(charCount.ch);
-                if (processed.size() == n + 1) {
-                    processed.clear();
+                processed[charCount.ch - 'A'] = true;
+                processedCount++;
+                if (processedCount == n + 1) {
+                    processed = new boolean[26];
+                    processedCount = 0;
                 }
                 result++;
             }
@@ -74,27 +76,5 @@ public class Problem621 {
             this.ch = ch;
             this.count = count;
         }
-
-        @Override
-        public String toString() {
-            return ch + " -> " + count;
-        }
-    }
-
-    public static void main(String[] args) {
-        Problem621 prob = new Problem621();
-        System.out.println(prob.leastInterval(new char[]{'A','A','A','B','B','B'}, 2)); // 8
-        System.out.println(prob.leastInterval(new char[]{'A','A','A','B','B','B'}, 1)); // 6
-        System.out.println(prob.leastInterval(new char[]{'A','A','A','B','B','B'}, 3)); // 10
-        System.out.println(prob.leastInterval(new char[]{'A','B','B','B'}, 2)); // 7
-        System.out.println(prob.leastInterval(new char[]{'A','B','B','B'}, 1)); // 5
-        System.out.println(prob.leastInterval(new char[]{'A','B','C'}, 1)); // 3
-        System.out.println(prob.leastInterval(new char[]{'A','B','C'}, 2)); // 3
-        System.out.println(prob.leastInterval(new char[]{'A','B','C'}, 3)); // 3
-        System.out.println(prob.leastInterval(new char[]{'A','B','C','A'}, 3)); // 5
-        System.out.println(prob.leastInterval(new char[]{'A','B','C','A','C'}, 3)); // 6
-        System.out.println(prob.leastInterval(new char[]{'A','B','C','D','C'}, 3)); // 5
-        System.out.println(prob.leastInterval(new char[]{'A','B','B','C','C','D','D','D','E'}, 3)); // 9
-        System.out.println(prob.leastInterval(new char[]{'A','B','B','C','C','D','D','D','E'}, 4)); // 11
     }
 }
