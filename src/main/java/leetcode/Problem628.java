@@ -1,18 +1,27 @@
 package leetcode;
 
+import java.util.Arrays;
+
 /**
  * https://leetcode.com/problems/maximum-product-of-three-numbers/
  */
 public class Problem628 {
     public int maximumProduct(int[] nums) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem628 prob = new Problem628();
-        System.out.println(prob.maximumProduct(new int[]{1, 2, 3})); // 6
-        System.out.println(prob.maximumProduct(new int[]{1, 2, 3, 4})); // 24
-        System.out.println(prob.maximumProduct(new int[]{-4, -3, -2, -1, 60})); // 720
+        Arrays.sort(nums);
+        boolean positive = false;
+        boolean negative = false;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] < 0) {
+                negative = true;
+            } else {
+                positive = true;
+            }
+        }
+        if (negative && positive) {
+            int a = nums[nums.length - 2] * nums[nums.length - 3];
+            int b = nums[0] * nums[1];
+            return nums[nums.length - 1] * Math.max(a, b);
+        }
+        return nums[nums.length - 1] * nums[nums.length - 2] * nums[nums.length - 3];
     }
 }
