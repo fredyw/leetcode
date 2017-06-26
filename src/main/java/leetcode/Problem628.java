@@ -13,5 +13,6 @@ public class Problem628 {
         Problem628 prob = new Problem628();
         System.out.println(prob.maximumProduct(new int[]{1, 2, 3})); // 6
         System.out.println(prob.maximumProduct(new int[]{1, 2, 3, 4})); // 24
+        System.out.println(prob.maximumProduct(new int[]{-4, -3, -2, -1, 60})); // 720
     }
 }
