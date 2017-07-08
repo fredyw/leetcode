@@ -78,31 +78,51 @@ public class Problem639 {
                 Timestamp ts = list.get(i);
                 if (Integer.parseInt(startSplit[0]) <= ts.year &&
                     Integer.parseInt(endSplit[0]) >= ts.year) {
-                    if (gra.equals("Year")) {
+                    if ((gra.equals("Year") &&
+                        (Integer.parseInt(startSplit[0]) == ts.year ||
+                            Integer.parseInt(endSplit[0]) == ts.year)) ||
+                        Integer.parseInt(startSplit[0]) < ts.year &&
+                            Integer.parseInt(endSplit[0]) > ts.year) {
                         result.add(ts.id);
                         continue;
                     }
                     if (Integer.parseInt(startSplit[1]) <= ts.month &&
                         Integer.parseInt(endSplit[1]) >= ts.month) {
-                        if (gra.equals("Month")) {
+                        if ((gra.equals("Month") &&
+                            (Integer.parseInt(startSplit[1]) == ts.month ||
+                                Integer.parseInt(endSplit[1]) == ts.month)) ||
+                            Integer.parseInt(startSplit[1]) < ts.month &&
+                                Integer.parseInt(endSplit[1]) > ts.month) {
                             result.add(ts.id);
                             continue;
                         }
                         if (Integer.parseInt(startSplit[2]) <= ts.day &&
                             Integer.parseInt(endSplit[2]) >= ts.day) {
-                            if (gra.equals("Day")) {
+                            if ((gra.equals("Day") &&
+                                (Integer.parseInt(startSplit[2]) == ts.day ||
+                                    Integer.parseInt(endSplit[2]) == ts.day)) ||
+                                Integer.parseInt(startSplit[2]) < ts.day &&
+                                    Integer.parseInt(endSplit[2]) > ts.day) {
                                 result.add(ts.id);
                                 continue;
                             }
                             if (Integer.parseInt(startSplit[3]) <= ts.hour &&
                                 Integer.parseInt(endSplit[3]) >= ts.hour) {
-                                if (gra.equals("Hour")) {
+                                if ((gra.equals("Hour") &&
+                                    (Integer.parseInt(startSplit[3]) == ts.hour ||
+                                        Integer.parseInt(endSplit[3]) == ts.hour)) ||
+                                    Integer.parseInt(startSplit[3]) < ts.hour &&
+                                        Integer.parseInt(endSplit[3]) > ts.hour) {
                                     result.add(ts.id);
                                     continue;
                                 }
                                 if (Integer.parseInt(startSplit[4]) <= ts.minute &&
                                     Integer.parseInt(endSplit[4]) >= ts.minute) {
-                                    if (gra.equals("Minute")) {
+                                    if ((gra.equals("Minute") &&
+                                        (Integer.parseInt(startSplit[4]) == ts.minute ||
+                                            Integer.parseInt(endSplit[4]) == ts.minute)) ||
+                                        Integer.parseInt(startSplit[4]) < ts.minute &&
+                                            Integer.parseInt(endSplit[4]) > ts.minute) {
                                         result.add(ts.id);
                                         continue;
                                     }
@@ -125,8 +145,9 @@ public class Problem639 {
         log.put(1, "2017:01:01:23:59:59");
         log.put(2, "2017:01:01:22:59:59");
         log.put(3, "2016:01:01:00:00:00");
-//        System.out.println(log.retrieve("2016:01:01:01:01:01", "2017:01:01:23:00:00", "Year")); // return [1,2,3], because you need to return all logs within 2016 and 2017.
-//        System.out.println(log.retrieve("2016:01:01:01:01:01", "2017:01:01:23:00:00", "Hour")); // return [1,2], because you need to return all logs start from 2016:01:01:01 to 2017:01:01:23, where log 3 is left outside the range.
-        System.out.println(log.retrieve("2014:01:01:01:01:01", "2018:01:01:23:00:00", "Hour")); // return [1,2,3]
+        System.out.println(log.retrieve("2016:01:01:01:01:01", "2017:01:01:23:00:00", "Year")); // [1,2,3]
+        System.out.println(log.retrieve("2016:01:01:01:01:01", "2017:01:01:23:00:00", "Hour")); // [1,2]
+        System.out.println(log.retrieve("2014:01:01:01:01:01", "2018:01:01:23:00:00", "Hour")); // [1,2,3]
+        System.out.println(log.retrieve("2017:01:01:23:00:00", "2017:01:01:23:59:59", "Second")); // [1]
     }
 }
