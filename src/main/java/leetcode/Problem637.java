@@ -12,7 +12,7 @@ import java.util.Queue;
  */
 public class Problem637 {
     public static class TreeNode {
-        long val;
+        int val;
         TreeNode left;
         TreeNode right;
 
@@ -67,16 +67,5 @@ public class Problem637 {
             this.level = level;
             this.node = node;
         }
-    }
-
-    public static void main(String[] args) {
-        Problem637 prob = new Problem637();
-
-        TreeNode root = new TreeNode(3);
-        root.left = new TreeNode(9);
-        root.right = new TreeNode(20);
-        root.right.left = new TreeNode(15);
-        root.right.right = new TreeNode(7);
-        System.out.println(prob.averageOfLevels(root)); // [3, 14.5, 11]
     }
 }
