@@ -2,50 +2,40 @@ package leetcode;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.TreeSet;
+import java.util.PriorityQueue;
 
 /**
  * https://leetcode.com/problems/smallest-range/
  */
 public class Problem632 {
     public int[] smallestRange(List<List<Integer>> nums) {
-        TreeSet<Integer> set = new TreeSet<>();
+        int minx = 0;
+        int miny = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        int[] next = new int[nums.size()];
+        boolean flag = true;
+        PriorityQueue<Integer> minQueue = new PriorityQueue<>((i, j) -> nums.get(i).get(next[i]) - nums.get(j).get(next[j]));
         for (int i = 0; i < nums.size(); i++) {
-            List<Integer> list = nums.get(i);
-            for (int j = 0; j < list.size(); j++) {
-                int val = list.get(j);
-                boolean found = true;
-                for (int k = 0; k < nums.size(); k++) {
-                    int lo = nums.get(k).get(0);
-                    int hi = nums.get(k).get(nums.get(k).size() - 1);
-                    if (lo > val || val > hi) {
-                        found = false;
-                    }
+            minQueue.offer(i);
+            max = Math.max(max, nums.get(i).get(0));
+        }
+        for (int i = 0; i < nums.size() && flag; i++) {
+            for (int j = 0; j < nums.get(i).size() && flag; j++) {
+                int mini = minQueue.poll();
+                if (miny - minx > max - nums.get(mini).get(next[mini])) {
+                    minx = nums.get(mini).get(next[mini]);
+                    miny = max;
                 }
-                if (found) {
-                    set.add(val);
+                next[mini]++;
+                if (next[mini] == nums.get(mini).size()) {
+                    flag = false;
+                    break;
                 }
+                minQueue.offer(mini);
+                max = Math.max(max, nums.get(mini).get(next[mini]));
             }
         }
-        int[] result = new int[2];
-        int i = 0;
-        int prev = 0;
-        int min = Integer.MAX_VALUE;
-        for (int val : set) {
-            if (i == 0) {
-                prev = val;
-            } else {
-                int diff = val - prev;
-                if (diff < min) {
-                    diff = min;
-                    result[0] = prev;
-                    result[1] = val;
-                }
-                prev = val;
-            }
-            i++;
-        }
-        return result;
+        return new int[]{minx, miny};
     }
 
     public static void main(String[] args) {
