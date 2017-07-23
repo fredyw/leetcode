@@ -14,18 +14,18 @@ public class Problem540 {
             if (mid + 1 < nums.length) {
                 if (mid - 1 >= 0) {
                     if (nums[mid] == nums[mid - 1]) {
-                        if ((mid - 1 - i) % 2 != 0) {
-                            j = mid;
+                        if ((mid - 1) % 2 != 0) {
+                            j = mid - 1;
                         } else {
-                            i = mid;
+                            i = mid + 1;
                         }
                     }
                 }
                 if (nums[mid] == nums[mid + 1]) {
-                    if ((j - mid + 1) % 2 != 0) {
-                        i = mid;
+                    if ((nums.length - 1 - mid + 1) % 2 != 0) {
+                        i = mid + 1;
                     } else {
-                        j = mid;
+                        j = mid - 1;
                     }
                 }
             }
@@ -34,13 +34,5 @@ public class Problem540 {
             }
         }
         return nums[i];
-    }
-
-    public static void main(String[] args) {
-        Problem540 prob = new Problem540();
-//        System.out.println(prob.singleNonDuplicate(new int[]{1, 1, 2, 3, 3, 4, 4, 8, 8})); // 2
-//        System.out.println(prob.singleNonDuplicate(new int[]{3, 3, 7, 7, 10, 11, 11})); // 10
-        System.out.println(prob.singleNonDuplicate(new int[]{1, 3, 3, 7, 7, 11, 11})); // 1
-        System.out.println(prob.singleNonDuplicate(new int[]{1, 1, 3, 3, 7, 7, 11})); // 11
     }
 }
