@@ -47,7 +47,8 @@ public class Problem647 {
 //        System.out.println(prob.countSubstrings("abc")); // 3
 //        System.out.println(prob.countSubstrings("abbc")); // 5
 //        System.out.println(prob.countSubstrings("aaa")); // 6
-//        System.out.println(prob.countSubstrings("aaabbbccc")); // 18
-        System.out.println(prob.countSubstrings("xkjkqlajprjwefilxgpdpebieswu")); // 30
+        System.out.println(prob.countSubstrings("aaabbbccc")); // 18
+        System.out.println(prob.countSubstrings("aabaa")); // 9
+//        System.out.println(prob.countSubstrings("xkjkqlajprjwefilxgpdpebieswu")); // 30
     }
 }
