@@ -1,18 +1,25 @@
 package leetcode;
 
-import java.util.Arrays;
-
 /**
  * https://leetcode.com/problems/set-mismatch/
  */
 public class Problem645 {
     public int[] findErrorNums(int[] nums) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem645 prob = new Problem645();
-        System.out.println(Arrays.toString(prob.findErrorNums(new int[]{1, 2, 2, 4}))); // [2, 3]
+        int duplicate = 0;
+        boolean[] b = new boolean[nums.length];
+        for (int num : nums) {
+            if (b[num - 1]) {
+                duplicate = num;
+            }
+            b[num - 1] = true;
+        }
+        int missing = 0;
+        for (int i = 0; i < b.length; i++) {
+            if (!b[i]) {
+                missing = i + 1;
+                break;
+            }
+        }
+        return new int[]{duplicate, missing};
     }
 }
