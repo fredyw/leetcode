@@ -14,32 +14,30 @@ public class Problem646 {
             }
             return cmp;
         });
-        return findLongestChain(pairs, 0);
+        Integer[] memo = new Integer[pairs.length];
+        int max = 0;
+        for (int i = 0; i < pairs.length; i++) {
+            max = Math.max(max, findLongestChain(pairs, i, memo) + 1);
+        }
+        return max;
     }
 
-    private static int findLongestChain(int[][] pairs, int idx) {
+    private static int findLongestChain(int[][] pairs, int idx, Integer[] memo) {
         if (idx == pairs.length) {
             return 0;
+        }
+        if (memo[idx] != null) {
+            return memo[idx];
         }
         int max = 0;
         int[] current = pairs[idx];
         for (int i = idx + 1; i < pairs.length; i++) {
             int[] next = pairs[i];
-            int val = 1;
             if (current[1] < next[0]) {
-                val++;
+                max = Math.max(max, findLongestChain(pairs, i, memo) + 1);
             }
-            max = Math.max(max, findLongestChain(pairs, i + 1) + val);
         }
+        memo[idx] = max;
         return max;
-    }
-
-    public static void main(String[] args) {
-        Problem646 prob = new Problem646();
-//        System.out.println(prob.findLongestChain(new int[][]{{1, 2}, {2, 3}, {3, 4}})); // 2
-//        System.out.println(prob.findLongestChain(new int[][]{{1, 2}, {2, 3}, {3, 4}, {4, 5}, {5, 6}})); // 3
-//        System.out.println(prob.findLongestChain(new int[][]{{1, 2}, {2, 3}, {3, 4}, {4, 5}})); // 2
-//        System.out.println(prob.findLongestChain(new int[][]{{1, 2}, {2, 3}, {3, 4}, {4, 5}, {5, 6}, {7, 8}})); // 4
-        System.out.println(prob.findLongestChain(new int[][]{{-1, 0}, {1, 2}, {2, 3}, {3, 4}, {4, 5}, {5, 6}, {7, 8}})); // 5
     }
 }
