@@ -39,7 +39,7 @@ public class Problem646 {
 //        System.out.println(prob.findLongestChain(new int[][]{{1, 2}, {2, 3}, {3, 4}})); // 2
 //        System.out.println(prob.findLongestChain(new int[][]{{1, 2}, {2, 3}, {3, 4}, {4, 5}, {5, 6}})); // 3
 //        System.out.println(prob.findLongestChain(new int[][]{{1, 2}, {2, 3}, {3, 4}, {4, 5}})); // 2
-        System.out.println(prob.findLongestChain(new int[][]{{1, 2}, {2, 3}, {3, 4}, {4, 5}, {5, 6}, {7, 8}})); // 3
-//        System.out.println(prob.findLongestChain(new int[][]{{-1, 0}, {1, 2}, {2, 3}, {3, 4}, {4, 5}, {5, 6}, {7, 8}})); // 5
+//        System.out.println(prob.findLongestChain(new int[][]{{1, 2}, {2, 3}, {3, 4}, {4, 5}, {5, 6}, {7, 8}})); // 4
+        System.out.println(prob.findLongestChain(new int[][]{{-1, 0}, {1, 2}, {2, 3}, {3, 4}, {4, 5}, {5, 6}, {7, 8}})); // 5
     }
 }
