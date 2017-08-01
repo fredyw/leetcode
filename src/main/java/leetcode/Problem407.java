@@ -96,33 +96,5 @@ public class Problem407 {
             this.col = col;
             this.value = value;
         }
-
-        @Override
-        public String toString() {
-            return "(" + row + ", " + col + ") => " + value;
-        }
-    }
-
-    public static void main(String[] args) {
-        Problem407 prob = new Problem407();
-        System.out.println(prob.trapRainWater(new int[][]{
-            {1, 4, 3, 1, 3, 2},
-            {3, 2, 1, 3, 2, 4},
-            {2, 3, 3, 2, 3, 1}
-        })); // 4
-        System.out.println(prob.trapRainWater(new int[][]{
-            {1, 3, 3, 1, 3, 2},
-            {3, 2, 1, 3, 2, 3},
-            {3, 3, 3, 2, 3, 1}
-        })); // 4
-        System.out.println(prob.trapRainWater(new int[][]{
-            {3, 10, 8, 12, 2, 7, 9},
-            {7, 1, 11, 3, 8, 1, 10},
-            {9, 7, 3, 10, 2, 5, 6},
-            {7, 11, 1, 4, 6, 11, 9},
-            {4, 5, 8, 12, 3, 4, 2},
-            {12, 2, 12, 1, 5, 9, 6},
-            {6, 5, 8, 12, 4, 11, 10},
-        })); // 39
     }
 }
