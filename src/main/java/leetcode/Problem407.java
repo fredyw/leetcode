@@ -39,6 +39,7 @@ public class Problem407 {
             int val = heightMap[row][maxCol - 1];
             queue.add(new RowCol(row, maxCol - 1, val));
         }
+        int result = 0;
         int max = 0;
         while (!queue.isEmpty()) {
             RowCol rowCol = queue.remove();
@@ -46,24 +47,24 @@ public class Problem407 {
             // top
             int row = rowCol.row - 1;
             int col = rowCol.col;
-            process(heightMap, queue, visited, row, col, maxRow, maxCol, max);
+            result += process(heightMap, queue, visited, row, col, maxRow, maxCol, max);
             // left
             row = rowCol.row;
             col = rowCol.col - 1;
-            process(heightMap, queue, visited, row, col, maxRow, maxCol, max);
+            result += process(heightMap, queue, visited, row, col, maxRow, maxCol, max);
             // bottom
             row = rowCol.row + 1;
             col = rowCol.col;
-            process(heightMap, queue, visited, row, col, maxRow, maxCol, max);
+            result += process(heightMap, queue, visited, row, col, maxRow, maxCol, max);
             // right
             row = rowCol.row;
             col = rowCol.col + 1;
-            process(heightMap, queue, visited, row, col, maxRow, maxCol, max);
+            result += process(heightMap, queue, visited, row, col, maxRow, maxCol, max);
         }
-        return max;
+        return result;
     }
 
-    private static void process(int[][] heightMap,
+    private static int process(int[][] heightMap,
                                 PriorityQueue<RowCol> queue,
                                 boolean[][] visited,
                                 int row,
@@ -72,13 +73,17 @@ public class Problem407 {
                                 int maxCol,
                                 int max) {
         if (row >= 0 && row < maxRow && col >= 0 && col < maxCol && !visited[row][col]) {
+            int result = 0;
             int val = heightMap[row][col];
             if (val < max) {
                 val = max - val;
+                result = val;
             }
             visited[row][col] = true;
             queue.add(new RowCol(row, col, val));
+            return result;
         }
+        return 0;
     }
 
     private static class RowCol {
@@ -102,9 +107,13 @@ public class Problem407 {
         Problem407 prob = new Problem407();
         System.out.println(prob.trapRainWater(new int[][]{
             {1, 4, 3, 1, 3, 2},
-            {2, 3, 3, 2, 3, 1},
-            {2, 3, 3, 2, 3, 1},
+            {3, 2, 1, 3, 2, 4},
             {2, 3, 3, 2, 3, 1}
+        })); // 4
+        System.out.println(prob.trapRainWater(new int[][]{
+            {1, 3, 3, 1, 3, 2},
+            {3, 2, 1, 3, 2, 3},
+            {3, 3, 3, 2, 3, 1}
         })); // 4
         System.out.println(prob.trapRainWater(new int[][]{
             {3, 10, 8, 12, 2, 7, 9},
@@ -114,6 +123,6 @@ public class Problem407 {
             {4, 5, 8, 12, 3, 4, 2},
             {12, 2, 12, 1, 5, 9, 6},
             {6, 5, 8, 12, 4, 11, 10},
-        })); // 4
+        })); // 39
     }
 }
