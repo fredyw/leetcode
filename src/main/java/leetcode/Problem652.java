@@ -37,5 +37,16 @@ public class Problem652 {
         root.right.left.left = new TreeNode(4);
         root.right.right = new TreeNode(4);
         System.out.println(prob.findDuplicateSubtrees(root)); // [2, 4]
+
+        root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+        root.right = new TreeNode(3);
+        root.right.left = new TreeNode(2);
+        root.right.left.left = new TreeNode(4);
+        root.right.left.right = new TreeNode(5);
+        root.right.right = new TreeNode(4);
+        System.out.println(prob.findDuplicateSubtrees(root)); // [2, 4]
     }
 }
