@@ -5,23 +5,34 @@ package leetcode;
  */
 public class Problem650 {
     public int minSteps(int n) {
-        return minSteps(1, n, 1);
+        Integer[][] memo = new Integer[n][n];
+        return minSteps(1, n, 1, memo);
     }
 
-    private static int minSteps(int n, int m, int x) {
-        if (n == m) {
-            return 1;
-        } else if (n > m) {
+    private static int minSteps(int m, int n, int x, Integer[][] memo) {
+        if (n == 1) {
             return 0;
         }
-        int a = minSteps(n - x, m, x) + 1;
-        int b = minSteps(n, m, n);
+        if (m == n) {
+            return 1;
+        }
+        if (m > n) {
+            return Integer.MAX_VALUE;
+        }
+        if (memo[m][x] != null) {
+            return memo[m][x];
+        }
+        int a = minSteps(m + x, n, x, memo);
+        if (a < Integer.MAX_VALUE) {
+            a++;
+        }
+        int b = minSteps(m + m, n, m, memo);
+        if (b < Integer.MAX_VALUE) {
+            // copy all + paste
+            b += 2;
+        }
         int min = Math.min(a, b);
+        memo[m][x] = min;
         return min;
-    }
-
-    public static void main(String[] args) {
-        Problem650 prob = new Problem650();
-        System.out.println(prob.minSteps(3)); // 3
     }
 }
