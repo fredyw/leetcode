@@ -5,16 +5,54 @@ package leetcode;
  */
 public class Problem640 {
     public String solveEquation(String equation) {
-        // TODO
-        return "";
+        String[] e = equation.split("=");
+        String lhs = e[0];
+        VarConst lhsvc = parse(lhs);
+        String rhs = e[1];
+        VarConst rhsvc = parse(rhs);
+        int variable = lhsvc.variable - rhsvc.variable;
+        int constant = rhsvc.constant - lhsvc.constant;
+        if (variable == 0 && constant == 0) {
+            return "Infinite solutions";
+        } else if (variable == 0 && constant != 0) {
+            return "No solution";
+        }
+        return "x=" + (constant / variable);
     }
 
-    public static void main(String[] args) {
-        Problem640 prob = new Problem640();
-        System.out.println(prob.solveEquation("x+5-3+x=6+x-2")); // x=2
-        System.out.println(prob.solveEquation("x=x")); // Infinite solutions
-        System.out.println(prob.solveEquation("2x=x")); // x=0
-        System.out.println(prob.solveEquation("2x+3x-6x=x+2")); // x=-1
-        System.out.println(prob.solveEquation("x=x+2")); // No solution
+    private static VarConst parse(String eq) {
+        VarConst varConst = new VarConst();
+        int prev = 0;
+        int curr = 0;
+        for (; curr < eq.length(); curr++) {
+            if (curr != 0 && (eq.charAt(curr) == '+' || eq.charAt(curr) == '-')) {
+                String sub = eq.substring(prev, curr);
+                update(varConst, sub);
+                prev = curr;
+            }
+        }
+        String sub = eq.substring(prev, curr);
+        update(varConst, sub);
+        return varConst;
+    }
+
+    private static void update(VarConst varConst, String sub) {
+        if (sub.contains("x")) {
+            sub = sub.replaceAll("x", "");
+            if (sub.isEmpty() || sub.equals("+")) {
+                varConst.variable += 1;
+            } else if (sub.equals("-")) {
+                varConst.variable += -1;
+            } else {
+                varConst.variable += Integer.parseInt(sub);
+            }
+        } else {
+            varConst.constant += Integer.parseInt(sub);
+        }
+    }
+
+    private static class VarConst {
+        private int variable;
+        private int constant;
     }
 }
