@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * https://leetcode.com/problems/two-sum-iv-input-is-a-bst/
  */
@@ -15,21 +18,32 @@ public class Problem653 {
     }
 
     public boolean findTarget(TreeNode root, int k) {
-        // TODO
+        Map<Integer, Integer> map = new HashMap<>();
+        findTarget(root, map);
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            int val = entry.getKey();
+            Integer count = map.get(k - val);
+            if (count != null) {
+                if (val == k - val && count >= 2) {
+                    return true;
+                } else if (val != k - val) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
-    public static void main(String[] args) {
-        Problem653 prob = new Problem653();
-
-        TreeNode root = new TreeNode(5);
-        root.left = new TreeNode(3);
-        root.right = new TreeNode(6);
-        root.left.left = new TreeNode(2);
-        root.left.right = new TreeNode(4);
-        root.right.right = new TreeNode(7);
-
-        System.out.println(prob.findTarget(root, 9)); // true
-        System.out.println(prob.findTarget(root, 28)); // false
+    private static void findTarget(TreeNode root, Map<Integer, Integer> map) {
+        if (root == null) {
+            return;
+        }
+        if (!map.containsKey(root.val)) {
+            map.put(root.val, 1);
+        } else {
+            map.put(root.val, map.get(root.val) + 1);
+        }
+        findTarget(root.left, map);
+        findTarget(root.right, map);
     }
 }
