@@ -12,6 +12,26 @@ public class Problem638 {
         return 0;
     }
 
+    private static void lowestPrice(List<Integer> prices, List<List<Integer>> specials, List<Integer> needs) {
+        for (List<Integer> special : specials) {
+            int specialPrice = special.get(special.size() - 1);
+            // exclude the last element
+            boolean foundSpecial = true;
+            for (int i = 0; i < special.size() - 1; i++) {
+                if (needs.get(0) - special.get(i) < 0) {
+                    foundSpecial = false;
+                    break;
+                }
+            }
+            if (foundSpecial) {
+                for (int i = 0; i < special.size() - 1; i++) {
+                    needs.set(i, needs.get(0) - special.get(i));
+                }
+            }
+            lowestPrice(prices, specials, needs);
+        }
+    }
+
     public static void main(String[] args) {
         Problem638 prob = new Problem638();
         System.out.println(prob.shoppingOffers(
