@@ -17,5 +17,6 @@ public class Problem658 {
         Problem658 prob = new Problem658();
         System.out.println(prob.findClosestElements(Arrays.asList(1, 2, 3, 4, 5), 4, 3)); // [1,2,3,4]
         System.out.println(prob.findClosestElements(Arrays.asList(1, 2, 3, 4, 5), 4, -1)); // [1,2,3,4]
+        System.out.println(prob.findClosestElements(Arrays.asList(10, 20, 30, 31, 35), 4, 30)); // [20,30,31,35]
     }
 }
