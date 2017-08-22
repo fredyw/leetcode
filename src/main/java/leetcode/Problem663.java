@@ -15,25 +15,37 @@ public class Problem663 {
     }
 
     public boolean checkEqualTree(TreeNode root) {
-        // TODO
-        return false;
+        if (root.left == null && root.right == null) {
+            return false;
+        }
+        int sum = sum(root);
+        return checkEqualTree(root, sum).found;
     }
 
-    public static void main(String[] args) {
-        Problem663 prob = new Problem663();
+    private static int sum(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+        return sum(node.left) + sum(node.right) + node.val;
+    }
 
-        TreeNode root = new TreeNode(5);
-        root.left = new TreeNode(10);
-        root.right = new TreeNode(10);
-        root.right.left = new TreeNode(2);
-        root.right.right = new TreeNode(3);
-        System.out.println(prob.checkEqualTree(root)); // true
+    private static FoundSum checkEqualTree(TreeNode node, int sum) {
+        if (node == null) {
+            return new FoundSum(false, 0);
+        }
+        FoundSum left = checkEqualTree(node.left, sum);
+        FoundSum right = checkEqualTree(node.right, sum);
+        boolean found = ((sum - left.sum) == left.sum) || ((sum - right.sum) == right.sum);
+        return new FoundSum(left.found || right.found || found, left.sum + right.sum + node.val);
+    }
 
-        root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(10);
-        root.right.left = new TreeNode(2);
-        root.right.right = new TreeNode(20);
-        System.out.println(prob.checkEqualTree(root)); // false
+    private static class FoundSum {
+        private final boolean found;
+        private final int sum;
+
+        public FoundSum(boolean found, int sum) {
+            this.found = found;
+            this.sum = sum;
+        }
     }
 }
