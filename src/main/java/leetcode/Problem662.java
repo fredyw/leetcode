@@ -37,18 +37,22 @@ public class Problem662 {
                     }
                     List<NodeLevel> list = map.get(current.level + 1);
                     if (current.node.left != null) {
-                        list.add(new NodeLevel(current.level + 1, current.node.left));
-                        queue.add(new NodeLevel(current.level + 1, current.node.left));
+                        NodeLevel n = new NodeLevel(current.level + 1, current.node.left);
+                        list.add(n);
+                        queue.add(n);
                     } else {
-                        list.add(new NodeLevel(current.level + 1, null));
-                        queue.add(new NodeLevel(current.level + 1, null));
+                        NodeLevel n = new NodeLevel(current.level + 1, null);
+                        list.add(n);
+                        queue.add(n);
                     }
                     if (current.node.right != null) {
-                        list.add(new NodeLevel(current.level + 1, current.node.right));
-                        queue.add(new NodeLevel(current.level + 1, current.node.right));
+                        NodeLevel n = new NodeLevel(current.level + 1, current.node.right);
+                        list.add(n);
+                        queue.add(n);
                     } else {
-                        list.add(new NodeLevel(current.level + 1, null));
-                        queue.add(new NodeLevel(current.level + 1, null));
+                        NodeLevel n = new NodeLevel(current.level + 1, null);
+                        list.add(n);
+                        queue.add(n);
                     }
                 } else {
                     if (!map.containsKey(current.level + 1)) {
