@@ -23,24 +23,42 @@ public class Problem662 {
     }
 
     public int widthOfBinaryTree(TreeNode root) {
-        Queue<NodeLevel> queue = new LinkedList<NodeLevel>();
+        int height = height(root);
+        Queue<NodeLevel> queue = new LinkedList<>();
         Map<Integer, List<NodeLevel>> map = new HashMap<>();
         map.put(1, Arrays.asList(new NodeLevel(1, root)));
         queue.add(new NodeLevel(1, root));
         while (!queue.isEmpty()) {
             NodeLevel current = queue.remove();
-            if (current.node != null) {
-                if (!map.containsKey(current.level + 1)) {
-                    map.put(current.level + 1, new ArrayList<>());
-                }
-                List<NodeLevel> list = map.get(current.level + 1);
-                list.add(new NodeLevel(current.level + 1, current.node.left));
-                list.add(new NodeLevel(current.level + 1, current.node.right));
-                if (current.node.left != null) {
-                    queue.add(new NodeLevel(current.level + 1, current.node.left));
-                }
-                if (current.node.right != null) {
-                    queue.add(new NodeLevel(current.level + 1, current.node.right));
+            if (current.level < height) {
+                if (current.node != null) {
+                    if (!map.containsKey(current.level + 1)) {
+                        map.put(current.level + 1, new ArrayList<>());
+                    }
+                    List<NodeLevel> list = map.get(current.level + 1);
+                    if (current.node.left != null) {
+                        list.add(new NodeLevel(current.level + 1, current.node.left));
+                        queue.add(new NodeLevel(current.level + 1, current.node.left));
+                    } else {
+                        list.add(new NodeLevel(current.level + 1, null));
+                        queue.add(new NodeLevel(current.level + 1, null));
+                    }
+                    if (current.node.right != null) {
+                        list.add(new NodeLevel(current.level + 1, current.node.right));
+                        queue.add(new NodeLevel(current.level + 1, current.node.right));
+                    } else {
+                        list.add(new NodeLevel(current.level + 1, null));
+                        queue.add(new NodeLevel(current.level + 1, null));
+                    }
+                } else {
+                    if (!map.containsKey(current.level + 1)) {
+                        map.put(current.level + 1, new ArrayList<>());
+                    }
+                    List<NodeLevel> list = map.get(current.level + 1);
+                    list.add(new NodeLevel(current.level + 1, null)); // left
+                    list.add(new NodeLevel(current.level + 1, null)); // right
+                    queue.add(new NodeLevel(current.level + 1, null)); // left
+                    queue.add(new NodeLevel(current.level + 1, null)); // right
                 }
             }
         }
@@ -65,6 +83,13 @@ public class Problem662 {
         return max;
     }
 
+    private static int height(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+        return Math.max(height(node.left), height(node.right)) + 1;
+    }
+
     private static class NodeLevel {
         private final int level;
         private final TreeNode node;
@@ -84,24 +109,24 @@ public class Problem662 {
         Problem662 prob = new Problem662();
 
         TreeNode root = new TreeNode(1);
-//        root.left = new TreeNode(3);
-//        root.left.left = new TreeNode(5);
-//        root.left.right = new TreeNode(3);
-//        root.right = new TreeNode(2);
-//        root.right.right = new TreeNode(9);
-//        System.out.println(prob.widthOfBinaryTree(root)); // 4
-//
-//        root = new TreeNode(1);
-//        root.left = new TreeNode(3);
-//        root.left.left = new TreeNode(5);
-//        root.left.right = new TreeNode(3);
-//        System.out.println(prob.widthOfBinaryTree(root)); // 2
-//
-//        root = new TreeNode(1);
-//        root.left = new TreeNode(3);
-//        root.left.left = new TreeNode(5);
-//        root.right = new TreeNode(2);
-//        System.out.println(prob.widthOfBinaryTree(root)); // 2
+        root.left = new TreeNode(3);
+        root.left.left = new TreeNode(5);
+        root.left.right = new TreeNode(3);
+        root.right = new TreeNode(2);
+        root.right.right = new TreeNode(9);
+        System.out.println(prob.widthOfBinaryTree(root)); // 4
+
+        root = new TreeNode(1);
+        root.left = new TreeNode(3);
+        root.left.left = new TreeNode(5);
+        root.left.right = new TreeNode(3);
+        System.out.println(prob.widthOfBinaryTree(root)); // 2
+
+        root = new TreeNode(1);
+        root.left = new TreeNode(3);
+        root.left.left = new TreeNode(5);
+        root.right = new TreeNode(2);
+        System.out.println(prob.widthOfBinaryTree(root)); // 2
 
         root = new TreeNode(1);
         root.left = new TreeNode(3);
