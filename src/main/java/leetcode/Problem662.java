@@ -1,11 +1,8 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Queue;
 
 /**
@@ -23,68 +20,61 @@ public class Problem662 {
     }
 
     public int widthOfBinaryTree(TreeNode root) {
+        int max = 0;
         int height = height(root);
         Queue<NodeLevel> queue = new LinkedList<>();
-        Map<Integer, List<NodeLevel>> map = new HashMap<>();
-        map.put(1, Arrays.asList(new NodeLevel(1, root)));
         queue.add(new NodeLevel(1, root));
+        int level = 1;
+        List<NodeLevel> tmp = new ArrayList<>();
         while (!queue.isEmpty()) {
             NodeLevel current = queue.remove();
+            if (level < current.level) {
+                level = current.level;
+                max = Math.max(max, count(tmp));
+                tmp = new ArrayList<>();
+            }
+            tmp.add(current);
             if (current.level < height) {
                 if (current.node != null) {
-                    if (!map.containsKey(current.level + 1)) {
-                        map.put(current.level + 1, new ArrayList<>());
-                    }
-                    List<NodeLevel> list = map.get(current.level + 1);
                     if (current.node.left != null) {
                         NodeLevel n = new NodeLevel(current.level + 1, current.node.left);
-                        list.add(n);
                         queue.add(n);
                     } else {
                         NodeLevel n = new NodeLevel(current.level + 1, null);
-                        list.add(n);
                         queue.add(n);
                     }
                     if (current.node.right != null) {
                         NodeLevel n = new NodeLevel(current.level + 1, current.node.right);
-                        list.add(n);
                         queue.add(n);
                     } else {
                         NodeLevel n = new NodeLevel(current.level + 1, null);
-                        list.add(n);
                         queue.add(n);
                     }
                 } else {
-                    if (!map.containsKey(current.level + 1)) {
-                        map.put(current.level + 1, new ArrayList<>());
-                    }
-                    List<NodeLevel> list = map.get(current.level + 1);
-                    list.add(new NodeLevel(current.level + 1, null)); // left
-                    list.add(new NodeLevel(current.level + 1, null)); // right
                     queue.add(new NodeLevel(current.level + 1, null)); // left
                     queue.add(new NodeLevel(current.level + 1, null)); // right
                 }
             }
         }
-        int max = 0;
-        for (Map.Entry<Integer, List<NodeLevel>> entry : map.entrySet()) {
-            List<NodeLevel> list = entry.getValue();
-            int count = 0;
-            int idx = -1;
-            for (int i = 0; i < list.size(); i++) {
-                NodeLevel nodeLevel = list.get(i);
-                if (nodeLevel.node != null) {
-                    if (idx == -1) {
-                        count++;
-                    } else {
-                        count += i - idx;
-                    }
-                    idx = i;
-                }
-            }
-            max = Math.max(max, count);
-        }
+        max = Math.max(max, count(tmp));
         return max;
+    }
+
+    private static int count(List<NodeLevel> list) {
+        int count = 0;
+        int idx = -1;
+        for (int i = 0; i < list.size(); i++) {
+            NodeLevel nodeLevel = list.get(i);
+            if (nodeLevel.node != null) {
+                if (idx == -1) {
+                    count++;
+                } else {
+                    count += i - idx;
+                }
+                idx = i;
+            }
+        }
+        return count;
     }
 
     private static int height(TreeNode node) {
