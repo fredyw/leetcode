@@ -1,67 +1,49 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 /**
  * https://leetcode.com/problems/split-array-into-consecutive-subsequences/
  */
 public class Problem659 {
     public boolean isPossible(int[] nums) {
-        List<ValCount> list = new ArrayList<>();
+        Map<Integer, PriorityQueue<Integer>> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-            boolean newSub = true;
-            int idx = -1;
-            for (int j = 0; j < list.size(); j++) {
-                ValCount vc = list.get(j);
-                if (vc.val + 1 == nums[i]) {
-                    newSub = false;
-                    if (idx == -1) {
-                        idx = j;
-                    } else {
-                        if (list.get(idx).count > list.get(j).count) {
-                            idx = j;
-                        }
-                    }
+            PriorityQueue<Integer> previous = map.get(nums[i] - 1);
+            PriorityQueue<Integer> current = map.get(nums[i]);
+            if (previous == null) {
+                if (map.containsKey(nums[i])) {
+                    PriorityQueue<Integer> q = current;
+                    q.add(1);
+                    map.put(nums[i], q);
+                } else {
+                    PriorityQueue<Integer> newQueue = new PriorityQueue<>();
+                    newQueue.add(1);
+                    map.put(nums[i], newQueue);
+                }
+            } else {
+                Integer count = previous.remove();
+                if (current != null) {
+                    current.add(count + 1);
+                } else {
+                    PriorityQueue<Integer> newQueue = new PriorityQueue<>();
+                    newQueue.add(count + 1);
+                    map.put(nums[i], newQueue);
+                }
+                if (previous.isEmpty()) {
+                    map.remove(nums[i] - 1);
                 }
             }
-            if (newSub) {
-                list.add(new ValCount(nums[i], 1));
-            } else {
-                list.set(idx, new ValCount(nums[i], list.get(idx).count + 1));
-            }
         }
-        for (ValCount vc : list) {
-            if (vc.count < 3) {
-                return false;
+        for (PriorityQueue<Integer> count : map.values()) {
+            for (int c : count) {
+                if (c < 3) {
+                    return false;
+                }
             }
         }
         return true;
-    }
-
-    private static class ValCount {
-        private int val;
-        private int count;
-
-        public ValCount(int val, int count) {
-            this.val = val;
-            this.count = count;
-        }
-
-        @Override
-        public String toString() {
-            return "" + val + " --> " + count;
-        }
-    }
-
-    public static void main(String[] args) {
-        Problem659 prob = new Problem659();
-        System.out.println(prob.isPossible(new int[]{1, 2, 3, 3, 4, 5})); // true
-        System.out.println(prob.isPossible(new int[]{1, 2, 3, 3, 4, 4, 5, 5})); // true
-        System.out.println(prob.isPossible(new int[]{1, 2, 3, 4, 4, 5})); // false
-        System.out.println(prob.isPossible(new int[]{1, 2, 3, 3, 4, 4, 5, 6})); // true
-        System.out.println(prob.isPossible(new int[]{1, 2, 3, 3, 4, 4, 5})); // true
-        System.out.println(prob.isPossible(new int[]{1, 2, 3, 3, 4, 4})); // false
-        System.out.println(prob.isPossible(new int[]{1, 3, 5})); // false
     }
 }
