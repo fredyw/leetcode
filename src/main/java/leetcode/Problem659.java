@@ -39,6 +39,8 @@ public class Problem659 {
         System.out.println(prob.isPossible(new int[]{1, 2, 3, 3, 4, 4, 5, 5})); // true
         System.out.println(prob.isPossible(new int[]{1, 2, 3, 4, 4, 5})); // false
         System.out.println(prob.isPossible(new int[]{1, 2, 3, 3, 4, 4, 5, 6})); // true
+        System.out.println(prob.isPossible(new int[]{1, 2, 3, 3, 4, 4, 5})); // true
+        System.out.println(prob.isPossible(new int[]{1, 2, 3, 3, 4, 4})); // false
         System.out.println(prob.isPossible(new int[]{1, 3, 5})); // false
     }
 }
