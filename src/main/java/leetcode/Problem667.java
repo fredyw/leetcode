@@ -1,7 +1,5 @@
 package leetcode;
 
-import java.util.Arrays;
-
 /**
  * https://leetcode.com/problems/beautiful-arrangement-ii/
  */
@@ -9,30 +7,30 @@ public class Problem667 {
     public int[] constructArray(int n, int k) {
         int[] result = new int[n];
         int idx = 0;
+        boolean add = true;
+        int j = k;
         for (int i = 0; i < n; i++) {
             if (i == 0) {
                 result[idx++] = i + 1;
                 continue;
             }
-            if (k > 0) {
-                int a = result[i - 1] - k;
-                if (a <= 0) {
-                    a = result[i - 1] + k;
+            if (j > 0) {
+                int a;
+                if (add) {
+                    a = result[i - 1] + j;
+                    add = false;
+                } else {
+                    a = result[i - 1] - j;
+                    add = true;
                 }
                 result[idx++] = a;
-                k--;
+            } else if (j == 0) {
+                result[idx++] = result[1] + 1;
             } else {
                 result[idx++] = result[i - 1] + 1;
             }
+            j--;
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        Problem667 prob = new Problem667();
-        System.out.println(Arrays.toString(prob.constructArray(3, 1))); // [1,2,3]
-        System.out.println(Arrays.toString(prob.constructArray(3, 2))); // [1,3,2]
-        System.out.println(Arrays.toString(prob.constructArray(10, 9))); // [1,10,2,9,3,8,4,7,5,6]
-        System.out.println(Arrays.toString(prob.constructArray(10, 5))); // [1,6,2,5,3,4,7,8,9,10]
     }
 }
