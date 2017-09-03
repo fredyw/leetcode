@@ -5,6 +5,9 @@ package leetcode;
  */
 public class Problem479 {
     public int largestPalindrome(int n) {
+        if (n == 1) {
+            return 9;
+        }
         StringBuilder largestStr = new StringBuilder();
         for (int i = 0; i < n; i++) {
             largestStr.append(9);
@@ -16,16 +19,28 @@ public class Problem479 {
         }
         long largest = Long.parseLong(largestStr.toString());
         long smallest = Long.parseLong(smallestStr.toString());
-        long max = 0;
-        for (long i = largest; i >= smallest; i--) {
-            for (long j = largest; j >= smallest; j--) {
-                long num = i * j;
-                if (isPalindrome(Long.toString(num))) {
-                    max = Math.max(max, num);
+        long max = largest * largest;
+        String maxStr = Long.toString(max);
+        long maxSub = Long.parseLong(maxStr.substring(0, maxStr.length() / 2));
+        while (true) {
+            String first = Long.toString(maxSub);
+            String second = new StringBuilder("" + maxSub).reverse().toString();
+            String str = first + second;
+            if (isPalindrome(str)) {
+                long l = Long.parseLong(str);
+                for (long j = largest; j >= smallest; j--) {
+                    long div = l / j;
+                    if (div > max || j * j < l) {
+                        break;
+                    }
+                    long mod = l % j;
+                    if (mod == 0 && Long.toString(div).length() == n) {
+                        return (int) (l % 1337);
+                    }
                 }
             }
+            maxSub--;
         }
-        return (int) (max % 1337);
     }
 
     private static boolean isPalindrome(String str) {
@@ -35,17 +50,5 @@ public class Problem479 {
             }
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-        Problem479 prob = new Problem479();
-        System.out.println(prob.largestPalindrome(1)); // 9
-        System.out.println(prob.largestPalindrome(2)); // 987
-        System.out.println(prob.largestPalindrome(3)); // 123
-        System.out.println(prob.largestPalindrome(4)); // 597
-        System.out.println(prob.largestPalindrome(5)); // 677
-        System.out.println(prob.largestPalindrome(6)); // 1218
-        System.out.println(prob.largestPalindrome(7)); // 877
-        System.out.println(prob.largestPalindrome(8)); // 475
     }
 }
