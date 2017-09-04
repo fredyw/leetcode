@@ -36,5 +36,11 @@ public class Problem636 {
             "1:end:5",
             "0:end:6"
         )))); // [3, 4]
+        System.out.println(Arrays.toString(prob.exclusiveTime(2, Arrays.asList(
+            "0:start:0",
+            "0:end:2",
+            "1:start:5",
+            "1:end:6"
+        )))); // [3, 2]
     }
 }
