@@ -31,42 +31,19 @@ public class Problem671 {
         }
         if (fsm.firstMin == null) {
             fsm.firstMin = node.val;
-        } else if (fsm.secondMin == null) {
+        } else if (fsm.secondMin == null && fsm.firstMin != node.val) {
             fsm.secondMin = node.val;
         } else {
-            if (fsm.firstMin < node.val) {
-                fsm.secondMin = fsm.firstMin;
-                fsm.firstMin = node.val;
-            } else if (fsm.secondMin < node.val) {
-                fsm.secondMin = fsm.secondMin;
+            if (fsm.firstMin != null && fsm.secondMin != null) {
+                if (fsm.firstMin > node.val) {
+                    fsm.secondMin = fsm.firstMin;
+                    fsm.firstMin = node.val;
+                } else if (fsm.secondMin > node.val && fsm.firstMin != node.val) {
+                    fsm.secondMin = node.val;
+                }
             }
         }
         findSecondMinimumValue(node.left, fsm);
         findSecondMinimumValue(node.right, fsm);
-    }
-
-    public static void main(String[] args) {
-        Problem671 prob = new Problem671();
-
-        TreeNode root = new TreeNode(2);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(5);
-        root.right.left = new TreeNode(5);
-        root.right.right = new TreeNode(7);
-        System.out.println(prob.findSecondMinimumValue(root)); // 5
-
-        root = new TreeNode(2);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(2);
-        System.out.println(prob.findSecondMinimumValue(root)); // -1
-
-        root = new TreeNode(2);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(5);
-        root.right.left = new TreeNode(5);
-        root.right.right = new TreeNode(7);
-        root.right.right.left = new TreeNode(8);
-        root.right.right.right = new TreeNode(8);
-        System.out.println(prob.findSecondMinimumValue(root)); // 5
     }
 }
