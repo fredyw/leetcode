@@ -5,21 +5,24 @@ package leetcode;
  */
 public class Problem672 {
     public int flipLights(int n, int m) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem672 prob = new Problem672();
-        System.out.println(prob.flipLights(1, 0)); // 1
-        System.out.println(prob.flipLights(1, 1)); // 2
-        System.out.println(prob.flipLights(2, 1)); // 3
-        System.out.println(prob.flipLights(3, 1)); // 4
-        System.out.println(prob.flipLights(3, 2)); // 7
-        System.out.println(prob.flipLights(3, 3)); // 8
-        System.out.println(prob.flipLights(3, 4)); // 8
-        System.out.println(prob.flipLights(15, 1)); // 4
-        System.out.println(prob.flipLights(15, 2)); // 7
-        System.out.println(prob.flipLights(15, 3)); // 8
+        if (m == 0) {
+            return 1;
+        }
+        if (n == 1) {
+            return 2;
+        }
+        if (n == 2) {
+            if (m < 2) {
+                return 3;
+            }
+            return 4;
+        }
+        if (m == 1) {
+            return 4;
+        }
+        if (m == 2) {
+            return 7;
+        }
+        return 8;
     }
 }
