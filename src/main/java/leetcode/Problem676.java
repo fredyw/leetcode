@@ -59,27 +59,24 @@ public class Problem676 {
                 return false;
             }
             boolean found = false;
-            if (!same) {
+            if (same) {
                 for (int i = 0; i < node.children.length; i++) {
                     Node n = node.children[i];
-                    if (n == null) {
+                    if (n == null || n.ch == word.charAt(idx)) {
                         continue;
                     }
-                    if (n.ch == word.charAt(idx)) {
-                        continue;
-                    }
-                    if (n.end) {
+                    if (n.end && !allSame) {
                         return true;
                     }
-                    found |= search(word, idx + 1, node, false, allSame && false);
+                    found |= search(word, idx + 1, n, false, allSame & false);
                 }
             }
             Node n = node.children[word.charAt(idx) - 'a'];
             if (n != null) {
-                if (n.end) {
+                if (n.end && !allSame) {
                     return true;
                 }
-                found |= search(word, idx + 1, node, true, allSame && true);
+                found |= search(word, idx + 1, n, true, allSame & true);
             }
             return found;
         }
@@ -91,6 +88,10 @@ public class Problem676 {
         System.out.println(dict.search("hello")); // false
         System.out.println(dict.search("hhllo")); // true
         System.out.println(dict.search("hell")); // false
+        System.out.println(dict.search("hella")); // true
         System.out.println(dict.search("leetcode")); // false
+        System.out.println(dict.search("leetkode")); // true
+        System.out.println(dict.search("leetcodd")); // true
+        System.out.println(dict.search("liitcode")); // false
     }
 }
