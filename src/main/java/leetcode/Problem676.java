@@ -51,17 +51,46 @@ public class Problem676 {
 
         /** Returns if there is any word in the trie that equals to the given word after modifying exactly one character */
         public boolean search(String word) {
-            // TODO
-            return false;
+            return search(word, 0, root, true, true);
+        }
+
+        private static boolean search(String word, int idx, Node node, boolean same, boolean allSame) {
+            if (idx == word.length()) {
+                return false;
+            }
+            boolean found = false;
+            if (!same) {
+                for (int i = 0; i < node.children.length; i++) {
+                    Node n = node.children[i];
+                    if (n == null) {
+                        continue;
+                    }
+                    if (n.ch == word.charAt(idx)) {
+                        continue;
+                    }
+                    if (n.end) {
+                        return true;
+                    }
+                    found |= search(word, idx + 1, node, false, allSame && false);
+                }
+            }
+            Node n = node.children[word.charAt(idx) - 'a'];
+            if (n != null) {
+                if (n.end) {
+                    return true;
+                }
+                found |= search(word, idx + 1, node, true, allSame && true);
+            }
+            return found;
         }
     }
 
     public static void main(String[] args) {
         MagicDictionary dict = new MagicDictionary();
         dict.buildDict(new String[]{"hello", "leetcode"});
-        dict.search("hello"); // false
-        dict.search("hhllo"); // true
-        dict.search("hell"); // false
-        dict.search("leetcode"); // false
+        System.out.println(dict.search("hello")); // false
+        System.out.println(dict.search("hhllo")); // true
+        System.out.println(dict.search("hell")); // false
+        System.out.println(dict.search("leetcode")); // false
     }
 }
