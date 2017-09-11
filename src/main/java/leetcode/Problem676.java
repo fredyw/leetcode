@@ -76,7 +76,7 @@ public class Problem676 {
                 if (n.end && !allSame) {
                     return true;
                 }
-                found |= search(word, idx + 1, n, true, allSame & true);
+                found |= search(word, idx + 1, n, same, allSame & true);
             }
             return found;
         }
@@ -84,14 +84,17 @@ public class Problem676 {
 
     public static void main(String[] args) {
         MagicDictionary dict = new MagicDictionary();
-        dict.buildDict(new String[]{"hello", "leetcode"});
+        dict.buildDict(new String[]{"hello", "leetcode", "judgg"});
         System.out.println(dict.search("hello")); // false
         System.out.println(dict.search("hhllo")); // true
         System.out.println(dict.search("hell")); // false
-        System.out.println(dict.search("hella")); // true
+        System.out.println(dict.search("helxa")); // false
         System.out.println(dict.search("leetcode")); // false
         System.out.println(dict.search("leetkode")); // true
-        System.out.println(dict.search("leetcodd")); // true
         System.out.println(dict.search("liitcode")); // false
+        System.out.println(dict.search("xeetcode")); // true
+        System.out.println(dict.search("guggg")); // false
+        System.out.println(dict.search("leetcodd")); // true
+        System.out.println(dict.search("hella")); // true
     }
 }
