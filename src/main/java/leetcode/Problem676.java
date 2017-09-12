@@ -65,7 +65,7 @@ public class Problem676 {
                     if (n == null || n.ch == word.charAt(idx)) {
                         continue;
                     }
-                    if (n.end && !allSame) {
+                    if (n.end && idx == word.length() - 1) {
                         return true;
                     }
                     found |= search(word, idx + 1, n, false, allSame & false);
@@ -73,28 +73,12 @@ public class Problem676 {
             }
             Node n = node.children[word.charAt(idx) - 'a'];
             if (n != null) {
-                if (n.end && !allSame) {
+                if (n.end && !allSame && idx == word.length() - 1) {
                     return true;
                 }
                 found |= search(word, idx + 1, n, same, allSame & true);
             }
             return found;
         }
-    }
-
-    public static void main(String[] args) {
-        MagicDictionary dict = new MagicDictionary();
-        dict.buildDict(new String[]{"hello", "leetcode", "judgg"});
-        System.out.println(dict.search("hello")); // false
-        System.out.println(dict.search("hhllo")); // true
-        System.out.println(dict.search("hell")); // false
-        System.out.println(dict.search("helxa")); // false
-        System.out.println(dict.search("leetcode")); // false
-        System.out.println(dict.search("leetkode")); // true
-        System.out.println(dict.search("liitcode")); // false
-        System.out.println(dict.search("xeetcode")); // true
-        System.out.println(dict.search("guggg")); // false
-        System.out.println(dict.search("leetcodd")); // true
-        System.out.println(dict.search("hella")); // true
     }
 }
