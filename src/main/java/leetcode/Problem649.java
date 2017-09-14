@@ -1,63 +1,50 @@
 package leetcode;
 
+import java.util.TreeSet;
+
 /**
  * https://leetcode.com/problems/dota2-senate/
  */
 public class Problem649 {
     public String predictPartyVictory(String senate) {
-        int radiantCount = 0;
-        int direCount = 0;
         char[] chars = senate.toCharArray();
+        TreeSet<Integer> radiants = new TreeSet<>();
+        TreeSet<Integer> dires = new TreeSet<>();
         for (int i = 0; i < chars.length; i++) {
             if (chars[i] == 'R') {
-                radiantCount++;
+                radiants.add(i);
             } else {
-                direCount++;
+                dires.add(i);
             }
         }
-        while (direCount > 0 || radiantCount > 0) {
+        while (dires.size() > 0 || radiants.size() > 0) {
             for (int i = 0; i < chars.length; i++) {
-                if (direCount == 0) {
+                if (dires.size() == 0) {
                     return "Radiant";
                 }
-                if (radiantCount == 0) {
+                if (radiants.size() == 0) {
                     return "Dire";
                 }
                 if (chars[i] == 'R') {
-                    int j = (i + 1) % chars.length;
-                    while (chars[j] != 'D') {
-                        j++;
-                        j = j % chars.length;
+                    Integer idx = dires.ceiling(i + 1);
+                    if (idx == null) {
+                        idx = dires.first();
                     }
-                    chars[j] = ' ';
-                    direCount--;
+                    chars[idx] = ' ';
+                    dires.remove(idx);
                 } else if (chars[i] == 'D') {
-                    int j = (i + 1) % chars.length;
-                    while (chars[j] != 'R') {
-                        j++;
-                        j = j % chars.length;
+                    Integer idx = radiants.ceiling(i + 1);
+                    if (idx == null) {
+                        idx = radiants.first();
                     }
-                    chars[j] = ' ';
-                    radiantCount--;
+                    chars[idx] = ' ';
+                    radiants.remove(idx);
                 }
             }
         }
-        if (direCount == 0) {
+        if (dires.size() == 0) {
             return "Radiant";
         }
         return "Dire";
-    }
-
-    public static void main(String[] args) {
-        Problem649 prob = new Problem649();
-        System.out.println(prob.predictPartyVictory("RD")); // Radiant
-        System.out.println(prob.predictPartyVictory("RDD")); // Dire
-        System.out.println(prob.predictPartyVictory("RDRD")); // Radiant
-        System.out.println(prob.predictPartyVictory("RDDR")); // Radiant
-        System.out.println(prob.predictPartyVictory("R")); // Radiant
-        System.out.println(prob.predictPartyVictory("D")); // Dire
-        System.out.println(prob.predictPartyVictory("DDRRR")); // Dire
-        System.out.println(prob.predictPartyVictory("RDDRDDDRRRDDRDRDRDDDDRRDR")); // Dire
-        System.out.println(prob.predictPartyVictory("DRRDRDRDRDDRDRDR")); // Radiant
     }
 }
