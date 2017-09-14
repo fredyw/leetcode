@@ -13,5 +13,7 @@ public class Problem649 {
         Problem649 prob = new Problem649();
         System.out.println(prob.predictPartyVictory("RD")); // Radiant
         System.out.println(prob.predictPartyVictory("RDD")); // Dire
+        System.out.println(prob.predictPartyVictory("RDRD")); // Radiant
+        System.out.println(prob.predictPartyVictory("RDDR")); // Radiant
     }
 }
