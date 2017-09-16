@@ -1,34 +1,40 @@
 package leetcode;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * https://leetcode.com/problems/longest-increasing-subsequence/
  */
 public class Problem300 {
     public int lengthOfLIS(int[] nums) {
-        int maxLength = 0;
-        Map<Integer, Integer> memo = new HashMap<>();
+        int max = 0;
+        Integer[] memo = new Integer[nums.length];
         for (int i = 0; i < nums.length; i++) {
-            int length = lengthOfLIS(nums, i, memo) + 1;
-            maxLength = Math.max(maxLength, length);
+            max = Math.max(max, lengthOfLIS(nums, i, memo) + 1);
         }
-        return maxLength;
+        return max;
     }
 
-    private int lengthOfLIS(int[] nums, int idx, Map<Integer, Integer> memo) {
-        if (memo.containsKey(idx)) {
-            return memo.get(idx);
+    private static int lengthOfLIS(int[] nums, int idx, Integer[] memo) {
+        if (memo[idx] != null) {
+            return memo[idx];
         }
-        int maxLength = 0;
+        int max = 0;
         for (int i = idx; i < nums.length; i++) {
             if (nums[idx] < nums[i]) {
-                int length = lengthOfLIS(nums, i, memo) + 1;
-                maxLength = Math.max(maxLength, length);
+                max = Math.max(max, lengthOfLIS(nums, i, memo) + 1);
             }
         }
-        memo.put(idx, maxLength);
-        return maxLength;
+        memo[idx] = max;
+        return max;
+    }
+
+    public static void main(String[] args) {
+        Problem300 prob = new Problem300();
+        System.out.println(prob.lengthOfLIS(new int[]{4, 10, 4, 3, 8, 9})); // 3
+        System.out.println(prob.lengthOfLIS(new int[]{3, 5, 2, 4})); // 2
+        System.out.println(prob.lengthOfLIS(new int[]{1})); // 1
+        System.out.println(prob.lengthOfLIS(new int[]{1, 2})); // 2
+        System.out.println(prob.lengthOfLIS(new int[]{1, 2, 3})); // 3
+        System.out.println(prob.lengthOfLIS(new int[]{})); // 0
+        System.out.println(prob.lengthOfLIS(new int[]{10, 9, 2, 5, 3, 7, 101, 18})); // 4
     }
 }
