@@ -49,8 +49,8 @@ public class Problem673 {
     public static void main(String[] args) {
         Problem673 prob = new Problem673();
 //        System.out.println(prob.findNumberOfLIS(new int[]{1, 3, 5, 4, 7})); // 2
-        System.out.println(prob.findNumberOfLIS(new int[]{2, 2, 2, 2, 2})); // 5
-//        System.out.println(prob.findNumberOfLIS(new int[]{1, 2, 3, 4, 5})); // 1
-//        System.out.println(prob.findNumberOfLIS(new int[]{1, 3, 3, 4, 5})); // 1
+//        System.out.println(prob.findNumberOfLIS(new int[]{2, 2, 2, 2, 2})); // 5
+        System.out.println(prob.findNumberOfLIS(new int[]{1, 2, 3, 4, 5})); // 1
+        System.out.println(prob.findNumberOfLIS(new int[]{1, 3, 3, 4, 5})); // 2
     }
 }
