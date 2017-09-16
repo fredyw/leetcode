@@ -26,15 +26,4 @@ public class Problem300 {
         memo[idx] = max;
         return max;
     }
-
-    public static void main(String[] args) {
-        Problem300 prob = new Problem300();
-        System.out.println(prob.lengthOfLIS(new int[]{4, 10, 4, 3, 8, 9})); // 3
-        System.out.println(prob.lengthOfLIS(new int[]{3, 5, 2, 4})); // 2
-        System.out.println(prob.lengthOfLIS(new int[]{1})); // 1
-        System.out.println(prob.lengthOfLIS(new int[]{1, 2})); // 2
-        System.out.println(prob.lengthOfLIS(new int[]{1, 2, 3})); // 3
-        System.out.println(prob.lengthOfLIS(new int[]{})); // 0
-        System.out.println(prob.lengthOfLIS(new int[]{10, 9, 2, 5, 3, 7, 101, 18})); // 4
-    }
 }
