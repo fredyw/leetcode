@@ -13,18 +13,19 @@ public class Problem673 {
         }
         Map<Integer, Integer> map = new HashMap<>();
         int max = 0;
+        int count = 1;
         MaxCount[] memo = new MaxCount[nums.length];
         for (int i = 0; i < nums.length; i++) {
             MaxCount mc = longestIncreasingSubsequence(nums, i, memo);
             int longest = mc.max + 1;
-            if (!map.containsKey(longest)) {
-                map.put(longest, mc.count);
-            } else {
-                map.put(longest, map.get(longest) + mc.count);
+            if (max < longest) {
+                count += mc.count;
+            } else if (max == longest) {
+                count += mc.count;
             }
             max = Math.max(max, longest);
         }
-        return map.getOrDefault(max, 1);
+        return count;
     }
 
     private static class MaxCount {
@@ -42,20 +43,20 @@ public class Problem673 {
             return memo[idx];
         }
         int max = 0;
-        Map<Integer, Integer> map = new HashMap<>();
+        int count = 1;
         for (int i = idx; i < nums.length; i++) {
             if (nums[idx] < nums[i]) {
                 MaxCount mc = longestIncreasingSubsequence(nums, i, memo);
                 int longest = mc.max + 1;
-                if (!map.containsKey(longest)) {
-                    map.put(longest, mc.count);
-                } else {
-                    map.put(longest, map.get(longest) + mc.count);
+                if (max < longest) {
+                    count += mc.count;
+                } else if (max == longest) {
+                    count += mc.count;
                 }
                 max = Math.max(max, longest);
             }
         }
-        MaxCount maxCount = new MaxCount(max, map.getOrDefault(max, 1));
+        MaxCount maxCount = new MaxCount(max, count);
         memo[idx] = maxCount;
         return maxCount;
     }
