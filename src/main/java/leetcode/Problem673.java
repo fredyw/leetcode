@@ -8,42 +8,55 @@ import java.util.Map;
  */
 public class Problem673 {
     public int findNumberOfLIS(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
         Map<Integer, Integer> map = new HashMap<>();
         int max = 0;
-        Integer[] memo = new Integer[nums.length];
+        MaxCount[] memo = new MaxCount[nums.length];
         for (int i = 0; i < nums.length; i++) {
-            int longest = longestIncreasingSubsequence(nums, i, memo) + 1;
-            max = Math.max(max, longest);
+            MaxCount mc = longestIncreasingSubsequence(nums, i, memo);
+            int longest = mc.max + 1;
             if (!map.containsKey(longest)) {
-                map.put(longest, 1);
+                map.put(longest, mc.count);
             } else {
-                map.put(longest, map.get(longest) + 1);
+                map.put(longest, map.get(longest) + mc.count);
             }
+            max = Math.max(max, longest);
         }
-        return map.get(max);
+        return map.getOrDefault(max, 1);
     }
 
-    private static int longestIncreasingSubsequence(int[] nums, int idx, Integer[] memo) {
+    private static class MaxCount {
+        private final int max;
+        private final int count;
+
+        public MaxCount(int max, int count) {
+            this.max = max;
+            this.count = count;
+        }
+    }
+
+    private static MaxCount longestIncreasingSubsequence(int[] nums, int idx, MaxCount[] memo) {
         if (memo[idx] != null) {
             return memo[idx];
         }
         int max = 0;
+        Map<Integer, Integer> map = new HashMap<>();
         for (int i = idx; i < nums.length; i++) {
             if (nums[idx] < nums[i]) {
-                max = Math.max(max, longestIncreasingSubsequence(nums, i, memo) + 1);
+                MaxCount mc = longestIncreasingSubsequence(nums, i, memo);
+                int longest = mc.max + 1;
+                if (!map.containsKey(longest)) {
+                    map.put(longest, mc.count);
+                } else {
+                    map.put(longest, map.get(longest) + mc.count);
+                }
+                max = Math.max(max, longest);
             }
         }
-        memo[idx] = max;
-        return max;
-    }
-
-    public static void main(String[] args) {
-        Problem673 prob = new Problem673();
-//        System.out.println(prob.findNumberOfLIS(new int[]{1, 2})); // 1
-//        System.out.println(prob.findNumberOfLIS(new int[]{3, 5, 2, 4})); // 2
-        System.out.println(prob.findNumberOfLIS(new int[]{1, 3, 5, 4, 7})); // 2
-//        System.out.println(prob.findNumberOfLIS(new int[]{2, 2, 2, 2, 2})); // 5
-//        System.out.println(prob.findNumberOfLIS(new int[]{1, 2, 3, 4, 5})); // 1
-//        System.out.println(prob.findNumberOfLIS(new int[]{1, 3, 3, 4, 5})); // 2
+        MaxCount maxCount = new MaxCount(max, map.getOrDefault(max, 1));
+        memo[idx] = maxCount;
+        return maxCount;
     }
 }
