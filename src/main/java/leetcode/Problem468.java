@@ -5,8 +5,35 @@ package leetcode;
  */
 public class Problem468 {
     public String validIPAddress(String IP) {
+        if (IP.contains(".")) {
+            if (isValidIPv4(IP)) {
+                return "IPv4";
+            }
+            return "Neither";
+        }
+        if (isValidIPv6(IP)) {
+            return "IPv6";
+        }
+        return "Neither";
+    }
+
+    private static boolean isValidIPv6(String ip) {
         // TODO
-        return null;
+        return false;
+    }
+
+    private static boolean isValidIPv4(String ip) {
+        String[] parts = ip.split("\\.");
+        if (parts.length != 4) {
+            return false;
+        }
+        for (String part : parts) {
+            int number = Integer.parseInt(part);
+            if (0 <= number && number <= 255) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void main(String[] args) {
