@@ -5,41 +5,76 @@ package leetcode;
  */
 public class Problem468 {
     public String validIPAddress(String IP) {
-        if (IP.contains(".")) {
-            if (isValidIPv4(IP)) {
+        String ip = IP.toLowerCase();
+        if (ip.contains(".")) {
+            if (isValidIPv4(ip)) {
                 return "IPv4";
             }
             return "Neither";
         }
-        if (isValidIPv6(IP)) {
+        if (isValidIPv6(ip)) {
             return "IPv6";
         }
         return "Neither";
     }
 
     private static boolean isValidIPv6(String ip) {
-        // TODO
-        return false;
+        String[] parts = ip.split(":", -1);
+        if (parts.length != 8) {
+            return false;
+        }
+        for (String part : parts) {
+            if (part.length() > 4) {
+                return false;
+            }
+            if (!isHex(part)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean isHex(String str) {
+        if (str.equals("+0") || str.equals("-0")) {
+            return false;
+        }
+        try {
+            Integer.parseInt(str, 16);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     private static boolean isValidIPv4(String ip) {
-        String[] parts = ip.split("\\.");
+        String[] parts = ip.split("\\.", -1);
         if (parts.length != 4) {
             return false;
         }
         for (String part : parts) {
+            if (part.startsWith("0") && part.length() > 1) {
+                return false;
+            }
+            if (!isNumber(part)) {
+                return false;
+            }
             int number = Integer.parseInt(part);
-            if (0 <= number && number <= 255) {
-                return true;
+            if (number < 0 || number > 255) {
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
-    public static void main(String[] args) {
-        Problem468 prob = new Problem468();
-        System.out.println(prob.validIPAddress("172.16.254.1")); // IPv4
-        System.out.println(prob.validIPAddress("2001:0db8:85a3:0:0:8A2E:0370:7334")); // IPv6
-        System.out.println(prob.validIPAddress("256.256.256.256")); // Neither
+    private static boolean isNumber(String str) {
+        if (str.equals("+0") || str.equals("-0")) {
+            return false;
+        }
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }
