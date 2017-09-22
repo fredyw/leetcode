@@ -5,13 +5,20 @@ package leetcode;
  */
 public class Problem365 {
     public boolean canMeasureWater(int x, int y, int z) {
-        // TODO
+        // http://www.math.tamu.edu/~dallen/hollywood/diehard/diehard.htm
+        if (z == 0) {
+            return true;
+        }
+        if ((x + y) >= z && gcd(x, y) == 1) {
+            return true;
+        }
         return false;
     }
 
-    public static void main(String[] args) {
-        Problem365 prob = new Problem365();
-        System.out.println(prob.canMeasureWater(3, 5, 4)); // true
-        System.out.println(prob.canMeasureWater(2, 6, 5)); // false
+    private static int gcd(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
+        return gcd(b, a % b);
     }
 }
