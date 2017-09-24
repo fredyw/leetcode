@@ -11,7 +11,9 @@ public class Problem402 {
 
     public static void main(String[] args) {
         Problem402 prob = new Problem402();
-        System.out.println(prob.removeKdigits("1432219", 3)); // 1432219
+        System.out.println(prob.removeKdigits("1432219", 3)); // 1219
+        System.out.println(prob.removeKdigits("1432219", 4)); // 119
+        System.out.println(prob.removeKdigits("1423219", 2)); // 12219
         System.out.println(prob.removeKdigits("10200", 1)); // 200
         System.out.println(prob.removeKdigits("10", 2)); // 0
         System.out.println(prob.removeKdigits("1234", 2)); // 12
