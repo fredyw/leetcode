@@ -1,23 +1,40 @@
 package leetcode;
 
+import java.util.Stack;
+
 /**
  * https://leetcode.com/problems/remove-k-digits/
  */
 public class Problem402 {
     public String removeKdigits(String num, int k) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem402 prob = new Problem402();
-        System.out.println(prob.removeKdigits("1432219", 3)); // 1219
-        System.out.println(prob.removeKdigits("1432219", 4)); // 119
-        System.out.println(prob.removeKdigits("1423219", 2)); // 12219
-        System.out.println(prob.removeKdigits("10200", 1)); // 200
-        System.out.println(prob.removeKdigits("10", 2)); // 0
-        System.out.println(prob.removeKdigits("1234", 2)); // 12
-        System.out.println(prob.removeKdigits("4321", 2)); // 21
-        System.out.println(prob.removeKdigits("31299", 2)); // 129
+        Stack<Integer> stack = new Stack<>();
+        int count = k;
+        for (int i = 0; i < num.length(); i++) {
+            Integer n = Integer.valueOf(num.charAt(i) - '0');
+            if (!stack.isEmpty() && n < stack.peek() && count > 0) {
+                while (!stack.isEmpty() && n < stack.peek() && count > 0) {
+                    stack.pop();
+                    count--;
+                }
+            }
+            stack.push(n);
+        }
+        while (count > 0) {
+            stack.pop();
+            count--;
+        }
+        StringBuilder sb = new StringBuilder();
+        while (!stack.isEmpty()) {
+            sb.append(stack.pop());
+        }
+        String result = sb.reverse().toString();
+        if (result.isEmpty()) {
+            return "0";
+        }
+        // Remove leading zeros.
+        int i = 0;
+        while (i < result.length() && result.charAt(i++) == '0') {
+        }
+        return result.substring(i - 1);
     }
 }
