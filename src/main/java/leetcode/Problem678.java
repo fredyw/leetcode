@@ -15,5 +15,6 @@ public class Problem678 {
         System.out.println(prob.checkValidString("(*)")); // true
         System.out.println(prob.checkValidString("(*))")); // true
         System.out.println(prob.checkValidString(")(")); // false
+        System.out.println(prob.checkValidString("()()")); // true
     }
 }
