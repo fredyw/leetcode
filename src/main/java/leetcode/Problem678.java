@@ -1,47 +1,42 @@
 package leetcode;
 
-import java.util.Stack;
-
 /**
  * https://leetcode.com/problems/valid-parenthesis-string/
  */
 public class Problem678 {
     public boolean checkValidString(String s) {
-        if (s.length() % 2 != 0) {
+        return check(s, 0, 0);
+    }
+
+    private static boolean check(String s, int idx, int opening) {
+        if (opening < 0) {
             return false;
         }
-        Stack<Character> stack = new Stack<>();
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '(' || s.charAt(i) == '*') {
-                stack.push(s.charAt(i));
-            } else if (s.charAt(i) == ')') {
-                if (stack.peek() == '(' || stack.peek() == '*') {
-                    stack.pop();
-                } else {
-                    return false;
-                }
+        if (s.length() == idx) {
+            if (opening == 0) {
+                return true;
             }
-        }
-        if (stack.size() % 2 != 0) {
             return false;
         }
-        while (!stack.isEmpty()) {
-            char a = stack.pop();
-            char b = stack.pop();
-            if (a == '(' || b == ')') {
-                return false;
-            }
+        if (s.charAt(idx) == '(') {
+            return check(s, idx + 1, opening + 1);
+        } else if (s.charAt(idx) == ')') {
+            return check(s, idx + 1, opening - 1);
+        } else {
+            boolean a = check(s, idx + 1, opening + 1); // (
+            boolean b = check(s, idx + 1, opening); // )
+            boolean c = check(s, idx + 1, opening - 1); // empty
+            return a || b || c;
         }
-        return true;
     }
 
     public static void main(String[] args) {
         Problem678 prob = new Problem678();
         System.out.println(prob.checkValidString("()")); // true
         System.out.println(prob.checkValidString("(*)")); // true
-//        System.out.println(prob.checkValidString("(*))")); // true
-//        System.out.println(prob.checkValidString(")(")); // false
-//        System.out.println(prob.checkValidString("()()")); // true
-//        System.out.println(prob.checkValidString("(**())")); // true
+        System.out.println(prob.checkValidString("(*))")); // true
+        System.out.println(prob.checkValidString(")(")); // false
+        System.out.println(prob.checkValidString("()()")); // true
+        System.out.println(prob.checkValidString("(**())")); // true
     }
 }
