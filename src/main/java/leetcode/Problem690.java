@@ -31,10 +31,10 @@ public class Problem690 {
 
     public static void main(String[] args) {
         Problem690 prob = new Problem690();
-        System.out.println(Arrays.asList(
+        System.out.println(prob.getImportance(Arrays.asList(
             new Employee(1, 5, Arrays.asList(2, 3)),
             new Employee(2, 3, Collections.emptyList()),
-            new Employee(3, 3, Collections.emptyList()),
+            new Employee(3, 3, Collections.emptyList())),
             1)); // 11
     }
 }
