@@ -33,19 +33,21 @@ public class Problem687 {
         }
         ValCount left = longestUnivaluePath(root.left, ref);
         ValCount right = longestUnivaluePath(root.right, ref);
-        int count = 1;
+        int totalCount = 1;
+        int maxCount = 0;
         if (left != null) {
             if (root.val == left.val) {
-                count += left.count;
+                maxCount = Math.max(maxCount, left.count);
             }
         }
         if (right != null) {
             if (root.val == right.val) {
-                count += right.count;
+                maxCount = Math.max(maxCount, right.count);
             }
         }
-        ref.val = Math.max(ref.val, count);
-        return new ValCount(root.val, count);
+        totalCount += maxCount;
+        ref.val = Math.max(ref.val, totalCount);
+        return new ValCount(root.val, totalCount);
     }
 
     private static class ValCount {
