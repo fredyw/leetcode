@@ -27,29 +27,6 @@ public class Problem687 {
         private int val;
     }
 
-    private ValCount longestUnivaluePath(TreeNode root, IntRef ref) {
-        if (root == null) {
-            return null;
-        }
-        ValCount left = longestUnivaluePath(root.left, ref);
-        ValCount right = longestUnivaluePath(root.right, ref);
-        int totalCount = 1;
-        int maxCount = 0;
-        if (left != null) {
-            if (root.val == left.val) {
-                maxCount = Math.max(maxCount, left.count);
-            }
-        }
-        if (right != null) {
-            if (root.val == right.val) {
-                maxCount = Math.max(maxCount, right.count);
-            }
-        }
-        totalCount += maxCount;
-        ref.val = Math.max(ref.val, totalCount);
-        return new ValCount(root.val, totalCount);
-    }
-
     private static class ValCount {
         private final int val;
         private final int count;
@@ -60,26 +37,29 @@ public class Problem687 {
         }
     }
 
-    public static void main(String[] args) {
-        Problem687 prob = new Problem687();
-
-        TreeNode root = new TreeNode(5);
-        root.left = new TreeNode(4);
-        root.left.left = new TreeNode(1);
-        root.left.right = new TreeNode(1);
-        root.right = new TreeNode(5);
-        root.right.right = new TreeNode(5);
-        System.out.println(prob.longestUnivaluePath(root)); // 2
-
-        root = new TreeNode(1);
-        root.left = new TreeNode(4);
-        root.left.left = new TreeNode(4);
-        root.left.right = new TreeNode(4);
-        root.right = new TreeNode(5);
-        root.right.right = new TreeNode(5);
-        System.out.println(prob.longestUnivaluePath(root)); // 2
-
-        root = new TreeNode(1);
-        System.out.println(prob.longestUnivaluePath(root)); // 0
+    private ValCount longestUnivaluePath(TreeNode root, IntRef ref) {
+        if (root == null) {
+            return null;
+        }
+        ValCount left = longestUnivaluePath(root.left, ref);
+        ValCount right = longestUnivaluePath(root.right, ref);
+        if (left != null && right != null && left.val == right.val && left.val == root.val) {
+            ref.val = Math.max(ref.val, left.count + right.count + 1);
+            return new ValCount(root.val, Math.max(left.count, right.count) + 1);
+        }
+        if (left != null) {
+            if (root.val == left.val) {
+                ref.val = Math.max(ref.val, left.count + 1);
+                return new ValCount(root.val, left.count + 1);
+            }
+        }
+        if (right != null) {
+            if (root.val == right.val) {
+                ref.val = Math.max(ref.val, right.count + 1);
+                return new ValCount(root.val, right.count + 1);
+            }
+        }
+        ref.val = Math.max(ref.val, 1);
+        return new ValCount(root.val, 1);
     }
 }
