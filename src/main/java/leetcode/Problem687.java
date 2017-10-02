@@ -15,8 +15,47 @@ public class Problem687 {
     }
 
     public int longestUnivaluePath(TreeNode root) {
-        // TODO
-        return 0;
+        if (root == null) {
+            return 0;
+        }
+        IntRef intRef = new IntRef();
+        longestUnivaluePath(root, intRef);
+        return intRef.val - 1;
+    }
+
+    private static class IntRef {
+        private int val;
+    }
+
+    private ValCount longestUnivaluePath(TreeNode root, IntRef ref) {
+        if (root == null) {
+            return null;
+        }
+        ValCount left = longestUnivaluePath(root.left, ref);
+        ValCount right = longestUnivaluePath(root.right, ref);
+        int count = 1;
+        if (left != null) {
+            if (root.val == left.val) {
+                count += left.count;
+            }
+        }
+        if (right != null) {
+            if (root.val == right.val) {
+                count += right.count;
+            }
+        }
+        ref.val = Math.max(ref.val, count);
+        return new ValCount(root.val, count);
+    }
+
+    private static class ValCount {
+        private final int val;
+        private final int count;
+
+        public ValCount(int val, int count) {
+            this.val = val;
+            this.count = count;
+        }
     }
 
     public static void main(String[] args) {
@@ -37,5 +76,8 @@ public class Problem687 {
         root.right = new TreeNode(5);
         root.right.right = new TreeNode(5);
         System.out.println(prob.longestUnivaluePath(root)); // 2
+
+        root = new TreeNode(1);
+        System.out.println(prob.longestUnivaluePath(root)); // 0
     }
 }
