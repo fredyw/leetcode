@@ -5,12 +5,19 @@ package leetcode;
  */
 public class Problem686 {
     public int repeatedStringMatch(String A, String B) {
-        // TODO
-        return 0;
-    }
+        String a = A;
+        int count = 1;
+        do {
+            if (a.toString().contains(B)) {
+                return count;
+            }
+            a += A;
+            count++;
 
-    public static void main(String[] args) {
-        Problem686 prob = new Problem686();
-        System.out.println(prob.repeatedStringMatch("abcd", "cdabcdab")); // 3
+        } while (a.length() <= B.length());
+        if (a.toString().contains(B)) {
+            return count;
+        }
+        return -1;
     }
 }
