@@ -6,6 +6,7 @@ package leetcode;
 public class Problem688 {
     public double knightProbability(int N, int K, int r, int c) {
         // TODO
+        // (-2, -1), (-1, -2), (1, -2), (2, -1), (2, 1), (1, 2), (-1, 2), (-2, 1)
         return 0;
     }
 
