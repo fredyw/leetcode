@@ -13,5 +13,6 @@ public class Problem688 {
     public static void main(String[] args) {
         Problem688 prob = new Problem688();
         System.out.println(prob.knightProbability(3, 2, 0, 0)); // 0.0625
+        System.out.println(prob.knightProbability(3, 3, 0, 0)); // 0.01563
     }
 }
