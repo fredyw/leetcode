@@ -6,19 +6,19 @@ package leetcode;
 public class Problem523 {
     public boolean checkSubarraySum(int[] nums, int k) {
         Boolean[][] memo = new Boolean[nums.length + 1][nums.length + 1];
-        return checkSubarraySum(nums, k, 0, nums.length, memo);
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        return checkSubarraySum(nums, k, 0, nums.length, sum, memo);
     }
 
-    private static boolean checkSubarraySum(int[] nums, int k, int i, int j, Boolean[][] memo) {
+    private static boolean checkSubarraySum(int[] nums, int k, int i, int j, int sum, Boolean[][] memo) {
         if (i >= j) {
             return false;
         }
         if (j - i == 1) {
             return false;
-        }
-        int sum = 0;
-        for (int x = i; x < j; x++) {
-            sum += nums[x];
         }
         if (sum == 0 && k == 0) {
             return true;
@@ -32,9 +32,11 @@ public class Problem523 {
         if (memo[i][j] != null) {
             return memo[i][j];
         }
-        boolean a = checkSubarraySum(nums, k, i + 1, j, memo);
-        boolean b = checkSubarraySum(nums, k, i, j - 1, memo);
-        boolean c = checkSubarraySum(nums, k, i + 1, j - 1, memo);
+        int vali = (i >= 0 && i < nums.length) ? nums[i] : 0;
+        int valj = (j >= 0 && j < nums.length) ? nums[j] : 0;
+        boolean a = checkSubarraySum(nums, k, i + 1, j, sum - vali, memo);
+        boolean b = checkSubarraySum(nums, k, i, j - 1, sum - valj, memo);
+        boolean c = checkSubarraySum(nums, k, i + 1, j - 1, sum - vali - valj, memo);
         boolean result = a | b | c;
         memo[i][j] = result;
         return result;
