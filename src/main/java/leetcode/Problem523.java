@@ -33,19 +33,4 @@ public class Problem523 {
         }
         return false;
     }
-
-    public static void main(String[] args) {
-        Problem523 prob = new Problem523();
-        System.out.println(prob.checkSubarraySum(new int[]{23, 2, 4, 6, 7}, 6)); // true
-        System.out.println(prob.checkSubarraySum(new int[]{23, 2, 6, 4, 7}, 6)); // true
-        System.out.println(prob.checkSubarraySum(new int[]{23, 2, 6, 4, 8}, 6)); // true
-        System.out.println(prob.checkSubarraySum(new int[]{1, 2, 3}, 4)); // false
-        System.out.println(prob.checkSubarraySum(new int[]{23, 2, 6, 4, 7}, 0)); // false
-        System.out.println(prob.checkSubarraySum(new int[]{0, 0}, 0)); // true
-        System.out.println(prob.checkSubarraySum(new int[]{0}, 0)); // false
-        System.out.println(prob.checkSubarraySum(new int[]{23, 2, 4, 6, 7}, -6)); // true
-        System.out.println(prob.checkSubarraySum(new int[]{0}, -1)); // false
-        System.out.println(prob.checkSubarraySum(new int[]{0, 0, 1}, 0)); // true
-        System.out.println(prob.checkSubarraySum(new int[]{0, 2}, 0)); // false
-    }
 }
