@@ -5,16 +5,25 @@ package leetcode;
  */
 public class Problem693 {
     public boolean hasAlternatingBits(int n) {
-        // TODO
-        return false;
-    }
-
-    public static void main(String[] args) {
-        Problem693 prob = new Problem693();
-        System.out.println(prob.hasAlternatingBits(5)); // true
-        System.out.println(prob.hasAlternatingBits(7)); // false
-        System.out.println(prob.hasAlternatingBits(11)); // false
-        System.out.println(prob.hasAlternatingBits(10)); // true
-        System.out.println(prob.hasAlternatingBits(36)); // false
+        String s = Integer.toBinaryString(n);
+        boolean zero = false;
+        for (int i = 0; i < s.length(); i++) {
+            if (i == 0) {
+                if (s.charAt(i) == '0') {
+                    zero = false;
+                } else {
+                    zero = true;
+                }
+            } else {
+                if (zero && s.charAt(i) != '0') {
+                    return false;
+                }
+                if (!zero && s.charAt(i) != '1') {
+                    return false;
+                }
+                zero = !zero;
+            }
+        }
+        return true;
     }
 }
