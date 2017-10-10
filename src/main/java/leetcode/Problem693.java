@@ -15,5 +15,6 @@ public class Problem693 {
         System.out.println(prob.hasAlternatingBits(7)); // false
         System.out.println(prob.hasAlternatingBits(11)); // false
         System.out.println(prob.hasAlternatingBits(10)); // true
+        System.out.println(prob.hasAlternatingBits(36)); // false
     }
 }
