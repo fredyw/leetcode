@@ -1,9 +1,5 @@
 package leetcode;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * https://leetcode.com/problems/redundant-connection/
  */
@@ -22,47 +18,33 @@ public class Problem684 {
     }
 
     private static class UnionFind {
-        private final Map<Integer, Integer> map = new HashMap<>();
+        private final Integer[] map = new Integer[1001];
 
         public void union(int a, int b) {
-            if (!map.containsKey(a)) {
-                map.put(a, a);
+            if (map[a] == null) {
+                map[a] = a;
             }
-            if (!map.containsKey(b)) {
-                map.put(b, b);
+            if (map[b] == null) {
+                map[b] = b;
             }
             if (connected(a, b)) {
                 return;
             }
-            int value = map.get(a);
-            for (Map.Entry<Integer, Integer> e : map.entrySet()) {
-                if (e.getValue().equals(value)) {
-                    map.put(e.getKey(), map.get(b));
+            int value = map[a];
+            for (int i = 0; i < map.length; i++) {
+                if (map[i] != null) {
+                    if (map[i] == value) {
+                        map[i] = map[b];
+                    }
                 }
             }
         }
 
         public boolean connected(int a, int b) {
-            if (!map.containsKey(a) || !map.containsKey(b)) {
+            if (map[a] == null || map[b] == null) {
                 return false;
             }
-            return map.get(a).equals(map.get(b));
+            return map[a] == map[b];
         }
-    }
-
-    public static void main(String[] args) {
-        Problem684 prob = new Problem684();
-        System.out.println(Arrays.toString(prob.findRedundantConnection(new int[][]{
-            {1, 2}, {1, 3}, {2, 3}
-        }))); // [2,3]
-        System.out.println(Arrays.toString(prob.findRedundantConnection(new int[][]{
-            {1, 2}, {2, 3}, {3, 4}, {1, 4}, {1, 5}
-        }))); // [1,4]
-        System.out.println(Arrays.toString(prob.findRedundantConnection(new int[][]{
-            {3, 4}, {2, 3}, {1, 2}, {1, 4}, {1, 5}
-        }))); // [1,4]
-        System.out.println(Arrays.toString(prob.findRedundantConnection(new int[][]{
-            {3, 4}, {2, 3}, {1, 4}, {1, 2}, {1, 5}
-        }))); // [1,2]
     }
 }
