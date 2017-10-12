@@ -51,6 +51,6 @@ public class Problem684 {
         })); // [1,4]
         System.out.println(prob.findRedundantConnection(new int[][]{
             {3, 4}, {2, 3}, {1, 4}, {1, 2}, {1, 5}
-        })); // [1,4]
+        })); // [1,2]
     }
 }
