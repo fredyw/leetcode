@@ -44,7 +44,13 @@ public class Problem684 {
             {1, 2}, {1, 3}, {2, 3}
         })); // [2,3]
         System.out.println(prob.findRedundantConnection(new int[][]{
-            {1,2}, {2,3}, {3,4}, {1,4}, {1,5}
+            {1, 2}, {2, 3}, {3, 4}, {1, 4}, {1, 5}
+        })); // [1,4]
+        System.out.println(prob.findRedundantConnection(new int[][]{
+            {3, 4}, {2, 3}, {1, 2}, {1, 4}, {1, 5}
+        })); // [1,4]
+        System.out.println(prob.findRedundantConnection(new int[][]{
+            {3, 4}, {2, 3}, {1, 4}, {1, 2}, {1, 5}
         })); // [1,4]
     }
 }
