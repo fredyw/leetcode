@@ -22,12 +22,13 @@ public class Problem684 {
             if (!map.containsKey(b)) {
                 map.put(b, b);
             }
-            while (!connected(a, b)) {
-                int value = map.get(a);
-                for (Map.Entry<Integer, Integer> e : map.entrySet()) {
-                    if (e.getValue().equals(value)) {
-                        map.put(e.getKey(), map.get(b));
-                    }
+            if (!connected(a, b)) {
+                return;
+            }
+            int value = map.get(a);
+            for (Map.Entry<Integer, Integer> e : map.entrySet()) {
+                if (e.getValue().equals(value)) {
+                    map.put(e.getKey(), map.get(b));
                 }
             }
         }
