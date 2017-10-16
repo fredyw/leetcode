@@ -1,19 +1,40 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * https://leetcode.com/problems/count-binary-substrings/
  */
 public class Problem696 {
     public int countBinarySubstrings(String s) {
-        // TODO
-        return 0;
+        List<CharCount> list = new ArrayList<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (list.isEmpty()) {
+                list.add(new CharCount(s.charAt(i), 1));
+            } else {
+                CharCount cc = list.get(list.size() - 1);
+                if (cc.ch == s.charAt(i)) {
+                    cc.count++;
+                } else {
+                    list.add(new CharCount(s.charAt(i), 1));
+                }
+            }
+        }
+        int result = 0;
+        for (int i = 0, j = 1; j < list.size(); i++, j++) {
+            result += Math.min(list.get(i).count, list.get(j).count);
+        }
+        return result;
     }
 
-    public static void main(String[] args) {
-        Problem696 prob = new Problem696();
-        System.out.println(prob.countBinarySubstrings("00110011")); // 6
-        System.out.println(prob.countBinarySubstrings("10101")); // 4
-        System.out.println(prob.countBinarySubstrings("0011")); // 2
-        System.out.println(prob.countBinarySubstrings("000111")); // 3
+    private static final class CharCount {
+        private final char ch;
+        private int count;
+
+        public CharCount(char ch, int count) {
+            this.ch = ch;
+            this.count = count;
+        }
     }
 }
