@@ -13,5 +13,7 @@ public class Problem696 {
         Problem696 prob = new Problem696();
         System.out.println(prob.countBinarySubstrings("00110011")); // 6
         System.out.println(prob.countBinarySubstrings("10101")); // 4
+        System.out.println(prob.countBinarySubstrings("0011")); // 2
+        System.out.println(prob.countBinarySubstrings("000111")); // 3
     }
 }
