@@ -14,10 +14,11 @@ public class Problem698 {
             return false;
         }
         Boolean[][] memo = new Boolean[k + 1][sub + 1];
-        return canPartition(nums, k, sub, memo);
+        boolean[] visited = new boolean[nums.length];
+        return canPartition(nums, k, sub, visited, memo);
     }
 
-    private static boolean canPartition(int[] nums, int k, int sub, Boolean[][] memo) {
+    private static boolean canPartition(int[] nums, int k, int sub, boolean[] visited, Boolean[][] memo) {
         if (sub == 0 && k == 0) {
             return true;
         }
@@ -29,7 +30,12 @@ public class Problem698 {
         }
         boolean found = false;
         for (int i = 0; i < nums.length; i++) {
-            found |= canPartition(nums, k - 1, sub - nums[i], memo);
+            if (visited[i]) {
+                continue;
+            }
+            visited[i] = true;
+            found |= canPartition(nums, k - 1, sub - nums[i], visited, memo);
+            visited[i] = false;
         }
         memo[k][sub] = found;
         return found;
