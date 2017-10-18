@@ -5,26 +5,42 @@ package leetcode;
  */
 public class Problem698 {
     public boolean canPartitionKSubsets(int[] nums, int k) {
-        // TODO
-        return false;
-    }
-
-    private static boolean canPartition(int[] nums, int k, int idx) {
-        if (k == 0 && idx == nums.length) {
-            return true;
+        int sum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
         }
-        if (k == 0 && idx < nums.length) {
+        int sub = sum / k;
+        if (sum % k != 0) {
             return false;
         }
-        for (int i = idx; i < nums.length; i++) {
-            // TODO
+        Boolean[][] memo = new Boolean[k + 1][sub + 1];
+        return canPartition(nums, k, sub, memo);
+    }
+
+    private static boolean canPartition(int[] nums, int k, int sub, Boolean[][] memo) {
+        if (sub == 0 && k == 0) {
+            return true;
         }
-        return false;
+        if (k <= 0 || sub <= 0) {
+            return false;
+        }
+        if (memo[k][sub] != null) {
+            return memo[k][sub];
+        }
+        boolean found = false;
+        for (int i = 0; i < nums.length; i++) {
+            found |= canPartition(nums, k - 1, sub - nums[i], memo);
+        }
+        memo[k][sub] = found;
+        return found;
     }
 
     public static void main(String[] args) {
         Problem698 prob = new Problem698();
-        System.out.println(prob.canPartitionKSubsets(new int[]{4, 3, 2, 3, 5, 2, 1}, 4)); // true
-        System.out.println(prob.canPartitionKSubsets(new int[]{5, 3, 2, 3, 4, 2, 1}, 4)); // true
+//        System.out.println(prob.canPartitionKSubsets(new int[]{4, 3, 2, 3, 5, 2, 1}, 4)); // true
+//        System.out.println(prob.canPartitionKSubsets(new int[]{5, 3, 2, 3, 4, 2, 1}, 4)); // true
+//        System.out.println(prob.canPartitionKSubsets(new int[]{5, 3, 2, 3, 4, 2, 2}, 4)); // false
+//        System.out.println(prob.canPartitionKSubsets(new int[]{1, 2, 3, 4}, 3)); // false
+        System.out.println(prob.canPartitionKSubsets(new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 5)); // true
     }
 }
