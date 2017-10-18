@@ -42,5 +42,6 @@ public class Problem698 {
 //        System.out.println(prob.canPartitionKSubsets(new int[]{5, 3, 2, 3, 4, 2, 2}, 4)); // false
 //        System.out.println(prob.canPartitionKSubsets(new int[]{1, 2, 3, 4}, 3)); // false
         System.out.println(prob.canPartitionKSubsets(new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 5)); // true
+//        System.out.println(prob.canPartitionKSubsets(new int[]{5, 7, 3}, 3)); // false
     }
 }
