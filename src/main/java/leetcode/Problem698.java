@@ -15,15 +15,20 @@ public class Problem698 {
         }
         Boolean[][] memo = new Boolean[k + 1][sub + 1];
         boolean[] visited = new boolean[nums.length];
-        return canPartition(nums, k, sub, visited, memo);
+        return canPartition(nums, sub, k, sub, visited, memo);
     }
 
-    private static boolean canPartition(int[] nums, int k, int sub, boolean[] visited, Boolean[][] memo) {
-        if (sub == 0 && k == 0) {
-            return true;
-        }
-        if (k <= 0 || sub <= 0) {
+    private static boolean canPartition(int[] nums, int originalSub, int k, int sub,
+                                        boolean[] visited, Boolean[][] memo) {
+        if (k <= 0 || sub < 0) {
             return false;
+        }
+        if (sub == 0) {
+            sub = originalSub;
+            k = k - 1;
+            if (k == 0) {
+                return true;
+            }
         }
         if (memo[k][sub] != null) {
             return memo[k][sub];
@@ -34,7 +39,7 @@ public class Problem698 {
                 continue;
             }
             visited[i] = true;
-            found |= canPartition(nums, k - 1, sub - nums[i], visited, memo);
+            found |= canPartition(nums, originalSub, k, sub - nums[i], visited, memo);
             visited[i] = false;
         }
         memo[k][sub] = found;
@@ -43,11 +48,12 @@ public class Problem698 {
 
     public static void main(String[] args) {
         Problem698 prob = new Problem698();
-//        System.out.println(prob.canPartitionKSubsets(new int[]{4, 3, 2, 3, 5, 2, 1}, 4)); // true
-//        System.out.println(prob.canPartitionKSubsets(new int[]{5, 3, 2, 3, 4, 2, 1}, 4)); // true
-//        System.out.println(prob.canPartitionKSubsets(new int[]{5, 3, 2, 3, 4, 2, 2}, 4)); // false
-//        System.out.println(prob.canPartitionKSubsets(new int[]{1, 2, 3, 4}, 3)); // false
+        System.out.println(prob.canPartitionKSubsets(new int[]{4, 3, 2, 3, 5, 2, 1}, 4)); // true
+        System.out.println(prob.canPartitionKSubsets(new int[]{5, 3, 2, 3, 4, 2, 1}, 4)); // true
+        System.out.println(prob.canPartitionKSubsets(new int[]{5, 3, 2, 3, 4, 2, 2}, 4)); // false
+        System.out.println(prob.canPartitionKSubsets(new int[]{1, 2, 3, 4}, 3)); // false
         System.out.println(prob.canPartitionKSubsets(new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 5)); // true
-//        System.out.println(prob.canPartitionKSubsets(new int[]{5, 7, 3}, 3)); // false
+        System.out.println(prob.canPartitionKSubsets(new int[]{5, 7, 3}, 3)); // false
+        System.out.println(prob.canPartitionKSubsets(new int[]{2, 2, 10, 5, 2, 7, 2, 2, 13}, 3)); // true
     }
 }
