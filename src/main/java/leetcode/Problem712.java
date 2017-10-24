@@ -11,10 +11,10 @@ public class Problem712 {
 
     private static int minimumDeleteSum(String s1, String s2, int i, int j) {
         if (i == 0) {
-            return j;
+            return Integer.MAX_VALUE;
         }
         if (j == 0) {
-            return i;
+            return Integer.MAX_VALUE;
         }
         if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
             return minimumDeleteSum(s1, s2, i - 1, j - 1);
@@ -28,8 +28,18 @@ public class Problem712 {
             jval = s2.charAt(j);
         }
         int a = minimumDeleteSum(s1, s2, i, j - 1);
+        if (a == Integer.MAX_VALUE) {
+            a = jval;
+        } else {
+            a += jval;
+        }
         int b = minimumDeleteSum(s1, s2, i - 1, j);
-        int min = 1 + Math.min(a, b);
+        if (b == Integer.MAX_VALUE) {
+            b = ival;
+        } else {
+            b += ival;
+        }
+        int min = Math.min(a, b);
         return min;
     }
 
