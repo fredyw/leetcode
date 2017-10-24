@@ -5,41 +5,31 @@ package leetcode;
  */
 public class Problem712 {
     public int minimumDeleteSum(String s1, String s2) {
-        // TODO
-        return minimumDeleteSum(s1, s2, s1.length(), s2.length());
+        Integer[][] memo = new Integer[s1.length() + 1][s2.length() + 1];
+        return minimumDeleteSum(s1, s2, 0, 0, memo);
     }
 
-    private static int minimumDeleteSum(String s1, String s2, int i, int j) {
-        if (i == 0) {
-            return Integer.MAX_VALUE;
+    private static int minimumDeleteSum(String s1, String s2, int i, int j, Integer[][] memo) {
+        if (i == s1.length() && j == s2.length()) {
+            return 0;
         }
-        if (j == 0) {
-            return Integer.MAX_VALUE;
+        if (i == s1.length()) {
+            return s2.charAt(j);
         }
-        if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
-            return minimumDeleteSum(s1, s2, i - 1, j - 1);
+        if (j == s2.length()) {
+            return s1.charAt(i);
         }
-        int ival = 0;
-        if (i < s1.length()) {
-            ival = s1.charAt(i);
+        if (memo[i][j] != null) {
+            return memo[i][j];
         }
-        int jval = 0;
-        if (j < s2.length()) {
-            jval = s2.charAt(j);
+        if (s1.charAt(i) == s2.charAt(j)) {
+            return minimumDeleteSum(s1, s2, i + 1, j + 1, memo);
         }
-        int a = minimumDeleteSum(s1, s2, i, j - 1);
-        if (a == Integer.MAX_VALUE) {
-            a = jval;
-        } else {
-            a += jval;
-        }
-        int b = minimumDeleteSum(s1, s2, i - 1, j);
-        if (b == Integer.MAX_VALUE) {
-            b = ival;
-        } else {
-            b += ival;
-        }
-        int min = Math.min(a, b);
+        int a = minimumDeleteSum(s1, s2, i + 1, j, memo) + s1.charAt(i);
+        int b = minimumDeleteSum(s1, s2, i, j + 1, memo) + s2.charAt(j);
+        int c = minimumDeleteSum(s1, s2, i + 1, j + 1, memo) + s1.charAt(i) + s2.charAt(j);
+        int min = Math.min(a, Math.min(b, c));
+        memo[i][j] = min;
         return min;
     }
 
