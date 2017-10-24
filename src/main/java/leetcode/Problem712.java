@@ -14,10 +14,18 @@ public class Problem712 {
             return 0;
         }
         if (i == s1.length()) {
-            return s2.charAt(j);
+            int sum = 0;
+            for (int x = j; x < s2.length(); x++) {
+                sum += s2.charAt(x);
+            }
+            return sum;
         }
         if (j == s2.length()) {
-            return s1.charAt(i);
+            int sum = 0;
+            for (int x = i; x < s1.length(); x++) {
+                sum += s1.charAt(x);
+            }
+            return sum;
         }
         if (memo[i][j] != null) {
             return memo[i][j];
@@ -27,17 +35,8 @@ public class Problem712 {
         }
         int a = minimumDeleteSum(s1, s2, i + 1, j, memo) + s1.charAt(i);
         int b = minimumDeleteSum(s1, s2, i, j + 1, memo) + s2.charAt(j);
-        // TODO: is c necessary?
-        int c = minimumDeleteSum(s1, s2, i + 1, j + 1, memo) + s1.charAt(i) + s2.charAt(j);
-        int min = Math.min(a, Math.min(b, c));
+        int min = Math.min(a, b);
         memo[i][j] = min;
         return min;
-    }
-
-    public static void main(String[] args) {
-        Problem712 prob = new Problem712();
-        System.out.println(prob.minimumDeleteSum("sea", "eat")); // 231
-        System.out.println(prob.minimumDeleteSum("delete", "leet")); // 403
-        System.out.println(prob.minimumDeleteSum("ccaccjp", "fwosarcwge")); // 1399
     }
 }
