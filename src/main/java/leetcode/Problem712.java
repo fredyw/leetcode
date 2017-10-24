@@ -27,6 +27,7 @@ public class Problem712 {
         }
         int a = minimumDeleteSum(s1, s2, i + 1, j, memo) + s1.charAt(i);
         int b = minimumDeleteSum(s1, s2, i, j + 1, memo) + s2.charAt(j);
+        // TODO: is c necessary?
         int c = minimumDeleteSum(s1, s2, i + 1, j + 1, memo) + s1.charAt(i) + s2.charAt(j);
         int min = Math.min(a, Math.min(b, c));
         memo[i][j] = min;
@@ -37,5 +38,6 @@ public class Problem712 {
         Problem712 prob = new Problem712();
         System.out.println(prob.minimumDeleteSum("sea", "eat")); // 231
         System.out.println(prob.minimumDeleteSum("delete", "leet")); // 403
+        System.out.println(prob.minimumDeleteSum("ccaccjp", "fwosarcwge")); // 1399
     }
 }
