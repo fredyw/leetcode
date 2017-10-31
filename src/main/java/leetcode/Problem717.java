@@ -5,13 +5,17 @@ package leetcode;
  */
 public class Problem717 {
     public boolean isOneBitCharacter(int[] bits) {
-        // TODO
-        return false;
-    }
-
-    public static void main(String[] args) {
-        Problem717 prob = new Problem717();
-        System.out.println(prob.isOneBitCharacter(new int[]{1, 0, 0})); // true
-        System.out.println(prob.isOneBitCharacter(new int[]{1, 1, 1, 0})); // false
+        int i = 0;
+        boolean found = false;
+        while (i < bits.length) {
+            if (bits[i] == 1) {
+               i += 2;
+               found = false;
+            } else {
+                i++;
+                found = true;
+            }
+        }
+        return found;
     }
 }
