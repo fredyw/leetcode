@@ -6,11 +6,7 @@ package leetcode;
 public class Problem718 {
     public int findLength(int[] A, int[] B) {
         Integer[][] memo = new Integer[A.length + 1][B.length + 1];
-        int max = 0;
-        for (int i = 0; i < A.length; i++) {
-            max = Math.max(max, findLength(A, B, i, 0, false, memo));
-        }
-        return max;
+        return findLength(A, B, 0, 0, false, memo);
     }
 
     private static int findLength(int[] a, int[] b, int i, int j, boolean found, Integer[][] memo) {
@@ -31,6 +27,7 @@ public class Problem718 {
                 return max;
             }
             max = Math.max(max, findLength(a, b, i, j + 1, false, memo));
+            max = Math.max(max, findLength(a, b, i + 1, j, false, memo));
         }
         memo[i][j] = max;
         return max;
