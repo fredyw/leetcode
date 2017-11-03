@@ -1,26 +1,23 @@
 package leetcode;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * https://leetcode.com/problems/integer-break/
  */
 public class Problem343 {
     public int integerBreak(int n) {
-        Map<Integer, Integer> memo = new HashMap<>();
+        Integer[] memo = new Integer[n + 1];
         return integerBreak(n, memo);
     }
 
-    private int integerBreak(int n, Map<Integer, Integer> memo) {
+    private static int integerBreak(int n, Integer[] memo) {
         if (n == 0) {
             return 0;
         }
         if (n == 1) {
             return 1;
         }
-        if (memo.containsKey(n)) {
-            return memo.get(n);
+        if (memo[n] != null) {
+            return memo[n];
         }
         int max = 0;
         for (int i = 1; i < n; i++) {
@@ -32,7 +29,7 @@ public class Problem343 {
             int y = Math.max(y1, y2);
             max = Math.max(x * y, max);
         }
-        memo.put(n, max);
+        memo[n] = max;
         return max;
     }
 }
