@@ -5,32 +5,43 @@ package leetcode;
  */
 public class Problem718 {
     public int findLength(int[] A, int[] B) {
-        Integer[][] memo = new Integer[A.length + 1][B.length + 1];
-        return findLength(A, B, 0, 0, false, memo);
+        int[][] memo = new int[A.length + 1][B.length + 1];
+        IntRef max = new IntRef();
+        return findLength(A, B, 0, 0, max, memo);
+//        int max = 0;
+//        int[][] memo = new int[A.length + 1][B.length + 1];
+//        for (int i = A.length - 1; i >= 0; i--) {
+//            for (int j = B.length - 1; j >= 0; j--) {
+//                if (A[i] == B[j]) {
+//                    memo[i][j] = memo[i + 1][j + 1] + 1;
+//                    max = Math.max(max, memo[i][j]);
+//                }
+//            }
+//        }
+//        return max;
     }
 
-    private static int findLength(int[] a, int[] b, int i, int j, boolean found, Integer[][] memo) {
+    private static class IntRef {
+        private int val;
+    }
+
+    private static int findLength(int[] a, int[] b, int i, int j, IntRef maxRef, int[][] memo) {
         if (i == a.length) {
             return 0;
         }
         if (j == b.length) {
             return 0;
         }
-        if (memo[i][j] != null) {
-            return memo[i][j];
-        }
-        int max = 0;
+        int val = 0;
         if (a[i] == b[j]) {
-            max = Math.max(max, findLength(a, b, i + 1, j + 1, true, memo) + 1);
-        } else {
-            if (found) {
-                return max;
-            }
-            max = Math.max(max, findLength(a, b, i, j + 1, false, memo));
-            max = Math.max(max, findLength(a, b, i + 1, j, false, memo));
+            int x = findLength(a, b, i + 1, j + 1, maxRef, memo) + 1;
+            memo[i][j] = x;
+            return x;
         }
-        memo[i][j] = max;
-        return max;
+        int x = findLength(a, b, i, j + 1, maxRef, memo);
+//        int y = findLength(a, b, i + 1, j, maxRef, memo);
+//        int max = Math.max(x, y);
+        return x;
     }
 
     public static void main(String[] args) {
