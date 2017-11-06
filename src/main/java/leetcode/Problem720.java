@@ -1,6 +1,5 @@
 package leetcode;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,17 +8,11 @@ import java.util.Set;
  */
 public class Problem720 {
     public String longestWord(String[] words) {
-        Arrays.sort(words, (a, b) -> {
-            int cmp = Integer.compare(b.length(), a.length());
-            if (cmp == 0) {
-                return a.compareTo(b);
-            }
-            return cmp;
-        });
         Set<String> set = new HashSet<>();
         for (String word : words) {
             set.add(word);
         }
+        String result = "";
         for (String word : words) {
             boolean found = true;
             String tmp = "";
@@ -31,21 +24,15 @@ public class Problem720 {
                 }
             }
             if (found) {
-                return word;
+                if (word.length() > result.length()) {
+                    result = word;
+                } else if (word.length() == result.length()) {
+                    if (word.compareTo(result) < 0) {
+                        result = word;
+                    }
+                }
             }
         }
-        return "";
-    }
-
-    public static void main(String[] args) {
-        Problem720 prob = new Problem720();
-        System.out.println(prob.longestWord(new String[]{"w","wo","wor","worl", "world"})); // world
-        System.out.println(prob.longestWord(new String[]{"a", "banana", "app", "appl", "ap", "apply", "apple"})); // apple
-        System.out.println(prob.longestWord(new String[]{"a"})); // a
-        System.out.println(prob.longestWord(new String[]{"a", "b"})); // a
-        System.out.println(prob.longestWord(new String[]{"m", "mo", "moc", "moch", "mocha", "l", "la", "lat", "latt", "latte", "c", "ca", "cat"})); // latte
-        System.out.println(prob.longestWord(new String[]{"ogz","eyj","e","ey","hmn","v","hm","ogznkb","ogzn","hmnm","eyjuo","vuq","ogznk","og","eyjuoi","d"})); // eyj
-        System.out.println(prob.longestWord(new String[]{"yo","ew","fc","zrc","yodn","fcm","qm","qmo","fcmz","z","ewq","yod","ewqz","y"})); // yodn
-        System.out.println(prob.longestWord(new String[]{"rac","rs","ra","on","r","otif","o","onpdu","rsf","rs","ot","oti","racy","onpd"})); // otif
+        return result;
     }
 }
