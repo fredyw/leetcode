@@ -10,45 +10,31 @@ import java.util.List;
 public class Problem720 {
     public String longestWord(String[] words) {
         Arrays.sort(words, (a, b) -> a.compareTo(b));
-        String tmp = words[0];
-        List<WordCount> result = new ArrayList<>();
-        int count = 1;
-        for (int i = 1; i < words.length; i++) {
-            if (tmp.length() + 1 == words[i].length() && words[i].startsWith(tmp)) {
+        String tmp = "";
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].length() == 1) {
+                if (!tmp.isEmpty()) {
+                    result.add(tmp);
+                }
                 tmp = words[i];
-                count++;
             } else {
-                result.add(new WordCount(tmp, count));
-                tmp = words[i];
-                count = 1;
+                if (tmp.length() + 1 == words[i].length() && words[i].startsWith(tmp)) {
+                    tmp = words[i];
+                }
             }
         }
-        result.add(new WordCount(tmp, count));
+        result.add(tmp);
         result.sort((a, b) -> {
-            if (a.count < b.count) {
+            if (a.length() < b.length()) {
                 return 1;
-            } else if (a.count > b.count) {
+            } else if (a.length() > b.length()) {
                 return -1;
             } else {
-                return a.word.compareTo(b.word);
+                return a.compareTo(b);
             }
         });
-        return result.get(0).word;
-    }
-
-    private static class WordCount {
-        private String word;
-        private int count;
-
-        public WordCount(String word, int count) {
-            this.word = word;
-            this.count = count;
-        }
-
-        @Override
-        public String toString() {
-            return word + ": " + count;
-        }
+        return result.get(0);
     }
 
     public static void main(String[] args) {
@@ -58,6 +44,8 @@ public class Problem720 {
 //        System.out.println(prob.longestWord(new String[]{"a"})); // a
 //        System.out.println(prob.longestWord(new String[]{"a", "b"})); // a
 //        System.out.println(prob.longestWord(new String[]{"m", "mo", "moc", "moch", "mocha", "l", "la", "lat", "latt", "latte", "c", "ca", "cat"})); // latte
-        System.out.println(prob.longestWord(new String[]{"ogz","eyj","e","ey","hmn","v","hm","ogznkb","ogzn","hmnm","eyjuo","vuq","ogznk","og","eyjuoi","d"})); // eyj
+//        System.out.println(prob.longestWord(new String[]{"ogz","eyj","e","ey","hmn","v","hm","ogznkb","ogzn","hmnm","eyjuo","vuq","ogznk","og","eyjuoi","d"})); // eyj
+//        System.out.println(prob.longestWord(new String[]{"yo","ew","fc","zrc","yodn","fcm","qm","qmo","fcmz","z","ewq","yod","ewqz","y"})); // yodn
+        System.out.println(prob.longestWord(new String[]{"rac","rs","ra","on","r","otif","o","onpdu","rsf","rs","ot","oti","racy","onpd"})); // otif
     }
 }
