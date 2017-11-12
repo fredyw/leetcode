@@ -10,7 +10,18 @@ import java.util.Map;
  */
 public class Problem721 {
     public List<List<String>> accountsMerge(List<List<String>> accounts) {
-        // TODO
+        Map<String, UnionFind> map = new HashMap<>();
+        for (List<String> account : accounts) {
+            String name = account.get(0);
+            if (account.size() > 1) {
+                UnionFind uf = new UnionFind();
+                String email = account.get(1);
+                for (int i = 2; i < account.size(); i++) {
+                    uf.connect(email, account.get(i));
+                }
+                map.put(name, uf);
+            }
+        }
         return null;
     }
 
@@ -24,7 +35,7 @@ public class Problem721 {
             if (!map.containsKey(b)) {
                 map.put(b, b);
             }
-            if (isConnected(a, b)) {
+            if (map.get(a).equals(map.get(b))) {
                 return;
             }
             for (Map.Entry<String, String> entry : map.entrySet()) {
