@@ -30,7 +30,7 @@ public class Problem547 {
             if (!map.containsKey(b)) {
                 map.put(b, b);
             }
-            if (map.get(a) == map.get(b)) {
+            if (map.get(a).equals(map.get(b))) {
                 return; // already connected
             }
             for (Map.Entry<Integer, Integer> e : map.entrySet()) {
