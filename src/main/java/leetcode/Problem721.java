@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeSet;
 
 /**
@@ -12,71 +13,73 @@ import java.util.TreeSet;
  */
 public class Problem721 {
     public List<List<String>> accountsMerge(List<List<String>> accounts) {
-        Map<String, List<Map<String, String>>> map = new HashMap<>();
+        UnionFind uf = new UnionFind();
         for (List<String> account : accounts) {
             String name = account.get(0);
-            if (account.size() > 1) {
-                List<Map<String, String>> list = map.get(name);
-                if (list == null) {
-                    list = new ArrayList<>();
-                }
-                Map<String, String> found = null;
-                outer:
-                for (Map<String, String> m : list) {
-                    for (int i = 1; i < account.size(); i++) {
-                        if (m.containsKey(account.get(i))) {
-                            found = m;
-                            break outer;
-                        }
-                    }
-                }
-                if (found != null) {
-                    String val = new ArrayList<>(found.values()).get(0);
-                    for (int i = 1; i < account.size(); i++) {
-                        found.put(account.get(i), val);
-                    }
-                } else {
-                    Map<String, String> m = new HashMap<>();
-                    String email = account.get(1);
-                    m.put(email, email);
-                    for (int i = 2; i < account.size(); i++) {
-                        m.put(account.get(i), email);
-                    }
-                    if (!map.containsKey(name)) {
-                        List<Map<String, String>> newList = new ArrayList<>();
-                        newList.add(m);
-                        map.put(name, newList);
-                    } else {
-                        map.get(name).add(m);
-                    }
-                }
+            String email = account.get(1);
+            uf.connect(name, email, email);
+            for (int i = 2; i < account.size(); i++) {
+                uf.connect(name, email, account.get(i));
+            }
+        }
+        Map<String, Set<String>> map = new HashMap<>();
+        for (Map.Entry<String, String[]> entry : uf.getMap().entrySet()) {
+            String key = entry.getValue()[0] + "," + entry.getValue()[1];
+            if (!map.containsKey(key)) {
+                Set<String> set = new TreeSet<>();
+                set.add(entry.getKey());
+                map.put(key, set);
+            } else {
+                map.get(key).add(entry.getKey());
             }
         }
         List<List<String>> result = new ArrayList<>();
-        for (Map.Entry<String, List<Map<String, String>>> e : map.entrySet()) {
-            String name = e.getKey();
-            List<Map<String, String>> list = e.getValue();
-            for (Map<String, String> m : list) {
-                List<String> account = new ArrayList<>();
-                account.add(name);
-                TreeSet<String> set = new TreeSet<>(m.keySet());
-                for (String email : set) {
-                    account.add(email);
-                }
-                result.add(account);
+        for (Map.Entry<String, Set<String>> entry : map.entrySet()) {
+            List<String> list = new ArrayList<>();
+            list.add(entry.getKey().split(",")[0]);
+            for (String email : entry.getValue()) {
+                list.add(email);
             }
+            result.add(list);
         }
         return result;
     }
 
+    public static class UnionFind {
+        private final Map<String, String[]> map = new HashMap<>();
+
+        public void connect(String x, String a, String b) {
+            if (!map.containsKey(a)) {
+                map.put(a, new String[]{x, a});
+            }
+            if (!map.containsKey(b)) {
+                map.put(b, new String[]{x, b});
+            }
+            if (map.get(a)[1].equals(map.get(b)[1])) {
+                return;
+            }
+            String oldValue = map.get(a)[1];
+            String newValue = map.get(b)[1];
+            for (Map.Entry<String, String[]> entry : map.entrySet()) {
+                if (entry.getValue()[1].equals(oldValue)) {
+                    map.put(entry.getKey(), new String[]{x, newValue});
+                }
+            }
+        }
+
+        public Map<String, String[]> getMap() {
+            return map;
+        }
+    }
+
     public static void main(String[] args) {
         Problem721 prob = new Problem721();
-//        System.out.println(prob.accountsMerge(Arrays.asList(
-//            Arrays.asList(new String[]{"John", "johnsmith@mail.com", "john00@mail.com"}),
-//            Arrays.asList(new String[]{"John", "johnnybravo@mail.com"}),
-//            Arrays.asList(new String[]{"John", "johnsmith@mail.com", "john_newyork@mail.com"}),
-//            Arrays.asList(new String[]{"Mary", "mary@mail.com"})
-//        ))); // [["John", 'john00@mail.com', 'john_newyork@mail.com', 'johnsmith@mail.com'],  ["John", "johnnybravo@mail.com"], ["Mary", "mary@mail.com"]]
+        System.out.println(prob.accountsMerge(Arrays.asList(
+            Arrays.asList(new String[]{"John", "johnsmith@mail.com", "john00@mail.com"}),
+            Arrays.asList(new String[]{"John", "johnnybravo@mail.com"}),
+            Arrays.asList(new String[]{"John", "johnsmith@mail.com", "john_newyork@mail.com"}),
+            Arrays.asList(new String[]{"Mary", "mary@mail.com"})
+        ))); // [["John", 'john00@mail.com', 'john_newyork@mail.com', 'johnsmith@mail.com'],  ["John", "johnnybravo@mail.com"], ["Mary", "mary@mail.com"]]
         System.out.println(prob.accountsMerge(Arrays.asList(
             Arrays.asList(new String[]{"David","David0@m.co","David1@m.co"}),
             Arrays.asList(new String[]{"David","David3@m.co","David4@m.co"}),
