@@ -5,13 +5,21 @@ package leetcode;
  */
 public class Problem724 {
     public int pivotIndex(int[] nums) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem724 prob = new Problem724();
-        System.out.println(prob.pivotIndex(new int[]{1, 7, 3, 6, 5, 6})); // 3
-        System.out.println(prob.pivotIndex(new int[]{1, 2, 3})); // -1
+        int totalSum = 0;
+        int[] sums = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            totalSum += nums[i];
+            sums[i] = totalSum;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            int left = 0;
+            if (i > 0) {
+                left = sums[i - 1];
+            }
+            if (totalSum - sums[i] == left) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
