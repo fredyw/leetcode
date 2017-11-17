@@ -33,12 +33,11 @@ public class Problem721 {
             }
         }
         int group = 0;
-        Map<String, Integer> groups = new HashMap<>();
         Set<String> visited = new HashSet<>();
         Map<Integer, TreeSet<String>> connectedComponents = new HashMap<>();
         for (String vertex : graph.keySet()) {
             if (!visited.contains(vertex)) {
-                dfs(graph, vertex, group++, groups, visited, connectedComponents);
+                dfs(graph, vertex, group++, visited, connectedComponents);
             }
         }
         List<List<String>> result = new ArrayList<>();
@@ -63,18 +62,16 @@ public class Problem721 {
     private static void dfs(Map<String, TreeSet<String>> graph,
                             String source,
                             int group,
-                            Map<String, Integer> groups,
                             Set<String> visited,
                             Map<Integer, TreeSet<String>> connectedComponents) {
         visited.add(source);
-        groups.put(source, group);
         if (!connectedComponents.containsKey(group)) {
             connectedComponents.put(group, new TreeSet<>());
         }
         connectedComponents.get(group).add(source);
         for (String adj : graph.get(source)) {
             if (!visited.contains(adj)) {
-                dfs(graph, adj, group, groups, visited, connectedComponents);
+                dfs(graph, adj, group, visited, connectedComponents);
             }
         }
     }
