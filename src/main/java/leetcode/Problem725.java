@@ -44,5 +44,6 @@ public class Problem725 {
         Problem725 prob = new Problem725();
         System.out.println(Arrays.toString(prob.splitListToParts(build(1, 2, 3), 5))); // [[1],[2],[3],[],[]]
         System.out.println(Arrays.toString(prob.splitListToParts(build(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 3))); // [[1, 2, 3, 4], [5, 6, 7], [8, 9, 10]]
+        System.out.println(Arrays.toString(prob.splitListToParts(build(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 7))); // [[1,2],[3,4],[5,6],[7],[8],[9],[10]]
     }
 }
