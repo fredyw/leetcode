@@ -21,8 +21,16 @@ public class Problem725 {
     }
 
     public ListNode[] splitListToParts(ListNode root, int k) {
+        int size = 0;
+        for (ListNode node = root; node != null; node = node.next) {
+            size++;
+        }
+        int division = size / k;
+        int remainder = size % k;
+        ListNode[] result = new ListNode[k];
+        int i = 0;
         // TODO
-        return null;
+        return result;
     }
 
     private static ListNode build(int... nums) {
