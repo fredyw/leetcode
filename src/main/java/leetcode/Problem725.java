@@ -29,7 +29,26 @@ public class Problem725 {
         int remainder = size % k;
         ListNode[] result = new ListNode[k];
         int i = 0;
-        // TODO
+        int d = division;
+        ListNode previous = null;
+        ListNode current = root;
+        while (current != null) {
+            if (i == 0) {
+                result[i++] = current;
+            } else if (d <= 0) {
+                if (remainder > 0) {
+                    previous = current;
+                    current = current.next;
+                    remainder--;
+                }
+                previous.next = null;
+                result[i++] = current;
+                d = division;
+            }
+            d--;
+            previous = current;
+            current = current.next;
+        }
         return result;
     }
 
@@ -51,7 +70,7 @@ public class Problem725 {
     public static void main(String[] args) {
         Problem725 prob = new Problem725();
         System.out.println(Arrays.toString(prob.splitListToParts(build(1, 2, 3), 5))); // [[1],[2],[3],[],[]]
-        System.out.println(Arrays.toString(prob.splitListToParts(build(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 3))); // [[1, 2, 3, 4], [5, 6, 7], [8, 9, 10]]
-        System.out.println(Arrays.toString(prob.splitListToParts(build(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 7))); // [[1,2],[3,4],[5,6],[7],[8],[9],[10]]
+//        System.out.println(Arrays.toString(prob.splitListToParts(build(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 3))); // [[1, 2, 3, 4], [5, 6, 7], [8, 9, 10]]
+//        System.out.println(Arrays.toString(prob.splitListToParts(build(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 7))); // [[1,2],[3,4],[5,6],[7],[8],[9],[10]]
     }
 }
