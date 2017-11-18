@@ -1,7 +1,5 @@
 package leetcode;
 
-import java.util.Arrays;
-
 /**
  * https://leetcode.com/problems/split-linked-list-in-parts/
  */
@@ -12,11 +10,6 @@ public class Problem725 {
 
         ListNode(int x) {
             val = x;
-        }
-
-        @Override
-        public String toString() {
-            return "" + val;
         }
     }
 
@@ -37,8 +30,10 @@ public class Problem725 {
                 result[i++] = current;
             } else if (d <= 0) {
                 if (remainder > 0) {
-                    previous = current;
-                    current = current.next;
+                    if (d == 0) {
+                        previous = current;
+                        current = current.next;
+                    }
                     remainder--;
                 }
                 previous.next = null;
@@ -65,12 +60,5 @@ public class Problem725 {
             }
         }
         return head;
-    }
-
-    public static void main(String[] args) {
-        Problem725 prob = new Problem725();
-        System.out.println(Arrays.toString(prob.splitListToParts(build(1, 2, 3), 5))); // [[1],[2],[3],[],[]]
-//        System.out.println(Arrays.toString(prob.splitListToParts(build(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 3))); // [[1, 2, 3, 4], [5, 6, 7], [8, 9, 10]]
-//        System.out.println(Arrays.toString(prob.splitListToParts(build(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 7))); // [[1,2],[3,4],[5,6],[7],[8],[9],[10]]
     }
 }
