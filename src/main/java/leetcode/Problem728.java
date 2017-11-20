@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,12 +8,21 @@ import java.util.List;
  */
 public class Problem728 {
     public List<Integer> selfDividingNumbers(int left, int right) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem728 prob = new Problem728();
-        System.out.println(prob.selfDividingNumbers(1, 22)); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
+        List<Integer> result = new ArrayList<>();
+        for (int i = left; i <= right; i++) {
+            String str = "" + i;
+            boolean found = true;
+            for (int j = 0; j < str.length(); j++) {
+                int a = str.charAt(j) - '0';
+                if (a == 0 || i % a != 0) {
+                    found = false;
+                    break;
+                }
+            }
+            if (found) {
+                result.add(i);
+            }
+        }
+        return result;
     }
 }
