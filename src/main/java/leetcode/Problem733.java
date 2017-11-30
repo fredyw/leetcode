@@ -11,6 +11,9 @@ public class Problem733 {
 
     public static void main(String[] args) {
         Problem733 prob = new Problem733();
-        System.out.println(prob.floodFill(new int[][]{{1, 1, 1}, {1, 1, 0}, {1, 0, 1}}, 1, 1, 2)); // [[2,2,2],[2,2,0],[2,0,1]]
+        System.out.println(prob.floodFill(new int[][]{
+            {1, 1, 1},
+            {1, 1, 0},
+            {1, 0, 1}}, 1, 1, 2)); // [[2,2,2],[2,2,0],[2,0,1]]
     }
 }
