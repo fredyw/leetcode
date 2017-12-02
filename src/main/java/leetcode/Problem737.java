@@ -16,5 +16,20 @@ public class Problem737 {
             new String[]{"fine", "drama", "talent"},
             new String[][]{{"great", "good"}, {"fine", "good"}, {"acting","drama"}, {"skills","talent"}}
         )); // true
+        System.out.println(prob.areSentencesSimilarTwo(
+            new String[]{"great"},
+            new String[]{"great"},
+            new String[][]{}
+        )); // true
+        System.out.println(prob.areSentencesSimilarTwo(
+            new String[]{"great"},
+            new String[]{"fine"},
+            new String[][]{{"great", "good"}, {"fine", "good"}}
+        )); // true
+        System.out.println(prob.areSentencesSimilarTwo(
+            new String[]{"great"},
+            new String[]{"great", "blah"},
+            new String[][]{}
+        )); // false
     }
 }
