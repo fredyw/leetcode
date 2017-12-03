@@ -1,6 +1,5 @@
 package leetcode;
 
-import java.util.Arrays;
 import java.util.Stack;
 
 /**
@@ -10,17 +9,27 @@ public class Problem735 {
     public int[] asteroidCollision(int[] asteroids) {
         Stack<Integer> stack = new Stack<>();
         for (int i = 0; i < asteroids.length; i++) {
-            if (stack.isEmpty()) {
-                stack.push(asteroids[i]);
-            } else {
-                int a = stack.pop();
-                if (a > 0 && asteroids[i] < 0) {
-                    int sum = a + asteroids[i];
+            stack.push(asteroids[i]);
+            if (stack.size() <= 1) {
+                continue;
+            }
+            while (true) {
+                if (stack.size() <= 1) {
+                    break;
+                }
+                int right = stack.pop();
+                int left = stack.pop();
+                if (left > 0 && right < 0) {
+                    int sum = left + right;
                     if (sum < 0) {
-                        stack.push(asteroids[i]);
+                        stack.push(right);
                     } else if (sum > 0) {
-                        stack.push(a);
+                        stack.push(left);
                     }
+                } else {
+                    stack.push(left);
+                    stack.push(right);
+                    break;
                 }
             }
         }
@@ -29,13 +38,5 @@ public class Problem735 {
             result[i] = stack.pop();
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        Problem735 prob = new Problem735();
-        System.out.println(Arrays.toString(prob.asteroidCollision(new int[]{5, 10, -5}))); // [5, 10]
-        System.out.println(Arrays.toString(prob.asteroidCollision(new int[]{8, -8}))); // []
-        System.out.println(Arrays.toString(prob.asteroidCollision(new int[]{10, 2, -5}))); // [10]
-        System.out.println(Arrays.toString(prob.asteroidCollision(new int[]{-2, -1, 1, 2}))); // [-2, -1, 1, 2]
     }
 }
