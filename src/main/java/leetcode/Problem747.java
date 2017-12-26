@@ -5,13 +5,21 @@ package leetcode;
  */
 public class Problem747 {
     public int dominantIndex(int[] nums) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem747 prob = new Problem747();
-        System.out.println(prob.dominantIndex(new int[]{3, 6, 1, 0})); // 1
-        System.out.println(prob.dominantIndex(new int[]{1, 2, 3, 4})); // -1
+        if (nums.length == 1) {
+            return 0;
+        }
+        int firstMax = -1;
+        int firstMaxIdx = -1;
+        int secondMax = -1;
+        for (int i = 0; i < nums.length; i++) {
+            if (firstMax < nums[i]) {
+                secondMax = firstMax;
+                firstMax = nums[i];
+                firstMaxIdx = i;
+            } else if (secondMax < nums[i]) {
+                secondMax = nums[i];
+            }
+        }
+        return firstMax >= secondMax * 2 ? firstMaxIdx : -1;
     }
 }
