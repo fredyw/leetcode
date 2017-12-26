@@ -5,22 +5,29 @@ package leetcode;
  */
 public class Problem746 {
     public int minCostClimbingStairs(int[] cost) {
-        int[] dp = new int[cost.length];
-        int min = 0;
+        int[] dp = new int[cost.length + 2];
         for (int i = cost.length - 1; i >= 0; i--) {
-            int a = 0;
-            if (i - 2 >= 0) {
-                a = dp[i - 2];
-            }
-            int b = dp[i - 1];
-            dp[i] = cost[i] + Math.min(a, b);
+            dp[i] = Math.min(dp[i + 1], dp[i + 2]) + cost[i];
         }
-        return min;
+        return Math.min(dp[0], dp[1]);
     }
 
-    public static void main(String[] args) {
-        Problem746 prob = new Problem746();
-        System.out.println(prob.minCostClimbingStairs(new int[]{10, 15, 20})); // 15
-        System.out.println(prob.minCostClimbingStairs(new int[]{1, 100, 1, 1, 1, 100, 1, 1, 100, 1})); // 6
-    }
+//    public int minCostClimbingStairs(int[] cost) {
+//        Integer[] memo = new Integer[cost.length];
+//        return Math.min(minCostClimbingStairs(cost, 0, memo), minCostClimbingStairs(cost, 1, memo));
+//    }
+//
+//    private static int minCostClimbingStairs(int[] cost, int idx, Integer[] memo) {
+//        if (idx >= cost.length) {
+//            return 0;
+//        }
+//        if (memo[idx] != null) {
+//            return memo[idx];
+//        }
+//        int a = minCostClimbingStairs(cost, idx + 1, memo);
+//        int b = minCostClimbingStairs(cost, idx + 2, memo);
+//        int min = Math.min(a, b) + cost[idx];
+//        memo[idx] = min;
+//        return min;
+//    }
 }
