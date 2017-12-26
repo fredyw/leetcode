@@ -5,8 +5,17 @@ package leetcode;
  */
 public class Problem746 {
     public int minCostClimbingStairs(int[] cost) {
-        // TODO
-        return 0;
+        int[] dp = new int[cost.length];
+        int min = 0;
+        for (int i = cost.length - 1; i >= 0; i--) {
+            int a = 0;
+            if (i - 2 >= 0) {
+                a = dp[i - 2];
+            }
+            int b = dp[i - 1];
+            dp[i] = cost[i] + Math.min(a, b);
+        }
+        return min;
     }
 
     public static void main(String[] args) {
