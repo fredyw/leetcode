@@ -5,6 +5,10 @@ package leetcode;
  */
 public class Problem740 {
     public int deleteAndEarn(int[] nums) {
+        int[] sums = new int[10002];
+        for (int i = 0; i < nums.length; i++) {
+            sums[nums[i]] += nums[i];
+        }
         // TODO
         return 0;
     }
