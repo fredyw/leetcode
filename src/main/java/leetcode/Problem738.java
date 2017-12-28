@@ -19,5 +19,7 @@ public class Problem738 {
         System.out.println(prob.monotoneIncreasingDigits(9735)); // 8999
         System.out.println(prob.monotoneIncreasingDigits(999)); // 999
         System.out.println(prob.monotoneIncreasingDigits(555)); // 555
+        System.out.println(prob.monotoneIncreasingDigits(8123)); // 7999
+        System.out.println(prob.monotoneIncreasingDigits(123765)); // 123699
     }
 }
