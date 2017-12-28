@@ -5,21 +5,42 @@ package leetcode;
  */
 public class Problem738 {
     public int monotoneIncreasingDigits(int N) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem738 prob = new Problem738();
-        System.out.println(prob.monotoneIncreasingDigits(10)); // 9
-        System.out.println(prob.monotoneIncreasingDigits(1234)); // 1234
-        System.out.println(prob.monotoneIncreasingDigits(332)); // 299
-        System.out.println(prob.monotoneIncreasingDigits(1357)); // 1357
-        System.out.println(prob.monotoneIncreasingDigits(9753)); // 8999
-        System.out.println(prob.monotoneIncreasingDigits(9735)); // 8999
-        System.out.println(prob.monotoneIncreasingDigits(999)); // 999
-        System.out.println(prob.monotoneIncreasingDigits(555)); // 555
-        System.out.println(prob.monotoneIncreasingDigits(8123)); // 7999
-        System.out.println(prob.monotoneIncreasingDigits(123765)); // 123699
+        String str = Integer.toString(N);
+        StringBuilder sb = new StringBuilder();
+        boolean nine = false;
+        int count = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (nine) {
+                sb.append('9');
+                continue;
+            }
+            if (i + 1 < str.length()) {
+                if (str.charAt(i) < str.charAt(i + 1)) {
+                    for (int j = 0; j < count; j++) {
+                        sb.append(str.charAt(i));
+                    }
+                    sb.append(str.charAt(i));
+                    count = 0;
+                } else if (str.charAt(i) > str.charAt(i + 1)) {
+                    if (str.charAt(i) - 1 != '0') {
+                        sb.append((char) (str.charAt(i) - 1));
+                    }
+                    for (int j = 0; j < count; j++) {
+                        sb.append('9');
+                    }
+                    nine = true;
+                    count = 0;
+                } else {
+                    count++;
+                }
+            }
+        }
+        if (!nine) {
+            for (int j = 0; j < count; j++) {
+                sb.append(str.charAt(str.length() - 1));
+            }
+            sb.append(str.charAt(str.length() - 1));
+        }
+        return Integer.parseInt(sb.toString());
     }
 }
