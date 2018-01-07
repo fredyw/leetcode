@@ -16,5 +16,6 @@ public class Problem756 {
         Problem756 prob = new Problem756();
         System.out.println(prob.pyramidTransition("XYZ", Arrays.asList("XYD", "YZE", "DEA", "FFF"))); // true
         System.out.println(prob.pyramidTransition("XXYX", Arrays.asList("XXX", "XXY", "XYX", "XYY", "YXZ"))); // false
+        System.out.println(prob.pyramidTransition("ABC", Arrays.asList("ABD", "BCE", "DEF", "FFF"))); // true
     }
 }
