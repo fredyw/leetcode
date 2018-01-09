@@ -1,7 +1,9 @@
 package leetcode;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * https://leetcode.com/problems/pyramid-transition-matrix/
@@ -9,6 +11,7 @@ import java.util.List;
 public class Problem756 {
     public boolean pyramidTransition(String bottom, List<String> allowed) {
         // TODO
+        Queue<Character> queue = new LinkedList<>();
         return false;
     }
 
