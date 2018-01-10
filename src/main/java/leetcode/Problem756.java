@@ -31,6 +31,16 @@ public class Problem756 {
             queue.add(bottom.charAt(i));
         }
         while (!queue.isEmpty()) {
+
+            // TODO: ???
+        }
+        return false;
+    }
+
+    private static boolean pyramidTransition(String bottom,
+                                             Map<String, List<Character>> map,
+                                             Queue<Character> queue) {
+        while (!queue.isEmpty()) {
             char c1 = queue.remove();
             if (queue.isEmpty()) {
                 return true;
@@ -40,9 +50,8 @@ public class Problem756 {
             if (!map.containsKey(s)) {
                 return false;
             }
-            // TODO: ???
+            pyramidTransition();
         }
-        return false;
     }
 
     public static void main(String[] args) {
