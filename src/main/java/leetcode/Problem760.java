@@ -1,16 +1,30 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+
 /**
  * https://leetcode.com/problems/find-anagram-mappings/
  */
 public class Problem760 {
     public int[] anagramMappings(int[] A, int[] B) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem760 prob = new Problem760();
-        System.out.println(prob.anagramMappings(new int[]{12, 28, 46, 32, 50}, new int[]{50, 12, 32, 46, 28})); // [1, 4, 3, 2, 0]
+        Map<Integer, LinkedList<Integer>> map = new HashMap<>();
+        for (int i = 0; i < B.length; i++) {
+            if (!map.containsKey(B[i])) {
+                LinkedList<Integer> list = new LinkedList<>();
+                list.add(i);
+                map.put(B[i], list);
+            } else {
+                map.get(B[i]).add(i);
+            }
+        }
+        int[] result = new int[A.length];
+        for (int i = 0; i < A.length; i++) {
+            LinkedList<Integer> list = map.get(A[i]);
+            Integer idx = list.removeFirst();
+            result[i] = idx;
+        }
+        return result;
     }
 }
