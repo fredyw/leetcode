@@ -1,19 +1,15 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Queue;
 
 /**
  * https://leetcode.com/problems/pyramid-transition-matrix/
  */
 public class Problem756 {
     public boolean pyramidTransition(String bottom, List<String> allowed) {
-        // TODO
         Map<String, List<Character>> map = new HashMap<>();
         for (String s : allowed) {
             String first = s.substring(0, 2);
@@ -26,40 +22,43 @@ public class Problem756 {
                 map.get(first).add(second);
             }
         }
-        Queue<Character> queue = new LinkedList<>();
+        List<List<Character>> matrix = new ArrayList<>();
         for (int i = 0; i < bottom.length(); i++) {
-            queue.add(bottom.charAt(i));
+            matrix.add(new ArrayList<>());
+            matrix.get(0).add(bottom.charAt(i));
         }
-        while (!queue.isEmpty()) {
-
-            // TODO: ???
-        }
-        return false;
+        return pyramidTransition(bottom, map, matrix, 0, 0);
     }
 
     private static boolean pyramidTransition(String bottom,
                                              Map<String, List<Character>> map,
-                                             Queue<Character> queue) {
-        while (!queue.isEmpty()) {
-            char c1 = queue.remove();
-            if (queue.isEmpty()) {
+                                             List<List<Character>> matrix,
+                                             int row,
+                                             int col) {
+        if (col + 1 >= matrix.get(row).size()) {
+            row++;
+            col = 0;
+        }
+        if (row == bottom.length() - 1 && matrix.get(row).size() == 1) {
+            return true;
+        }
+        char c1 = matrix.get(row).get(col);
+        char c2 = matrix.get(row).get(col + 1);
+        String s = "" + c1 + c2;
+        if (!map.containsKey(s)) {
+            return false;
+        }
+        List<Character> chars = map.get(s);
+        boolean found = false;
+        for (Character ch : chars) {
+            int idx = matrix.get(row + 1).size();
+            matrix.get(row + 1).add(ch);
+            found |= pyramidTransition(bottom, map, matrix, row, col + 1);
+            if (found) {
                 return true;
             }
-            char c2 = queue.remove();
-            String s = "" + c1 + c2;
-            if (!map.containsKey(s)) {
-                return false;
-            }
-            pyramidTransition();
+            matrix.get(row + 1).remove(idx);
         }
-    }
-
-    public static void main(String[] args) {
-        Problem756 prob = new Problem756();
-        System.out.println(prob.pyramidTransition("XYZ", Arrays.asList("XYD", "YZE", "DEA", "FFF"))); // true
-        System.out.println(prob.pyramidTransition("XXYX", Arrays.asList("XXX", "XXY", "XYX", "XYY", "YXZ"))); // false
-        System.out.println(prob.pyramidTransition("ABC", Arrays.asList("ABD", "BCE", "DEF", "FFF"))); // true
-        System.out.println(prob.pyramidTransition("XXX", Arrays.asList("XXX", "XXX", "XXX", "FFF"))); // true
-        System.out.println(prob.pyramidTransition("ABCD", Arrays.asList("BCE","BCF","ABA","CDA","AEG","FAG","GGG"))); // false
+        return false;
     }
 }
