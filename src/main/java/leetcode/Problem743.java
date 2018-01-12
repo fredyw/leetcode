@@ -11,5 +11,8 @@ public class Problem743 {
 
     public static void main(String[] args) {
         Problem743 prob = new Problem743();
+        System.out.println(prob.networkDelayTime(new int[][]{
+            {2, 1, 1}, {2, 3, 1}, {3, 4, 1}
+        }, 4, 2)); // 2
     }
 }
