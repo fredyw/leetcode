@@ -5,19 +5,29 @@ package leetcode;
  */
 public class Problem762 {
     public int countPrimeSetBits(int L, int R) {
-        // TODO
+        int result = 0;
+        for (int i = L; i <= R; i++) {
+            int count = count(i);
+            if (isPrime(count)) {
+                result++;
+            }
+        }
+        return result;
+    }
 
-        return 0;
+    private static int count(int n) {
+        int count = 0;
+        while (n > 0) {
+            if ((n & 1) == 1) {
+                count++;
+            }
+            n >>= 1;
+        }
+        return count;
     }
 
     private static boolean isPrime(int n) {
         return n == 2 || n == 3 || n == 5 || n == 7 || n == 11 ||
             n == 13 || n == 17 || n == 19;
-    }
-
-    public static void main(String[] args) {
-        Problem762 prob = new Problem762();
-        System.out.println(prob.countPrimeSetBits(6, 10)); // 4
-        System.out.println(prob.countPrimeSetBits(10, 15)); // 5
     }
 }
