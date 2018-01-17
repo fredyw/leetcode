@@ -6,7 +6,13 @@ package leetcode;
 public class Problem762 {
     public int countPrimeSetBits(int L, int R) {
         // TODO
+
         return 0;
+    }
+
+    private static boolean isPrime(int n) {
+        return n == 2 || n == 3 || n == 5 || n == 7 || n == 11 ||
+            n == 13 || n == 17 || n == 19;
     }
 
     public static void main(String[] args) {
