@@ -19,5 +19,7 @@ public class Problem764 {
         System.out.println(prob.orderOfLargestPlusSign(1, new int[][]{
             {0, 0}
         })); // 0
+        System.out.println(prob.orderOfLargestPlusSign(1, new int[][]{
+        })); // 1
     }
 }
