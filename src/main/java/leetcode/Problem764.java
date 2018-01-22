@@ -18,75 +18,49 @@ public class Problem764 {
             int y = mine[1];
             grid[x][y] = 0;
         }
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                int largest = orderOfLargestPlusSign(N, grid, i, j);
-                result = Math.max(result, largest);
+        int[][] dp = new int[N][N];
+        for (int row = 0; row < N; row++) {
+            int count = 0;
+            for (int col = 0; col < N; col++) {
+                if (grid[row][col] == 1) {
+                    count++;
+                } else {
+                    count = 0;
+                }
+                dp[row][col] = count;
+            }
+            count = 0;
+            for (int col = N - 1; col >= 0; col--) {
+                if (grid[row][col] == 1) {
+                    count++;
+                } else {
+                    count = 0;
+                }
+                dp[row][col] = Math.min(dp[row][col], count);
+            }
+        }
+
+        for (int col = 0; col < N; col++) {
+            int count = 0;
+            for (int row = 0; row < N; row++) {
+                if (grid[row][col] == 1) {
+                    count++;
+                } else {
+                    count = 0;
+                }
+                dp[row][col] = Math.min(dp[row][col], count);
+            }
+            count = 0;
+            for (int row = N - 1; row >= 0; row--) {
+                if (grid[row][col] == 1) {
+                    count++;
+                } else {
+                    count = 0;
+                }
+                dp[row][col] = Math.min(dp[row][col], count);
+                result = Math.max(result, dp[row][col]);
             }
         }
         return result;
-    }
-
-    private static int orderOfLargestPlusSign(int n, int[][] grid, int row, int col) {
-        if (grid[row][col] == 0) {
-            return 0;
-        }
-        int a = 1;
-        if (row - 1 >= 0) {
-            for (int i = row - 1; i >= 0; i--) {
-                if (grid[i][col] == 0) {
-                    break;
-                }
-                a++;
-            }
-        }
-        int b = 1;
-        if (col + 1 < n) {
-            for (int i = col + 1; i < n; i++) {
-                if (grid[row][i] == 0) {
-                    break;
-                }
-                b++;
-            }
-        }
-        int c = 1;
-        if (row + 1 < n) {
-            for (int i = row + 1; i < n; i++) {
-                if (grid[i][col] == 0) {
-                    break;
-                }
-                c++;
-            }
-        }
-        int d = 1;
-        if (col - 1 >= 0) {
-            for (int i = col - 1; i >= 0; i--) {
-                if (grid[row][i] == 0) {
-                    break;
-                }
-                d++;
-            }
-        }
-        int min = Math.min(Math.min(Math.min(a ,b), c), d);
-        return min;
-    }
-
-    public static void main(String[] args) {
-        Problem764 prob = new Problem764();
-//        System.out.println(prob.orderOfLargestPlusSign(5, new int[][]{
-//            {4, 2}
-//        })); // 2
-//        System.out.println(prob.orderOfLargestPlusSign(2, new int[][]{
-//        })); // 1
-//        System.out.println(prob.orderOfLargestPlusSign(1, new int[][]{
-//            {0, 0}
-//        })); // 0
-//        System.out.println(prob.orderOfLargestPlusSign(1, new int[][]{
-//        })); // 1
-        System.out.println(prob.orderOfLargestPlusSign(3, new int[][]{
-            {0, 2},
-            {1, 0},
-            {2, 0},
-        })); // 1
     }
 }
