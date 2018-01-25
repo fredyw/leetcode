@@ -31,8 +31,9 @@ public class Problem769 {
 //        System.out.println(prob.maxChunksToSorted(new int[]{1, 3, 2, 0, 4})); // 2
 //        System.out.println(prob.maxChunksToSorted(new int[]{2, 0, 1})); // 1
 //        System.out.println(prob.maxChunksToSorted(new int[]{2, 0, 1, 3})); // 2
-//        System.out.println(prob.maxChunksToSorted(new int[]{1, 2})); // 2
-//        System.out.println(prob.maxChunksToSorted(new int[]{2, 1})); // 1
+//        System.out.println(prob.maxChunksToSorted(new int[]{0, 1})); // 2
+//        System.out.println(prob.maxChunksToSorted(new int[]{1, 0})); // 1
         System.out.println(prob.maxChunksToSorted(new int[]{1, 4, 3, 6, 0, 7, 8, 2, 5})); // 1
+//        System.out.println(prob.maxChunksToSorted(new int[]{0, 3, 1, 2})); // 2
     }
 }
