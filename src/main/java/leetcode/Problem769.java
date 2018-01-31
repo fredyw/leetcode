@@ -8,32 +8,23 @@ public class Problem769 {
         int result = 0;
         int j = 0;
         int max = -1;
+        boolean[] found = new boolean[arr.length];
         for (int i = 0; i < arr.length; i++) {
-            if (i <= max) {
+            if (found[i] && i <= max) {
                 continue;
             }
             while (j < arr.length && arr[j] != i) {
+                found[arr[j]] = true;
                 max = Math.max(max, arr[j]);
                 j++;
             }
             if (j < arr.length) {
                 max = Math.max(max, arr[j]);
             }
-            result++;
+            if (max == j) {
+                result++;
+            }
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        Problem769 prob = new Problem769();
-//        System.out.println(prob.maxChunksToSorted(new int[]{4, 3, 2, 1, 0})); // 1
-//        System.out.println(prob.maxChunksToSorted(new int[]{1, 0, 2, 3, 4})); // 4
-//        System.out.println(prob.maxChunksToSorted(new int[]{1, 3, 2, 0, 4})); // 2
-//        System.out.println(prob.maxChunksToSorted(new int[]{2, 0, 1})); // 1
-//        System.out.println(prob.maxChunksToSorted(new int[]{2, 0, 1, 3})); // 2
-//        System.out.println(prob.maxChunksToSorted(new int[]{0, 1})); // 2
-//        System.out.println(prob.maxChunksToSorted(new int[]{1, 0})); // 1
-        System.out.println(prob.maxChunksToSorted(new int[]{1, 4, 3, 6, 0, 7, 8, 2, 5})); // 1
-//        System.out.println(prob.maxChunksToSorted(new int[]{0, 3, 1, 2})); // 2
     }
 }
