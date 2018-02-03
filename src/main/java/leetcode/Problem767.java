@@ -32,11 +32,21 @@ public class Problem767 {
                 sb.append(chars[i++]).append(chars[j++]);
             }
         }
-//        sb.append(chars[i]);
-//        if (i + 1 < S.length() && chars[i] == chars[i + 1]) {
-//            return "";
-//        }
-        return sb.toString();
+        char c = chars[i++];
+        int count = 0;
+        while (i < S.length() && c == chars[i]) {
+            i++;
+            count++;
+        }
+
+        if (count == 0) {
+            return sb.toString();
+        } else if (count == 1) {
+            sb.append(chars[i]);
+            return sb.toString();
+        } else {
+            return  "";
+        }
     }
 
     private static class CharCount {
@@ -59,7 +69,9 @@ public class Problem767 {
 //        System.out.println(prob.reorganizeString("aab")); // aba
 //        System.out.println(prob.reorganizeString("aaab")); //
 //        System.out.println(prob.reorganizeString("aaabb")); // ababa
-        System.out.println(prob.reorganizeString("aabbb")); // babab
-//        System.out.println(prob.reorganizeString("aaabbb")); // ababab
+//        System.out.println(prob.reorganizeString("aabbb")); // babab
+        System.out.println(prob.reorganizeString("aaabbb")); // ababab
+//        System.out.println(prob.reorganizeString("a")); // a
+//        System.out.println(prob.reorganizeString("ab")); // ab
     }
 }
