@@ -7,6 +7,9 @@ import java.util.Arrays;
  */
 public class Problem767 {
     public String reorganizeString(String S) {
+        if (S.length() == 1) {
+            return S;
+        }
         CharCount[] array = new CharCount[26];
         for (char i = 0; i < array.length; i++) {
             array[i] = new CharCount((char) (i + 'a'), 0);
@@ -32,7 +35,10 @@ public class Problem767 {
                 sb.append(chars[i++]).append(chars[j++]);
             }
         }
-        char c = chars[i++];
+        if (i - 1 < 0) {
+            return "";
+        }
+        char c = chars[i - 1];
         int count = 0;
         while (i < S.length() && c == chars[i]) {
             i++;
@@ -42,7 +48,7 @@ public class Problem767 {
         if (count == 0) {
             return sb.toString();
         } else if (count == 1) {
-            sb.append(chars[i]);
+            sb.append(c);
             return sb.toString();
         } else {
             return  "";
@@ -57,11 +63,6 @@ public class Problem767 {
             this.ch = ch;
             this.count = count;
         }
-
-        @Override
-        public String toString() {
-            return ch + " --> " + count;
-        }
     }
 
     public static void main(String[] args) {
@@ -70,8 +71,10 @@ public class Problem767 {
 //        System.out.println(prob.reorganizeString("aaab")); //
 //        System.out.println(prob.reorganizeString("aaabb")); // ababa
 //        System.out.println(prob.reorganizeString("aabbb")); // babab
-        System.out.println(prob.reorganizeString("aaabbb")); // ababab
+//        System.out.println(prob.reorganizeString("aaabbb")); // ababab
 //        System.out.println(prob.reorganizeString("a")); // a
 //        System.out.println(prob.reorganizeString("ab")); // ab
+//        System.out.println(prob.reorganizeString("aaa")); //
+        System.out.println(prob.reorganizeString("bfrbs")); // brbsf
     }
 }
