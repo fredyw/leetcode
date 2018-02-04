@@ -1,58 +1,48 @@
 package leetcode;
 
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 /**
  * https://leetcode.com/problems/reorganize-string/
  */
 public class Problem767 {
     public String reorganizeString(String S) {
-        if (S.length() == 1) {
-            return S;
-        }
-        CharCount[] array = new CharCount[26];
-        for (char i = 0; i < array.length; i++) {
-            array[i] = new CharCount((char) (i + 'a'), 0);
-        }
+        Map<Character, Integer> map = new HashMap<>();
         for (int i = 0; i < S.length(); i++) {
-            array[S.charAt(i) - 'a'].count++;
-        }
-        Arrays.sort(array, (a, b) -> Integer.compare(b.count, a.count));
-        StringBuilder newString = new StringBuilder();
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].count; j++) {
-                newString.append(array[i].ch);
+            if (!map.containsKey(S.charAt(i))) {
+                map.put(S.charAt(i), 1);
+            } else {
+                map.put(S.charAt(i), map.get(S.charAt(i)) + 1);
             }
+        }
+        PriorityQueue<CharCount> queue = new PriorityQueue<>((a, b) -> Integer.compare(b.count, a.count));
+        for (Map.Entry<Character, Integer> e : map.entrySet()) {
+            queue.add(new CharCount(e.getKey(), e.getValue()));
         }
         StringBuilder sb = new StringBuilder();
-        int i = 0;
-        int j = 0;
-        char[] chars = newString.toString().toCharArray();
-        while (j < chars.length) {
-            if (chars[i] == chars[j]) {
-                j++;
+        while (!queue.isEmpty()) {
+            CharCount charCount = queue.remove();
+            if (sb.length() == 0) {
+                sb.append(charCount.ch);
             } else {
-                sb.append(chars[i++]).append(chars[j++]);
+                CharCount tmp = charCount;
+                if (!queue.isEmpty() && charCount.ch == sb.charAt(sb.length() - 1)) {
+                    charCount = queue.remove();
+                    queue.add(tmp);
+                }
+                if (charCount.ch == sb.charAt(sb.length() - 1)) {
+                    return "";
+                }
+                sb.append(charCount.ch);
+            }
+            charCount.count--;
+            if (charCount.count > 0) {
+                queue.add(charCount);
             }
         }
-        if (i - 1 < 0) {
-            return "";
-        }
-        char c = chars[i - 1];
-        int count = 0;
-        while (i < S.length() && c == chars[i]) {
-            i++;
-            count++;
-        }
-
-        if (count == 0) {
-            return sb.toString();
-        } else if (count == 1) {
-            sb.append(c);
-            return sb.toString();
-        } else {
-            return  "";
-        }
+        return sb.toString();
     }
 
     private static class CharCount {
@@ -63,19 +53,5 @@ public class Problem767 {
             this.ch = ch;
             this.count = count;
         }
-    }
-
-    public static void main(String[] args) {
-        Problem767 prob = new Problem767();
-//        System.out.println(prob.reorganizeString("aab")); // aba
-//        System.out.println(prob.reorganizeString("aaab")); //
-//        System.out.println(prob.reorganizeString("aaabb")); // ababa
-//        System.out.println(prob.reorganizeString("aabbb")); // babab
-//        System.out.println(prob.reorganizeString("aaabbb")); // ababab
-//        System.out.println(prob.reorganizeString("a")); // a
-//        System.out.println(prob.reorganizeString("ab")); // ab
-//        System.out.println(prob.reorganizeString("aaa")); //
-        System.out.println(prob.reorganizeString("bfrbs")); // brbsf
-        System.out.println(prob.reorganizeString("aabbcc")); // abcabc
     }
 }
