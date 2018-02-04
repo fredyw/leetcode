@@ -76,5 +76,6 @@ public class Problem767 {
 //        System.out.println(prob.reorganizeString("ab")); // ab
 //        System.out.println(prob.reorganizeString("aaa")); //
         System.out.println(prob.reorganizeString("bfrbs")); // brbsf
+        System.out.println(prob.reorganizeString("aabbcc")); // abcabc
     }
 }
