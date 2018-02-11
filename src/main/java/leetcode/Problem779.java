@@ -10,31 +10,22 @@ public class Problem779 {
         for (int row = N - 2; row >= 0; row--) {
             cols[row] = (int) Math.ceil(cols[row + 1] / 2.0);
         }
-        String s = "0";
-        for (int row = 0; row < N; row++) {
-            String tmp = "";
-            for (int i = 0; i < s.length(); i++) {
-                if (s.charAt(i) == '0') {
-                    tmp += "01";
-                } else {
-                    tmp += "10";
-                }
-                if (tmp.length() >= cols[row]) {
-                    break;
-                }
+        int result = 0;
+        for (int row = 1; row < N; row++) {
+            int i = cols[row];
+            String s = "";
+            if (result == 0) {
+                s = "01";
+            } else {
+                s = "10";
             }
-            s = tmp;
-        }
-        return s.charAt(K - 1) - '0';
-    }
 
-    public static void main(String[] args) {
-        // 01101001
-        Problem779 prob = new Problem779();
-//        System.out.println(prob.kthGrammar(1, 1)); // 0
-//        System.out.println(prob.kthGrammar(2, 1)); // 0
-//        System.out.println(prob.kthGrammar(2, 2)); // 1
-//        System.out.println(prob.kthGrammar(4, 5)); // 1
-        System.out.println(prob.kthGrammar(30, 434991989)); // 1
+            if (i % 2 == 0) {
+                result = s.charAt(1) - '0';
+            } else {
+                result = s.charAt(0) - '0';
+            }
+        }
+        return result;
     }
 }
