@@ -20,7 +20,8 @@ public class Problem781 {
         System.out.println(prob.numRabbits(new int[]{1, 2, 2, 2, 3})); // 9
         System.out.println(prob.numRabbits(new int[]{1, 2, 2, 2, 2, 3})); // 12
         System.out.println(prob.numRabbits(new int[]{1, 2, 2, 2, 2, 2, 3})); // 12
-        System.out.println(prob.numRabbits(new int[]{1, 2, 2, 2, 2, 2, 2, 3})); // 15
+        System.out.println(prob.numRabbits(new int[]{1, 2, 2, 2, 2, 2, 2, 3})); // 12
+        System.out.println(prob.numRabbits(new int[]{1, 2, 2, 2, 2, 2, 2, 2, 3})); // 15
         System.out.println(prob.numRabbits(new int[]{0})); // 1
         System.out.println(prob.numRabbits(new int[]{0, 0})); // 2
         System.out.println(prob.numRabbits(new int[]{0, 0, 0})); // 3
