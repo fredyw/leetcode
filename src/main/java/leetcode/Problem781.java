@@ -1,30 +1,30 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * https://leetcode.com/problems/rabbits-in-forest/
  */
 public class Problem781 {
     public int numRabbits(int[] answers) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem781 prob = new Problem781();
-        System.out.println(prob.numRabbits(new int[]{1, 1, 2})); // 5
-        System.out.println(prob.numRabbits(new int[]{10, 10, 10})); // 11
-        System.out.println(prob.numRabbits(new int[]{})); // 0
-        System.out.println(prob.numRabbits(new int[]{1, 0, 1, 0, 0})); // 5
-        System.out.println(prob.numRabbits(new int[]{1, 2, 3})); // 9
-        System.out.println(prob.numRabbits(new int[]{1, 2, 2, 3})); // 9
-        System.out.println(prob.numRabbits(new int[]{1, 2, 2, 2, 3})); // 9
-        System.out.println(prob.numRabbits(new int[]{1, 2, 2, 2, 2, 3})); // 12
-        System.out.println(prob.numRabbits(new int[]{1, 2, 2, 2, 2, 2, 3})); // 12
-        System.out.println(prob.numRabbits(new int[]{1, 2, 2, 2, 2, 2, 2, 3})); // 12
-        System.out.println(prob.numRabbits(new int[]{1, 2, 2, 2, 2, 2, 2, 2, 3})); // 15
-        System.out.println(prob.numRabbits(new int[]{0})); // 1
-        System.out.println(prob.numRabbits(new int[]{0, 0})); // 2
-        System.out.println(prob.numRabbits(new int[]{0, 0, 0})); // 3
-        System.out.println(prob.numRabbits(new int[]{0, 0, 0, 0})); // 4
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int answer : answers) {
+            if (!map.containsKey(answer)) {
+                map.put(answer, 1);
+            } else {
+                map.put(answer, map.get(answer) + 1);
+            }
+        }
+        int result = 0;
+        for (Map.Entry<Integer, Integer> e : map.entrySet()) {
+            result += e.getKey() + 1;
+            int count = e.getValue() - e.getKey() - 1;
+            while (count > 0) {
+                result += e.getKey() + 1;
+                count -= e.getKey() + 1;
+            }
+        }
+        return result;
     }
 }
