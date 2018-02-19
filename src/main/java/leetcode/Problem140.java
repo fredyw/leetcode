@@ -1,7 +1,9 @@
 package leetcode;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * https://leetcode.com/problems/word-break-ii/
@@ -9,6 +11,10 @@ import java.util.List;
 public class Problem140 {
     public List<String> wordBreak(String s, List<String> wordDict) {
         // TODO
+        Set<String> words = new HashSet<>();
+        for (String word : wordDict) {
+            words.add(word);
+        }
         return null;
     }
 
