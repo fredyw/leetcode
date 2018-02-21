@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,14 +8,21 @@ import java.util.List;
  */
 public class Problem784 {
     public List<String> letterCasePermutation(String S) {
-        // TODO
-        return null;
+        List<String> result = new ArrayList<>();
+        S = S.toLowerCase();
+        letterCasePermutation(S, 0, "", result);
+        return result;
     }
 
-    public static void main(String[] args) {
-        Problem784 prob = new Problem784();
-        System.out.println(prob.letterCasePermutation("a1b2")); // ["a1b2", "a1B2", "A1b2", "A1B2"]
-        System.out.println(prob.letterCasePermutation("3z4")); // ["3z4", "3Z4"]
-        System.out.println(prob.letterCasePermutation("12345")); // ["12345"]
+    private static void letterCasePermutation(String s, int idx, String accu, List<String> result) {
+        if (idx == s.length()) {
+            result.add(accu);
+            return;
+        }
+        char c = s.charAt(idx);
+        letterCasePermutation(s, idx + 1, accu + c, result);
+        if (c >= 'a' && c <= 'z') {
+            letterCasePermutation(s, idx + 1, accu + ("" + c).toUpperCase(), result);
+        }
     }
 }
