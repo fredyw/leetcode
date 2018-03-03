@@ -5,8 +5,16 @@ package leetcode;
  */
 public class Problem789 {
     public boolean escapeGhosts(int[][] ghosts, int[] target) {
-        // TODO
-        return false;
+        int distance1 = Integer.MAX_VALUE;
+        for (int[] ghost : ghosts) {
+            distance1 = Math.min(distance1, shortestPath(ghost, target));
+        }
+        int distance2 = shortestPath(new int[]{0, 0}, target);
+        return distance2 < distance1;
+    }
+
+    private static int shortestPath(int[] source, int[] target) {
+        return 0;
     }
 
     public static void main(String[] args) {
