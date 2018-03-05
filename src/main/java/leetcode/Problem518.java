@@ -1,29 +1,32 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * https://leetcode.com/problems/coin-change-2/
  */
 public class Problem518 {
     public int change(int amount, int[] coins) {
-        Result result = new Result();
-        change(amount, coins, result);
-        return result.result;
+        return coinChange(amount, coins, new HashMap<>());
     }
 
-    private static class Result {
-        private int result;
-    }
-
-    private static void change(int amount, int[] coins, Result result) {
+    private static int coinChange(int amount, int[] coins, Map<Integer, Integer> memo) {
         if (amount <= 0) {
             if (amount == 0) {
-                result.result++;
+                return 1;
             }
-            return;
+            return 0;
         }
+        if (memo.containsKey(amount)) {
+            return memo.get(amount);
+        }
+        int count = 0;
         for (int coin : coins) {
-            change(amount - coin, coins, result);
+            count += coinChange(amount - coin, coins, memo);
         }
+        memo.put(amount, count);
+        return count;
     }
 
     public static void main(String[] args) {
