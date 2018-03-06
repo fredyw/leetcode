@@ -8,10 +8,10 @@ import java.util.Map;
  */
 public class Problem518 {
     public int change(int amount, int[] coins) {
-        return coinChange(amount, coins, new HashMap<>());
+        return coinChange(amount, coins, 0, new HashMap<>());
     }
 
-    private static int coinChange(int amount, int[] coins, Map<Integer, Integer> memo) {
+    private static int coinChange(int amount, int[] coins, int idx, Map<Integer, Integer> memo) {
         if (amount <= 0) {
             if (amount == 0) {
                 return 1;
@@ -22,8 +22,8 @@ public class Problem518 {
             return memo.get(amount);
         }
         int count = 0;
-        for (int coin : coins) {
-            count += coinChange(amount - coin, coins, memo);
+        for (int i = idx; i < coins.length; i++) {
+            count += coinChange(amount - coins[i], coins, i, memo);
         }
         memo.put(amount, count);
         return count;
