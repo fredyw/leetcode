@@ -25,6 +25,7 @@ public class Problem795 {
         System.out.println(prob.numSubarrayBoundedMax(new int[]{1, 1, 1, 1}, 2, 3)); // 0
         System.out.println(prob.numSubarrayBoundedMax(new int[]{1, 1, 2, 1}, 2, 3)); // 6
         System.out.println(prob.numSubarrayBoundedMax(new int[]{1, 2, 1}, 2, 3)); // 4
+        System.out.println(prob.numSubarrayBoundedMax(new int[]{1, 2, 3, 1}, 2, 3)); // 8
         System.out.println(prob.numSubarrayBoundedMax(new int[]{1, 1, 2, 1, 1}, 2, 3)); // 9
         System.out.println(prob.numSubarrayBoundedMax(new int[]{1, 3, 2, 1, 1}, 2, 3)); // 11
         System.out.println(prob.numSubarrayBoundedMax(new int[]{1, 3, 2, 3, 1}, 2, 3)); // 13
