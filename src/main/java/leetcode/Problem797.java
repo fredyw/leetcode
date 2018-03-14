@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -10,11 +11,20 @@ import java.util.Queue;
 public class Problem797 {
     public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
         // TODO
+        List<List<Integer>> result = new ArrayList<>();
+        boolean[] visited = new boolean[graph.length];
         Queue<Integer> queue = new LinkedList<>();
+        queue.add(0);
         while (!queue.isEmpty()) {
-
+            Integer current = queue.remove();
+            visited[current] = true;
+            for (int neighbor : graph[current]) {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                }
+            }
         }
-        return null;
+        return result;
     }
 
     public static void main(String[] args) {
