@@ -24,11 +24,4 @@ public class Problem797 {
             }
         }
     }
-
-    public static void main(String[] args) {
-        Problem797 prob = new Problem797();
-        System.out.println(prob.allPathsSourceTarget(new int[][]{
-            {1, 2}, {3}, {3}, {}
-        })); // [[0,1,3],[0,2,3]]
-    }
 }
