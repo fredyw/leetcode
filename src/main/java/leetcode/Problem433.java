@@ -15,35 +15,41 @@ public class Problem433 {
         for (String s : bank) {
             set.add(s);
         }
-        boolean found = false;
-        Queue<String> queue = new LinkedList<>();
-        int count = 0;
-        queue.add(start);
+        Queue<StringLevel> queue = new LinkedList<>();
+        Set<String> visited = new HashSet<>();
+        int result = -1;
+        queue.add(new StringLevel(start, 0));
+        visited.add(start);
         while (!queue.isEmpty()) {
-            String s = queue.remove();
-            count++;
-            if (s.equals(end)) {
-                found = true;
+            StringLevel sl = queue.remove();
+            if (sl.node.equals(end)) {
+                result = sl.level;
                 break;
             }
-            for (int i = 0; i < s.length(); i++) {
-                char[] tmp = s.toCharArray();
+            for (int i = 0; i < sl.node.length(); i++) {
                 for (char c : chars) {
+                    char[] tmp = sl.node.toCharArray();
                     tmp[i] = c;
-                }
-                String adjacent = new String(tmp);
-                if (set.contains(adjacent)) {
-                    queue.add(adjacent);
+                    String adjacent = new String(tmp);
+                    if (set.contains(adjacent)) {
+                        if (!visited.contains(adjacent)) {
+                            queue.add(new StringLevel(adjacent, sl.level + 1));
+                            visited.add(adjacent);
+                        }
+                    }
                 }
             }
         }
-        return (found) ? count : -1;
+        return result;
     }
 
-    public static void main(String[] args) {
-        Problem433 prob = new Problem433();
-        System.out.println(prob.minMutation("AACCGGTT", "AACCGGTA", new String[]{"AACCGGTA"})); // 1
-//        System.out.println(prob.minMutation("AACCGGTT", "AAACGGTA", new String[]{"AACCGGTA", "AACCGCTA", "AAACGGTA"})); // 2
-//        System.out.println(prob.minMutation("AAAAACCC", "AACCCCCC", new String[]{"AAAACCCC", "AAACCCCC", "AACCCCCC"})); // 3
+    private static class StringLevel {
+        private final String node;
+        private final int level;
+
+        public StringLevel(String node, int level) {
+            this.node = node;
+            this.level = level;
+        }
     }
 }
