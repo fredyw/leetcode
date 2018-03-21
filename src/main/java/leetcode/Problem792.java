@@ -10,6 +10,7 @@ public class Problem792 {
     }
 
     public static void main(String[] args) {
-
+        Problem792 prob = new Problem792();
+        System.out.println(prob.numMatchingSubseq("abcde", new String[]{"a", "bb", "acd", "ace"})); // 3
     }
 }
