@@ -42,7 +42,7 @@ public class Problem792 {
                         break;
                     }
                 }
-                lastIndex = index + 1;
+                lastIndex = index;
             }
 
             if (found) {
