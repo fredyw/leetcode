@@ -25,7 +25,7 @@ public class Problem792 {
         }
 
         for (String word : words) {
-            int lastIndex = 0;
+            int nextIndex = -1;
             boolean found = true;
             for (int i = 0; i < word.length(); i++) {
                 char c = word.charAt(i);
@@ -34,27 +34,27 @@ public class Problem792 {
                     break;
                 }
                 List<Integer> indices = map.get(c);
-                int index = Collections.binarySearch(indices, lastIndex);
+                if (nextIndex == -1) {
+                    nextIndex = indices.get(0) + 1;
+                    continue;
+                }
+                int index = Collections.binarySearch(indices, nextIndex);
                 if (index < 0) {
-                    index = (-(index) - 1);
-                    if (index >= S.length()) {
+                    int insertion = (-(index) - 1);
+                    if (insertion >= indices.size()) {
                         found = false;
                         break;
                     }
+                    nextIndex = indices.get(insertion) + 1;
+                } else {
+                    nextIndex = indices.get(index) + 1;
                 }
-                lastIndex = index;
             }
 
             if (found) {
                 result++;
             }
         }
-
         return result;
-    }
-
-    public static void main(String[] args) {
-        Problem792 prob = new Problem792();
-        System.out.println(prob.numMatchingSubseq("abcde", new String[]{"a", "bb", "acd", "ace"})); // 3
     }
 }
