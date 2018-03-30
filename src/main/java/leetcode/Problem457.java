@@ -14,5 +14,6 @@ public class Problem457 {
         System.out.println(prob.circularArrayLoop(new int[]{2, -1, 1, 2, 2})); // true
         System.out.println(prob.circularArrayLoop(new int[]{-1, 2})); // false
         System.out.println(prob.circularArrayLoop(new int[]{-1, 1})); // false
+        System.out.println(prob.circularArrayLoop(new int[]{-1, -2})); // false
     }
 }
