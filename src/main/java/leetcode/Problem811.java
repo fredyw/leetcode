@@ -1,20 +1,35 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * https://leetcode.com/problems/subdomain-visit-count/description/
  */
 public class Problem811 {
     public List<String> subdomainVisits(String[] cpdomains) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem811 prob = new Problem811();
-        System.out.println(prob.subdomainVisits(new String[]{"9001 discuss.leetcode.com"})); // ["9001 discuss.leetcode.com", "9001 leetcode.com", "9001 com"]
-        System.out.println(prob.subdomainVisits(new String[]{"900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"})); // ["901 mail.com","50 yahoo.com","900 google.mail.com","5 wiki.org","5 org","1 intel.mail.com","951 com"]
-
+        Map<String, Integer> map = new HashMap<>();
+        for (String cpdomain : cpdomains) {
+            String[] split = cpdomain.split(" ");
+            int count = Integer.parseInt(split[0]);
+            String domain = split[1];
+            String[] d = domain.split("\\.");
+            String str = "";
+            for (int i = d.length - 1; i >= 0; i--) {
+                str = d[i] + ((str.isEmpty()) ? "" : ".") + str;
+                if (map.containsKey(str)) {
+                    map.put(str, map.get(str) + count);
+                } else {
+                    map.put(str, count);
+                }
+            }
+        }
+        List<String> result = new ArrayList<>();
+        map.forEach((domain, count) -> {
+            result.add(count + " " + domain);
+        });
+        return result;
     }
 }
