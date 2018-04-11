@@ -15,11 +15,29 @@ public class Problem814 {
     }
 
     public TreeNode pruneTree(TreeNode root) {
-        // TODO
-        return null;
+        boolean b = prune(root);
+        if (b) {
+            return null;
+        }
+        return root;
     }
 
-    public static void main(String[] args) {
-        Problem814 prob = new Problem814();
+    private static boolean prune(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        boolean b1 = prune(root.left);
+        boolean b2 = prune(root.right);
+        if (b1) {
+            if (root.left != null) {
+                root.left = null;
+            }
+        }
+        if (b2) {
+            if (root.right != null) {
+                root.right = null;
+            }
+        }
+        return root.val == 0 && b1 && b2;
     }
 }
