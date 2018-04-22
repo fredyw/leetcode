@@ -9,20 +9,20 @@ import java.util.List;
 public class Problem787 {
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
         List<Edge>[] graph = buildGraph(flights);
-        int price = findCheapestPrice(graph, src, dst, K, new Integer[100]);
+        int price = findCheapestPrice(graph, src, dst, K + 1, new Integer[100][K + 2]);
         return price == Integer.MAX_VALUE ? - 1 : price;
     }
 
     private static int findCheapestPrice(List<Edge>[] graph, int src, int dst, int k,
-                                         Integer[] memo) {
-        if (src == dst && k >= -1) {
-            return 0;
-        }
-        if (k < -1) {
+                                         Integer[][] memo) {
+        if (k < 0) {
             return Integer.MAX_VALUE;
         }
-        if (memo[src] != null) {
-            return memo[src];
+        if (src == dst) {
+            return 0;
+        }
+        if (memo[src][k] != null) {
+            return memo[src][k];
         }
         List<Edge> neighbors = graph[src];
         if (neighbors == null) {
@@ -35,7 +35,9 @@ public class Problem787 {
                 min = Math.min(min, price + neighbor.price);
             }
         }
-        memo[src] = min;
+        if (min != Integer.MAX_VALUE) {
+            memo[src][k] = min;
+        }
         return min;
     }
 
@@ -64,15 +66,5 @@ public class Problem787 {
             this.to = to;
             this.price = price;
         }
-    }
-
-    public static void main(String[] args) {
-        Problem787 prob = new Problem787();
-        System.out.println(prob.findCheapestPrice(3, new int[][]{
-            {0, 1, 100}, {1, 2, 100}, {0, 2, 500}
-        }, 0, 2, 1)); // 20
-        System.out.println(prob.findCheapestPrice(3, new int[][]{
-            {0, 1, 100}, {1, 2, 100}, {0, 2, 500}
-        }, 0, 2, 0)); // 500
     }
 }
