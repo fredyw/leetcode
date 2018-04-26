@@ -11,5 +11,6 @@ public class Problem820 {
 
     public static void main(String[] args) {
         Problem820 prob = new Problem820();
+        System.out.println(prob.minimumLengthEncoding(new String[]{"time", "me", "bell"})); // 10
     }
 }
