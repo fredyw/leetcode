@@ -56,8 +56,7 @@ public class Problem820 {
                 }
             }
         }
-        System.out.println("total count: " + (totalCount + (count * totalPath)));
-        return new PathCount(totalPath, totalCount + (count * totalPath));
+        return new PathCount(totalPath, totalCount + totalPath);
     }
 
     private static void add(Node node, String word, int idx) {
@@ -73,17 +72,5 @@ public class Problem820 {
 
     private static class Node {
         private final Node[] children = new Node[26];
-    }
-
-    public static void main(String[] args) {
-        Problem820 prob = new Problem820();
-//        System.out.println(prob.minimumLengthEncoding(new String[]{"time", "me", "bell"})); // 10
-//        System.out.println(prob.minimumLengthEncoding(new String[]{"me", "bell", "time"})); // 10
-//        System.out.println(prob.minimumLengthEncoding(new String[]{"me", "bell", "time", "tame"})); // 15
-//        System.out.println(prob.minimumLengthEncoding(new String[]{"time", "men"})); // 9
-//        System.out.println(prob.minimumLengthEncoding(new String[]{"time", "tim"})); // 9
-//        System.out.println(prob.minimumLengthEncoding(new String[]{"time", "im"})); // 8
-//        System.out.println(prob.minimumLengthEncoding(new String[]{"me", "time"})); // 5
-        System.out.println(prob.minimumLengthEncoding(new String[]{"time", "atime", "btime"})); // 12
     }
 }
