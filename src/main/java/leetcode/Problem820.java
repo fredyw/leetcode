@@ -14,5 +14,8 @@ public class Problem820 {
         System.out.println(prob.minimumLengthEncoding(new String[]{"time", "me", "bell"})); // 10
         System.out.println(prob.minimumLengthEncoding(new String[]{"me", "bell", "time"})); // 10
         System.out.println(prob.minimumLengthEncoding(new String[]{"me", "bell", "time", "tame"})); // 15
+        System.out.println(prob.minimumLengthEncoding(new String[]{"time", "men"})); // 9
+        System.out.println(prob.minimumLengthEncoding(new String[]{"time", "tim"})); // 9
+        System.out.println(prob.minimumLengthEncoding(new String[]{"time", "im"})); // 8
     }
 }
