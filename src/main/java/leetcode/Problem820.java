@@ -18,13 +18,24 @@ public class Problem820 {
         int result = 0;
         for (Node node : nodes) {
             if (node != null) {
-                result += count(node, 0);
+                PathCount pc = count(node);
+                result += pc.path + pc.count;
             }
         }
         return result;
     }
 
-    private static int count(Node node, int accu) {
+    private static class PathCount {
+        private final int path;
+        private final int count;
+
+        public PathCount(int path, int count) {
+            this.path = path;
+            this.count = count;
+        }
+    }
+
+    private static PathCount count(Node node) {
         int count = 0;
         for (Node child : node.children) {
             if (child != null) {
@@ -32,17 +43,21 @@ public class Problem820 {
             }
         }
         if (count == 0) {
-            return accu;
+            return new PathCount(1, 1);
         }
-        int result = 0;
+        int totalPath = 0;
+        int totalCount = 0;
         if (count > 0) {
             for (Node child : node.children) {
                 if (child != null) {
-                    result += count(child, count + 1) + 1;
+                    PathCount pc = count(child);
+                    totalPath += pc.path;
+                    totalCount += pc.count;
                 }
             }
         }
-        return result;
+        System.out.println("total count: " + (totalCount + (count * totalPath)));
+        return new PathCount(totalPath, totalCount + (count * totalPath));
     }
 
     private static void add(Node node, String word, int idx) {
@@ -64,10 +79,11 @@ public class Problem820 {
         Problem820 prob = new Problem820();
 //        System.out.println(prob.minimumLengthEncoding(new String[]{"time", "me", "bell"})); // 10
 //        System.out.println(prob.minimumLengthEncoding(new String[]{"me", "bell", "time"})); // 10
-        System.out.println(prob.minimumLengthEncoding(new String[]{"me", "bell", "time", "tame"})); // 15
+//        System.out.println(prob.minimumLengthEncoding(new String[]{"me", "bell", "time", "tame"})); // 15
 //        System.out.println(prob.minimumLengthEncoding(new String[]{"time", "men"})); // 9
 //        System.out.println(prob.minimumLengthEncoding(new String[]{"time", "tim"})); // 9
 //        System.out.println(prob.minimumLengthEncoding(new String[]{"time", "im"})); // 8
 //        System.out.println(prob.minimumLengthEncoding(new String[]{"me", "time"})); // 5
+        System.out.println(prob.minimumLengthEncoding(new String[]{"time", "atime", "btime"})); // 12
     }
 }
