@@ -8,26 +8,46 @@ import java.util.List;
  */
 public class Problem816 {
     public List<String> ambiguousCoordinates(String S) {
-        // TODO
         List<String> result = new ArrayList<>();
         for (int i = 2; i < S.length() - 1; i++) {
             String first = S.substring(1, i);
             String second = S.substring(i, S.length() - 1);
-
-            System.out.println(first + " -> " + second);
+            List<String> firstNumbers = makeNumbers(first);
+            List<String> secondNumbers = makeNumbers(second);
+            if (!firstNumbers.isEmpty() && !secondNumbers.isEmpty()) {
+                for (String fn : firstNumbers) {
+                    for (String sn : secondNumbers) {
+                        result.add("(" + fn + ", " + sn + ")");
+                    }
+                }
+            }
         }
         return result;
     }
 
-    private static List<String> makeDecimals(String s) {
-        return null;
+    private static boolean isFirstValid(String s) {
+        if (s.length() == 1) {
+            return true;
+        }
+        return s.charAt(0) != '0';
     }
 
-    public static void main(String[] args) {
-        Problem816 prob = new Problem816();
-//        System.out.println(prob.ambiguousCoordinates("(123)")); // "(1, 23)", "(12, 3)", "(1.2, 3)", "(1, 2.3)"
-        System.out.println(prob.ambiguousCoordinates("(00011)")); // "(0.001, 1)", "(0, 0.011)"
-//        System.out.println(prob.ambiguousCoordinates("(0123)")); // "(0, 123)", "(0, 12.3)", "(0, 1.23)", "(0.1, 23)", "(0.1, 2.3)", "(0.12, 3)"
-//        System.out.println(prob.ambiguousCoordinates("(100)")); // "(10, 0)"
+    private static boolean isSecondValid(String s) {
+        return s.charAt(s.length() - 1) != '0';
+    }
+
+    private static List<String> makeNumbers(String s) {
+        List<String> result = new ArrayList<>();
+        if (isFirstValid(s)) {
+            result.add(s);
+        }
+        for (int i = 1; i < s.length(); i++) {
+            String first = s.substring(0, i);
+            String second = s.substring(i);
+            if (isFirstValid(first) && isSecondValid(second)) {
+                result.add(first + "." + second);
+            }
+        }
+        return result;
     }
 }
