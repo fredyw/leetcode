@@ -2,23 +2,34 @@ package leetcode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * https://leetcode.com/problems/find-eventual-safe-states/
  */
 public class Problem802 {
     public List<Integer> eventualSafeNodes(int[][] graph) {
-        List<Integer> result = new ArrayList<>();
+        Set<Integer> result = new TreeSet<>();
+        boolean[] ignored = new boolean[10000];
         for (int i = 0; i < graph.length; i++) {
+            if (ignored[i]) {
+                continue;
+            }
             boolean[] visited = new boolean[10000];
             boolean[] onStack = new boolean[10000];
             Cycle cycle = new Cycle();
             dfs(graph, i, visited, onStack, cycle);
             if (!cycle.cycle) {
-                result.add(i);
+                for (int j = 0; j < visited.length; j++) {
+                    if (visited[j]) {
+                        ignored[j] = true;
+                        result.add(j);
+                    }
+                }
             }
         }
-        return result;
+        return new ArrayList<>(result);
     }
 
     private static class Cycle {
