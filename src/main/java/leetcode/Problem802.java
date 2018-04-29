@@ -17,13 +17,18 @@ public class Problem802 {
             }
             boolean[] visited = new boolean[10000];
             boolean[] onStack = new boolean[10000];
-            Cycle cycle = new Cycle();
-            dfs(graph, i, visited, onStack, cycle);
-            if (!cycle.cycle) {
+            boolean cycle = hasCycle(graph, i, visited, onStack);
+            if (!cycle) {
                 for (int j = 0; j < visited.length; j++) {
                     if (visited[j] && !ignored[j]) {
                         ignored[j] = true;
                         result.add(j);
+                    }
+                }
+            } else {
+                for (int j = 0; j < onStack.length; j++) {
+                    if (onStack[j]) {
+                        ignored[j] = true;
                     }
                 }
             }
@@ -32,24 +37,22 @@ public class Problem802 {
         return result;
     }
 
-    private static class Cycle {
-        private boolean cycle;
-    }
-
-    private static void dfs(int[][] graph, int source, boolean[] visited,
-                            boolean[] onStack, Cycle cycle) {
+    private static boolean hasCycle(int[][] graph, int source, boolean[] visited,
+                                    boolean[] onStack) {
         visited[source] = true;
         onStack[source] = true;
+        boolean cycle = false;
         for (int neighbor : graph[source]) {
             if (!visited[neighbor]) {
-                dfs(graph, neighbor, visited, onStack, cycle);
+                cycle |= hasCycle(graph, neighbor, visited, onStack);
             } else {
                 if (onStack[neighbor]) {
-                    cycle.cycle = true;
+                    return true;
                 }
             }
         }
         onStack[source] = false;
+        return cycle;
     }
 
     public static void main(String[ ] args) {
