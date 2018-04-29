@@ -1,7 +1,6 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -9,31 +8,15 @@ import java.util.List;
  */
 public class Problem802 {
     public List<Integer> eventualSafeNodes(int[][] graph) {
+        boolean[] onStack = new boolean[graph.length];
+        boolean[] visited = new boolean[graph.length];
         List<Integer> result = new ArrayList<>();
-        boolean[] ignored = new boolean[10000];
         for (int i = 0; i < graph.length; i++) {
-            if (ignored[i]) {
-                continue;
-            }
-            boolean[] visited = new boolean[10000];
-            boolean[] onStack = new boolean[10000];
             boolean cycle = hasCycle(graph, i, visited, onStack);
             if (!cycle) {
-                for (int j = 0; j < visited.length; j++) {
-                    if (visited[j] && !ignored[j]) {
-                        ignored[j] = true;
-                        result.add(j);
-                    }
-                }
-            } else {
-                for (int j = 0; j < onStack.length; j++) {
-                    if (onStack[j]) {
-                        ignored[j] = true;
-                    }
-                }
+                result.add(i);
             }
         }
-        Collections.sort(result);
         return result;
     }
 
@@ -41,10 +24,12 @@ public class Problem802 {
                                     boolean[] onStack) {
         visited[source] = true;
         onStack[source] = true;
-        boolean cycle = false;
         for (int neighbor : graph[source]) {
             if (!visited[neighbor]) {
-                cycle |= hasCycle(graph, neighbor, visited, onStack);
+                boolean cycle = hasCycle(graph, neighbor, visited, onStack);
+                if (cycle) {
+                    return true;
+                }
             } else {
                 if (onStack[neighbor]) {
                     return true;
@@ -52,7 +37,7 @@ public class Problem802 {
             }
         }
         onStack[source] = false;
-        return cycle;
+        return false;
     }
 
     public static void main(String[ ] args) {
