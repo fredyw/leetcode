@@ -17,5 +17,8 @@ public class Problem802 {
         System.out.println(prob.eventualSafeNodes(new int[][]{
             {1, 2}, {2, 3}, {5}, {0}, {5}, {}, {}
         })); // [2,4,5,6]
+        System.out.println(prob.eventualSafeNodes(new int[][]{
+            {1,2},{1},{0}
+        })); // []
     }
 }
