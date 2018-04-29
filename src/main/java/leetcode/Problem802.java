@@ -1,16 +1,15 @@
 package leetcode;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * https://leetcode.com/problems/find-eventual-safe-states/
  */
 public class Problem802 {
     public List<Integer> eventualSafeNodes(int[][] graph) {
-        Set<Integer> result = new TreeSet<>();
+        List<Integer> result = new ArrayList<>();
         boolean[] ignored = new boolean[10000];
         for (int i = 0; i < graph.length; i++) {
             if (ignored[i]) {
@@ -22,14 +21,15 @@ public class Problem802 {
             dfs(graph, i, visited, onStack, cycle);
             if (!cycle.cycle) {
                 for (int j = 0; j < visited.length; j++) {
-                    if (visited[j]) {
+                    if (visited[j] && !ignored[j]) {
                         ignored[j] = true;
                         result.add(j);
                     }
                 }
             }
         }
-        return new ArrayList<>(result);
+        Collections.sort(result);
+        return result;
     }
 
     private static class Cycle {
