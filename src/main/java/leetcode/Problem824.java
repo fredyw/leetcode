@@ -5,13 +5,28 @@ package leetcode;
  */
 public class Problem824 {
     public String toGoatLatin(String S) {
-        // TODO
-        return null;
+        StringBuilder result = new StringBuilder();
+        String[] words = S.split(" ");
+        for (int i = 0; i < words.length; i++) {
+            String word = words[i];
+            if (i > 0) {
+                result.append(" ");
+            }
+            if (isVowel(word.charAt(0)) || word.length() == 1) {
+                result.append(word);
+            } else {
+                result.append(word.substring(1)).append(word.charAt(0));
+            }
+            result.append("ma");
+            for (int j = 0; j <= i; j++) {
+                result.append("a");
+            }
+        }
+        return result.toString();
     }
 
-    public static void main(String[] args) {
-        Problem824 prob = new Problem824();
-        System.out.println(prob.toGoatLatin("I speak Goat Latin")); // "Imaa peaksmaaa oatGmaaaa atinLmaaaaa"
-        System.out.println(prob.toGoatLatin("The quick brown fox jumped over the lazy dog")); //  "heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa"
+    private static boolean isVowel(char c) {
+        return c == 'a' || c == 'i' || c == 'u' || c == 'e' || c == 'o' ||
+            c == 'A' || c == 'I' || c == 'U' || c == 'E' || c == 'O';
     }
 }
