@@ -5,31 +5,36 @@ package leetcode;
  */
 public class Problem808 {
     public double soupServings(int N) {
-        // TODO
-        return soupServings(N, N);
+        int div = N / 25;
+        int mod = N % 25;
+        N = div + (mod == 0 ? 0 : 1);
+        if (N >= 500) {
+            return 1;
+        }
+        Double[][] memo = new Double[N + 1][N + 1];
+        return soupServings(N, N, memo);
     }
 
-    private double soupServings(int a, int b) {
+    private double soupServings(int a, int b, Double[][] memo) {
         if (a <= 0 && b <= 0) {
             return 0.5;
         }
         if (a <= 0) {
-            return 0;
-        }
-        if (b <= 0) {
             return 1;
         }
-        double result = 0.25 * (soupServings(a, b - 100) +
-            soupServings(a - 25, b - 75) +
-            soupServings(a - 50, b - 50) +
-            soupServings(a - 75, b - 25));
+        if (b <= 0) {
+            return 0;
+        }
+        if (memo[a][b] != null) {
+            return memo[a][b];
+        }
+        double result = 0.25 * (
+            soupServings(a - 4, b, memo) +
+            soupServings(a - 3, b - 1, memo) +
+            soupServings(a - 2, b - 2, memo) +
+            soupServings(a - 1, b - 3, memo)
+        );
+        memo[a][b] = result;
         return result;
-    }
-
-    public static void main(String[] args) {
-        Problem808 prob = new Problem808();
-        System.out.println(prob.soupServings(50)); // 0.625
-        System.out.println(prob.soupServings(40)); // 0.625
-        System.out.println(prob.soupServings(100)); // 0.71875
     }
 }
