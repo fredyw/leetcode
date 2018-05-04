@@ -11,5 +11,7 @@ public class Problem775 {
 
     public static void main(String[] args) {
         Problem775 prob = new Problem775();
+        System.out.println(prob.isIdealPermutation(new int[]{1, 0, 2})); // true
+        System.out.println(prob.isIdealPermutation(new int[]{1, 2, 0})); // false
     }
 }
