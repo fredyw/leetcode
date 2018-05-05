@@ -5,8 +5,10 @@ package leetcode;
  */
 public class Problem775 {
     public boolean isIdealPermutation(int[] A) {
-        // TODO
-        return false;
+        for (int i = 0; i < A.length; i++) {
+            // TODO
+        }
+        return true;
     }
 
     public static void main(String[] args) {
