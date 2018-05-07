@@ -16,10 +16,11 @@ public class Problem831 {
     }
 
     private static String maskEmail(String s) {
+        s = s.toLowerCase();
         StringBuilder sb = new StringBuilder();
         int idx = s.indexOf("@");
         sb.append(s.charAt(0));
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 5; i++) {
             sb.append("*");
         }
         sb.append(s.substring(idx - 1));
@@ -27,15 +28,17 @@ public class Problem831 {
     }
 
     private static String maskPhone(String s) {
-        return "";
-    }
-
-    public static void main(String[] args) {
-        Problem831 prob = new Problem831();
-        System.out.println(prob.maskPII("LeetCode@LeetCode.com")); // l*****e@leetcode.com
-        System.out.println(prob.maskPII("AB@qq.com")); // a*****b@qq.com
-//        System.out.println(prob.maskPII("1(234)567-890")); // ***-***-7890
-//        System.out.println(prob.maskPII("86-(10)12345678")); // +**-***-***-5678
-//        System.out.println(prob.maskPII("1-(10)12345678")); // +*-***-***-5678
+        s = s.replaceAll("\\(|\\)|-|\\+| ", "");
+        StringBuilder sb = new StringBuilder();
+        int countryCode = s.length() - 10;
+        if (s.length() > 10) {
+            sb.append("+");
+            for (int i = 0; i < countryCode; i++) {
+                sb.append("*");
+            }
+            sb.append("-");
+        }
+        sb.append("***-***-").append(s.substring(s.length() - 4));
+        return sb.toString();
     }
 }
