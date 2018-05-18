@@ -33,7 +33,7 @@ public class Problem833 {
 //            new String[]{"def", "xxx"})); // defcd
 //        System.out.println(prob.findReplaceString("ab", new int[]{0, 1}, new String[]{"a", "b"},
 //            new String[]{"xxx", "yyy"})); // xxxyyy
-        System.out.println(prob.findReplaceString("ab", new int[]{0, 1}, new String[]{"ab", "b"},
-            new String[]{"xxx", "yyy"})); // ayyy
+        System.out.println(prob.findReplaceString("vmokgggqzp", new int[]{3, 5, 1},
+            new String[]{"kg", "ggq", "mo"}, new String[]{"s", "so", "bfr"})); // vbfrssozp
     }
 }
