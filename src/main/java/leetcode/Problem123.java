@@ -8,22 +8,29 @@ import java.util.Map;
  */
 public class Problem123 {
     public int maxProfit(int[] prices) {
-        for (int i = 0; i < prices.length; i++) {
-            for (int j = 0; j < prices.length; j++) {
-
-            }
-        }
+//        int[] dp = new int[prices.length + 1];
+//        for (int i = prices.length - 1; i >= 0; i--) {
+//            int max = 0;
+//            for (int j = prices.length - 1; j > i; j--) {
+//                if (prices[i] < prices[j]) {
+//                    int diff = prices[j] - prices[i];
+//                    int profit = dp[j + 1] + diff;
+//                    max = Math.max(max, profit);
+//                }
+//            }
+//            dp[i] = max;
+//        }
+//        return dp[0];
         return maxProfit(prices, 0, 0, new HashMap<>());
     }
 
     private static int maxProfit(int[] prices, int i, int count,
-                                 Map<String, Integer> memo) {
+                                 Map<Integer, Integer> memo) {
         if (count >= 2) {
             return 0;
         }
-        String key = count + "|" + i;
-        if (memo.containsKey(key)) {
-            return memo.get(key);
+        if (memo.containsKey(i)) {
+            return memo.get(i);
         }
         int max = 0;
         for (int x = i; x < prices.length; x++) {
@@ -35,7 +42,7 @@ public class Problem123 {
                 }
             }
         }
-        memo.put(key, max);
+        memo.put(i, max);
         return max;
     }
 
