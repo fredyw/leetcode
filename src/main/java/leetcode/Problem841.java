@@ -1,6 +1,5 @@
 package leetcode;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -29,21 +28,5 @@ public class Problem841 {
                 canVisitAllRooms(rooms, rooms.get(key), visited);
             }
         }
-    }
-
-    public static void main(String[] args) {
-        Problem841 prob = new Problem841();
-        System.out.println(prob.canVisitAllRooms(Arrays.asList(
-            Arrays.asList(1),
-            Arrays.asList(2),
-            Arrays.asList(3),
-            Arrays.asList())
-        )); // true
-        System.out.println(prob.canVisitAllRooms(Arrays.asList(
-            Arrays.asList(1, 3),
-            Arrays.asList(3, 0, 1),
-            Arrays.asList(2),
-            Arrays.asList(0)
-        ))); // false
     }
 }
