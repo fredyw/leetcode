@@ -5,15 +5,20 @@ package leetcode;
  */
 public class Problem844 {
     public boolean backspaceCompare(String S, String T) {
-        // TODO
-        return false;
+        return finalString(S).equals(finalString(T));
     }
 
-    public static void main(String[] args) {
-        Problem844 prob = new Problem844();
-        System.out.println(prob.backspaceCompare("ab#c", "ad#c")); // true
-        System.out.println(prob.backspaceCompare("ab##", "c#d#")); // true
-        System.out.println(prob.backspaceCompare("a##c", "#a#c")); // true
-        System.out.println(prob.backspaceCompare("a#c", "b")); // false
+    private static String finalString(String s) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '#') {
+                if (sb.length() - 1 >= 0) {
+                    sb.deleteCharAt(sb.length() - 1);
+                }
+            } else {
+                sb.append(s.charAt(i));
+            }
+        }
+        return sb.toString();
     }
 }
