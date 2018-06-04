@@ -11,5 +11,9 @@ public class Problem844 {
 
     public static void main(String[] args) {
         Problem844 prob = new Problem844();
+        System.out.println(prob.backspaceCompare("ab#c", "ad#c")); // true
+        System.out.println(prob.backspaceCompare("ab##", "c#d#")); // true
+        System.out.println(prob.backspaceCompare("a##c", "#a#c")); // true
+        System.out.println(prob.backspaceCompare("a#c", "b")); // false
     }
 }
