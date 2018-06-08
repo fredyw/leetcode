@@ -40,5 +40,6 @@ public class Problem845 {
         System.out.println(prob.longestMountain(new int[]{2, 1})); // 0
 //        System.out.println(prob.longestMountain(new int[]{1, 2})); // 0
 //        System.out.println(prob.longestMountain(new int[]{1, 2, 1})); // 3
+//        System.out.println(prob.longestMountain(new int[]{1, 2, 2, 1})); // 0
     }
 }
