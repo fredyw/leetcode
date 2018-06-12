@@ -11,5 +11,7 @@ public class Problem838 {
 
     public static void main(String[] args) {
         Problem838 prob = new Problem838();
+        System.out.println(prob.pushDominoes(".L.R...LR..L..")); // LL.RR.LLRRLL..
+        System.out.println(prob.pushDominoes("RR.L")); // RR.L
     }
 }
