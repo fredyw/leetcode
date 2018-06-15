@@ -15,5 +15,8 @@ public class Problem838 {
         System.out.println(prob.pushDominoes("RR.L")); // RR.L
         System.out.println(prob.pushDominoes("R..L")); // RRLL
         System.out.println(prob.pushDominoes("R.LL")); // R.LL
+        System.out.println(prob.pushDominoes("...")); // ...
+        System.out.println(prob.pushDominoes("L..")); // LLL
+        System.out.println(prob.pushDominoes("..R")); // RRR
     }
 }
