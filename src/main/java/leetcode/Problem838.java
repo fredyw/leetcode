@@ -6,6 +6,9 @@ package leetcode;
 public class Problem838 {
     public String pushDominoes(String dominoes) {
         // TODO
+        for (int i = 0; i < dominoes.length(); i++) {
+            
+        }
         return null;
     }
 
