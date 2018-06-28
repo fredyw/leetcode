@@ -36,8 +36,12 @@ public class Problem838 {
                 }
                 prev = cur;
             } else if (dominoes.charAt(cur) == 'R') {
+                if (dominoes.charAt(prev) == 'R') {
+                    for (int i = prev; i <= cur; i++) {
+                        chars[i] = 'R';
+                    }
+                }
                 prev = cur;
-                // TODO
             }
             cur++;
         }
@@ -47,28 +51,5 @@ public class Problem838 {
             }
         }
         return new String(chars);
-    }
-
-    public static void main(String[] args) {
-        Problem838 prob = new Problem838();
-//        System.out.println(prob.pushDominoes(".L.R...LR..L..")); // LL.RR.LLRRLL..
-//        System.out.println(prob.pushDominoes("R..L")); // RRLL
-//        System.out.println(prob.pushDominoes("R...L")); // RR.LL
-//        System.out.println(prob.pushDominoes("RR.L")); // RR.L
-//        System.out.println(prob.pushDominoes("R..L")); // RRLL
-//        System.out.println(prob.pushDominoes("R.LL")); // R.LL
-//        System.out.println(prob.pushDominoes("...")); // ...
-//        System.out.println(prob.pushDominoes("L..")); // L..
-//        System.out.println(prob.pushDominoes("..L")); // LLL
-//        System.out.println(prob.pushDominoes("..R")); // ..R
-//        System.out.println(prob.pushDominoes("R..")); // RRR
-//        System.out.println(prob.pushDominoes("..R..")); // ..RRR
-//        System.out.println(prob.pushDominoes("..L..")); // LLL..
-//        System.out.println(prob.pushDominoes("LLL")); // LLL
-//        System.out.println(prob.pushDominoes("RRR")); // RRR
-//        System.out.println(prob.pushDominoes("LR")); // LR
-//        System.out.println(prob.pushDominoes("RL")); // LR
-//        System.out.println(prob.pushDominoes("R.R.L")); // RRR.L
-        System.out.println(prob.pushDominoes("R.R")); // RRR
     }
 }
