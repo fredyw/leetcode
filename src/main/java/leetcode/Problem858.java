@@ -5,20 +5,29 @@ package leetcode;
  */
 public class Problem858 {
     public int mirrorReflection(int p, int q) {
-        // TODO
         if (q == 0) {
             return 0;
         }
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem858 prob = new Problem858();
-        System.out.println(prob.mirrorReflection(2, 1)); // 2
-        System.out.println(prob.mirrorReflection(2, 0)); // 0
-        System.out.println(prob.mirrorReflection(3, 1)); // 1
-        System.out.println(prob.mirrorReflection(4, 1)); // 2
-        System.out.println(prob.mirrorReflection(3, 2)); // 0
-        System.out.println(prob.mirrorReflection(5, 3)); // 1
+        if (p == q) {
+            return 1;
+        }
+        int a = q;
+        boolean right = true;
+        boolean zero;
+        while (true) {
+            a += q;
+            right = !right;
+            zero = (a / p) % 2 == 0;
+            if (a % p == 0) {
+                break;
+            }
+        }
+        if (right) {
+            if (zero) {
+                return 0;
+            }
+            return 1;
+        }
+        return 2;
     }
 }
