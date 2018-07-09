@@ -20,11 +20,4 @@ public class Problem868 {
         }
         return result;
     }
-
-    private static void print(int[][] matrix) {
-        for (int[] array : matrix) {
-            System.out.println(Arrays.toString(array));
-        }
-        System.out.println();
-    }
 }
