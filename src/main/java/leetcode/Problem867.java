@@ -3,7 +3,7 @@ package leetcode;
 /**
  * https://leetcode.com/problems/transpose-matrix/
  */
-public class Problem868 {
+public class Problem867 {
     public int[][] transpose(int[][] A) {
         int nRow = A.length;
         int nCol = 0;
