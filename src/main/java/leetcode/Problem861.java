@@ -7,8 +7,7 @@ public class Problem861 {
     public int matrixScore(int[][] A) {
         int nRow = A.length;
         int nCol = A.length > 0 ? A[0].length : 0;
-        int totalScore = 0;
-        int[] score = new int[nRow];
+        int[] scores = new int[nRow];
         for (int row = 0; row < nRow; row++) {
             int origScore = 0;
             int flipScore = 0;
@@ -16,27 +15,24 @@ public class Problem861 {
                 origScore += A[row][col] << nCol - col - 1;
                 flipScore += (A[row][col] ^ 1) << nCol - col - 1;
             }
-            score[row] = (origScore > flipScore) ? origScore : flipScore;
+            scores[row] = (origScore > flipScore) ? origScore : flipScore;
         }
+        int totalScore = 0;
         for (int col = 0; col < nCol; col++) {
+            int origScore = 0;
+            int flipScore = 0;
+            int[] flipScores = new int[nRow];
             for (int row = 0; row < nRow; row++) {
+                origScore += scores[row];
+                int fs = scores[row] ^ (1 << nCol - col - 1);
+                flipScore += fs;
+                flipScores[row] = fs;
             }
-        }
-        for (int s : score) {
-            totalScore += s;
+            if (origScore < flipScore) {
+                scores = flipScores;
+            }
+            totalScore = Math.max(origScore, flipScore);
         }
         return totalScore;
-    }
-
-    public static void main(String[] args) {
-        Problem861 prob = new Problem861();
-//            {1, 1, 1, 1},
-//            {1, 0, 0, 1},
-//            {1, 1, 1, 1}
-        System.out.println(prob.matrixScore(new int[][]{
-            {0, 0, 1, 1},
-            {1, 0, 1, 0},
-            {1, 1, 0, 0}
-        })); // 39
     }
 }
