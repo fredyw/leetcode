@@ -61,6 +61,15 @@ public class Problem641 {
     }
 
     public static void main(String[] args) {
-        
+        MyCircularDeque deque = new MyCircularDeque(3);
+        System.out.println(deque.insertLast(1)); // return true
+        System.out.println(deque.insertLast(2)); // return true
+        System.out.println(deque.insertFront(3)); // return true
+        System.out.println(deque.insertFront(4)); // return false, the queue is full
+        System.out.println(deque.getRear()); // return 32
+        System.out.println(deque.isFull()); // return true
+        System.out.println(deque.deleteLast()); // return true
+        System.out.println(deque.insertFront(4)); // return true
+        System.out.println(deque.getFront()); // return 4
     }
 }
