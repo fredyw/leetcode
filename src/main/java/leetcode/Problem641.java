@@ -1,75 +1,80 @@
 package leetcode;
 
+import java.util.LinkedList;
+
 /**
  * https://leetcode.com/problems/design-circular-deque/
  */
 public class Problem641 {
     private static class MyCircularDeque {
+        private final int size;
+        private final LinkedList<Integer> deque = new LinkedList<>();
 
         /** Initialize your data structure here. Set the size of the deque to be k. */
         public MyCircularDeque(int k) {
-            // TODO
+            size = k;
         }
 
         /** Adds an item at the front of Deque. Return true if the operation is successful. */
         public boolean insertFront(int value) {
-            // TODO
-            return false;
+            if (isFull()) {
+                return false;
+            }
+            deque.addFirst(value);
+            return true;
         }
 
         /** Adds an item at the rear of Deque. Return true if the operation is successful. */
         public boolean insertLast(int value) {
-            // TODO
-            return false;
+            if (isFull()) {
+                return false;
+            }
+            deque.addLast(value);
+            return true;
         }
 
         /** Deletes an item from the front of Deque. Return true if the operation is successful. */
         public boolean deleteFront() {
-            // TODO
-            return false;
+            if (isEmpty()) {
+                return false;
+            }
+            deque.removeFirst();
+            return true;
         }
 
         /** Deletes an item from the rear of Deque. Return true if the operation is successful. */
         public boolean deleteLast() {
-            // TODO
-            return false;
+            if (isEmpty()) {
+                return false;
+            }
+            deque.removeLast();
+            return true;
         }
 
         /** Get the front item from the deque. */
         public int getFront() {
-            // TODO
-            return 0;
+            if (isEmpty()) {
+                return -1;
+            }
+            return deque.getFirst();
         }
 
         /** Get the last item from the deque. */
         public int getRear() {
-            // TODO
-            return 0;
+            if (isEmpty()) {
+                return -1;
+            }
+            return deque.getLast();
         }
 
         /** Checks whether the circular deque is empty or not. */
         public boolean isEmpty() {
-            // TODO
-            return false;
+            return deque.isEmpty();
         }
 
         /** Checks whether the circular deque is full or not. */
         public boolean isFull() {
-            // TODO
-            return false;
+            return deque.size() == size;
         }
-    }
-
-    public static void main(String[] args) {
-        MyCircularDeque deque = new MyCircularDeque(3);
-        System.out.println(deque.insertLast(1)); // return true
-        System.out.println(deque.insertLast(2)); // return true
-        System.out.println(deque.insertFront(3)); // return true
-        System.out.println(deque.insertFront(4)); // return false, the queue is full
-        System.out.println(deque.getRear()); // return 32
-        System.out.println(deque.isFull()); // return true
-        System.out.println(deque.deleteLast()); // return true
-        System.out.println(deque.insertFront(4)); // return true
-        System.out.println(deque.getFront()); // return 4
     }
 }
