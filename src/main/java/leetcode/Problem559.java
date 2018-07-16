@@ -20,11 +20,13 @@ public class Problem559 {
     }
 
     public int maxDepth(Node root) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem559 prob = new Problem559();
+        if (root == null) {
+            return 0;
+        }
+        int max = 1;
+        for (Node child : root.children) {
+            max = Math.max(max, maxDepth(child) + 1);
+        }
+        return max;
     }
 }
