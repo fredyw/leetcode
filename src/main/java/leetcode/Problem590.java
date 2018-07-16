@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,11 +21,18 @@ public class Problem590 {
     }
 
     public List<Integer> postorder(Node root) {
-        // TODO
-        return null;
+        List<Integer> result = new ArrayList<>();
+        postOrder(root, result);
+        return result;
     }
 
-    public static void main(String[] args) {
-        Problem590 prob = new Problem590();
+    private static void postOrder(Node root, List<Integer> result) {
+        if (root == null) {
+            return;
+        }
+        for (Node node : root.children) {
+            postOrder(node, result);
+        }
+        result.add(root.val);
     }
 }
