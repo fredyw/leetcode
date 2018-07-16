@@ -15,11 +15,20 @@ public class Problem700 {
     }
 
     public TreeNode searchBST(TreeNode root, int val) {
-        // TODO
+        if (root == null) {
+            return null;
+        }
+        if (root.val == val) {
+            return root;
+        }
+        TreeNode left = searchBST(root.left, val);
+        TreeNode right = searchBST(root.right, val);
+        if (left != null) {
+            return left;
+        }
+        if (right != null) {
+            return right;
+        }
         return null;
-    }
-
-    public static void main(String[] args) {
-        Problem700 prob = new Problem700();
     }
 }
