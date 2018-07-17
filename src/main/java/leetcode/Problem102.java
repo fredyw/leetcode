@@ -1,10 +1,8 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * https://leetcode.com/problems/binary-tree-level-order-traversal/
@@ -21,41 +19,25 @@ public class Problem102 {
     }
 
     public List<List<Integer>> levelOrder(TreeNode root) {
-        class LevelNode {
-            int level;
-            TreeNode node;
-
-            public LevelNode(int level, TreeNode node) {
-                this.level = level;
-                this.node = node;
-            }
-        }
-
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) {
             return result;
         }
-        Map<Integer, List<Integer>> map = new HashMap<>();
-        LinkedList<LevelNode> linkedList = new LinkedList<>();
-        linkedList.add(new LevelNode(0, root));
-        while (!linkedList.isEmpty()) {
-            LevelNode n = linkedList.removeFirst();
-            if (!map.containsKey(n.level)) {
-                List<Integer> list = new ArrayList<>();
-                list.add(n.node.val);
-                map.put(n.level, list);
-            } else {
-                map.get(n.level).add(n.node.val);
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            List<Integer> list = new ArrayList<>();
+            int queueSize = queue.size();
+            for (int i = 0; i < queueSize; i++) {
+                if (queue.peek().left != null) {
+                    queue.add(queue.peek().left);
+                }
+                if (queue.peek().right != null) {
+                    queue.add(queue.peek().right);
+                }
+                list.add(queue.poll().val);
             }
-            if (n.node.left != null) {
-                linkedList.addLast(new LevelNode(n.level + 1, n.node.left));
-            }
-            if (n.node.right != null) {
-                linkedList.addLast(new LevelNode(n.level + 1, n.node.right));
-            }
-        }
-        for (int i = 0; i < map.size(); i++) {
-            result.add(map.get(i));
+            result.add(list);
         }
         return result;
     }
