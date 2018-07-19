@@ -5,10 +5,13 @@ package leetcode;
  */
 public class Problem706 {
     private static class MyHashMap {
-        private final Integer[] map = new Integer[1000001];
+        private final int[] map = new int[1000001];
 
         /** Initialize your data structure here. */
         public MyHashMap() {
+            for (int i = 0; i < map.length; i++) {
+                map[i] = -1;
+            }
         }
 
         /** value will always be non-negative. */
@@ -21,9 +24,6 @@ public class Problem706 {
          * -1 if this map contains no mapping for the key
          */
         public int get(int key) {
-            if (map[key] == null) {
-                return -1;
-            }
             return map[key];
         }
 
@@ -32,9 +32,7 @@ public class Problem706 {
          * a mapping for the key
          */
         public void remove(int key) {
-            if (map[key] != null) {
-                map[key] = null;
-            }
+            map[key] = -1;
         }
     }
 }
