@@ -5,15 +5,15 @@ package leetcode;
  */
 public class Problem706 {
     private static class MyHashMap {
+        private final Integer[] map = new Integer[1000001];
 
         /** Initialize your data structure here. */
         public MyHashMap() {
-            // TODO
         }
 
         /** value will always be non-negative. */
         public void put(int key, int value) {
-            // TODO
+            map[key] = value;
         }
 
         /**
@@ -21,8 +21,10 @@ public class Problem706 {
          * -1 if this map contains no mapping for the key
          */
         public int get(int key) {
-            // TODO
-            return 0;
+            if (map[key] == null) {
+                return -1;
+            }
+            return map[key];
         }
 
         /**
@@ -30,19 +32,9 @@ public class Problem706 {
          * a mapping for the key
          */
         public void remove(int key) {
-            // TODO
+            if (map[key] != null) {
+                map[key] = null;
+            }
         }
-    }
-
-    public static void main(String[] args) {
-        MyHashMap hashMap = new MyHashMap();
-        hashMap.put(1, 1);
-        hashMap.put(2, 2);
-        System.out.println(hashMap.get(1)); // returns 1
-        System.out.println(hashMap.get(3)); // returns -1 (not found)
-        hashMap.put(2, 1); // update the existing value
-        System.out.println(hashMap.get(2)); // returns 1
-        hashMap.remove(2); // remove the mapping for 2
-        System.out.println(hashMap.get(2)); // returns -1 (not found)
     }
 }
