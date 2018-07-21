@@ -12,6 +12,11 @@ public class Problem707 {
             public Node(int value) {
                 this.value = value;
             }
+
+            @Override
+            public String toString() {
+                return "" + value;
+            }
         }
 
         private Node head;
@@ -26,8 +31,13 @@ public class Problem707 {
          * return -1.
          */
         public int get(int index) {
-            // TODO
-            return 0;
+            int idx = 0;
+            for (Node n = head; n != null; n = n.next) {
+                if (idx++ == index) {
+                    return n.value;
+                }
+            }
+            return -1;
         }
 
         /**
@@ -35,12 +45,24 @@ public class Problem707 {
          * After the insertion, the new node will be the first node of the linked list.
          */
         public void addAtHead(int val) {
-            // TODO
+            if (head == null) {
+                head = new Node(val);
+                tail = head;
+            } else {
+                head.next = new Node(val);
+                head = head.next;
+            }
         }
 
         /** Append a node of value val to the last element of the linked list. */
         public void addAtTail(int val) {
-            // TODO
+            if (tail == null) {
+                tail = new Node(val);
+                head = tail;
+            } else {
+                tail.next = new Node(val);
+                tail = tail.next;
+            }
         }
 
         /**
@@ -50,12 +72,30 @@ public class Problem707 {
          * will not be inserted.
          */
         public void addAtIndex(int index, int val) {
-            // TODO
+            if (index == 0) {
+                addAtHead(val);
+                return;
+            }
+            int idx = 0;
+            for (Node n = head; n != null; n = n.next) {
+                if (idx == index - 1) {
+                    Node tmp = n.next;
+                    n.next = new Node(val);
+                    n.next.next = tmp;
+                }
+                idx++;
+            }
         }
 
         /** Delete the index-th node in the linked list, if the index is valid. */
         public void deleteAtIndex(int index) {
-            // TODO
+            int idx = 0;
+            for (Node n = head; n != null; n = n .next) {
+                if (idx == index + 1) {
+                    Node tmp = n.next;
+                    // TODO
+                }
+            }
         }
     }
 
@@ -63,9 +103,9 @@ public class Problem707 {
         MyLinkedList linkedList = new MyLinkedList();
         linkedList.addAtHead(1);
         linkedList.addAtTail(3);
+        System.out.println(linkedList.get(0)); // 1
+        System.out.println(linkedList.get(1)); // 3
         linkedList.addAtIndex(1, 2); // linked list becomes 1->2->3
         System.out.println(linkedList.get(1)); // returns 2
-        linkedList.deleteAtIndex(1); // now the linked list is 1->3
-        System.out.println(linkedList.get(1)); // returns 3
     }
 }
