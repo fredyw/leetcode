@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * https://leetcode.com/problems/leaf-similar-trees/
  */
@@ -15,11 +18,22 @@ public class Problem872 {
     }
 
     public boolean leafSimilar(TreeNode root1, TreeNode root2) {
-        // TODO
-        return false;
+        List<Integer> leaves1 = new ArrayList<>();
+        collectLeafValues(root1, leaves1);
+        List<Integer> leaves2 = new ArrayList<>();
+        collectLeafValues(root2, leaves2);
+        return leaves1.equals(leaves2);
     }
 
-    public static void main(String[] args) {
-        Problem872 prob = new Problem872();
+    private static void collectLeafValues(TreeNode root, List<Integer> leaves) {
+        if (root == null) {
+            return;
+        }
+        if (root.left == null && root.right == null) {
+            leaves.add(root.val);
+        } else {
+            collectLeafValues(root.left, leaves);
+            collectLeafValues(root.right, leaves);
+        }
     }
 }
