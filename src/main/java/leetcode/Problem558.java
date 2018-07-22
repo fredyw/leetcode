@@ -31,8 +31,20 @@ public class Problem558 {
     }
 
     public Node intersect(Node quadTree1, Node quadTree2) {
-        // TODO
-        return null;
+        if (quadTree1.isLeaf && quadTree2.isLeaf) {
+            Node topLeft = intersect(quadTree1.topLeft, quadTree2.topLeft);
+            Node topRight = intersect(quadTree1.topRight, quadTree2.topRight);
+            Node bottomLeft = intersect(quadTree1.bottomLeft, quadTree2.bottomLeft);
+            Node bottomRight = intersect(quadTree1.bottomRight, quadTree2.bottomRight);
+            return new Node(false, true, topLeft, topRight, bottomLeft, bottomRight);
+        } else if (!quadTree1.isLeaf) {
+            boolean val = quadTree1.topLeft.val | quadTree1.topRight.val |
+                quadTree1.bottomLeft.val | quadTree1.bottomRight.val;
+            return new Node(val | quadTree2.val, false, null, null, null, null);
+        }
+        boolean val = quadTree2.topLeft.val | quadTree2.topRight.val |
+            quadTree2.bottomLeft.val | quadTree2.bottomRight.val;
+        return new Node(quadTree1.val | val, false, null, null, null, null);
     }
 
     public static void main(String[] args) {
