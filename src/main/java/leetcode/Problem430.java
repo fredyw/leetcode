@@ -22,8 +22,25 @@ public class Problem430 {
     }
 
     public Node flatten(Node head) {
-        // TODO
-        return null;
+        for (Node n = head; n != null; n = n.next) {
+            if (n.child != null) {
+                Node tmp = n.next;
+                n.next = n.child;
+                Node cn = n.child;
+                while (cn.next != null) {
+                    cn = cn.next;
+                }
+                cn.next = tmp;
+            }
+        }
+        return head;
+    }
+
+    private static void print(Node head) {
+        for (Node n = head; n != null; n = n.next) {
+            System.out.print(n.val + ' ');
+        }
+        System.out.println();
     }
 
     public static void main(String[] args) {
