@@ -1,29 +1,31 @@
 package leetcode;
 
+import java.util.PriorityQueue;
+
 /**
  * https://leetcode.com/problems/kth-largest-element-in-a-stream/
  */
 public class Problem703 {
     private static class KthLargest {
+        private final PriorityQueue<Integer> queue = new PriorityQueue<>();
+        private final int k;
 
         public KthLargest(int k, int[] nums) {
-            // TODO
+            for (int i = 0; i < nums.length; i++) {
+                queue.add(nums[i]);
+                if (queue.size() > k) {
+                    queue.poll();
+                }
+            }
+            this.k = k;
         }
 
         public int add(int val) {
-            // TODO
-            return 0;
+            queue.add(val);
+            if (queue.size() > k) {
+                queue.poll();
+            }
+            return queue.peek();
         }
-    }
-
-    public static void main(String[] args) {
-        int k = 3;
-        int[] arr = new int[]{4, 5, 8, 2};
-        KthLargest kthLargest = new KthLargest(3, arr);
-        System.out.println(kthLargest.add(3)); // returns 4
-        System.out.println(kthLargest.add(5)); // returns 5
-        System.out.println(kthLargest.add(10)); // returns 5
-        System.out.println(kthLargest.add(9)); // returns 8
-        System.out.println(kthLargest.add(4)); // returns 8
     }
 }
