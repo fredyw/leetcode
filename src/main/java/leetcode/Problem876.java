@@ -14,11 +14,17 @@ public class Problem876 {
     }
 
     public ListNode middleNode(ListNode head) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem876 prob = new Problem876();
+        int size = 0;
+        for (ListNode n = head; n != null; n = n.next) {
+            size++;
+        }
+        int index = size / 2;
+        int i = 0;
+        for (ListNode n = head; n != null; n = n.next) {
+            if (i++ == index) {
+                return n;
+            }
+        }
+        return head;
     }
 }
