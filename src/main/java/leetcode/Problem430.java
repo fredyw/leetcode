@@ -19,11 +19,6 @@ public class Problem430 {
             next = _next;
             child = _child;
         }
-
-        @Override
-        public String toString() {
-            return "" + val;
-        }
     }
 
     public Node flatten(Node head) {
