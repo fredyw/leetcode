@@ -19,31 +19,30 @@ public class Problem430 {
             next = _next;
             child = _child;
         }
+
+        @Override
+        public String toString() {
+            return "" + val;
+        }
     }
 
     public Node flatten(Node head) {
         for (Node n = head; n != null; n = n.next) {
             if (n.child != null) {
                 Node tmp = n.next;
-                n.next = n.child;
-                Node cn = n.child;
+                Node cn = flatten(n.child);
+                n.next = cn;
+                cn.prev = n;
+                n.child = null;
                 while (cn.next != null) {
                     cn = cn.next;
                 }
                 cn.next = tmp;
+                if (tmp != null) {
+                    tmp.prev = cn;
+                }
             }
         }
         return head;
-    }
-
-    private static void print(Node head) {
-        for (Node n = head; n != null; n = n.next) {
-            System.out.print(n.val + ' ');
-        }
-        System.out.println();
-    }
-
-    public static void main(String[] args) {
-        Problem430 prob = new Problem430();
     }
 }
