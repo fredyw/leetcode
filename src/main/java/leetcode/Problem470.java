@@ -15,11 +15,14 @@ public class Problem470 {
     }
 
     public int rand10() {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem470 prob = new Problem470();
+        int row = rand7();
+        int col = rand7();
+        int index = col + ((row - 1) * 7);
+        while (index > 40) {
+            row = rand7();
+            col = rand7();
+            index = col + ((row - 1) * 7);
+        }
+        return 1 + (index - 1) % 10;
     }
 }
