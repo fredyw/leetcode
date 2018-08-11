@@ -5,11 +5,22 @@ package leetcode;
  */
 public class Problem887 {
     public int projectionArea(int[][] grid) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem887 prob = new Problem887();
+        int top = 0;
+        int front = 0;
+        int side = 0;
+        for (int i = 0; i < grid.length; i++) {
+            int maxRow = 0;
+            int maxCol = 0;
+            for (int j = 0; j < grid[i].length; j++) {
+                if (grid[i][j] > 0) {
+                    top++;
+                }
+                maxRow = Math.max(maxRow, grid[i][j]);
+                maxCol = Math.max(maxCol, grid[j][i]);
+            }
+            front += maxRow;
+            side += maxCol;
+        }
+        return top + front + side;
     }
 }
