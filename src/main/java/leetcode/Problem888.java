@@ -1,6 +1,7 @@
 package leetcode;
 
-import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * https://leetcode.com/problems/fair-candy-swap/
@@ -11,33 +12,26 @@ public class Problem888 {
         for (int a : A) {
             sumA += a;
         }
+        Set<Integer> setB = new HashSet<>();
         int sumB = 0;
         for (int b : B) {
             sumB += b;
+            setB.add(b);
         }
+        // Formula:
+        // sumA - a + b = sumB - b + a
+        // 2b = sumB - sumA + 2a
+        // b = (sumB - sumA + 2a) / 2
         int[] result = new int[2];
         outer:
         for (int a : A) {
-            for (int b : B) {
-                if (sumA - a + b == sumB - b + a) {
-                    result[0] = a;
-                    result[1] = b;
-                    break outer;
-                }
+            int b = (sumB - sumA + (2 * a)) / 2;
+            if (setB.contains(b)) {
+                result[0] = a;
+                result[1] = b;
+                break;
             }
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        Problem888 prob = new Problem888();
-        System.out.println(Arrays.toString(prob.fairCandySwap(
-            new int[]{1, 1}, new int[]{2, 2}))); // [1,2]
-        System.out.println(Arrays.toString(prob.fairCandySwap(
-            new int[]{1, 2}, new int[]{2, 3}))); // [1,2]
-        System.out.println(Arrays.toString(prob.fairCandySwap(
-            new int[]{2}, new int[]{1, 3}))); // [2,3]
-        System.out.println(Arrays.toString(prob.fairCandySwap(
-            new int[]{1, 2, 5}, new int[]{2, 4}))); // [5,4]
     }
 }
