@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * https://leetcode.com/problems/uncommon-words-from-two-sentences/
  */
-public class Problem888 {
+public class Problem884 {
     public String[] uncommonFromSentences(String A, String B) {
         Map<String, Integer> map = new HashMap<>();
         for (String str : A.split(" ")) {
