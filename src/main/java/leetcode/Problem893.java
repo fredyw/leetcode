@@ -1,19 +1,39 @@
 package leetcode;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * https://leetcode.com/problems/groups-of-special-equivalent-strings/
  */
 public class Problem893 {
     public int numSpecialEquivGroups(String[] A) {
-        // TODO
-        return 0;
+        Set<String> set = new HashSet<>();
+        for (int i = 0; i < A.length; i++) {
+            char[] chars = A[i].toCharArray();
+            String key = key(chars);
+            set.add(key);
+        }
+        return set.size();
     }
 
-    public static void main(String[] args) {
-        Problem893 prob = new Problem893();
-        System.out.println(prob.numSpecialEquivGroups(new String[]{"a","b","c","a","c","c"})); // 3
-        System.out.println(prob.numSpecialEquivGroups(new String[]{"aa","bb","ab","ba"})); // 4
-        System.out.println(prob.numSpecialEquivGroups(new String[]{"abc","acb","bac","bca","cab","cba"})); // 3
-        System.out.println(prob.numSpecialEquivGroups(new String[]{"abcd","cdab","adcb","cbad"})); // 1
+    private static String key(char[] chars) {
+        StringBuilder even = new StringBuilder();
+        StringBuilder odd = new StringBuilder();
+        for (int j = 0; j < chars.length; j++) {
+            if (j % 2 == 0) {
+                even.append(chars[j]);
+            } else {
+                odd.append(chars[j]);
+            }
+        }
+        char[] evenChars = even.toString().toCharArray();
+        Arrays.sort(evenChars);
+        String evenString = new String(evenChars);
+        char[] oddChars = odd.toString().toCharArray();
+        Arrays.sort(oddChars);
+        String oddString = new String(oddChars);
+        return evenString + "|" + oddString;
     }
 }
