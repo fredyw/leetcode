@@ -15,8 +15,39 @@ public class Problem897 {
     }
 
     public TreeNode increasingBST(TreeNode root) {
-        // TODO
-        return null;
+        TreeNodeRef ref = new TreeNodeRef();
+        increasingBST(root, ref);
+        return ref.root;
+    }
+
+    private static class TreeNodeRef {
+        private TreeNode root;
+        private TreeNode node;
+    }
+
+    private static void increasingBST(TreeNode root, TreeNodeRef ref) {
+        if (root == null) {
+            return;
+        }
+        increasingBST(root.left, ref);
+        if (ref.root == null) {
+            ref.root = root;
+            ref.node = root;
+        } else {
+            ref.node.left = null;
+            ref.node.right = root;
+            ref.node = root;
+        }
+        increasingBST(root.right, ref);
+    }
+
+    private static void print(TreeNode node) {
+        for (TreeNode n = node; n != null; n = n.right) {
+            if (n.left != null) {
+                throw new RuntimeException("Wrong!");
+            }
+            System.out.println(n.val);
+        }
     }
 
     public static void main(String[] args) {
@@ -31,6 +62,7 @@ public class Problem897 {
         root.right.right.left = new TreeNode(7);
         root.right.right.right = new TreeNode(9);
 
-        System.out.println(prob.increasingBST(root));
+        print(prob.increasingBST(root));
+        print(prob.increasingBST(new TreeNode(1)));
     }
 }
