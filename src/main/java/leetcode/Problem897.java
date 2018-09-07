@@ -14,6 +14,23 @@ public class Problem897 {
         }
     }
 
+//    TreeNode cur;
+//    public TreeNode increasingBST(TreeNode root) {
+//        TreeNode ans = new TreeNode(0);
+//        cur = ans;
+//        inorder(root);
+//        return ans.right;
+//    }
+//
+//    public void inorder(TreeNode node) {
+//        if (node == null) return;
+//        inorder(node.left);
+//        node.left = null;
+//        cur = node;
+//        cur.right = cur;
+//        inorder(node.right);
+//    }
+
     public TreeNode increasingBST(TreeNode root) {
         TreeNodeRef ref = new TreeNodeRef();
         increasingBST(root, ref);
@@ -25,20 +42,20 @@ public class Problem897 {
         private TreeNode node;
     }
 
-    private static void increasingBST(TreeNode root, TreeNodeRef ref) {
-        if (root == null) {
+    private static void increasingBST(TreeNode node, TreeNodeRef ref) {
+        if (node == null) {
             return;
         }
-        increasingBST(root.left, ref);
+        increasingBST(node.left, ref);
         if (ref.root == null) {
-            ref.root = root;
-            ref.node = root;
+            ref.root = node;
+            ref.node = node;
         } else {
             ref.node.left = null;
-            ref.node.right = root;
-            ref.node = root;
+            ref.node.right = node;
+            ref.node = node;
         }
-        increasingBST(root.right, ref);
+        increasingBST(node.right, ref);
     }
 
     private static void print(TreeNode node) {
