@@ -24,6 +24,9 @@ public class Problem892 {
             {1, 2}, {3, 4}
         })); // 10
         System.out.println(prob.surfaceArea(new int[][]{
+            {1, 1}, {1, 1}
+        })); // 16
+        System.out.println(prob.surfaceArea(new int[][]{
             {1, 0}, {0, 2}
         })); // 10
         System.out.println(prob.surfaceArea(new int[][]{
