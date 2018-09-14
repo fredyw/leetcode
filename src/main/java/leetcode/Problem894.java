@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,11 +18,17 @@ public class Problem894 {
     }
 
     public List<TreeNode> allPossibleFBT(int N) {
+        List<TreeNode> result = new ArrayList<>();
+        if (N <= 2 || N % 2 == 0) {
+            return result;
+        }
         // TODO
-        return null;
+        return result;
     }
 
     public static void main(String[] args) {
         Problem894 prob = new Problem894();
+        System.out.println(prob.allPossibleFBT(7)); // [[0,0,0,null,null,0,0,null,null,0,0],[0,0,0,null,null,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,null,null,null,null,0,0],[0,0,0,0,0,null,null,0,0]]
+        System.out.println(prob.allPossibleFBT(6)); // []
     }
 }
