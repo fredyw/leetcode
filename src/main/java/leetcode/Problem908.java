@@ -1,18 +1,17 @@
 package leetcode;
 
+import java.util.Arrays;
+
 /**
  * https://leetcode.com/problems/smallest-range-i/description/
  */
 public class Problem908 {
     public int smallestRangeI(int[] A, int K) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem908 prob = new Problem908();
-        System.out.println(prob.smallestRangeI(new int[]{1}, 0)); // 0
-        System.out.println(prob.smallestRangeI(new int[]{0, 10}, 2)); // 6
-        System.out.println(prob.smallestRangeI(new int[]{1, 3, 6}, 3)); // 0
+        Arrays.sort(A);
+        if (A.length <= 1) {
+            return 0;
+        }
+        int diff = (A[A.length - 1] - K) - (A[0] + K);
+        return diff < 0 ? 0 : diff;
     }
 }
