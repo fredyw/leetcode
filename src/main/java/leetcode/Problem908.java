@@ -11,5 +11,8 @@ public class Problem908 {
 
     public static void main(String[] args) {
         Problem908 prob = new Problem908();
+        System.out.println(prob.smallestRangeI(new int[]{1}, 0)); // 0
+        System.out.println(prob.smallestRangeI(new int[]{0, 10}, 2)); // 6
+        System.out.println(prob.smallestRangeI(new int[]{1, 3, 6}, 3)); // 0
     }
 }
