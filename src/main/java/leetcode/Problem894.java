@@ -19,28 +19,20 @@ public class Problem894 {
 
     public List<TreeNode> allPossibleFBT(int N) {
         List<TreeNode> result = new ArrayList<>();
-        if (N <= 2 || N % 2 == 0) {
-            return result;
+        if (N == 1) {
+            result.add(new TreeNode(0));
+        } else if (N % 2 != 0) {
+            for (int i = 0; i < N; i++) {
+                int j = N - 1 - i;
+                for (TreeNode left : allPossibleFBT(i))
+                    for (TreeNode right : allPossibleFBT(j)) {
+                        TreeNode node = new TreeNode(0);
+                        node.left = left;
+                        node.right = right;
+                        result.add(node);
+                    }
+            }
         }
-        allPossibleFBT(N, 1, new TreeNode(0));
         return result;
-    }
-
-    private static void allPossibleFBT(int n, int count, TreeNode node) {
-        node.left = new TreeNode(0);
-        node.right = new TreeNode(0);
-        if (count + 2 == n) {
-            System.out.println("here");
-        } else {
-            allPossibleFBT(n, count + 2, node.left);
-            allPossibleFBT(n, count + 2, node.right);
-        }
-    }
-
-    public static void main(String[] args) {
-        Problem894 prob = new Problem894();
-//        System.out.println(prob.allPossibleFBT(5).size()); // 2
-        System.out.println(prob.allPossibleFBT(7).size()); // 5
-//        System.out.println(prob.allPossibleFBT(6).size()); // 0
     }
 }
