@@ -28,12 +28,4 @@ public class Problem877 {
         memo[i][j] = max;
         return max;
     }
-
-    public static void main(String[] args) {
-        Problem877 prob = new Problem877();
-        System.out.println(prob.stoneGame(new int[]{5, 3, 4, 5})); // true
-        System.out.println(prob.stoneGame(new int[]{5, 3, 4, 6})); // true
-        System.out.println(prob.stoneGame(new int[]{1, 1, 1, 1})); // true
-        System.out.println(prob.stoneGame(new int[]{7, 3, 8, 2, 9, 10})); // true
-    }
 }
