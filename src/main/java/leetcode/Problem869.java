@@ -39,10 +39,12 @@ public class Problem869 {
         return s.charAt(i) + left + right;
     }
 
+    private static double log2(int n) {
+        return Math.log(n) / Math.log(2);
+    }
+
     private static boolean isPower2(int n) {
-        double dsqrt = Math.sqrt(n);
-        int isqrt = (int) dsqrt;
-        return dsqrt - isqrt == 0;
+        return (Math.ceil(log2(n)) == Math.floor(log2(n)));
     }
 
     public static void main(String[] args) {
@@ -53,8 +55,9 @@ public class Problem869 {
 //        System.out.println(prob.reorderedPowerOf2(24)); // false
 //        System.out.println(prob.reorderedPowerOf2(46)); // true
 //        System.out.println(prob.reorderedPowerOf2(562)); // true
-//        System.out.println(prob.reorderedPowerOf2(821)); // false
-        System.out.println(prob.reorderedPowerOf2(152)); // true
+        System.out.println(prob.reorderedPowerOf2(821)); // true
+//        System.out.println(prob.reorderedPowerOf2(128)); // true
+//        System.out.println(prob.reorderedPowerOf2(152)); // true
 //        System.out.println(prob.reorderedPowerOf2(512)); // true
     }
 }
