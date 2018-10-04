@@ -11,5 +11,14 @@ public class Problem835 {
 
     public static void main(String[] args) {
         Problem835 prob = new Problem835();
+        System.out.println(prob.largestOverlap(new int[][]{
+            {1, 1, 0},
+            {0, 1, 0},
+            {0, 1, 0}
+        }, new int[][]{
+            {0, 0, 0},
+            {0, 1, 1},
+            {0, 0, 1}
+        })); // 3
     }
 }
