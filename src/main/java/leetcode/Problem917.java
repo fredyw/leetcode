@@ -5,14 +5,30 @@ package leetcode;
  */
 public class Problem917 {
     public String reverseOnlyLetters(String S) {
-        // TODO
-        return null;
+        int i = 0;
+        int j = S.length() - 1;
+        char[] chars = S.toCharArray();
+        while (i < j) {
+            while (i < S.length() && !isLetter(chars[i])) {
+                i++;
+            }
+            while (j >= 0 && !isLetter(chars[j])) {
+                j--;
+            }
+            if (i < j) {
+                swap(chars, i++, j--);
+            }
+        }
+        return new String(chars);
     }
 
-    public static void main(String[] args) {
-        Problem917 prob = new Problem917();
-        System.out.println(prob.reverseOnlyLetters("ab-cd")); // "dc-ba"
-        System.out.println(prob.reverseOnlyLetters("a-bC-dEf-ghIj")); // "j-Ih-gfE-dCba"
-        System.out.println(prob.reverseOnlyLetters("Test1ng-Leet=code-Q!")); // "Qedo1ct-eeLg=ntse-T!"
+    private static boolean isLetter(char c) {
+        return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
+    }
+
+    private static void swap(char[] chars, int i, int j) {
+        char tmp = chars[i];
+        chars[i] = chars[j];
+        chars[j] = tmp;
     }
 }
