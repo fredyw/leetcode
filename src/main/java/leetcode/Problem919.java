@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * https://leetcode.com/problems/complete-binary-tree-inserter/
  */
@@ -12,40 +15,45 @@ public class Problem919 {
         TreeNode(int x) {
             val = x;
         }
-
-        @Override
-        public String toString() {
-            return "" + val;
-        }
     }
 
     public static class CBTInserter {
         private final TreeNode root;
+        private final LinkedList<TreeNode> queue = new LinkedList<>();
 
         public CBTInserter(TreeNode root) {
             this.root = root;
+            queue.add(this.root);
         }
 
         public int insert(int v) {
-            // TODO
-            return 0;
+            TreeNode current = null;
+            while (!queue.isEmpty()) {
+                current = queue.remove();
+                if (current.left == null) {
+                    current.left = new TreeNode(v);
+                    queue.add(current.left);
+                    if (current.right != null) {
+                        queue.add(current.right);
+                    } else {
+                        queue.addFirst(current);
+                    }
+                    break;
+                } else if (current.right == null) {
+                    current.right = new TreeNode(v);
+                    queue.add(current.left);
+                    queue.add(current.right);
+                    break;
+                } else {
+                    queue.add(current.left);
+                    queue.add(current.right);
+                }
+            }
+            return current.val;
         }
 
         public TreeNode get_root() {
             return root;
         }
-    }
-
-    public static void main(String[] args) {
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        root.left.right = new TreeNode(5);
-        root.right.left = new TreeNode(6);
-
-        CBTInserter inserter = new CBTInserter(root);
-        System.out.println(inserter.insert(4)); // 2
-        System.out.println(inserter.insert(7)); // 3
-        System.out.println(inserter.insert(8)); // 4
     }
 }
