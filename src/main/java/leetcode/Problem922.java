@@ -5,12 +5,26 @@ package leetcode;
  */
 public class Problem922 {
     public int[] sortArrayByParityII(int[] A) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem922 prob = new Problem922();
-        System.out.println(prob.sortArrayByParityII(new int[]{4, 2, 5, 7})); // [4,5,2,7]
+        int[] odd = new int[(A.length / 2) + 1];
+        int[] even = new int[(A.length / 2) + 1];
+        int oddIdx = 0;
+        int evenIdx = 0;
+        for (int i = 0; i < A.length; i++) {
+            if (A[i] % 2 == 0) {
+                even[evenIdx++] = A[i];
+            } else {
+                odd[oddIdx++] = A[i];
+            }
+        }
+        oddIdx = 0;
+        evenIdx = 0;
+        for (int i = 0; i < A.length; i++) {
+            if (i % 2 == 0) {
+                A[i] = even[evenIdx++];
+            } else {
+                A[i] = odd[oddIdx++];
+            }
+        }
+        return A;
     }
 }
