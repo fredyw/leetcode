@@ -9,41 +9,28 @@ import java.util.List;
 public class Problem916 {
     public List<String> wordSubsets(String[] A, String[] B) {
         List<String> result = new ArrayList<>();
+        int[] countB = new int[26];
+        for (String b : B) {
+            int[] tmp = new int[26];
+            for (char c : b.toCharArray()) {
+                tmp[c - 'a']++;
+                countB[c - 'a'] = Math.max(countB[c - 'a'], tmp[c - 'a']);
+            }
+        }
         outer:
         for (String a : A) {
-            for (String b : B) {
-                int[] counts = new int[26];
-                for (char c : a.toCharArray()) {
-                    counts[c - 'a']++;
-                }
-                for (char c : b.toCharArray()) {
-                    if (counts[c - 'a'] == 0) {
-                        continue outer;
-                    }
-                    counts[c - 'a']--;
+            int[] countA = new int[26];
+            for (char c : a.toCharArray()) {
+                countA[c - 'a']++;
+            }
+            for (int i = 0; i < countB.length; i++) {
+                countA[i] -= countB[i];
+                if (countA[i] < 0) {
+                    continue outer;
                 }
             }
             result.add(a);
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        Problem916 prob = new Problem916();
-        System.out.println(prob.wordSubsets(
-            new String[]{"amazon", "apple", "facebook", "google", "leetcode"},
-            new String[]{"e", "o"})); // ["facebook","google","leetcode"]
-        System.out.println(prob.wordSubsets(
-            new String[]{"amazon", "apple", "facebook", "google", "leetcode"},
-            new String[]{"l", "e"})); // ["apple","google","leetcode"]
-        System.out.println(prob.wordSubsets(
-            new String[]{"amazon", "apple", "facebook", "google", "leetcode"},
-            new String[]{"e", "oo"})); // ["facebook","google"]
-        System.out.println(prob.wordSubsets(
-            new String[]{"amazon", "apple", "facebook", "google", "leetcode"},
-            new String[]{"lo", "eo"})); // ["google","leetcode"]
-        System.out.println(prob.wordSubsets(
-            new String[]{"amazon", "apple", "facebook", "google", "leetcode"},
-            new String[]{"ec", "oc", "ceo"})); // ["facebook","leetcode"]
     }
 }
