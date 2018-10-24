@@ -11,5 +11,9 @@ public class Problem921 {
 
     public static void main(String[] args) {
         Problem921 prob = new Problem921();
+        System.out.println(prob.minAddToMakeValid("())")); // 1
+        System.out.println(prob.minAddToMakeValid("(((")); // 3
+        System.out.println(prob.minAddToMakeValid("()")); // 0
+        System.out.println(prob.minAddToMakeValid("()))((")); // 4
     }
 }
