@@ -1,19 +1,26 @@
 package leetcode;
 
+import java.util.Stack;
+
 /**
  * https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/
  */
 public class Problem921 {
     public int minAddToMakeValid(String S) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem921 prob = new Problem921();
-        System.out.println(prob.minAddToMakeValid("())")); // 1
-        System.out.println(prob.minAddToMakeValid("(((")); // 3
-        System.out.println(prob.minAddToMakeValid("()")); // 0
-        System.out.println(prob.minAddToMakeValid("()))((")); // 4
+        int count = 0;
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < S.length(); i++) {
+            char c = S.charAt(i);
+            if (c == '(') {
+                stack.add('(');
+            } else if (c == ')') {
+                if (!stack.isEmpty() && stack.peek() == '(') {
+                    stack.pop();
+                } else {
+                    count++;
+                }
+            }
+        }
+        return count + stack.size();
     }
 }
