@@ -1,35 +1,34 @@
 package leetcode;
 
+import java.util.Stack;
+
 /**
  * https://leetcode.com/problems/online-stock-span/
  */
 public class Problem901 {
     private static class StockSpanner {
+        private final Stack<PriceCount> stack = new Stack<>();
+
+        private static class PriceCount {
+            private final int price;
+            private final int count;
+
+            public PriceCount(int price, int count) {
+                this.price = price;
+                this.count = count;
+            }
+        }
+
         public StockSpanner() {
         }
 
         public int next(int price) {
-            // TODO
-            return 0;
+            int count = 1;
+            while (!stack.isEmpty() && stack.peek().price <= price) {
+                count += stack.pop().count;
+            }
+            stack.push(new PriceCount(price, count));
+            return count;
         }
-    }
-
-    public static void main(String[] args) {
-        StockSpanner spanner = new StockSpanner();
-//        System.out.println(spanner.next(100)); // 1
-//        System.out.println(spanner.next(80)); // 1
-//        System.out.println(spanner.next(60)); // 1
-//        System.out.println(spanner.next(70)); // 2
-//        System.out.println(spanner.next(60)); // 1
-//        System.out.println(spanner.next(75)); // 4
-//        System.out.println(spanner.next(85)); // 6
-
-        System.out.println(spanner.next(1)); // 1
-        System.out.println(spanner.next(1)); // 2
-        System.out.println(spanner.next(1)); // 3
-        System.out.println(spanner.next(1)); // 4
-        System.out.println(spanner.next(10)); // 5
-        System.out.println(spanner.next(20)); // 6
-        System.out.println(spanner.next(0)); // 1
     }
 }
