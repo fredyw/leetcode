@@ -5,19 +5,30 @@ package leetcode;
  */
 public class Problem875 {
     public int minEatingSpeed(int[] piles, int H) {
-        // TODO
-        return 0;
+        int lo = 1;
+        int hi = 1_000_000;
+        while (lo <= hi) {
+            int mid = (lo + hi) / 2;
+            int time = time(piles, mid);
+            if (time <= H) {
+                hi = mid - 1;
+            } else {
+                lo = mid + 1;
+            }
+        }
+        return lo;
     }
 
-    public static void main(String[] args) {
-        Problem875 prob = new Problem875();
-        System.out.println(prob.minEatingSpeed(new int[]{3, 6, 7, 11}, 4)); // 11
-        System.out.println(prob.minEatingSpeed(new int[]{3, 6, 7, 11}, 5)); // 7
-        System.out.println(prob.minEatingSpeed(new int[]{3, 6, 7, 11}, 6)); // 6
-        System.out.println(prob.minEatingSpeed(new int[]{3, 6, 7, 11}, 7)); // 6
-        System.out.println(prob.minEatingSpeed(new int[]{3, 6, 7, 11}, 8)); // 4
-        System.out.println(prob.minEatingSpeed(new int[]{3, 6, 7, 11}, 100)); // 1
-        System.out.println(prob.minEatingSpeed(new int[]{30, 11, 23, 4, 20}, 5)); // 30
-        System.out.println(prob.minEatingSpeed(new int[]{30, 11, 23, 4, 20}, 6)); // 23
+    private static int time(int[] piles, int val) {
+        int time = 0;
+        for (int pile : piles) {
+            int div = pile / val;
+            int mod = pile % val;
+            if (mod > 0) {
+                div++;
+            }
+            time += div;
+        }
+        return time;
     }
 }
