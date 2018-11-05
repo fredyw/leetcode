@@ -1,28 +1,23 @@
 package leetcode;
 
+import java.util.LinkedList;
+
 /**
  * https://leetcode.com/problems/number-of-recent-calls/
  */
 public class Problem933 {
     private static class RecentCounter {
+        private final LinkedList<Integer> list = new LinkedList<>();
 
         public RecentCounter() {
-
         }
 
         public int ping(int t) {
-            // TODO
-            return 0;
+            list.add(t);
+            while (t - 3000 > list.peekFirst()) {
+                list.removeFirst();
+            }
+            return list.size();
         }
-    }
-
-    public static void main(String[] args) {
-        RecentCounter counter = new RecentCounter();
-        System.out.println(counter.ping(1)); // 1
-        System.out.println(counter.ping(100)); // 2
-        System.out.println(counter.ping(3001)); // 3
-        System.out.println(counter.ping(3002)); // 3
-        System.out.println(counter.ping(3003)); // 4
-        System.out.println(counter.ping(6004)); // 1
     }
 }
