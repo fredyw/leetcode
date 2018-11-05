@@ -23,5 +23,6 @@ public class Problem933 {
         System.out.println(counter.ping(3001)); // 3
         System.out.println(counter.ping(3002)); // 3
         System.out.println(counter.ping(3003)); // 4
+        System.out.println(counter.ping(6004)); // 1
     }
 }
