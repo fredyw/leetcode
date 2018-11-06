@@ -1,21 +1,34 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * https://leetcode.com/problems/beautiful-array/
  */
 public class Problem932 {
     public int[] beautifulArray(int N) {
-        // TODO
-        return null;
+        Map<Integer, int[]> memo = new HashMap<>();
+        return beautifulArray(N, memo);
     }
 
-    public static void main(String[] args) {
-        Problem932 prob = new Problem932();
-        System.out.println(prob.beautifulArray(1)); // [1]
-        System.out.println(prob.beautifulArray(2)); // [1,2]
-        System.out.println(prob.beautifulArray(3)); // [1,3,2]
-        System.out.println(prob.beautifulArray(4)); // [2,1,4,3]
-        System.out.println(prob.beautifulArray(5)); // [3,1,2,5,4]
-        System.out.println(prob.beautifulArray(6)); // [1,5,3,2,6,4]
+    public int[] beautifulArray(int n, Map<Integer, int[]> memo) {
+        if (memo.containsKey(n)) {
+            return memo.get(n);
+        }
+        int[] result = new int[n];
+        if (n == 1) {
+            result[0] = 1;
+        } else {
+            int i = 0;
+            for (int x : beautifulArray((n + 1) / 2)) {  // odds
+                result[i++] = 2 * x - 1;
+            }
+            for (int x : beautifulArray(n / 2)) { // evens
+                result[i++] = 2 * x;
+            }
+        }
+        memo.put(n, result);
+        return result;
     }
 }
