@@ -11,7 +11,14 @@ public class Problem934 {
         boolean[][] visited2 = new boolean[maxRow][maxCol];
         for (int row = 0; row < maxRow; row++) {
             for (int col = 0; col < maxCol; col++) {
-                // TODO
+                if (A[row][col] == 1) {
+                    if (!visited1[row][col]) {
+                        traverse(A, maxRow, maxCol, row, col, visited1);
+                    }
+                    if (!visited1[row][col]) {
+                        traverse(A, maxRow, maxCol, row, col, visited2);
+                    }
+                }
             }
         }
         return 0;
@@ -38,26 +45,26 @@ public class Problem934 {
 
     public static void main(String[] args) {
         Problem934 prob = new Problem934();
-        System.out.println(prob.shortestBridge(new int[][]{
-            {0, 1},
-            {1, 0}
-        })); // 1
+//        System.out.println(prob.shortestBridge(new int[][]{
+//            {0, 1},
+//            {1, 0}
+//        })); // 1
         System.out.println(prob.shortestBridge(new int[][]{
             {0, 1, 0},
             {0, 0, 0},
             {0, 0, 1}
         })); // 2
-        System.out.println(prob.shortestBridge(new int[][]{
-            {0, 1, 1},
-            {0, 0, 0},
-            {1, 1, 0}
-        })); // 1
-        System.out.println(prob.shortestBridge(new int[][]{
-            {1, 1, 1, 1, 1},
-            {1, 0, 0, 0, 1},
-            {1, 0, 1, 0, 1},
-            {1, 0, 0, 0, 1},
-            {1, 1, 1, 1, 1}
-        })); // 1
+//        System.out.println(prob.shortestBridge(new int[][]{
+//            {0, 1, 1},
+//            {0, 0, 0},
+//            {1, 1, 0}
+//        })); // 1
+//        System.out.println(prob.shortestBridge(new int[][]{
+//            {1, 1, 1, 1, 1},
+//            {1, 0, 0, 0, 1},
+//            {1, 0, 1, 0, 1},
+//            {1, 0, 0, 0, 1},
+//            {1, 1, 1, 1, 1}
+//        })); // 1
     }
 }
