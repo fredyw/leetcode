@@ -7,35 +7,33 @@ public class Problem934 {
     public int shortestBridge(int[][] A) {
         int maxRow = A.length;
         int maxCol = maxRow > 0 ? A[0][0] : 0;
-        boolean[][] visited = new boolean[maxRow][maxCol];
+        boolean[][] visited1 = new boolean[maxRow][maxCol];
+        boolean[][] visited2 = new boolean[maxRow][maxCol];
         for (int row = 0; row < maxRow; row++) {
             for (int col = 0; col < maxCol; col++) {
-                if (visited[row][col]) {
-                    continue;
-                }
                 // TODO
             }
         }
         return 0;
     }
 
-    private static void shortest(int[][] a, int maxRow, int maxCol, int row, int col) {
+    private static void traverse(int[][] a, int maxRow, int maxCol, int row, int col,
+                                 boolean[][] visited) {
+        if (row < 0 || row >= maxRow || col < 0 || col >= maxCol) {
+            return;
+        }
+        if (visited[row][col] || a[row][col] == 0) {
+            return;
+        }
+        visited[row][col] = true;
         // top
-        if (row - 1 >= 0) {
-
-        }
+        traverse(a, maxRow, maxCol, row - 1, col, visited);
         // right
-        if (col + 1 < maxCol) {
-
-        }
+        traverse(a, maxRow, maxCol, row, col + 1, visited);
         // bottom
-        if (row + 1 < maxRow) {
-
-        }
+        traverse(a, maxRow, maxCol, row + 1, col, visited);
         // left
-        if (col - 1 >= 0) {
-
-        }
+        traverse(a, maxRow, maxCol, row, col - 1, visited);
     }
 
     public static void main(String[] args) {
