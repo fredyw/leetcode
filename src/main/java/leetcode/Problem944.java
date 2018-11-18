@@ -5,11 +5,17 @@ package leetcode;
  */
 public class Problem944 {
     public int minDeletionSize(String[] A) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem944 prob = new Problem944();
+        int maxRow = A.length;
+        int maxCol = A.length > 0 ? A[0].length() : 0;
+        int count = 0;
+        for (int col = 0; col < maxCol; col++) {
+            for (int row = 1; row < maxRow; row++) {
+                if (A[row - 1].charAt(col) > A[row].charAt(col)) {
+                    count++;
+                    break;
+                }
+            }
+        }
+        return count;
     }
 }
