@@ -51,7 +51,7 @@ public class Problem939 {
         if (xPoints == null) {
             return Integer.MAX_VALUE;
         }
-        List<int[]> yPoints = yMap.get(x);
+        List<int[]> yPoints = yMap.get(y);
         if (yPoints == null) {
             return Integer.MAX_VALUE;
         }
@@ -80,25 +80,5 @@ public class Problem939 {
 
     private static String key(int x, int y) {
         return x + "," + y;
-    }
-
-    public static void main(String[] args) {
-        Problem939 prob = new Problem939();
-        // [1, 1], [1, 3], [3, 1], [3, 3]
-        System.out.println(prob.minAreaRect(new int[][]{
-            {1, 1}, {1, 3}, {3, 1}, {3, 3}, {2, 2}
-        })); // 4
-        // [1, 1], [1, 3], [3, 1], [3, 3]
-        // [3, 1], [3, 3], [4, 3], [4, 1]
-        // [3, 1] --> x = [3, 3]
-        //            y = [1, 1], [1, 3]
-        //                [4, 1], [4, 3]
-        System.out.println(prob.minAreaRect(new int[][]{
-            {1, 1}, {1, 3}, {3, 1}, {3, 3}, {4, 1}, {4, 3}
-        })); // 2
-        System.out.println(prob.minAreaRect(new int[][]{
-            {1, 3}, {3, 1}, {3, 3}, {2, 2}
-        })); // 0
-        // [[3,2],[3,1],[4,4],[1,1],[4,3],[0,3],[0,2],[4,0]]
     }
 }
