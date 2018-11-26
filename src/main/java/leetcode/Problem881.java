@@ -14,30 +14,37 @@ public class Problem881 {
             if (visited[i]) {
                 continue;
             }
-            int newLimit = limit - people[i];
-            int n = 1;
-            for (int j = people.length - 1; j > i; j--) {
-                if (visited[j]) {
-                    continue;
+            int index = Arrays.binarySearch(people, limit - people[i]);
+            if (index < 0) {
+                index = -index - 1;
+                if (index == visited.length) {
+                    index--;
                 }
-                if (newLimit - people[j] >= 0) {
-                    n++;
-                    newLimit -= people[j];
-                    visited[j] = true;
-                    // The boat can only carry 2 people.
-                    if (newLimit == 0 || n == 2) {
+            } else {
+                int val = people[index];
+                while (index < people.length && val == people[index]) {
+                    index++;
+                }
+                index--;
+            }
+            while (i < index) {
+                if (!visited[index]) {
+                    if (limit - (people[i] + people[index]) >= 0) {
+                        visited[index] = true;
                         break;
                     }
                 }
+                index--;
             }
             count++;
-            visited[i] = true;
         }
         return count;
     }
 
     public static void main(String[] args) {
         Problem881 prob = new Problem881();
+        System.out.println(prob.numRescueBoats(new int[]{2, 2}, 6)); // 1
+        System.out.println(prob.numRescueBoats(new int[]{2, 4}, 5)); // 2
         System.out.println(prob.numRescueBoats(new int[]{1, 2}, 3)); // 1
         System.out.println(prob.numRescueBoats(new int[]{3, 2, 2, 1}, 3)); // 3
         System.out.println(prob.numRescueBoats(new int[]{3, 5, 3, 4}, 5)); // 4
@@ -46,5 +53,7 @@ public class Problem881 {
         System.out.println(prob.numRescueBoats(new int[]{21, 40, 16, 24, 30}, 50)); // 3
         System.out.println(prob.numRescueBoats(new int[]{
             2, 49, 10, 7, 11, 41, 47, 2, 22, 6, 13, 12, 33, 18, 10, 26, 2, 6, 50, 10}, 50)); // 11
+        System.out.println(prob.numRescueBoats(
+            new int[]{3, 8, 4, 9, 2, 2, 7, 1, 6, 10, 6, 7, 1, 7, 7, 6, 4, 4, 10, 1}, 10)); // 11
     }
 }
