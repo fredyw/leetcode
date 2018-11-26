@@ -14,7 +14,7 @@ public class Problem881 {
             if (visited[i]) {
                 continue;
             }
-            int index = Arrays.binarySearch(people, limit - people[i]);
+            int index = Arrays.binarySearch(people, i, people.length, limit - people[i]);
             if (index < 0) {
                 index = -index - 1;
                 if (index == visited.length) {
