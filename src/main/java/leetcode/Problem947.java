@@ -32,16 +32,16 @@ public class Problem947 {
                 yMap.get(y).add(stone);
             }
         }
-        int max = 0;
+        int totalCount = 0;
         Set<String> visited = new HashSet<>();
         for (int[] stone : stones) {
             if (!visited.contains(toString(stone))) {
                 IntRef count = new IntRef(0);
                 dfs(stone, xMap, yMap, visited, count);
-                max = Math.max(max, count.val - 1);
+                totalCount += count.val - 1;
             }
         }
-        return max;
+        return totalCount;
     }
 
     private static class IntRef {
@@ -71,33 +71,5 @@ public class Problem947 {
 
     private static String toString(int[] stone) {
         return stone[0] + "," + stone[1];
-    }
-
-    public static void main(String[] args) {
-        Problem947 prob = new Problem947();
-//        System.out.println(prob.removeStones(new int[][]{
-//            {0, 0}, {0, 1}, {1, 0}, {1, 2}, {2, 1}, {2, 2}
-//        })); // 5
-//        System.out.println(prob.removeStones(new int[][]{
-//            {0, 0}, {0, 2}, {1, 1}, {2, 0}, {2, 2}
-//        })); // 3
-//        System.out.println(prob.removeStones(new int[][]{
-//            {0, 0}, {0, 2}, {1, 1}, {2, 0}, {2, 2}, {3, 3}
-//        })); // 3
-//        System.out.println(prob.removeStones(new int[][]{
-//            {0, 0}
-//        })); // 0
-//        System.out.println(prob.removeStones(new int[][]{
-//            {0, 0}, {0, 1}, {1, 0}, {1, 2}, {2, 1}, {2, 2}, {3, 0}
-//        })); // 6
-//        System.out.println(prob.removeStones(new int[][]{
-//            {0, 0}, {3, 3}
-//        })); // 0
-//        System.out.println(prob.removeStones(new int[][]{
-//            {0, 0}, {0, 2}, {1, 1}, {2, 0}, {2, 2}
-//        })); // 3
-        System.out.println(prob.removeStones(new int[][]{
-            {3, 2}, {3, 1}, {4, 4}, {1, 1}, {0, 2}, {4, 0}
-        })); // 4
     }
 }
