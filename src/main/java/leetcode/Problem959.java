@@ -11,5 +11,25 @@ public class Problem959 {
 
     public static void main(String[] args) {
         Problem959 prob = new Problem959();
+        System.out.println(prob.regionsBySlashes(new String[]{
+            " /",
+            "/ "
+        })); // 2
+        System.out.println(prob.regionsBySlashes(new String[]{
+            " /",
+            "  "
+        })); // 1
+        System.out.println(prob.regionsBySlashes(new String[]{
+            "\\/",
+            "/\\"
+        })); // 4
+        System.out.println(prob.regionsBySlashes(new String[]{
+            "/\\",
+            "\\/"
+        })); // 5
+        System.out.println(prob.regionsBySlashes(new String[]{
+            "//",
+            "/ "
+        })); // 3
     }
 }
