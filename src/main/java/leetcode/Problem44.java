@@ -17,12 +17,12 @@ public class Problem44 {
             return false;
         }
         boolean match = false;
-        if (p.charAt(j) == '?' || s.charAt(i) == p.charAt(j)) {
-            match = isMatch(s, p, i + 1, j + 1);
-        } else if (p.charAt(j) == '*') {
+        if (p.charAt(j) == '*') {
             match |= isMatch(s, p, i + 1, j);
             match |= isMatch(s, p, i, j + 1);
             match |= isMatch(s, p, i + 1, j + 1);
+        } else if (p.charAt(j) == '?' || s.charAt(i) == p.charAt(j)) {
+            match = isMatch(s, p, i + 1, j + 1);
         }
         return match;
     }
@@ -37,5 +37,8 @@ public class Problem44 {
 //        System.out.println(prob.isMatch("acdcb", "a*c?b")); // false
 //        System.out.println(prob.isMatch("aabc", "a*?c")); // true
         System.out.println(prob.isMatch("abc", "*abc*")); // true
+//        System.out.println(prob.isMatch("abc", "*")); // true
+//        System.out.println(prob.isMatch("a", "***")); // true
+//        System.out.println(prob.isMatch("abc", "abcd")); // false
     }
 }
