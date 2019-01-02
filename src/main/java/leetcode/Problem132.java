@@ -5,19 +5,29 @@ package leetcode;
  */
 public class Problem132 {
     public int minCut(String s) {
-        return minCut(s, 0, 1, s.length());
+        Integer[][] memo = new Integer[s.length() + 1][s.length() + 1];
+        return minCut(s, 0, 1, memo);
     }
 
-    private static int minCut(String s, int i, int j, int max) {
-        if (i == s.length() || j == s.length()) {
-            return max;
+    private static int minCut(String s, int i, int j, Integer[][] memo) {
+        if (i == s.length() || j > s.length()) {
+            return Integer.MAX_VALUE;
+        }
+        if (memo[i][j] != null) {
+            return memo[i][j];
         }
         String sub = s.substring(i, j);
-        int min = max;
+        int min = Integer.MAX_VALUE;
         if (isPalindrome(sub)) {
-            min = Math.min(min, minCut(s, j, j + 1, max) - 1);
+            int val = minCut(s, j, j + 1, memo);
+            if (val == Integer.MAX_VALUE) {
+                min = 0;
+            } else {
+                min = Math.min(min, val + 1);
+            }
         }
-        min = Math.min(min, minCut(s, i, j + 1, max));
+        min = Math.min(min, minCut(s, i, j + 1, memo));
+        memo[i][j] = min;
         return min;
     }
 
@@ -32,6 +42,8 @@ public class Problem132 {
 
     public static void main(String[] args) {
         Problem132 prob = new Problem132();
+        System.out.println(prob.minCut("abc")); // 2
+        System.out.println(prob.minCut("abcde")); // 4
         System.out.println(prob.minCut("aab")); // 1
         System.out.println(prob.minCut("aaa")); // 0
         System.out.println(prob.minCut("bbaaaaabb")); // 0
