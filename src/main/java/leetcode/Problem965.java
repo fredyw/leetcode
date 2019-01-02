@@ -15,11 +15,16 @@ public class Problem965 {
     }
 
     public boolean isUnivalTree(TreeNode root) {
-        // TODO
-        return false;
+        return isUnivalTree(root, root.val);
     }
 
-    public static void main(String[] args) {
-        Problem965 prob = new Problem965();
+    private static boolean isUnivalTree(TreeNode node, int val) {
+        if (node == null) {
+            return true;
+        }
+        if (node.val != val) {
+            return false;
+        }
+        return isUnivalTree(node.left, val) && isUnivalTree(node.right, val);
     }
 }
