@@ -8,7 +8,6 @@ import java.util.Arrays;
 public class Problem37 {
     public void solveSudoku(char[][] board) {
         // TODO
-        print(board);
     }
 
     private static void print(char[][] board) {
