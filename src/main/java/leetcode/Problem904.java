@@ -19,7 +19,15 @@ public class Problem904 {
             } else if (tree[i] == tc[1].type) {
                 tc[1].count++;
             } else {
-                tc[0] = tc[1];
+                int count = 0;
+                int type = tree[i - 1];
+                int j = i - 1;
+                while (j >= 0 && tree[j] == type) {
+                    count++;
+                    j--;
+                }
+                tc[0] = new TypeCount(tree[i - 1]);
+                tc[0].count = count;
                 tc[1] = new TypeCount(tree[i]);
                 tc[1].count++;
             }
@@ -36,14 +44,5 @@ public class Problem904 {
         public TypeCount(int num) {
             this.type = num;
         }
-    }
-
-    public static void main(String[] args) {
-        Problem904 prob = new Problem904();
-//        System.out.println(prob.totalFruit(new int[]{1, 2, 1})); // 3
-//        System.out.println(prob.totalFruit(new int[]{0, 1, 2, 2})); // 3
-//        System.out.println(prob.totalFruit(new int[]{1, 2, 3, 2, 2})); // 4
-//        System.out.println(prob.totalFruit(new int[]{3, 3, 3, 1, 2, 1, 1, 2, 3, 3, 4})); // 5
-        System.out.println(prob.totalFruit(new int[]{1, 0, 1, 4, 1, 4, 1, 2, 3})); // 5
     }
 }
