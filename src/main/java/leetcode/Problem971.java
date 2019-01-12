@@ -19,25 +19,49 @@ public class Problem971 {
 
     public List<Integer> flipMatchVoyage(TreeNode root, int[] voyage) {
         List<Integer> answer = new ArrayList<>();
-        // TODO
+        boolean b = flipMatchVoyage(root, voyage, new Index(), answer);
+        if (!b) {
+            answer.clear();
+            answer.add(-1);
+        }
         return answer;
     }
 
-    public static void main(String[] args) {
-        Problem971 prob = new Problem971();
+    private static class Index {
+        private int val;
 
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        System.out.println(prob.flipMatchVoyage(root, new int[]{2, 1})); // [-1]
+        public Index inc() {
+            val++;
+            return this;
+        }
 
-        root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        System.out.println(prob.flipMatchVoyage(root, new int[]{1, 3, 2})); // [1]
+        public Index dec() {
+            val--;
+            return this;
+        }
+    }
 
-        root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        System.out.println(prob.flipMatchVoyage(root, new int[]{1, 2, 3})); // []
+    private static boolean flipMatchVoyage(TreeNode current, int[] voyage, Index index,
+                                           List<Integer> answer) {
+        if (current == null) {
+            index.dec();
+            return true;
+        }
+        int val = voyage[index.val];
+        if (current.val == val) {
+            boolean b = flipMatchVoyage(current.left, voyage, index.inc(), answer);
+            if (!b) {
+                TreeNode tmp = current.left;
+                current.left = current.right;
+                current.right = tmp;
+                b = flipMatchVoyage(current.left, voyage, index, answer);
+                if (!b) {
+                    return false;
+                }
+                answer.add(current.val);
+            }
+            return flipMatchVoyage(current.right, voyage, index.inc(), answer);
+        }
+        return false;
     }
 }
