@@ -6,18 +6,20 @@ package leetcode;
 public class Problem848 {
     public String shiftingLetters(String S, int[] shifts) {
         char[] chars = S.toCharArray();
+        long totalSum = 0;
+        long[] sums = new long[shifts.length];
         for (int i = 0; i < shifts.length; i++) {
-            for (int j = 0; j <= i; j++) {
-                int val = (chars[j] - 'a' + shifts[i]) % 26;
-                chars[j] = (char) ('a' + val);
+            sums[i] = totalSum + shifts[i];
+            totalSum += shifts[i];
+        }
+        for (int i = 0; i < shifts.length; i++) {
+            long prevSum = 0;
+            if (i - 1 >= 0) {
+                prevSum = sums[i - 1];
             }
+            long val = (chars[i] - 'a' + (totalSum - prevSum)) % 26;
+            chars[i] = (char) ('a' + val);
         }
         return new String(chars);
-    }
-
-    public static void main(String[] args) {
-        Problem848 prob = new Problem848();
-        System.out.println(prob.shiftingLetters("abc", new int[]{3, 5, 9})); // rpl
-        System.out.println(prob.shiftingLetters("bad", new int[]{10, 20, 30})); // jyh
     }
 }
