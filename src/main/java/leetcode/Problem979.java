@@ -15,39 +15,22 @@ public class Problem979 {
     }
 
     public int distributeCoins(TreeNode root) {
-        // TODO
-        return 0;
+        IntRef ref = new IntRef();
+        distributeCoins(root, ref);
+        return ref.val;
     }
 
-    public static void main(String[] args) {
-        Problem979 prob = new Problem979();
+    private static class IntRef {
+        private int val;
+    }
 
-        TreeNode root = new TreeNode(3);
-        root.left = new TreeNode(0);
-        root.right = new TreeNode(0);
-        System.out.println(prob.distributeCoins(root)); // 2
-
-        root = new TreeNode(5);
-        root.left = new TreeNode(0);
-        root.left.left = new TreeNode(0);
-        root.left.right = new TreeNode(0);
-        root.right = new TreeNode(0);
-        System.out.println(prob.distributeCoins(root)); // 6
-
-        root = new TreeNode(0);
-        root.left = new TreeNode(3);
-        root.right = new TreeNode(0);
-        System.out.println(prob.distributeCoins(root)); // 3
-
-        root = new TreeNode(1);
-        root.left = new TreeNode(0);
-        root.right = new TreeNode(2);
-        System.out.println(prob.distributeCoins(root)); // 2
-
-        root = new TreeNode(1);
-        root.left = new TreeNode(0);
-        root.left.right = new TreeNode(3);
-        root.right = new TreeNode(0);
-        System.out.println(prob.distributeCoins(root)); // 4
+    private static int distributeCoins(TreeNode root, IntRef ref) {
+        if (root == null) {
+            return 0;
+        }
+        int a = distributeCoins(root.left, ref);
+        int b = distributeCoins(root.right, ref);
+        ref.val += Math.abs(a) + Math.abs(b);
+        return root.val + a + b - 1;
     }
 }
