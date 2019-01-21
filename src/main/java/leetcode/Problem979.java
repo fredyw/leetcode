@@ -27,6 +27,13 @@ public class Problem979 {
         root.right = new TreeNode(0);
         System.out.println(prob.distributeCoins(root)); // 2
 
+        root = new TreeNode(5);
+        root.left = new TreeNode(0);
+        root.left.left = new TreeNode(0);
+        root.left.right = new TreeNode(0);
+        root.right = new TreeNode(0);
+        System.out.println(prob.distributeCoins(root)); // 6
+
         root = new TreeNode(0);
         root.left = new TreeNode(3);
         root.right = new TreeNode(0);
