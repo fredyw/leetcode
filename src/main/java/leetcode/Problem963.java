@@ -16,7 +16,7 @@ public class Problem963 {
                                 distance(points[j], points[k]);
                             answer = Math.min(answer, area);
                         } else if (isRectangle(points[j], points[k], points[i], points[l])) {
-                            double area = distance(points[j], points[k]) +
+                            double area = distance(points[j], points[k]) *
                                 distance(points[k], points[i]);
                             answer = Math.min(answer, area);
                         } else if (isRectangle(points[k], points[i], points[j], points[l])) {
@@ -41,24 +41,5 @@ public class Problem963 {
 
     private static boolean isRectangle(int[] a, int[] b, int[] c, int[] d) {
         return isRightAngle(a, b, c) && isRightAngle(b, c, d) && isRightAngle(c, d, a);
-    }
-
-    public static void main(String[] args) {
-        Problem963 prob = new Problem963();
-//        System.out.println(prob.minAreaFreeRect(new int[][]{
-//            {1, 2}, {2, 1}, {1, 0}, {0, 1}
-//        })); // 2.00000
-//        System.out.println(prob.minAreaFreeRect(new int[][]{
-//            {0, 1}, {2, 1}, {1, 1}, {1, 0}, {2, 0}
-//        })); // 1.00000
-//        System.out.println(prob.minAreaFreeRect(new int[][]{
-//            {0, 3}, {1, 2}, {3, 1}, {1, 3}, {2, 1}
-//        })); // 0
-//        System.out.println(prob.minAreaFreeRect(new int[][]{
-//            {3, 1}, {1, 1}, {0, 1}, {2, 1}, {3, 3}, {3, 2}, {0, 2}, {2, 3}
-//        })); // 2.00000
-        System.out.println(prob.minAreaFreeRect(new int[][]{
-            {0, 1}, {1, 0}, {3, 2}, {2, 3}, {0, 3}, {1, 1}, {3, 3}, {0, 2}
-        })); // 3.0
     }
 }
