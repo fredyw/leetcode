@@ -8,8 +8,12 @@ public class Problem984 {
         StringBuilder answer = new StringBuilder();
         int a = A;
         int b = B;
-        while (a + b > 0) {
+        while (a > 0 && b > 0) {
             if (A >= B) {
+                if (a > 0) {
+                    answer.append("a");
+                    a--;
+                }
                 if (a > 0) {
                     answer.append("a");
                     a--;
@@ -23,23 +27,52 @@ public class Problem984 {
                     answer.append("b");
                     b--;
                 }
+                if (b > 0) {
+                    answer.append("b");
+                    b--;
+                }
                 if (a > 0) {
                     answer.append("a");
                     a--;
                 }
             }
         }
+        int size = answer.charAt(answer.length() - 1) == 'a' ? 1 : 2;
+        for (int i = 0; i < size; i++) {
+            if (a > 0) {
+                answer.append("a");
+                a--;
+            }
+        }
+        size = answer.charAt(answer.length() - 1) == 'b' ? 1 : 2;
+        for (int i = 0; i < size; i++) {
+            if (b > 0) {
+                answer.append("b");
+                b--;
+            }
+        }
+        if (a > 0) {
+            StringBuilder ans = new StringBuilder();
+            for (int i = 0; i < answer.length(); i++) {
+                ans.append(answer.charAt(i));
+                if (a > 0 && answer.charAt(i) == 'b') {
+                    ans.append("a");
+                    a--;
+                }
+            }
+            return ans.toString();
+        }
+        if (b > 0) {
+            StringBuilder ans = new StringBuilder();
+            for (int i = 0; i < answer.length(); i++) {
+                ans.append(answer.charAt(i));
+                if (b > 0 && answer.charAt(i) == 'a') {
+                    ans.append("b");
+                    b--;
+                }
+            }
+            return ans.toString();
+        }
         return answer.toString();
-    }
-
-    public static void main(String[] args) {
-        Problem984 prob = new Problem984();
-        System.out.println(prob.strWithout3a3b(1, 2));
-        System.out.println(prob.strWithout3a3b(4, 1));
-        System.out.println(prob.strWithout3a3b(3, 1));
-        System.out.println(prob.strWithout3a3b(1, 3));
-        System.out.println(prob.strWithout3a3b(3, 3));
-        System.out.println(prob.strWithout3a3b(4, 4));
-        System.out.println(prob.strWithout3a3b(4, 5));
     }
 }
