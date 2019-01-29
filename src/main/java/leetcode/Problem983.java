@@ -5,12 +5,16 @@ package leetcode;
  */
 public class Problem983 {
     public int mincostTickets(int[] days, int[] costs) {
-        return minCostTickets(days, costs, 0);
+        Integer[] memo = new Integer[days.length];
+        return minCostTickets(days, costs, 0, memo);
     }
 
-    private static int minCostTickets(int[] days, int[] costs, int index) {
+    private static int minCostTickets(int[] days, int[] costs, int index, Integer[] memo) {
         if (index == days.length) {
             return 0;
+        }
+        if (memo[index] != null) {
+            return memo[index];
         }
         int min = Integer.MAX_VALUE;
         for (int i = 0; i < costs.length; i++) {
@@ -29,15 +33,10 @@ public class Problem983 {
                     break;
                 }
             }
-            int c = minCostTickets(days, costs, j) + costs[i];
+            int c = minCostTickets(days, costs, j, memo) + costs[i];
             min = Math.min(min, c);
         }
+        memo[index] = min;
         return min;
-    }
-
-    public static void main(String[] args) {
-        Problem983 prob = new Problem983();
-        System.out.println(prob.mincostTickets(new int[]{1, 4, 6, 7, 8, 20}, new int[]{2, 7, 15})); // 11
-        System.out.println(prob.mincostTickets(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 30, 31}, new int[]{2, 7, 15})); // 17
     }
 }
