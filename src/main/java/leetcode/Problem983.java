@@ -5,8 +5,34 @@ package leetcode;
  */
 public class Problem983 {
     public int mincostTickets(int[] days, int[] costs) {
-        // TODO
-        return 0;
+        return minCostTickets(days, costs, 0);
+    }
+
+    private static int minCostTickets(int[] days, int[] costs, int index) {
+        if (index == days.length) {
+            return 0;
+        }
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < costs.length; i++) {
+            int nDays = 0;
+            if (i == 0) {
+                nDays = 1;
+            } else if (i == 1) {
+                nDays = 7;
+            } else {
+                nDays = 30;
+            }
+            int toDay = days[index] + nDays;
+            int j = index + 1;
+            for (; j < days.length; j++) {
+                if (days[j] >= toDay) {
+                    break;
+                }
+            }
+            int c = minCostTickets(days, costs, j) + costs[i];
+            min = Math.min(min, c);
+        }
+        return min;
     }
 
     public static void main(String[] args) {
