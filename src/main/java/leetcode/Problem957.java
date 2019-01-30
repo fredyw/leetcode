@@ -27,6 +27,7 @@ public class Problem957 {
             cells = tmp;
             dayToCell.put(i, cells);
             String s = Arrays.toString(cells);
+            System.out.println(i + ": " + Arrays.toString(cells));
             if (!cellToDay.containsKey(s)) {
                 cellToDay.put(s, i);
             } else {
@@ -42,9 +43,9 @@ public class Problem957 {
 
     public static void main(String[] args) {
         Problem957 prob = new Problem957();
-        System.out.println(Arrays.toString(prob.prisonAfterNDays(new int[]{0, 1, 0, 1, 1, 0, 0, 1}, 7))); // [0,0,1,1,0,0,0,0]
+//        System.out.println(Arrays.toString(prob.prisonAfterNDays(new int[]{0, 1, 0, 1, 1, 0, 0, 1}, 7))); // [0,0,1,1,0,0,0,0]
         System.out.println(Arrays.toString(prob.prisonAfterNDays(new int[]{1, 0, 0, 1, 0, 0, 1, 0}, 1000000000))); // [0,0,1,1,1,1,1,0]
-        System.out.println(Arrays.toString(prob.prisonAfterNDays(new int[]{1, 1, 0, 0, 0, 0, 1, 1}, 7))); // [0,0,1,1,1,1,0,0]
-        System.out.println(Arrays.toString(prob.prisonAfterNDays(new int[]{1, 1, 0, 1, 1, 0, 1, 1}, 6))); // [0,0,1,0,0,1,0,0]
+//        System.out.println(Arrays.toString(prob.prisonAfterNDays(new int[]{1, 1, 0, 0, 0, 0, 1, 1}, 7))); // [0,0,1,1,1,1,0,0]
+//        System.out.println(Arrays.toString(prob.prisonAfterNDays(new int[]{1, 1, 0, 1, 1, 0, 1, 1}, 6))); // [0,0,1,0,0,1,0,0]
     }
 }
