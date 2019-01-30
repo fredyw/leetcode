@@ -19,6 +19,12 @@ public class Problem855 {
     }
 
     public static void main(String[] args) {
-        Problem855 prob = new Problem855();
+        ExamRoom room = new ExamRoom(10);
+        System.out.println(room.seat()); // 0
+        System.out.println(room.seat()); // 9
+        System.out.println(room.seat()); // 4
+        System.out.println(room.seat()); // 2
+        room.leave(4);
+        System.out.println(room.seat()); // 5
     }
 }
