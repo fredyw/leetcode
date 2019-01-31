@@ -15,22 +15,52 @@ public class Problem855 {
         }
 
         public int seat() {
-            // TODO
-            return 0;
+            if (set.size() == 1) {
+                int i = set.first();
+                int diff = n - i - 1;
+                if (i >= diff) {
+                    set.add(i);
+                    return i;
+                }
+                set.add(n - 1);
+                return n - 1;
+            }
+            int prevIdx = 0;
+            int maxPrevIdx = 0;
+            int maxCurIdx = 0;
+            int max = 0;
+            for (int i : set) {
+                int mid = (i - prevIdx) / 2;
+                if (max < mid) {
+                    max = mid;
+                    maxPrevIdx = prevIdx;
+                    maxCurIdx = i;
+                }
+                prevIdx = i;
+            }
+            int newIdx = maxPrevIdx + ((maxCurIdx - maxPrevIdx) / 2);
+            set.add(newIdx);
+            return newIdx;
         }
 
         public void leave(int p) {
-            // TODO
+           set.remove(p);
         }
     }
 
     public static void main(String[] args) {
         ExamRoom room = new ExamRoom(10);
+//        System.out.println(room.seat()); // 0
+//        System.out.println(room.seat()); // 9
+//        System.out.println(room.seat()); // 4
+//        System.out.println(room.seat()); // 2
+//        room.leave(4);
+//        System.out.println(room.seat()); // 5
+
         System.out.println(room.seat()); // 0
         System.out.println(room.seat()); // 9
         System.out.println(room.seat()); // 4
-        System.out.println(room.seat()); // 2
-        room.leave(4);
-        System.out.println(room.seat()); // 5
+        room.leave(9);
+        System.out.println(room.seat()); // 9
     }
 }
