@@ -1,11 +1,17 @@
 package leetcode;
 
+import java.util.TreeSet;
+
 /**
  * https://leetcode.com/problems/exam-room/
  */
 public class Problem855 {
     private static class ExamRoom {
+        private final int n;
+        private final TreeSet<Integer> set = new TreeSet<>();
+
         public ExamRoom(int N) {
+            this.n = N;
         }
 
         public int seat() {
