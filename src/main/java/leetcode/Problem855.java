@@ -33,6 +33,7 @@ public class Problem855 {
             if (!set.contains(0)) {
                 int diff = set.first();
                 if (max <= diff) {
+                    max = diff;
                     newIdx = 0;
                 }
             }
@@ -49,49 +50,5 @@ public class Problem855 {
         public void leave(int p) {
            set.remove(p);
         }
-    }
-
-    public static void main(String[] args) {
-        ExamRoom room = new ExamRoom(10);
-//        System.out.println(room.seat()); // 0
-//        System.out.println(room.seat()); // 9
-//        System.out.println(room.seat()); // 4
-//        System.out.println(room.seat()); // 2
-//        room.leave(4);
-//        System.out.println(room.seat()); // 5
-//        System.out.println(room.seat()); // 7
-//        System.out.println(room.seat()); // 1
-//        System.out.println(room.seat()); // 3
-
-//        System.out.println(room.seat()); // 0
-//        System.out.println(room.seat()); // 9
-//        System.out.println(room.seat()); // 4
-//        room.leave(9);
-//        System.out.println(room.seat()); // 9
-
-//        System.out.println(room.seat()); // 0
-//        System.out.println(room.seat()); // 9
-//        System.out.println(room.seat()); // 4
-//        room.leave(0);
-//        System.out.println(room.seat()); // 0
-
-        System.out.println(room.seat()); // 0
-        System.out.println(room.seat()); // 9
-        System.out.println(room.seat()); // 4
-        room.leave(0);
-        room.leave(4);
-        System.out.println(room.seat()); // 0
-        System.out.println(room.seat()); // 4
-        System.out.println(room.seat()); // 2
-        System.out.println(room.seat()); // 6
-        System.out.println(room.seat()); // 1
-        System.out.println(room.seat()); // 3
-        System.out.println(room.seat()); // 5
-        System.out.println(room.seat()); // 7
-        System.out.println(room.seat()); // 8
-        room.leave(0);
-        room.leave(4);
-        System.out.println(room.seat()); // 0
-        System.out.println(room.seat()); // 4
     }
 }
