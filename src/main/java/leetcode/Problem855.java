@@ -15,30 +15,33 @@ public class Problem855 {
         }
 
         public int seat() {
-            if (set.size() == 1) {
-                int i = set.first();
-                int diff = n - i - 1;
-                if (i >= diff) {
-                    set.add(i);
-                    return i;
-                }
-                set.add(n - 1);
-                return n - 1;
+            if (set.isEmpty()) {
+                set.add(0);
+                return 0;
             }
             int prevIdx = 0;
-            int maxPrevIdx = 0;
-            int maxCurIdx = 0;
+            int newIdx = 0;
             int max = 0;
             for (int i : set) {
                 int mid = (i - prevIdx) / 2;
                 if (max < mid) {
                     max = mid;
-                    maxPrevIdx = prevIdx;
-                    maxCurIdx = i;
+                    newIdx = prevIdx + mid;
                 }
                 prevIdx = i;
             }
-            int newIdx = maxPrevIdx + ((maxCurIdx - maxPrevIdx) / 2);
+            if (!set.contains(0)) {
+                int diff = set.first();
+                if (max <= diff) {
+                    newIdx = 0;
+                }
+            }
+            if (!set.contains(n - 1)) {
+                int diff = n - 1 - prevIdx;
+                if (max < diff) {
+                    newIdx = n - 1;
+                }
+            }
             set.add(newIdx);
             return newIdx;
         }
@@ -56,11 +59,39 @@ public class Problem855 {
 //        System.out.println(room.seat()); // 2
 //        room.leave(4);
 //        System.out.println(room.seat()); // 5
+//        System.out.println(room.seat()); // 7
+//        System.out.println(room.seat()); // 1
+//        System.out.println(room.seat()); // 3
+
+//        System.out.println(room.seat()); // 0
+//        System.out.println(room.seat()); // 9
+//        System.out.println(room.seat()); // 4
+//        room.leave(9);
+//        System.out.println(room.seat()); // 9
+
+//        System.out.println(room.seat()); // 0
+//        System.out.println(room.seat()); // 9
+//        System.out.println(room.seat()); // 4
+//        room.leave(0);
+//        System.out.println(room.seat()); // 0
 
         System.out.println(room.seat()); // 0
         System.out.println(room.seat()); // 9
         System.out.println(room.seat()); // 4
-        room.leave(9);
-        System.out.println(room.seat()); // 9
+        room.leave(0);
+        room.leave(4);
+        System.out.println(room.seat()); // 0
+        System.out.println(room.seat()); // 4
+        System.out.println(room.seat()); // 2
+        System.out.println(room.seat()); // 6
+        System.out.println(room.seat()); // 1
+        System.out.println(room.seat()); // 3
+        System.out.println(room.seat()); // 5
+        System.out.println(room.seat()); // 7
+        System.out.println(room.seat()); // 8
+        room.leave(0);
+        room.leave(4);
+        System.out.println(room.seat()); // 0
+        System.out.println(room.seat()); // 4
     }
 }
