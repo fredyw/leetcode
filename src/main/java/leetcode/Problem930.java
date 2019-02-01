@@ -11,5 +11,6 @@ public class Problem930 {
 
     public static void main(String[] args) {
         Problem930 prob = new Problem930();
+        System.out.println(prob.numSubarraysWithSum(new int[]{1, 0, 1, 0, 1}, 2)); // 4
     }
 }
