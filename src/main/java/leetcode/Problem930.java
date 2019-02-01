@@ -13,28 +13,24 @@ public class Problem930 {
         }
         int answer = 0;
         for (int i = 0; i < sums.length; i++) {
+            if (sums[i] < S) {
+                continue;
+            }
             if (sums[i] == S) {
                 answer++;
             }
-            if (sums[i] >= S) {
-                int j = 0;
-                while (j < i) {
-                    int diff = sums[i] - sums[j];
-                    if (diff == S) {
-                        answer++;
-                    } else if (diff < S) {
-                        break;
-                    }
-                    j++;
+            int j = 0;
+            while (j < i) {
+                int diff = sums[i] - sums[j];
+                if (diff < S) {
+                    break;
                 }
+                if (diff == S) {
+                    answer++;
+                }
+                j++;
             }
         }
         return answer;
-    }
-
-    public static void main(String[] args) {
-        Problem930 prob = new Problem930();
-        System.out.println(prob.numSubarraysWithSum(new int[]{1, 0, 1, 0, 1}, 2)); // 4
-        System.out.println(prob.numSubarraysWithSum(new int[]{0, 1, 1, 1, 1}, 3)); // 3
     }
 }
