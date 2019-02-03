@@ -15,11 +15,24 @@ public class Problem988 {
     }
 
     public String smallestFromLeaf(TreeNode root) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem988 prob = new Problem988();
+        if (root == null) {
+            return "";
+        }
+        String left = smallestFromLeaf(root.left);
+        String right = smallestFromLeaf(root.right);
+        String val = "";
+        if (!left.isEmpty()) {
+            val = left;
+        } else if (!right.isEmpty()) {
+            val = right;
+        }
+        if (!left.isEmpty() && !right.isEmpty()) {
+            if (left.compareTo(right) <= 0) {
+                val = left;
+            } else {
+                val = right;
+            }
+        }
+        return val + (char) (root.val + 'a');
     }
 }
