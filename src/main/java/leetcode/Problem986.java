@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * https://leetcode.com/problems/interval-list-intersections/
  */
@@ -17,33 +20,32 @@ public class Problem986 {
             start = s;
             end = e;
         }
-
-        @Override
-        public String toString() {
-            return "[" + start + ", " + end + "]";
-        }
     }
 
     public Interval[] intervalIntersection(Interval[] A, Interval[] B) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem986 prob = new Problem986();
-        System.out.println(prob.intervalIntersection(
-            new Interval[]{
-                new Interval(0, 2), new Interval(5, 10), new Interval(13, 23), new Interval(24, 25)
-            }, new Interval[]{
-                new Interval(1, 5), new Interval(8, 12), new Interval(15, 24), new Interval(25, 26)
-            })); // [[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]
-
-        System.out.println(prob.intervalIntersection(
-            new Interval[]{
-                new Interval(0, 3), new Interval(4, 6), new Interval(7, 9)
-            }, new Interval[]{
-                new Interval(1, 8)
+        List<Interval> answer = new ArrayList<>();
+        int i = 0;
+        int j = 0;
+        while (i < A.length && j < B.length) {
+            if ((A[i].start <= B[j].start && B[j].start <= A[i].end) ||
+                (B[j].start <= A[i].start && A[i].start <= B[j].end)) {
+                int start = Integer.max(A[i].start, B[j].start);
+                int end = Integer.min(A[i].end, B[j].end);
+                if (A[i].end < B[j].end) {
+                    i++;
+                } else if (A[i].end == B[j].end) {
+                    i++;
+                    j++;
+                } else {
+                    j++;
+                }
+                answer.add(new Interval(start, end));
+            } else if (A[i].start < B[j].start) {
+                i++;
+            } else if (B[j].start < A[i].start) {
+                j++;
             }
-        )); // [[1,3],[4,6],[7,8]]
+        }
+        return answer.toArray(new Interval[0]);
     }
 }
