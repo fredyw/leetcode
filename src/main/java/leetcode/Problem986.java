@@ -37,5 +37,13 @@ public class Problem986 {
             }, new Interval[]{
                 new Interval(1, 5), new Interval(8, 12), new Interval(15, 24), new Interval(25, 26)
             })); // [[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]
+
+        System.out.println(prob.intervalIntersection(
+            new Interval[]{
+                new Interval(0, 3), new Interval(4, 6), new Interval(7, 9)
+            }, new Interval[]{
+                new Interval(1, 8)
+            }
+        )); // [[1,3],[4,6],[7,8]]
     }
 }
