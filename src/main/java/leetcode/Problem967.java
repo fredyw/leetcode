@@ -1,11 +1,9 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * https://leetcode.com/problems/numbers-with-same-consecutive-differences/
@@ -13,9 +11,10 @@ import java.util.stream.Collectors;
 public class Problem967 {
     public int[] numsSameConsecDiff(int N, int K) {
         Set<Integer> set = new HashSet<>();
+        List<String>[][] memo = new List[N + 1][10];
         for (int i = 0; i <= 9; i++) {
             List<String> newList = new ArrayList<>();
-            List<String> list = numsSameConsecDiff(N - 1, K, i);
+            List<String> list = numsSameConsecDiff(N - 1, K, i, memo);
             if (list.isEmpty()) {
                 String s = "" + i;
                 if (s.length() == N) {
@@ -29,26 +28,30 @@ public class Problem967 {
                     }
                 }
             }
-            set.addAll(newList.stream()
-                .filter(e -> e.length() == 1 || (e.length() > 1 && !e.startsWith("0")))
-                .map(Integer::valueOf).collect(Collectors.toList()));
+            for (String s : newList) {
+                if (s.length() == 1 || (s.length() > 1 && !s.startsWith("0"))) {
+                    set.add(Integer.valueOf(s));
+                }
+            }
         }
         int[] answer = new int[set.size()];
         int i = 0;
         for (int s : set) {
             answer[i++] = s;
         }
-        Arrays.sort(answer);
         return answer;
     }
 
-    private static List<String> numsSameConsecDiff(int n, int k, int i) {
+    private static List<String> numsSameConsecDiff(int n, int k, int i, List<String>[][] memo) {
         if (n == 0) {
             return new ArrayList<>();
         }
+        if (memo[n][i] != null) {
+            return memo[n][i];
+        }
         List<String> list = new ArrayList<>();
         if (i + k <= 9) {
-            List<String> l = numsSameConsecDiff(n - 1, k, i + k);
+            List<String> l = numsSameConsecDiff(n - 1, k, i + k, memo);
             if (l.isEmpty()) {
                 list.add("" + (i + k));
             } else {
@@ -58,7 +61,7 @@ public class Problem967 {
             }
         }
         if (i - k >= 0) {
-            List<String> l = numsSameConsecDiff(n - 1, k, i - k);
+            List<String> l = numsSameConsecDiff(n - 1, k, i - k, memo);
             if (l.isEmpty()) {
                 list.add("" + (i - k));
             } else {
@@ -67,17 +70,7 @@ public class Problem967 {
                 }
             }
         }
+        memo[n][i] = list;
         return list;
-    }
-
-    public static void main(String[] args) {
-        Problem967 prob = new Problem967();
-        System.out.println(Arrays.toString(prob.numsSameConsecDiff(3, 7))); // [181,292,707,818,929]
-        System.out.println(Arrays.toString(prob.numsSameConsecDiff(2, 1))); // [10,12,21,23,32,34,43,45,54,56,65,67,76,78,87,89,98]
-        System.out.println(Arrays.toString(prob.numsSameConsecDiff(3, 3))); // [141,147,252,258,303,363,369,414,474,525,585,630,636,696,741,747,852,858,963,969]
-        System.out.println(Arrays.toString(prob.numsSameConsecDiff(9, 9))); // [909090909]
-        System.out.println(Arrays.toString(prob.numsSameConsecDiff(9, 1))); // [909090909]
-        System.out.println(Arrays.toString(prob.numsSameConsecDiff(1, 0))); // [0,1,2,3,4,5,6,7,8,9]
-        System.out.println(Arrays.toString(prob.numsSameConsecDiff(1, 6))); // [0,1,2,3,4,5,6,7,8,9]
     }
 }
