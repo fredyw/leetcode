@@ -14,7 +14,22 @@ public class Problem967 {
     public int[] numsSameConsecDiff(int N, int K) {
         Set<Integer> set = new HashSet<>();
         for (int i = 0; i <= 9; i++) {
-            set.addAll(numsSameConsecDiff(N, K, i).stream()
+            List<String> newList = new ArrayList<>();
+            List<String> list = numsSameConsecDiff(N - 1, K, i);
+            if (list.isEmpty()) {
+                String s = "" + i;
+                if (s.length() == N) {
+                    newList.add(s);
+                }
+            } else {
+                for (String s : list) {
+                    String s1 = i + s;
+                    if (s1.length() == N) {
+                        newList.add(s1);
+                    }
+                }
+            }
+            set.addAll(newList.stream()
                 .filter(e -> e.length() == 1 || (e.length() > 1 && !e.startsWith("0")))
                 .map(Integer::valueOf).collect(Collectors.toList()));
         }
@@ -57,12 +72,12 @@ public class Problem967 {
 
     public static void main(String[] args) {
         Problem967 prob = new Problem967();
-//        System.out.println(Arrays.toString(prob.numsSameConsecDiff(3, 7))); // [181,292,707,818,929]
-//        System.out.println(Arrays.toString(prob.numsSameConsecDiff(2, 1))); // [10,12,21,23,32,34,43,45,54,56,65,67,76,78,87,89,98]
-//        System.out.println(Arrays.toString(prob.numsSameConsecDiff(3, 3))); // [141,147,252,258,303,363,369,414,474,525,585,630,636,696,741,747,852,858,963,969]
-//        System.out.println(Arrays.toString(prob.numsSameConsecDiff(9, 9))); // [909090909]
-//        System.out.println(Arrays.toString(prob.numsSameConsecDiff(9, 1))); // [909090909]
-//        System.out.println(Arrays.toString(prob.numsSameConsecDiff(1, 0))); // [0,1,2,3,4,5,6,7,8,9]
+        System.out.println(Arrays.toString(prob.numsSameConsecDiff(3, 7))); // [181,292,707,818,929]
+        System.out.println(Arrays.toString(prob.numsSameConsecDiff(2, 1))); // [10,12,21,23,32,34,43,45,54,56,65,67,76,78,87,89,98]
+        System.out.println(Arrays.toString(prob.numsSameConsecDiff(3, 3))); // [141,147,252,258,303,363,369,414,474,525,585,630,636,696,741,747,852,858,963,969]
+        System.out.println(Arrays.toString(prob.numsSameConsecDiff(9, 9))); // [909090909]
+        System.out.println(Arrays.toString(prob.numsSameConsecDiff(9, 1))); // [909090909]
+        System.out.println(Arrays.toString(prob.numsSameConsecDiff(1, 0))); // [0,1,2,3,4,5,6,7,8,9]
         System.out.println(Arrays.toString(prob.numsSameConsecDiff(1, 6))); // [0,1,2,3,4,5,6,7,8,9]
     }
 }
