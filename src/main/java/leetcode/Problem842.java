@@ -23,7 +23,7 @@ public class Problem842 {
                 if (val > Integer.MAX_VALUE) {
                     continue;
                 }
-                answer.add(Integer.valueOf(sub));
+                answer.add((int) val);
                 if (splitIntoFibonacci(S, 0, i, i, j, answer) && answer.size() >= 3) {
                     return answer;
                 } else {
