@@ -12,16 +12,21 @@ public class Problem842 {
         if (S.length() < 3) {
             return answer;
         }
+        int maxLength = Integer.toString(Integer.MAX_VALUE).length();
         for (int i = 1; i <= S.length(); i++) {
             for (int j = i + 1; j <= S.length(); j++) {
-                try {
-                    answer.add(Integer.valueOf(S.substring(0, i)));
-                    if (splitIntoFibonacci(S, 0, i, i, j, answer) && answer.size() >= 3) {
-                        return answer;
-                    } else {
-                        answer.clear();
-                    }
-                } catch (NumberFormatException e) {
+                String sub = S.substring(0, i);
+                if (sub.length() > maxLength) {
+                    continue;
+                }
+                long val = Long.parseLong(sub);
+                if (val > Integer.MAX_VALUE) {
+                    continue;
+                }
+                answer.add(Integer.valueOf(sub));
+                if (splitIntoFibonacci(S, 0, i, i, j, answer) && answer.size() >= 3) {
+                    return answer;
+                } else {
                     answer.clear();
                 }
             }
@@ -30,24 +35,35 @@ public class Problem842 {
     }
 
     private static boolean splitIntoFibonacci(String s, int i, int j, int k, int l, List<Integer> answer) {
+        int maxLength = Integer.toString(Integer.MAX_VALUE).length();
         if (l == s.length()) {
             String sub = s.substring(k, l);
-            if (sub.length() > 1 && sub.startsWith("0")) {
+            if (sub.length() > maxLength || (sub.length() > 1 && sub.startsWith("0"))) {
                 return false;
             }
-            answer.add(Integer.parseInt(sub));
+            long val = Long.parseLong(sub);
+            if (val > Integer.MAX_VALUE) {
+                return false;
+            }
+            answer.add((int) val);
             return true;
         }
         String sub1 = s.substring(i, j);
-        if (sub1.length() > 1 && sub1.startsWith("0")) {
+        if (sub1.length() > maxLength || (sub1.length() > 1 && sub1.startsWith("0"))) {
             return false;
         }
-        int num1 = Integer.parseInt(sub1);
+        long num1 = Long.parseLong(sub1);
+        if (num1 > Integer.MAX_VALUE) {
+            return false;
+        }
         String sub2 = s.substring(k, l);
-        if (sub2.length() > 1 && sub2.startsWith("0")) {
+        if (sub2.length() > maxLength || (sub2.length() > 1 && sub2.startsWith("0"))) {
             return false;
         }
-        int num2 = Integer.parseInt(sub2);
+        long num2 = Long.parseLong(sub2);
+        if (num2 > Integer.MAX_VALUE) {
+            return false;
+        }
         long sum = num1 + num2;
         if (sum > Integer.MAX_VALUE) {
             return false;
@@ -62,19 +78,5 @@ public class Problem842 {
             }
         }
         return found;
-    }
-
-    public static void main(String[] args) {
-        Problem842 prob = new Problem842();
-        System.out.println(prob.splitIntoFibonacci("123456579")); // [123,456,579]
-        System.out.println(prob.splitIntoFibonacci("11235813")); // [1,1,2,3,5,8,13]
-        System.out.println(prob.splitIntoFibonacci("112358130")); // []
-        System.out.println(prob.splitIntoFibonacci("0123")); // []
-        System.out.println(prob.splitIntoFibonacci("1101111")); // [110, 1, 111]
-        System.out.println(prob.splitIntoFibonacci("1")); // []
-        System.out.println(prob.splitIntoFibonacci("1")); // []
-        System.out.println(prob.splitIntoFibonacci("14748364721")); // []
-        System.out.println(prob.splitIntoFibonacci("214748364721474836422147483641")); // []
-        System.out.println(prob.splitIntoFibonacci("0123")); // []
     }
 }
