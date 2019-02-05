@@ -14,10 +14,14 @@ public class Problem842 {
         }
         for (int i = 1; i <= S.length(); i++) {
             for (int j = i + 1; j <= S.length(); j++) {
-                answer.add(Integer.valueOf(S.substring(0, i)));
-                if (splitIntoFibonacci(S, 0, i, i, j, answer) && answer.size() >= 3) {
-                    return answer;
-                } else {
+                try {
+                    answer.add(Integer.valueOf(S.substring(0, i)));
+                    if (splitIntoFibonacci(S, 0, i, i, j, answer) && answer.size() >= 3) {
+                        return answer;
+                    } else {
+                        answer.clear();
+                    }
+                } catch (NumberFormatException e) {
                     answer.clear();
                 }
             }
@@ -27,19 +31,19 @@ public class Problem842 {
 
     private static boolean splitIntoFibonacci(String s, int i, int j, int k, int l, List<Integer> answer) {
         if (l == s.length()) {
-            answer.add(Integer.valueOf(s.substring(k, l)));
+            answer.add(Integer.parseInt(s.substring(k, l)));
             return true;
         }
-        int int1 = Integer.parseInt(s.substring(i, j));
-        int int2 = Integer.parseInt(s.substring(k, l));
-        long sum = int1 + int2;
+        int num1 = Integer.parseInt(s.substring(i, j));
+        int num2 = Integer.parseInt(s.substring(k, l));
+        long sum = num1 + num2;
         if (sum > Integer.MAX_VALUE) {
             return false;
         }
         String sumStr = Long.toString(sum);
         boolean found = false;
         if (l + sumStr.length() <= s.length() && sumStr.equals(s.substring(l, l + sumStr.length()))) {
-            answer.add(int2);
+            answer.add((int) num2);
             found = splitIntoFibonacci(s, k, l, l, l + sumStr.length(), answer);
             if (!found) {
                 answer.remove(answer.size() - 1);
@@ -57,6 +61,8 @@ public class Problem842 {
 //        System.out.println(prob.splitIntoFibonacci("1101111")); // [110, 1, 111]
 //        System.out.println(prob.splitIntoFibonacci("1")); // []
 //        System.out.println(prob.splitIntoFibonacci("1")); // []
-        System.out.println(prob.splitIntoFibonacci("14748364721")); // []
+//        System.out.println(prob.splitIntoFibonacci("14748364721")); // []
+//        System.out.println(prob.splitIntoFibonacci("214748364721474836422147483641")); // []
+        System.out.println(prob.splitIntoFibonacci("0123")); // []
     }
 }
