@@ -1,56 +1,37 @@
 package leetcode;
 
-import java.util.Arrays;
-
 /**
  * https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/
  */
 public class Problem801 {
     public int minSwap(int[] A, int[] B) {
-        int answer = 0;
-        int i = 0;
-        int j = 0;
-        while (i < A.length && j < B.length) {
-            while (i + 1 < A.length && A[i] < A[i + 1]) {
-                i++;
-            }
-            while (j + 1 < B.length && B[j] < B[j + 1]) {
-                j++;
-            }
-            boolean swap = (i + 1 < A.length && A[i] >= A[i + 1]) ||
-                (j + 1 < B.length && B[j] >= B[j + 1]);
-            if (swap) {
-                if (i < j) {
-                    swap(A, B, i + 1);
-                    j = i;
-                    answer++;
-                } else if (i > j) {
-                    swap(A, B, j + 1);
-                    i = j;
-                    answer++;
-                } else {
-                    swap(A, B, i + 1);
-                    answer++;
-                }
-            }
-            i++;
-            j++;
+        Integer[][] memo = new Integer[A.length][2]; // 0 = no-swap, 1 = swap
+        return minSwap(A, B, 0, 0, memo);
+    }
+
+    private static int minSwap(int[] a, int[] b, int i, int swap, Integer[][] memo) {
+        if (i == a.length) {
+            return 0;
         }
-        System.out.println(Arrays.toString(A));
-        System.out.println(Arrays.toString(B));
-        return answer;
+        if (memo[i][swap] != null) {
+            return memo[i][swap];
+        }
+        int min = Integer.MAX_VALUE;
+        if (i == 0 || a[i] > a[i - 1] && b[i] > b[i - 1]) {
+            min = Math.min(min, minSwap(a, b, i + 1, 0, memo));
+        }
+        if (i == 0 || a[i] > b[i - 1] && b[i] > a[i - 1]) {
+            swap(a, b, i);
+            min = Math.min(min, minSwap(a, b, i + 1, 1, memo) + 1);
+            swap(a, b, i); // backtrack
+        }
+        memo[i][swap] = min;
+        return min;
     }
 
     private static void swap(int[] a, int[] b, int i) {
         int tmp = a[i];
         a[i] = b[i];
         b[i] = tmp;
-    }
-
-    public static void main(String[] args) {
-        Problem801 prob = new Problem801();
-//        System.out.println(prob.minSwap(new int[]{1, 3, 5, 4}, new int[]{1, 2, 3, 7})); // 1
-//        System.out.println(prob.minSwap(new int[]{1, 3, 5, 4, 8}, new int[]{1, 2, 3, 7, 5})); // 1
-        System.out.println(prob.minSwap(new int[]{0, 4, 4, 5, 9}, new int[]{0, 1, 6, 8, 10})); // 1
     }
 }
