@@ -6,27 +6,27 @@ package leetcode;
 public class Problem825 {
     public int numFriendRequests(int[] ages) {
         int answer = 0;
-        for (int i = 0; i < ages.length; i++) {
-            for (int j = i + 1; j < ages.length; j++) {
-                if (accept(ages[i], ages[j])) {
-                    answer++;
-                }
-                if (accept(ages[j], ages[i])) {
-                    answer++;
+        int[] counts = new int[121]; // there are 120 ages
+        for (int age : ages) {
+            counts[age]++;
+        }
+        for (int i = 1; i < counts.length; i++) {
+            for (int j = 1; j < counts.length; j++) {
+                if (counts[i] > 0 && counts[j] > 0) {
+                    if (reject(i, j)) {
+                        continue;
+                    }
+                    answer += counts[i] * counts[j];
+                    if (i == j) {
+                        answer -= counts[i];
+                    }
                 }
             }
         }
         return answer;
     }
 
-    private static boolean accept(int a, int b) {
-        return (!((a <= 0.5 * b + 7) || (a > b) || (a > 100 && b < 100)));
-    }
-
-    public static void main(String[] args) {
-        Problem825 prob = new Problem825();
-        System.out.println(prob.numFriendRequests(new int[]{16, 16})); // 2
-        System.out.println(prob.numFriendRequests(new int[]{16, 17, 18})); // 2
-        System.out.println(prob.numFriendRequests(new int[]{20, 30, 100, 110, 120})); // 3
+    private static boolean reject(int a, int b) {
+        return ((a <= 0.5 * b + 7) || (a > b) || (a > 100 && b < 100));
     }
 }
