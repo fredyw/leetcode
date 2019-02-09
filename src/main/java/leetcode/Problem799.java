@@ -20,7 +20,7 @@ public class Problem799 {
                     glasses[row][col] = 1;
                     double half = (val - 1) / 2;
                     glasses[row + 1][colIdx++] += half;
-                    glasses[row + 1][colIdx++] += half;
+                    glasses[row + 1][colIdx] += half;
                     overflow = true;
                 }
             }
@@ -43,6 +43,7 @@ public class Problem799 {
 //        System.out.println(prob.champagneTower(4, 2, 0)); // 0.25
 //        System.out.println(prob.champagneTower(4, 1, 0)); // 1.0
 //        System.out.println(prob.champagneTower(4, 1, 1)); // 1.0
-        System.out.println(prob.champagneTower(4, 2, 1)); // 0.5
+//        System.out.println(prob.champagneTower(4, 2, 1)); // 0.5
+        System.out.println(prob.champagneTower(6, 3, 0)); // 0.0
     }
 }
