@@ -33,8 +33,9 @@ public class Problem547 {
             if (map.get(a).equals(map.get(b))) {
                 return; // already connected
             }
+            Integer value = map.get(a);
             for (Map.Entry<Integer, Integer> e : map.entrySet()) {
-                if (e.getValue().equals(map.get(a))) {
+                if (e.getValue().equals(value)) {
                     map.put(e.getKey(), map.get(b));
                 }
             }
