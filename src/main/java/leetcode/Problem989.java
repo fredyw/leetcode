@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -7,15 +9,50 @@ import java.util.List;
  */
 public class Problem989 {
     public List<Integer> addToArrayForm(int[] A, int K) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem989 prob = new Problem989();
-        System.out.println(prob.addToArrayForm(new int[]{1, 2, 0, 0}, 34)); // [1,2,3,4]
-        System.out.println(prob.addToArrayForm(new int[]{2, 7, 4}, 181)); // [4,5,5]
-        System.out.println(prob.addToArrayForm(new int[]{2, 1, 5}, 806)); // [1,0,2,1]
-        System.out.println(prob.addToArrayForm(new int[]{9, 9, 9, 9, 9, 9, 9, 9, 9, 9}, 1)); // [1,0,0,0,0,0,0,0,0,0,0]
+        String kStr = Integer.toString(K);
+        int[] k = new int[kStr.length()];
+        for (int i = 0; i < kStr.length(); i++) {
+            k[i] = kStr.charAt(i) - '0';
+        }
+        List<Integer> answer = new ArrayList<>();
+        int i = A.length - 1;
+        int j = k.length - 1;
+        int carry = 0;
+        while (i >= 0 && j >= 0) {
+            int sum = A[i] + k[j] + carry;;
+            if (sum >= 10) {
+                carry = 1;
+            } else {
+                carry = 0;
+            }
+            answer.add(sum % 10);
+            i--;
+            j--;
+        }
+        while (i >= 0) {
+            int sum = A[i] + carry;
+            if (sum >= 10) {
+                carry = 1;
+            } else {
+                carry = 0;
+            }
+            answer.add(sum % 10);
+            i--;
+        }
+        while (j >= 0) {
+            int sum = k[j] + carry;
+            if (sum >= 10) {
+                carry = 1;
+            } else {
+                carry = 0;
+            }
+            answer.add(sum % 10);
+            j--;
+        }
+        if (carry == 1) {
+            answer.add(1);
+        }
+        Collections.reverse(answer);
+        return answer;
     }
 }
