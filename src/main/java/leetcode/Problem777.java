@@ -12,12 +12,17 @@ public class Problem777 {
                 if (i + 1 == s.length) {
                     return false;
                 }
-                if ((s[i] == 'X' && s[i + 1] == 'L') ||
-                    (s[i] == 'R' && s[i + 1] == 'X')) {
-                    swap(e, i, i + 1);
-                    if (s[i] != e[i]) {
+                if (s[i] == 'R' && s[i + 1] == 'X') {
+                    swap(s, i, i + 1);
+                } else if (e[i] == 'L') {
+                    int j = i;
+                    while (j < s.length && s[j] == 'X') {
+                        j++;
+                    }
+                    if (s[j] != 'L') {
                         return false;
                     }
+                    swap(s, i, j);
                 } else {
                     return false;
                 }
@@ -37,9 +42,11 @@ public class Problem777 {
 //        System.out.println(prob.canTransform("RXXLRXRXL", "XRLXXRRLX")); // true
 //        System.out.println(prob.canTransform("RXXLRXRXL", "XRLXXRRLL")); // false
 //        System.out.println(prob.canTransform("LR", "RL")); // false
-        System.out.println(prob.canTransform("XXXXXLXXXX", "LXXXXXXXXX")); // true
-        System.out.println(prob.canTransform("RXXXXL", "RLXXXX")); // true
-        System.out.println(prob.canTransform("RXXXXL", "RLXXXX")); // true
-        System.out.println(prob.canTransform("RXXXXL", "XXXXRL")); // true
+//        System.out.println(prob.canTransform("RL", "LR")); // false
+//        System.out.println(prob.canTransform("XXXXXLXXXX", "LXXXXXXXXX")); // true
+//        System.out.println(prob.canTransform("RXXXXL", "RLXXXX")); // true
+//        System.out.println(prob.canTransform("RXXXXL", "RLXXXX")); // true
+//        System.out.println(prob.canTransform("RXXXXL", "XXXXRL")); // true
+        System.out.println(prob.canTransform("XLXRRXXRXX", "LXXXXXXRRR")); // true
     }
 }
