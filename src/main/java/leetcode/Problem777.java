@@ -38,5 +38,8 @@ public class Problem777 {
 //        System.out.println(prob.canTransform("RXXLRXRXL", "XRLXXRRLL")); // false
 //        System.out.println(prob.canTransform("LR", "RL")); // false
         System.out.println(prob.canTransform("XXXXXLXXXX", "LXXXXXXXXX")); // true
+        System.out.println(prob.canTransform("RXXXXL", "RLXXXX")); // true
+        System.out.println(prob.canTransform("RXXXXL", "RLXXXX")); // true
+        System.out.println(prob.canTransform("RXXXXL", "XXXXRL")); // true
     }
 }
