@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.Arrays;
+
 /**
  * https://leetcode.com/problems/swap-adjacent-in-lr-string/
  */
@@ -9,46 +11,38 @@ public class Problem777 {
         char[] e = end.toCharArray();
         for (int i = 0; i < s.length; i++) {
             if (s[i] != e[i]) {
-                if (i + 1 == s.length) {
-                    return false;
-                }
-                if (s[i] == 'R' && s[i + 1] == 'X') {
-                    swap(s, i, i + 1);
-                } else if (e[i] == 'L') {
+                if (e[i] == 'L') {
                     int j = i;
                     while (j < s.length && s[j] == 'X') {
                         j++;
                     }
-                    if (s[j] != 'L') {
+                    if (j == s.length || s[j] != 'L') {
                         return false;
                     }
                     swap(s, i, j);
-                } else {
-                    return false;
                 }
             }
         }
-        return true;
+        for (int i = s.length - 1; i >= 0; i--) {
+            if (s[i] != e[i]) {
+                if (e[i] == 'R') {
+                    int j = i;
+                    while (j >= 0 && s[j] == 'X') {
+                        j--;
+                    }
+                    if (j < 0 || s[j] != 'R') {
+                        return false;
+                    }
+                    swap(s, i, j);
+                }
+            }
+        }
+        return Arrays.equals(s, e);
     }
 
     private static void swap(char[] chars, int i, int j) {
         char tmp = chars[i];
         chars[i] = chars[j];
         chars[j] = tmp;
-    }
-
-    public static void main(String[] args) {
-        Problem777 prob = new Problem777();
-//        System.out.println(prob.canTransform("RXXLRXRXL", "XRLXXRRLX")); // true
-//        System.out.println(prob.canTransform("RXXLRXRXL", "XRLXXRRLL")); // false
-//        System.out.println(prob.canTransform("LR", "RL")); // false
-//        System.out.println(prob.canTransform("RL", "LR")); // false
-//        System.out.println(prob.canTransform("XXXXXLXXXX", "LXXXXXXXXX")); // true
-//        System.out.println(prob.canTransform("RXXXXL", "RLXXXX")); // true
-//        System.out.println(prob.canTransform("RXXXXL", "RLXXXX")); // true
-//        System.out.println(prob.canTransform("RXXXXL", "XXXXRL")); // true
-//        System.out.println(prob.canTransform("XLXRRXXRXX", "LXXXXXXRRR")); // true
-        System.out.println(prob.canTransform("XLXRRXXRXXXL", "LXXXXXXRRRLX")); // true
-//        System.out.println(prob.canTransform("XLXXXXLXLX", "LLLXXXXXXX")); // true
     }
 }
