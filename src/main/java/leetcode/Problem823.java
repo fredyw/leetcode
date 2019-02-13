@@ -14,13 +14,13 @@ public class Problem823 {
             if (!set[i]) {
                 continue;
             }
-            answer += numFactoredBinaryTrees(set, i);
+            answer += numFactoredBinaryTrees(set, i) + 1;
         }
         return answer;
     }
 
     private static int numFactoredBinaryTrees(boolean[] set, int root) {
-        int count = 1;
+        int count = 0;
         set[root] = false;;
         for (int i = 0; i < set.length; i++) {
             if (!set[i]) {
@@ -29,6 +29,8 @@ public class Problem823 {
             if (root % i == 0) {
                 int j = root / i;
                 if (set[j]) {
+                    count++;
+
                     set[i] = false;
                     count += numFactoredBinaryTrees(set, i);
                     set[i] = true;
