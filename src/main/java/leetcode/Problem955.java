@@ -13,5 +13,7 @@ public class Problem955 {
         Problem955 prob = new Problem955();
         System.out.println(prob.minDeletionSize(new String[]{"ca", "bb", "ac"})); // 1
         System.out.println(prob.minDeletionSize(new String[]{"xc", "yb", "za"})); // 0
+        System.out.println(prob.minDeletionSize(new String[]{"zyx","wvu","tsr"})); // 3
+        System.out.println(prob.minDeletionSize(new String[]{"abcdef", "uvwxyz"})); // 0
     }
 }
