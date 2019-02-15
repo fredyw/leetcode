@@ -1,38 +1,90 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * https://leetcode.com/problems/delete-columns-to-make-sorted-ii/
  */
 public class Problem955 {
     public int minDeletionSize(String[] A) {
         int n = A[0].length();
-        char[][] chars = new char[A.length][];
-        for (int i = 0; i < A.length; i++) {
-            chars[i] = A[i].toCharArray();
-        }
         int answer = 0;
+        Map<Character, List<Integer>> map = new HashMap<>();
         for (int i = 0; i < n; i++) {
-            char[] prev = null;
+            boolean done = true;
             boolean remove = false;
-            for (int j = 0; j < chars.length; j++) {
-                if (j == 0) {
-                    prev = chars[j];
-                } else {
-                    if (new String(prev).compareTo(new String(chars[j])) > 0) {
-                        remove = true;
-                        break;
+            if (map.isEmpty()) {
+                int prevIdx = 0;
+                char prevValue = ' ';
+                boolean first = true;
+                for (int j = 0; j < A.length; j++) {
+                    if (first) {
+                        first = false;
+                    } else {
+                        if (prevValue > A[j].charAt(i)) {
+                            remove = true;
+                            map.clear();
+                            done = false;
+                            break;
+                        } else if (prevValue == A[j].charAt(i)) {
+                            List<Integer> list = map.get(prevValue);
+                            if (list == null) {
+                                list = new ArrayList<>();
+                                map.put(prevValue, list);
+                            }
+                            // TODO
+                            list.add(prevIdx);
+                            list.add(j);
+                            done = false;
+                        }
+                    }
+                    prevIdx = j;
+                    prevValue = A[j].charAt(i);
+                }
+                System.out.println(map);
+            } else {
+                Map<Character, List<Integer>> tmpMap = new HashMap<>();
+                outer:
+                for (List<Integer> indexes : map.values()) {
+                    int prevIdx = 0;
+                    char prevValue = ' ';
+                    boolean first = true;
+                    for (int idx : indexes) {
+                        if (first) {
+                            first = false;
+                        } else {
+                            if (prevValue > A[idx].charAt(i)) {
+                                remove = true;
+                                done = false;
+                                break outer;
+                            } else if (prevValue == A[idx].charAt(i)) {
+                                List<Integer> list = tmpMap.get(prevValue);
+                                if (list == null) {
+                                    list = new ArrayList<>();
+                                    tmpMap.put(prevValue, list);
+                                }
+                                // TODO
+                                list.add(prevIdx);
+                                list.add(idx);
+                                done = false;
+                            }
+                        }
+                        prevIdx = idx;
+                        prevValue = A[idx].charAt(i);
                     }
                 }
+                map = tmpMap;
+                System.out.println(map);
             }
             if (remove) {
                 answer++;
-                for (int j = 0; j < chars.length; j++) {
-                    chars[j][i] = ' ';
-                }
             }
-        }
-        for (int i = 0; i < chars.length; i++) {
-            System.out.println(new String(chars[i]));
+            if (done) {
+                break;
+            }
         }
         return answer;
     }
@@ -43,6 +95,9 @@ public class Problem955 {
 //        System.out.println(prob.minDeletionSize(new String[]{"xc", "yb", "za"})); // 0
 //        System.out.println(prob.minDeletionSize(new String[]{"zyx","wvu","tsr"})); // 3
 //        System.out.println(prob.minDeletionSize(new String[]{"abcdef", "uvwxyz"})); // 0
-        System.out.println(prob.minDeletionSize(new String[]{"xga", "xfb", "yfa"})); // 1
+//        System.out.println(prob.minDeletionSize(new String[]{"xga", "xfb", "yfa"})); // 1
+//        System.out.println(prob.minDeletionSize(new String[]{"xac", "xbb", "yax"})); // 0
+        System.out.println(prob.minDeletionSize(new String[]{"abx", "agz", "bgc", "bfc"})); // 1
+//        System.out.println(prob.minDeletionSize(new String[]{"aby", "abx", "bcy", "bcx"})); // 1
     }
 }
