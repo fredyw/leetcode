@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * https://leetcode.com/problems/cousins-in-binary-tree/
  */
@@ -15,30 +18,34 @@ public class Problem993 {
     }
 
     public boolean isCousins(TreeNode root, int x, int y) {
-        // TODO
-        return false;
+        Map<Integer, DepthParent> map = new HashMap<>();
+        traverse(root, x, y, 0, 0, map);
+        DepthParent xdp = map.get(x);
+        DepthParent ydp = map.get(y);
+        if (xdp.parent == ydp.parent) {
+            return false;
+        }
+        return xdp.depth == ydp.depth;
     }
 
-    public static void main(String[] args) {
-        Problem993 prob = new Problem993();
+    private static class DepthParent {
+        private final int depth;
+        private final int parent;
 
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.left.left = new TreeNode(4);
-        root.right = new TreeNode(3);
-        System.out.println(prob.isCousins(root, 4, 3)); // false
+        public DepthParent(int depth, int parent) {
+            this.depth = depth;
+            this.parent = parent;
+        }
+    }
 
-        root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.left.right = new TreeNode(4);
-        root.right = new TreeNode(3);
-        root.right.right = new TreeNode(5);
-        System.out.println(prob.isCousins(root, 5, 4)); // true
-
-        root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.left.right = new TreeNode(4);
-        root.right = new TreeNode(3);
-        System.out.println(prob.isCousins(root, 2, 3)); // false
+    private static void traverse(TreeNode root, int x, int y, int parent, int depth,
+                                 Map<Integer, DepthParent> map) {
+        if (root == null) {
+            return;
+        }
+        int newDepth = depth + 1;
+        map.put(root.val, new DepthParent(newDepth, parent));
+        traverse(root.left, x, y, root.val, newDepth, map);
+        traverse(root.right, x, y, root.val, newDepth, map);
     }
 }
