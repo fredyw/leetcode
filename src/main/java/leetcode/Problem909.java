@@ -33,7 +33,6 @@ public class Problem909 {
         outer:
         while (!queue.isEmpty()) {
             Queue<Integer> tmp = new LinkedList<>();
-            answer++;
             while (!queue.isEmpty()) {
                 int current = queue.remove();
                 if (visited[current]) {
@@ -47,7 +46,7 @@ public class Problem909 {
                 for (int step = 1; step <= 6; step++) {
                     int newStep = current + step;
                     if (newStep < b.length) {
-                        if (b[newStep] >= 0) {
+                        if (b[newStep] > 0) {
                             tmp.add(b[newStep]);
                         } else {
                             tmp.add(newStep);
@@ -55,9 +54,10 @@ public class Problem909 {
                     }
                 }
             }
+            answer++;
             queue.addAll(tmp);
         }
-        return !found ? -1 : answer - 1;
+        return !found ? -1 : answer;
     }
 
     public static void main(String[] args) {
@@ -93,5 +93,14 @@ public class Problem909 {
 //        System.out.println(prob.snakesAndLadders(new int[][]{
 //            {-1, -1}, {-1, 3}
 //        })); // 1
+//        System.out.println(prob.snakesAndLadders(new int[][]{
+//            {-1, -1, -1, -1, 48, 5, -1},
+//            {12, 29, 13, 9, -1, 2, 32},
+//            {-1, -1, 21, 7, -1, 12, 49},
+//            {42, 37, 21, 40, -1, 22, 12},
+//            {42, -1, 2, -1, -1, -1, 6},
+//            {39, -1, 35, -1, -1, 39, -1},
+//            {-1, 36, -1, -1, -1, -1, 5}
+//        })); // 3
     }
 }
