@@ -10,35 +10,34 @@ public class Problem994 {
     public int orangesRotting(int[][] grid) {
         int maxRow = grid.length;
         int maxCol = maxRow > 0 ? grid[0].length : 0;
-        int row = 0;
-        int col = 0;
-        boolean rotten = false;
-        boolean fresh = false;
-        outer:
+        int answer = Integer.MAX_VALUE;
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
                 if (grid[i][j] == 2) {
-                    row = i;
-                    col = j;
-                    rotten = true;
-                    break outer;
-                } else if (grid[i][j] == 1) {
-                    fresh = true;
+                    int val = bfs(grid, maxRow, maxCol, i, j);
+                    if (val > 0) {
+                        answer = Math.min(answer, val);
+                    }
                 }
             }
         }
-        if (!rotten && !fresh) {
-            return 0;
+        for (int i = 0; i < maxRow; i++) {
+            for (int j = 0; j < maxCol; j++) {
+                if (grid[i][j] == 1) {
+                    return -1;
+                }
+            }
         }
-        if (!rotten) {
-            return -1;
-        }
-        int answer = -1;
+        return answer == Integer.MAX_VALUE ? 0 : answer;
+    }
+
+    private static int bfs(int[][] grid, int maxRow, int maxCol, int row, int col) {
+        int count = -1;
         Queue<int[]> queue = new LinkedList<>();
         queue.add(new int[]{row, col});
         while (!queue.isEmpty()) {
             Queue<int[]> tmp = new LinkedList<>();
-            answer++;
+            count++;
             while (!queue.isEmpty()) {
                 int[] current = queue.remove();
                 row = current[0];
@@ -62,14 +61,7 @@ public class Problem994 {
             }
             queue.addAll(tmp);
         }
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
-                if (grid[i][j] == 1) {
-                    return -1;
-                }
-            }
-        }
-        return answer;
+        return count;
     }
 
     public static void main(String[] args) {
@@ -96,8 +88,14 @@ public class Problem994 {
 //        System.out.println(prob.orangesRotting(new int[][]{
 //            {0}
 //        })); // 0
+//        System.out.println(prob.orangesRotting(new int[][]{
+//            {2, 2, 2, 1, 1}
+//        })); // 2
         System.out.println(prob.orangesRotting(new int[][]{
-            {2, 2, 2, 1, 1}
-        })); // 2
+            {2, 2},
+            {1, 1},
+            {0, 0},
+            {2, 0}
+        })); // 1
     }
 }
