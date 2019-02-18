@@ -25,7 +25,9 @@ public class Problem909 {
             }
         }
         int answer = 0;
+        boolean found = false;
         int target = board.length * board.length;
+        boolean[] visited = new boolean[b.length];
         Queue<Integer> queue = new LinkedList<>();
         queue.add(1);
         outer:
@@ -34,7 +36,12 @@ public class Problem909 {
             answer++;
             while (!queue.isEmpty()) {
                 int current = queue.remove();
+                if (visited[current]) {
+                    continue;
+                }
+                visited[current] = true;
                 if (current == target) {
+                    found = true;
                     break outer;
                 }
                 for (int step = 1; step <= 6; step++) {
@@ -50,7 +57,7 @@ public class Problem909 {
             }
             queue.addAll(tmp);
         }
-        return answer - 1;
+        return !found ? -1 : answer - 1;
     }
 
     public static void main(String[] args) {
@@ -63,10 +70,28 @@ public class Problem909 {
 //            {-1, -1, -1, -1, -1, -1},
 //            {-1, 15, -1, -1, -1, -1}
 //        })); // 4
+//        System.out.println(prob.snakesAndLadders(new int[][]{
+//            {1, 1, -1},
+//            {1, 1, 1},
+//            {-1, 1, 1}
+//        })); // -1
         System.out.println(prob.snakesAndLadders(new int[][]{
-            {1, 1, -1},
-            {1, 1, 1},
-            {-1, 1, 1}
-        })); // -1
+            {-1, -1, 19, 10, -1},
+            {2, -1, -1, 6, -1},
+            {-1, 17, -1, 19, -1},
+            {25, -1, 20, -1, -1},
+            {-1, -1, -1, -1, 15}
+        })); // 2
+//        System.out.println(prob.snakesAndLadders(new int[][]{
+//            {-1, -1, 30, 14, 15, -1},
+//            {23, 9, -1, -1, -1, 9},
+//            {12, 5, 7, 24, -1, 30},
+//            {10, -1, -1, -1, 25, 17},
+//            {32, -1, 28, -1, -1, 32},
+//            {-1, -1, 23, -1, 13, 19}
+//        })); // 2
+//        System.out.println(prob.snakesAndLadders(new int[][]{
+//            {-1, -1}, {-1, 3}
+//        })); // 1
     }
 }
