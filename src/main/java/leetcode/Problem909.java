@@ -23,9 +23,9 @@ public class Problem909 {
                     i++;
                 }
             }
+            leftToRight = !leftToRight;
         }
         int answer = 0;
-        boolean found = false;
         int target = board.length * board.length;
         boolean[] visited = new boolean[b.length];
         Queue<Integer> queue = new LinkedList<>();
@@ -40,13 +40,12 @@ public class Problem909 {
                 }
                 visited[current] = true;
                 if (current == target) {
-                    found = true;
-                    break outer;
+                    return answer;
                 }
                 for (int step = 1; step <= 6; step++) {
                     int newStep = current + step;
                     if (newStep < b.length) {
-                        if (b[newStep] > 0) {
+                        if (b[newStep] != -1) {
                             tmp.add(b[newStep]);
                         } else {
                             tmp.add(newStep);
@@ -57,64 +56,6 @@ public class Problem909 {
             answer++;
             queue.addAll(tmp);
         }
-        return !found ? -1 : answer;
-    }
-
-    public static void main(String[] args) {
-        Problem909 prob = new Problem909();
-//        System.out.println(prob.snakesAndLadders(new int[][]{
-//            {-1, -1, -1, -1, -1, -1},
-//            {-1, -1, -1, -1, -1, -1},
-//            {-1, -1, -1, -1, -1, -1},
-//            {-1, 35, -1, -1, 13, -1},
-//            {-1, -1, -1, -1, -1, -1},
-//            {-1, 15, -1, -1, -1, -1}
-//        })); // 4
-//        System.out.println(prob.snakesAndLadders(new int[][]{
-//            {1, 1, -1},
-//            {1, 1, 1},
-//            {-1, 1, 1}
-//        })); // -1
-        System.out.println(prob.snakesAndLadders(new int[][]{
-            {-1, -1, 19, 10, -1},
-            {2, -1, -1, 6, -1},
-            {-1, 17, -1, 19, -1},
-            {25, -1, 20, -1, -1},
-            {-1, -1, -1, -1, 15}
-        })); // 2
-//        System.out.println(prob.snakesAndLadders(new int[][]{
-//            {-1, -1, 30, 14, 15, -1},
-//            {23, 9, -1, -1, -1, 9},
-//            {12, 5, 7, 24, -1, 30},
-//            {10, -1, -1, -1, 25, 17},
-//            {32, -1, 28, -1, -1, 32},
-//            {-1, -1, 23, -1, 13, 19}
-//        })); // 2
-//        System.out.println(prob.snakesAndLadders(new int[][]{
-//            {-1, -1}, {-1, 3}
-//        })); // 1
-//        System.out.println(prob.snakesAndLadders(new int[][]{
-//            {-1, -1, -1, -1, 48, 5, -1},
-//            {12, 29, 13, 9, -1, 2, 32},
-//            {-1, -1, 21, 7, -1, 12, 49},
-//            {42, 37, 21, 40, -1, 22, 12},
-//            {42, -1, 2, -1, -1, -1, 6},
-//            {39, -1, 35, -1, -1, 39, -1},
-//            {-1, 36, -1, -1, -1, -1, 5}
-//        })); // 3
-        System.out.println(prob.snakesAndLadders(new int[][]{
-            {-1, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1},
-            {25, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1}
-        })); // 2
-        System.out.println(prob.snakesAndLadders(new int[][]{
-            {-1, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1},
-            {-1, -1, -1, -1, -1},
-            {-1, -1, -1, -1, 25}
-        })); // 1
+        return -1;
     }
 }
