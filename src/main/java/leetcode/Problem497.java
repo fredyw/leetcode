@@ -1,44 +1,34 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
+import java.util.TreeMap;
 
 /**
  * https://leetcode.com/problems/random-point-in-non-overlapping-rectangles/
  */
 public class Problem497 {
     private static class Solution {
-        private final List<int[]> rects = new ArrayList<>();
+        private final TreeMap<Integer, int[]> map = new TreeMap<>();
         private final Random random = new Random();
+        private int area;
 
-        public Solution(int[][] rects) {
-            for (int i = 0; i < rects.length; i++) {
-                long area = area(rects[i]);
-                if (area > 0) {
-                    this.rects.add(rects[i]);
-                }
+        public Solution(int[][] rect) {
+            for (int i = 0; i < rect.length; i++) {
+                area += area(rect[i]);
+                map.put(area, rect[i]);
             }
         }
 
         public int[] pick() {
-            int index = random.nextInt(rects.size());
-            int[] rect = rects.get(index);
-            int x = random.nextInt(rect[2] - rect[0]) + rect[0];
-            int y = random.nextInt(rect[3] - rect[1]) + rect[1];
+            int key = map.ceilingKey(random.nextInt(area) + 1);
+            int[] rect = map.get(key);
+            int x = random.nextInt(rect[2] - rect[0] + 1) + rect[0];
+            int y = random.nextInt(rect[3] - rect[1] + 1) + rect[1];
             return new int[]{x, y};
         }
 
-        private static long area(int[] rect) {
+        private static int area(int[] rect) {
             return (rect[2] - rect[0] + 1) * (rect[3] - rect[1] + 1);
         }
-    }
-
-    public static void main(String[] args) {
-        Solution solution = new Solution(new int[][]{{1, 1, 5, 5}});
-        System.out.println(Arrays.toString(solution.pick()));
-        System.out.println(Arrays.toString(solution.pick()));
-        System.out.println(Arrays.toString(solution.pick()));
     }
 }
