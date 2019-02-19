@@ -25,22 +25,13 @@ public class Problem497 {
         public int[] pick() {
             int index = random.nextInt(rects.size());
             int[] rect = rects.get(index);
-            int minX = Integer.min(rect[0], rect[2]);
-            int maxX = Integer.max(rect[0], rect[2]);
-            int minY = Integer.min(rect[1], rect[3]);
-            int maxY = Integer.max(rect[1], rect[3]);
-
-            int x = random.nextInt(maxX - minX) + minX;
-            int y = random.nextInt(maxY - minY) + minY;
+            int x = random.nextInt(rect[2] - rect[0]) + rect[0];
+            int y = random.nextInt(rect[3] - rect[1]) + rect[1];
             return new int[]{x, y};
         }
 
         private static long area(int[] rect) {
-            long minX = Integer.min(rect[0], rect[2]);
-            long maxX = Integer.max(rect[0], rect[2]);
-            long minY = Integer.min(rect[1], rect[3]);
-            long maxY = Integer.max(rect[1], rect[3]);
-            return (maxX - minX) * (maxY * minY);
+            return (rect[2] - rect[0] + 1) * (rect[3] - rect[1] + 1);
         }
     }
 
