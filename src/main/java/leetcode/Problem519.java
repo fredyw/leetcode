@@ -1,40 +1,43 @@
 package leetcode;
 
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 /**
  * https://leetcode.com/problems/random-flip-matrix/
  */
 public class Problem519 {
-    class Solution {
+    private static class Solution {
         private final Random random = new Random();
-        private int[][] matrix;
+        private Set<String> set = new HashSet<>();
         private final int nRows;
         private final int nCols;
 
         public Solution(int n_rows, int n_cols) {
             nRows = n_rows;
             nCols = n_cols;
-            matrix = new int[n_rows][n_cols];
         }
 
         public int[] flip() {
             int r = random.nextInt(nRows);
             int c = random.nextInt(nCols);
-            while (matrix[r][c] == 1) {
+            String key = key(r, c);
+            while (set.contains(key)) {
                 r = random.nextInt(nRows);
                 c = random.nextInt(nCols);
+                key = key(r, c);
             }
-            matrix[r][c] = 1;
+            set.add(key);
             return new int[]{r, c};
         }
 
-        public void reset() {
-            matrix = new int[nRows][nCols];
+        private String key(int row, int col) {
+            return row + "|" + col;
         }
-    }
 
-    public static void main(String[] args) {
-        Problem519 prob = new Problem519();
+        public void reset() {
+            set = new HashSet<>();
+        }
     }
 }
