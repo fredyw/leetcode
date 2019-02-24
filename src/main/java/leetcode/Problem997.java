@@ -5,15 +5,22 @@ package leetcode;
  */
 public class Problem997 {
     public int findJudge(int N, int[][] trust) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem997 prob = new Problem997();
-        System.out.println(prob.findJudge(2, new int[][]{{1, 2}})); // 2
-        System.out.println(prob.findJudge(2, new int[][]{{1, 3}, {2, 3}})); // 3
-        System.out.println(prob.findJudge(2, new int[][]{{1, 3}, {2, 3}, {3, 1}})); // -1
-        System.out.println(prob.findJudge(2, new int[][]{{1, 2}, {2, 3}})); // -1
+        int[] trusts = new int[N + 1];
+        int[] trustees = new int[N + 1];
+        for (int[] t : trust) {
+            trusts[t[0]]++;
+            trustees[t[1]]++;
+        }
+        int a = 0;
+        int b = 0;
+        for (int i = 1; i < trusts.length; i++) {
+            if (trusts[i] == 0) {
+                a = i;
+            }
+            if (trustees[i] == N - 1) {
+                b = i;
+            }
+        }
+        return a == b ? a : -1;
     }
 }
