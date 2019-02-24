@@ -15,11 +15,15 @@ public class Problem998 {
     }
 
     public TreeNode insertIntoMaxTree(TreeNode root, int val) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem998 prob = new Problem998();
+        if (root == null) {
+            return new TreeNode(val);
+        }
+        if (root.val < val) {
+            TreeNode node  = new TreeNode(val);
+            node.left = root;
+            return node;
+        }
+        root.right = insertIntoMaxTree(root.right, val);
+        return root;
     }
 }
