@@ -1,12 +1,24 @@
 package leetcode;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * https://leetcode.com/problems/bitwise-ors-of-subarrays/
  */
 public class Problem898 {
     public int subarrayBitwiseORs(int[] A) {
-        // TODO
-        return 0;
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < A.length; i++) {
+            int or = A[i];
+            set.add(or);
+            for (int j = i + 1; j < A.length; j++) {
+                set.add(A[j]);
+                or |= A[j];
+                set.add(or);
+            }
+        }
+        return set.size();
     }
 
     public static void main(String[] args) {
