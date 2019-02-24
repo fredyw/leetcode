@@ -8,24 +8,17 @@ import java.util.Set;
  */
 public class Problem898 {
     public int subarrayBitwiseORs(int[] A) {
+        Set<Integer> answer = new HashSet<>();
         Set<Integer> set = new HashSet<>();
         for (int i = 0; i < A.length; i++) {
-            int or = A[i];
-            set.add(or);
-            for (int j = i + 1; j < A.length; j++) {
-                set.add(A[j]);
-                or |= A[j];
-                set.add(or);
+            Set<Integer> tmp = new HashSet<>();
+            tmp.add(A[i]);
+            for (int a : set) {
+                tmp.add(A[i] | a);
             }
+            answer.addAll(tmp);
+            set = tmp;
         }
-        return set.size();
-    }
-
-    public static void main(String[] args) {
-        Problem898 prob = new Problem898();
-        System.out.println(prob.subarrayBitwiseORs(new int[]{0})); // 1
-        System.out.println(prob.subarrayBitwiseORs(new int[]{1, 1, 2})); // 3
-        System.out.println(prob.subarrayBitwiseORs(new int[]{1, 2, 4})); // 6
-        System.out.println(prob.subarrayBitwiseORs(new int[]{1, 2, 4, 5})); // 7
+        return answer.size();
     }
 }
