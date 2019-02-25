@@ -5,26 +5,18 @@ package leetcode;
  */
 public class Problem918 {
     public int maxSubarraySumCircular(int[] A) {
-        int answer = A[0];
-        for (int i = 0; i < A.length; i++) {
-            int sum = A[i];
-            answer = Math.max(answer, sum);
-            int j = (i + 1) % A.length;
-            while (j != i) {
-                sum += A[j];
-                answer = Math.max(answer, sum);
-                j = (j + 1) % A.length;
-            }
+        int total = 0;
+        int maxSum = -30000;
+        int maxSoFar = 0;
+        int minSum = 30000;
+        int minSoFar = 0;
+        for (int a : A) {
+            maxSoFar = Math.max(maxSoFar + a, a);
+            maxSum = Math.max(maxSum, maxSoFar);
+            minSoFar = Math.min(minSoFar + a, a);
+            minSum = Math.min(minSum, minSoFar);
+            total += a;
         }
-        return answer;
-    }
-
-    public static void main(String[] args) {
-        Problem918 prob = new Problem918();
-        System.out.println(prob.maxSubarraySumCircular(new int[]{1, -2, 3, -2})); // 3
-        System.out.println(prob.maxSubarraySumCircular(new int[]{5, -3, 5})); // 10
-        System.out.println(prob.maxSubarraySumCircular(new int[]{3, -1, 2, -1})); // 4
-        System.out.println(prob.maxSubarraySumCircular(new int[]{3, -2, 2, -3})); // 3
-        System.out.println(prob.maxSubarraySumCircular(new int[]{-2, -3, -1})); // -1
+        return maxSum > 0 ? Math.max(maxSum, total - minSum) : maxSum;
     }
 }
