@@ -36,21 +36,9 @@ public class Problem1004 {
         }
         int answer = 0;
         for (int i = 0; i < list.size(); i++) {
-            NumberCount n = list.get(i);
             int max = 0;
             int count = K;
-            if (n.number == 1) {
-                max = n.count;
-            } else {
-                if (n.count - count >= 0) {
-                    max = count;
-                    count = 0;
-                } else {
-                    count -= n.count;
-                    max = n.count;
-                }
-            }
-            int j = i + 1;
+            int j = i;
             while (j < list.size()) {
                 NumberCount nc = list.get(j);
                 if (nc.number == 0) {
@@ -68,6 +56,27 @@ public class Problem1004 {
             }
             answer = Math.max(answer, max);
         }
+        for (int i = list.size() - 1; i >= 0; i--) {
+            int max = 0;
+            int count = K;
+            int j = i;
+            while (j >= 0) {
+                NumberCount nc = list.get(j);
+                if (nc.number == 0) {
+                    if (count - nc.count >= 0) {
+                        count -= nc.count;
+                        max += nc.count;
+                    } else {
+                        max += count;
+                        break;
+                    }
+                } else {
+                    max += nc.count;
+                }
+                j--;
+            }
+            answer = Math.max(answer, max);
+        }
         return answer;
     }
 
@@ -79,20 +88,5 @@ public class Problem1004 {
             this.number = number;
             this.count = count;
         }
-
-        @Override
-        public String toString() {
-            return number + ": " + count;
-        }
-    }
-
-    public static void main(String[] args) {
-        Problem1004 prob = new Problem1004();
-//        System.out.println(prob.longestOnes(new int[]{1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0}, 2)); // 6
-//        System.out.println(prob.longestOnes(new int[]{1, 1, 1}, 2)); // 3
-//        System.out.println(prob.longestOnes(new int[]{0, 0, 0}, 3)); // 3
-//        System.out.println(prob.longestOnes(new int[]{1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0}, 3)); // 10
-//        System.out.println(prob.longestOnes(new int[]{0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1}, 3)); // 10
-        System.out.println(prob.longestOnes(new int[]{1,0,0,0,1,1,0,0,1,1,0,0,0,0,0,0,1,1,1,1,0,1,0,1,1,1,1,1,1,0,1,0,1,0,0,1,1,0,1,1}, 8)); // 25
     }
 }
