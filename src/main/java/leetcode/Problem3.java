@@ -8,15 +8,17 @@ import java.util.Map;
  */
 public class Problem3 {
     public int lengthOfLongestSubstring(String s) {
-        Map<Character, Integer> charToIndices = new HashMap<>();
-        int maxLength = 0, minIdx = 0;
+        Map<Character, Integer> map = new HashMap<>();
+        int answer = 0;
+        int idx = 0;
         for (int i = 0; i < s.length(); i++) {
-            if (charToIndices.containsKey(s.charAt(i))) {
-                minIdx = Math.max(charToIndices.get(s.charAt(i)) + 1, minIdx);
+            char c = s.charAt(i);
+            if (map.containsKey(c)) {
+                idx = Math.max(map.get(c) + 1, idx);
             }
-            maxLength = Math.max(maxLength, i - minIdx + 1);
-            charToIndices.put(s.charAt(i), i);
+            answer = Math.max(answer, i - idx + 1);
+            map.put(c, i);
         }
-        return maxLength;
+        return answer;
     }
 }
