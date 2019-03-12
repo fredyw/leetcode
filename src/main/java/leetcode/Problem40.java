@@ -1,7 +1,7 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,33 +11,25 @@ import java.util.Set;
  */
 public class Problem40 {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        List<List<Integer>> result = new ArrayList<>();
-        Arrays.sort(candidates);
-        List<Integer> candidateList = new ArrayList();
-        for (int candidate : candidates) {
-            candidateList.add(candidate);
-        }
-        List<Integer> accu = new ArrayList<>();
-        Set<List<Integer>> tmpResult = new HashSet<>();
-        combination(candidateList, target, 0, 0, accu, tmpResult);
-        result.addAll(tmpResult);
-        return result;
+        Set<List<Integer>> sets = new HashSet<>();
+        combinationSum2(candidates, target, 0, new ArrayList<>(), sets);
+        return new ArrayList<>(sets);
     }
 
-    private void combination(List<Integer> candidateList, int target, int idx, int sum,
-                             List<Integer> accu, Set<List<Integer>> result) {
-        if (sum == target) {
-            result.add(accu);
+    private void combinationSum2(int[] candidates, int target, int index, List<Integer> accu, Set<List<Integer>> sets) {
+        if (target == 0) {
+            List<Integer> newList = new ArrayList<>(accu);
+            Collections.sort(newList);
+            sets.add(newList);
             return;
         }
-        if (sum > target) {
+        if (target < 0) {
             return;
         }
-        for (int i = idx; i < candidateList.size(); i++) {
-            List<Integer> newAccu = new ArrayList<>(accu);
-            int val = candidateList.get(i);
-            newAccu.add(val);
-            combination(candidateList, target, i + 1, sum + val, newAccu, result);
+        for (int i = index; i < candidates.length; i++) {
+            accu.add(candidates[i]);
+            combinationSum2(candidates, target - candidates[i], i + 1, accu, sets);
+            accu.remove(accu.size() - 1);
         }
     }
 }
