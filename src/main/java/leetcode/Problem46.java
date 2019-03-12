@@ -10,32 +10,26 @@ import java.util.Set;
  */
 public class Problem46 {
     public List<List<Integer>> permute(int[] num) {
-        List<List<Integer>> result = new ArrayList<>();
-        permute(result, new ArrayList<>(), new HashSet<>(), 0, num);
-        return result;
+        List<List<Integer>> answer = new ArrayList<>();
+        permute(num, num.length, new HashSet<>(), new ArrayList<>(), answer);
+        return answer;
     }
 
-    private void permute(List<List<Integer>> result, List<Integer> accu,
-                         Set<Integer> indices, int n, int[] num) {
-        if (n == num.length) {
-            result.add(accu);
+    private static void permute(int[] num, int n, Set<Integer> duplicates, List<Integer> accu,
+                                List<List<Integer>> answer) {
+        if (n == 0) {
+            answer.add(new ArrayList<>(accu));
             return;
         }
         for (int i = 0; i < num.length; i++) {
-            if (indices.contains(i)) {
+            if (duplicates.contains(i)) {
                 continue;
             }
-            List<Integer> newAccu = new ArrayList<>();
-            for (int a : accu) {
-                newAccu.add(a);
-            }
-            newAccu.add(num[i]);
-            Set<Integer> newIndices = new HashSet<>();
-            for (int idx : indices) {
-                newIndices.add(idx);
-            }
-            newIndices.add(i);
-            permute(result, newAccu, newIndices, n + 1, num);
+            duplicates.add(i);
+            accu.add(num[i]);
+            permute(num, n - 1, duplicates, accu, answer);
+            accu.remove(accu.size() - 1);
+            duplicates.remove(i);
         }
     }
 }
