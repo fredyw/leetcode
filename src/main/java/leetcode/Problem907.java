@@ -7,10 +7,6 @@ import java.util.Stack;
  */
 public class Problem907 {
     public int sumSubarrayMins(int[] A) {
-        IndexValue[] iv = new IndexValue[A.length];
-        for (int i = 0; i < A.length; i++) {
-            iv[i] = new IndexValue(i, A[i]);
-        }
         Stack<IndexValue> left = new Stack<>();
         int[] leftCounts = new int[A.length];
         for (int i = 0; i < A.length; i++) {
