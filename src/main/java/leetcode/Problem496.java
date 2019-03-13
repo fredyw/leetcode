@@ -1,20 +1,31 @@
 package leetcode;
 
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
 
 /**
  * https://leetcode.com/problems/next-greater-element-i/
  */
 public class Problem496 {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+        Stack<Integer> stack = new Stack<>();
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = nums2.length - 1; i >= 0; i--) {
+            while (!stack.isEmpty() && nums2[i] > stack.peek()) {
+                stack.pop();
+            }
+            if (stack.isEmpty()) {
+                map.put(nums2[i], -1);
+            } else {
+                map.put(nums2[i], stack.peek());
+            }
+            stack.push(nums2[i]);
+        }
         int[] answer = new int[nums1.length];
+        for (int i = 0; i < nums1.length; i++) {
+            answer[i] = map.get(nums1[i]);
+        }
         return answer;
-    }
-
-    public static void main(String[] args) {
-        Problem496 prob = new Problem496();
-//        System.out.println(prob.nextGreaterElement(new int[]{1, 5, 10}, new int[]{2, 3, 7, 11}));
-        System.out.println(Arrays.toString(prob.nextGreaterElement(new int[]{4, 1, 2}, new int[]{1, 3, 4, 2})));
-//        System.out.println(Arrays.toString(prob.nextGreaterElement(new int[]{2, 4}, new int[]{1, 2, 3, 4})));
     }
 }
