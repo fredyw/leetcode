@@ -13,8 +13,8 @@ public class Problem907 {
         }
         Stack<IndexValue> left = new Stack<>();
         int[] leftCounts = new int[A.length];
-        for (int i = 0; i < iv.length; i++) {
-            while (!left.isEmpty() && left.peek().value > iv[i].value) {
+        for (int i = 0; i < A.length; i++) {
+            while (!left.isEmpty() && left.peek().value > A[i]) {
                 left.pop();
             }
             if (!left.isEmpty()) {
@@ -22,13 +22,13 @@ public class Problem907 {
             } else {
                 leftCounts[i] = i + 1;
             }
-            left.push(iv[i]);
+            left.push(new IndexValue(i, A[i]));
         }
 
         Stack<IndexValue> right = new Stack<>();
         int[] rightCounts = new int[A.length];
-        for (int i = iv.length - 1, j = 0; i >= 0; i--, j++) {
-            while (!right.isEmpty() && right.peek().value >= iv[i].value) {
+        for (int i = A.length - 1, j = 0; i >= 0; i--, j++) {
+            while (!right.isEmpty() && right.peek().value >= A[i]) {
                 right.pop();
             }
             if (!right.isEmpty()) {
@@ -36,11 +36,11 @@ public class Problem907 {
             } else {
                 rightCounts[i] = j + 1;
             }
-            right.push(iv[i]);
+            right.push(new IndexValue(i, A[i]));
         }
         long answer = 0;
         for (int i = 0; i < A.length; i++) {
-            answer += (A[i] * leftCounts[i] * rightCounts[i]) % 1000_000_007;
+            answer = (answer + A[i] * leftCounts[i] * rightCounts[i]) % 1000_000_007;
         }
         return (int) answer;
     }
