@@ -1,6 +1,5 @@
 package leetcode;
 
-import java.util.Arrays;
 import java.util.Stack;
 
 /**
@@ -8,10 +7,21 @@ import java.util.Stack;
  */
 public class Problem503 {
     public int[] nextGreaterElements(int[] nums) {
+        int max = Integer.MIN_VALUE;
+        int maxIdx = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (max < nums[i]) {
+                max = nums[i];
+                maxIdx = i;
+            }
+        }
         int[] answer = new int[nums.length];
         Stack<Integer> stack = new Stack<>();
-        for (int i = nums.length - 1; i >= 0; i--) {
-            while (!stack.isEmpty() && nums[i] > stack.peek()) {
+        for (int i = maxIdx, j = 0; j < nums.length; i--, j++) {
+            if (i < 0) {
+                i = nums.length - 1;
+            }
+            while (!stack.isEmpty() && nums[i] >= stack.peek()) {
                 stack.pop();
             }
             if (!stack.isEmpty()) {
@@ -22,11 +32,5 @@ public class Problem503 {
             stack.push(nums[i]);
         }
         return answer;
-    }
-
-    public static void main(String[] args) {
-        Problem503 prob = new Problem503();
-        System.out.println(Arrays.toString(prob.nextGreaterElements(new int[]{1, 2, 1}))); // [2,-1,2]
-        System.out.println(Arrays.toString(prob.nextGreaterElements(new int[]{1, 2, 1, 1}))); // [2,-1,2,2]
     }
 }
