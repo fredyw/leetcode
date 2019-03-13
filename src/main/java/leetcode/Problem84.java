@@ -7,32 +7,50 @@ import java.util.Stack;
  */
 public class Problem84 {
     public int largestRectangleArea(int[] height) {
-        Stack<Integer> stack = new Stack<>();
-        int idx = 0;
-        int maxArea = 0;
-        while (idx < height.length) {
-            if (stack.isEmpty() || height[stack.peek()] <= height[idx]) {
-                stack.push(idx);
-                idx++;
+        if (height.length == 0) {
+            return 0;
+        }
+        Stack<IndexValue> leftStack = new Stack<>();
+        int[] leftCounts = new int[height.length];
+        for (int i = 0; i < height.length; i++) {
+            while (!leftStack.isEmpty() && height[i] <= leftStack.peek().value) {
+                leftStack.pop();
+            }
+            if (!leftStack.isEmpty()) {
+                leftCounts[i] = i - leftStack.peek().index;
             } else {
-                int topIdx = stack.pop();
-                int peekIdx = (stack.isEmpty()) ? -1 : stack.peek();
-                int width = idx - peekIdx - 1;
-                int area = height[topIdx] * width;
-                if (maxArea < area) {
-                    maxArea = area;
-                }
+                leftCounts[i] = i + 1;
             }
+            leftStack.push(new IndexValue(i, height[i]));
         }
-        while (!stack.isEmpty()) {
-            int topIdx = stack.pop();
-            int peekIdx = (stack.isEmpty()) ? -1 : stack.peek();
-            int width = idx - peekIdx - 1;
-            int area = height[topIdx] * width;
-            if (maxArea < area) {
-                maxArea = area;
+
+        Stack<IndexValue> rightStack = new Stack<>();
+        int[] rightCounts = new int[height.length];
+        for (int i = height.length - 1, j = 0; i >= 0; i--, j++) {
+            while (!rightStack.isEmpty() && height[i] <= rightStack.peek().value) {
+                rightStack.pop();
             }
+            if (!rightStack.isEmpty()) {
+                rightCounts[i] = rightStack.peek().index - i;
+            } else {
+                rightCounts[i] = j + 1;
+            }
+            rightStack.push(new IndexValue(i, height[i]));
         }
-        return maxArea;
+        int answer = Integer.MIN_VALUE;
+        for (int i = 0; i < height.length; i++) {
+            answer = Math.max(answer, height[i] * (rightCounts[i] + leftCounts[i] - 1));
+        }
+        return answer;
+    }
+
+    private static class IndexValue {
+        private final int index;
+        private final int value;
+
+        public IndexValue(int index, int value) {
+            this.index = index;
+            this.value = value;
+        }
     }
 }
