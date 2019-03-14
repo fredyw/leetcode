@@ -5,32 +5,19 @@ package leetcode;
  */
 public class Problem122 {
     public int maxProfit(int[] prices) {
-        boolean buy = true;
-        int profit = 0;
-        int buyPrice = Integer.MAX_VALUE;
-        int sellPrice = Integer.MIN_VALUE;
-        for (int i = 0; i < prices.length; i++) {
-            if (buy) {
-                if (buyPrice < prices[i]) {
-                    sellPrice = prices[i];
-                    buy = false;
-                } else {
-                    buyPrice = prices[i];
-                }
-            } else { // sell
-                if (sellPrice > prices[i]) {
-                    profit += sellPrice - buyPrice;
-                    buy = true;
-                    buyPrice = prices[i];
-                    sellPrice = Integer.MIN_VALUE;
-                } else {
-                    sellPrice = prices[i];
-                }
+        int answer = 0;
+        int i = 0;
+        while (i < prices.length - 1) {
+            while (i < prices.length - 1 && prices[i] >= prices[i + 1]) {
+                i++;
             }
+            int buy = prices[i];
+            while (i < prices.length - 1&& prices[i] <= prices[i + 1]) {
+                i++;
+            }
+            int sell = prices[i];
+            answer += sell - buy;
         }
-        if (buyPrice < sellPrice) {
-            profit += sellPrice - buyPrice;
-        }
-        return profit;
+        return answer;
     }
 }
