@@ -5,25 +5,27 @@ package leetcode;
  */
 public class Problem152 {
     public int maxProduct(int[] nums) {
-        int max = nums[0];
-        int tmpMax = nums[0];
+        int answer = nums[0];
+        int product = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            if (tmpMax * nums[i] == 0) {
-                tmpMax = nums[i];
+            if (product * nums[i] == 0) {
+                product = nums[i];
             } else {
-                tmpMax *= nums[i];
+                product *= nums[i];
             }
-            max = Math.max(Math.max(tmpMax, nums[i]), max);
+            int max = Math.max(nums[i], product);
+            answer = Math.max(answer, max);
         }
-        tmpMax = nums[nums.length - 1];
+        product = nums[nums.length - 1];
         for (int i = nums.length - 2; i >= 0; i--) {
-            if (tmpMax * nums[i] == 0) {
-                tmpMax = nums[i];
+            if (product * nums[i] == 0) {
+                product = nums[i];
             } else {
-                tmpMax *= nums[i];
+                product *= nums[i];
             }
-            max = Math.max(Math.max(tmpMax, nums[i]), max);
+            int max = Math.max(nums[i], product);
+            answer = Math.max(answer, max);
         }
-        return max;
+        return answer;
     }
 }
