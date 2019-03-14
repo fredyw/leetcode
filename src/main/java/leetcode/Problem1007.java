@@ -5,13 +5,38 @@ package leetcode;
  */
 public class Problem1007 {
     public int minDominoRotations(int[] A, int[] B) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1007 prob = new Problem1007();
-        System.out.println(prob.minDominoRotations(new int[]{2, 1, 2, 4, 2, 2}, new int[]{5, 2, 6, 2, 3, 2})); // 2
-        System.out.println(prob.minDominoRotations(new int[]{3, 5, 1, 2, 3}, new int[]{3, 6, 3, 3, 4})); // -1
+        int[] aCounts = new int[6];
+        int[] bCOunts = new int[6];
+        for (int i = 0; i < A.length; i++) {
+            aCounts[A[i] - 1]++;
+            bCOunts[B[i] - 1]++;
+        }
+        int max = 0;
+        boolean a = true;
+        int val = 0;
+        for (int i = 0; i < aCounts.length; i++) {
+            if (aCounts[i] > max) {
+                max = aCounts[i];
+                val = i + 1;
+                a = true;
+            }
+            if (bCOunts[i] > max) {
+                max = bCOunts[i];
+                val = i + 1;
+                a = false;
+            }
+        }
+        int answer = 0;
+        for (int i = 0; i < A.length; i++) {
+            if (A[i] == val && a || B[i] == val && !a) {
+                continue;
+            }
+            if (A[i] == val || B[i] == val) {
+                answer++;
+            } else {
+                return -1;
+            }
+        }
+        return answer;
     }
 }
