@@ -5,8 +5,22 @@ package leetcode;
  */
 public class Problem188 {
     public int maxProfit(int k, int[] prices) {
+        // the k can be ridiculously high.
+        if (k >= prices.length / 2) {
+            return quickSolve(prices);
+        }
         Integer[][][] memo = new Integer[k + 1][prices.length + 1][2];
         return maxProfit(k, prices, 0, true, memo);
+    }
+
+    private static int quickSolve(int[] prices) {
+        int len = prices.length;
+        int profit = 0;
+        for (int i = 1; i < len; i++) {
+            // as long as there is a price gap, we gain a profit.
+            if (prices[i] > prices[i - 1]) profit += prices[i] - prices[i - 1];
+        }
+        return profit;
     }
 
     private static int maxProfit(int k, int[] prices, int index, boolean buy,
@@ -29,10 +43,4 @@ public class Problem188 {
         memo[k][index][buy ? 0 : 1] = max;
         return max;
     }
-
-    public static void main(String[] args) {
-        Problem188 prob = new Problem188();
-        System.out.println(prob.maxProfit(2, new int[]{2, 4, 1})); // 2
-        System.out.println(prob.maxProfit(2, new int[]{3, 2, 6, 5, 0, 3})); // 7
-   }
 }
