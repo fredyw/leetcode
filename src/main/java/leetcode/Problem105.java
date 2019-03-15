@@ -26,8 +26,10 @@ public class Problem105 {
         return buildTree(preorder, inOrderMap, new IntRef(), 0, preorder.length - 1);
     }
 
-    private static TreeNode buildTree(int[] preOrder,  Map<Integer, Integer> inOrderMap,
-                                      IntRef preOrderIdx, int startInOrderIdx,
+    private static TreeNode buildTree(int[] preOrder,
+                                      Map<Integer, Integer> inOrderMap,
+                                      IntRef preOrderIdx,
+                                      int startInOrderIdx,
                                       int endInOrderIdx) {
         if (preOrder.length <= preOrderIdx.val || startInOrderIdx > endInOrderIdx) {
             preOrderIdx.val--;
