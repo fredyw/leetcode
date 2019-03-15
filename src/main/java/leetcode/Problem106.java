@@ -17,45 +17,40 @@ public class Problem106 {
         }
     }
 
-    private class IntRef {
-        private int idx;
-
-        public IntRef(int idx) {
-            this.idx = idx;
-        }
-    }
-
     public TreeNode buildTree(int[] inorder, int[] postorder) {
-        if (inorder.length == 0) {
-            return null;
-        }
+        // For fast lookup.
         Map<Integer, Integer> inOrderMap = new HashMap<>();
         for (int i = 0; i < inorder.length; i++) {
             inOrderMap.put(inorder[i], i);
         }
-        TreeNode node = new TreeNode(postorder[postorder.length - 1]);
-        buildTree(node, postorder, new IntRef(postorder.length - 1), 0, inorder.length, inOrderMap);
+        IntRef postOrderIdx = new IntRef(postorder.length - 1);
+        return buildTree(postorder, inOrderMap, postOrderIdx, 0, postorder.length - 1);
+    }
+
+    private static TreeNode buildTree(int[] postOrder,
+                                      Map<Integer, Integer> inOrderMap,
+                                      IntRef postOrderIdx,
+                                      int startInOrderIdx,
+                                      int endInOrderIdx) {
+        if (postOrderIdx.val < 0 || startInOrderIdx > endInOrderIdx) {
+            postOrderIdx.val++;
+            return null;
+        }
+        int val = postOrder[postOrderIdx.val];
+        int inOrderIdx = inOrderMap.get(val);
+        TreeNode node = new TreeNode(val);
+        postOrderIdx.val--;
+        node.right = buildTree(postOrder, inOrderMap, postOrderIdx, inOrderIdx + 1, endInOrderIdx);
+        postOrderIdx.val--;
+        node.left = buildTree(postOrder, inOrderMap, postOrderIdx, startInOrderIdx, inOrderIdx - 1);
         return node;
     }
 
-    private void buildTree(TreeNode node,
-                           int[] postorder,
-                           IntRef postOrderIndexRef,
-                           int fromInOrderIdx,
-                           int toInOrderIdx,
-                           Map<Integer, Integer> inOrderMap) {
-        int inOrderIdx = inOrderMap.get(postorder[postOrderIndexRef.idx]);
-        if (inOrderIdx + 1 < toInOrderIdx) {
-            postOrderIndexRef.idx--;
-            int val = postorder[postOrderIndexRef.idx];
-            node.right = new TreeNode(val);
-            buildTree(node.right, postorder, postOrderIndexRef, inOrderIdx + 1, toInOrderIdx, inOrderMap);
-        }
-        if (fromInOrderIdx < inOrderIdx) {
-            postOrderIndexRef.idx--;
-            int val = postorder[postOrderIndexRef.idx];
-            node.left = new TreeNode(val);
-            buildTree(node.left, postorder, postOrderIndexRef, fromInOrderIdx, inOrderIdx, inOrderMap);
+    private static class IntRef {
+        private int val;
+
+        public IntRef(int val) {
+            this.val = val;
         }
     }
 }
