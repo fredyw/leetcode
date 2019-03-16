@@ -5,14 +5,29 @@ package leetcode;
  */
 public class Problem866 {
     public int primePalindrome(int N) {
-        // TODO
-        return 0;
+        if (8 <= N && N <= 11) {
+            return 11;
+        }
+        for (int x = 1; x < 100000; x++) {
+            String s = Integer.toString(x);
+            String r = new StringBuilder(s).reverse().toString().substring(1);
+            int y = Integer.parseInt(s + r);
+            if (y >= N && isPrime(y)) {
+                return y;
+            }
+        }
+        return -1;
     }
 
-    public static void main(String[] args) {
-        Problem866 prob = new Problem866();
-        System.out.println(prob.primePalindrome(6)); // 7
-        System.out.println(prob.primePalindrome(8)); // 11
-        System.out.println(prob.primePalindrome(13)); // 101
+    private static boolean isPrime(int n) {
+        if (n < 2) {
+            return false;
+        }
+        for (int i = 2; i <= (int) Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
