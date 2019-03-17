@@ -5,14 +5,20 @@ package leetcode;
  */
 public class Problem1012 {
     public int bitwiseComplement(int N) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1012 prob = new Problem1012();
-        System.out.println(prob.bitwiseComplement(5)); // 2
-        System.out.println(prob.bitwiseComplement(7)); // 0
-        System.out.println(prob.bitwiseComplement(10)); // 5
+        if (N == 0) {
+            return 1;
+        }
+        int n = N;
+        int size = 0;
+        while (n > 0) {
+            n >>= 1;
+            size++;
+        }
+        int answer = ~N;
+        int m = ~0;
+        for (int i = 0; i < size; i++) {
+            m <<= 1;
+        }
+        return answer & ~m;
     }
 }
