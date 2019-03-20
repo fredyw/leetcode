@@ -5,16 +5,36 @@ package leetcode;
  */
 public class Problem1014 {
     public int shipWithinDays(int[] weights, int D) {
-        // TODO
-        return 0;
+        int left = 0;
+        int right = 0;
+        for (int w : weights) {
+            left = Math.max(left, w); // max
+            right += w; // sum
+        }
+        while (left < right) {
+            int mid = (left + right) / 2;
+            if (isPossible(weights, D, mid)) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return left;
     }
 
-    public static void main(String[] args) {
-        Problem1014 prob = new Problem1014();
-        System.out.println(prob.shipWithinDays(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 5)); // 15
-//        System.out.println(prob.shipWithinDays(new int[]{1, 2, 3, 10, 5, 6, 7, 8, 9}, 5)); // 15
-//        System.out.println(prob.shipWithinDays(new int[]{1, 2, 10, 3, 5, 6, 7, 8, 9}, 5)); // 13
-//        System.out.println(prob.shipWithinDays(new int[]{3, 2, 2, 4, 1, 4}, 3)); // 6
-//        System.out.println(prob.shipWithinDays(new int[]{1, 2, 3, 1, 1}, 4)); // 3
+    private static boolean isPossible(int[] weights, int d, int max) {
+        int sum = 0;
+        int split = 1;
+        for (int weight : weights) {
+            if (sum + weight > max) {
+                sum = 0;
+                split++;
+                if (split > d) {
+                    return false;
+                }
+            }
+            sum += weight;
+        }
+        return true;
     }
 }
