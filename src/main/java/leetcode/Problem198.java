@@ -1,40 +1,32 @@
 package leetcode;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * https://leetcode.com/problems/house-robber/
  */
 public class Problem198 {
     public int rob(int[] num) {
-        Map<Integer, Integer> memo = new HashMap<>();
-        int max1 = rob(num, 0, memo);
-        int max2 = rob(num, 1, memo);
-        if (max1 > max2) {
-            return max1;
-        }
-        return max2;
+        Integer[][] memo = new Integer[num.length][2];
+        int a = rob(num, 0, true, memo);
+        int b = rob(num, 0, false, memo);
+        return Math.max(a, b);
     }
 
-    private int rob(int[] num, int idx, Map<Integer, Integer> memo) {
-        if (memo.containsKey(idx)) {
-            return memo.get(idx);
-        }
-        if (idx == num.length - 1) {
-            return num[idx];
-        }
-        if (idx >= num.length) {
+    private static int rob(int[] num, int index, boolean rob, Integer[][] memo) {
+        if (index == num.length) {
             return 0;
         }
-        int m1 = rob(num, idx + 2, memo);
-        int m2 = rob(num, idx + 3, memo);
-        int val = num[idx];
-        if (m1 > m2) {
-            memo.put(idx, val + m1);
-            return val + m1;
+        if (memo[index][rob ? 1 : 0] != null) {
+            return memo[index][rob ? 1 : 0];
         }
-        memo.put(idx, val + m2);
-        return val + m2;
+        int max = 0;
+        if (rob) {
+            max = Math.max(max, rob(num, index + 1, false, memo) + num[index]);
+        } else {
+            int a = rob(num, index + 1, true, memo);
+            int b = rob(num, index + 1, false, memo);
+            max = Math.max(max, Math.max(a, b));
+        }
+        memo[index][rob ? 1 : 0] = max;
+        return max;
     }
 }
