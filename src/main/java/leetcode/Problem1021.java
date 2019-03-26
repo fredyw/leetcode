@@ -5,18 +5,15 @@ package leetcode;
  */
 public class Problem1021 {
     public int maxScoreSightseeingPair(int[] A) {
-        int answer = 0;
         for (int i = 0; i < A.length; i++) {
-            for (int j = i + 1; j < A.length; j++) {
-                int val = A[i] + A[j] + i - j;
-                answer = Math.max(answer, val);
-            }
+            A[i] += i;
+        }
+        int answer = 0;
+        int maxSoFar = 0;
+        for (int i = 0; i < A.length; i++) {
+            answer = Math.max(answer, A[i] + maxSoFar - (i * 2));
+            maxSoFar = Math.max(maxSoFar, A[i]);
         }
         return answer;
-    }
-
-    public static void main(String[] args) {
-        Problem1021 prob = new Problem1021();
-        System.out.println(prob.maxScoreSightseeingPair(new int[]{8, 1, 5, 2, 6})); // 11
     }
 }
