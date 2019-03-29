@@ -7,37 +7,17 @@ import java.util.Arrays;
  */
 public class Problem881 {
     public int numRescueBoats(int[] people, int limit) {
+        int answer = 0;
         Arrays.sort(people);
-        int count = 0;
-        boolean[] visited = new boolean[people.length];
-        for (int i = 0; i < people.length; i++) {
-            if (visited[i]) {
-                continue;
+        int left = 0;
+        int right = people.length - 1;
+        while (left <= right) {
+            if (people[left] + people[right] <= limit) {
+                left++;
             }
-            int index = Arrays.binarySearch(people, i, people.length, limit - people[i]);
-            if (index < 0) {
-                index = -index - 1;
-                if (index == visited.length) {
-                    index--;
-                }
-            } else {
-                int val = people[index];
-                while (index < people.length && val == people[index]) {
-                    index++;
-                }
-                index--;
-            }
-            while (i < index) {
-                if (!visited[index]) {
-                    if (limit - (people[i] + people[index]) >= 0) {
-                        visited[index] = true;
-                        break;
-                    }
-                }
-                index--;
-            }
-            count++;
+            right--;
+            answer++;
         }
-        return count;
+        return answer;
     }
 }
