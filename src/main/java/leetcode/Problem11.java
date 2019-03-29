@@ -5,18 +5,18 @@ package leetcode;
  */
 public class Problem11 {
     public int maxArea(int[] height) {
-        int max = 0;
-        int i = 0;
-        int j = height.length - 1;
-        while (i < j) {
-            int area = Math.min(height[i], height[j]) * (j - i);
-            if (height[i] < height[j]) {
-                i++;
+        int answer = 0;
+        int left = 0;
+        int right = height.length - 1;
+        while (left < right) {
+            int area = Math.min(height[left], height[right]) * (right - left);
+            answer = Math.max(answer, area);
+            if (height[left] < height[right]) {
+                left++;
             } else {
-                j--;
+                right--;
             }
-            max = Math.max(max, area);
         }
-        return max;
+        return answer;
     }
 }
