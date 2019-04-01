@@ -9,14 +9,11 @@ import java.util.List;
 public class Problem1018 {
     public List<Boolean> prefixesDivBy5(int[] A) {
         List<Boolean> answer = new ArrayList<>();
-        // TODO
+        int remainder = 0;
+        for (int i = 0; i < A.length; i++) {
+            remainder = A[i] == 0 ? (remainder * 2) % 5 : (remainder * 2 + 1) % 5;
+            answer.add(remainder == 0);
+        }
         return answer;
-    }
-
-    public static void main(String[] args) {
-        Problem1018 prob = new Problem1018();
-        System.out.println(prob.prefixesDivBy5(new int[]{0, 1, 1})); // [true,false,false]
-        System.out.println(prob.prefixesDivBy5(new int[]{1, 1, 1})); // [false,false,false]
-        System.out.println(prob.prefixesDivBy5(new int[]{0, 1, 1, 1, 1, 1})); // [true,false,false,false,true,false]
     }
 }
