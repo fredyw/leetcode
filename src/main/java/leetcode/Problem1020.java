@@ -5,23 +5,46 @@ package leetcode;
  */
 public class Problem1020 {
     public int numEnclaves(int[][] A) {
-        // TODO
-        return 0;
+        int maxRow = A.length;
+        int maxCol = A.length > 0 ? A[0].length : 0;
+        int answer = 0;
+        boolean[][] visited = new boolean[maxRow][maxCol];
+        for (int i = 0; i < maxRow; i++) {
+            for (int j = 0; j < maxCol; j++) {
+                if (visited[i][j] || A[i][j] == 0) {
+                    continue;
+                }
+                BooleanRef ignored = new BooleanRef();
+                int n = numEnclaves(A, maxRow, maxCol, i, j, visited, ignored);
+                if (ignored.val) {
+                    continue;
+                }
+                answer += n;
+            }
+        }
+        return answer;
     }
 
-    public static void main(String[] args) {
-        Problem1020 prob = new Problem1020();
-        System.out.println(prob.numEnclaves(new int[][]{
-            {0, 0, 0, 0},
-            {1, 0, 1, 0},
-            {0, 1, 1, 0},
-            {0, 0, 0, 0}
-        })); // 3
-        System.out.println(prob.numEnclaves(new int[][]{
-            {0, 1, 1, 0},
-            {0, 0, 1, 0},
-            {0, 0, 1, 0},
-            {0, 0, 0, 0}
-        })); // 0
+    private static class BooleanRef {
+        private boolean val;
+    }
+
+    private static int numEnclaves(int[][] array, int maxRow, int maxCol, int row, int col,
+                                   boolean[][] visited, BooleanRef ignored) {
+        if (row < 0 || row == maxRow || col < 0 || col == maxCol) {
+            return 0;
+        }
+        if (visited[row][col] || array[row][col] == 0) {
+            return 0;
+        }
+        if (row == 0 || row == maxRow - 1 || col == 0 || col == maxCol - 1) {
+            ignored.val = true;
+        }
+        visited[row][col] = true;
+        int a = numEnclaves(array, maxRow, maxCol, row - 1, col, visited, ignored);
+        int b = numEnclaves(array, maxRow, maxCol, row, col + 1, visited, ignored);
+        int c = numEnclaves(array, maxRow, maxCol, row + 1, col, visited, ignored);
+        int d = numEnclaves(array, maxRow, maxCol, row, col - 1, visited, ignored);
+        return a + b + c + d + 1;
     }
 }
