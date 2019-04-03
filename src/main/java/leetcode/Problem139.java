@@ -1,17 +1,18 @@
 package leetcode;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
  * https://leetcode.com/problems/word-break/
  */
 public class Problem139 {
-    public boolean wordBreak(String s, Set<String> dict) {
-        return wordBreak(s, dict, new HashSet<>());
+    public boolean wordBreak(String s, List<String> wordDict) {
+        return wordBreak(s, wordDict, new HashSet<>());
     }
 
-    private boolean wordBreak(String s, Set<String> dict, Set<String> memo) {
+    private static boolean wordBreak(String s, List<String> dict, Set<String> memo) {
         for (String d : dict) {
             if (s.equals(d)) {
                 return true;
