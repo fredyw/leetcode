@@ -1,31 +1,29 @@
 package leetcode;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * https://leetcode.com/problems/combination-sum-iv/
  */
 public class Problem377 {
     public int combinationSum4(int[] nums, int target) {
-        return combinationSum(nums, target, new HashMap<>());
+        Integer[] memo = new Integer[target + 1];
+        return combinationSum4(nums, target, memo);
     }
 
-    private int combinationSum(int[] nums, int target, Map<Integer, Integer> memo) {
+    private static int combinationSum4(int[] nums, int target, Integer[] memo) {
         if (target < 0) {
             return 0;
         }
         if (target == 0) {
             return 1;
         }
-        if (memo.containsKey(target)) {
-            return memo.get(target);
+        if (memo[target] != null) {
+            return memo[target];
         }
-        int count = 0;
+        int answer = 0;
         for (int i = 0; i < nums.length; i++) {
-            count += combinationSum(nums, target - nums[i], memo);
+            answer += combinationSum4(nums, target - nums[i], memo);
         }
-        memo.put(target, count);
-        return count;
+        memo[target] = answer;
+        return answer;
     }
 }
