@@ -5,36 +5,33 @@ package leetcode;
  */
 public class Problem33 {
     public int search(int[] nums, int target) {
-        int prev = 0;
-        int current;
-        for (current = 1; current < nums.length; current++) {
-            if (nums[current] < nums[prev]) {
-                break;
-            }
-            prev = current;
-        }
-        int startIdx = current;
-        if (current == nums.length) {
-            startIdx = 0;
-        }
-        return binarySearch(nums, target, 0, nums.length - 1, startIdx);
-    }
-
-    private int binarySearch(int[] nums, int target, int lo, int hi, int startIdx) {
-        if (lo > hi) {
+        if (nums.length == 0) {
             return -1;
         }
-        int mid = (lo + hi) / 2;
-        int midIdx = startIdx + mid;
-        if (midIdx >= nums.length) {
-            midIdx = midIdx - nums.length;
+        int idx = 0;
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] > nums[i + 1]) {
+                idx = i + 1;
+                break;
+            }
         }
-        if (nums[midIdx] == target) {
-            return midIdx;
+        return binarySearch(nums, target, idx, 0, nums.length);
+    }
+
+    private static int binarySearch(int[] nums, int target, int idx, int i, int j) {
+        int left = i;
+        int right = j;
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            int midValue = nums[(mid + idx) % nums.length];
+            if (midValue == target) {
+                return (mid + idx) % nums.length;
+            } else if (midValue < target) {
+                left = mid + 1;
+            } else { // midValue >= target
+                right = mid - 1;
+            }
         }
-        if (nums[midIdx] > target) {
-            return binarySearch(nums, target, lo, mid - 1, startIdx);
-        }
-        return binarySearch(nums, target, mid + 1, hi, startIdx);
+        return -1;
     }
 }
