@@ -1,54 +1,42 @@
 package leetcode;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * https://leetcode.com/problems/house-robber-ii/
  */
 public class Problem213 {
     public int rob(int[] nums) {
-        int max = 0;
+        int answer = 0;
         if (nums.length == 1) {
             return nums[nums.length - 1];
         }
         for (int i = 0; i < nums.length - 1; i++) {
-            Map<Integer, Value> memo = new HashMap<>();
-            Value a = rob(nums, i, memo);
-            Value b = rob(nums, i + 1, memo);
-            int tmpMax = Math.max(a.value0, b.value1);
-            max = Math.max(max, tmpMax);
+            Integer[] memo = new Integer[nums.length];
+            int a = rob(nums, true, i, memo);
+            memo = new Integer[nums.length];
+            int b = rob(nums, false, i + 1, memo);
+            answer = Math.max(answer, Math.max(a, b));
         }
-        return max;
+        return answer;
     }
 
-    private static class Value {
-        int value0;
-        int value1;
-    }
-
-    private Value rob(int[] nums, int idx, Map<Integer, Value> memo) {
-        if (memo.containsKey(idx)) {
-            return memo.get(idx);
-        }
+    private static int rob(int[] nums, boolean first, int idx, Integer[] memo) {
         if (idx == nums.length - 1) {
-            Value value = new Value();
-            value.value0 = 0;
-            value.value1 = nums[idx];
-            return value;
+            if (first) {
+                return 0;
+            }
+            return nums[idx];
         }
         if (idx >= nums.length) {
-            return new Value();
+            return 0;
         }
-        Value a = rob(nums, idx + 2, memo);
-        Value b = rob(nums, idx + 3, memo);
-        int val = nums[idx];
-        int max0 = Math.max(a.value0 + val, b.value0 + val);
-        int max1 = Math.max(a.value1 + val, b.value1 + val);
-        Value value = new Value();
-        value.value0 = max0;
-        value.value1 = max1;
-        memo.put(idx, value);
-        return value;
+        if (memo[idx] != null) {
+            return memo[idx];
+        }
+        int answer = nums[idx];
+        int a = rob(nums, first, idx + 2, memo);
+        int b = rob(nums, first, idx + 3, memo);
+        answer += Math.max(a, b);
+        memo[idx] = answer;
+        return answer;
     }
 }
