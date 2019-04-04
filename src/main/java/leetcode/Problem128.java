@@ -1,7 +1,9 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -10,51 +12,40 @@ import java.util.Set;
  */
 public class Problem128 {
     public int longestConsecutive(int[] nums) {
-        Map<Integer, Integer> numToGroupMap = new HashMap<>();
-        Map<Integer, Set<Integer>> groupToNumsMap = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            int num = nums[i];
-            int prevNum = num - 1;
-            int nextNum = num + 1;
-
-            if (numToGroupMap.containsKey(num)) {
-                continue;
+        Set<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            set.add(num);
+        }
+        Map<Integer, List<Integer>> graph = new HashMap<>();
+        for (int num : nums) {
+            int a = num - 1;
+            int b = num + 1;
+            graph.putIfAbsent(num, new ArrayList<>());
+            if (set.contains(a)) {
+                graph.get(num).add(a);
             }
-            numToGroupMap.put(num, i);
-            if (groupToNumsMap.containsKey(i)) {
-                groupToNumsMap.get(i).add(num);
-            } else {
-                Set<Integer> set = new HashSet<>();
-                set.add(num);
-                groupToNumsMap.put(i, set);
-            }
-            if (numToGroupMap.containsKey(prevNum)) {
-                link(numToGroupMap, groupToNumsMap, num, prevNum);
-            }
-            if (numToGroupMap.containsKey(nextNum)) {
-                link(numToGroupMap, groupToNumsMap, num, nextNum);
+            if (set.contains(b)) {
+                graph.get(num).add(b);
             }
         }
-        int max = 0;
-        for (Set<Integer> set : groupToNumsMap.values()) {
-            max = Math.max(max, set.size());
+        Set<Integer> visited = new HashSet<>();
+        int answer = 0;
+        for (int num : nums) {
+            if (!visited.contains(num)) {
+                answer = Math.max(answer, dfs(graph, visited, num));
+            }
         }
-        return max;
+        return answer;
     }
 
-    private void link(Map<Integer, Integer> numToGroupMap,
-                      Map<Integer, Set<Integer>> groupToNumsMap,
-                      int num,
-                      int consNum) {
-        int group = numToGroupMap.get(num);
-        int consGroup = numToGroupMap.get(consNum);
-        Set<Integer> consSet = groupToNumsMap.get(consGroup);
-        consSet.add(num);
-        Set<Integer> set = groupToNumsMap.get(group);
-        consSet.addAll(set);
-        for (int n : set) {
-            numToGroupMap.put(n, consGroup);
+    private static int dfs(Map<Integer, List<Integer>> graph, Set<Integer> visited, int num) {
+        visited.add(num);
+        int count = 0;
+        for (int neighbor : graph.get(num)) {
+            if (!visited.contains(neighbor)) {
+                count += dfs(graph, visited, neighbor);
+            }
         }
-        groupToNumsMap.remove(group);
+        return count + 1;
     }
 }
