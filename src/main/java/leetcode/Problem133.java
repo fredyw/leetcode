@@ -19,20 +19,7 @@ public class Problem133 {
             label = x;
             neighbors = new ArrayList<>();
         }
-
-        @Override
-        public String toString() {
-            StringBuilder builder = new StringBuilder();
-            builder.append("UndirectedGraphNode [label=");
-            builder.append(label);
-            builder.append(", neighbors=");
-            builder.append(neighbors);
-            builder.append("]");
-            return builder.toString();
-        }
     }
-
-    ;
 
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
         if (node == null) {
