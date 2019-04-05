@@ -1,7 +1,6 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -12,60 +11,62 @@ public class Problem57 {
         int start;
         int end;
 
-        Interval() {
-            start = 0;
-            end = 0;
-        }
-
         Interval(int s, int e) {
             start = s;
             end = e;
         }
-
-        @Override
-        public String toString() {
-            return "[" + start + ", " + end + "]";
-        }
     }
 
     public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
-        intervals.add(newInterval);
-        Collections.sort(intervals, (e1, e2) -> {
-            int cmp = Integer.compare(e1.start, e2.start);
-            if (cmp == 0) {
-                return Integer.compare(e1.end, e2.end);
-            }
-            return cmp;
-        });
-        List<Interval> result = new ArrayList<>();
+        List<Interval> answer = new ArrayList<>();
+        if (intervals.size() == 0) {
+            answer.add(newInterval);
+            return answer;
+        }
+        boolean[] overlaps = new boolean[intervals.size()];
+        boolean hasOverlap = false;
+        for (int i = 0; i < intervals.size(); i++) {
+            boolean a = intervals.get(i).start <= newInterval.start &&
+                newInterval.start <= intervals.get(i).end;
+            boolean b = intervals.get(i).start <= newInterval.end &&
+                newInterval.start <= intervals.get(i).end;
+
+            boolean c = newInterval.start <= intervals.get(i).start &&
+                intervals.get(i).end <= newInterval.end;
+            boolean d = newInterval.start <= intervals.get(i).end &&
+                intervals.get(i).end <= newInterval.end;
+
+            overlaps[i] = a || b || c || d;
+            hasOverlap |= overlaps[i];
+        }
         int i = 0;
-        for (; i < intervals.size() - 1; i++) {
-            if (intervals.get(i).end < intervals.get(i + 1).start) {
-                result.add(intervals.get(i));
-            } else { // overlap
-                int start = Math.min(intervals.get(i).start, intervals.get(i + 1).start);
-                int end = Math.max(intervals.get(i).end, intervals.get(i + 1).end);
-                boolean add = false;
-                for (; i < intervals.size(); i++) {
-                    if (intervals.get(i).start <= end) {
-                        end = Math.max(intervals.get(i).end, end);
-                        add = true;
-                    } else {
-                        if (add) {
-                            result.add(new Interval(start, end));
-                            add = false;
-                        }
-                        result.add(intervals.get(i));
+        boolean added = false;
+        while (i < intervals.size()) {
+            if (!overlaps[i]) {
+                if (!hasOverlap && !added) {
+                    if (newInterval.end < intervals.get(i).start) {
+                        answer.add(newInterval);
+                        added = true;
                     }
                 }
-                if (add) {
-                    result.add(new Interval(start, end));
+                answer.add(intervals.get(i));
+                i++;
+            } else {
+                // Merge.
+                int newStart = Integer.min(newInterval.start, intervals.get(i).start);
+                int newEnd = 0;
+                while (i < intervals.size() && overlaps[i]) {
+                    newEnd = Integer.max(newInterval.end, intervals.get(i).end);
+                    i++;
                 }
+                answer.add(new Interval(newStart, newEnd));
             }
         }
-        if (i < intervals.size()) {
-            result.add(intervals.get(i));
+        if (!hasOverlap) {
+            if (intervals.get(intervals.size() - 1).end < newInterval.start) {
+                answer.add(newInterval);
+            }
         }
-        return result;
+        return answer;
     }
 }
