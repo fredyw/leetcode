@@ -1,16 +1,22 @@
 package leetcode;
 
-import java.util.Arrays;
-
 /**
  * https://leetcode.com/problems/valid-anagram/
  */
 public class Problem242 {
     public boolean isAnagram(String s, String t) {
-        char[] sChars = s.toCharArray();
-        char[] tChars = t.toCharArray();
-        Arrays.sort(sChars);
-        Arrays.sort(tChars);
-        return Arrays.equals(sChars, tChars);
+        int[] counts = new int[26];
+        for (char c : s.toCharArray()) {
+            counts[c - 'a']++;
+        }
+        for (char c : t.toCharArray()) {
+            counts[c - 'a']--;
+        }
+        for (int count : counts) {
+            if (count != 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
