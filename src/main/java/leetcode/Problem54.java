@@ -8,68 +8,50 @@ import java.util.List;
  */
 public class Problem54 {
     public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> result = new ArrayList<>();
-        if (matrix.length == 0) {
-            return result;
-        }
-        Direction[] directions = new Direction[]{
-            Direction.LEFT, Direction.DOWN, Direction.RIGHT, Direction.UP
-        };
+        List<Integer> answer = new ArrayList<>();
+        int left = 0;
+        int right = matrix.length > 0 ? matrix[0].length - 1 : 0;
+        int up = 0;
+        int down = matrix.length - 1;
         int dirIdx = 0;
-        int row = 0;
-        int col = 0;
-        int rowBegin = 0;
-        int colBegin = 0;
-        int rowEnd = matrix.length;
-        int colEnd = matrix[row].length;
-        do {
-            if (dirIdx == directions.length) {
-                dirIdx = 0;
-            }
-            switch (directions[dirIdx]) {
-                case LEFT:
-                    row = rowBegin;
-                    col = colBegin;
-                    while (col < colEnd) {
-                        result.add(matrix[row][col]);
-                        col++;
+        Direction[] directions = new Direction[]{
+            Direction.RIGHT, Direction.DOWN, Direction.LEFT, Direction.UP
+        };
+        while (left <= right && up <= down) {
+            Direction direction = directions[dirIdx];
+            switch (direction) {
+                case RIGHT:
+                    for (int col = left; col <= right; col++) {
+                       answer.add(matrix[up][col]);
                     }
-                    rowBegin++;
-                    col--;
+                    up++;
                     break;
                 case DOWN:
-                    row++;
-                    while (row < rowEnd) {
-                        result.add(matrix[row][col]);
-                        row++;
+                    for (int row = up; row <= down; row++) {
+                        answer.add(matrix[row][right]);
                     }
-                    colEnd--;
-                    row--;
+                    right--;
                     break;
-                case RIGHT:
-                    col--;
-                    while (col >= colBegin) {
-                        result.add(matrix[row][col]);
-                        col--;
+                case LEFT:
+                    for (int col = right; col >= left; col--) {
+                        answer.add(matrix[down][col]);
                     }
-                    rowEnd--;
-                    col++;
+                    down--;
                     break;
                 case UP:
-                    row--;
-                    while (row >= rowBegin) {
-                        result.add(matrix[row][col]);
-                        row--;
+                    for (int row = down; row >= up; row--) {
+                        answer.add(matrix[row][left]);
                     }
-                    colBegin++;
+                    left++;
                     break;
             }
             dirIdx++;
-        } while (rowBegin != rowEnd && colBegin != colEnd);
-        return result;
+            dirIdx %= directions.length;
+        }
+        return answer;
     }
 
-    private static enum Direction {
-        LEFT, RIGHT, UP, DOWN
+    private enum Direction {
+        RIGHT, DOWN, LEFT, UP
     }
 }
