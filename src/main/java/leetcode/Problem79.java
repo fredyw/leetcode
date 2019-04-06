@@ -1,60 +1,45 @@
 package leetcode;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * https://leetcode.com/problems/word-search/
  */
 public class Problem79 {
     public boolean exist(char[][] board, String word) {
-        for (int row = 0; row < board.length; row++) {
-            for (int col = 0; col < board[row].length; col++) {
-                if (word.charAt(0) == board[row][col]) {
-                    Set<String> set = new HashSet<>();
-                    boolean found = exist(board, word, board.length, board[row].length,
-                        set, 0, row, col);
-                    if (found) {
-                        return true;
-                    }
+        int maxRow = board.length;
+        int maxCol = maxRow > 0 ? board[0].length : 0;
+        for (int i = 0; i < maxRow; i++) {
+            for (int j = 0; j < maxCol; j++) {
+                boolean[][] visited = new boolean[maxRow][maxCol];
+                if (exist(board, word, maxRow, maxCol, 0, i, j, visited)) {
+                    return true;
                 }
             }
         }
         return false;
     }
 
-    private boolean exist(char[][] board, String word, int maxRow, int maxCol,
-                          Set<String> set,
-                          int idx, int row, int col) {
-        String key = row + "|" + col;
-        if (col < 0 || col >= maxCol || row < 0 || row >= maxRow) {
-            return false;
-        }
-        if (idx >= word.length()) {
-            return false;
-        }
-        if (board[row][col] != word.charAt(idx)) {
-            return false;
-        }
-        if (set.contains(key)) {
-            return false;
-        }
-        if (board[row][col] == word.charAt(idx) && idx == word.length() - 1) {
+    private static boolean exist(char[][] board, String word, int maxRow, int maxCol,
+                                 int idx, int row, int col, boolean[][] visited) {
+        if (idx == word.length()) {
             return true;
         }
-        set.add(key);
-        // left
-        boolean a = exist(board, word, maxRow, maxCol, set, idx + 1, row, col - 1);
-        // up
-        boolean b = exist(board, word, maxRow, maxCol, set, idx + 1, row - 1, col);
-        // right
-        boolean c = exist(board, word, maxRow, maxCol, set, idx + 1, row, col + 1);
-        // down
-        boolean d = exist(board, word, maxRow, maxCol, set, idx + 1, row + 1, col);
-        boolean result = a | b | c | d;
-        if (!result) {
-            set.remove(key);
+        if (row < 0 || row == maxRow || col < 0 || col == maxCol) {
+            return false;
         }
-        return result;
+        if (visited[row][col]) {
+            return false;
+        }
+        char c = word.charAt(idx);
+        if (board[row][col] != c) {
+            return false;
+        }
+        visited[row][col] = true;
+        boolean answer = false;
+        answer |= exist(board, word, maxRow, maxCol, idx + 1, row, col + 1, visited); // right
+        answer |= exist(board, word, maxRow, maxCol, idx + 1, row + 1, col, visited); // down
+        answer |= exist(board, word, maxRow, maxCol, idx + 1, row, col - 1, visited); // left
+        answer |= exist(board, word, maxRow, maxCol, idx + 1, row - 1, col, visited); // up
+        visited[row][col] = false;
+        return answer;
     }
 }
