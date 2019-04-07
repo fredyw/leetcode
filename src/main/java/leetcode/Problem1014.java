@@ -1,40 +1,19 @@
 package leetcode;
 
 /**
- * https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
+ * https://leetcode.com/problems/best-sightseeing-pair/
  */
 public class Problem1014 {
-    public int shipWithinDays(int[] weights, int D) {
-        int left = 0;
-        int right = 0;
-        for (int w : weights) {
-            left = Math.max(left, w); // max
-            right += w; // sum
+    public int maxScoreSightseeingPair(int[] A) {
+        for (int i = 0; i < A.length; i++) {
+            A[i] += i;
         }
-        while (left < right) {
-            int mid = (left + right) / 2;
-            if (isPossible(weights, D, mid)) {
-                right = mid;
-            } else {
-                left = mid + 1;
-            }
+        int answer = 0;
+        int maxSoFar = 0;
+        for (int i = 0; i < A.length; i++) {
+            answer = Math.max(answer, A[i] + maxSoFar - (i * 2));
+            maxSoFar = Math.max(maxSoFar, A[i]);
         }
-        return left;
-    }
-
-    private static boolean isPossible(int[] weights, int d, int max) {
-        int sum = 0;
-        int split = 1;
-        for (int weight : weights) {
-            if (sum + weight > max) {
-                sum = 0;
-                split++;
-                if (split > d) {
-                    return false;
-                }
-            }
-            sum += weight;
-        }
-        return true;
+        return answer;
     }
 }
