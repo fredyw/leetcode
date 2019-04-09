@@ -1,7 +1,5 @@
 package leetcode;
 
-import java.util.Stack;
-
 /**
  * https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
  */
@@ -17,41 +15,31 @@ public class Problem236 {
     }
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        Stack<TreeNode> path1 = getPath(root, p);
-        Stack<TreeNode> path2 = getPath(root, q);
-        int minSize = Math.min(path1.size(), path2.size());
-        TreeNode lca = null;
-        for (int i = 0; i < minSize; i++) {
-            TreeNode node1 = path1.pop();
-            TreeNode node2 = path2.pop();
-            if (node1.val != node2.val) {
-                break;
-            } else {
-                lca = node1;
-            }
-        }
-        return lca;
+        LCA lca = new LCA();
+        lowestCommonAncestor(root, p, q, lca);
+        return lca.node;
     }
 
-    private Stack<TreeNode> getPath(TreeNode root, TreeNode n) {
+    private static class LCA {
+        private TreeNode node;
+    }
+
+    private static boolean lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q,
+                                                LCA lca) {
         if (root == null) {
-            return null;
+            return false;
         }
-        if (root == n) {
-            Stack<TreeNode> path = new Stack<>();
-            path.add(root);
-            return path;
+        boolean mid = false;
+        if (root.val == p.val || root.val == q.val) {
+            mid = true;
         }
-        Stack<TreeNode> result = getPath(root.left, n);
-        if (result != null) {
-            result.add(root);
-            return result;
+        boolean left = lowestCommonAncestor(root.left, p, q, lca);
+        boolean right = lowestCommonAncestor(root.right, p, q, lca);
+        if ((mid && left) || (mid && right) || (left && right)) {
+            if (lca.node == null) {
+                lca.node = root;
+            }
         }
-        result = getPath(root.right, n);
-        if (result != null) {
-            result.add(root);
-            return result;
-        }
-        return result;
+        return left | mid | right;
     }
 }
