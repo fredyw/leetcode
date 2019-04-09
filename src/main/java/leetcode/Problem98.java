@@ -1,10 +1,5 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
-
 /**
  * https://leetcode.com/problems/validate-binary-search-tree/
  */
@@ -20,21 +15,25 @@ public class Problem98 {
     }
 
     public boolean isValidBST(TreeNode root) {
-        List<Integer> values = new ArrayList<>();
-        inOrder(root, values);
-        Set<Integer> sortedValues = new TreeSet<>();
-        for (int v : values) {
-            sortedValues.add(v);
-        }
-        return values.equals(new ArrayList<>(sortedValues));
+        return inOrder(root, new IntRef());
     }
 
-    private void inOrder(TreeNode node, List<Integer> values) {
+    private static class IntRef {
+        private Integer val;
+    }
+
+    private boolean inOrder(TreeNode node, IntRef ref) {
         if (node == null) {
-            return;
+            return true;
         }
-        inOrder(node.left, values);
-        values.add(node.val);
-        inOrder(node.right, values);
+        boolean a = inOrder(node.left, ref);
+        if (ref.val != null) {
+            if (ref.val >= node.val) {
+                return false;
+            }
+        }
+        ref.val = node.val;
+        boolean b = inOrder(node.right, ref);
+        return a & b;
     }
 }
