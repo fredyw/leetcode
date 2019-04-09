@@ -5,55 +5,46 @@ package leetcode;
  */
 public class Problem5 {
     public String longestPalindrome(String s) {
-        if (s.length() == 1) {
-            return s;
-        }
-        String longest = "";
-        char[] chars = s.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            String p = palindrome(chars, i, true);
-            if (p.length() > longest.length()) {
-                longest = p;
-            }
-            p = palindrome(chars, i, false);
-            if (p.length() > longest.length()) {
-                longest = p;
-            }
-        }
-        return longest;
+        String[][] memo = new String[s.length() + 1][s.length() + 1];
+        return longestPalindrome(s, 0, s.length(), memo);
     }
 
-    private String palindrome(char[] chars, int idx, boolean even) {
-        int left = idx;
-        int right = idx;
-        if (!even) {
-            if (idx - 1 >= 0 && idx + 1 < chars.length && chars[idx - 1] == chars[idx + 1]) {
-                left--;
-                right++;
-            } else if (idx + 1 < chars.length && chars[idx] == chars[idx + 1]) {
-                right++;
-            } else {
-                return "";
-            }
+    private static String longestPalindrome(String s, int i, int j, String[][] memo) {
+        if (i >= j) {
+            return "";
+        }
+        if (memo[i][j] != null) {
+            return memo[i][j];
+        }
+        String answer = s.substring(i, j);
+        if (isPalindrome(answer)) {
+            memo[i][j] = answer;
+            return answer;
         } else {
-            if (idx + 1 < chars.length && chars[idx] == chars[idx + 1]) {
-                right++;
-            } else if (idx - 1 >= 0 && idx + 1 < chars.length && chars[idx - 1] == chars[idx + 1]) {
-                left--;
-                right++;
-            } else {
-                return "";
+            answer = "";
+        }
+        String a = longestPalindrome(s, i + 1, j, memo);
+        String b = longestPalindrome(s, i, j - 1, memo);
+        String c = longestPalindrome(s, i + 1, j - 1, memo);
+        if (answer.length() < a.length()) {
+            answer = a;
+        }
+        if (answer.length() < b.length()) {
+            answer = b;
+        }
+        if (answer.length() < c.length()) {
+            answer = c;
+        }
+        memo[i][j] = answer;
+        return answer;
+    }
+
+    private static boolean isPalindrome(String s) {
+        for (int i = 0, j = s.length() - 1; i <= j; i++, j--) {
+            if (s.charAt(i) != s.charAt(j)) {
+                return false;
             }
         }
-        while (left >= 0 && right < chars.length) {
-            if (chars[left] != chars[right]) {
-                break;
-            }
-            left--;
-            right++;
-        }
-        left++;
-        right--;
-        return new String(chars, left, right - left + 1);
+        return true;
     }
 }
