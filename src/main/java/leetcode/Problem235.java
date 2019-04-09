@@ -1,8 +1,5 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
  */
@@ -18,41 +15,31 @@ public class Problem235 {
     }
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        List<TreeNode> path1 = getPath(root, p);
-        List<TreeNode> path2 = getPath(root, q);
-        int minSize = Math.min(path1.size(), path2.size());
-        TreeNode lca = null;
-        for (int i = 0; i < minSize; i++) {
-            if (path1.get(i).val != path2.get(i).val) {
-                break;
-            } else {
-                lca = path1.get(i);
+        LCA lca = new LCA();
+        lowestCommonAncestor(root, p, q, lca);
+        return lca.node;
+    }
+
+    private static class LCA {
+        private TreeNode node;
+    }
+
+    private static boolean lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q,
+                                                LCA lca) {
+        if (root == null) {
+            return false;
+        }
+        boolean mid = false;
+        if (root.val == p.val || root.val == q.val) {
+            mid = true;
+        }
+        boolean left = lowestCommonAncestor(root.left, p, q, lca);
+        boolean right = lowestCommonAncestor(root.right, p, q, lca);
+        if ((mid && left) || (mid && right) || (left && right)) {
+            if (lca.node == null) {
+                lca.node = root;
             }
         }
-        return lca;
-    }
-
-    private List<TreeNode> getPath(TreeNode root, TreeNode n) {
-        List<TreeNode> result = new ArrayList<>();
-        getPath(root, n, new ArrayList<>(), result);
-        return result;
-    }
-
-    private void getPath(TreeNode root, TreeNode n, List<TreeNode> path, List<TreeNode> result) {
-        if (root == null) {
-            return;
-        }
-        if (root == n) {
-            result.addAll(path);
-            result.add(root);
-            return;
-        }
-        List<TreeNode> newPath = new ArrayList<>(path);
-        newPath.add(root);
-        if (root.val >= n.val) {
-            getPath(root.left, n, newPath, result);
-        } else {
-            getPath(root.right, n, newPath, result);
-        }
+        return left | mid | right;
     }
 }
