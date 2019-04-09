@@ -14,31 +14,27 @@ public class Problem230 {
         }
     }
 
-    private static class Result {
-        int n;
-        int val;
-        boolean found;
-    }
-
     public int kthSmallest(TreeNode root, int k) {
-        Result result = new Result();
-        kthSmallest(root, k, result);
-        return result.val;
+        IntRef ref = new IntRef();
+        kthSmallest(root, k, ref);
+        return ref.value;
     }
 
-    private void kthSmallest(TreeNode node, int k, Result result) {
-        if (result.n == k) {
-            result.found = true;
-            return;
-        }
+    private static class IntRef {
+        private int value;
+        private int n;
+    }
+
+    private void kthSmallest(TreeNode node, int k, IntRef ref) {
         if (node == null) {
             return;
         }
-        kthSmallest(node.left, k, result);
-        result.n++;
-        if (!result.found) {
-            result.val = node.val;
+        kthSmallest(node.left, k, ref);
+        ref.n++;
+        if (ref.n == k) {
+            ref.value = node.val;
+            return;
         }
-        kthSmallest(node.right, k, result);
+        kthSmallest(node.right, k, ref);
     }
 }
