@@ -15,18 +15,9 @@ public class Problem141 {
     }
 
     public boolean hasCycle(ListNode head) {
-        if (head == null) {
-            return false;
-        }
-        ListNode one = head;
-        ListNode two = head; // iterate two times the speed of one
-        while (true) {
-            if (one == null) {
-                break;
-            }
-            if (two == null) {
-                break;
-            }
+        ListNode one = head; // one step
+        ListNode two = head; // two steps
+        while (one != null && two != null) {
             one = one.next;
             if (two.next == null) {
                 break;
