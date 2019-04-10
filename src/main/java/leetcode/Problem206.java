@@ -1,7 +1,5 @@
 package leetcode;
 
-import java.util.Stack;
-
 /**
  * https://leetcode.com/problems/reverse-linked-list/
  */
@@ -16,26 +14,27 @@ public class Problem206 {
     }
 
     public ListNode reverseList(ListNode head) {
-        Stack<ListNode> stack = new Stack<>();
-        for (ListNode node = head; node != null; node = node.next) {
-            stack.push(node);
+        ListNodeRef ref = new ListNodeRef();
+        reverse(head, ref);
+        return ref.head;
+    }
+
+    private static class ListNodeRef {
+        private ListNode head;
+    }
+
+    private static ListNode reverse(ListNode head, ListNodeRef ref) {
+        if (head == null) {
+            return null;
         }
-        ListNode n1 = null;
-        ListNode n2 = null;
-        ListNode newHead = null;
-        while (!stack.isEmpty()) {
-            n1 = stack.pop();
-            if (newHead == null) {
-                newHead = n1;
-            }
-            if (stack.isEmpty()) {
-                break;
-            }
-            n2 = stack.pop();
-            n1.next = n2;
-            n2.next = null;
-            stack.push(n2);
+        ListNode next = head.next;
+        if (next == null) {
+            ref.head = head;
+            return head;
         }
-        return newHead;
+        head.next = null;
+        ListNode node = reverse(next, ref);
+        node.next = head;
+        return head;
     }
 }
