@@ -2,51 +2,31 @@ package leetcode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
- * https://leetcode.com/problems/anagrams/
+ * https://leetcode.com/problems/group-anagrams/
  */
 public class Problem49 {
-    public List<String> anagrams(String[] strs) {
-        class Anagram {
-            String sorted;
-            String original;
-
-            Anagram(String sorted, String original) {
-                this.sorted = sorted;
-                this.original = original;
-            }
-        }
-
-        List<Anagram> sortedStrings = new ArrayList<>();
+    public List<List<String>> anagrams(String[] strs) {
+        Map<String, List<String>> map = new HashMap<>();
         for (String s : strs) {
-            if (s.isEmpty()) {
-                sortedStrings.add(new Anagram(s, s));
+            char[] chars = s.toCharArray();
+            Arrays.sort(chars);
+            String sorted = new String(chars);
+            if (!map.containsKey(sorted)) {
+                List<String> list = new ArrayList<>();
+                list.add(s);
+                map.put(sorted, list);
             } else {
-                char[] chars = s.toCharArray();
-                Arrays.sort(chars);
-                sortedStrings.add(new Anagram(new String(chars), s));
+                map.get(sorted).add(s);
             }
         }
-
-        List<String> result = new ArrayList<>();
-        Set<Integer> ignored = new HashSet<>();
-        for (int i = 0; i < sortedStrings.size(); i++) {
-            for (int j = 0; j < sortedStrings.size(); j++) {
-                if (i == j) {
-                    continue;
-                }
-                if (sortedStrings.get(i).sorted.equals(sortedStrings.get(j).sorted)) {
-                    if (!ignored.contains(i)) {
-                        result.add(sortedStrings.get(i).original);
-                    }
-                    ignored.add(i);
-                }
-            }
-        }
-        return result;
+        return map.values().stream()
+            .map(e -> new ArrayList<>(e))
+            .collect(Collectors.toList());
     }
 }
