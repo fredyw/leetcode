@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
@@ -16,25 +17,25 @@ public class Problem23 {
     }
 
     public ListNode mergeKLists(ListNode[] lists) {
-        PriorityQueue<ListNode> queue = new PriorityQueue<>((a, b) -> Integer.compare(a.val, b.val));
+        PriorityQueue<ListNode> queue = new PriorityQueue<>(Comparator.comparingInt(a -> a.val));
         for (ListNode node : lists) {
             for (ListNode n = node; n != null; n = n.next) {
                 queue.add(n);
             }
         }
-        ListNode result = null;
-        ListNode resultHead = null;
+        ListNode answer = null; // the head
+        ListNode node = null;
         while (!queue.isEmpty()) {
             ListNode n = queue.remove();
-            n.next = null;
-            if (result == null) {
-                result = n;
-                resultHead = result;
+            n.next = null; // null out to avoid cycle
+            if (answer == null) {
+                answer = n;
+                node = n;
             } else {
-                result.next = n;
-                result = result.next;
+                node.next = n;
+                node = node.next;
             }
         }
-        return resultHead;
+        return answer;
     }
 }
