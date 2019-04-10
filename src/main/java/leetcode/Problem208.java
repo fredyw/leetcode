@@ -1,31 +1,26 @@
 package leetcode;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * https://leetcode.com/problems/implement-trie-prefix-tree/
  */
 public class Problem208 {
-    static class TrieNode {
-        Map<Character, TrieNode> children = new HashMap<>();
-        char value;
-        boolean complete;
-
-        // Initialize your data structure here.
-        public TrieNode() {
-        }
-
-        public TrieNode(char value) {
-            this.value = value;
-        }
-    }
-
     public static class Trie {
-        private TrieNode root;
+        private static class Node {
+            private final Node[] children = new Node[26];
+            private char value;
+            private boolean complete;
+
+            public Node() {
+            }
+
+            public Node(char value) {
+                this.value = value;
+            }
+        }
+
+        private final Node root = new Node();
 
         public Trie() {
-            root = new TrieNode();
         }
 
         // Inserts a word into the trie.
@@ -33,18 +28,16 @@ public class Problem208 {
             insert(root, word, 0);
         }
 
-        private void insert(TrieNode node, String word, int idx) {
+        private static void insert(Node node, String word, int idx) {
             if (word.length() == idx) {
                 node.complete = true;
                 return;
             }
             char c = word.charAt(idx);
-            TrieNode n;
-            if (node.children.containsKey(c)) {
-                n = node.children.get(c);
-            } else {
-                n = new TrieNode(c);
-                node.children.put(c, n);
+            Node n = node.children[c - 'a'];
+            if (n == null) {
+                n = new Node(c);
+                node.children[c - 'a'] = n;
             }
             insert(n, word, idx + 1);
         }
@@ -54,21 +47,18 @@ public class Problem208 {
             return search(root, word, 0);
         }
 
-        private boolean search(TrieNode node, String word, int idx) {
+        private static boolean search(Node node, String word, int idx) {
             if (node == null) {
                 return false;
             }
             if (word.length() == idx) {
-                if (node.complete) {
-                    return true;
-                }
-                return false;
+                return node.complete;
             }
             char c = word.charAt(idx);
-            if (!node.children.containsKey(c)) {
+            if (node.children[c - 'a'] == null) {
                 return false;
             }
-            TrieNode n = node.children.get(c);
+            Node n = node.children[c - 'a'];
             return search(n, word, idx + 1);
         }
 
@@ -78,7 +68,7 @@ public class Problem208 {
             return startsWith(root, prefix, 0);
         }
 
-        private boolean startsWith(TrieNode node, String prefix, int idx) {
+        private boolean startsWith(Node node, String prefix, int idx) {
             if (node == null) {
                 return false;
             }
@@ -86,10 +76,10 @@ public class Problem208 {
                 return true;
             }
             char c = prefix.charAt(idx);
-            if (!node.children.containsKey(c)) {
+            if (node.children[c - 'a'] == null) {
                 return false;
             }
-            TrieNode n = node.children.get(c);
+            Node n = node.children[c - 'a'];
             return startsWith(n, prefix, idx + 1);
         }
     }
