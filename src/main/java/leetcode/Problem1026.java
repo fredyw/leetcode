@@ -15,21 +15,48 @@ public class Problem1026 {
     }
 
     public int maxAncestorDiff(TreeNode root) {
-        // TODO
-        return 0;
+        IntRef answer = new IntRef();
+        maxAncestorDiff(root, answer);
+        return answer.val;
     }
 
-    public static void main(String[] args) {
-        Problem1026 prob = new Problem1026();
-        TreeNode root = new TreeNode(8);
-        root.left = new TreeNode(3);
-        root.left.left = new TreeNode(1);
-        root.left.right = new TreeNode(6);
-        root.left.right.left = new TreeNode(4);
-        root.left.right.right = new TreeNode(7);
-        root.right = new TreeNode(10);
-        root.right.right = new TreeNode(14);
-        root.right.right.left = new TreeNode(13);
-        System.out.println(prob.maxAncestorDiff(root)); // 7
+    private static class MinMax {
+        private int min;
+        private int max;
+
+        public MinMax(int min, int max) {
+            this.min = min;
+            this.max = max;
+        }
+    }
+
+    private static class IntRef {
+        private int val;
+    }
+
+    private static MinMax maxAncestorDiff(TreeNode root, IntRef max) {
+        if (root == null) {
+            return null;
+        }
+        MinMax left = maxAncestorDiff(root.left, max);
+        MinMax right = maxAncestorDiff(root.right, max);
+        MinMax minMax = new MinMax(Integer.MAX_VALUE, Integer.MIN_VALUE);
+        if (left != null) {
+            minMax.min = Math.min(minMax.min, left.min);
+            minMax.max = Math.max(minMax.max, left.max);
+            int a = Math.abs(root.val - left.max);
+            int b = Math.abs(root.val - left.min);
+            max.val = Math.max(max.val, Math.max(a, b));
+        }
+        if (right != null) {
+            minMax.min = Math.min(minMax.min, right.min);
+            minMax.max = Math.max(minMax.max, right.max);
+            int a = Math.abs(root.val - right.max);
+            int b = Math.abs(root.val - right.min);
+            max.val = Math.max(max.val, Math.max(a, b));
+        }
+        minMax.min = Math.min(minMax.min, root.val);
+        minMax.max = Math.max(minMax.max, root.val);
+        return minMax;
     }
 }
