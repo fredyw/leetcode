@@ -15,7 +15,7 @@ public class Problem673 {
             MaxCount mc = longestIncreasingSubsequence(nums, i, memo);
             int longest = mc.max + 1;
             if (max < longest) {
-                count += mc.count;
+                count = mc.count;
             } else if (max == longest) {
                 count += mc.count;
             }
@@ -45,7 +45,7 @@ public class Problem673 {
                 MaxCount mc = longestIncreasingSubsequence(nums, i, memo);
                 int longest = mc.max + 1;
                 if (max < longest) {
-                    count += mc.count;
+                    count = mc.count;
                 } else if (max == longest) {
                     count += mc.count;
                 }
