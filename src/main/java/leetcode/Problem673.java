@@ -1,8 +1,5 @@
 package leetcode;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * https://leetcode.com/problems/number-of-longest-increasing-subsequence/
  */
@@ -11,7 +8,6 @@ public class Problem673 {
         if (nums.length == 0) {
             return 0;
         }
-        Map<Integer, Integer> map = new HashMap<>();
         int max = 0;
         int count = 1;
         MaxCount[] memo = new MaxCount[nums.length];
