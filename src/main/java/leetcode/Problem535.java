@@ -10,7 +10,7 @@ public class Problem535 {
     public static class Codec {
         private static final String PREFIX_URL = "http://tinyurl.com/";
         private static final String ALPHANUMERIC = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        private Map<Integer, String> map = new HashMap<>();
+        private final Map<Integer, String> map = new HashMap<>();
         private int id;
 
         // Encodes a URL to a shortened URL.
@@ -33,7 +33,6 @@ public class Problem535 {
         public String decode(String shortUrl) {
             String url = shortUrl.substring(PREFIX_URL.length());
             int key = 0;
-            System.out.println(shortUrl);
             for (int i = url.length() - 1; i >= 0; i--) {
                 key += ALPHANUMERIC.indexOf(url.charAt(i)) * (int) Math.pow(ALPHANUMERIC.length(), i);
             }
