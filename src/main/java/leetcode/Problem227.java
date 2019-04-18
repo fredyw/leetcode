@@ -1,8 +1,6 @@
 package leetcode;
 
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Stack;
 
 /**
@@ -10,79 +8,63 @@ import java.util.Stack;
  */
 public class Problem227 {
     public int calculate(String s) {
-        Map<Character, Integer> precendenceMap = new HashMap<>();
-        precendenceMap.put('/', 2);
-        precendenceMap.put('*', 2);
-        precendenceMap.put('-', 1);
-        precendenceMap.put('+', 1);
-        String str = s.replaceAll("\\s+", "");
-        Stack<Long> operands = new Stack<>();
+        String expr = s.replaceAll("\\s", "");
         Stack<Character> operators = new Stack<>();
+        Stack<Long> operands = new Stack<>();
         String num = "";
-        for (char c : str.toCharArray()) {
+        for (int i = 0; i < expr.length(); i++) {
+            char c = expr.charAt(i);
             if (Character.isDigit(c)) {
                 num += c;
-            } else if (c == '+' || c == '-' || c == '*' || c == '/') {
-                if (!num.isEmpty()) {
-                    operands.add(Long.parseLong(num));
-                    num = "";
-                }
+            } else { // the operator
+                operands.add(Long.valueOf(num));
                 if (!operators.isEmpty()) {
-                    int peekPrecedence = precendenceMap.get(operators.peek());
-                    int predence = precendenceMap.get(c);
-                    if (peekPrecedence >= predence) {
-                        evaluate(operands, operators);
-                    }
-                }
-                if (c == '+' || c == '-') {
-                    while (!operators.isEmpty()) {
-                        evaluate(operands, operators);
+                    char op = operators.peek();
+                    if (op == '*' || op == '/') {
+                        long a = operands.pop();
+                        long b = operands.pop();
+                        op = operators.pop();
+                        operands.add(evaluate(b, a, op));
                     }
                 }
                 operators.add(c);
+                num = "";
             }
         }
         if (!num.isEmpty()) {
-            operands.add(Long.parseLong(num));
-            num = "";
+            operands.add(Long.valueOf(num));
         }
         if (!operators.isEmpty()) {
-            evaluate(operands, operators);
+            char op = operators.peek();
+            if (op == '*' || op == '/') {
+                long a = operands.pop();
+                long b = operands.pop();
+                op = operators.pop();
+                operands.add(evaluate(b, a, op));
+            }
         }
-        // evaluate from left to right
+        // Evaluate from left to right.
         Collections.reverse(operands);
         Collections.reverse(operators);
         while (!operators.isEmpty()) {
-            evaluateLeftToRight(operands, operators);
+            long a = operands.pop();
+            long b = operands.pop();
+            char op = operators.pop();
+            operands.add(evaluate(a, b, op));
         }
-        return (int) operands.pop().longValue();
+        return operands.pop().intValue();
     }
 
-    private void evaluate(Stack<Long> operands, Stack<Character> operators) {
-        char op = operators.pop();
-        long a = operands.pop();
-        long b = operands.pop();
-        long val = evaluate(b, a, op);
-        operands.add(val);
-    }
-
-    private void evaluateLeftToRight(Stack<Long> operands, Stack<Character> operators) {
-        char op = operators.pop();
-        long a = operands.pop();
-        long b = operands.pop();
-        long val = evaluate(a, b, op);
-        operands.add(val);
-    }
-
-    private long evaluate(long a, long b, char op) {
-        if (op == '+') {
-            return a + b;
-        } else if (op == '-') {
-            return a - b;
-        } else if (op == '*') {
+    private static long evaluate(long a, long b, char op) {
+        if (op == '*') {
             return a * b;
-        } else { // op == /
+        }
+        if (op == '/') {
             return a / b;
         }
+        if (op == '+') {
+            return a + b;
+        }
+        return a - b; // op == '-'
     }
 }
