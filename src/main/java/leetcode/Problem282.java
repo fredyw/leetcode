@@ -45,6 +45,11 @@ public class Problem282 {
                 answer.add("" + c);
             } else {
                 for (String s : strings) {
+                    if (s.length() >= 2) {
+                        if (s.charAt(0) == '0' && Character.isDigit(s.charAt(1))) {
+                            continue;
+                        }
+                    }
                     answer.add(c + op + s);
                 }
             }
