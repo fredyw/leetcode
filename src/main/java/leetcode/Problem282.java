@@ -45,11 +45,6 @@ public class Problem282 {
                 answer.add("" + c);
             } else {
                 for (String s : strings) {
-                    if (s.length() >= 2) {
-                        if (s.charAt(0) == '0' && Character.isDigit(s.charAt(1))) {
-                            continue;
-                        }
-                    }
                     answer.add(c + op + s);
                 }
             }
@@ -67,6 +62,9 @@ public class Problem282 {
             if (Character.isDigit(c)) {
                 num += c;
             } else { // the operator
+                if (num.length() >= 2 && num.charAt(0) == '0') {
+                    return Long.MIN_VALUE;
+                }
                 operands.add(Long.valueOf(num));
                 if (!operators.isEmpty()) {
                     char op = operators.peek();
@@ -82,6 +80,9 @@ public class Problem282 {
             }
         }
         if (!num.isEmpty()) {
+            if (num.length() >= 2 && num.charAt(0) == '0') {
+                return Long.MIN_VALUE;
+            }
             operands.add(Long.valueOf(num));
         }
         if (!operators.isEmpty()) {
@@ -102,7 +103,7 @@ public class Problem282 {
             char op = operators.pop();
             operands.add(evaluate(a, b, op));
         }
-        return operands.pop().intValue();
+        return operands.pop();
     }
 
     private static long evaluate(long a, long b, char op) {
@@ -126,5 +127,6 @@ public class Problem282 {
         System.out.println(prob.addOperators("105", 5)); // ["1*0+5","10-5"]
         System.out.println(prob.addOperators("00", 0)); // ["0+0", "0-0", "0*0"]
         System.out.println(prob.addOperators("3456237490", 9191)); // []
+        System.out.println(prob.addOperators("2147483648", -2147483648)); // []
     }
 }
