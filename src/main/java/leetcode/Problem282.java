@@ -1,11 +1,10 @@
 package leetcode;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.Stack;
 
 /**
  * https://leetcode.com/problems/expression-add-operators/
@@ -54,8 +53,8 @@ public class Problem282 {
     }
 
     private static long calculate(String expr) {
-        Stack<Character> operators = new Stack<>();
-        Stack<Long> operands = new Stack<>();
+        ArrayDeque<Character> operators = new ArrayDeque<>();
+        ArrayDeque<Long> operands = new ArrayDeque<>();
         String num = "";
         for (int i = 0; i < expr.length(); i++) {
             char c = expr.charAt(i);
@@ -65,17 +64,17 @@ public class Problem282 {
                 if (num.length() >= 2 && num.charAt(0) == '0') {
                     return Long.MIN_VALUE;
                 }
-                operands.add(Long.valueOf(num));
+                operands.addLast(Long.valueOf(num));
                 if (!operators.isEmpty()) {
-                    char op = operators.peek();
+                    char op = operators.peekLast();
                     if (op == '*' || op == '/') {
-                        long a = operands.pop();
-                        long b = operands.pop();
-                        op = operators.pop();
-                        operands.add(evaluate(b, a, op));
+                        long a = operands.removeLast();
+                        long b = operands.removeLast();
+                        op = operators.removeLast();
+                        operands.addLast(evaluate(b, a, op));
                     }
                 }
-                operators.add(c);
+                operators.addLast(c);
                 num = "";
             }
         }
@@ -83,27 +82,25 @@ public class Problem282 {
             if (num.length() >= 2 && num.charAt(0) == '0') {
                 return Long.MIN_VALUE;
             }
-            operands.add(Long.valueOf(num));
+            operands.addLast(Long.valueOf(num));
         }
         if (!operators.isEmpty()) {
-            char op = operators.peek();
+            char op = operators.peekLast();
             if (op == '*' || op == '/') {
-                long a = operands.pop();
-                long b = operands.pop();
-                op = operators.pop();
-                operands.add(evaluate(b, a, op));
+                long a = operands.removeLast();
+                long b = operands.removeLast();
+                op = operators.removeLast();
+                operands.addLast(evaluate(b, a, op));
             }
         }
         // Evaluate from left to right.
-        Collections.reverse(operands);
-        Collections.reverse(operators);
         while (!operators.isEmpty()) {
-            long a = operands.pop();
-            long b = operands.pop();
-            char op = operators.pop();
-            operands.add(evaluate(a, b, op));
+            long a = operands.removeFirst();
+            long b = operands.removeFirst();
+            char op = operators.removeFirst();
+            operands.addFirst(evaluate(a, b, op));
         }
-        return operands.pop();
+        return operands.removeLast();
     }
 
     private static long evaluate(long a, long b, char op) {
@@ -117,16 +114,5 @@ public class Problem282 {
             return a + b;
         }
         return a - b; // op == '-'
-    }
-
-    public static void main(String[] args) {
-        Problem282 prob = new Problem282();
-        System.out.println(prob.addOperators("123", 6)); // ["1+2+3", "1*2*3"]
-        System.out.println(prob.addOperators("123", 123)); // ["123"]
-        System.out.println(prob.addOperators("232", 8)); // ["2*3+2", "2+3*2"]
-        System.out.println(prob.addOperators("105", 5)); // ["1*0+5","10-5"]
-        System.out.println(prob.addOperators("00", 0)); // ["0+0", "0-0", "0*0"]
-        System.out.println(prob.addOperators("3456237490", 9191)); // []
-        System.out.println(prob.addOperators("2147483648", -2147483648)); // []
     }
 }
