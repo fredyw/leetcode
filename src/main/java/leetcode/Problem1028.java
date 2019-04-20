@@ -15,14 +15,35 @@ public class Problem1028 {
     }
 
     public TreeNode recoverFromPreorder(String S) {
-        // TODO
-        return null;
+        return recoverFromPreorder(S, new IntRef(), 0);
     }
 
-    public static void main(String[] args) {
-        Problem1028 prob = new Problem1028();
-        System.out.println(prob.recoverFromPreorder("1-2--3--4-5--6--7"));
-        System.out.println(prob.recoverFromPreorder("1-2--3---4-5--6---7"));
-        System.out.println(prob.recoverFromPreorder("1-401--349---90--88"));
+    private static class IntRef {
+        private int val;
+    }
+
+    private static TreeNode recoverFromPreorder(String s, IntRef idx, int depth) {
+        if (idx.val == s.length()) {
+            return null;
+        }
+        int i = idx.val;
+        int count = 0;
+        while (i < s.length() && s.charAt(i) == '-') {
+            count++;
+            i++;
+        }
+        String num = "";
+        while (i < s.length() && Character.isDigit(s.charAt(i))) {
+            num += s.charAt(i);
+            i++;
+        }
+        TreeNode node = null;
+        if (count == depth) {
+            node = new TreeNode(Integer.parseInt(num));
+            idx.val = i;
+            node.left = recoverFromPreorder(s, idx, depth + 1);
+            node.right = recoverFromPreorder(s, idx, depth + 1);
+        }
+        return node;
     }
 }
