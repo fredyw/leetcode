@@ -46,15 +46,4 @@ public class Problem1031 {
         }
         return max;
     }
-
-    public static void main(String[] args) {
-        Problem1031 prob = new Problem1031();
-        System.out.println(prob.maxSumTwoNoOverlap(new int[]{0, 6, 5, 2, 2, 5, 1, 9, 4}, 1, 2)); // 20
-        System.out.println(prob.maxSumTwoNoOverlap(new int[]{3, 8, 1, 3, 2, 1, 8, 9, 0}, 3, 2)); // 29
-        System.out.println(prob.maxSumTwoNoOverlap(new int[]{2, 1, 5, 6, 0, 9, 5, 0, 3, 8}, 4, 3)); // 31
-        System.out.println(prob.maxSumTwoNoOverlap(new int[]{4, 0, 1}, 2, 1)); // 5
-        System.out.println(prob.maxSumTwoNoOverlap(new int[]{8, 20, 6, 2, 20, 17, 6, 3, 20, 8, 12}, 5, 4)); // 108
-        System.out.println(prob.maxSumTwoNoOverlap(new int[]{8, 20, 6, 2, 20, 17, 6, 3, 20, 8, 12}, 5, 4)); // 108
-        System.out.println(prob.maxSumTwoNoOverlap(new int[]{12, 8, 12, 18, 19, 10, 17, 20, 6, 8, 13, 1, 19, 11, 5}, 3, 6)); // 131
-    }
 }
