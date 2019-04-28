@@ -14,6 +14,8 @@ public class Problem1033 {
     public static void main(String[] args) {
         Problem1033 prob = new Problem1033();
         System.out.println(Arrays.toString(prob.numMovesStones(1, 2, 5))); // [1, 2]
+        System.out.println(Arrays.toString(prob.numMovesStones(1, 3, 5))); // [1, 2]
         System.out.println(Arrays.toString(prob.numMovesStones(4, 3, 2))); // [0, 0]
+        System.out.println(Arrays.toString(prob.numMovesStones(1, 5, 9))); // [2, 6]
     }
 }
