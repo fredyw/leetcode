@@ -10,17 +10,39 @@ import java.util.List;
 public class Problem336 {
     public List<List<Integer>> palindromePairs(String[] words) {
         List<List<Integer>> answer = new ArrayList<>();
+        String[] reversedWords = new String[words.length];
         for (int i = 0; i < words.length; i++) {
-            for (int j = i + 1; j < words.length; j++) {
-                if (isPalindrome(words[i] + words[j])) {
+            reversedWords[i] = new StringBuilder(words[i]).reverse().toString();
+        }
+        for (int i = 0; i < words.length; i++) {
+            for (int j = i + 1; j < reversedWords.length; j++) {
+                if (isPalindrome(words[i], reversedWords[j])) {
                     answer.add(Arrays.asList(i, j));
                 }
-                if (isPalindrome(words[j] + words[i])) {
+                if (isPalindrome(words[j], reversedWords[i])) {
                     answer.add(Arrays.asList(j, i));
                 }
             }
         }
         return answer;
+    }
+
+    private static boolean isPalindrome(String word, String reversedWord) {
+        if (word.equals(reversedWord)) {
+            return true;
+        }
+        if (word.startsWith(reversedWord)) {
+            String sub = word.substring(reversedWord.length());
+            if (isPalindrome(sub)) {
+                return true;
+            }
+        } else if (reversedWord.startsWith(word)) {
+            String sub = reversedWord.substring(word.length());
+            if (isPalindrome(sub)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static boolean isPalindrome(String s) {
@@ -30,11 +52,5 @@ public class Problem336 {
             }
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-        Problem336 prob = new Problem336();
-        System.out.println(prob.palindromePairs(new String[]{"abcd", "dcba", "lls", "s", "sssll"})); // [[0,1],[1,0],[3,2],[2,4]]
-        System.out.println(prob.palindromePairs(new String[]{"bat", "tab", "cat"})); // [[0,1],[1,0]]
     }
 }
