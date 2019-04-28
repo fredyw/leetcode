@@ -5,8 +5,23 @@ package leetcode;
  */
 public class Problem1035 {
     public int maxUncrossedLines(int[] A, int[] B) {
-        // TODO
-        return 0;
+        int answer = 0;
+        for (int i = 0; i < A.length; i++) {
+            answer = Math.max(answer, maxUncrossedLines(A, B, i, 0));
+        }
+        return answer;
+    }
+
+    private static int maxUncrossedLines(int[] a, int[] b, int i, int j) {
+        if (i == a.length || j == b.length) {
+            return 0;
+        }
+        int max = 0;
+        if (a[i] == b[j]) {
+            max = Math.max(max, maxUncrossedLines(a, b, i + 1, j + 1) + 1);
+        }
+        max = Math.max(max, maxUncrossedLines(a, b, i, j + 1));
+        return max;
     }
 
     public static void main(String[] args) {
