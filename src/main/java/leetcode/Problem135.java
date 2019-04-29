@@ -46,7 +46,8 @@ public class Problem135 {
 //        System.out.println(prob.candy(new int[]{1, 2, 3, 4})); // 10
 //        System.out.println(prob.candy(new int[]{1, 2, 3, 4, 4, 4, 3, 2, 1})); // 21
 //        System.out.println(prob.candy(new int[]{1, 2, 3, 4, 3, 2, 1})); // 16
-//        System.out.println(prob.candy(new int[]{2, 3, 2, 1})); // 7
-        System.out.println(prob.candy(new int[]{2, 3, 3, 2, 1})); // 9
+        System.out.println(prob.candy(new int[]{2, 3, 2, 1})); // 7
+//        System.out.println(prob.candy(new int[]{2, 3, 3, 2, 1})); // 9
+//        System.out.println(prob.candy(new int[]{2, 3, 3, 4, 5})); // 9
     }
 }
