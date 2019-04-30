@@ -17,7 +17,7 @@ public class Problem307 {
             }
         }
 
-        void update(int i, int val) {
+        public void update(int i, int val) {
             int delta = val - nums[i];
             nums[i] = val;
             int idx = i + 1;
