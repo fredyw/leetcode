@@ -1,26 +1,29 @@
 package leetcode;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 /**
  * https://leetcode.com/problems/my-calendar-iii/
  */
 public class Problem732 {
     private static class MyCalendarThree {
+        private final Map<Integer/*num*/, Integer/*count*/> delta = new TreeMap<>();
+
         public MyCalendarThree() {
         }
 
         public int book(int start, int end) {
-            // TODO
-            return 0;
-        }
-    }
+            delta.put(start, delta.getOrDefault(start, 0) + 1); // increment start count
+            delta.put(end, delta.getOrDefault(end, 0) - 1); // decrement end count
 
-    public static void main(String[] args) {
-        MyCalendarThree calendar = new MyCalendarThree();
-        System.out.println(calendar.book(10, 20)); // 1
-        System.out.println(calendar.book(50, 60)); // 1
-        System.out.println(calendar.book(10, 40)); // 2
-        System.out.println(calendar.book(5, 15)); // 3
-        System.out.println(calendar.book(5, 10)); // 3
-        System.out.println(calendar.book(25, 55)); // 3
+            int count = 0;
+            int max = 0;
+            for (int d : delta.values()) {
+                count += d;
+                max = Math.max(max, count);
+            }
+            return max;
+        }
     }
 }
