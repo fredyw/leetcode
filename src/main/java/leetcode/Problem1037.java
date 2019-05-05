@@ -5,35 +5,13 @@ package leetcode;
  */
 public class Problem1037 {
     public boolean isBoomerang(int[][] points) {
-        // TODO
-        return false;
-    }
-
-    public static void main(String[] args) {
-        Problem1037 prob = new Problem1037();
-        System.out.println(prob.isBoomerang(new int[][]{
-            {1, 1}, {2, 3}, {3, 2}
-        })); // true
-        System.out.println(prob.isBoomerang(new int[][]{
-            {1, 1}, {2, 2}, {3, 3}
-        })); // false
-        System.out.println(prob.isBoomerang(new int[][]{
-            {0, 1}, {0, 2}, {0, 3}
-        })); // false
-        System.out.println(prob.isBoomerang(new int[][]{
-            {0, 1}, {0, 2}, {2, 3}
-        })); // true
-        System.out.println(prob.isBoomerang(new int[][]{
-            {0, 1}, {0, 1}, {0, 1}
-        })); // false
-        System.out.println(prob.isBoomerang(new int[][]{
-            {0, 1}, {0, 1}, {0, 1}
-        })); // false
-        System.out.println(prob.isBoomerang(new int[][]{
-            {1, 1}, {2, 3}, {3, 5}
-        })); // false
-        System.out.println(prob.isBoomerang(new int[][]{
-            {1, 1}, {2, 3}, {3, 6}
-        })); // true
+        // Note: slope of 2 points (x1, y1), (x2, y2)
+        // (y2 - y2) / (x2 - x1)
+        int[] a = points[0]; // (x1, y1)
+        int[] b = points[1]; // (x2, y2)
+        int[] c = points[2]; // (x3, y3)
+        // (y2 − y1) / (x2 − x1) == (y3 − y1) / (x3 − x1)
+        // (y2 − y1) * (x3 − x1) == (y3 − y1) * (x2 − x1)
+        return !((b[1] - a[1]) * (c[0] - a[0]) == ((c[1] - a[1]) * (b[0] - a[0])));
     }
 }
