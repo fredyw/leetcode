@@ -17,5 +17,23 @@ public class Problem1037 {
         System.out.println(prob.isBoomerang(new int[][]{
             {1, 1}, {2, 2}, {3, 3}
         })); // false
+        System.out.println(prob.isBoomerang(new int[][]{
+            {0, 1}, {0, 2}, {0, 3}
+        })); // false
+        System.out.println(prob.isBoomerang(new int[][]{
+            {0, 1}, {0, 2}, {2, 3}
+        })); // true
+        System.out.println(prob.isBoomerang(new int[][]{
+            {0, 1}, {0, 1}, {0, 1}
+        })); // false
+        System.out.println(prob.isBoomerang(new int[][]{
+            {0, 1}, {0, 1}, {0, 1}
+        })); // false
+        System.out.println(prob.isBoomerang(new int[][]{
+            {1, 1}, {2, 3}, {3, 5}
+        })); // false
+        System.out.println(prob.isBoomerang(new int[][]{
+            {1, 1}, {2, 3}, {3, 6}
+        })); // true
     }
 }
