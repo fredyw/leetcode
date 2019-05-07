@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Problem1038 {
     public static class TreeNode {
         int val;
@@ -9,11 +12,45 @@ public class Problem1038 {
         TreeNode(int x) {
             val = x;
         }
+
+        @Override
+        public String toString() {
+            return "" + val;
+        }
     }
 
     public TreeNode bstToGst(TreeNode root) {
-        // TODO
-        return null;
+        List<Integer> sums = new ArrayList<>();
+        traverse(root, sums);
+        return bstToGst(root, sums, new IntRef());
+    }
+
+    private static TreeNode bstToGst(TreeNode root, List<Integer> sums, IntRef idx) {
+        if (root == null) {
+            return null;
+        }
+        root.left = bstToGst(root.left, sums, idx);
+        root.val = sums.get(sums.size() - 1) - sums.get(idx.val) + root.val;
+        idx.val++;
+        root.right = bstToGst(root.right, sums, idx);
+        return root;
+    }
+
+    private static class IntRef {
+        private int val;
+    }
+
+    private static void traverse(TreeNode root, List<Integer> sums) {
+        if (root == null) {
+            return;
+        }
+        traverse(root.left, sums);
+        if (sums.isEmpty()) {
+            sums.add(root.val);
+        } else {
+            sums.add(sums.get(sums.size() - 1) + root.val);
+        }
+        traverse(root.right, sums);
     }
 
     public static void main(String[] args) {
@@ -29,7 +66,8 @@ public class Problem1038 {
         root.right.right = new TreeNode(7);
         root.right.right.right = new TreeNode(8);
 
-        root = prob.bstToGst(root); // 30
+        root = prob.bstToGst(root);
+        System.out.println(root); // 30
         System.out.println(root.left); // 36
         System.out.println(root.left.left); // 36
         System.out.println(root.left.right); // 35
