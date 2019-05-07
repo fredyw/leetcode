@@ -15,34 +15,21 @@ public class Problem538 {
     }
 
     public TreeNode convertBST(TreeNode root) {
+        return convertBST(root, new IntRef());
+    }
+
+    private static TreeNode convertBST(TreeNode root, IntRef sum) {
         if (root == null) {
-            return root;
+            return null;
         }
-        return convert(root, new Sum());
+        root.right = convertBST(root.right, sum);
+        sum.val += root.val;
+        root.val = sum.val;
+        root.left = convertBST(root.left, sum);
+        return root;
     }
 
-    private static class Sum {
+    private static class IntRef {
         private int val;
-    }
-
-    private static TreeNode convert(TreeNode node, Sum sum) {
-        if (node.left == null && node.right == null) {
-            sum.val += node.val;
-            return new TreeNode(sum.val);
-        }
-        TreeNode right = null;
-        if (node.right != null) {
-            right = convert(node.right, sum);
-        }
-        sum.val += node.val;
-        int val = sum.val;
-        TreeNode left = null;
-        if (node.left != null) {
-            left = convert(node.left, sum);
-        }
-        TreeNode parent = new TreeNode(val);
-        parent.left = left;
-        parent.right = right;
-        return parent;
     }
 }
