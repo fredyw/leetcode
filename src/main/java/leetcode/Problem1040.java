@@ -35,5 +35,7 @@ public class Problem1040 {
         System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{1, 5, 8, 13, 19, 23, 24}))); // [4,17]
         System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{1, 50, 100, 200}))); // [3,148]
         System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{4, 8, 10, 12, 14, 20}))); // [3,8]
+        System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{1, 2, 8, 13, 21, 22, 23}))); // [4,16]
+        System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{4, 5, 8, 13, 15, 16, 17}))); // [3,7]
     }
 }
