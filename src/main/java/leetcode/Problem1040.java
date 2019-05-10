@@ -15,27 +15,18 @@ public class Problem1040 {
         if (max == 0) {
             return new int[]{0, max};
         }
-        int min = 0;
+        int min = Integer.MAX_VALUE;
+        for (int i = 0, j = 0; j < stones.length; ++j) {
+            while (stones[j] - stones[i] >= stones.length) {
+                i++;
+            }
+            // corner case
+            if (j - i + 1 == stones.length - 1 && stones[j] - stones[i] == stones.length - 2) {
+                min = Math.min(min, 2);
+            } else {
+                min = Math.min(min, stones.length - (j - i + 1));
+            }
+        }
         return new int[]{min, max};
-    }
-
-    public static void main(String[] args) {
-        Problem1040 prob = new Problem1040();
-        System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{7, 4, 9}))); // [1,2]
-        System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{6, 5, 4, 3, 10}))); // [2,3]
-        System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{100, 101, 104, 102, 103}))); // [0,0]
-        System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{1, 2, 5}))); // [2,2]
-        System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{1, 3, 5, 7, 10}))); // [2,4]
-        System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{1, 5, 8, 12}))); // [2,5]
-        System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{1, 5, 8, 13}))); // [2,6]
-        System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{1, 5, 8, 13, 18}))); // [3,10]
-        System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{1, 5, 8, 13, 14}))); // [3,9]
-        System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{1, 5, 8, 13, 18, 23}))); // [4,14]
-        System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{1, 5, 8, 13, 18, 23, 24}))); // [4,17]
-        System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{1, 5, 8, 13, 19, 23, 24}))); // [4,17]
-        System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{1, 50, 100, 200}))); // [3,148]
-        System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{4, 8, 10, 12, 14, 20}))); // [3,8]
-        System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{1, 2, 8, 13, 21, 22, 23}))); // [4,16]
-        System.out.println(Arrays.toString(prob.numMovesStonesII(new int[]{4, 5, 8, 13, 15, 16, 17}))); // [3,7]
     }
 }
