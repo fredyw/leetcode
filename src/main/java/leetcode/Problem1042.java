@@ -1,6 +1,5 @@
 package leetcode;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,23 +12,37 @@ public class Problem1042 {
         for (int i = 1; i <= N; i++) {
             set[i] = new HashSet<>();
         }
-        for (int i = 1; i <= N; i++) {
-            int a = paths[i][0];
-            int b = paths[i][1];
+        for (int[] path : paths) {
+            int a = path[0];
+            int b = path[1];
             set[a].add(b);
             set[b].add(a);
         }
         int[] answer = new int[N];
-        for (int i = 1; i <= N; i++) {
-            // TODO
-        }
+        gardenNoAdj(answer, set, 0);
         return answer;
     }
 
-    public static void main(String[] args) {
-        Problem1042 prob = new Problem1042();
-        System.out.println(Arrays.toString(prob.gardenNoAdj(3, new int[][]{{1, 2}, {2, 3}, {3, 1}}))); // [1,2,3]
-//        System.out.println(Arrays.toString(prob.gardenNoAdj(4, new int[][]{{1, 2}, {3, 4}}))); // [1,2,1,2]
-//        System.out.println(Arrays.toString(prob.gardenNoAdj(4, new int[][]{{1, 2}, {2, 3}, {3, 4}, {4, 1}, {1, 3}, {2, 4}}))); // [1,2,3,4]
+    private static boolean gardenNoAdj(int[] answer, Set<Integer>[] set, int index) {
+        if (index == answer.length) {
+            return true;
+        }
+        for (int i = 1; i <= 4; i++) {
+            answer[index] = i;
+            if (isValid(answer, set, index) && gardenNoAdj(answer, set, index + 1)) {
+                break;
+            }
+        }
+        return true;
+    }
+
+    private static boolean isValid(int[] answer, Set<Integer>[] set, int index) {
+        Set<Integer> adjs = set[index + 1];
+        for (int adj : adjs) {
+            if (answer[index] == answer[adj - 1]) {
+                return false;
+            }
+        }
+        return true;
     }
 }
