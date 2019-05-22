@@ -16,19 +16,13 @@ public class Problem1043 {
             return memo[index];
         }
         int answer = array[index];
-        int[] max = new int[k];
-        for (int i = 0, j = index; j < index + k && j < array.length; i++, j++) {
-            if (i == 0) {
-                max[i] = array[j];
-            } else {
-                max[i] = Math.max(max[i - 1], array[j]);
-            }
-        }
+        int max = 0;
         for (int i = 0; i < k; i++) {
             if (index + i >= array.length) {
                 break;
             }
-            int val = maxSumAfterPartitioning(array, k, index + i + 1, memo) + (max[i] * (i + 1));
+            max = Math.max(max, array[index + i]);
+            int val = maxSumAfterPartitioning(array, k, index + i + 1, memo) + (max * (i + 1));
             answer = Math.max(answer, val);
         }
         memo[index] = answer;
