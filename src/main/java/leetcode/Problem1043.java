@@ -5,37 +5,33 @@ package leetcode;
  */
 public class Problem1043 {
     public int maxSumAfterPartitioning(int[] A, int K) {
-        return maxSumAfterPartitioning(A, K, 0);
+        return maxSumAfterPartitioning(A, K, 0, new Integer[A.length]);
     }
 
-    private static int maxSumAfterPartitioning(int[] array, int k, int index) {
+    private static int maxSumAfterPartitioning(int[] array, int k, int index, Integer[] memo) {
         if (index >= array.length) {
             return 0;
         }
+        if (memo[index] != null) {
+            return memo[index];
+        }
         int answer = array[index];
-        for (int i = 1; i < k; i++) {
-            int val = 0;
+        int[] max = new int[k];
+        for (int i = 0, j = index; j < index + k && j < array.length; i++, j++) {
+            if (i == 0) {
+                max[i] = array[j];
+            } else {
+                max[i] = Math.max(max[i - 1], array[j]);
+            }
+        }
+        for (int i = 0; i < k; i++) {
             if (index + i >= array.length) {
                 break;
             }
-            int max = 0;
-            for (int j = index; j < index + i; j++) {
-                max = Math.max(max, array[j]);
-            }
-            val = maxSumAfterPartitioning(array, k, index + i) + (max * (i + 1));
+            int val = maxSumAfterPartitioning(array, k, index + i + 1, memo) + (max[i] * (i + 1));
             answer = Math.max(answer, val);
         }
+        memo[index] = answer;
         return answer;
-    }
-
-    public static void main(String[] args) {
-        Problem1043 prob = new Problem1043();
-//        System.out.println(prob.maxSumAfterPartitioning(new int[]{1, 2, 3, 4}, 1)); // 10
-        System.out.println(prob.maxSumAfterPartitioning(new int[]{1, 2, 3, 4}, 3)); // 13
-//        System.out.println(prob.maxSumAfterPartitioning(new int[]{1, 15, 7, 9, 2, 5, 10}, 3)); // 84
-//        System.out.println(prob.maxSumAfterPartitioning(new int[]{1, 15, 7, 10, 2, 5, 9}, 3)); // 84
-//        System.out.println(prob.maxSumAfterPartitioning(new int[]{1, 15, 7, 10, 2, 5, 9}, 4)); // 87
-//        System.out.println(prob.maxSumAfterPartitioning(new int[]{10, 15, 7, 9, 2, 5, 1}, 4)); // 81
-//        System.out.println(prob.maxSumAfterPartitioning(new int[]{10, 15, 7, 9, 2, 5, 1}, 2)); // 68
     }
 }
