@@ -32,5 +32,6 @@ public class Problem1043 {
         System.out.println(prob.maxSumAfterPartitioning(new int[]{1, 15, 7, 10, 2, 5, 9}, 3)); // 84
         System.out.println(prob.maxSumAfterPartitioning(new int[]{1, 15, 7, 10, 2, 5, 9}, 4)); // 87
         System.out.println(prob.maxSumAfterPartitioning(new int[]{10, 15, 7, 9, 2, 5, 1}, 4)); // 81
+        System.out.println(prob.maxSumAfterPartitioning(new int[]{10, 15, 7, 9, 2, 5, 1}, 2)); // 68
     }
 }
