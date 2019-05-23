@@ -10,51 +10,59 @@ import java.util.Map;
  */
 public class Problem1048 {
     public int longestStrChain(String[] words) {
-        Map<Integer, List<String>> map = new HashMap<>();
+        Map<Integer, List<WordCount>> map = new HashMap<>();
         for (String word : words) {
             if (!map.containsKey(word.length())) {
                 map.put(word.length(), new ArrayList<>());
             }
-            map.get(word.length()).add(word);
+            int[] count = new int[26];
+            for (char c : word.toCharArray()) {
+                count[c - 'a']++;
+            }
+            map.get(word.length()).add(new WordCount(word, count));
         }
         int answer = 0;
         Map<String, Integer> memo = new HashMap<>();
-        for (String word : words) {
-            answer = Math.max(answer, longestStrChain(map, word, memo) + 1);
+        for (List<WordCount> wordCounts : map.values()) {
+            for (WordCount wordCount : wordCounts) {
+                answer = Math.max(answer, longestStrChain(map, wordCount, memo) + 1);
+            }
         }
         return answer;
     }
 
-    private static int longestStrChain(Map<Integer, List<String>> words, String word,
-                                       Map<String, Integer> memo) {
-        if (!words.containsKey(word.length() + 1)) {
+    private static class WordCount {
+        private final String word;
+        private final int[] count;
+
+        public WordCount(String word, int[] count) {
+            this.word = word;
+            this.count = count;
+        }
+    }
+
+    private static int longestStrChain(Map<Integer, List<WordCount>> words,
+                                       WordCount wordCount, Map<String, Integer> memo) {
+        if (!words.containsKey(wordCount.word.length() + 1)) {
             return 0;
         }
-        if (memo.containsKey(word)) {
-            return memo.get(word);
+        if (memo.containsKey(wordCount.word)) {
+            return memo.get(wordCount.word);
         }
         int max = 0;
-        for (String s : words.get(word.length() + 1)) {
-            if (isValid(word, s)) {
-                max = Math.max(max, longestStrChain(words, s, memo) + 1);
+        for (WordCount next : words.get(wordCount.word.length() + 1)) {
+            if (isValid(wordCount.count, next.count)) {
+                max = Math.max(max, longestStrChain(words, next, memo) + 1);
             }
         }
-        memo.put(word, max);
+        memo.put(wordCount.word, max);
         return max;
     }
 
-    private static boolean isValid(String word1, String word2) {
-        int[] counts1 = new int[26];
-        for (char c : word1.toCharArray()) {
-            counts1[c - 'a']++;
-        }
-        int[] counts2 = new int[26];
-        for (char c : word2.toCharArray()) {
-            counts2[c - 'a']++;
-        }
+    private static boolean isValid(int[] count1, int[] count2) {
         int diff = 0;
-        for (int i = 0; i < counts1.length; i++) {
-            diff += Math.abs(counts2[i] - counts1[i]);
+        for (int i = 0; i < count1.length; i++) {
+            diff += Math.abs(count2[i] - count1[i]);
         }
         return diff == 1;
     }
