@@ -5,16 +5,25 @@ package leetcode;
  */
 public class Problem1039 {
     public int minScoreTriangulation(int[] A) {
-        // TODO
-        return 0;
+        Integer[][] memo = new Integer[A.length][A.length];
+        return minScoreTriangulation(A, 0, A.length - 1, memo);
     }
 
-    public static void main(String[] args) {
-        Problem1039 prob = new Problem1039();
-        System.out.println(prob.minScoreTriangulation(new int[]{1, 2, 3})); // 6
-        System.out.println(prob.minScoreTriangulation(new int[]{3, 7, 4, 5})); // 144
-        System.out.println(prob.minScoreTriangulation(new int[]{1, 3, 1, 4, 1, 5})); // 13
-        System.out.println(prob.minScoreTriangulation(new int[]{1, 3, 1, 4, 1, 5, 6})); // 43
-        System.out.println(prob.minScoreTriangulation(new int[]{1, 3, 1, 4, 1, 5, 6, 8})); // 91
+    private static int minScoreTriangulation(int[] array, int i, int j, Integer[][] memo) {
+        if (j - i + 1 < 3) {
+            return 0;
+        }
+        if (memo[i][j] != null) {
+            return memo[i][j];
+        }
+        int min = Integer.MAX_VALUE;
+        for (int k = i + 1; k < j; k++) {
+            int val = (minScoreTriangulation(array, i, k, memo) +
+                minScoreTriangulation(array, k, j, memo)) +
+                (array[i] * array[j] * array[k]);
+            min = Math.min(min, val);
+        }
+        memo[i][j] = min;
+        return min;
     }
 }
