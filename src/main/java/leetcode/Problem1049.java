@@ -28,24 +28,4 @@ public class Problem1049 {
         memo.put(key, min);
         return min;
     }
-
-    public static void main(String[] args) {
-        Problem1049 prob = new Problem1049();
-        // 7 + 4 + 1 = 12
-        // 8 + 2 + 1 = 11
-        // sum = 23
-        System.out.println(prob.lastStoneWeightII(new int[]{2, 7, 4, 1, 8, 1})); // 1
-        System.out.println(prob.lastStoneWeightII(new int[]{2, 7, 4, 1, 1, 8})); // 1
-        // 7 + 4 + 2 = 13
-        // 10 + 1 + 1 = 12
-        System.out.println(prob.lastStoneWeightII(new int[]{2, 7, 4, 1, 1, 10})); // 1
-        System.out.println(prob.lastStoneWeightII(new int[]{2, 7, 4, 1, 0, 10})); // 0
-        System.out.println(prob.lastStoneWeightII(new int[]{13, 10})); // 3
-        System.out.println(prob.lastStoneWeightII(new int[]{2, 7, 15})); // 6
-        // 7 + 4 + 2 + 1 = 14
-        // 10 + 3 + 13
-        System.out.println(prob.lastStoneWeightII(new int[]{2, 7, 4, 1, 3, 10})); // 1
-
-
-    }
 }
