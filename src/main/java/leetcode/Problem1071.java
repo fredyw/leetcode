@@ -5,14 +5,16 @@ package leetcode;
  */
 public class Problem1071 {
     public String gcdOfStrings(String str1, String str2) {
-        // TODO
-        return "";
-    }
-
-    public static void main(String[] args) {
-        Problem1071 prob = new Problem1071();
-        System.out.println(prob.gcdOfStrings("ABCABC", "ABC")); // ABC
-        System.out.println(prob.gcdOfStrings("ABABAB", "ABAB")); // AB
-        System.out.println(prob.gcdOfStrings("LEET", "CODE")); // 
+        String s1 = str1.length() >= str2.length() ? str1 : str2;
+        String s2 = str1.length() < str2.length() ? str1 : str2;
+        if (s2.isEmpty()) {
+            return str1;
+        }
+        int index = s1.indexOf(s2);
+        if (index < 0) {
+            return "";
+        }
+        String s3 = s1.substring(index + s2.length());
+        return gcdOfStrings(s2, s3);
     }
 }
