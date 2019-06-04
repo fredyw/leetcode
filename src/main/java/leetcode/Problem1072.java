@@ -12,13 +12,17 @@ public class Problem1072 {
     public static void main(String[] args) {
         Problem1072 prob = new Problem1072();
         System.out.println(prob.maxEqualRowsAfterFlips(new int[][]{
-            {0, 1}, {1, 1}
+            {0, 1},
+            {1, 1}
         })); // 1
         System.out.println(prob.maxEqualRowsAfterFlips(new int[][]{
-            {0, 1}, {1, 0}
+            {0, 1},
+            {1, 0}
         })); // 2
         System.out.println(prob.maxEqualRowsAfterFlips(new int[][]{
-            {0, 0, 0}, {0, 0, 1}, {1, 1, 0}
+            {0, 0, 0},
+            {0, 0, 1},
+            {1, 1, 0}
         })); // 2
     }
 }
