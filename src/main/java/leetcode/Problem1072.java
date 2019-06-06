@@ -8,49 +8,33 @@ import java.util.Map;
  */
 public class Problem1072 {
     public int maxEqualRowsAfterFlips(int[][] matrix) {
+        int answer = 0;
         Map<String, Integer> map = new HashMap<>();
         for (int i = 0; i < matrix.length; i++) {
+            // count all the number of rows that are opposite of each other, e.g.
+            // 1001
+            // 1001
+            // 0110 --> if we flip this, it will be 1001
+            // total count = 3
             String original = "";
             String flipped = "";
             for (int j = 0; j < matrix[i].length; j++) {
                 original += matrix[i][j];
                 flipped += matrix[i][j] == 0 ? "1" : "0";
             }
+            int count = 0;
             if (!map.containsKey(original) && !map.containsKey(flipped)) {
-                map.put(original, 1);
+                count = 1;
+                map.put(original, count);
             } else if (map.containsKey(original)) {
-                map.put(original, map.get(original) + 1);
+                count = map.get(original) + 1;
+                map.put(original, count);
             } else {
-                map.put(flipped, map.get(flipped) + 1);
+                count = map.get(flipped) + 1;
+                map.put(flipped, count);
             }
-        }
-        int answer = 0;
-        for (int count : map.values()) {
             answer = Math.max(answer, count);
         }
         return answer;
-    }
-
-    public static void main(String[] args) {
-        Problem1072 prob = new Problem1072();
-        System.out.println(prob.maxEqualRowsAfterFlips(new int[][]{
-            {0, 1},
-            {1, 1}
-        })); // 1
-        System.out.println(prob.maxEqualRowsAfterFlips(new int[][]{
-            {0, 1},
-            {1, 0}
-        })); // 2
-        System.out.println(prob.maxEqualRowsAfterFlips(new int[][]{
-            {0, 0, 0},
-            {0, 0, 1},
-            {1, 1, 0}
-        })); // 2
-        System.out.println(prob.maxEqualRowsAfterFlips(new int[][]{
-            {0, 0, 0},
-            {0, 0, 1},
-            {1, 0, 1},
-            {1, 1, 0}
-        })); // 2
     }
 }
