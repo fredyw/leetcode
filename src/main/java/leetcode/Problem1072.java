@@ -6,6 +6,10 @@ package leetcode;
 public class Problem1072 {
     public int maxEqualRowsAfterFlips(int[][] matrix) {
         // TODO
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+            }
+        }
         return 0;
     }
 
@@ -22,6 +26,12 @@ public class Problem1072 {
         System.out.println(prob.maxEqualRowsAfterFlips(new int[][]{
             {0, 0, 0},
             {0, 0, 1},
+            {1, 1, 0}
+        })); // 2
+        System.out.println(prob.maxEqualRowsAfterFlips(new int[][]{
+            {0, 0, 0},
+            {0, 0, 1},
+            {1, 0, 1},
             {1, 1, 0}
         })); // 2
     }
