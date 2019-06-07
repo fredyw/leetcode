@@ -19,43 +19,49 @@ public class Problem1073 {
                 int sum = arr1[i] + arr2[j] + carry;
                 carry = sum / 2;
                 list.add(sum % 2);
-                positive = false;
             } else {
                 int sum = -(arr1[i] + arr2[j]) + carry;
                 carry = sum / 2;
                 list.add(Math.abs(sum % 2));
-                positive = true;
             }
+            positive = !positive;
             i--;
             j--;
         }
-        while (i >= 0) {
-            if (positive) {
-                int sum = arr1[i] + carry;
+        if (i < 0 && j < 0) {
+            while (carry != 0) {
+                int sum = carry;
                 carry = sum / 2;
-                list.add(sum % 2);
-                positive = true;
-            } else {
-                int sum = -arr1[i] + carry;
-                carry = sum / 2;
-                list.add(sum % 2);
-                positive = false;
+                list.add(Math.abs(sum % 2));
+                positive = !positive;
             }
-            i--;
-        }
-        while (j >= 0) {
-            if (positive) {
-                int sum = arr2[j] + carry;
-                carry = sum / 2;
-                list.add(sum % 2);
-                positive = true;
-            } else {
-                int sum = -arr2[j] + carry;
-                carry = sum / -2;
-                list.add(sum % 2);
-                positive = false;
+        } else {
+            while (i >= 0) {
+                if (positive) {
+                    int sum = arr1[i] + carry;
+                    carry = sum / 2;
+                    list.add(sum % 2);
+                } else {
+                    int sum = -arr1[i] + carry;
+                    carry = sum / 2;
+                    list.add(sum % 2);
+                }
+                positive = !positive;
+                i--;
             }
-            j--;
+            while (j >= 0) {
+                if (positive) {
+                    int sum = arr2[j] + carry;
+                    carry = sum / 2;
+                    list.add(sum % 2);
+                } else {
+                    int sum = -arr2[j] + carry;
+                    carry = sum / -2;
+                    list.add(sum % 2);
+                }
+                positive = !positive;
+                j--;
+            }
         }
         int size = list.size();
         int k = list.size() - 1;
