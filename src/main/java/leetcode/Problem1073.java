@@ -1,7 +1,6 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -15,53 +14,56 @@ public class Problem1073 {
         boolean positive = true;
         int carry = 0;
         while (i >= 0 && j >= 0) {
-            if (positive) {
-                int sum = arr1[i] + arr2[j] + carry;
-                carry = sum / 2;
-                list.add(sum % 2);
+            int sum = positive ? arr1[i] + arr2[j] + carry : -(arr1[i] + arr2[j]) + carry;
+            if (positive && sum < 0) {
+                carry = -1;
+            } else if (!positive && sum > 0) {
+                carry = 1;
             } else {
-                int sum = -(arr1[i] + arr2[j]) + carry;
                 carry = sum / 2;
-                list.add(Math.abs(sum % 2));
             }
+            list.add(Math.abs(sum % 2));
             positive = !positive;
             i--;
             j--;
         }
-        if (i < 0 && j < 0) {
-            while (carry != 0) {
-                int sum = carry;
+        while (i >= 0) {
+            int sum = positive ? arr1[i] + carry : -arr1[i] + carry;
+            if (positive && sum < 0) {
+                carry = -1;
+            } else if (!positive && sum > 0) {
+                carry = 1;
+            } else {
                 carry = sum / 2;
-                list.add(Math.abs(sum % 2));
-                positive = !positive;
             }
-        } else {
-            while (i >= 0) {
-                if (positive) {
-                    int sum = arr1[i] + carry;
-                    carry = sum / 2;
-                    list.add(sum % 2);
-                } else {
-                    int sum = -arr1[i] + carry;
-                    carry = sum / 2;
-                    list.add(sum % 2);
-                }
-                positive = !positive;
-                i--;
+            list.add(Math.abs(sum % 2));
+            positive = !positive;
+            i--;
+        }
+        while (j >= 0) {
+            int sum = positive ? arr2[j] + carry : -arr2[j] + carry;
+            if (positive && sum < 0) {
+                carry = -1;
+            } else if (!positive && sum > 0) {
+                carry = 1;
+            } else {
+                carry = sum / 2;
             }
-            while (j >= 0) {
-                if (positive) {
-                    int sum = arr2[j] + carry;
-                    carry = sum / 2;
-                    list.add(sum % 2);
-                } else {
-                    int sum = -arr2[j] + carry;
-                    carry = sum / -2;
-                    list.add(sum % 2);
-                }
-                positive = !positive;
-                j--;
+            list.add(Math.abs(sum % 2));
+            positive = !positive;
+            j--;
+        }
+        while (carry != 0) {
+            int sum = carry;
+            if (positive && sum < 0) {
+                carry = -1;
+            } else if (!positive && sum > 0) {
+                carry = 1;
+            } else {
+                carry = sum / 2;
             }
+            list.add(Math.abs(sum % 2));
+            positive = !positive;
         }
         int size = list.size();
         int k = list.size() - 1;
@@ -69,19 +71,15 @@ public class Problem1073 {
             k--;
             size--;
         }
+        if (size == 0) {
+            return new int[]{0};
+        }
+        // Remove all the leading zeros.
         int[] answer = new int[size];
         int l = 0;
         for (; k >= 0; k--) {
             answer[l++] = list.get(k);
         }
         return answer;
-    }
-
-    public static void main(String[] args) {
-        Problem1073 prob = new Problem1073();
-//        System.out.println(Arrays.toString(prob.addNegabinary(new int[]{1, 1, 1, 1, 1}, new int[]{1, 0, 1}))); // [1,0,0,0,0]
-//        System.out.println(Arrays.toString(prob.addNegabinary(new int[]{1, 1, 1, 1, 1}, new int[]{1, 0, 1, 1}))); // [1,1,0]
-//        System.out.println(Arrays.toString(prob.addNegabinary(new int[]{1, 1, 1, 1, 1, 0, 1}, new int[]{1, 0, 1, 1, 1, 1, 0}))); // [1,1,0,0,0,1,0,1,1]
-        System.out.println(Arrays.toString(prob.addNegabinary(new int[]{1, 0}, new int[]{1, 0}))); // [1,1,0,0]
     }
 }
