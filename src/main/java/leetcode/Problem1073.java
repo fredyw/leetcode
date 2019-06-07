@@ -38,7 +38,7 @@ public class Problem1073 {
             } else {
                 int sum = -arr1[i] + carry;
                 carry = sum / 2;
-                list.add(Math.abs(sum % 2));
+                list.add(sum % 2);
                 positive = false;
             }
             i--;
@@ -47,12 +47,12 @@ public class Problem1073 {
             if (positive) {
                 int sum = arr2[j] + carry;
                 carry = sum / 2;
-                list.add(Math.abs(sum % 2));
+                list.add(sum % 2);
                 positive = true;
             } else {
                 int sum = -arr2[j] + carry;
-                carry = sum / 2;
-                list.add(Math.abs(sum % 2));
+                carry = sum / -2;
+                list.add(sum % 2);
                 positive = false;
             }
             j--;
@@ -75,6 +75,7 @@ public class Problem1073 {
         Problem1073 prob = new Problem1073();
 //        System.out.println(Arrays.toString(prob.addNegabinary(new int[]{1, 1, 1, 1, 1}, new int[]{1, 0, 1}))); // [1,0,0,0,0]
 //        System.out.println(Arrays.toString(prob.addNegabinary(new int[]{1, 1, 1, 1, 1}, new int[]{1, 0, 1, 1}))); // [1,1,0]
-        System.out.println(Arrays.toString(prob.addNegabinary(new int[]{1, 1, 1, 1, 1, 0, 1}, new int[]{1, 0, 1, 1, 1, 1, 0}))); // [1,1,0,0,0,1,0,1,1]
+//        System.out.println(Arrays.toString(prob.addNegabinary(new int[]{1, 1, 1, 1, 1, 0, 1}, new int[]{1, 0, 1, 1, 1, 1, 0}))); // [1,1,0,0,0,1,0,1,1]
+        System.out.println(Arrays.toString(prob.addNegabinary(new int[]{1, 0}, new int[]{1, 0}))); // [1,1,0,0]
     }
 }
