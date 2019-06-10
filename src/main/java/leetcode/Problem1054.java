@@ -1,19 +1,56 @@
 package leetcode;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 /**
  * https://leetcode.com/problems/distant-barcodes/
  */
 public class Problem1054 {
     public int[] rearrangeBarcodes(int[] barcodes) {
-        // TODO
-        return null;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int barcode : barcodes) {
+            if (!map.containsKey(barcode)) {
+                map.put(barcode, 1);
+            } else {
+                map.put(barcode, map.get(barcode) + 1);
+            }
+        }
+        PriorityQueue<ValueCount> queue = new PriorityQueue<>((a, b) -> Integer.compare(b.count, a.count));
+        for (Map.Entry<Integer, Integer> e : map.entrySet()) {
+            queue.add(new ValueCount(e.getKey(), e.getValue()));
+        }
+        int[] answer = new int[barcodes.length];
+        int i = 0;
+        List<ValueCount> tmp = new ArrayList<>();
+        while (!queue.isEmpty()) {
+            while (i - 1 >= 0 && answer[i - 1] == queue.peek().value) {
+                tmp.add(queue.remove());
+            }
+            ValueCount valueCount = queue.remove();
+            answer[i++] = valueCount.value;
+            valueCount.count--;
+            if (valueCount.count > 0) {
+                queue.add(valueCount);
+            }
+            for (ValueCount vc : tmp) {
+                queue.add(vc);
+            }
+            tmp.clear();
+        }
+        return answer;
     }
 
-    public static void main(String[] args) {
-        Problem1054 prob = new Problem1054();
-        System.out.println(Arrays.toString(prob.rearrangeBarcodes(new int[]{1, 1, 1, 2, 2, 2}))); // [2,1,2,1,2,1]
-        System.out.println(Arrays.toString(prob.rearrangeBarcodes(new int[]{1, 1, 1, 1, 2, 2, 3, 3}))); // [1,3,1,3,2,1,2,1]
+    private static class ValueCount {
+        private final int value;
+        private int count;
+
+        public ValueCount(int value, int count) {
+            this.value = value;
+            this.count = count;
+        }
     }
 }
