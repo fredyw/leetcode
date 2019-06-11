@@ -1,17 +1,32 @@
 package leetcode;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * https://leetcode.com/problems/letter-tile-possibilities/
  */
 public class Problem1079 {
     public int numTilePossibilities(String tiles) {
-        // TODO
-        return 0;
+        Set<String> set = new HashSet<>();
+        numTilePossibilities(tiles, "", new boolean[tiles.length()], set);
+        return set.size();
     }
 
-    public static void main(String[] args) {
-        Problem1079 prob = new Problem1079();
-        System.out.println(prob.numTilePossibilities("AAB")); // 8
-        System.out.println(prob.numTilePossibilities("AAABBC")); // 188
+    private static void numTilePossibilities(String tiles, String accu, boolean[] visited,
+                                            Set<String> set) {
+        if (accu.length() == tiles.length()) {
+            return;
+        }
+        for (int i = 0; i < tiles.length(); i++) {
+            if (visited[i]) {
+                continue;
+            }
+            visited[i] = true;
+            String newStr = accu + tiles.charAt(i);
+            set.add(newStr);
+            numTilePossibilities(tiles, newStr, visited, set);
+            visited[i] = false;
+        }
     }
 }
