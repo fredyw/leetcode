@@ -15,26 +15,20 @@ public class Problem1080 {
     }
 
     public TreeNode sufficientSubset(TreeNode root, int limit) {
-        if (!sufficientSubset(root, limit, 0)) {
-            return null;
-        }
-        return root;
+        return sufficientSubset(root, limit, 0);
     }
 
-    private static boolean sufficientSubset(TreeNode root, int limit, int sum) {
+    private static TreeNode sufficientSubset(TreeNode root, int limit, int sum) {
         if (root == null) {
-            return sum >= limit;
+            return null;
+        }
+        if (root.left == null && root.right == null) {
+            return root.val + sum >= limit ? root : null;
         }
         int newSum = root.val + sum;
-        boolean left = sufficientSubset(root.left, limit, newSum);
-        if (!left) {
-            root.left = null;
-        }
-        boolean right = sufficientSubset(root.right, limit, newSum);
-        if (!right) {
-            root.right = null;
-        }
-        return left || right;
+        root.left = sufficientSubset(root.left, limit, newSum);
+        root.right = sufficientSubset(root.right, limit, newSum);
+        return root.left == null && root.right == null ? null : root;
     }
 
     public static void main(String[] args) {
