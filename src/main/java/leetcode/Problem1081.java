@@ -15,5 +15,6 @@ public class Problem1081 {
         System.out.println(prob.smallestSubsequence("abcd")); // "abcd"
         System.out.println(prob.smallestSubsequence("ecbacba")); // "eacb"
         System.out.println(prob.smallestSubsequence("leetcode")); // "letcod"
+        System.out.println(prob.smallestSubsequence("acbabc")); // "abc"
     }
 }
