@@ -15,6 +15,8 @@ public class Problem1090 {
             new int[]{1, 1, 2, 2, 3}, 3, 1)); // 9
         System.out.println(prob.largestValsFromLabels(new int[]{5, 4, 3, 2, 1},
             new int[]{1, 3, 3, 3, 2}, 3, 2)); // 12
+        System.out.println(prob.largestValsFromLabels(new int[]{5, 4, 3, 2, 1},
+            new int[]{1, 3, 3, 3, 2}, 3, 1)); // 10
         System.out.println(prob.largestValsFromLabels(new int[]{9, 8, 8, 7, 6},
             new int[]{0, 0, 0, 1, 1}, 3, 1)); // 16
         System.out.println(prob.largestValsFromLabels(new int[]{9, 8, 8, 7, 6},
