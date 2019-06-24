@@ -1,7 +1,5 @@
 package leetcode;
 
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
@@ -9,48 +7,35 @@ import java.util.PriorityQueue;
  */
 public class Problem1094 {
     public boolean carPooling(int[][] trips, int capacity) {
-        Arrays.sort(trips, (a, b) -> {
-            int cmp = Integer.compare(a[1], b[1]);
+        PriorityQueue<Trip> queue = new PriorityQueue<>((a, b) -> {
+            int cmp = a.location - b.location;
             if (cmp == 0) {
-                return Integer.compare(a[2], b[2]);
+                // End location should come first.
+                return Integer.compare(b.passengers, a.passengers);
             }
             return cmp;
         });
+        for (int[] trip : trips) {
+            queue.add(new Trip(-trip[0], trip[1]));
+            queue.add(new Trip(trip[0], trip[2]));
+        }
         int cap = capacity;
-        PriorityQueue<NumPassengersEndLocation> queue = new PriorityQueue<>(
-            Comparator.comparingInt(a -> a.endLocation));
-        for (int i = 0; i < trips.length; i++) {
-            int numPassengers = trips[i][0];
-            int startLocation = trips[i][1];
-            int endLocation = trips[i][2];
-            if (!queue.isEmpty() && queue.peek().endLocation <= startLocation) {
-                cap += queue.remove().numPassengers;
-            }
-            cap -= numPassengers;
+        while (!queue.isEmpty()) {
+            cap += queue.poll().passengers;
             if (cap < 0) {
                 return false;
             }
-            queue.add(new NumPassengersEndLocation(numPassengers, endLocation));
         }
         return true;
     }
 
-    private static class NumPassengersEndLocation {
-        private final int numPassengers;
-        private final int endLocation;
+    private static class Trip {
+        private final int passengers;
+        private final int location;
 
-        public NumPassengersEndLocation(int numPassengers, int endLocation) {
-            this.numPassengers = numPassengers;
-            this.endLocation = endLocation;
+        public Trip(int passengers, int location) {
+            this.passengers = passengers;
+            this.location = location;
         }
-    }
-
-    public static void main(String[] args) {
-        Problem1094 prob = new Problem1094();
-//        System.out.println(prob.carPooling(new int[][]{{2, 1, 5}, {3, 3, 7}}, 4)); // false
-//        System.out.println(prob.carPooling(new int[][]{{2, 1, 5}, {3, 3, 7}}, 5)); // true
-//        System.out.println(prob.carPooling(new int[][]{{2, 1, 5}, {3, 5, 7}}, 3)); // true
-//        System.out.println(prob.carPooling(new int[][]{{3, 2, 7}, {3, 7, 9}, {8, 3, 9}}, 11)); // true
-        System.out.println(prob.carPooling(new int[][]{{3, 2, 8}, {4, 4, 6}, {10, 8, 9}}, 11)); // true
     }
 }
