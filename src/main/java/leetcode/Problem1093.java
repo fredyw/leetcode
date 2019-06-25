@@ -7,8 +7,27 @@ import java.util.Arrays;
  */
 public class Problem1093 {
     public double[] sampleStats(int[] count) {
-        // TODO
-        return null;
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        int size = 0;
+        int sum = 0;
+        int modeCount = Integer.MIN_VALUE;
+        int mode = 0;
+        for (int i = 0; i < count.length; i++) {
+            sum += i * count[i];
+            size += count[i];
+            if (count[i] > 0) {
+                min = Math.min(min, i);
+                max = Math.max(max, i);
+            }
+            if (modeCount < count[i]) {
+                mode = i;
+                modeCount = count[i];
+            }
+        }
+        double mean = (double) sum / (double) size;
+        double median = 0; // TODO
+        return new double[]{min, max, mean, median, mode};
     }
 
     public static void main(String[] args) {
