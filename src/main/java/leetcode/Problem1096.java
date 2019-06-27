@@ -13,8 +13,9 @@ public class Problem1096 {
 
     public static void main(String[] args) {
         Problem1096 prob = new Problem1096();
-        System.out.println(prob.braceExpansionII("a{b,c}")); // ["ab","ac"]
-        System.out.println(prob.braceExpansionII("{c{d,e}f}")); // ["cdf","cef"]
+        System.out.println(prob.braceExpansionII("{a{b,c}d{e,f}}")); // ["abde",abdf","acde","acdf"]
+//        System.out.println(prob.braceExpansionII("a{b,c}")); // ["ab","ac"]
+//        System.out.println(prob.braceExpansionII("{c{d,e}f}")); // ["cdf","cef"]
 //        System.out.println(prob.braceExpansionII("{a,b}{c{d,e}}")); // ["acd","ace","bcd","bce"]
 //        System.out.println(prob.braceExpansionII("{{a,z},a{b,c},{ab,z}}")); // ["a","ab","ac","z"]
 //        System.out.println(prob.braceExpansionII("{a,b,c}")); // ["a","b","c"]
