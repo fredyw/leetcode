@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -7,13 +9,16 @@ import java.util.List;
  */
 public class Problem1104 {
     public List<Integer> pathInZigZagTree(int label) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1104 prob = new Problem1104();
-        System.out.println(prob.pathInZigZagTree(14)); // [1,3,4,14]
-        System.out.println(prob.pathInZigZagTree(26)); // [1,2,6,10,26]
+        int level = (int) (Math.log10(label) / Math.log10(2));
+        List<Integer> answer = new ArrayList<>();
+        while (label != 0) {
+            answer.add(label);
+            int left = (int) Math.pow(2, level - 1);
+            int right = (int) Math.pow(2, level) - 1;
+            label = left + (right - label / 2);
+            level--;
+        }
+        Collections.reverse(answer);
+        return answer;
     }
 }
