@@ -11,5 +11,8 @@ public class Problem1105 {
 
     public static void main(String[] args) {
         Problem1105 prob = new Problem1105();
+        System.out.println(prob.minHeightShelves(new int[][]{
+            {1, 1}, {2, 3}, {2, 3}, {1, 1}, {1, 1}, {1, 1}, {1, 2}
+        }, 4)); // 6
     }
 }
