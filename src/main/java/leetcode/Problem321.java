@@ -1,13 +1,15 @@
 package leetcode;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * https://leetcode.com/problems/create-maximum-number/
  */
 public class Problem321 {
     public int[] maxNumber(int[] nums1, int[] nums2, int k) {
-        char[] chars = maxNumber(nums1, nums2, k, 0, 0, "", new String[nums1.length + 1][nums2.length + 1]).toCharArray();
+        char[] chars = maxNumber(nums1, nums2, k, 0, 0, "", new HashMap<>()).toCharArray();
         int[] answer = new int[chars.length];
         for (int i = 0; i < answer.length; i++) {
             answer[i] = chars[i] - '0';
@@ -16,9 +18,13 @@ public class Problem321 {
     }
 
     private static String maxNumber(int[] nums1, int[] nums2, int k, int i, int j, String accu,
-                                    String[][] memo) {
+                                    Map<String, String> memo) {
         if (accu.length() == k) {
             return accu;
+        }
+        String key = accu + "," + i + "," + j;
+        if (memo.containsKey(key)) {
+            return memo.get(key);
         }
         long max = 0;
         if (i < nums1.length && j < nums2.length) {
@@ -38,7 +44,9 @@ public class Problem321 {
             long b = Long.parseLong(maxNumber(nums1, nums2, k, i, j + 1, accu + nums2[j], memo));
             max = Math.max(a, b);
         }
-        return Long.toString(max);
+        String answer = Long.toString(max);
+        memo.put(key, answer);
+        return answer;
     }
 
     public static void main(String[] args) {
