@@ -51,9 +51,10 @@ public class Problem321 {
 
     public static void main(String[] args) {
         Problem321 prob = new Problem321();
-        System.out.println(Arrays.toString(prob.maxNumber(new int[]{3, 4, 6, 5}, new int[]{9, 1, 2, 5, 8, 3}, 5))); // [9, 8, 6, 5, 3]
-        System.out.println(Arrays.toString(prob.maxNumber(new int[]{6, 7}, new int[]{6, 0, 4}, 5))); // [6, 7, 6, 0, 4]
-        System.out.println(Arrays.toString(prob.maxNumber(new int[]{3, 9}, new int[]{8, 9}, 3))); // [9, 8, 9]
-        System.out.println(Arrays.toString(prob.maxNumber(new int[]{9, 8, 7}, new int[]{1, 2}, 4))); // [9, 8, 7, 2]
+//        System.out.println(Arrays.toString(prob.maxNumber(new int[]{3, 4, 6, 5}, new int[]{9, 1, 2, 5, 8, 3}, 5))); // [9, 8, 6, 5, 3]
+//        System.out.println(Arrays.toString(prob.maxNumber(new int[]{6, 7}, new int[]{6, 0, 4}, 5))); // [6, 7, 6, 0, 4]
+//        System.out.println(Arrays.toString(prob.maxNumber(new int[]{3, 9}, new int[]{8, 9}, 3))); // [9, 8, 9]
+//        System.out.println(Arrays.toString(prob.maxNumber(new int[]{9, 8, 7}, new int[]{1, 2}, 4))); // [9, 8, 7, 2]
+        System.out.println(Arrays.toString(prob.maxNumber(new int[]{5, 9, 3, 7, 5, 6, 2, 3}, new int[]{3, 8, 1, 2, 8, 6, 0, 8}, 8))); // [9,8,8,8,7,6,2,3]
     }
 }
