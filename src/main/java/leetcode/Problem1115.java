@@ -9,7 +9,7 @@ public class Problem1115 {
     private static class FooBar {
         private int n;
         private final Semaphore fooSemaphore = new Semaphore(0);
-        private final Semaphore barSemaphore = new Semaphore(2);
+        private final Semaphore barSemaphore = new Semaphore(1);
 
         public FooBar(int n) {
             this.n = n;
