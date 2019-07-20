@@ -7,8 +7,13 @@ import java.util.Arrays;
  */
 public class Problem1109 {
     public int[] corpFlightBookings(int[][] bookings, int n) {
-        // TODO
-        return null;
+        int[] answer = new int[n];
+        for (int[] booking : bookings) {
+            for (int i = booking[0]; i <= booking[1]; i++) {
+                answer[i - 1] += booking[2];
+            }
+        }
+        return answer;
     }
 
     public static void main(String[] args) {
