@@ -8,8 +8,8 @@ import java.util.concurrent.Semaphore;
 public class Problem1115 {
     private static class FooBar {
         private int n;
-        private final Semaphore fooSemaphore = new Semaphore(0);
-        private final Semaphore barSemaphore = new Semaphore(1);
+        private final Semaphore fooSemaphore = new Semaphore(1);
+        private final Semaphore barSemaphore = new Semaphore(0);
 
         public FooBar(int n) {
             this.n = n;
@@ -17,19 +17,19 @@ public class Problem1115 {
 
         public void foo(Runnable printFoo) throws InterruptedException {
             for (int i = 0; i < n; i++) {
-                barSemaphore.acquire();
+                fooSemaphore.acquire();
                 // printFoo.run() outputs "foo". Do not change or remove this line.
                 printFoo.run();
-                fooSemaphore.release();
+                barSemaphore.release();
             }
         }
 
         public void bar(Runnable printBar) throws InterruptedException {
             for (int i = 0; i < n; i++) {
-                fooSemaphore.acquire();
+                barSemaphore.acquire();
                 // printBar.run() outputs "bar". Do not change or remove this line.
                 printBar.run();
-                barSemaphore.release();
+                fooSemaphore.release();
             }
         }
     }
