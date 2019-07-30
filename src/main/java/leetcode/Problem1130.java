@@ -11,5 +11,6 @@ public class Problem1130 {
 
     public static void main(String[] args) {
         Problem1130 prob = new Problem1130();
+        System.out.println(prob.mctFromLeafValues(new int[]{6, 2, 4})); // 32
     }
 }
