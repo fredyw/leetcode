@@ -15,36 +15,21 @@ public class Problem1123 {
     }
 
     public TreeNode lcaDeepestLeaves(TreeNode root) {
-        // TODO
-        return null;
+        if (root == null) {
+            return null;
+        }
+        int left = height(root.left);
+        int right = height(root.right);
+        if (left == right) {
+            return root;
+        }
+        return left > right ? lcaDeepestLeaves(root.left) : lcaDeepestLeaves(root.right);
     }
 
-    public static void main(String[] args) {
-        Problem1123 prob = new Problem1123();
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        root = prob.lcaDeepestLeaves(root);
-        System.out.println(root); // 1
-        System.out.println(root.left); // 2
-        System.out.println(root.right); // 3
-
-
-        root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        root.left.left = new TreeNode(4);
-        root = prob.lcaDeepestLeaves(root);
-        System.out.println(root); // 4
-
-        root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        root.left.left = new TreeNode(4);
-        root.left.right = new TreeNode(5);
-        root = prob.lcaDeepestLeaves(root);
-        System.out.println(root); // 2
-        System.out.println(root.left); // 4
-        System.out.println(root.right); // 5
+    private static int height(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return 1 + Math.max(height(root.left), height(root.right));
     }
 }
