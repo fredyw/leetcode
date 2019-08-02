@@ -12,7 +12,7 @@ public class Problem1140 {
         int answer = 0;
         for (int i = 1; i <= 2 * m; i++) {
             int sum = 0;
-            for (int j = index; j < j + i && j < piles.length; j++) {
+            for (int j = index; j < index + i && j < piles.length; j++) {
                 sum += piles[j];
                 int value = stoneGame(piles, Math.max(i, m), !alex, j + 1);
                 if (alex) {
@@ -26,8 +26,8 @@ public class Problem1140 {
 
     public static void main(String[] args) {
         Problem1140 prob = new Problem1140();
-//        System.out.println(prob.stoneGameII(new int[]{2, 7, 9, 4, 4})); // 10
-        System.out.println(prob.stoneGameII(new int[]{2, 3, 4})); // 5
+        System.out.println(prob.stoneGameII(new int[]{2, 7, 9, 4, 4})); // 10
+//        System.out.println(prob.stoneGameII(new int[]{2, 3, 4})); // 5
 //        System.out.println(prob.stoneGameII(new int[]{2})); // 2
 //        System.out.println(prob.stoneGameII(new int[]{2, 3})); // 5
     }
