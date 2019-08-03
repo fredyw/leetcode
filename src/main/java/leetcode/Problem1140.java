@@ -12,34 +12,21 @@ public class Problem1140 {
         for (int pile : piles) {
             totalSum += pile;
         }
-        return stoneGame(piles, 1, 0, totalSum, new HashMap<>());
+        return stoneGame(piles, 1, 0, totalSum, new Integer[piles.length * 2][piles.length + 1]);
     }
 
-    private static int stoneGame(int[] piles, int m, int index, int totalSum, Map<String, Integer> memo) {
-        String key = m + "," + index;
-        if (memo.containsKey(key)) {
-            return memo.get(key);
+    private static int stoneGame(int[] piles, int m, int index, int totalSum, Integer[][] memo) {
+        if (memo[index][m] != null) {
+            return memo[index][m];
         }
         int answer = 0;
-        for (int i = 1; i <= 2 * m; i++) {
-            int sum = 0;
-            for (int j = index; j < index + i && j < piles.length; j++) {
-                sum += piles[j];
-                int value = totalSum - stoneGame(piles, Math.max(i, m), j + 1, totalSum - sum, memo);
-                answer = Math.max(answer,  value);
-            }
+        int sum = 0;
+        for (int i = index; i < index + (2 * m) && i < piles.length; i++) {
+            sum += piles[i];
+            int value = totalSum - stoneGame(piles, Math.max(i - index + 1, m), i + 1, totalSum - sum, memo);
+            answer = Math.max(answer,  value);
         }
-        memo.put(key, answer);
+        memo[m][index] = answer;
         return answer;
-    }
-
-    public static void main(String[] args) {
-        Problem1140 prob = new Problem1140();
-        System.out.println(prob.stoneGameII(new int[]{2, 3, 9, 4})); // 6
-        System.out.println(prob.stoneGameII(new int[]{2, 7, 9, 4, 4})); // 10
-        System.out.println(prob.stoneGameII(new int[]{2, 3, 4})); // 5
-        System.out.println(prob.stoneGameII(new int[]{2})); // 2
-        System.out.println(prob.stoneGameII(new int[]{2, 3})); // 5
-        System.out.println(prob.stoneGameII(new int[]{6, 4, 2, 8, 1, 8, 6, 6, 2})); // 24
     }
 }
