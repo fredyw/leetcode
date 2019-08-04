@@ -12,6 +12,7 @@ public class Problem1143 {
     public static void main(String[] args) {
         Problem1143 prob = new Problem1143();
         System.out.println(prob.longestCommonSubsequence("abcde", "ace")); // 3
+        System.out.println(prob.longestCommonSubsequence("ace", "abcde")); // 3
         System.out.println(prob.longestCommonSubsequence("abc", "abc")); // 3
         System.out.println(prob.longestCommonSubsequence("abc", "def")); // 0
     }
