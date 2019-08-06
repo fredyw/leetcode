@@ -5,22 +5,27 @@ package leetcode;
  */
 public class Problem1130 {
     public int mctFromLeafValues(int[] arr) {
-        return mctFromLeafValues(arr, 0, arr.length - 1).sum;
+        return mctFromLeafValues(arr, 0, arr.length - 1, new MaxSum[arr.length][arr.length]).sum;
     }
 
-    private static MaxSum mctFromLeafValues(int[] array, int start, int end) {
+    private static MaxSum mctFromLeafValues(int[] array, int start, int end, MaxSum[][] memo) {
         if (start == end) {
             return new MaxSum(array[start], 0);
+        }
+        if (memo[start][end] != null) {
+            return memo[start][end];
         }
         int max = 0;
         int sum = Integer.MAX_VALUE;
         for (int i = start; i < end; i++) {
-            MaxSum left = mctFromLeafValues(array, start, i);
-            MaxSum right = mctFromLeafValues(array, i + 1, end);
+            MaxSum left = mctFromLeafValues(array, start, i, memo);
+            MaxSum right = mctFromLeafValues(array, i + 1, end, memo);
             max = Math.max(max, Math.max(left.max, right.max));
             sum = Math.min(sum, left.sum + right.sum + left.max * right.max);
         }
-        return new MaxSum(max, sum);
+        MaxSum answer = new MaxSum(max, sum);
+        memo[start][end] = answer;
+        return answer;
     }
 
     private static class MaxSum {
@@ -31,13 +36,5 @@ public class Problem1130 {
             this.max = max;
             this.sum = sum;
         }
-    }
-
-    public static void main(String[] args) {
-        Problem1130 prob = new Problem1130();
-        System.out.println(prob.mctFromLeafValues(new int[]{6, 2, 4})); // 32
-        System.out.println(prob.mctFromLeafValues(new int[]{6, 2, 4, 5})); // 58
-        System.out.println(prob.mctFromLeafValues(new int[]{6, 2})); // 12
-        System.out.println(prob.mctFromLeafValues(new int[]{6, 2, 4, 1, 7})); // 78
     }
 }
