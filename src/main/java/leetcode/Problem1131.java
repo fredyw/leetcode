@@ -5,8 +5,14 @@ package leetcode;
  */
 public class Problem1131 {
     public int maxAbsValExpr(int[] arr1, int[] arr2) {
-        // TODO
-        return 0;
+        int answer = 0;
+        for (int i = 0; i < arr1.length; i++) {
+            for (int j = i + 1; j < arr2.length; j++) {
+                int value = Math.abs(arr1[i] - arr1[j]) + Math.abs(arr2[i] - arr2[j]) + Math.abs(i - j);
+                answer = Math.max(answer, value);
+            }
+        }
+        return answer;
     }
 
     public static void main(String[] args) {
