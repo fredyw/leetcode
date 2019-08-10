@@ -49,10 +49,4 @@ public class Problem1131 {
         }
         return max - min;
     }
-
-    public static void main(String[] args) {
-        Problem1131 prob = new Problem1131();
-        System.out.println(prob.maxAbsValExpr(new int[]{1, 2, 3, 4}, new int[]{-1, 4, 5, 6})); // 13
-        System.out.println(prob.maxAbsValExpr(new int[]{1, -2, -5, 0, 10}, new int[]{0, -2, -1, -7, -4})); // 20
-    }
 }
