@@ -1,5 +1,9 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * https://leetcode.com/problems/binary-tree-coloring-game/
  */
@@ -15,8 +19,43 @@ public class Problem1145 {
     }
 
     public boolean btreeGameWinningMove(TreeNode root, int n, int x) {
-        // TODO
+        int[] counts = new int[n + 1];
+        getChildCount(root, counts);
+        System.out.println(Arrays.toString(counts));
+        List<Integer> adjacents = new ArrayList<>();
+        getAdjacents(null, root, x, adjacents);
+        System.out.println(adjacents);
         return false;
+    }
+
+    private static void getAdjacents(TreeNode parent, TreeNode current,
+                                     int x, List<Integer> adjacents) {
+        if (current == null) {
+            return;
+        }
+        if (current.val == x) {
+            if (parent != null) {
+                adjacents.add(parent.val);
+            }
+            if (current.left != null) {
+                adjacents.add(current.left.val);
+            }
+            if (current.right != null) {
+                adjacents.add(current.right.val);
+            }
+            return;
+        }
+        getAdjacents(current, current.left, x, adjacents);
+        getAdjacents(current, current.right, x, adjacents);
+    }
+
+    private static int getChildCount(TreeNode root, int[] counts) {
+        if (root == null) {
+            return 0;
+        }
+        int count = getChildCount(root.left, counts) + getChildCount(root.right, counts) + 1;
+        counts[root.val] = count;
+        return count;
     }
 
     public static void main(String[] args) {
@@ -35,6 +74,7 @@ public class Problem1145 {
         root.left.right.right = new TreeNode(11);
 
         System.out.println(prob.btreeGameWinningMove(root, 11, 3)); // true
-        System.out.println(prob.btreeGameWinningMove(root, 11, 2)); // false
+//        System.out.println(prob.btreeGameWinningMove(root, 11, 2)); // false
+//        System.out.println(prob.btreeGameWinningMove(root, 11, 1)); // true
     }
 }
