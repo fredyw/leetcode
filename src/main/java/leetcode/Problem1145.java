@@ -1,8 +1,7 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * https://leetcode.com/problems/binary-tree-coloring-game/
@@ -21,27 +20,50 @@ public class Problem1145 {
     public boolean btreeGameWinningMove(TreeNode root, int n, int x) {
         int[] counts = new int[n + 1];
         getChildCount(root, counts);
-        System.out.println(Arrays.toString(counts));
-        List<Integer> adjacents = new ArrayList<>();
+        Map<Type, Integer> adjacents = new HashMap<>();
         getAdjacents(null, root, x, adjacents);
-        System.out.println(adjacents);
+        if (adjacents.get(Type.PARENT) != null) {
+            int player1 = counts[x];
+            int player2 = n - counts[x];
+            if (player1 < player2) {
+                return true;
+            }
+        }
+        if (adjacents.get(Type.LEFT_CHILD) != null) {
+            int player1 = n - counts[adjacents.get(Type.LEFT_CHILD)];
+            int player2 = counts[adjacents.get(Type.LEFT_CHILD)];
+            if (player1 < player2) {
+                return true;
+            }
+        }
+        if (adjacents.get(Type.RIGHT_CHILD) != null) {
+            int player1 = n - counts[adjacents.get(Type.RIGHT_CHILD)];
+            int player2 = counts[adjacents.get(Type.RIGHT_CHILD)];
+            if (player1 < player2) {
+                return true;
+            }
+        }
         return false;
     }
 
+    private enum Type {
+        PARENT, LEFT_CHILD, RIGHT_CHILD
+    }
+
     private static void getAdjacents(TreeNode parent, TreeNode current,
-                                     int x, List<Integer> adjacents) {
+                                     int x, Map<Type, Integer> adjacents) {
         if (current == null) {
             return;
         }
         if (current.val == x) {
             if (parent != null) {
-                adjacents.add(parent.val);
+                adjacents.put(Type.PARENT, parent.val);
             }
             if (current.left != null) {
-                adjacents.add(current.left.val);
+                adjacents.put(Type.LEFT_CHILD, current.left.val);
             }
             if (current.right != null) {
-                adjacents.add(current.right.val);
+                adjacents.put(Type.RIGHT_CHILD, current.right.val);
             }
             return;
         }
@@ -56,25 +78,5 @@ public class Problem1145 {
         int count = getChildCount(root.left, counts) + getChildCount(root.right, counts) + 1;
         counts[root.val] = count;
         return count;
-    }
-
-    public static void main(String[] args) {
-        Problem1145 prob = new Problem1145();
-
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        root.left.left = new TreeNode(4);
-        root.left.right = new TreeNode(5);
-        root.right.left = new TreeNode(6);
-        root.right.right = new TreeNode(7);
-        root.left.left.left = new TreeNode(8);
-        root.left.left.right = new TreeNode(9);
-        root.left.right.left = new TreeNode(10);
-        root.left.right.right = new TreeNode(11);
-
-        System.out.println(prob.btreeGameWinningMove(root, 11, 3)); // true
-//        System.out.println(prob.btreeGameWinningMove(root, 11, 2)); // false
-//        System.out.println(prob.btreeGameWinningMove(root, 11, 1)); // true
     }
 }
