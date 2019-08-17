@@ -19,5 +19,23 @@ public class Problem1139 {
         System.out.println(prob.largest1BorderedSquare(new int[][]{
             {1, 1, 0, 0},
         })); // 1
+        System.out.println(prob.largest1BorderedSquare(new int[][]{
+            {1, 1, 1, 1},
+        })); // 1
+        System.out.println(prob.largest1BorderedSquare(new int[][]{
+            {1, 1, 1, 1},
+            {1, 1, 1, 1}
+        })); // 4
+        System.out.println(prob.largest1BorderedSquare(new int[][]{
+            {1, 1, 1, 1},
+            {1, 0, 0, 1},
+            {1, 1, 1, 1},
+        })); // 1
+        System.out.println(prob.largest1BorderedSquare(new int[][]{
+            {1, 1, 1, 1},
+            {1, 0, 0, 1},
+            {1, 0, 0, 1},
+            {1, 1, 1, 1},
+        })); // 16
     }
 }
