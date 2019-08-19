@@ -5,13 +5,33 @@ package leetcode;
  */
 public class Problem1160 {
     public int countCharacters(String[] words, String chars) {
-        // TODO
-        return 0;
+        int answer = 0;
+        for (String word : words) {
+            if (word.length() > chars.length()) {
+                continue;
+            }
+            int[] counts = counts(chars);
+            boolean found = true;
+            for (char c : word.toCharArray()) {
+                if (counts[c - 'a'] == 0) {
+                    found = false;
+                    break;
+                } else {
+                    counts[c - 'a']--;
+                }
+            }
+            if (found) {
+                answer += word.length();
+            }
+        }
+        return answer;
     }
 
-    public static void main(String[] args) {
-        Problem1160 prob = new Problem1160();
-        System.out.println(prob.countCharacters(new String[]{"cat","bt","hat","tree"}, "atach")); // 6
-        System.out.println(prob.countCharacters(new String[]{"hello","world","leetcode"}, "welldonehoneyr")); // 10
+    private static int[] counts(String chars) {
+        int[] counts = new int[26];
+        for (char c : chars.toCharArray()) {
+           counts[c - 'a']++;
+        }
+        return counts;
     }
 }
