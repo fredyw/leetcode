@@ -13,27 +13,54 @@ import java.util.TreeSet;
  */
 public class Problem1169 {
     public List<String> invalidTransactions(String[] transactions) {
+//        Set<Integer> invalid = new HashSet<>();
+//        TreeSet<Transaction> set = new TreeSet<>();
+//        for (int i = 0; i < transactions.length; i++) {
+//            String[] t1 = transactions[i].split(",");
+//            String name1 = t1[0];
+//            int time1 = Integer.parseInt(t1[1]);
+//            int amount1 = Integer.parseInt(t1[2]);
+//            String city1 = t1[3];
+//            set.add(new Transaction(i, name, time, amount, city));
+//            if (amount > 1000) {
+//                invalid.add(i);
+//            }
+//        }
+//        for (Transaction t1 : set) {
+//            NavigableSet<Transaction> within60Mins = set.subSet(
+//                t1, true, /* we only care about t1.time + 60 */
+//                new Transaction(0, "", t1.time + 60, 0, ""), false);
+//            for (Transaction t2 : within60Mins) {
+//                if (t1.name.equals(t2.name) && !t1.city.equals(t2.city)) {
+//                    invalid.add(t1.index);
+//                    invalid.add(t2.index);
+//                }
+//            }
+//        }
+//        List<String> answer = new ArrayList<>();
+//        for (int i : invalid) {
+//            answer.add(transactions[i]);
+//        }
+//        return answer;
+
         Set<Integer> invalid = new HashSet<>();
-        TreeSet<Transaction> set = new TreeSet<>();
         for (int i = 0; i < transactions.length; i++) {
-            String[] t = transactions[i].split(",");
-            String name = t[0];
-            int time = Integer.parseInt(t[1]);
-            int amount = Integer.parseInt(t[2]);
-            String city = t[3];
-            set.add(new Transaction(i, name, time, amount, city));
-            if (amount > 1000) {
+            String[] t1 = transactions[i].split(",");
+            String name1 = t1[0];
+            int time1 = Integer.parseInt(t1[1]);
+            int amount1 = Integer.parseInt(t1[2]);
+            String city1 = t1[3];
+            if (amount1 > 1000) {
                 invalid.add(i);
             }
-        }
-        for (Transaction t1 : set) {
-            NavigableSet<Transaction> within60Mins = set.subSet(
-                t1, true, /* we only care about t1.time + 60 */
-                new Transaction(0, "", t1.time + 60, 0, ""), true);
-            for (Transaction t2 : within60Mins) {
-                if (t1.name.equals(t2.name) && !t1.city.equals(t2.city)) {
-                    invalid.add(t1.index);
-                    invalid.add(t2.index);
+            for (int j = i + 1; j < transactions.length; j++) {
+                String[] t2 = transactions[j].split(",");
+                String name2 = t2[0];
+                int time2 = Integer.parseInt(t2[1]);
+                String city2 = t2[3];
+                if (name1.equals(name2) && !city1.equals(city2) && Math.abs(time1 - time2) <= 60) {
+                    invalid.add(i);
+                    invalid.add(j);
                 }
             }
         }
@@ -80,17 +107,20 @@ public class Problem1169 {
 
     public static void main(String[] args) {
         Problem1169 prob = new Problem1169();
+//        System.out.println(prob.invalidTransactions(new String[]{
+//            "alice,20,800,mtv","alice,50,100,beijing"})); // ["alice,20,800,mtv","alice,50,100,beijing"]
+//        System.out.println(prob.invalidTransactions(new String[]{
+//            "alice,20,800,mtv","alice,50,100,beijing","alice,5,100,beijing"})); // ["alice,20,800,mtv","alice,50,100,beijing","alice,5,100,beijing"]
+//        System.out.println(prob.invalidTransactions(new String[]{
+//            "alice,20,800,mtv","alice,50,1200,mtv"})); // ["alice,50,1200,mtv"]
+//        System.out.println(prob.invalidTransactions(new String[]{
+//            "alice,20,800,mtv","bob,50,1200,mtv"})); // ["bob,50,1200,mtv"]
+//        System.out.println(prob.invalidTransactions(new String[]{
+//            "alice,5,100,beijing","alice,50,100,beijing"})); // []
+//        System.out.println(prob.invalidTransactions(new String[]{
+//            "alice,5,100,beijing","alice,50,100,beijing","alice,80,800,mtv"})); // ["alice,50,100,beijing","alice,80,800,mtv"]
         System.out.println(prob.invalidTransactions(new String[]{
-            "alice,20,800,mtv","alice,50,100,beijing"})); // ["alice,20,800,mtv","alice,50,100,beijing"]
-        System.out.println(prob.invalidTransactions(new String[]{
-            "alice,20,800,mtv","alice,50,100,beijing","alice,5,100,beijing"})); // ["alice,20,800,mtv","alice,50,100,beijing","alice,5,100,beijing"]
-        System.out.println(prob.invalidTransactions(new String[]{
-            "alice,20,800,mtv","alice,50,1200,mtv"})); // ["alice,50,1200,mtv"]
-        System.out.println(prob.invalidTransactions(new String[]{
-            "alice,20,800,mtv","bob,50,1200,mtv"})); // ["bob,50,1200,mtv"]
-        System.out.println(prob.invalidTransactions(new String[]{
-            "alice,5,100,beijing","alice,50,100,beijing"})); // []
-        System.out.println(prob.invalidTransactions(new String[]{
-            "alice,5,100,beijing","alice,50,100,beijing","alice,80,800,mtv"})); // ["alice,50,100,beijing","alice,80,800,mtv"]
+            "bob,689,1910,barcelona","alex,696,122,bangkok","bob,832,1726,barcelona",
+            "bob,820,596,bangkok","chalicefy,217,669,barcelona","bob,175,221,amsterdam"})); // ["bob,689,1910,barcelona","bob,832,1726,barcelona","bob,820,596,bangkok"]
     }
 }
