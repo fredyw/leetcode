@@ -7,13 +7,41 @@ import java.util.Arrays;
  */
 public class Problem1170 {
     public int[] numSmallerByFrequency(String[] queries, String[] words) {
-        // TODO
-        return null;
+        int[] answer = new int[queries.length];
+        int i = 0;
+        int[] queryMinFreqs = getMinFreqs(queries);
+        int[] wordMinFreqs = getMinFreqs(words);
+        for (int query : queryMinFreqs) {
+            int count = 0;
+            for (int word : wordMinFreqs) {
+                if (query < word) {
+                    count++;
+                }
+            }
+            answer[i++] = count;
+        }
+        return answer;
     }
 
-    public static void main(String[] args) {
-        Problem1170 prob = new Problem1170();
-        System.out.println(Arrays.toString(prob.numSmallerByFrequency(new String[]{"cbd"}, new String[]{"zaaaz"}))); // [1]
-        System.out.println(Arrays.toString(prob.numSmallerByFrequency(new String[]{"bbb","cc"}, new String[]{"a","aa","aaa","aaaa"}))); // [1,2]
+    private static int[] getMinFreqs(String[] strings) {
+        int[][] counts = new int[strings.length][];
+        int i = 0;
+        for (String str : strings) {
+            int[] count = new int[26];
+            for (char c : str.toCharArray()) {
+                count[c - 'a']++;
+            }
+            counts[i++] = count;
+        }
+        int[] minFreqs = new int[strings.length];
+        for (int j = 0; j < counts.length; j++) {
+            for (int k = 0; k < counts[j].length; k++) {
+                if (counts[j][k] > 0) {
+                    minFreqs[j] = counts[j][k];
+                    break;
+                }
+            }
+        }
+        return minFreqs;
     }
 }
