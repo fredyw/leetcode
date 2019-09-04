@@ -16,11 +16,6 @@ public class Problem1171 {
         ListNode(int x) {
             val = x;
         }
-
-        @Override
-        public String toString() {
-            return "" + val;
-        }
     }
 
     public ListNode removeZeroSumSublists(ListNode head) {
@@ -42,6 +37,11 @@ public class Problem1171 {
                     endIdx = i;
                     removed = true;
                     break;
+                } if (sum == 0) {
+                    startIdx = 0;
+                    endIdx = i;
+                    removed = true;
+                    break;
                 } else {
                     map.put(sum, i);
                 }
@@ -57,14 +57,8 @@ public class Problem1171 {
             }
             nodes = tmp;
         }
-        if (sum == 0) {
-            return null;
-        }
         ListNode answer = null;
         for (int i = 0; i < nodes.size(); i++) {
-            if (nodes.get(i).val == 0) {
-                continue;
-            }
             if (answer == null) {
                 answer = nodes.get(i);
             } else {
@@ -81,53 +75,5 @@ public class Problem1171 {
             System.out.print(n.val + " ");
         }
         System.out.println("]");
-    }
-
-    public static void main(String[] args) {
-        Problem1171 prob = new Problem1171();
-
-        ListNode head = new ListNode(1);
-//        head.next = new ListNode(2);
-//        head.next.next = new ListNode(-3);
-//        head.next.next.next = new ListNode(3);
-//        head.next.next.next.next = new ListNode(1);
-//        print(prob.removeZeroSumSublists(head)); // [3,1]
-//
-//        head = new ListNode(1);
-//        head.next = new ListNode(2);
-//        head.next.next = new ListNode(3);
-//        head.next.next.next = new ListNode(-3);
-//        head.next.next.next.next = new ListNode(4);
-//        print(prob.removeZeroSumSublists(head)); // [1,2,4]
-//
-//        head = new ListNode(1);
-//        head.next = new ListNode(2);
-//        head.next.next = new ListNode(3);
-//        head.next.next.next = new ListNode(-3);
-//        head.next.next.next.next = new ListNode(-2);
-//        print(prob.removeZeroSumSublists(head)); // [1]
-//
-//        head = new ListNode(3);
-//        head.next = new ListNode(4);
-//        head.next.next = new ListNode(5);
-//        head.next.next.next = new ListNode(-2);
-//        head.next.next.next.next = new ListNode(-3);
-//        head.next.next.next.next.next = new ListNode(2);
-//        head.next.next.next.next.next.next = new ListNode(6);
-//        print(prob.removeZeroSumSublists(head)); // [3, 2]
-//
-//        head = new ListNode(1);
-//        head.next = new ListNode(-1);
-//        print(prob.removeZeroSumSublists(head)); // []
-//
-//        head = new ListNode(0);
-//        head.next = new ListNode(2);
-//        print(prob.removeZeroSumSublists(head)); // [2]
-
-        head = new ListNode(-1);
-        head.next = new ListNode(1);
-        head.next.next = new ListNode(-2);
-        head.next.next.next = new ListNode(-1);
-        print(prob.removeZeroSumSublists(head)); // [-2, -1]
     }
 }
