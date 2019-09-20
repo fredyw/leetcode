@@ -34,18 +34,4 @@ public class Problem1156 {
         }
         return answer;
     }
-
-    public static void main(String[] args) {
-        Problem1156 prob = new Problem1156();
-//        System.out.println(prob.maxRepOpt1("ababa")); // 3
-//        System.out.println(prob.maxRepOpt1("aaabaaa")); // 6
-        System.out.println(prob.maxRepOpt1("aaabbaaa")); // 4
-//        System.out.println(prob.maxRepOpt1("aaabaaaca")); // 7
-//        System.out.println(prob.maxRepOpt1("aaaaa")); // 5
-//        System.out.println(prob.maxRepOpt1("abcdef")); // 1
-//        System.out.println(prob.maxRepOpt1("abcdefa")); // 2
-//        System.out.println(prob.maxRepOpt1("abcaaa")); // 3
-//        System.out.println(prob.maxRepOpt1("aaa")); // 3
-//        System.out.println(prob.maxRepOpt1("bbababaaaa")); // 6
-    }
 }
