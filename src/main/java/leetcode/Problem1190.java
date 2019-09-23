@@ -5,15 +5,28 @@ package leetcode;
  */
 public class Problem1190 {
     public String reverseParentheses(String s) {
-        // TODO
-        return null;
+        return reverseParentheses(s, new IntRef());
     }
 
-    public static void main(String[] args) {
-        Problem1190 prob = new Problem1190();
-        System.out.println(prob.reverseParentheses("(abcd)")); // "dcba"
-        System.out.println(prob.reverseParentheses("(u(love)i)")); // "iloveu"
-        System.out.println(prob.reverseParentheses("(ed(et(oc))el)")); // "leetcode"
-        System.out.println(prob.reverseParentheses("a(bcdefghijkl(mno)p)q")); // "apmnolkjihgfedcbq"
+    private static class IntRef {
+        private int val;
+    }
+
+    private static String reverseParentheses(String s, IntRef index) {
+        String str = "";
+        while(index.val < s.length()) {
+            int i = index.val;
+            if (s.charAt(i) == '(') {
+                index.val++;
+                str += reverseParentheses(s, index);
+            } else if (s.charAt(i) == ')') {
+                index.val++;
+                return new StringBuilder(str).reverse().toString();
+            } else {
+                str += s.charAt(i);
+                index.val++;
+            }
+        }
+        return str;
     }
 }
