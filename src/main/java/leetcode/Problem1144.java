@@ -20,23 +20,16 @@ public class Problem1144 {
             if (less) { // a < b
                 if (nums[i] >= nums[i + 1]) {
                     min += nums[i] - nums[i + 1] + 1;
-                    nums[i + 1] = nums[i] + 1;
+                    nums[i] = nums[i + 1] - 1;
                 }
             } else { // a > b
                 if (nums[i] <= nums[i + 1]) {
                     min += nums[i + 1] - nums[i] + 1;
-                    nums[i + 1] = nums[i] + 1;
+                    nums[i + 1] = nums[i] - 1;
                 }
             }
             less = !less;
         }
         return min;
-    }
-
-    public static void main(String[] args) {
-        Problem1144 prob = new Problem1144();
-//        System.out.println(prob.movesToMakeZigzag(new int[]{1,2,3})); // 2
-//        System.out.println(prob.movesToMakeZigzag(new int[]{9,6,1,6,2})); // 4
-        System.out.println(prob.movesToMakeZigzag(new int[]{7,4,8,9,7,7,5})); // 6
     }
 }
