@@ -23,5 +23,7 @@ public class Problem1129 {
             new int[][]{{0, 1}}, new int[][]{{1, 2}}))); // [0,1,2]
         System.out.println(Arrays.toString(prob.shortestAlternatingPaths(3,
             new int[][]{{0, 1}, {0, 2}}, new int[][]{{1, 0}}))); // [0,1,1]
+        System.out.println(Arrays.toString(prob.shortestAlternatingPaths(4,
+            new int[][]{{0, 1}, {1, 2}, {3, 2}}, new int[][]{{1, 3}}))); // [0,1,3,2]
     }
 }
