@@ -1,7 +1,6 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -100,27 +99,5 @@ public class Problem1129 {
             }
         }
         return graph;
-    }
-
-    public static void main(String[] args) {
-        Problem1129 prob = new Problem1129();
-        System.out.println(Arrays.toString(prob.shortestAlternatingPaths(3,
-            new int[][]{{0, 1}, {1, 2}}, new int[][]{}))); // [0,1,-1]
-        System.out.println(Arrays.toString(prob.shortestAlternatingPaths(3,
-            new int[][]{{0, 1}}, new int[][]{{2, 1}}))); // [0,1,-1]
-        System.out.println(Arrays.toString(prob.shortestAlternatingPaths(3,
-            new int[][]{{1, 0}}, new int[][]{{2, 1}}))); // [0,-1,-1]
-        System.out.println(Arrays.toString(prob.shortestAlternatingPaths(3,
-            new int[][]{{0, 1}}, new int[][]{{1, 2}}))); // [0,1,2]
-        System.out.println(Arrays.toString(prob.shortestAlternatingPaths(3,
-            new int[][]{{0, 1}, {0, 2}}, new int[][]{{1, 0}}))); // [0,1,1]
-        System.out.println(Arrays.toString(prob.shortestAlternatingPaths(4,
-            new int[][]{{0, 1}, {1, 2}, {3, 2}}, new int[][]{{1, 3}}))); // [0,1,3,2]
-        System.out.println(Arrays.toString(prob.shortestAlternatingPaths(5,
-            new int[][]{{0, 1}, {1, 2}, {2, 3}, {3, 4}}, new int[][]{{1, 2}, {2, 3}, {3, 1}}))); // [0,1,2,3,7]
-        System.out.println(Arrays.toString(prob.shortestAlternatingPaths(8,
-            new int[][]{{7,1},{4,2},{2,1},{5,0},{3,1},{1,0},{7,5},{4,3},{2,0},{0,7},{2,3},{1,7},{7,4},{2,2},{1,6},{6,2},{4,5},{2,4},{1,5},{1,2},{5,2},{0,4},{3,3}},
-            new int[][]{{1,5},{3,1},{6,3},{4,5},{7,1},{1,4},{5,5},{2,7},{7,3},{3,4},{0,3},{7,0},{4,6}
-        }))); // [0,2,3,1,1,2,2,1]
     }
 }
