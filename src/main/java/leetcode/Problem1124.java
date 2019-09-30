@@ -5,8 +5,22 @@ package leetcode;
  */
 public class Problem1124 {
     public int longestWPI(int[] hours) {
-        // TODO
-        return 0;
+        int answer = 0;
+        for (int i = 0; i < hours.length; i++) {
+            int tiring = 0;
+            int nonTiring = 0;
+            for (int j = i; j < hours.length; j++) {
+                if (hours[j] <= 8) {
+                    nonTiring++;
+                } else {
+                    tiring++;
+                }
+                if (tiring > nonTiring) {
+                    answer = Math.max(answer, j - i + 1);
+                }
+            }
+        }
+        return answer;
     }
 
     public static void main(String[] args) {
