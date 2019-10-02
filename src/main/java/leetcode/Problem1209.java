@@ -9,7 +9,7 @@ public class Problem1209 {
         while (true) {
             boolean found = false;
             int count = 1;
-            String tmp = "";
+            StringBuilder tmp = new StringBuilder();
             int i = 0;
             while (i < answer.length() - 1) {
                 if (answer.charAt(i) == answer.charAt(i + 1)) {
@@ -17,10 +17,10 @@ public class Problem1209 {
                 } else {
                     count = 1;
                 }
-                tmp += answer.charAt(i);
+                tmp.append(answer.charAt(i));
                 if (count == k) {
-                    tmp += answer.charAt(i + 1);
-                    tmp = tmp.substring(0, tmp.length() - k);
+                    tmp.append(answer.charAt(i + 1));
+                    tmp.delete(i - k + 2, tmp.length());
                     found = true;
                     i++;
                     count = 1;
@@ -30,15 +30,11 @@ public class Problem1209 {
             if (!found) {
                 break;
             }
-            answer = tmp + (i < answer.length() ? answer.charAt(i) : "");
+            if (i < answer.length()) {
+                tmp.append(answer.charAt(i));
+            }
+            answer = tmp.toString();
         }
         return answer;
-    }
-
-    public static void main(String[] args) throws Exception {
-        Problem1209 prob = new Problem1209();
-        System.out.println(prob.removeDuplicates("abcd", 2)); // "abcd"
-        System.out.println(prob.removeDuplicates("deeedbbcccbdaa", 3)); // "aa"
-        System.out.println(prob.removeDuplicates("pbbcggttciiippooaais", 2)); // "ps"
     }
 }
