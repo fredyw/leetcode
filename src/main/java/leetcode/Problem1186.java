@@ -16,5 +16,6 @@ public class Problem1186 {
         System.out.println(prob.maximumSum(new int[]{-1, -1, -1, -1})); // -1
         System.out.println(prob.maximumSum(new int[]{1, -2, -1, 0, 3})); // 3
         System.out.println(prob.maximumSum(new int[]{1, 2, 3})); // 6
+        System.out.println(prob.maximumSum(new int[]{-4, 1, 2, -3, 3, -4, 2})); // 6
     }
 }
