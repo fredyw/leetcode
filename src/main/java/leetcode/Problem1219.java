@@ -30,29 +30,7 @@ public class Problem1219 {
         int c = getMaximumGold(grid, row + 1, col, visited); // down
         int d = getMaximumGold(grid, row, col - 1, visited); // left
         int max = grid[row][col] + Math.max(a, Math.max(b, Math.max(c, d)));
+        visited[row][col] = false;
         return max;
-    }
-
-    public static void main(String[] args) {
-        Problem1219 prob = new Problem1219();
-        System.out.println(prob.getMaximumGold(new int[][]{
-            {0, 6, 0},
-            {5, 8, 7},
-            {0, 9, 0}
-        })); // 24
-        System.out.println(prob.getMaximumGold(new int[][]{
-            {1, 0, 7},
-            {2, 0, 6},
-            {3, 4, 5},
-            {0, 3, 0},
-            {9, 0, 20}
-        })); // 28
-        System.out.println(prob.getMaximumGold(new int[][]{
-            {1, 0, 7, 0, 0, 0},
-            {2, 0, 6, 0, 1, 0},
-            {3, 5, 6, 7, 4, 2},
-            {4, 3, 1, 0, 2, 0},
-            {3, 0, 5, 0, 20, 0}
-        })); // 60
     }
 }
