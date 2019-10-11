@@ -5,8 +5,23 @@ package leetcode;
  */
 public class Problem1186 {
     public int maximumSum(int[] arr) {
-        // TODO
-        return 0;
+        int answer = Integer.MIN_VALUE;
+        for (int i = 0; i < arr.length; i++) {
+            boolean negative = false;
+            int sum = arr[i];
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < 0) {
+                    if (negative) {
+                        break;
+                    }
+                    negative = true;
+                } else {
+                    sum += arr[j];
+                }
+            }
+            answer = Math.max(answer, sum);
+        }
+        return answer;
     }
 
     public static void main(String[] args) {
