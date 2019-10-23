@@ -1,29 +1,102 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * https://leetcode.com/problems/queens-that-can-attack-the-king/
  */
 public class Problem1222 {
     public List<List<Integer>> queensAttacktheKing(int[][] queens, int[] king) {
-        // TODO
-        return null;
+        List<List<Integer>> answer = new ArrayList<>();
+        Set<String> set = new HashSet<>();
+        for (int[] queen : queens) {
+            set.add(queen[0] + "," + queen[1]);
+        }
+        for (int[] queen : queens) {
+            if (canAttack(queen, king, 8, 8, set)) {
+                answer.add(Arrays.asList(queen[0], queen[1]));
+            }
+        }
+        return answer;
     }
 
-    public static void main(String[] args) {
-        Problem1222 prob = new Problem1222();
-        System.out.println(prob.queensAttacktheKing(
-            new int[][]{{0, 1}, {1, 0}, {4, 0}, {0, 4}, {3, 3}, {2, 4}},
-            new int[]{0, 0}
-        )); // [[0,1],[1,0],[3,3]]
-        System.out.println(prob.queensAttacktheKing(
-            new int[][]{{0, 0}, {1, 1}, {2, 2}, {3, 4}, {3, 5}, {4, 4}, {4, 5}},
-            new int[]{3, 3}
-        )); // [[2,2],[3,4],[4,4]]
-        System.out.println(prob.queensAttacktheKing(
-            new int[][]{{5, 6}, {7, 7}, {2, 1}, {0, 7}, {1, 6}, {5, 1}, {3, 7}, {0, 3}, {4, 0}, {1, 2}, {6, 3}, {5, 0}, {0, 4}, {2, 2}, {1, 1}, {6, 4}, {5, 4}, {0, 0}, {2, 6}, {4, 5}, {5, 2}, {1, 4}, {7, 5}, {2, 3}, {0, 5}, {4, 2}, {1, 0}, {2, 7}, {0, 1}, {4, 6}, {6, 1}, {0, 6}, {4, 3}, {1, 7}},
-            new int[]{3, 4}
-        )); // [[2,3],[1,4],[1,6],[3,7],[4,3],[5,4],[4,5]]
+    private static boolean canAttack(int[] queen, int[] king, int maxRow, int maxCol, Set<String> queens) {
+        // top
+        for (int row = queen[0] - 1, col = queen[1]; row >= 0; row--) {
+            if (queens.contains(row + "," + col)) {
+                break;
+            }
+            if (row == king[0] && col == king[1]) {
+                return true;
+            }
+        }
+        // top right
+        for (int row = queen[0] - 1, col = queen[1] + 1; row >= 0 && col < maxCol; row--, col++) {
+            if (queens.contains(row + "," + col)) {
+                break;
+            }
+            if (row == king[0] && col == king[1]) {
+                return true;
+            }
+        }
+        // right
+        for (int row = queen[0], col = queen[1] + 1; col < maxCol; col++) {
+            if (queens.contains(row + "," + col)) {
+                break;
+            }
+            if (row == king[0] && col == king[1]) {
+                return true;
+            }
+        }
+        // bottom right
+        for (int row = queen[0] + 1, col = queen[1] + 1; row < maxRow && col < maxCol; row++, col++) {
+            if (queens.contains(row + "," + col)) {
+                break;
+            }
+            if (row == king[0] && col == king[1]) {
+                return true;
+            }
+        }
+        // bottom
+        for (int row = queen[0] + 1, col = queen[1]; row < maxRow; row++) {
+            if (queens.contains(row + "," + col)) {
+                break;
+            }
+            if (row == king[0] && col == king[1]) {
+                return true;
+            }
+        }
+        // bottom left
+        for (int row = queen[0] + 1, col = queen[1] - 1; row < maxRow && col >= 0; row++, col--) {
+            if (queens.contains(row + "," + col)) {
+                break;
+            }
+            if (row == king[0] && col == king[1]) {
+                return true;
+            }
+        }
+        // left
+        for (int row = queen[0], col = queen[1] - 1; col >= 0; col--) {
+            if (queens.contains(row + "," + col)) {
+                break;
+            }
+            if (row == king[0] && col == king[1]) {
+                return true;
+            }
+        }
+        // top left
+        for (int row = queen[0] - 1, col = queen[1] - 1; row >= 0 && col >= 0; row--, col--) {
+            if (queens.contains(row + "," + col)) {
+                break;
+            }
+            if (row == king[0] && col == king[1]) {
+                return true;
+            }
+        }
+        return false;
     }
 }
