@@ -22,22 +22,9 @@ public class Problem1186 {
             backward[i] = maxSoFar;
             answer = Math.max(answer, maxSoFar);
         }
-//        System.out.println(Arrays.toString(forward));
-//        System.out.println(Arrays.toString(backward));
         for (int i = 1; i < arr.length - 1; i++) {
             answer = Math.max(answer, forward[i - 1] + backward[i + 1]);
         }
         return answer;
-    }
-
-    public static void main(String[] args) {
-        Problem1186 prob = new Problem1186();
-        System.out.println(prob.maximumSum(new int[]{1, -2, 0, 3})); // 4
-        System.out.println(prob.maximumSum(new int[]{1, -2, -2, 3})); // 3
-        System.out.println(prob.maximumSum(new int[]{-1, -1, -1, -1})); // -1
-        System.out.println(prob.maximumSum(new int[]{1, -2, -1, 0, 3})); // 3
-        System.out.println(prob.maximumSum(new int[]{1, 2, 3})); // 6
-        System.out.println(prob.maximumSum(new int[]{-4, 1, 2, -3, 3, -4, 2})); // 6
-        System.out.println(prob.maximumSum(new int[]{-2, -3, 4, -1, -2, 1, 5, -3})); // 9
     }
 }
