@@ -1,23 +1,30 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * https://leetcode.com/problems/remove-sub-folders-from-the-filesystem/
  */
 public class Problem1233 {
     public List<String> removeSubfolders(String[] folder) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1233 prob = new Problem1233();
-        System.out.println(prob.removeSubfolders(
-            new String[]{"/a","/a/b","/c/d","/c/d/e","/c/f"})); // ["/a","/c/d","/c/f"]
-        System.out.println(prob.removeSubfolders(
-            new String[]{"/a","/a/b/c","/a/b/d"})); // ["/a""]
-        System.out.println(prob.removeSubfolders(
-            new String[]{"/a/b/c","/a/b/ca","/a/b/d"})); // ["/a/b/c","/a/b/ca","/a/b/d"]
+        Set<String> answer = new HashSet<>();
+        for (String f : folder) {
+            answer.add(f);
+        }
+        for (String f : folder) {
+            String[] split = f.split("/");
+            String tmp = "";
+            for (int i = 1; i < split.length; i++) {
+                tmp += "/" + split[i];
+                if (!tmp.equals(f) && answer.contains(tmp)) {
+                    answer.remove(f);
+                    break;
+                }
+            }
+        }
+        return new ArrayList<>(answer);
     }
 }
