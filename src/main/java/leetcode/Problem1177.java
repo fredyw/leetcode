@@ -31,7 +31,10 @@ public class Problem1177 {
 //            {3,3,0},{1,2,0},{0,3,1},{0,3,2},{0,4,1}
 //        })); // [true,false,false,true,true]
         System.out.println(prob.canMakePaliQueries("hunu", new int[][]{
-            {1,1,1},{2,3,0},{3,3,1},{0,3,2},{1,3,3},{2,3,1},{3,3,1},{0,3,0},{1,1,1},{2,3,0},{3,3,1},{0,3,1},{1,1,1}
-        })); // [true,false,true,true,true,true,true,false,true,false,true,true,true]
+            {0,3,1}
+        })); // [true]
+//        System.out.println(prob.canMakePaliQueries("hunu", new int[][]{
+//            {1,1,1},{2,3,0},{3,3,1},{0,3,2},{1,3,3},{2,3,1},{3,3,1},{0,3,0},{1,1,1},{2,3,0},{3,3,1},{0,3,1},{1,1,1}
+//        })); // [true,false,true,true,true,true,true,false,true,false,true,true,true]
     }
 }
