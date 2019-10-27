@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -14,10 +16,14 @@ public class Problem1237 {
     }
 
     public List<List<Integer>> findSolution(CustomFunction customfunction, int z) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
+        List<List<Integer>> answer = new ArrayList<>();
+        for (int x = 1; x <= 1000 && x <= z; x++) {
+            for (int y = 1; y <= 1000 && y <= z; y++) {
+                if (customfunction.f(x, y) == z) {
+                    answer.add(Arrays.asList(x, y));
+                }
+            }
+        }
+        return answer;
     }
 }
