@@ -21,5 +21,10 @@ public class Problem1162 {
             {0,0,0},
             {0,0,0}
         })); // 4
+        System.out.println(prob.maxDistance(new int[][]{
+            {1,0,1},
+            {0,0,0},
+            {0,0,0}
+        })); // 3
     }
 }
