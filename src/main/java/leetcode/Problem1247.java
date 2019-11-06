@@ -29,18 +29,20 @@ public class Problem1247 {
                 if (s1.charAt(i) == 'x') {
                     if (x1Set.remove(i) && y2Set.remove(i)) {
                         if (!x1Set.isEmpty()) {
-                            int index = x1Set.iterator().next();
+                            // Example:
+                            // xx
+                            // yy
+                            int index = x1Set.iterator().next(); // pick any y from s1
                             x1Set.remove(index);
-                            x2Set.remove(index);
-                            y1Set.remove(index);
                             y2Set.remove(index);
                             answer++;
                         } else if (!x2Set.isEmpty()) {
-                            int index = x2Set.iterator().next();
-                            x1Set.remove(index);
+                            // Example:
+                            // xy
+                            // yx
+                            int index = x2Set.iterator().next(); // pick any x from s2
                             x2Set.remove(index);
                             y1Set.remove(index);
-                            y2Set.remove(index);
                             answer += 2;
                         } else {
                             return -1;
@@ -49,17 +51,19 @@ public class Problem1247 {
                 } else {
                     if (y1Set.remove(i) && x2Set.remove(i)) {
                         if (!y1Set.isEmpty()) {
-                            int index = y1Set.iterator().next();
-                            x1Set.remove(index);
-                            x2Set.remove(index);
+                            // Example:
+                            // yy
+                            // xx
+                            int index = y1Set.iterator().next(); // pick any y from s1
                             y1Set.remove(index);
-                            y2Set.remove(index);
+                            x2Set.remove(index);
                             answer++;
                         } else if (!y2Set.isEmpty()) {
-                            int index = y2Set.iterator().next();
+                            // Example:
+                            // yx
+                            // xy
+                            int index = y2Set.iterator().next(); // pick any y from the s2
                             x1Set.remove(index);
-                            x2Set.remove(index);
-                            y1Set.remove(index);
                             y2Set.remove(index);
                             answer += 2;
                         } else {
@@ -70,14 +74,5 @@ public class Problem1247 {
             }
         }
         return answer;
-    }
-
-    public static void main(String[] args) {
-        Problem1247 prob = new Problem1247();
-        System.out.println(prob.minimumSwap("xx", "yy")); // 1
-        System.out.println(prob.minimumSwap("xy", "yx")); // 2
-        System.out.println(prob.minimumSwap("xx", "xy")); // -1
-        System.out.println(prob.minimumSwap("xx", "xx")); // 0
-        System.out.println(prob.minimumSwap("xxyyxyxyxx", "xyyxyxxxyx")); // 4
     }
 }
