@@ -50,38 +50,6 @@ public class Problem1254 {
         dfs(grid, visited, maxRow, maxCol, row - 1, col); // up
         dfs(grid, visited, maxRow, maxCol, row, col + 1); // right
         dfs(grid, visited, maxRow, maxCol, row + 1, col); // down
-        dfs(grid, visited, maxRow, maxCol, row - 1, col); // left
-    }
-
-    public static void main(String[] args) {
-        Problem1254 prob = new Problem1254();
-        System.out.println(prob.closedIsland(new int[][]{
-            {1,1,1,1,1,1,1,0},
-            {1,0,0,0,0,1,1,0},
-            {1,0,1,0,1,1,1,0},
-            {1,0,0,0,0,1,0,1},
-            {1,1,1,1,1,1,1,0}
-        })); // 2
-        System.out.println(prob.closedIsland(new int[][]{
-            {0,0,1,0,0},
-            {0,1,0,1,0},
-            {0,1,1,1,0}
-        })); // 1
-        System.out.println(prob.closedIsland(new int[][]{
-            {1,1,1,1,1,1,1},
-            {1,0,0,0,0,0,1},
-            {1,0,1,1,1,0,1},
-            {1,0,1,0,1,0,1},
-            {1,0,1,1,1,0,1},
-            {1,0,0,0,0,0,1},
-            {1,1,1,1,1,1,1}
-        })); // 2
-        System.out.println(prob.closedIsland(new int[][]{
-            {1,1,1,1,1,1,1,0},
-            {1,1,0,1,0,1,1,0},
-            {1,0,1,0,1,1,1,0},
-            {1,1,0,1,0,1,0,1},
-            {1,1,1,1,1,1,1,0}
-        })); // 7
+        dfs(grid, visited, maxRow, maxCol, row, col - 1); // left
     }
 }
