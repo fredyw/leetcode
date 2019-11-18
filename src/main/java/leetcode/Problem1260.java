@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,8 +8,11 @@ import java.util.List;
  */
 public class Problem1260 {
     public List<List<Integer>> shiftGrid(int[][] grid, int k) {
-        // TODO
-        return null;
+        int m = grid.length;
+        int n = m > 0 ? grid[0].length : 0;
+        List<List<Integer>> answer = new ArrayList<>();
+        // TODO:
+        return answer;
     }
 
     public static void main(String[] args) {
