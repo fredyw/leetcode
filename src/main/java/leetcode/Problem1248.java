@@ -14,5 +14,6 @@ public class Problem1248 {
         System.out.println(prob.numberOfSubarrays(new int[]{1,1,2,1,1}, 3)); // 2
         System.out.println(prob.numberOfSubarrays(new int[]{2,4,6}, 1)); // 0
         System.out.println(prob.numberOfSubarrays(new int[]{2,2,2,1,2,2,1,2,2,2}, 2)); // 16
+        System.out.println(prob.numberOfSubarrays(new int[]{2,2,2,1,2,2,1,2,2,2,1,2,2}, 2)); // 25
     }
 }
