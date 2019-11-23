@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,8 +8,15 @@ import java.util.List;
  */
 public class Problem1238 {
     public List<Integer> circularPermutation(int n, int start) {
+        List<Integer> answer = new ArrayList<>();
+        answer.add(start);
         // TODO
-        return null;
+        return answer;
+    }
+
+    private static int binaryToGray(int n) {
+        // https://en.wikipedia.org/wiki/Gray_code
+        return n ^ (n >> 1);
     }
 
     public static void main(String[] args) {
