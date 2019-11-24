@@ -5,13 +5,15 @@ package leetcode;
  */
 public class Problem1266 {
     public int minTimeToVisitAllPoints(int[][] points) {
-        // TODO
-        return 0;
+        int answer = 0;
+        for (int i = 0; i < points.length - 1; i++) {
+            answer += chebyshev(points[i], points[i + 1]);
+        }
+        return answer;
     }
 
-    public static void main(String[] args) {
-        Problem1266 prob = new Problem1266();
-        System.out.println(prob.minTimeToVisitAllPoints(new int[][]{{1,1},{3,4},{-1,0}})); // 7
-        System.out.println(prob.minTimeToVisitAllPoints(new int[][]{{3,2},{-2,2}})); // 5
+    private static int chebyshev(int[] point1, int[] point2) {
+        // https://en.wikipedia.org/wiki/Chebyshev_distance
+        return Math.max(Math.abs(point1[0] - point2[0]), Math.abs(point1[1] - point2[1]));
     }
 }
