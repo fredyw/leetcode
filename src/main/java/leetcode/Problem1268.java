@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,11 +8,21 @@ import java.util.List;
  */
 public class Problem1268 {
     public List<List<String>> suggestedProducts(String[] products, String searchWord) {
-        Node root = new Node(' ');
+        Node root = new Node(' '); // dummy root
         for (String product : products) {
             root = build(root, product, 0);
         }
-        return null;
+        List<List<String>> answer = new ArrayList<>();
+        for (int i = 0; i < searchWord.length(); i++) {
+            List<String> words = new ArrayList<>();
+            String sub = searchWord.substring(0, i + 1);
+            Node node = get(root, sub, 0);
+            if (node != null) {
+                traverse(node, sub, words);
+            }
+            answer.add(words);
+        }
+        return answer;
     }
 
     private static class Node {
@@ -22,11 +33,35 @@ public class Problem1268 {
         private Node(char c) {
             this.c = c;
         }
+    }
 
-        @Override
-        public String toString() {
-            return "" + c;
+    private static void traverse(Node node, String word, List<String> words) {
+        if (node == null) {
+            return;
         }
+        if (words.size() == 3) {
+            return;
+        }
+        if (node.isWord) {
+            words.add(word);
+        }
+        for (Node child : node.children) {
+            if (child != null) {
+                traverse(child, word + child.c, words);
+            }
+        }
+    }
+
+    private static Node get(Node node, String searchWord, int index) {
+        if (index == searchWord.length()) {
+            return node;
+        }
+        char c = searchWord.charAt(index);
+        Node child = node.children[c - 'a'];
+        if (child == null) {
+            return null;
+        }
+        return get(child, searchWord, index + 1);
     }
 
     private static Node build(Node node, String product, int index) {
@@ -43,22 +78,5 @@ public class Problem1268 {
             node.children[c - 'a'].isWord = true;
         }
         return node;
-    }
-
-    public static void main(String[] args) {
-        Problem1268 prob = new Problem1268();
-        // [["mobile","moneypot","monitor"],
-        //  ["mobile","moneypot","monitor"],
-        //  ["mouse","mousepad"],
-        //  ["mouse","mousepad"],
-        //  ["mouse","mousepad"]]
-        System.out.println(prob.suggestedProducts(
-            new String[]{"mobile","mouse","moneypot","monitor","mousepad"}, "mouse"));
-//        System.out.println(prob.suggestedProducts(
-//            new String[]{"havana"}, "havana")); // [["havana"],["havana"],["havana"],["havana"],["havana"],["havana"]]
-//        System.out.println(prob.suggestedProducts(
-//            new String[]{"bags","baggage","banner","box","cloths"}, "bags")); // [["baggage","bags","banner"],["baggage","bags","banner"],["baggage","bags"],["bags"]]
-//        System.out.println(prob.suggestedProducts(
-//            new String[]{"havana"}, "tatiana")); // [[],[],[],[],[],[],[]]
     }
 }
