@@ -5,6 +5,14 @@ package leetcode;
  */
 public class Problem1262 {
     public int maxSumDivThree(int[] nums) {
+        int answer = 0;
+        for (int i = 0; i < nums.length; i++) {
+            answer = Math.max(answer, maxSumDivThree(nums, i));
+        }
+        return answer;
+    }
+
+    private static int maxSumDivThree(int[] nums, int index) {
         // TODO
         return 0;
     }
@@ -12,7 +20,7 @@ public class Problem1262 {
     public static void main(String[] args) {
         Problem1262 prob = new Problem1262();
         System.out.println(prob.maxSumDivThree(new int[]{3,6,5,1,8})); // 18
-        System.out.println(prob.maxSumDivThree(new int[]{4})); // 0
-        System.out.println(prob.maxSumDivThree(new int[]{1,2,3,4,4})); // 12
+//        System.out.println(prob.maxSumDivThree(new int[]{4})); // 0
+//        System.out.println(prob.maxSumDivThree(new int[]{1,2,3,4,4})); // 12
     }
 }
