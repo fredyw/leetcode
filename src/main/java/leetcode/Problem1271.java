@@ -5,13 +5,13 @@ package leetcode;
  */
 public class Problem1271 {
     public String toHexspeak(String num) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1271 prob = new Problem1271();
-        System.out.println(prob.toHexspeak("257")); // "IOI"
-        System.out.println(prob.toHexspeak("3")); // "ERROR"
+        String hex = Long.toHexString(Long.valueOf(num)).toUpperCase()
+            .replaceAll("0", "O").replaceAll("1", "I");
+        for (int i = 0; i < hex.length(); i++) {
+            if (hex.charAt(i) >= '2' && hex.charAt(i) < '9') {
+                return "ERROR";
+            }
+        }
+        return hex;
     }
 }
