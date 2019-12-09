@@ -5,13 +5,12 @@ package leetcode;
  */
 public class Problem1281 {
     public int subtractProductAndSum(int n) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1281 prob = new Problem1281();
-        System.out.println(prob.subtractProductAndSum(234)); // 15
-        System.out.println(prob.subtractProductAndSum(4421)); // 21
+        int product = 1;
+        int sum = 0;
+        for (char c : Integer.toString(n).toCharArray()) {
+            product *= c - '0';
+            sum += c - '0';
+        }
+        return product - sum;
     }
 }
