@@ -14,5 +14,7 @@ public class Problem1191 {
         System.out.println(prob.kConcatenationMaxSum(new int[]{1,2}, 3)); // 9
         System.out.println(prob.kConcatenationMaxSum(new int[]{1,-2,1}, 5)); // 2
         System.out.println(prob.kConcatenationMaxSum(new int[]{-1,-2}, 7)); // 0
+        System.out.println(prob.kConcatenationMaxSum(new int[]{1,2,-3}, 3)); // 3
+        System.out.println(prob.kConcatenationMaxSum(new int[]{1,2,-3,4}, 3)); // 12
     }
 }
