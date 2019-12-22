@@ -9,90 +9,68 @@ public class Problem1234 {
         int w = 0;
         int e = 0;
         int r = 0;
-        for (char c : s.toCharArray()) {
-            if (c == 'Q') {
+        int n = s.length() / 4;
+        int startIndex = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == 'Q') {
                 q++;
-            } else if (c == 'W') {
+            } else if (s.charAt(i) == 'W') {
                 w++;
-            } else if (c == 'E') {
+            } else if (s.charAt(i) == 'E') {
                 e++;
             } else {
                 r++;
             }
-        }
-        int answer = 0;
-        while (!((q == w) && (w == e) && (e == r))) {
-            CharCount max = max(q, w, e, r);
-            CharCount min = min(q, w, e, r);
-            if (max.c == 'Q') {
-                q--;
-            } else if (max.c == 'W') {
-                w--;
-            } else if (max.c == 'E') {
-                e--;
-            } else {
-                r--;
+            startIndex = i;
+            if (q > n || w > n || e > n || r > n) {
+                if (q > n) {
+                    q--;
+                } else if (w > n) {
+                    w--;
+                } else if (e > n) {
+                    e--;
+                } else {
+                    r--;
+                }
+                break;
             }
-            if (min.c == 'Q') {
+        }
+        int endIndex = 0;
+        for (int i = s.length() - 1; i >= startIndex; i--) {
+            if (s.charAt(i) == 'Q') {
                 q++;
-            } else if (min.c == 'W') {
+            } else if (s.charAt(i) == 'W') {
                 w++;
-            } else if (min.c == 'E') {
+            } else if (s.charAt(i) == 'E') {
                 e++;
             } else {
                 r++;
             }
-            answer++;
+            endIndex = i;
+            if (q > n || w > n || e > n || r > n) {
+                if (q > n) {
+                    q--;
+                } else if (w > n) {
+                    w--;
+                } else if (e > n) {
+                    e--;
+                } else {
+                    r--;
+                }
+                break;
+            }
         }
-        return answer;
+        return endIndex - startIndex + 1;
     }
 
-    private static class CharCount {
-        private final char c;
-        private final int count;
-
-        public CharCount(char c, int count) {
-            this.c = c;
-            this.count = count;
-        }
-    }
-
-    private static CharCount max(int q, int w, int e, int r) {
-        int max = Math.max(q, Math.max(w, Math.max(e, r)));
-        if (max == q) {
-            return new CharCount('Q', q);
-        }
-        if (max == w) {
-            return new CharCount('W', w);
-        }
-        if (max == e) {
-            return new CharCount('E', e);
-        }
-        return new CharCount('R', r);
-    }
-
-    private static CharCount min(int q, int w, int e, int r) {
-        int min = Math.min(q, Math.min(w, Math.min(e, r)));
-        if (min == q) {
-            return new CharCount('Q', q);
-        }
-        if (min == w) {
-            return new CharCount('W', w);
-        }
-        if (min == e) {
-            return new CharCount('E', e);
-        }
-        return new CharCount('R', r);
-    }
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Problem1234 prob = new Problem1234();
-//        System.out.println(prob.balancedString("QWER")); // 0
-//        System.out.println(prob.balancedString("QQWE")); // 1
-//        System.out.println(prob.balancedString("QQQW")); // 2
-//        System.out.println(prob.balancedString("QQQQ")); // 3
-//        System.out.println(prob.balancedString("WQWRQQQW")); // 3
-//        System.out.println(prob.balancedString("WWEQERQWQWWRWWERQWEQ")); // 4
+        System.out.println(prob.balancedString("QWER")); // 0
+        System.out.println(prob.balancedString("QQWE")); // 1
+        System.out.println(prob.balancedString("QQQW")); // 2
+        System.out.println(prob.balancedString("QQQQ")); // 3
+        System.out.println(prob.balancedString("WQWRQQQW")); // 3
+        System.out.println(prob.balancedString("WWEQERQWQWWRWWERQWEQ")); // 4
         System.out.println(prob.balancedString("QQQWEEER")); // 3
     }
 }
