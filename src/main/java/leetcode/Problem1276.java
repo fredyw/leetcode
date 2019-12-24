@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -7,16 +9,15 @@ import java.util.List;
  */
 public class Problem1276 {
     public List<Integer> numOfBurgers(int tomatoSlices, int cheeseSlices) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1276 prob = new Problem1276();
-        System.out.println(prob.numOfBurgers(16, 7)); // [1,6]
-        System.out.println(prob.numOfBurgers(17, 4)); // []
-        System.out.println(prob.numOfBurgers(4, 17)); // []
-        System.out.println(prob.numOfBurgers(0, 0)); // [0,0]
-        System.out.println(prob.numOfBurgers(2, 1)); // [0,1]
+        // 4jumbo + 2small = tomato
+        // 1jumbo + 1small = cheese
+        // small = cheese - jumbo
+        // jumbo = (tomato - 2cheese) / 2
+        int jumbo = (tomatoSlices - (2 * cheeseSlices)) % 2 == 0 ? (tomatoSlices - (2 * cheeseSlices)) / 2 : -1;
+        int small = cheeseSlices - jumbo;
+        if (jumbo < 0 || small < 0) {
+            return Collections.emptyList();
+        }
+        return Arrays.asList(jumbo, small);
     }
 }
