@@ -1,6 +1,5 @@
 package leetcode;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,12 +47,5 @@ public class Problem1239 {
             count[c - 'a'] = true;
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-        Problem1239 prob = new Problem1239();
-        System.out.println(prob.maxLength(Arrays.asList("un", "iq", "ue"))); // 4
-        System.out.println(prob.maxLength(Arrays.asList("cha", "r", "act", "ers"))); // 6
-        System.out.println(prob.maxLength(Arrays.asList("abcdefghijklmnopqrstuvwxyz"))); // 26
     }
 }
