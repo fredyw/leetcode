@@ -5,14 +5,15 @@ package leetcode;
  */
 public class Problem5295 {
     public int[] sumZero(int n) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem5295 prob = new Problem5295();
-        System.out.println(prob.sumZero(5)); // [-7,-1,1,3,4]
-        System.out.println(prob.sumZero(3)); // [-1,0,1]
-        System.out.println(prob.sumZero(1)); // [0]
+        int[] answer = new int[n];
+        int index = 0;
+        for (int i = 1; i <= n / 2; i++) {
+            answer[index++] = i;
+            answer[index++] = -i;
+        }
+        if (n % 2 != 0) {
+            answer[index] = 0;
+        }
+        return answer;
     }
 }
