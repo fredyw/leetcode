@@ -1,38 +1,36 @@
 package leetcode;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * https://leetcode.com/problems/longest-arithmetic-subsequence-of-given-difference/
  */
 public class Problem1218 {
     public int longestSubsequence(int[] arr, int difference) {
         int answer = 0;
-        HashMap<String, Integer> memo = new HashMap<>();
+        Integer[][] memo = new Integer[arr.length][arr.length];
         for (int i = 0; i < arr.length; i++) {
-            answer = Math.max(answer, longestSubsequence(arr, difference, 0, arr[i], 0, memo));
+            answer = Math.max(answer, longestSubsequence(arr, difference, i, i + 1, memo) + 1);
         }
         return answer;
     }
 
-    private static int longestSubsequence(int[] arr, int difference, int index, int value,
-                                          int length, Map<String, Integer> memo) {
-        if (arr.length == index) {
-            return length;
+    private static int longestSubsequence(int[] arr,
+                                          int difference,
+                                          int previousIndex,
+                                          int currentIndex,
+                                          Integer[][] memo) {
+        if (arr.length == currentIndex) {
+            return 0;
         }
-        String key = index + "," + value + "," + length;
-        if (memo.containsKey(key)) {
-            return memo.get(key);
+        if (memo[previousIndex][currentIndex] != null) {
+            return memo[previousIndex][currentIndex];
         }
         int max;
-        if (arr[index] == value) {
-            max = longestSubsequence(arr, difference, index + 1, arr[index] + difference,
-                length + 1, memo);
+        if (arr[currentIndex] == arr[previousIndex] + difference) {
+            max = longestSubsequence(arr, difference, currentIndex, currentIndex + 1, memo) + 1;
         } else {
-            max = longestSubsequence(arr, difference, index + 1, value, length, memo);
+            max = longestSubsequence(arr, difference, previousIndex, currentIndex + 1, memo);
         }
-        memo.put(key, max);
+        memo[previousIndex][currentIndex] = max;
         return max;
     }
 
