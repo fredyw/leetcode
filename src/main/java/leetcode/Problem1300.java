@@ -5,8 +5,14 @@ package leetcode;
  */
 public class Problem1300 {
     public int findBestValue(int[] arr, int target) {
-        // TODO
-        return 0;
+        int max = 0;
+        int sum = 0;
+        for (int num : arr) {
+            sum += num;
+            max = Math.max(max, num);
+        }
+        int answer = sum / arr.length;
+        return answer;
     }
 
     public static void main(String[] args) {
@@ -14,5 +20,7 @@ public class Problem1300 {
         System.out.println(prob.findBestValue(new int[]{4,9,3}, 10)); // 3
         System.out.println(prob.findBestValue(new int[]{2,3,5}, 10)); // 5
         System.out.println(prob.findBestValue(new int[]{60864,25176,27249,21296,20204}, 56803)); // 11361
+        System.out.println(prob.findBestValue(new int[]{10,10,10}, 10)); // 3
+        System.out.println(prob.findBestValue(new int[]{1,1,1}, 10)); // 1
     }
 }
