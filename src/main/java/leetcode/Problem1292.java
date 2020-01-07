@@ -23,5 +23,11 @@ public class Problem1292 {
         System.out.println(prob.maxSideLength(new int[][]{
             {18,70},{61,1},{25,85},{14,40},{11,96},{97,96},{63,45}
         }, 40184)); // 2
+        System.out.println(prob.maxSideLength(new int[][]{
+            {18,70},{61,1}
+        }, 4)); // 1
+        System.out.println(prob.maxSideLength(new int[][]{
+            {18,70},{61,5}
+        }, 4)); // 0
     }
 }
