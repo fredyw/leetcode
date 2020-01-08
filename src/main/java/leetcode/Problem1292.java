@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * https://leetcode.com/problems/maximum-side-length-of-a-square-with-sum-less-than-or-equal-to-threshold/
  */
@@ -28,10 +31,10 @@ public class Problem1292 {
             }
         }
         int answer = 0;
-        int[][][][] sums = new int[maxRow][maxCol][maxRow][maxCol];
+        Map<String, Integer> sums = new HashMap<>();
         for (int row = maxRow - 1; row >= 0; row--) {
             for (int col = maxCol - 1; col >= 0; col--) {
-                sums[row][col][row][col] = mat[row][col];
+                sums.put(key(row, col, row, col), mat[row][col]);
                 answer = Math.max(answer,
                     Math.max(mat[row][col] <= threshold ? 1 : 0,
                         maxSideLength(mat, threshold, maxRow, maxCol, rowSums, colSums,
@@ -41,17 +44,20 @@ public class Problem1292 {
         return answer;
     }
 
+    private static String key(int row1, int col1, int row2, int col2) {
+        return row1 + "," + col1 + "," + row2 + "," + col2;
+    }
+
     private static int maxSideLength(int[][] mat, int threshold, int maxRow, int maxCol,
-                                     int[][] rowSums, int[][] colSums, int[][][][] sums,
+                                     int[][] rowSums, int[][] colSums, Map<String, Integer> sums,
                                      int row1, int col1, int row2, int col2) {
         if (row1 < 0 || col1 < 0) {
             return 0;
         }
         int row = rowSums[row1][col2] - (col1 - 1 < 0 ? 0 : rowSums[row1][col1 - 1]);
         int col = colSums[row2][col1] - (row1 - 1 < 0 ? 0 : colSums[row1 - 1][col1]);
-        int sum = row + col - mat[row1][col1] +
-            (row1 + 1 == maxRow || col1 + 1 == maxCol ? 0 : sums[row1 + 1][col1 + 1][row2][col2]);
-        sums[row1][col1][row2][col2] = sum;
+        int sum = row + col - mat[row1][col1] + sums.getOrDefault(key(row1 + 1, col1 + 1, row2, col2), 0);
+        sums.put(key(row1, col1, row2, col2), sum);
         return Math.max(sum <= threshold ? row2 - row1 + 1 : 0,
             maxSideLength(mat, threshold, maxRow, maxCol, rowSums, colSums, sums, row1 - 1, col1 - 1, row2, col2));
     }
