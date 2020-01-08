@@ -37,7 +37,7 @@ public class Problem1292 {
                 sums.put(key(row, col, row, col), mat[row][col]);
                 answer = Math.max(answer,
                     Math.max(mat[row][col] <= threshold ? 1 : 0,
-                        maxSideLength(mat, threshold, maxRow, maxCol, rowSums, colSums,
+                        maxSideLength(mat, threshold, rowSums, colSums,
                         sums, row - 1, col - 1, row, col)));
             }
         }
@@ -48,8 +48,9 @@ public class Problem1292 {
         return row1 + "," + col1 + "," + row2 + "," + col2;
     }
 
-    private static int maxSideLength(int[][] mat, int threshold, int maxRow, int maxCol,
-                                     int[][] rowSums, int[][] colSums, Map<String, Integer> sums,
+    private static int maxSideLength(int[][] mat, int threshold,
+                                     int[][] rowSums, int[][] colSums,
+                                     Map<String, Integer> sums,
                                      int row1, int col1, int row2, int col2) {
         if (row1 < 0 || col1 < 0) {
             return 0;
@@ -59,7 +60,7 @@ public class Problem1292 {
         int sum = row + col - mat[row1][col1] + sums.getOrDefault(key(row1 + 1, col1 + 1, row2, col2), 0);
         sums.put(key(row1, col1, row2, col2), sum);
         return Math.max(sum <= threshold ? row2 - row1 + 1 : 0,
-            maxSideLength(mat, threshold, maxRow, maxCol, rowSums, colSums, sums, row1 - 1, col1 - 1, row2, col2));
+            maxSideLength(mat, threshold, rowSums, colSums, sums, row1 - 1, col1 - 1, row2, col2));
     }
 
     public static void main(String[] args) {
