@@ -37,8 +37,4 @@ public class Problem1315 {
         int right = sumEvenGrandparent(root.right, copy);
         return even + left + right;
     }
-
-    public static void main(String[] args) {
-        Problem1315 prob = new Problem1315();
-    }
 }
