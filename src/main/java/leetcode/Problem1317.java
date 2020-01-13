@@ -7,8 +7,9 @@ import java.util.Arrays;
  */
 public class Problem1317 {
     public int[] getNoZeroIntegers(int n) {
+        int[] answer = new int[2];
         // TODO
-        return null;
+        return answer;
     }
 
     public static void main(String[] args) {
