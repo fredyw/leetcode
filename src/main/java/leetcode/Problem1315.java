@@ -1,8 +1,5 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * https://leetcode.com/problems/sum-of-nodes-with-even-valued-grandparent/
  */
@@ -18,23 +15,19 @@ public class Problem1315 {
     }
 
     public int sumEvenGrandparent(TreeNode root) {
-        return sumEvenGrandparent(root, new ArrayList<>());
+        return sumEvenGrandparent(root, -1, -1);
     }
 
-    private static int sumEvenGrandparent(TreeNode root, List<Integer> grandparents) {
+    private static int sumEvenGrandparent(TreeNode root, int grandparent, int parent) {
         if (root == null) {
             return 0;
         }
         int even = 0;
-        if (grandparents.size() >= 2 && grandparents.get(grandparents.size() - 2) % 2 == 0) {
+        if (grandparent % 2 == 0) {
             even = root.val;
         }
-        List<Integer> copy = new ArrayList<>(grandparents);
-        copy.add(root.val);
-        int left = sumEvenGrandparent(root.left, copy);
-        copy = new ArrayList<>(grandparents);
-        copy.add(root.val);
-        int right = sumEvenGrandparent(root.right, copy);
+        int left = sumEvenGrandparent(root.left, parent, root.val);
+        int right = sumEvenGrandparent(root.right, parent, root.val);
         return even + left + right;
     }
 }
