@@ -5,14 +5,23 @@ package leetcode;
  */
 public class Problem1318 {
     public int minFlips(int a, int b, int c) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1318 prob = new Problem1318();
-        System.out.println(prob.minFlips(2, 6, 5)); // 3
-        System.out.println(prob.minFlips(4, 2, 7)); // 1
-        System.out.println(prob.minFlips(1, 2, 3)); // 0
+        int answer = 0;
+        while (a > 0 || b > 0 || c > 0) {
+            if ((c & 1) == 1) {
+                if ((a & 1) == 0 && (b & 1) == 0) {
+                    answer++;
+                }
+            } else { // (c & 1) == 0
+                if ((a & 1) == 1 && (b & 1) == 1) {
+                    answer += 2;
+                } else if ((a & 1) == 1 || (b & 1) == 1) {
+                    answer++;
+                }
+            }
+            a >>= 1;
+            b >>= 1;
+            c >>= 1;
+        }
+        return answer;
     }
 }
