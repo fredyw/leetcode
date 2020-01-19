@@ -15,7 +15,7 @@ public class Problem1319 {
         return uf.count - 1;
     }
 
-    public class UnionFind {
+    private static class UnionFind {
         private int[] parent; // parent[i] = parent of i
         private int count;
 
@@ -27,14 +27,14 @@ public class Problem1319 {
             }
         }
 
-        public int root(int i) {
+        private int root(int i) {
             while (i != parent[i]) {
                 i = parent[i];
             }
             return i;
         }
 
-        public void union(int a, int b) {
+        private void union(int a, int b) {
             int rootA = root(a);
             int rootB = root(b);
             if (rootA == rootB) {
