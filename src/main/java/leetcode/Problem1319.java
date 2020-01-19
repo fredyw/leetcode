@@ -1,8 +1,5 @@
 package leetcode;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * https://leetcode.com/problems/number-of-operations-to-make-network-connected/
  */
@@ -15,44 +12,36 @@ public class Problem1319 {
         for (int i = 0; i < connections.length; i++) {
             uf.union(connections[i][0], connections[i][1]);
         }
-        int answer = 0;
-        Set<Integer> connected = new HashSet<>(); // number of connected computers
-        for (int i = 0; i < uf.map.length; i++) {
-            if (uf.map[i] == null) {
-                answer++; // number of remaining computers
-            } else {
-                connected.add(uf.map[i]);
-            }
-        }
-        return answer + connected.size() - 1;
+        return uf.count - 1;
     }
 
-    private static class UnionFind {
-        private final Integer[] map;
+    public class UnionFind {
+        private int[] parent; // parent[i] = parent of i
+        private int count;
 
         public UnionFind(int n) {
-            this.map = new Integer[n];
+            count = n;
+            parent = new int[n];
+            for (int i = 0; i < n; i++) {
+                parent[i] = i;
+            }
+        }
+
+        public int root(int i) {
+            while (i != parent[i]) {
+                i = parent[i];
+            }
+            return i;
         }
 
         public void union(int a, int b) {
-            if (map[a] == null) {
-                map[a] = a;
+            int rootA = root(a);
+            int rootB = root(b);
+            if (rootA == rootB) {
+                return;
             }
-            if (map[b] == null) {
-                map[b] = b;
-            }
-            if (map[a].equals(map[b])) {
-                return; // already connected
-            }
-            Integer value = map[a];
-            for (int i = 0; i < map.length; i++) {
-                if (map[i] == null) {
-                    continue;
-                }
-                if (map[i].equals(value)) {
-                    map[i] = map[b];
-                }
-            }
+            parent[rootA] = rootB;
+            count--;
         }
     }
 
