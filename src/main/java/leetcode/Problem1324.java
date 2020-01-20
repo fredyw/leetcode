@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,14 +8,23 @@ import java.util.List;
  */
 public class Problem1324 {
     public List<String> printVertically(String s) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1324 prob = new Problem1324();
-        System.out.println(prob.printVertically("HOW ARE YOU")); // ["HAY","ORO","WEU"]
-        System.out.println(prob.printVertically("TO BE OR NOT TO BE")); // ["TBONTB","OEROOE","   T"]
-        System.out.println(prob.printVertically("CONTEST IS COMING")); // ["CIC","OSO","N M","T I","E N","S G","T"]
+        String[] words = s.split(" ");
+        int maxLength = 0;
+        for (String word : words) {
+            maxLength = Math.max(maxLength, word.length());
+        }
+        List<String> answer = new ArrayList<>();
+        for (int i = 0; i < maxLength; i++) {
+            String str = "";
+            for (String word : words) {
+                if (i >= word.length()) {
+                    str += " ";
+                } else {
+                    str += word.charAt(i);
+                }
+            }
+            answer.add(str.replaceFirst("\\s++$", ""));
+        }
+        return answer;
     }
 }
