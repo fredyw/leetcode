@@ -15,20 +15,14 @@ public class Problem1325 {
     }
 
     public TreeNode removeLeafNodes(TreeNode root, int target) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1325 prob = new Problem1325();
-
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.left.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        root.right.left = new TreeNode(2);
-        root.right.right = new TreeNode(4);
-
-        System.out.println(prob.removeLeafNodes(root, 2));
+        if (root == null) {
+            return root;
+        }
+        root.left = removeLeafNodes(root.left, target);
+        root.right = removeLeafNodes(root.right, target);
+        if (root.val == target && root.left == null && root.right == null) {
+            return null;
+        }
+        return root;
     }
 }
