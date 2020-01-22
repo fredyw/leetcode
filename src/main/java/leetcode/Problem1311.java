@@ -23,6 +23,10 @@ public class Problem1311 {
             ), new int[][]{{1, 2}, {0, 3}, {0, 3}, {1, 2}}, 0, 1)); // ["B","C"]
         System.out.println(prob.watchedVideosByFriends(
             Arrays.asList(
+                Arrays.asList("A", "B"), Arrays.asList("A", "B", "C"), Arrays.asList("B", "C"), Arrays.asList("D")
+            ), new int[][]{{1, 2}, {0, 3}, {0, 3}, {1, 2}}, 0, 1)); // ["B","A","C"]
+        System.out.println(prob.watchedVideosByFriends(
+            Arrays.asList(
                 Arrays.asList("A", "B"), Arrays.asList("C"), Arrays.asList("B", "C"), Arrays.asList("D")
             ), new int[][]{{1, 2}, {0, 3}, {0, 3}, {1, 2}}, 0, 2)); // ["D"]
     }
