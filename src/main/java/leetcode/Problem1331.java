@@ -1,20 +1,29 @@
 package leetcode;
 
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * https://leetcode.com/problems/rank-transform-of-an-array/
  */
 public class Problem1331 {
     public int[] arrayRankTransform(int[] arr) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1331 prob = new Problem1331();
-        System.out.println(Arrays.toString(prob.arrayRankTransform(new int[]{40,10,20,30}))); // [4,1,2,3]
-        System.out.println(Arrays.toString(prob.arrayRankTransform(new int[]{100,100,100}))); // [1,1,1]
-        System.out.println(Arrays.toString(prob.arrayRankTransform(new int[]{37,12,28,9,100,56,80,5,12}))); // [5,3,4,2,8,6,7,1,3]
+        Set<Integer> set = new TreeSet<>();
+        for (int i = 0; i < arr.length; i++) {
+            set.add(arr[i]);
+        }
+        int rank = 1;
+        Map</* value= */ Integer, /* rank= */ Integer> map = new HashMap<>();
+        for (int n : set) {
+            map.put(n, rank);
+            rank++;
+        }
+        int[] answer = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            answer[i] = map.get(arr[i]);
+        }
+        return answer;
     }
 }
