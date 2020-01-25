@@ -16,8 +16,7 @@ public class Problem1311 {
                                                int id,
                                                int level) {
         Map<String, Integer> countMap = new HashMap<>();
-        watchedVideos(watchedVideos, friends, id, level, 0, countMap);
-        System.out.println(countMap);
+        watchedVideos(watchedVideos, friends, id, level, 0, new boolean[friends.length], countMap);
         List<Map.Entry<String, Integer>> sorted = new ArrayList<>(countMap.entrySet());
         Collections.sort(sorted, (a, b) -> {
             int cmp = Integer.compare(a.getValue(), b.getValue());
@@ -35,7 +34,12 @@ public class Problem1311 {
 
     private static void watchedVideos(List<List<String>> watchedVideos,
                                       int[][] friends, int id, int targetLevel, int level,
+                                      boolean[] visited,
                                       Map<String, Integer> countMap) {
+        if (visited[id]) {
+            return;
+        }
+        visited[id] = true;
         if (level == targetLevel) {
             for (String video : watchedVideos.get(id)) {
                 countMap.put(video, countMap.getOrDefault(video, 0) + 1);
@@ -43,7 +47,7 @@ public class Problem1311 {
             return;
         }
         for (int friend : friends[id]) {
-            watchedVideos(watchedVideos, friends, friend, targetLevel, level + 1, countMap);
+            watchedVideos(watchedVideos, friends, friend, targetLevel, level + 1, visited, countMap);
         }
     }
 
@@ -60,7 +64,7 @@ public class Problem1311 {
         System.out.println(prob.watchedVideosByFriends(
             Arrays.asList(
                 Arrays.asList("A", "B"), Arrays.asList("A", "B", "C"), Arrays.asList("B", "C"), Arrays.asList("D")
-            ), new int[][]{{1, 2}, {0, 3}, {0, 3}, {1, 2}}, 0, 1)); // ["B","A","C"]
+            ), new int[][]{{1, 2}, {0, 3}, {0, 3}, {1, 2}}, 0, 1)); // ["A","B","C"]
         System.out.println(prob.watchedVideosByFriends(
             Arrays.asList(
                 Arrays.asList("A", "B"), Arrays.asList("C"), Arrays.asList("B", "C"), Arrays.asList("D")
