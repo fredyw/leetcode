@@ -33,8 +33,8 @@ public class Problem1311 {
     }
 
     private static void watchedVideos(List<List<String>> watchedVideos,
-                                      int[][] friends, int id, int targetLevel, int level,
-                                      boolean[] visited,
+                                      int[][] friends, int id, int targetLevel,
+                                      int level, boolean[] visited,
                                       Map<String, Integer> countMap) {
         if (visited[id]) {
             return;
@@ -47,7 +47,8 @@ public class Problem1311 {
             return;
         }
         for (int friend : friends[id]) {
-            watchedVideos(watchedVideos, friends, friend, targetLevel, level + 1, visited, countMap);
+            watchedVideos(watchedVideos, friends, friend, targetLevel, level + 1,
+                visited, countMap);
         }
     }
 
