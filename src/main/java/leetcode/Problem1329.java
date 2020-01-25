@@ -1,31 +1,38 @@
 package leetcode;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * https://leetcode.com/problems/sort-the-matrix-diagonally/
  */
 public class Problem1329 {
     public int[][] diagonalSort(int[][] mat) {
-        // TODO
-        return null;
-    }
-
-    private static void print(int[][] mat) {
-        for (int[] m : mat) {
-            System.out.println(Arrays.toString(m));
+        int maxRow = mat.length;
+        int maxCol = maxRow > 0 ? mat[0].length : 0;
+        for (int i = 0; i < maxRow; i++) {
+            List<Integer> tmp = new ArrayList<>();
+            for (int row = i, col = 0; row < maxRow && col < maxCol; row++, col++) {
+                tmp.add(mat[row][col]);
+            }
+            Collections.sort(tmp);
+            int index = 0;
+            for (int row = i, col = 0; row < maxRow && col < maxCol; row++, col++) {
+                mat[row][col] = tmp.get(index++);
+            }
         }
-    }
-
-    public static void main(String[] args) {
-        Problem1329 prob = new Problem1329();
-        // [[1,1,1,1],
-        //  [1,2,2,2],
-        //  [1,2,3,3]]
-        print(prob.diagonalSort(new int[][]{
-            {3, 3, 1, 1},
-            {2, 2, 1, 2},
-            {1, 1, 1, 2}
-        }));
+        for (int i = 1; i < maxCol; i++) {
+            List<Integer> tmp = new ArrayList<>();
+            for (int row = 0, col = i; row < maxRow && col < maxCol; row++, col++) {
+                tmp.add(mat[row][col]);
+            }
+            Collections.sort(tmp);
+            int index = 0;
+            for (int row = 0, col = i; row < maxRow && col < maxCol; row++, col++) {
+                mat[row][col] = tmp.get(index++);
+            }
+        }
+        return mat;
     }
 }
