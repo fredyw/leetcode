@@ -1,7 +1,11 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * https://leetcode.com/problems/get-watched-videos-by-your-friends/
@@ -11,8 +15,36 @@ public class Problem1311 {
                                                int[][] friends,
                                                int id,
                                                int level) {
+        Map<String, Integer> countMap = new HashMap<>();
+        watchedVideos(watchedVideos, friends, id, level, 0, countMap);
+        System.out.println(countMap);
+        List<Map.Entry<String, Integer>> sorted = new ArrayList<>(countMap.entrySet());
+        Collections.sort(sorted, (a, b) -> {
+            int cmp = Integer.compare(a.getValue(), b.getValue());
+            if (cmp == 0) {
+                return a.getKey().compareTo(b.getKey());
+            }
+            return cmp;
+        });
+        List<String> answer = new ArrayList<>();
+        for (Map.Entry<String, Integer> e : sorted) {
+            answer.add(e.getKey());
+        }
+        return answer;
+    }
 
-        return null;
+    private static void watchedVideos(List<List<String>> watchedVideos,
+                                      int[][] friends, int id, int targetLevel, int level,
+                                      Map<String, Integer> countMap) {
+        if (level == targetLevel) {
+            for (String video : watchedVideos.get(id)) {
+                countMap.put(video, countMap.getOrDefault(video, 0) + 1);
+            }
+            return;
+        }
+        for (int friend : friends[id]) {
+            watchedVideos(watchedVideos, friends, friend, targetLevel, level + 1, countMap);
+        }
     }
 
     public static void main(String[] args) {
