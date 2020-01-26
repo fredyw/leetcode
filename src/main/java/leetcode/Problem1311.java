@@ -16,7 +16,29 @@ public class Problem1311 {
                                                int id,
                                                int level) {
         Map<String, Integer> countMap = new HashMap<>();
-        watchedVideos(watchedVideos, friends, id, level, 0, new boolean[friends.length], countMap);
+        watchedVideos(watchedVideos, friends, id, level, new boolean[friends.length], countMap);
+
+//        Queue<Integer> queue = new LinkedList<>();
+//        queue.add(id);
+//        int count = 0;
+//        boolean[] visited = new boolean[friends.length];
+//        visited[id] = true;
+//        while (!queue.isEmpty()) {
+//            if (count == level) {
+//                break;
+//            }
+//            int size = queue.size();
+//            for (int i = 0; i < size; i++) {
+//                int p = queue.poll();
+//                for (int friend : friends[p]) {
+//                    if (!visited[friend]) {
+//                        queue.add(friend);
+//                        visited[friend] = true;
+//                    }
+//                }
+//            }
+//            count++;
+//        }
         List<Map.Entry<String, Integer>> sorted = new ArrayList<>(countMap.entrySet());
         Collections.sort(sorted, (a, b) -> {
             int cmp = Integer.compare(a.getValue(), b.getValue());
@@ -33,22 +55,24 @@ public class Problem1311 {
     }
 
     private static void watchedVideos(List<List<String>> watchedVideos,
-                                      int[][] friends, int id, int targetLevel,
-                                      int level, boolean[] visited,
+                                      int[][] friends, int id, int level,
+                                      boolean[] visited,
                                       Map<String, Integer> countMap) {
         if (visited[id]) {
             return;
         }
         visited[id] = true;
-        if (level == targetLevel) {
+        if (level == 0) {
             for (String video : watchedVideos.get(id)) {
                 countMap.put(video, countMap.getOrDefault(video, 0) + 1);
             }
             return;
         }
         for (int friend : friends[id]) {
-            watchedVideos(watchedVideos, friends, friend, targetLevel, level + 1,
-                visited, countMap);
+            if (visited[friend]) {
+                continue;
+            }
+            watchedVideos(watchedVideos, friends, friend, level - 1, visited, countMap);
         }
     }
 
