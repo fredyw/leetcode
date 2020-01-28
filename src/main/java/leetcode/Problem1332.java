@@ -5,15 +5,21 @@ package leetcode;
  */
 public class Problem1332 {
     public int removePalindromeSub(String s) {
-        // TODO
-        return 0;
+        if (s.isEmpty()) {
+            return 0;
+        }
+        if (isPalindrome(s)) {
+            return 1;
+        }
+        return 2;
     }
 
-    public static void main(String[] args) {
-        Problem1332 prob = new Problem1332();
-        System.out.println(prob.removePalindromeSub("ababa")); // 1
-        System.out.println(prob.removePalindromeSub("abb")); // 2
-        System.out.println(prob.removePalindromeSub("baabb")); // 2
-        System.out.println(prob.removePalindromeSub("")); // 0
+    private static boolean isPalindrome(String s) {
+        for (int i = 0, j = s.length() - 1; i < j; i++, j--) {
+            if (s.charAt(i) != s.charAt(j)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
