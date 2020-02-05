@@ -5,8 +5,18 @@ package leetcode;
  */
 public class Problem1283 {
     public int smallestDivisor(int[] nums, int threshold) {
-        // TODO
-        return 0;
+        int answer = 0;
+        for (int i = 1; i <= 1000000; i++) {
+            int sum = 0;
+            for (int num : nums) {
+                sum += -Math.floorDiv(-num, i); // opposite of ceilDiv
+            }
+            if (sum <= threshold) {
+                answer = i;
+                break;
+            }
+        }
+        return answer;
     }
 
     public static void main(String[] args) {
