@@ -6,23 +6,29 @@ package leetcode;
 public class Problem1283 {
     public int smallestDivisor(int[] nums, int threshold) {
         int answer = 0;
-        for (int i = 1; i <= 1000000; i++) {
+        int left = 1;
+        int right = 1000000;
+        int mid = 0;
+        int maxSum = 0;
+        while (left < right) {
+            mid = (left + right) / 2;
             int sum = 0;
             for (int num : nums) {
-                sum += -Math.floorDiv(-num, i); // opposite of ceilDiv
+                sum += -Math.floorDiv(-num, mid); // opposite of ceilDiv
             }
-            if (sum <= threshold) {
-                answer = i;
-                break;
+            if (sum > threshold) {
+                left = mid + 1;
+            } else {
+                right = mid;
+                if (sum > maxSum) {
+                    answer = mid;
+                    maxSum = sum;
+                } else if (sum == maxSum) {
+                    answer = Math.min(answer, mid);
+                }
             }
+
         }
         return answer;
-    }
-
-    public static void main(String[] args) {
-        Problem1283 prob = new Problem1283();
-        System.out.println(prob.smallestDivisor(new int[]{1, 2, 5, 9}, 6)); // 5
-        System.out.println(prob.smallestDivisor(new int[]{2, 3, 5, 7, 11}, 11)); // 3
-        System.out.println(prob.smallestDivisor(new int[]{19}, 5)); // 4
     }
 }
