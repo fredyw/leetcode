@@ -1,20 +1,30 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * https://leetcode.com/problems/reduce-array-size-to-the-half/
  */
 public class Problem1338 {
     public int minSetSize(int[] arr) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1338 prob = new Problem1338();
-        System.out.println(prob.minSetSize(new int[]{3,3,3,3,5,5,5,2,2,7})); // 2
-        System.out.println(prob.minSetSize(new int[]{7,7,7,7,7,7})); // 1
-        System.out.println(prob.minSetSize(new int[]{1,9})); // 1
-        System.out.println(prob.minSetSize(new int[]{1000,1000,3,7})); // 1
-        System.out.println(prob.minSetSize(new int[]{1,2,3,4,5,6,7,8,9,10})); // 5
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int a : arr) {
+            map.put(a, map.getOrDefault(a, 0) + 1);
+        }
+        List<Map.Entry<Integer, Integer>> entries = new ArrayList<>(map.entrySet());
+        entries.sort((a, b) -> Integer.compare(b.getValue(), a.getValue()));
+        int answer = 0;
+        int size = arr.length;
+        for (Map.Entry<Integer, Integer> e : entries) {
+            size -= e.getValue();
+            answer++;
+            if (size <= arr.length / 2) {
+                break;
+            }
+        }
+        return answer;
     }
 }
