@@ -5,16 +5,30 @@ package leetcode;
  */
 public class Problem1347 {
     public int minSteps(String s, String t) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1347 prob = new Problem1347();
-        System.out.println(prob.minSteps("bab", "aba")); // 1
-        System.out.println(prob.minSteps("leetcode", "practice")); // 5
-        System.out.println(prob.minSteps("anagram", "mangaar")); // 0
-        System.out.println(prob.minSteps("xxyyzz", "xxyyzz")); // 0
-        System.out.println(prob.minSteps("friend", "family")); // 4
+        int[] countA = new int[26];
+        for (char c : s.toCharArray()) {
+            countA[c - 'a']++;
+        }
+        int[] countB = new int[26];
+        for (char c : t.toCharArray()) {
+            countB[c - 'a']++;
+        }
+        for (int i = 0; i < countA.length; i++) {
+            if (countA[i] == countB[i]) {
+                countA[i] = 0;
+                countB[i] = 0;
+            } else if (countA[i] < countB[i]) {
+                countA[i] = 0;
+                countB[i] -= countB[i];
+            } else {
+                countA[i] -= countB[i];
+                countB[i] -= 0;
+            }
+        }
+        int answer = 0;
+        for (int i = 0; i < countA.length; i++) {
+            answer += countA[i];
+        }
+        return answer;
     }
 }
