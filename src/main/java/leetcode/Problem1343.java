@@ -5,16 +5,23 @@ package leetcode;
  */
 public class Problem1343 {
     public int numOfSubarrays(int[] arr, int k, int threshold) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1343 prob = new Problem1343();
-        System.out.println(prob.numOfSubarrays(new int[]{2,2,2,2,5,5,5,8}, 3, 4)); // 3
-        System.out.println(prob.numOfSubarrays(new int[]{1,1,1,1,1}, 1, 0)); // 5
-        System.out.println(prob.numOfSubarrays(new int[]{11,13,17,23,29,31,7,5,2,3}, 3, 5)); // 6
-        System.out.println(prob.numOfSubarrays(new int[]{7,7,7,7,7,7,7}, 7, 7)); // 1
-        System.out.println(prob.numOfSubarrays(new int[]{4,4,4,4}, 4, 1)); // 1
+        int[] prefixSums = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            if (i == 0) {
+                prefixSums[i] = arr[i];
+            } else {
+                prefixSums[i] += prefixSums[i - 1] + arr[i];
+            }
+        }
+        int answer = 0;
+        int j = -1;
+        for (int i = k - 1; i < arr.length; i++) {
+            int average = (prefixSums[i] - (j == -1 ? 0 : prefixSums[j])) / k;
+            if (average >= threshold) {
+                answer++;
+            }
+            j++;
+        }
+        return answer;
     }
 }
