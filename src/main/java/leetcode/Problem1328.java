@@ -13,5 +13,7 @@ public class Problem1328 {
         Problem1328 prob = new Problem1328();
         System.out.println(prob.breakPalindrome("abccba")); // "aaccba"
         System.out.println(prob.breakPalindrome("a")); // ""
+        System.out.println(prob.breakPalindrome("aba")); // "abb"
+        System.out.println(prob.breakPalindrome("bab")); // "aab"
     }
 }
