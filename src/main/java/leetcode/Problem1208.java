@@ -14,5 +14,6 @@ public class Problem1208 {
         System.out.println(prob.equalSubstring("abcd", "bcdf", 3)); // 3
         System.out.println(prob.equalSubstring("abcd", "cdef", 3)); // 1
         System.out.println(prob.equalSubstring("abcd", "acde", 0)); // 1
+        System.out.println(prob.equalSubstring("abcd", "bxdf", 2)); // 1
     }
 }
