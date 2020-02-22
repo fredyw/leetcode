@@ -11,6 +11,12 @@ public class Problem1208 {
         int cost = maxCost;
         for (int cur = 0; cur < size; cur++) {
             int diff = Math.abs(s.charAt(cur) - t.charAt(cur));
+            if (diff > maxCost) {
+                cost = maxCost;
+                answer = Math.max(answer, cur - prev);
+                prev = cur + 1;
+                continue;
+            }
             cost -= diff;
             if (cost < 0) {
                 cost = maxCost - diff;
@@ -33,6 +39,7 @@ public class Problem1208 {
 //        System.out.println(prob.equalSubstring("abcd", "acde", 0)); // 1
 //        System.out.println(prob.equalSubstring("abcd", "bxdf", 2)); // 1
 //        System.out.println(prob.equalSubstring("abcd", "bcde", 5)); // 4
-        System.out.println(prob.equalSubstring("abcd", "cdef", 1)); // 0
+//        System.out.println(prob.equalSubstring("abcd", "cdef", 1)); // 0
+        System.out.println(prob.equalSubstring("ujteygggjwxnfl", "nstsenrzttikoy", 43)); // 5
     }
 }
