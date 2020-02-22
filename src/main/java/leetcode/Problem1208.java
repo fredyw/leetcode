@@ -13,13 +13,13 @@ public class Problem1208 {
             int diff = Math.abs(s.charAt(cur) - t.charAt(cur));
             cost -= diff;
             if (cost < 0) {
-                cost = maxCost;
+                cost = maxCost - diff;
                 answer = Math.max(answer, cur - prev);
                 prev = cur;
             }
         }
         if (cost >= 0) {
-            answer = Math.max(answer, size - 1 - prev);
+            answer = Math.max(answer, size - prev);
         }
         return answer;
     }
@@ -28,8 +28,11 @@ public class Problem1208 {
         Problem1208 prob = new Problem1208();
 //        System.out.println(prob.equalSubstring("abcd", "bcdf", 3)); // 3
 //        System.out.println(prob.equalSubstring("abaace", "bcxbdf", 3)); // 3
-        System.out.println(prob.equalSubstring("abcd", "cdef", 3)); // 1
+//        System.out.println(prob.equalSubstring("ababace", "bcxxbdf", 3)); // 3
+//        System.out.println(prob.equalSubstring("abcd", "cdef", 3)); // 1
 //        System.out.println(prob.equalSubstring("abcd", "acde", 0)); // 1
 //        System.out.println(prob.equalSubstring("abcd", "bxdf", 2)); // 1
+//        System.out.println(prob.equalSubstring("abcd", "bcde", 5)); // 4
+        System.out.println(prob.equalSubstring("abcd", "cdef", 1)); // 0
     }
 }
