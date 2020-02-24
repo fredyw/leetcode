@@ -7,16 +7,43 @@ import java.util.Arrays;
  */
 public class Problem1356 {
     public int[] sortByBits(int[] arr) {
-        // TODO
-        return null;
+        ValueCount[] vc = new ValueCount[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            vc[i] = new ValueCount(arr[i], numOnes(arr[i]));
+        }
+        Arrays.sort(vc, (a, b) -> {
+            int cmp = Integer.compare(a.count, b.count);
+            if (cmp == 0) {
+                return Integer.compare(a.value, b.value);
+            }
+            return cmp;
+        });
+        int[] answer = new int[arr.length];
+        for (int i = 0; i < vc.length; i++) {
+            answer[i] = vc[i].value;
+        }
+        return answer;
     }
 
-    public static void main(String[] args) {
-        Problem1356 prob = new Problem1356();
-        System.out.println(Arrays.toString(prob.sortByBits(new int[]{0,1,2,3,4,5,6,7,8}))); // [0,1,2,4,8,3,5,6,7]
-        System.out.println(Arrays.toString(prob.sortByBits(new int[]{1024,512,256,128,64,32,16,8,4,2,1}))); // [1,2,4,8,16,32,64,128,256,512,1024]
-        System.out.println(Arrays.toString(prob.sortByBits(new int[]{10000,10000}))); // [10000,10000]
-        System.out.println(Arrays.toString(prob.sortByBits(new int[]{2,3,5,7,11,13,17,19}))); // [2,3,5,17,7,11,13,19]
-        System.out.println(Arrays.toString(prob.sortByBits(new int[]{10, 100, 1000, 10000}))); // [10,100,10000,1000]
+    private static class ValueCount {
+        private final int value;
+        private final int count;
+
+        public ValueCount(int value, int count) {
+            this.value = value;
+            this.count = count;
+        }
+    }
+
+    private static int numOnes(int n) {
+        int count = 0;
+        int num = n;
+        while (num > 0) {
+            if ((num & 1) == 1) {
+                count++;
+            }
+            num >>= 1;
+        }
+        return count;
     }
 }
