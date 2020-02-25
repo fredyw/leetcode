@@ -15,5 +15,6 @@ public class Problem1361 {
         System.out.println(prob.validateBinaryTreeNodes(4, new int[]{1,-1,3,-1}, new int[]{2,3,-1,-1})); // false
         System.out.println(prob.validateBinaryTreeNodes(2, new int[]{1,0}, new int[]{-1,-1})); // false
         System.out.println(prob.validateBinaryTreeNodes(6, new int[]{1,-1,-1,4,-1,-1}, new int[]{2,-1,-1,5,-1,-1})); // false
+        System.out.println(prob.validateBinaryTreeNodes(5, new int[]{3,-1,-1,1,-1}, new int[]{4,-1,-1,2,-1})); // false
     }
 }
