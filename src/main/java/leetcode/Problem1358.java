@@ -21,5 +21,6 @@ public class Problem1358 {
         System.out.println(prob.numberOfSubstrings("bbabc")); // 3
         System.out.println(prob.numberOfSubstrings("bbabcbbabcbb")); // 43
         System.out.println(prob.numberOfSubstrings("bbabcbb")); // 9
+        System.out.println(prob.numberOfSubstrings("abcbbabc")); // 15
     }
 }
