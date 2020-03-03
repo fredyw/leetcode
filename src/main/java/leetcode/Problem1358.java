@@ -14,5 +14,11 @@ public class Problem1358 {
         System.out.println(prob.numberOfSubstrings("abcabc")); // 10
         System.out.println(prob.numberOfSubstrings("aaacb")); // 3
         System.out.println(prob.numberOfSubstrings("abc")); // 1
+        System.out.println(prob.numberOfSubstrings("abcaaabcaa")); // 30
+        System.out.println(prob.numberOfSubstrings("abcaa")); // 5
+        System.out.println(prob.numberOfSubstrings("aaabc")); // 3
+        System.out.println(prob.numberOfSubstrings("abcbb")); // 3
+        System.out.println(prob.numberOfSubstrings("bbabc")); // 3
+        System.out.println(prob.numberOfSubstrings("bbabcbbabcbb")); // 43
     }
 }
