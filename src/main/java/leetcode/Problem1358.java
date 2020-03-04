@@ -5,22 +5,38 @@ package leetcode;
  */
 public class Problem1358 {
     public int numberOfSubstrings(String s) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1358 prob = new Problem1358();
-        System.out.println(prob.numberOfSubstrings("abcabc")); // 10
-        System.out.println(prob.numberOfSubstrings("aaacb")); // 3
-        System.out.println(prob.numberOfSubstrings("abc")); // 1
-        System.out.println(prob.numberOfSubstrings("abcaaabcaa")); // 30
-        System.out.println(prob.numberOfSubstrings("abcaa")); // 5
-        System.out.println(prob.numberOfSubstrings("aaabc")); // 3
-        System.out.println(prob.numberOfSubstrings("abcbb")); // 3
-        System.out.println(prob.numberOfSubstrings("bbabc")); // 3
-        System.out.println(prob.numberOfSubstrings("bbabcbbabcbb")); // 43
-        System.out.println(prob.numberOfSubstrings("bbabcbb")); // 9
-        System.out.println(prob.numberOfSubstrings("abcbbabc")); // 15
+        int a = 0;
+        int b = 0;
+        int c = 0;
+        int cur = 0;
+        int prev = 0;
+        int answer = 0;
+        while (cur < s.length()) {
+            if (s.charAt(cur) == 'a') {
+                a++;
+            } else if (s.charAt(cur) == 'b') {
+                b++;
+            } else {
+                c++;
+            }
+            if (a > 0 && b > 0 && c > 0) {
+                answer += s.length() - cur;
+                while (a > 0 && b > 0 && c > 0) {
+                    if (s.charAt(prev) == 'a') {
+                        a--;
+                    } else if (s.charAt(prev) == 'b') {
+                        b--;
+                    } else {
+                        c--;
+                    }
+                    if (a > 0 && b > 0 && c > 0) {
+                        answer += s.length() - cur;
+                    }
+                    prev++;
+                }
+            }
+            cur++;
+        }
+        return answer;
     }
 }
