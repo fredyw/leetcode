@@ -16,5 +16,6 @@ public class Problem1362 {
         System.out.println(Arrays.toString(prob.closestDivisors(8))); // [3,3]
         System.out.println(Arrays.toString(prob.closestDivisors(123))); // [5,25]
         System.out.println(Arrays.toString(prob.closestDivisors(999))); // [40,25]
+        System.out.println(Arrays.toString(prob.closestDivisors(10))); // [3,4]
     }
 }
