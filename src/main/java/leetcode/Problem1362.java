@@ -1,21 +1,32 @@
 package leetcode;
 
-import java.util.Arrays;
-
 /**
  * https://leetcode.com/problems/closest-divisors/
  */
 public class Problem1362 {
     public int[] closestDivisors(int num) {
-        // TODO
-        return null;
+        int a = num + 1;
+        int b = num + 2;
+        int[] div1 = divisor(a);
+        int diff1 = Math.abs(div1[0] - div1[1]);
+        int[] div2 = divisor(b);
+        int diff2 = Math.abs(div2[0] - div2[1]);
+        return diff1 < diff2 ? div1 : div2;
     }
 
-    public static void main(String[] args) {
-        Problem1362 prob = new Problem1362();
-        System.out.println(Arrays.toString(prob.closestDivisors(8))); // [3,3]
-        System.out.println(Arrays.toString(prob.closestDivisors(123))); // [5,25]
-        System.out.println(Arrays.toString(prob.closestDivisors(999))); // [40,25]
-        System.out.println(Arrays.toString(prob.closestDivisors(10))); // [3,4]
+    private static int[] divisor(int num) {
+        int[] div = new int[2];
+        int min = Integer.MAX_VALUE;
+        for (int i = 1; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                int diff = Math.abs(i - (num / i));
+                if (diff < min) {
+                    div[0] = i;
+                    div[1] = num / i;
+                    min = diff;
+                }
+            }
+        }
+        return div;
     }
 }
