@@ -5,14 +5,17 @@ package leetcode;
  */
 public class Problem1374 {
     public String generateTheString(int n) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1374 prob = new Problem1374();
-        System.out.println(prob.generateTheString(4)); // "pppz"
-        System.out.println(prob.generateTheString(2)); // "xy"
-        System.out.println(prob.generateTheString(7)); // "holasss"
+        String answer = "";
+        if (n % 2 == 0) {
+            for (int i = 0; i < n - 1; i++) {
+                answer += "a";
+            }
+            answer += "b";
+        } else {
+            for (int i = 0; i < n; i++) {
+                answer += "a";
+            }
+        }
+        return answer;
     }
 }
