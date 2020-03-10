@@ -17,49 +17,32 @@ public class Problem1372 {
     public int longestZigZag(TreeNode root) {
         IntRef answer = new IntRef();
         longestZigZag(root, answer);
-        return answer.val;
-    }
-
-    private static void longestZigZag(TreeNode root, IntRef ref) {
-        if (root == null) {
-            return;
-        }
-        longestZigZag(root.left, ref);
-        longestZigZag(root.right, ref);
-        ref.val = Math.max(ref.val, Math.max(
-            longestZigZag(root, Direction.LEFT),
-            longestZigZag(root, Direction.RIGHT)) - 1);
+        return answer.val - 1;
     }
 
     private static class IntRef {
         private int val;
     }
 
-    private enum Direction {
-        LEFT, RIGHT
+    private static class Count {
+        private int left;
+        private int right;
+
+        public Count(int left, int right) {
+            this.left = left;
+            this.right = right;
+        }
     }
 
-    private static int longestZigZag(TreeNode root, Direction direction) {
+    private static Count longestZigZag(TreeNode root, IntRef max) {
         if (root == null) {
-            return 0;
+            return new Count(0, 0);
         }
-        if (direction == Direction.LEFT) {
-            return longestZigZag(root.left, Direction.RIGHT) + 1;
-        }
-        return longestZigZag(root.right, Direction.LEFT) + 1;
-    }
-
-    public static void main(String[] args) {
-        Problem1372 prob = new Problem1372();
-
-        TreeNode root = new TreeNode(1);
-        root.right = new TreeNode(1);
-        root.right.left = new TreeNode(1);
-        root.right.right = new TreeNode(1);
-        root.right.right.left = new TreeNode(1);
-        root.right.right.right = new TreeNode(1);
-        root.right.right.left.right = new TreeNode(1);
-        root.right.right.left.right.right = new TreeNode(1);
-        System.out.println(prob.longestZigZag(root)); // 3
+        Count left = longestZigZag(root.left, max);
+        Count right = longestZigZag(root.right, max);
+        int leftCount = left.right + 1;
+        int rightCount = right.left + 1;
+        max.val = Math.max(max.val, Math.max(leftCount, rightCount));
+        return new Count(leftCount, rightCount);
     }
 }
