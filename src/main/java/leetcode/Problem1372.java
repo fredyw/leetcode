@@ -15,17 +15,38 @@ public class Problem1372 {
     }
 
     public int longestZigZag(TreeNode root) {
-        return Math.max(longestZigZag(root, true), longestZigZag(root, false)) - 1;
+        IntRef answer = new IntRef();
+        longestZigZag(root, answer);
+        return answer.val;
     }
 
-    private static int longestZigZag(TreeNode root, boolean left) {
+    private static void longestZigZag(TreeNode root, IntRef ref) {
+        if (root == null) {
+            return;
+        }
+        longestZigZag(root.left, ref);
+        longestZigZag(root.right, ref);
+        ref.val = Math.max(ref.val, Math.max(
+            longestZigZag(root, Direction.LEFT),
+            longestZigZag(root, Direction.RIGHT)) - 1);
+    }
+
+    private static class IntRef {
+        private int val;
+    }
+
+    private enum Direction {
+        LEFT, RIGHT
+    }
+
+    private static int longestZigZag(TreeNode root, Direction direction) {
         if (root == null) {
             return 0;
         }
-        if (left) {
-            return longestZigZag(root.left, !left) + 1;
+        if (direction == Direction.LEFT) {
+            return longestZigZag(root.left, Direction.RIGHT) + 1;
         }
-        return longestZigZag(root.right, !left) + 1;
+        return longestZigZag(root.right, Direction.LEFT) + 1;
     }
 
     public static void main(String[] args) {
