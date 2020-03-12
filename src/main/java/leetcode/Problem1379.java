@@ -15,10 +15,16 @@ public class Problem1379 {
     }
 
     public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
+        if (original == null) {
+            return null;
+        }
+        if (original == target) {
+            return cloned;
+        }
+        TreeNode left = getTargetCopy(original.left, cloned.left, target);
+        if (left != null) {
+            return left;
+        }
+        return getTargetCopy(original.right, cloned.right, target);
     }
 }
