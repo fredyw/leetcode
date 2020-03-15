@@ -14,5 +14,6 @@ public class Problem1371 {
         System.out.println(prob.findTheLongestSubstring("eleetminicoworoep")); // 13
         System.out.println(prob.findTheLongestSubstring("leetcodeisgreat")); // 5
         System.out.println(prob.findTheLongestSubstring("bcbcbc")); // 6
+        System.out.println(prob.findTheLongestSubstring("eleetminicoworoepo")); // 18
     }
 }
