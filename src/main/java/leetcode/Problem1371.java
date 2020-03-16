@@ -31,16 +31,4 @@ public class Problem1371 {
         }
         return answer;
     }
-
-    public static void main(String[] args) {
-        Problem1371 prob = new Problem1371();
-//        System.out.println(prob.findTheLongestSubstring("eleetminicoworoep")); // 13
-//        System.out.println(prob.findTheLongestSubstring("xxx")); // 0
-//        System.out.println(prob.findTheLongestSubstring("aabbbbee")); // 8
-        System.out.println(prob.findTheLongestSubstring("aaabbbbee")); // 8
-//        System.out.println(prob.findTheLongestSubstring("aaaa")); // 4
-//        System.out.println(prob.findTheLongestSubstring("leetcodeisgreat")); // 5
-//        System.out.println(prob.findTheLongestSubstring("bcbcbc")); // 6
-//        System.out.println(prob.findTheLongestSubstring("eleetminicoworoepo")); // 18
-    }
 }
