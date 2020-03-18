@@ -1,40 +1,50 @@
 package leetcode;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+
 /**
  * https://leetcode.com/problems/design-a-stack-with-increment-operation/
  */
 public class Problem1381 {
     static class CustomStack {
+        private final int maxSize;
+        private final LinkedList<IntWrapper> list = new LinkedList<>();
+
+        private static class IntWrapper {
+            private int value;
+
+            public IntWrapper(int value) {
+                this.value = value;
+            }
+        }
+
         public CustomStack(int maxSize) {
+            this.maxSize = maxSize;
         }
 
         public void push(int x) {
-            // TODO
+            if (list.size() == maxSize) {
+                return;
+            }
+            list.push(new IntWrapper(x));
         }
 
         public int pop() {
-            // TODO
-            return 0;
+            if (list.size() == 0) {
+                return -1;
+            }
+            return list.removeFirst().value;
         }
 
         public void increment(int k, int val) {
-            // TODO
+            Iterator<IntWrapper> iter = list.descendingIterator();
+            int i = 0;
+            while (i < k && iter.hasNext()) {
+                IntWrapper iw = iter.next();
+                iw.value += val;
+                i++;
+            }
         }
-    }
-
-    public static void main(String[] args) {
-        CustomStack stack = new CustomStack(3);
-        stack.push(1);
-        stack.push(2);
-        System.out.println(stack.pop()); // 2
-        stack.push(2);
-        stack.push(3);
-        stack.push(4);
-        stack.increment(5, 100);
-        stack.increment(2, 100);
-        System.out.println(stack.pop()); // 103
-        System.out.println(stack.pop()); // 202
-        System.out.println(stack.pop()); // 201
-        System.out.println(stack.pop()); // -1
     }
 }
