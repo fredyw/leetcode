@@ -16,5 +16,6 @@ public class Problem1375 {
         System.out.println(prob.numTimesAllBlue(new int[]{4,1,2,3})); // 1
         System.out.println(prob.numTimesAllBlue(new int[]{2,1,4,3,6,5})); // 3
         System.out.println(prob.numTimesAllBlue(new int[]{1,2,3,4,5,6})); // 6
+        System.out.println(prob.numTimesAllBlue(new int[]{3,2,1})); // 1
     }
 }
