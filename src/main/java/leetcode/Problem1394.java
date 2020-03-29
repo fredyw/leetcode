@@ -1,20 +1,24 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * https://leetcode.com/problems/find-lucky-integer-in-an-array/
  */
 public class Problem1394 {
     public int findLucky(int[] arr) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1394 prob = new Problem1394();
-        System.out.println(prob.findLucky(new int[]{2,2,3,4})); // 2
-        System.out.println(prob.findLucky(new int[]{1,2,2,3,3,3})); // 3
-        System.out.println(prob.findLucky(new int[]{2,2,2,3,3})); // -1
-        System.out.println(prob.findLucky(new int[]{5})); // -1
-        System.out.println(prob.findLucky(new int[]{7,7,7,7,7,7,7})); // 7
+        Map</* number= */ Integer, /* count= */ Integer> map = new HashMap<>();
+        for (int a : arr) {
+            map.put(a, map.getOrDefault(a, 0) + 1);
+        }
+        int answer = -1;
+        for (Map.Entry<Integer, Integer> e : map.entrySet()) {
+            if (e.getKey() != e.getValue()) {
+                continue;
+            }
+            answer = Math.max(answer, e.getValue());
+        }
+        return answer;
     }
 }
