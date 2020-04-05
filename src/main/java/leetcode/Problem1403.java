@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -7,14 +9,20 @@ import java.util.List;
  */
 public class Problem1403 {
     public List<Integer> minSubsequence(int[] nums) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1403 prob = new Problem1403();
-        System.out.println(prob.minSubsequence(new int[]{4,3,10,9,8})); // [10,9]
-        System.out.println(prob.minSubsequence(new int[]{4,4,7,6,7})); // [7,7,6]
-        System.out.println(prob.minSubsequence(new int[]{6})); // [6]
+        Arrays.sort(nums);
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        List<Integer> answer = new ArrayList<>();
+        int tmp = 0;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            tmp += nums[i];
+            answer.add(nums[i]);
+            if (sum - tmp < tmp) {
+                break;
+            }
+        }
+        return answer;
     }
 }
