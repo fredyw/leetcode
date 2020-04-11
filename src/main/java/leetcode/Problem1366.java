@@ -13,6 +13,9 @@ public class Problem1366 {
         Problem1366 prob = new Problem1366();
         System.out.println(prob.rankTeams(new String[]{"ABC","ACB","ABC","ACB","ACB"})); // "ABC"
         System.out.println(prob.rankTeams(new String[]{"WXYZ","XYZW"})); // "XWYZ"
+        System.out.println(prob.rankTeams(new String[]{"ABC","CBA"})); // "ABC"
+        System.out.println(prob.rankTeams(new String[]{"ABDC","CDBA"})); // "ACBD"
+        System.out.println(prob.rankTeams(new String[]{"CBDA","ADBC"})); // "ACBD"
         System.out.println(prob.rankTeams(new String[]{"WYXZ","XYZW"})); // "XWYZ"
         System.out.println(prob.rankTeams(new String[]{"ZMNAGUEDSJYLBOPHRQICWFXTVK"})); // "ZMNAGUEDSJYLBOPHRQICWFXTVK"
         System.out.println(prob.rankTeams(new String[]{"BCA","CAB","CBA","ABC","ACB","BAC"})); // "ABC"
