@@ -1,23 +1,31 @@
 package leetcode;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * https://leetcode.com/problems/rank-teams-by-votes/
  */
 public class Problem1366 {
     public String rankTeams(String[] votes) {
-        Map<Integer, Map<Character, Integer>> map = new HashMap<>();
+        Map<Integer, Map<Character, Integer>> rankMap = new HashMap<>();
+        Map<Character, Set<Integer>> charMap = new HashMap<>();
         for (String vote : votes) {
             for (int i = 0; i < vote.length(); i++) {
-                if (!map.containsKey(i)) {
-                    map.put(i, new HashMap<>());
+                if (!rankMap.containsKey(i)) {
+                    rankMap.put(i, new HashMap<>());
                 }
-                map.get(i).put(vote.charAt(i), map.get(i).getOrDefault(vote.charAt(i), 0) + 1);
+                rankMap.get(i).put(vote.charAt(i), rankMap.get(i).getOrDefault(vote.charAt(i), 0) + 1);
+                if (!charMap.containsKey(vote.charAt(i))) {
+                    charMap.put(vote.charAt(i), new HashSet<>());
+                }
+                charMap.get(vote.charAt(i)).add(i);
             }
         }
-        System.out.println(map);
+        System.out.println(rankMap);
+        System.out.println(charMap);
         return null;
     }
 
