@@ -1,20 +1,33 @@
 package leetcode;
 
-import java.util.Arrays;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 /**
  * https://leetcode.com/problems/queries-on-a-permutation-with-key/
  */
 public class Problem1409 {
     public int[] processQueries(int[] queries, int m) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1409 prob = new Problem1409();
-        System.out.println(Arrays.toString(prob.processQueries(new int[]{3,1,2,1}, 5))); // [2,1,2,1]
-        System.out.println(Arrays.toString(prob.processQueries(new int[]{4,1,2,2}, 4))); // [3,1,2,0]
-        System.out.println(Arrays.toString(prob.processQueries(new int[]{7,5,5,8,3}, 8))); // [6,5,0,7,5]
+        LinkedList<Integer> list = new LinkedList<>();
+        for (int i = 0; i < m; i++) {
+            list.add(i + 1);
+        }
+        int[] answer = new int[queries.length];
+        int index = 0;
+        for (int query : queries) {
+            Iterator<Integer> iterator = list.iterator();
+            int i = 0;
+            while (iterator.hasNext()) {
+                int n = iterator.next();
+                if (n == query) {
+                    iterator.remove();
+                    list.addFirst(n);
+                    answer[index++] = i;
+                    break;
+                }
+                i++;
+            }
+        }
+        return answer;
     }
 }
