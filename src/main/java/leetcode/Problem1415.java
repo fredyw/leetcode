@@ -5,17 +5,41 @@ package leetcode;
  */
 public class Problem1415 {
     public String getHappyString(int n, int k) {
-        // TODO
-        return "";
+        Ref<String> answer = new Ref<>("");
+        getHappyString(n, new char[]{'a', 'b', 'c'}, -1, "", new Ref<>(k), answer);
+        return answer.val;
     }
 
-    public static void main(String[] args) {
-        Problem1415 prob = new Problem1415();
-        System.out.println(prob.getHappyString(1, 3)); // "c"
-        System.out.println(prob.getHappyString(1, 4)); // ""
-        System.out.println(prob.getHappyString(3, 9)); // "cab"
-        System.out.println(prob.getHappyString(2, 7)); // ""
-        System.out.println(prob.getHappyString(10, 100)); // "abacbabacb"
-        System.out.println(prob.getHappyString(4, 1)); // "abab"
+    private static class Ref<T> {
+        private T val;
+
+        public Ref(T val) {
+            this.val = val;
+        }
+    }
+
+    private static boolean getHappyString(int n,
+                                          char[] chars,
+                                          int prevIdx,
+                                          String acc,
+                                          Ref<Integer> count,
+                                          Ref<String> answer) {
+        if (n == 0) {
+            count.val--;
+            if (count.val == 0) {
+                answer.val = acc;
+                return true; // done
+            }
+            return false; // keep going
+        }
+        for (int i = 0; i < chars.length; i++) {
+            if (prevIdx != -1 && chars[i] == chars[prevIdx]) {
+                continue;
+            }
+            if (getHappyString(n - 1, chars, i, acc + chars[i], count, answer)) {
+                return true; // done
+            }
+        }
+        return false; // keep going
     }
 }
