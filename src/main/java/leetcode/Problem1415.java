@@ -16,5 +16,6 @@ public class Problem1415 {
         System.out.println(prob.getHappyString(3, 9)); // "cab"
         System.out.println(prob.getHappyString(2, 7)); // ""
         System.out.println(prob.getHappyString(10, 100)); // "abacbabacb"
+        System.out.println(prob.getHappyString(4, 1)); // "abab"
     }
 }
