@@ -12,6 +12,7 @@ public class Problem1405 {
     public static void main(String[] args) {
         Problem1405 prob = new Problem1405();
         System.out.println(prob.longestDiverseString(1, 1, 7)); // "ccaccbcc"
+        System.out.println(prob.longestDiverseString(1, 1, 10)); // "ccaccbcc"
         System.out.println(prob.longestDiverseString(2, 2, 1)); // "aabbc"
         System.out.println(prob.longestDiverseString(7, 1, 0)); // "aabaa"
     }
