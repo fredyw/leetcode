@@ -15,5 +15,6 @@ public class Problem1405 {
         System.out.println(prob.longestDiverseString(1, 1, 10)); // "ccaccbcc"
         System.out.println(prob.longestDiverseString(2, 2, 1)); // "aabbc"
         System.out.println(prob.longestDiverseString(7, 1, 0)); // "aabaa"
+        System.out.println(prob.longestDiverseString(5, 6, 7)); // "ccbbaaccbbaaccbbac"
     }
 }
