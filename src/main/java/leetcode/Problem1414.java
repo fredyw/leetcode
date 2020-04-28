@@ -1,34 +1,41 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * https://leetcode.com/problems/find-the-minimum-number-of-fibonacci-numbers-whose-sum-is-k/
  */
 public class Problem1414 {
     public int findMinFibonacciNumbers(int k) {
-        Integer[] memo = new Integer[k + 1];
-        memo[1] = 1;
-        memo[2] = 1;
-        fibonacci(k, memo);
-        int answer = Integer.MAX_VALUE;
-        // TODO:
+        List<Integer> values = fibonacci(k);
+        int answer = 1;
+        int n = k;
+        while (true) {
+            int i = Collections.binarySearch(values, n);
+            if (i >= 0) {
+                break;
+            } else {
+                i = -i - 2;
+                n -= values.get(i);
+            }
+            answer++;
+        }
         return answer;
     }
 
-    private static int fibonacci(int n, Integer[] memo) {
-        if (n <= 2) {
-            return 1;
+    private static List<Integer> fibonacci(int k) {
+        List<Integer> values = new ArrayList<>();
+        int a = 0;
+        int b = 0;
+        int c = 1;
+        while (c <= k) {
+            values.add(c);
+            a = b;
+            b = c;
+            c = a + b;
         }
-        if (memo[n] != null) {
-            return memo[n];
-        }
-        memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo);
-        return memo[n];
-    }
-
-    public static void main(String[] args) {
-        Problem1414 prob = new Problem1414();
-        System.out.println(prob.findMinFibonacciNumbers(7)); // 2
-        System.out.println(prob.findMinFibonacciNumbers(10)); // 2
-        System.out.println(prob.findMinFibonacciNumbers(19)); // 3
+        return values;
     }
 }
