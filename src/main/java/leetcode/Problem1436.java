@@ -1,31 +1,30 @@
 package leetcode;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * https://leetcode.com/problems/destination-city/
  */
 public class Problem1436 {
     public String destCity(List<List<String>> paths) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1436 prob = new Problem1436();
-        System.out.println(prob.destCity(Arrays.asList(
-            Arrays.asList("London","New York"),
-            Arrays.asList("New York","Lima"),
-            Arrays.asList("Lima","Sao Paulo")
-        ))); // "Sao Paulo"
-        System.out.println(prob.destCity(Arrays.asList(
-            Arrays.asList("B","C"),
-            Arrays.asList("D","B"),
-            Arrays.asList("C","A")
-        ))); // "A"
-        System.out.println(prob.destCity(Arrays.asList(
-            Arrays.asList("A","Z")
-        ))); // "Z"
+        Map<String, String> map = new HashMap<>();
+        Set<String> destinations = new HashSet<>();
+        for (List<String> path : paths) {
+            map.put(path.get(0), path.get(1));
+            destinations.add(path.get(1));
+        }
+        String answer = null;
+        for (String destination : destinations) {
+            if (!map.containsKey(destination)) {
+                answer = destination;
+                break;
+            }
+        }
+        return answer;
     }
 }
