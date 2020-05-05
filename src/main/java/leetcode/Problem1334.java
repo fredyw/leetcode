@@ -11,5 +11,11 @@ public class Problem1334 {
 
     public static void main(String[] args) {
         Problem1334 prob = new Problem1334();
+        System.out.println(prob.findTheCity(4, new int[][]{
+            {0, 1, 3}, {1, 2, 1}, {1, 3, 4}, {2, 3, 1},
+        }, 4)); // 3
+        System.out.println(prob.findTheCity(4, new int[][]{
+            {0, 1, 2}, {0, 4, 8}, {1, 2, 3}, {1, 4, 2}, {2, 3, 1}, {3, 4, 1},
+        }, 2)); // 0
     }
 }
