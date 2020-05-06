@@ -1,70 +1,44 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.Arrays;
 
 /**
  * https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/
  */
 public class Problem1334 {
     public int findTheCity(int n, int[][] edges, int distanceThreshold) {
-        List<Edge>[] adjList = new List[n];
+        // https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm
+        int[][] graph = new int[n][n];
         for (int i = 0; i < n; i++) {
-            adjList[i] = new ArrayList();
+            for (int j = 0; j < n; j++) {
+                if (i != j) {
+                    graph[i][j] = Integer.MAX_VALUE;
+                }
+            }
         }
         for (int[] edge : edges) {
             int from = edge[0];
             int to = edge[1];
             int weight = edge[2];
-            adjList[from].add(new Edge(to, weight));
-            adjList[to].add(new Edge(from, weight));
+            graph[from][to] = weight;
+            graph[to][from] = weight;
         }
-        int answer = -1;
-        int min = Integer.MAX_VALUE;
-        boolean[] visited = new boolean[n];
-        for (int i = 0; i < n; i++) {
-            Set<Integer> cities = new HashSet<>();
-            dfs(adjList, i, visited, 0, distanceThreshold, cities);
-            if (min > cities.size()) {
-                min = cities.size();
-                answer = i;
-            } else if (min == cities.size()) {
-                answer = Math.max(answer, i);
+        int answer = 0;
+        for (int k = 0; k < n; k++) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (graph[i][k] != Integer.MAX_VALUE &&
+                        graph[k][j] != Integer.MAX_VALUE &&
+                        graph[i][k] + graph[k][j] < graph[i][j]) {
+                        graph[i][j] = graph[i][k] + graph[k][j];
+                    }
+                }
             }
         }
+        for (int[] edge : graph) {
+            System.out.println(Arrays.toString(edge));
+        }
         return answer;
-    }
-
-    private static void dfs(List<Edge>[] adjList,
-                            int node,
-                            boolean[] visited,
-                            int weightSum,
-                            int distanceThreshold,
-                            Set<Integer> cities) {
-        if (visited[node]) {
-            return;
-        }
-        if (weightSum <= distanceThreshold) {
-            cities.add(node);
-        }
-        visited[node] = true;
-        for (Edge neighbors : adjList[node]) {
-            dfs(adjList, neighbors.to, visited, weightSum + neighbors.weight,
-                distanceThreshold, cities);
-        }
-        visited[node] = false;
-    }
-
-    private static class Edge {
-        private final int to;
-        private final int weight;
-
-        public Edge(int to, int weight) {
-            this.to = to;
-            this.weight = weight;
-        }
     }
 
     public static void main(String[] args) {
@@ -72,8 +46,8 @@ public class Problem1334 {
         System.out.println(prob.findTheCity(4, new int[][]{
             {0, 1, 3}, {1, 2, 1}, {1, 3, 4}, {2, 3, 1},
         }, 4)); // 3
-        System.out.println(prob.findTheCity(5, new int[][]{
-            {0, 1, 2}, {0, 4, 8}, {1, 2, 3}, {1, 4, 2}, {2, 3, 1}, {3, 4, 1},
-        }, 2)); // 0
+//        System.out.println(prob.findTheCity(5, new int[][]{
+//            {0, 1, 2}, {0, 4, 8}, {1, 2, 3}, {1, 4, 2}, {2, 3, 1}, {3, 4, 1},
+//        }, 2)); // 0
     }
 }
