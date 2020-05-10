@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,15 +8,17 @@ import java.util.List;
  */
 public class Problem1441 {
     public List<String> buildArray(int[] target, int n) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1441 prob = new Problem1441();
-        System.out.println(prob.buildArray(new int[]{1,3}, 3)); // ["Push","Push","Pop","Push"]
-        System.out.println(prob.buildArray(new int[]{1,2,3}, 3)); // ["Push","Push","Push"]
-        System.out.println(prob.buildArray(new int[]{1,2}, 4)); // ["Push","Push"]
-        System.out.println(prob.buildArray(new int[]{2,3,4}, 4)); // ["Push","Pop","Push","Push","Push"]
+        List<String> answer = new ArrayList<>();
+        int j = 0;
+        for (int i = 1; i <= n && j < target.length; i++) {
+            if (i == target[j]) {
+                answer.add("Push");
+                j++;
+            } else {
+                answer.add("Push");
+                answer.add("Pop");
+            }
+        }
+        return answer;
     }
 }
