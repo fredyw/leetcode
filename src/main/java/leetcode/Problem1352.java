@@ -1,15 +1,32 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * https://leetcode.com/problems/product-of-the-last-k-numbers/
  */
 public class Problem1352 {
     static class ProductOfNumbers {
+        private final List<Integer> list = new ArrayList<>();
+        private int product = 1;
+
         public ProductOfNumbers() {
         }
 
         public void add(int num) {
-            // TODO
+            if (num == 0) {
+                product = 0;
+            } else if (list.isEmpty()) {
+                product = num;
+            } else if (list.size() - 1 > 0) {
+                if (list.get(list.size() - 1) == 0) {
+                    product = num;
+                } else {
+                    product *= num;
+                }
+            }
+            list.add(product);
         }
 
         public int getProduct(int k) {
