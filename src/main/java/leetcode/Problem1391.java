@@ -12,6 +12,15 @@ public class Problem1391 {
     public static void main(String[] args) {
         Problem1391 prob = new Problem1391();
         System.out.println(prob.hasValidPath(new int[][]{
+            {2,4,3},{6,5,2}
+        })); // true
+        System.out.println(prob.hasValidPath(new int[][]{
+            {2,4,3},{6,5,6}
+        })); // true
+        System.out.println(prob.hasValidPath(new int[][]{
+            {2,4,3},{6,5,5}
+        })); // true
+        System.out.println(prob.hasValidPath(new int[][]{
             {1,2,1},{1,2,1}
         })); // false
         System.out.println(prob.hasValidPath(new int[][]{
