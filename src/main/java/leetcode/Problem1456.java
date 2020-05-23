@@ -5,16 +5,27 @@ package leetcode;
  */
 public class Problem1456 {
     public int maxVowels(String s, int k) {
-        // TODO
-        return 0;
+        int max = 0;
+        for (int i = 0; i < k; i++) {
+            if (s.charAt(i) == 'a' || s.charAt(i) == 'e' || s.charAt(i) == 'i' ||
+                s.charAt(i) == 'o' || s.charAt(i) == 'u') {
+                max++;
+            }
+        }
+        int answer = max;
+        for (int i = k; i < s.length(); i++) {
+            if (isVowel(s.charAt(i))) {
+                max++;
+            }
+            if (isVowel(s.charAt(i - k))) {
+                max--;
+            }
+            answer = Math.max(answer, max);
+        }
+        return answer;
     }
 
-    public static void main(String[] args) {
-        Problem1456 prob = new Problem1456();
-        System.out.println(prob.maxVowels("abciiidef", 3)); // 3
-        System.out.println(prob.maxVowels("aeiou", 2)); // 2
-        System.out.println(prob.maxVowels("leetcode", 3)); // 2
-        System.out.println(prob.maxVowels("rhythms", 3)); // 4
-        System.out.println(prob.maxVowels("tryhard", 4)); // 4
+    private static boolean isVowel(char c) {
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
     }
 }
