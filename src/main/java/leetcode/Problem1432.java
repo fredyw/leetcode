@@ -25,7 +25,7 @@ public class Problem1432 {
         i = 0;
         boolean zero = false;
         if (s.charAt(i) == '1') {
-            while (i < s.length() && s.charAt(i) == '1') {
+            while (i < s.length() && (s.charAt(i) == '0' || s.charAt(i) == '1')) {
                 i++;
             }
             if (i == s.length()) {
@@ -34,7 +34,6 @@ public class Problem1432 {
                 zero = true;
             }
         }
-
         for (int j = 0; j < s.length(); j++) {
             if (s.charAt(i) == s.charAt(j)) {
                 min.append(zero ? "0" : "1");
@@ -42,22 +41,6 @@ public class Problem1432 {
                 min.append(s.charAt(j));
             }
         }
-        System.out.println(max + " " + min);
         return Integer.parseInt(max.toString()) - Integer.parseInt(min.toString());
-    }
-
-    public static void main(String[] args) {
-        Problem1432 prob = new Problem1432();
-//        System.out.println(prob.maxDiff(555)); // 888
-//        System.out.println(prob.maxDiff(9)); // 8
-//        System.out.println(prob.maxDiff(123456)); // 820000
-//        System.out.println(prob.maxDiff(10000)); // 80000
-//        System.out.println(prob.maxDiff(9288)); // 8700
-//        System.out.println(prob.maxDiff(9289)); // 8708
-//        System.out.println(prob.maxDiff(1111)); // 8888
-//        System.out.println(prob.maxDiff(9999)); // 8888
-//        System.out.println(prob.maxDiff(1000)); // 8000
-//        System.out.println(prob.maxDiff(3)); // 8
-        System.out.println(prob.maxDiff(1101057)); // 8808050
     }
 }
