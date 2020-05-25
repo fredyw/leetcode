@@ -23,6 +23,14 @@ public class Problem1452 {
         ))); // [0,1,4]
         System.out.println(prob.peopleIndexes(Arrays.asList(
             Arrays.asList("leetcode","google","facebook"),
+            Arrays.asList("google","microsoft"),
+            Arrays.asList("google","facebook"),
+            Arrays.asList("google"),
+            Arrays.asList("amazon"),
+            Arrays.asList("leetcode", "facebook")
+        ))); // [0,1,4]
+        System.out.println(prob.peopleIndexes(Arrays.asList(
+            Arrays.asList("leetcode","google","facebook"),
             Arrays.asList("leetcode","amazon"),
             Arrays.asList("facebook","google")
         ))); // [0,1]
