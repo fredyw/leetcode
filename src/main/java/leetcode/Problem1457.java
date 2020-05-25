@@ -24,30 +24,34 @@ public class Problem1457 {
     }
 
     public int pseudoPalindromicPaths(TreeNode root) {
-        // TODO
-        return 0;
+        IntRef answer = new IntRef();
+        pseudoPalindromicPaths(root, new int[9], answer);
+        return answer.val;
     }
 
-    public static void main(String[] args) {
-        Problem1457 prob = new Problem1457();
+    private static class IntRef {
+        private int val;
+    }
 
-        TreeNode root = new TreeNode(2);
-        root.left = new TreeNode(3);
-        root.left.left = new TreeNode(3);
-        root.left.right = new TreeNode(1);
-        root.right = new TreeNode(1);
-        root.right.right = new TreeNode(1);
-        System.out.println(prob.pseudoPalindromicPaths(root)); // 2
-
-        root = new TreeNode(2);
-        root.left = new TreeNode(1);
-        root.left.left = new TreeNode(1);
-        root.left.right = new TreeNode(3);
-        root.left.right.right = new TreeNode(1);
-        root.right = new TreeNode(1);
-        System.out.println(prob.pseudoPalindromicPaths(root)); // 1
-
-        root = new TreeNode(9);
-        System.out.println(prob.pseudoPalindromicPaths(root)); // 1
+    private static void pseudoPalindromicPaths(TreeNode root, int[] counts, IntRef answer) {
+        if (root == null) {
+            return;
+        }
+        counts[root.val - 1]++;
+        if (root.left == null && root.right == null) {
+            int odd = 0;
+            for (int i = 0; i < counts.length; i++) {
+                if (counts[i] % 2 != 0) {
+                    odd++;
+                }
+            }
+            if (odd <= 1) {
+                answer.val++;
+            }
+        } else {
+            pseudoPalindromicPaths(root.left, counts, answer);
+            pseudoPalindromicPaths(root.right, counts, answer);
+        }
+        counts[root.val - 1]--;
     }
 }
