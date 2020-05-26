@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,15 +8,23 @@ import java.util.List;
  */
 public class Problem1447 {
     public List<String> simplifiedFractions(int n) {
-        // TODO
-        return null;
+        List<String> answer = new ArrayList<>();
+        for (int i = 1; i < n; i++) {
+            for (int j = i + 1; j <= n; j++) {
+                int x = gcd(i, j);
+                if (x != 1 && i % x == 0 && j % x == 0) {
+                    continue;
+                }
+                answer.add(i + "/" + j);
+            }
+        }
+        return answer;
     }
 
-    public static void main(String[] args) {
-        Problem1447 prob = new Problem1447();
-        System.out.println(prob.simplifiedFractions(2)); // ["1/2"]
-        System.out.println(prob.simplifiedFractions(3)); // ["1/2","1/3","2/3"]
-        System.out.println(prob.simplifiedFractions(4)); // ["1/2","1/3","1/4","2/3","3/4"]
-        System.out.println(prob.simplifiedFractions(1)); // []
+    private static int gcd(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
+        return gcd(b, a % b);
     }
 }
