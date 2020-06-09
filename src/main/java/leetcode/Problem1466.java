@@ -1,21 +1,45 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/
  */
 public class Problem1466 {
     public int minReorder(int n, int[][] connections) {
-        // TODO
-        return 0;
+        List<Integer>[] graph = new List[n];
+        for (int i = 0; i < n; i++) {
+            graph[i] = new ArrayList<>();
+        }
+        Set[] direction = new Set[n];
+        for (int i = 0; i < n; i++) {
+            direction[i] = new HashSet();
+        }
+        for (int[] connection : connections) {
+            int from = connection[0];
+            int to = connection[1];
+            graph[from].add(to);
+            graph[to].add(from);
+            direction[from].add(to);
+        }
+        return dfs(graph, new boolean[n], direction, 0);
     }
 
-    public static void main(String[] args) {
-        Problem1466 prob = new Problem1466();
-        System.out.println(prob.minReorder(
-            6, new int[][]{{0,1},{1,3},{2,3},{4,0},{4,5}})); // 3
-        System.out.println(prob.minReorder(
-            5, new int[][]{{1,0},{1,2},{3,2},{3,4}})); // 2
-        System.out.println(prob.minReorder(
-            3, new int[][]{{1,0},{2,0}})); // 0
+    private static int dfs(List<Integer>[] graph, boolean[] visited,
+                           Set[] direction, int node) {
+        int count = 0;
+        visited[node] = true;
+        for (int neighbor : graph[node]) {
+            if (!visited[neighbor]) {
+                if (direction[node].contains(neighbor)) {
+                    count++;
+                }
+                count += dfs(graph, visited, direction, neighbor);
+            }
+        }
+        return count;
     }
 }
