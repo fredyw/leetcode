@@ -25,11 +25,11 @@ public class Problem1466 {
             graph[to].add(from);
             direction[from].add(to);
         }
-        return dfs(graph, new boolean[n], direction, 0);
+        return minReorder(graph, new boolean[n], direction, 0);
     }
 
-    private static int dfs(List<Integer>[] graph, boolean[] visited,
-                           Set[] direction, int node) {
+    private static int minReorder(List<Integer>[] graph, boolean[] visited,
+                                  Set[] direction, int node) {
         int count = 0;
         visited[node] = true;
         for (int neighbor : graph[node]) {
@@ -37,7 +37,7 @@ public class Problem1466 {
                 if (direction[node].contains(neighbor)) {
                     count++;
                 }
-                count += dfs(graph, visited, direction, neighbor);
+                count += minReorder(graph, visited, direction, neighbor);
             }
         }
         return count;
