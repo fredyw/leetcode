@@ -7,16 +7,24 @@ import java.util.Arrays;
  */
 public class Problem1471 {
     public int[] getStrongest(int[] arr, int k) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1471 prob = new Problem1471();
-        System.out.println(Arrays.toString(prob.getStrongest(new int[]{1,2,3,4,5}, 2))); // [5,1]
-        System.out.println(Arrays.toString(prob.getStrongest(new int[]{1,1,3,5,5}, 2))); // [5,5]
-        System.out.println(Arrays.toString(prob.getStrongest(new int[]{6,7,11,7,6,8}, 5))); // [11,8,6,6,7]
-        System.out.println(Arrays.toString(prob.getStrongest(new int[]{6,-3,7,2,11}, 3))); // [-3,11,2]
-        System.out.println(Arrays.toString(prob.getStrongest(new int[]{-7,22,17,3}, 2))); // [22,17]
+        Arrays.sort(arr);
+        int m = arr[(arr.length - 1) / 2];
+        int[] sorted = Arrays.stream(arr)
+            .boxed()
+            .sorted((a, b) -> {
+                int i = Math.abs(a - m);
+                int j = Math.abs(b - m);
+                int cmp = Integer.compare(j, i);
+                if (cmp == 0) {
+                    return Integer.compare(b, a);
+                }
+                return cmp;
+            })
+            .mapToInt(a -> a).toArray();
+        int[] answer = new int[k];
+        for (int i = 0; i < k; i++) {
+            answer[i] = sorted[i];
+        }
+        return answer;
     }
 }
