@@ -13,6 +13,7 @@ public class Problem1512 {
         Problem1512 prob = new Problem1512();
         System.out.println(prob.numIdenticalPairs(new int[]{1,2,3,1,1,3})); // 4
         System.out.println(prob.numIdenticalPairs(new int[]{1,1,1,1})); // 6
+        System.out.println(prob.numIdenticalPairs(new int[]{1,1,1,1,2,2})); // 7
         System.out.println(prob.numIdenticalPairs(new int[]{1,2,3})); // 0
     }
 }
