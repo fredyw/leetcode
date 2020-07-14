@@ -13,14 +13,16 @@ public class Problem1504 {
                 if (mat[row][col] == 0) {
                     continue;
                 }
-                answer += numSubmat(mat, maxRow, maxCol, row, col, row, col);
+                answer += numSubmat(mat, maxRow, maxCol, row, col, row, col,
+                    new boolean[maxRow][maxCol]);
             }
         }
         return answer;
     }
 
     private static int numSubmat(int[][] mat, int maxRow, int maxCol,
-                                 int row1, int col1, int row2, int col2) {
+                                 int row1, int col1, int row2, int col2,
+                                 boolean[][] visited) {
         if (row2 == maxRow || col2 == maxCol) {
             return 0;
         }
@@ -34,9 +36,12 @@ public class Problem1504 {
                 return 0;
             }
         }
-        System.out.println(row1 + "," + col1 + " -- " + row2 + "," + col2);
-        int a = numSubmat(mat, maxRow, maxCol, row1, col1, row2 + 1, col2);
-        int b = numSubmat(mat, maxRow, maxCol, row1, col1, row2, col2 + 1);
+        if (visited[row2][col2]) {
+            return 0;
+        }
+        visited[row2][col2] = true;
+        int a = numSubmat(mat, maxRow, maxCol, row1, col1, row2 + 1, col2, visited);
+        int b = numSubmat(mat, maxRow, maxCol, row1, col1, row2, col2 + 1, visited);
         int val = a + b + 1;
         return val;
     }
@@ -47,23 +52,23 @@ public class Problem1504 {
             {1,1},
             {1,1},
         })); // 9
-//        System.out.println(prob.numSubmat(new int[][]{
-//            {1,0,1},
-//            {1,1,0},
-//            {1,1,0},
-//        })); // 13
-//        System.out.println(prob.numSubmat(new int[][]{
-//            {0,1,1,0},
-//            {0,1,1,1},
-//            {1,1,1,0},
-//        })); // 24
-//        System.out.println(prob.numSubmat(new int[][]{
-//            {1,1,1,1,1,1},
-//        })); // 21
-//        System.out.println(prob.numSubmat(new int[][]{
-//            {1,0,1},
-//            {0,1,0},
-//            {1,0,1},
-//        })); // 5
+        System.out.println(prob.numSubmat(new int[][]{
+            {1,0,1},
+            {1,1,0},
+            {1,1,0},
+        })); // 13
+        System.out.println(prob.numSubmat(new int[][]{
+            {0,1,1,0},
+            {0,1,1,1},
+            {1,1,1,0},
+        })); // 24
+        System.out.println(prob.numSubmat(new int[][]{
+            {1,1,1,1,1,1},
+        })); // 21
+        System.out.println(prob.numSubmat(new int[][]{
+            {1,0,1},
+            {0,1,0},
+            {1,0,1},
+        })); // 5
     }
 }
