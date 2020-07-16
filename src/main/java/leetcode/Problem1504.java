@@ -7,68 +7,33 @@ public class Problem1504 {
     public int numSubmat(int[][] mat) {
         int maxRow = mat.length;
         int maxCol = maxRow > 0 ? mat[0].length : 0;
-        int answer = 0;
+        int[][] dp = new int[maxRow][maxCol];
         for (int row = 0; row < maxRow; row++) {
             for (int col = 0; col < maxCol; col++) {
+                if (col == 0) {
+                    dp[row][col] = mat[row][col];
+                } else {
+                    if (mat[row][col] == 0) {
+                        dp[row][col] = 0;
+                    } else {
+                        dp[row][col] = dp[row][col - 1] + 1;
+                    }
+                }
+            }
+        }
+        int answer = 0;
+        for (int row = 0; row < maxRow; row++) { // top to down
+            for (int col = 0; col < maxCol; col++) { // left to right
                 if (mat[row][col] == 0) {
                     continue;
                 }
-                answer += numSubmat(mat, maxRow, maxCol, row, col, row, col,
-                    new boolean[maxRow][maxCol]);
+                int min = Integer.MAX_VALUE;
+                for (int r = row; r >= 0 && mat[r][col] == 1; r--) { // r to top
+                    min = Math.min(min, dp[r][col]);
+                    answer += min;
+                }
             }
         }
         return answer;
-    }
-
-    private static int numSubmat(int[][] mat, int maxRow, int maxCol,
-                                 int row1, int col1, int row2, int col2,
-                                 boolean[][] visited) {
-        if (row2 == maxRow || col2 == maxCol) {
-            return 0;
-        }
-        for (int row = row1; row <= row2; row++) {
-            if (mat[row][col2] == 0) {
-                return 0;
-            }
-        }
-        for (int col = col1; col <= col2; col++) {
-            if (mat[row2][col] == 0) {
-                return 0;
-            }
-        }
-        if (visited[row2][col2]) {
-            return 0;
-        }
-        visited[row2][col2] = true;
-        int a = numSubmat(mat, maxRow, maxCol, row1, col1, row2 + 1, col2, visited);
-        int b = numSubmat(mat, maxRow, maxCol, row1, col1, row2, col2 + 1, visited);
-        int val = a + b + 1;
-        return val;
-    }
-
-    public static void main(String[] args) {
-        Problem1504 prob = new Problem1504();
-        System.out.println(prob.numSubmat(new int[][]{
-            {1,1},
-            {1,1},
-        })); // 9
-        System.out.println(prob.numSubmat(new int[][]{
-            {1,0,1},
-            {1,1,0},
-            {1,1,0},
-        })); // 13
-        System.out.println(prob.numSubmat(new int[][]{
-            {0,1,1,0},
-            {0,1,1,1},
-            {1,1,1,0},
-        })); // 24
-        System.out.println(prob.numSubmat(new int[][]{
-            {1,1,1,1,1,1},
-        })); // 21
-        System.out.println(prob.numSubmat(new int[][]{
-            {1,0,1},
-            {0,1,0},
-            {1,0,1},
-        })); // 5
     }
 }
