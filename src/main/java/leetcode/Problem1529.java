@@ -5,18 +5,20 @@ package leetcode;
  */
 public class Problem1529 {
     public int minFlips(String target) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1529 prob = new Problem1529();
-        System.out.println(prob.minFlips("10111")); // 3
-        System.out.println(prob.minFlips("101")); // 3
-        System.out.println(prob.minFlips("00000")); // 0
-        System.out.println(prob.minFlips("001011101")); // 5
-        System.out.println(prob.minFlips("100100")); // 4
-        System.out.println(prob.minFlips("100100")); // 4
-        System.out.println(prob.minFlips("100111")); // 3
+        int i = target.length() - 1;
+        boolean one = target.charAt(target.length() - 1) == '1';
+        int answer = one ? -1 : 0;
+        while (i >= 0) {
+            if (one) {
+                answer += 2;
+            }
+            while (i >= 0 && target.charAt(i) == (one ? '1' : '0')) {
+                i--;
+            }
+            if (i >= 0) {
+                one = target.charAt(i) == '1';
+            }
+        }
+        return answer;
     }
 }
