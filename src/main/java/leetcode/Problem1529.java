@@ -15,5 +15,8 @@ public class Problem1529 {
         System.out.println(prob.minFlips("101")); // 3
         System.out.println(prob.minFlips("00000")); // 0
         System.out.println(prob.minFlips("001011101")); // 5
+        System.out.println(prob.minFlips("100100")); // 4
+        System.out.println(prob.minFlips("100100")); // 4
+        System.out.println(prob.minFlips("100111")); // 3
     }
 }
