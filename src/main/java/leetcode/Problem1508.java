@@ -9,9 +9,9 @@ import java.util.List;
  */
 public class Problem1508 {
     public int rangeSum(int[] nums, int n, int left, int right) {
-        List<Integer> list = new ArrayList<>();
+        List<Long> list = new ArrayList<>();
         for (int i = 0; i < nums.length; i++) {
-            int sum = nums[i];
+            long sum = nums[i];
             list.add(sum);
             for (int j = i + 1; j < nums.length; j++) {
                 sum += nums[j];
@@ -21,15 +21,8 @@ public class Problem1508 {
         Collections.sort(list);
         long answer = 0;
         for (int i = left - 1; i < right; i++) {
-            answer += list.get(i) % 1_000_000_007;
+            answer += list.get(i);
         }
-        return (int) answer;
-    }
-
-    public static void main(String[] args) {
-        Problem1508 prob = new Problem1508();
-        System.out.println(prob.rangeSum(new int[]{1,2,3,4}, 4, 1, 5)); // 13
-        System.out.println(prob.rangeSum(new int[]{1,2,3,4}, 4, 3, 4)); // 6
-        System.out.println(prob.rangeSum(new int[]{1,2,3,4}, 4, 1, 10)); // 50
+        return (int) (answer  % 1_000_000_007);
     }
 }
