@@ -1,20 +1,17 @@
 package leetcode;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * https://leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/
  */
 public class Problem1461 {
     public boolean hasAllCodes(String s, int k) {
-        // TODO
-        return false;
-    }
-
-    public static void main(String[] args) {
-        Problem1461 prob = new Problem1461();
-        System.out.println(prob.hasAllCodes("00110110", 2)); // true
-        System.out.println(prob.hasAllCodes("00110", 2)); // true
-        System.out.println(prob.hasAllCodes("0110", 1)); // true
-        System.out.println(prob.hasAllCodes("0110", 2)); // false
-        System.out.println(prob.hasAllCodes("0000000001011100", 4)); // false
+        Set<String> set = new HashSet<>();
+        for (int i = 0; i <= s.length() - k; i++) {
+            set.add(s.substring(i, i + k));
+        }
+        return set.size() == Math.pow(2, k);
     }
 }
