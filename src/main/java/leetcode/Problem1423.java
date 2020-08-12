@@ -16,5 +16,6 @@ public class Problem1423 {
         System.out.println(prob.maxScore(new int[]{9,7,7,9,7,7,9}, 7)); // 55
         System.out.println(prob.maxScore(new int[]{1,1000,1}, 1)); // 1
         System.out.println(prob.maxScore(new int[]{1,79,80,1,1,1,200,1}, 3)); // 202
+        System.out.println(prob.maxScore(new int[]{1,79,80,1,1,1,200,1}, 4)); // 281
     }
 }
