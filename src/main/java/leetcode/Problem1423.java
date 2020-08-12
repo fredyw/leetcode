@@ -5,8 +5,22 @@ package leetcode;
  */
 public class Problem1423 {
     public int maxScore(int[] cardPoints, int k) {
-        // TODO
-        return 0;
+        return maxScore(cardPoints, k, 0, cardPoints.length - 1,
+            new Integer[cardPoints.length][cardPoints.length]);
+    }
+
+    private static int maxScore(int[] cardPoints, int k, int i, int j, Integer[][] memo) {
+        if (k == 0) {
+            return 0;
+        }
+        if (memo[i][j] != null) {
+            return memo[i][j];
+        }
+        int a = maxScore(cardPoints, k - 1, i + 1, j, memo) + cardPoints[i];
+        int b = maxScore(cardPoints, k - 1, i, j - 1, memo) + cardPoints[j];
+        int max = Math.max(a, b);
+        memo[i][j] = max;
+        return max;
     }
 
     public static void main(String[] args) {
