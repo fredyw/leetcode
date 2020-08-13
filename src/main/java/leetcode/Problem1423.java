@@ -5,31 +5,27 @@ package leetcode;
  */
 public class Problem1423 {
     public int maxScore(int[] cardPoints, int k) {
-        return maxScore(cardPoints, k, 0, cardPoints.length - 1,
-            new Integer[cardPoints.length][cardPoints.length]);
+        int[] prefixSum = new int[cardPoints.length];
+        for (int i = 0; i < cardPoints.length; i++) {
+            if (i == 0) {
+                prefixSum[i] = cardPoints[i];
+            } else {
+                prefixSum[i] = prefixSum[i - 1] + cardPoints[i];
+            }
+        }
+        int answer = 0;
+        for (int i = k - 1; i >= 0; i--) {
+            if (i - k + 1 == 0) {
+                answer = Math.max(answer, prefixSum[i]);
+            } else {
+                int sum = prefixSum[i] + getSuffixSum(prefixSum, cardPoints.length + i - k + 1);
+                answer = Math.max(answer, sum);
+            }
+        }
+        return Math.max(answer, getSuffixSum(prefixSum, cardPoints.length - k));
     }
 
-    private static int maxScore(int[] cardPoints, int k, int i, int j, Integer[][] memo) {
-        if (k == 0) {
-            return 0;
-        }
-        if (memo[i][j] != null) {
-            return memo[i][j];
-        }
-        int a = maxScore(cardPoints, k - 1, i + 1, j, memo) + cardPoints[i];
-        int b = maxScore(cardPoints, k - 1, i, j - 1, memo) + cardPoints[j];
-        int max = Math.max(a, b);
-        memo[i][j] = max;
-        return max;
-    }
-
-    public static void main(String[] args) {
-        Problem1423 prob = new Problem1423();
-        System.out.println(prob.maxScore(new int[]{1,2,3,4,5,6,1}, 3)); // 12
-        System.out.println(prob.maxScore(new int[]{2,2,2}, 2)); // 4
-        System.out.println(prob.maxScore(new int[]{9,7,7,9,7,7,9}, 7)); // 55
-        System.out.println(prob.maxScore(new int[]{1,1000,1}, 1)); // 1
-        System.out.println(prob.maxScore(new int[]{1,79,80,1,1,1,200,1}, 3)); // 202
-        System.out.println(prob.maxScore(new int[]{1,79,80,1,1,1,200,1}, 4)); // 281
+    private static int getSuffixSum(int[] prefixSum, int index) {
+        return prefixSum[prefixSum.length - 1] - (index - 1 < 0 ? 0 : prefixSum[index - 1]);
     }
 }
