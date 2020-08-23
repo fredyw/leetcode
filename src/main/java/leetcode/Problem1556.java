@@ -5,15 +5,24 @@ package leetcode;
  */
 public class Problem1556 {
     public String thousandSeparator(int n) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1556 prob = new Problem1556();
-        System.out.println(prob.thousandSeparator(987)); // "987"
-        System.out.println(prob.thousandSeparator(1234)); // "1.234"
-        System.out.println(prob.thousandSeparator(123456789)); // "123.456.789"
-        System.out.println(prob.thousandSeparator(0)); // "0"
+        String answer = "";
+        String s = "" + n;
+        int i = s.length();
+        for (; i - 3 >= 0; i -= 3) {
+            String sub = s.substring(i - 3, i);
+            if (answer.isEmpty()) {
+                answer = sub;
+            } else {
+                answer = sub + "." + answer;
+            }
+        }
+        if (i > 0) {
+            if (answer.isEmpty()) {
+                answer = s;
+            } else {
+                answer = s.substring(0, i) + "." + answer;
+            }
+        }
+        return answer;
     }
 }
