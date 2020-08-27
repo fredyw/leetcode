@@ -1,32 +1,26 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * https://leetcode.com/problems/minimum-number-of-vertices-to-reach-all-nodes/
  */
 public class Problem1557 {
     public List<Integer> findSmallestSetOfVertices(int n, List<List<Integer>> edges) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1557 prob = new Problem1557();
-        System.out.println(prob.findSmallestSetOfVertices(6, Arrays.asList(
-            Arrays.asList(0, 1),
-            Arrays.asList(0, 2),
-            Arrays.asList(2, 5),
-            Arrays.asList(3, 4),
-            Arrays.asList(4, 2)
-        ))); // [0,3]
-        System.out.println(prob.findSmallestSetOfVertices(5, Arrays.asList(
-            Arrays.asList(0, 1),
-            Arrays.asList(2, 1),
-            Arrays.asList(3, 1),
-            Arrays.asList(1, 4),
-            Arrays.asList(2, 4)
-        ))); // [0,2,3]
+        Set<Integer> set = new HashSet<>();
+        for (List<Integer> edge : edges) {
+            set.add(edge.get(1));
+        }
+        List<Integer> answer = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            if (!set.contains(i)) {
+                answer.add(i);
+            }
+        }
+        return answer;
     }
 }
