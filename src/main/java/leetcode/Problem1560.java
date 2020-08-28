@@ -16,5 +16,6 @@ public class Problem1560 {
         System.out.println(prob.mostVisited(4, new int[]{1,3,1,2})); // [1,2]
         System.out.println(prob.mostVisited(2, new int[]{2,1,2,1,2,1,2,1,2})); // [2]
         System.out.println(prob.mostVisited(7, new int[]{1,3,5,7})); // [1,2,3,4,5,6,7]
+        System.out.println(prob.mostVisited(7, new int[]{1,3,4,3})); // [1,2,3]
     }
 }
