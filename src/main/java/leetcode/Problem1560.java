@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -7,15 +9,24 @@ import java.util.List;
  */
 public class Problem1560 {
     public List<Integer> mostVisited(int n, int[] rounds) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1560 prob = new Problem1560();
-        System.out.println(prob.mostVisited(4, new int[]{1,3,1,2})); // [1,2]
-        System.out.println(prob.mostVisited(2, new int[]{2,1,2,1,2,1,2,1,2})); // [2]
-        System.out.println(prob.mostVisited(7, new int[]{1,3,5,7})); // [1,2,3,4,5,6,7]
-        System.out.println(prob.mostVisited(7, new int[]{1,3,4,3})); // [1,2,3]
+        int[] counts = new int[n];
+        int prev = rounds[0] - 1;
+        for (int i = 1; i < rounds.length; i++) {
+            int j = prev;
+            while (j != rounds[i] - 1) {
+                counts[j]++;
+                j = (j + 1) % n;
+            }
+            prev = rounds[i] - 1;
+        }
+        counts[prev]++;
+        List<Integer> answer = new ArrayList<>();
+        int max = Arrays.stream(counts).max().getAsInt();
+        for (int i = 0; i < counts.length; i++) {
+            if (counts[i] == max) {
+                answer.add(i + 1);
+            }
+        }
+        return answer;
     }
 }
