@@ -5,16 +5,25 @@ package leetcode;
  */
 public class Problem1566 {
     public boolean containsPattern(int[] arr, int m, int k) {
-        // TODO
+        for (int i = 0; i <= arr.length - m; i++) {
+            int n = i;
+            String prev = "";
+            boolean found = true;
+            for (int j = 0; j < k; j++) {
+                String s = "";
+                for (int l = 0; l < m && n < arr.length; l++) {
+                    s += arr[n++];
+                }
+                if (!prev.isEmpty() && !s.equals(prev)) {
+                    found = false;
+                    break;
+                }
+                prev = s;
+            }
+            if (found) {
+                return true;
+            }
+        }
         return false;
-    }
-
-    public static void main(String[] args) {
-        Problem1566 prob = new Problem1566();
-        System.out.println(prob.containsPattern(new int[]{1,2,4,4,4,4}, 1, 3)); // true
-        System.out.println(prob.containsPattern(new int[]{1,2,4,4,4,4}, 2, 2)); // true
-        System.out.println(prob.containsPattern(new int[]{1,2,1,2,1,3}, 2, 3)); // false
-        System.out.println(prob.containsPattern(new int[]{1,2,3,1,2}, 2, 2)); // false
-        System.out.println(prob.containsPattern(new int[]{2,2,2,2}, 2, 3)); // false
     }
 }
