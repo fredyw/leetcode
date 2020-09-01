@@ -16,5 +16,6 @@ public class Problem1558 {
         System.out.println(prob.minOperations(new int[]{4,2,5})); // 6
         System.out.println(prob.minOperations(new int[]{3,2,2,4})); // 7
         System.out.println(prob.minOperations(new int[]{2,4,8,16})); // 8
+        System.out.println(prob.minOperations(new int[]{2,3,10})); // 8
     }
 }
