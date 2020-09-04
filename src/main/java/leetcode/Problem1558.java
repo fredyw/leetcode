@@ -7,34 +7,35 @@ import java.util.Arrays;
  */
 public class Problem1558 {
     public int minOperations(int[] nums) {
-        int answer = nums.length;
+        int answer = 0;
         int max = Arrays.stream(nums).max().getAsInt();
-        int val = (int) (Math.log(max) / Math.log(2));
-        answer += val;
-        answer += max % val;
+        int m = max;
+        while (m > 1) {
+            if (m % 2 != 0) {
+                answer++; // plus 1 for any odd numbers
+            }
+            m /= 2;
+            answer++; // multiply all by 2
+        }
+        int maxCount = 0;
         for (int num : nums) {
             if (num == 0) {
-                answer--;
                 continue;
             }
-            if (num == 1 || num == max) {
-                continue;
+            answer++; // plus 1 from 0
+            if (num == max) {
+                maxCount++;
+                if (maxCount == 1) {
+                    continue;
+                }
             }
-            if (num % 2 != 0) {
-                answer++;
+            while (num > 1) {
+                if (num % 2 != 0) {
+                    answer++; // plus 1 for any odd numbers
+                }
+                num /= 2;
             }
         }
         return answer;
-    }
-
-    public static void main(String[] args) {
-        Problem1558 prob = new Problem1558();
-        System.out.println(prob.minOperations(new int[]{1,5})); // 5
-        System.out.println(prob.minOperations(new int[]{2,2})); // 3
-        System.out.println(prob.minOperations(new int[]{4,2,5})); // 6
-        System.out.println(prob.minOperations(new int[]{3,2,2,4})); // 7
-        System.out.println(prob.minOperations(new int[]{2,4,8,16})); // 8
-        System.out.println(prob.minOperations(new int[]{2,3,10})); // 8
-        System.out.println(prob.minOperations(new int[]{2,3,10,89})); // 15
     }
 }
