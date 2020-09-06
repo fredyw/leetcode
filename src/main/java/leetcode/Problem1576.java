@@ -5,7 +5,7 @@ package leetcode;
  */
 public class Problem1576 {
     public String modifyString(String s) {
-        String answer = "";
+        StringBuilder answer = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '?') {
                 for (char c = 'a'; c <= 'z'; c++) {
@@ -21,13 +21,13 @@ public class Problem1576 {
                             continue;
                         }
                     }
-                    answer += c;
+                    answer.append(c);
                     break;
                 }
             } else {
-                answer += s.charAt(i);
+                answer.append(s.charAt(i));
             }
         }
-        return answer;
+        return answer.toString();
     }
 }
