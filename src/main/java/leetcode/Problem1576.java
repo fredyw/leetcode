@@ -5,15 +5,29 @@ package leetcode;
  */
 public class Problem1576 {
     public String modifyString(String s) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1576 prob = new Problem1576();
-        System.out.println(prob.modifyString("?zs")); // "azs"
-        System.out.println(prob.modifyString("ubv?w")); // "ubvaw"
-        System.out.println(prob.modifyString("j?qg??b")); // "jaqgacb"
-        System.out.println(prob.modifyString("??yw?ipkj?")); // "acywaipkja"
+        String answer = "";
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '?') {
+                for (char c = 'a'; c <= 'z'; c++) {
+                    if (i - 1 >= 0) {
+                        char prev = answer.charAt(i - 1);
+                        if (prev == c) {
+                            continue;
+                        }
+                    }
+                    if (i + 1 < s.length()) {
+                        char next = s.charAt(i + 1);
+                        if (next == c) {
+                            continue;
+                        }
+                    }
+                    answer += c;
+                    break;
+                }
+            } else {
+                answer += s.charAt(i);
+            }
+        }
+        return answer;
     }
 }
