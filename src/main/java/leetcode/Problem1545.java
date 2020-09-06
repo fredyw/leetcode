@@ -20,19 +20,10 @@ public class Problem1545 {
     }
 
     private static String inverse(String s) {
-        String str = "";
+        StringBuilder sb = new StringBuilder();
         for (char c : s.toCharArray()) {
-            str += c == '0' ? '1' : '0';
+            sb.append(c == '0' ? '1' : '0');
         }
-        return str;
-    }
-
-    public static void main(String[] args) {
-        Problem1545 prob = new Problem1545();
-        System.out.println(prob.findKthBit(3, 1)); // "0"
-        System.out.println(prob.findKthBit(4, 11)); // "1"
-        System.out.println(prob.findKthBit(1, 1)); // "0"
-        System.out.println(prob.findKthBit(2, 3)); // "1"
-        System.out.println(prob.findKthBit(20, 1048575)); // "1"
+        return sb.toString();
     }
 }
