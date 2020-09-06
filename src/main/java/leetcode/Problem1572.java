@@ -5,25 +5,15 @@ package leetcode;
  */
 public class Problem1572 {
     public int diagonalSum(int[][] mat) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1572 prob = new Problem1572();
-        System.out.println(prob.diagonalSum(new int[][]{
-            {1,2,3},
-            {4,5,6},
-            {7,8,9}
-        })); // 25
-        System.out.println(prob.diagonalSum(new int[][]{
-            {1,1,1,1},
-            {1,1,1,1},
-            {1,1,1,1},
-            {1,1,1,1},
-        })); // 7
-        System.out.println(prob.diagonalSum(new int[][]{
-            {5},
-        })); // 5
+        int answer = 0;
+        int maxRow = mat.length;
+        int maxCol = maxRow > 0 ? mat[0].length : 0;
+        for (int i = 0, j = 0; i < maxRow; i++, j++) {
+            answer += mat[i][j];
+        }
+        for (int i = 0, j = maxCol - 1; i < maxRow; i++, j--) {
+            answer += mat[i][j];
+        }
+        return maxRow % 2 == 0 ? answer : answer - mat[maxRow / 2][maxRow / 2];
     }
 }
