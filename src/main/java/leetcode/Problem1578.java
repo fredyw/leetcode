@@ -5,15 +5,23 @@ package leetcode;
  */
 public class Problem1578 {
     public int minCost(String s, int[] cost) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1578 prob = new Problem1578();
-        System.out.println(prob.minCost("abaac", new int[]{1,2,3,4,5})); // 3
-        System.out.println(prob.minCost("abc", new int[]{1,2,3})); // 0
-        System.out.println(prob.minCost("aabaa", new int[]{1,2,3,4,1})); // 2
-        System.out.println(prob.minCost("aabaaa", new int[]{1,2,3,4,1,5})); // 6
+        int answer = 0;
+        int i = 0;
+        while (i < s.length()) {
+            int max = cost[i];
+            int sum = cost[i];
+            int count = 1;
+            while (i + 1 < s.length() && s.charAt(i) == s.charAt(i + 1)) {
+                max = Math.max(max, cost[i + 1]);
+                sum += cost[i + 1];
+                count++;
+                i++;
+            }
+            if (count > 1) {
+                answer += sum - max;
+            }
+            i++;
+        }
+        return answer;
     }
 }
