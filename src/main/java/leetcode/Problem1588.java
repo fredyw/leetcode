@@ -5,14 +5,22 @@ package leetcode;
  */
 public class Problem1588 {
     public int sumOddLengthSubarrays(int[] arr) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1588 prob = new Problem1588();
-        System.out.println(prob.sumOddLengthSubarrays(new int[]{1,4,2,5,3})); // 58
-        System.out.println(prob.sumOddLengthSubarrays(new int[]{1,2})); // 3
-        System.out.println(prob.sumOddLengthSubarrays(new int[]{10,11,12})); // 66
+        int[] prefixSum = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            if (i == 0) {
+                prefixSum[i] = arr[i];
+            } else {
+                prefixSum[i] = prefixSum[i - 1] + arr[i];
+            }
+        }
+        int answer = 0;
+        for (int len = 1; len <= arr.length; len += 2) {
+            for (int i = 0; i < arr.length; i++) {
+                if (i + len - 1 < arr.length) {
+                    answer += prefixSum[i + len - 1] - (i - 1 >= 0 ? prefixSum[i - 1] : 0);
+                }
+            }
+        }
+        return answer;
     }
 }
