@@ -23,5 +23,13 @@ public class Problem1583 {
             4,
             new int[][]{{1, 3, 2}, {2, 3, 0}, {1, 3, 0}, {0, 2, 1}},
             new int[][]{{1, 3}, {0, 2}})); // 4
+        System.out.println(prob.unhappyFriends(
+            4,
+            new int[][]{{1, 3, 2}, {2, 3, 0}, {1, 3, 0}, {0, 2, 1}},
+            new int[][]{{0, 1}, {2, 3}})); // 2
+        System.out.println(prob.unhappyFriends(
+            4,
+            new int[][]{{1, 3, 2}, {2, 3, 0}, {1, 3, 0}, {0, 2, 1}},
+            new int[][]{{0, 3}, {1, 2}})); // 0
     }
 }
