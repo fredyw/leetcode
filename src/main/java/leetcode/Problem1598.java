@@ -1,18 +1,24 @@
 package leetcode;
 
+import java.util.Stack;
+
 /**
  * https://leetcode.com/problems/crawler-log-folder/
  */
 public class Problem1598 {
     public int minOperations(String[] logs) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1598 prob = new Problem1598();
-        System.out.println(prob.minOperations(new String[]{"d1/","d2/","../","d21/","./"})); // 2
-        System.out.println(prob.minOperations(new String[]{"d1/","d2/","./","d3/","../","d31/"})); // 3
-        System.out.println(prob.minOperations(new String[]{"d1/","../","../","../"})); // 0
+        Stack<String> stack = new Stack<>();
+        for (String log : logs) {
+            if (log.equals("../")) {
+                if (!stack.isEmpty()) {
+                    stack.pop();
+                }
+            } else if (log.equals("./")) {
+                // Do nothing.
+            } else {
+                stack.add(log);
+            }
+        }
+        return stack.isEmpty() ? 0 : stack.size();
     }
 }
