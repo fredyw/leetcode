@@ -59,23 +59,10 @@ public class Problem745 {
                 return node.weight;
             }
             Node child = node.children[word.charAt(i) - 'a'];
-            if (node == null) {
+            if (child == null) {
                 return -1;
             }
             return search(word, i + 1, child);
         }
-    }
-
-    public static void main(String[] args) {
-        WordFilter wf = new WordFilter(new String[]{"apple", "facebook", "fakebook"});
-        System.out.println(wf.f("a", "e")); // 0
-        System.out.println(wf.f("fa", "ook")); // 1
-
-//        WordFilter wf = new WordFilter(new String[]{
-//            "cabaabaaaa","ccbcababac","bacaabccba","bcbbcbacaa","abcaccbcaa","accabaccaa","cabcbbbcca","ababccabcb","caccbbcbab","bccbacbcba"
-//        });
-//        System.out.println(wf.f("bccbacbcba","a")); // 9
-//        System.out.println(wf.f("ab","abcaccbcaa")); // 4
-//        System.out.println(wf.f("a","aa")); // 5
     }
 }
