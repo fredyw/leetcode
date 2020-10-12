@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * https://leetcode.com/problems/even-odd-tree/
  */
@@ -24,34 +27,41 @@ public class Problem1609 {
     }
 
     public boolean isEvenOddTree(TreeNode root) {
-        // TODO
-        return false;
-    }
-
-    public static void main(String[] args) {
-        Problem1609 prob = new Problem1609();
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(10);
-        root.right = new TreeNode(4);
-        root.left.left = new TreeNode(3);
-        root.left.left.left = new TreeNode(12);
-        root.left.left.right = new TreeNode(8);
-        root.right = new TreeNode(4);
-        root.right.left = new TreeNode(7);
-        root.right.left.left = new TreeNode(6);
-        root.right.right = new TreeNode(9);
-        root.right.right.right = new TreeNode(2);
-        System.out.println(prob.isEvenOddTree(root)); // true
-
-        root = new TreeNode(5);
-        root.left = new TreeNode(9);
-        root.left.left = new TreeNode(3);
-        root.left.right = new TreeNode(5);
-        root.right = new TreeNode(1);
-        root.right.left = new TreeNode(7);
-        System.out.println(prob.isEvenOddTree(root)); // false
-
-        root = new TreeNode(1);
-        System.out.println(prob.isEvenOddTree(root)); // true
+        int level = 0;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            TreeNode previous = null;
+            for (int i = 0; i < size; i++) {
+                TreeNode current = queue.remove();
+                if (level % 2 == 0) { // even
+                    if (current.val % 2 == 0) { // must have odd number
+                        return false;
+                    }
+                    // must have strictly increasing order
+                    if (previous != null && previous.val >= current.val) {
+                        return false;
+                    }
+                } else { // odd
+                    if (current.val % 2 != 0) { // must have even number
+                        return false;
+                    }
+                    // must have strictly decreasing order
+                    if (previous != null && previous.val <= current.val) {
+                        return false;
+                    }
+                }
+                if (current.left != null) {
+                    queue.add(current.left);
+                }
+                if (current.right != null) {
+                    queue.add(current.right);
+                }
+                previous = current;
+            }
+            level++;
+        }
+        return true;
     }
 }
