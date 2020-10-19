@@ -17,5 +17,6 @@ public class Problem1624 {
         System.out.println(prob.maxLengthBetweenEqualCharacters("cabbac")); // 4
         System.out.println(prob.maxLengthBetweenEqualCharacters("aaaaa")); // 3
         System.out.println(prob.maxLengthBetweenEqualCharacters("abdefghdxyz")); // 4
+        System.out.println(prob.maxLengthBetweenEqualCharacters("aaxyza")); // 4
     }
 }
