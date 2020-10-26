@@ -5,13 +5,21 @@ package leetcode;
  */
 public class Problem1629 {
     public char slowestKey(int[] releaseTimes, String keysPressed) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1629 prob = new Problem1629();
-        System.out.println(prob.slowestKey(new int[]{9,29,49,50}, "cbcd")); // "c"
-        System.out.println(prob.slowestKey(new int[]{12,23,36,46,62}, "spuda")); // "a"
+        char answer = ' ';
+        int max = 0;
+        for (int i = 0; i < releaseTimes.length; i++) {
+            if (i == 0) {
+                max = releaseTimes[i];
+                answer = keysPressed.charAt(i);
+            } else {
+                int diff = releaseTimes[i] - releaseTimes[i - 1];
+                char c = keysPressed.charAt(i);
+                if (diff > max || (diff == max && c > answer)) {
+                    max = diff;
+                    answer = c;
+                }
+            }
+        }
+        return answer;
     }
 }
