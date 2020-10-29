@@ -1,18 +1,26 @@
 package leetcode;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * https://leetcode.com/problems/split-a-string-into-the-max-number-of-unique-substrings/
  */
 public class Problem1593 {
     public int maxUniqueSplit(String s) {
-        // TODO
-        return 0;
+        return maxUniqueSplit(s, 0, new HashSet<>());
     }
 
-    public static void main(String[] args) {
-        Problem1593 prob = new Problem1593();
-        System.out.println(prob.maxUniqueSplit("ababccc")); // 5
-        System.out.println(prob.maxUniqueSplit("aba")); // 2
-        System.out.println(prob.maxUniqueSplit("aa")); // 1
+    private static int maxUniqueSplit(String s, int i, Set<String> set) {
+        int max = set.size();
+        for (int j = i; j < s.length(); j++) {
+            String sub = s.substring(i, j + 1);
+            if (!set.contains(sub)) {
+                set.add(sub);
+                max = Math.max(max, maxUniqueSplit(s, j + 1, set));
+                set.remove(sub);
+            }
+        }
+        return max;
     }
 }
