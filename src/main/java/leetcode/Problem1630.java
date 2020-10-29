@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -7,15 +9,28 @@ import java.util.List;
  */
 public class Problem1630 {
     public List<Boolean> checkArithmeticSubarrays(int[] nums, int[] l, int[] r) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1630 prob = new Problem1630();
-        System.out.println(prob.checkArithmeticSubarrays(
-            new int[]{4,6,5,9,3,7}, new int[]{0,0,2}, new int[]{2,3,5})); // [true,false,true]
-        System.out.println(prob.checkArithmeticSubarrays(
-            new int[]{-12,-9,-3,-12,-6,15,20,-25,-20,-15,-10}, new int[]{0,1,6,4,8,7}, new int[]{4,4,9,7,9,10})); // [false,true,false,false,true,true]
+        List<Boolean> answer = new ArrayList<>();
+        for (int i = 0; i < l.length; i++) {
+            int[] sub = new int[r[i] - l[i] + 1];
+            for (int j = l[i], k = 0; j <= r[i]; j++, k++) {
+                sub[k] = nums[j];
+            }
+            Arrays.sort(sub);
+            int diff = 0;
+            boolean valid = true;
+            for (int j = 0; j < sub.length - 1; j++) {
+                if (j == 0) {
+                    diff = sub[j + 1] - sub[j];
+                } else {
+                    int newDiff = sub[j + 1] - sub[j];
+                    if (diff != newDiff) {
+                        valid = false;
+                        break;
+                    }
+                }
+            }
+            answer.add(valid);
+        }
+        return answer;
     }
 }
