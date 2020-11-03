@@ -5,13 +5,27 @@ package leetcode;
  */
 public class Problem1641 {
     public int countVowelStrings(int n) {
-        // TODO
-        return 0;
+        int answer = 0;
+        int nVowels = 5;
+        Integer[][] memo = new Integer[n][nVowels];
+        for (int i = 0; i < nVowels; i++) {
+            answer += countVowelStrings(nVowels, n - 1, i, memo);
+        }
+        return answer;
     }
 
-    public static void main(String[] args) {
-        Problem1641 prob = new Problem1641();
-        System.out.println(prob.countVowelStrings(1)); // 5
-        System.out.println(prob.countVowelStrings(2)); // 15
+    private static int countVowelStrings(int nVowels, int n, int i, Integer[][] memo) {
+        if (n == 0) {
+            return 1;
+        }
+        if (memo[n][i] != null) {
+            return memo[n][i];
+        }
+        int total = 0;
+        for (int j = i; j < nVowels; j++) {
+            total += countVowelStrings(nVowels, n - 1, j, memo);
+        }
+        memo[n][i] = total;
+        return total;
     }
 }
