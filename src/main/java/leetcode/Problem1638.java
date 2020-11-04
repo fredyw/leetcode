@@ -5,8 +5,29 @@ package leetcode;
  */
 public class Problem1638 {
     public int countSubstrings(String s, String t) {
-        // TODO
-        return 0;
+        int answer = 0;
+        int minLength = Math.max(s.length(), t.length());
+        for (int length = 1; length <= minLength; length++) {
+            for (int i = 0; i <= s.length() - length; i++) {
+                String sub1 = s.substring(i, i + length);
+                for (int j = 0; j <= t.length() - length; j++) {
+                    String sub2 = t.substring(j, j + length);
+                    int count = 0;
+                    for (int k = 0; k < length; k++) {
+                        if (sub1.charAt(k) != sub2.charAt(k)) {
+                            count++;
+                        }
+                        if (count > 1) {
+                            break;
+                        }
+                    }
+                    if (count == 1) {
+                        answer++;
+                    }
+                }
+            }
+        }
+        return answer;
     }
 
     public static void main(String[] args) {
