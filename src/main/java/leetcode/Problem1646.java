@@ -5,14 +5,18 @@ package leetcode;
  */
 public class Problem1646 {
     public int getMaximumGenerated(int n) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1646 prob = new Problem1646();
-        System.out.println(prob.getMaximumGenerated(7)); // 3
-        System.out.println(prob.getMaximumGenerated(2)); // 1
-        System.out.println(prob.getMaximumGenerated(3)); // 2
+        int answer = 0;
+        int[] array = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            if (i == 1) {
+                array[i] = 1;
+            } else if (i % 2 == 0) {
+                array[i] = array[i / 2];
+            } else if (i % 2 != 0) {
+                array[i] = array[i / 2] + array[(i / 2) + 1];
+            }
+            answer = Math.max(answer, array[i]);
+        }
+        return answer;
     }
 }
