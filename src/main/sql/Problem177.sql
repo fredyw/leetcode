@@ -8,6 +8,6 @@ CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
       select distinct Salary
       from Employee
       order by Salary desc
-      limit M, 1
+      limit 1 offset M
     );
   END
