@@ -1,41 +1,68 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * https://leetcode.com/problems/throne-inheritance/
  */
 public class Problem1600 {
     static class ThroneInheritance {
+        private static class Node {
+            private String name;
+            private boolean death;
+            private final List<Node> children = new ArrayList<>();
+
+            public Node(String name) {
+                this.name = name;
+            }
+        }
+
+        private final Node root;
+        private final Map<String, Node> nodes = new HashMap<>();
+
         public ThroneInheritance(String kingName) {
-            // TODO
+            root = new Node(kingName);
+            nodes.put(kingName, root);
         }
 
         public void birth(String parentName, String childName) {
-            // TODO
+            Node parent = nodes.get(parentName);
+            if (parent != null) {
+                Node child = new Node(childName);
+                parent.children.add(child);
+                nodes.put(childName, child);
+            }
         }
 
         public void death(String name) {
-            // TODO
+            Node node = nodes.get(name);
+            if (node != null) {
+                node.death = true;
+            }
         }
 
         public List<String> getInheritanceOrder() {
-            // TODO
-            return null;
+            List<String> inheritance = new ArrayList<>();
+            if (!root.death) {
+                inheritance.add(root.name);
+            }
+            getInheritanceOrder(root, inheritance);
+            return inheritance;
         }
-    }
 
-    public static void main(String[] args) {
-        Problem1600 prob = new Problem1600();
-        ThroneInheritance t= new ThroneInheritance("king"); // order: king
-        t.birth("king", "andy"); // order: king > andy
-        t.birth("king", "bob"); // order: king > andy > bob
-        t.birth("king", "catherine"); // order: king > andy > bob > catherine
-        t.birth("andy", "matthew"); // order: king > andy > matthew > bob > catherine
-        t.birth("bob", "alex"); // order: king > andy > matthew > bob > alex > catherine
-        t.birth("bob", "asha"); // order: king > andy > matthew > bob > alex > asha > catherine
-        System.out.println(t.getInheritanceOrder()); // return ["king", "andy", "matthew", "bob", "alex", "asha", "catherine"]
-        t.death("bob"); // order: king > andy > matthew > bob > alex > asha > catherine
-        System.out.println(t.getInheritanceOrder()); // return ["king", "andy", "matthew", "alex", "asha", "catherine"]
+        private static void getInheritanceOrder(Node parent, List<String> inheritance) {
+            if (parent == null) {
+                return;
+            }
+            for (Node child : parent.children) {
+                if (!child.death) {
+                    inheritance.add(child.name);
+                }
+                getInheritanceOrder(child, inheritance);
+            }
+        }
     }
 }
