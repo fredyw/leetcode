@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,23 +8,25 @@ import java.util.List;
  */
 public class Problem1656 {
     static class OrderedStream {
+        private final String[] strings;
+        private int ptr;
+
         public OrderedStream(int n) {
-            // TODO
+            strings = new String[n + 1];
+            ptr = 1;
         }
 
         public List<String> insert(int id, String value) {
-            // TODO
-            return null;
+            List<String> list = new ArrayList<>();
+            strings[id] = value;
+            if (ptr == id && strings[id] != null) {
+                int i = id;
+                for (; i < strings.length && strings[i] != null; i++) {
+                    list.add(strings[i]);
+                }
+                ptr = i;
+            }
+            return list;
         }
-    }
-
-
-    public static void main(String[] args) {
-        OrderedStream os= new OrderedStream(5);
-        os.insert(3, "ccccc"); // Inserts (3, "ccccc"), returns [].
-        os.insert(1, "aaaaa"); // Inserts (1, "aaaaa"), returns ["aaaaa"].
-        os.insert(2, "bbbbb"); // Inserts (2, "bbbbb"), returns ["bbbbb", "ccccc"].
-        os.insert(5, "eeeee"); // Inserts (5, "eeeee"), returns [].
-        os.insert(4, "ddddd"); // Inserts (4, "ddddd"), returns ["ddddd", "eeeee"].
     }
 }
