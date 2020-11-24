@@ -6,20 +6,18 @@ package leetcode;
 public class Problem1663 {
     public String getSmallestString(int n, int k) {
         char[] chars = new char[n];
+        int remaining = k;
         for (int i = chars.length - 1; i >= 0; i--) {
-            // TODO
+            int x = remaining - 26 - i;
+            if (x < 0) {
+                x = remaining - i;
+                chars[i] = (char) (x + 'a' - 1);
+                remaining -= x;
+            } else {
+                chars[i] = 'z';
+                remaining -= 'z' - 'a' + 1;
+            }
         }
         return new String(chars);
-    }
-
-    public static void main(String[] args) {
-        Problem1663 prob = new Problem1663();
-        System.out.println(prob.getSmallestString(3, 27)); // "aay"
-        System.out.println(prob.getSmallestString(5, 73)); // "aaszz"
-        System.out.println(prob.getSmallestString(4, 47)); // "aasz"
-        System.out.println(prob.getSmallestString(27, 43)); // "aaaaaaaaaaaaaaaaaaaaaaaaaaq"
-        System.out.println(prob.getSmallestString(28, 43)); // "aaaaaaaaaaaaaaaaaaaaaaaaaaap"
-        System.out.println(prob.getSmallestString(28, 143)); // "aaaaaaaaaaaaaaaaaaaaaaapzzzz"
-        System.out.println(prob.getSmallestString(28, 53)); // "aaaaaaaaaaaaaaaaaaaaaaaaaaaz"
     }
 }
