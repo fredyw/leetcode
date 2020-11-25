@@ -18,5 +18,8 @@ public class Problem1657 {
         System.out.println(prob.closeStrings("a", "aa")); // false
         System.out.println(prob.closeStrings("cabbba", "abbccc")); // true
         System.out.println(prob.closeStrings("cabbba", "aabbss")); // false
+        System.out.println(prob.closeStrings("ababc", "aaabc")); // false
+        System.out.println(prob.closeStrings("cbbaa", "ccbba")); // true
+        System.out.println(prob.closeStrings("caabbb", "aabbccc")); // true
     }
 }
