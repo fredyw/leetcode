@@ -5,14 +5,22 @@ package leetcode;
  */
 public class Problem1668 {
     public int maxRepeating(String sequence, String word) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1668 prob = new Problem1668();
-        System.out.println(prob.maxRepeating("ababc", "ab")); // 2
-        System.out.println(prob.maxRepeating("ababc", "ba")); // 1
-        System.out.println(prob.maxRepeating("ababc", "ac")); // 0
+        int answer = 0;
+        int i = 0;
+        while (i + word.length() <= sequence.length()) {
+            String substring = sequence.substring(i, i + word.length());
+            if (!substring.equals(word)) {
+                i++;
+            } else {
+                int count = 1;
+                i += word.length();
+                while (i + word.length() <= sequence.length() && sequence.startsWith(word, i)) {
+                    i += word.length();
+                    count++;
+                }
+                answer = Math.max(answer, count);
+            }
+        }
+        return answer;
     }
 }
