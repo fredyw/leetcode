@@ -13,6 +13,7 @@ public class Problem1643 {
         Problem1643 prob = new Problem1643();
         System.out.println(prob.minimumDeletions("aababbab")); // 2
         System.out.println(prob.minimumDeletions("bbaaaaabb")); // 2
+        System.out.println(prob.minimumDeletions("bbbbbbbaaaaabb")); // 5
         System.out.println(prob.minimumDeletions("abbbbbbbbbbbb")); // 0
         System.out.println(prob.minimumDeletions("abab")); // 1
     }
