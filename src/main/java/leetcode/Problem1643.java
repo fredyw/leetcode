@@ -16,5 +16,9 @@ public class Problem1643 {
         System.out.println(prob.minimumDeletions("bbbbbbbaaaaabb")); // 5
         System.out.println(prob.minimumDeletions("abbbbbbbbbbbb")); // 0
         System.out.println(prob.minimumDeletions("abab")); // 1
+        System.out.println(prob.minimumDeletions("abaababa")); // 3
+        System.out.println(prob.minimumDeletions("bbb")); // 0
+        System.out.println(prob.minimumDeletions("abbbababbab")); // 3
+        System.out.println(prob.minimumDeletions("aabbab")); // 1
     }
 }
