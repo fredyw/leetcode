@@ -5,14 +5,23 @@ package leetcode;
  */
 public class Problem1684 {
     public int countConsistentStrings(String allowed, String[] words) {
-         // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1684 prob = new Problem1684();
-        System.out.println(prob.countConsistentStrings("ab", new String[]{"ad","bd","aaab","baa","badab"})); // 2
-        System.out.println(prob.countConsistentStrings("abc", new String[]{"a","b","c","ab","ac","bc","abc"})); // 7
-        System.out.println(prob.countConsistentStrings("cad", new String[]{"cc","acd","b","ba","bac","bad","ac","d"})); // 4
+        boolean[] charsAllowed = new boolean[26];
+        for (char c : allowed.toCharArray()) {
+            charsAllowed[c - 'a'] = true;
+        }
+        int answer = 0;
+        for (String word : words) {
+            boolean consistent = true;
+            for (char c : word.toCharArray()) {
+                if (!charsAllowed[c - 'a']) {
+                    consistent = false;
+                    break;
+                }
+            }
+            if (consistent) {
+                answer++;
+            }
+        }
+        return answer;
     }
 }
