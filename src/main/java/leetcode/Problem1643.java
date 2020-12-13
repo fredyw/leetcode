@@ -5,20 +5,24 @@ package leetcode;
  */
 public class Problem1643 {
     public int minimumDeletions(String s) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1643 prob = new Problem1643();
-        System.out.println(prob.minimumDeletions("aababbab")); // 2
-        System.out.println(prob.minimumDeletions("bbaaaaabb")); // 2
-        System.out.println(prob.minimumDeletions("bbbbbbbaaaaabb")); // 5
-        System.out.println(prob.minimumDeletions("abbbbbbbbbbbb")); // 0
-        System.out.println(prob.minimumDeletions("abab")); // 1
-        System.out.println(prob.minimumDeletions("abaababa")); // 3
-        System.out.println(prob.minimumDeletions("bbb")); // 0
-        System.out.println(prob.minimumDeletions("abbbababbab")); // 3
-        System.out.println(prob.minimumDeletions("aabbab")); // 1
+        int countA = 0;
+        for (char c : s.toCharArray()) {
+            if (c == 'a') {
+                countA++;
+            }
+        }
+        int answer = countA;
+        int countB = 0;
+        for (char c : s.toCharArray()) {
+            if (c == 'a') {
+                countA--;
+            } else {
+                countB++;
+            }
+            if (countA + countB < answer) {
+                answer = countA + countB;
+            }
+        }
+        return answer;
     }
 }
