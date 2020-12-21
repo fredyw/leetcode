@@ -5,16 +5,25 @@ package leetcode;
  */
 public class Problem1694 {
     public String reformatNumber(String number) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1694 prob = new Problem1694();
-        System.out.println(prob.reformatNumber("1-23-45 6")); // "123-456"
-        System.out.println(prob.reformatNumber("123 4-567")); // "123-45-67"
-        System.out.println(prob.reformatNumber("123 4-5678")); // "123-456-78"
-        System.out.println(prob.reformatNumber("12")); // "12"
-        System.out.println(prob.reformatNumber("--17-5 229 35-39475 ")); // "175-229-353-94-75"
+        String num = number.replaceAll("-", "").replaceAll("\\s", "");
+        StringBuilder answer = new StringBuilder();
+        int count = 0;
+        for (int i = 0; i < num.length(); i++) {
+            if (num.length() % 3 == 1 && num.length() - count == 4) {
+                if (answer.length() > 0) {
+                    answer.append("-");
+                }
+                answer.append(num, i, i + 2).append("-").append(num, i + 2, i + 4);
+                break;
+            }
+            if (num.charAt(i) >= '0' && num.charAt(i) <= '9') {
+                if (i > 0 && count % 3 == 0) {
+                    answer.append("-");
+                }
+                answer.append(num.charAt(i));
+                count++;
+            }
+        }
+        return answer.toString();
     }
 }
