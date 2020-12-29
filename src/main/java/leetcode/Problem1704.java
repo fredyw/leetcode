@@ -5,15 +5,23 @@ package leetcode;
  */
 public class Problem1704 {
     public boolean halvesAreAlike(String s) {
-        // TODO
-        return false;
+        int leftCount = 0;
+        for (int i = 0; i < s.length() / 2; i++) {
+            if (isVowel(s.charAt(i))) {
+                leftCount++;
+            }
+        }
+        int rightCount = 0;
+        for (int i = s.length() / 2; i < s.length(); i++) {
+            if (isVowel(s.charAt(i))) {
+                rightCount++;
+            }
+        }
+        return leftCount == rightCount;
     }
 
-    public static void main(String[] args) {
-        Problem1704 prob = new Problem1704();
-        System.out.println(prob.halvesAreAlike("book")); // true
-        System.out.println(prob.halvesAreAlike("textbook")); // true
-        System.out.println(prob.halvesAreAlike("MerryChristmas")); // false
-        System.out.println(prob.halvesAreAlike("AbCdEfGh")); // true
+    private static boolean isVowel(char c) {
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' ||
+            c == 'E' || c == 'I' || c == 'O' || c == 'U';
     }
 }
