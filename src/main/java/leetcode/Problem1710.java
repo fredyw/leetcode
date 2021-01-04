@@ -1,21 +1,27 @@
 package leetcode;
 
+import java.util.Arrays;
+
 /**
  * https://leetcode.com/problems/maximum-units-on-a-truck/
  */
 public class Problem1710 {
     public int maximumUnits(int[][] boxTypes, int truckSize) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1710 prob = new Problem1710();
-        System.out.println(prob.maximumUnits(new int[][]{
-            {1,3},{2,2},{3,1}
-        }, 3)); // 8
-        System.out.println(prob.maximumUnits(new int[][]{
-            {5,10},{2,5},{4,7},{3,9}
-        }, 10)); // 91
+        Arrays.sort(boxTypes, (a, b) -> Integer.compare(b[1], a[1]));
+        int nBoxes = truckSize;
+        int answer = 0;
+        for (int[] boxType : boxTypes) {
+            if (nBoxes - boxType[0] >= 0) {
+                answer += boxType[0] * boxType[1];
+                nBoxes -= boxType[0];
+            } else {
+                answer += nBoxes * boxType[1];
+                nBoxes = 0;
+            }
+            if (nBoxes == 0) {
+                break;
+            }
+        }
+        return answer;
     }
 }
