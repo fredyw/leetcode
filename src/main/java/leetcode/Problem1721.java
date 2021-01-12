@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * https://leetcode.com/problems/swapping-nodes-in-a-linked-list/
  */
@@ -19,35 +22,37 @@ public class Problem1721 {
             this.val = val;
             this.next = next;
         }
+
+        @Override
+        public String toString() {
+            return "" + val;
+        }
     }
 
     public ListNode swapNodes(ListNode head, int k) {
-        // TODO
-        return null;
-    }
-
-    private static ListNode build(int[] array) {
-        ListNode head = new ListNode(array[0]);
-        for (int i = 1; i < array.length; i++) {
-            head.next = new ListNode(array[i]);
-            head = head.next;
+        List<ListNode> nodes = new ArrayList<>();
+        // Destroy the linkage.
+        ListNode prev = null;
+        for (ListNode node = head; node != null; node = node.next) {
+            if (prev != null) {
+                prev.next = null;
+            }
+            nodes.add(node);
+            prev = node;
         }
-        return head;
-    }
-
-    private static void print(ListNode head) {
-        for (ListNode n = head; n != null; n = n.next) {
-            System.out.print(n.val + " ");
+        int leftIndex = k - 1;
+        int rightIndex = nodes.size() - k;
+        ListNode tmp = nodes.get(leftIndex);
+        nodes.set(leftIndex, nodes.get(rightIndex));
+        nodes.set(rightIndex, tmp);
+        // Build the linkage.
+        prev = null;
+        for (ListNode node : nodes) {
+            if (prev != null) {
+                prev.next = node;
+            }
+            prev = node;git
         }
-        System.out.println();
-    }
-
-    public static void main(String[] args) {
-        Problem1721 prob = new Problem1721();
-        print(prob.swapNodes(build(new int[]{1,2,3,4,5}), 2)); // [1,4,3,2,5]
-        print(prob.swapNodes(build(new int[]{7,9,6,6,7,8,3,0,9,5}), 5)); // [7,9,6,6,8,7,3,0,9,5]
-        print(prob.swapNodes(build(new int[]{1}), 1)); // [1]
-        print(prob.swapNodes(build(new int[]{1,2}), 1)); // [2,1]
-        print(prob.swapNodes(build(new int[]{1,2,3}), 2)); // [1,2,3]
+        return nodes.get(0);
     }
 }
