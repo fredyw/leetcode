@@ -51,7 +51,7 @@ public class Problem1721 {
             if (prev != null) {
                 prev.next = node;
             }
-            prev = node;git
+            prev = node;
         }
         return nodes.get(0);
     }
