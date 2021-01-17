@@ -13,6 +13,7 @@ public class Problem1701 {
         Problem1701 prob = new Problem1701();
         System.out.println(prob.averageWaitingTime(new int[][]{{1,2},{2,5},{4,3}})); // 5.00000
         System.out.println(prob.averageWaitingTime(new int[][]{{5,2},{5,4},{10,3},{20,1}})); // 3.25000
+        System.out.println(prob.averageWaitingTime(new int[][]{{1,10},{2,1},{3,4}})); // 11.00000
     }
 }
 
