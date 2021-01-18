@@ -5,15 +5,19 @@ package leetcode;
  */
 public class Problem1701 {
     public double averageWaitingTime(int[][] customers) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1701 prob = new Problem1701();
-        System.out.println(prob.averageWaitingTime(new int[][]{{1,2},{2,5},{4,3}})); // 5.00000
-        System.out.println(prob.averageWaitingTime(new int[][]{{5,2},{5,4},{10,3},{20,1}})); // 3.25000
-        System.out.println(prob.averageWaitingTime(new int[][]{{1,10},{2,1},{3,4}})); // 11.00000
+        double answer = 0;
+        int currentTime = customers[0][0];
+        for (int i = 0; i < customers.length; i++) {
+            int arrival = customers[i][0];
+            int time = customers[i][1];
+            if (arrival > currentTime) {
+                currentTime = arrival + time;
+            } else {
+                currentTime += time;
+            }
+            answer += currentTime - arrival;
+        }
+        return answer / customers.length;
     }
 }
 
