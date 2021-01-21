@@ -1,7 +1,6 @@
 package leetcode;
 
 import java.util.Comparator;
-import java.util.Objects;
 import java.util.PriorityQueue;
 
 /**
@@ -52,19 +51,6 @@ public class Problem1631 {
             this.row = row;
             this.col = col;
             this.diff = diff;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Vertex vertex = (Vertex) o;
-            return row == vertex.row && col == vertex.col;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(row, col);
         }
     }
 }
