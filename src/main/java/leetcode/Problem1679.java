@@ -12,12 +12,40 @@ public class Problem1679 {
         for (int num : nums) {
             map.put(num, map.getOrDefault(num, 0) + 1);
         }
-        return 0;
+        int answer = 0;
+        for (int a : nums) {
+            int countA = map.getOrDefault(a, 0);
+            if (countA == 0) {
+                continue;
+            }
+            int b = k - a;
+            int countB = map.getOrDefault(b, 0);
+            if (a == b) {
+                if (countB > 1) {
+                    update(map, a);
+                    update(map, b);
+                    answer++;
+                }
+            } else {
+                if (countB > 0) {
+                    update(map, a);
+                    update(map, b);
+                    answer++;
+                }
+            }
+        }
+        return answer;
     }
 
-    public static void main(String[] args) {
-        Problem1679 prob = new Problem1679();
-        System.out.println(prob.maxOperations(new int[]{1,2,3,4}, 5)); // 2
-        System.out.println(prob.maxOperations(new int[]{3,1,3,4,3}, 6)); // 1
+    private static void update(Map<Integer, Integer> map, int val) {
+        int count = map.getOrDefault(val, 0);
+        if (count == 0) {
+            return;
+        }
+        if (count - 1 == 0) {
+            map.remove(val);
+        } else {
+            map.put(val, count - 1);
+        }
     }
 }
