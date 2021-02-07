@@ -1,19 +1,31 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * https://leetcode.com/problems/tuple-with-same-product/
  */
 public class Problem1726 {
     public int tupleSameProduct(int[] nums) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1726 prob = new Problem1726();
-        System.out.println(prob.tupleSameProduct(new int[]{2,3,4,6})); // 8
-        System.out.println(prob.tupleSameProduct(new int[]{1,2,4,5,10})); // 16
-        System.out.println(prob.tupleSameProduct(new int[]{2,3,4,6,8,12})); // 40
-        System.out.println(prob.tupleSameProduct(new int[]{2,3,5,7})); // 0
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                int product = nums[i] * nums[j];
+                map.put(product, map.getOrDefault(product, 0) + 1);
+            }
+        }
+        int answer = 0;
+        for (int count : map.values()) {
+            if (count <= 1) {
+                continue;
+            }
+            int totalCount = 0;
+            for (int i = 1; i < count; i++) {
+                totalCount += i;
+            }
+            answer += totalCount;
+        }
+        return answer * 8;
     }
 }
