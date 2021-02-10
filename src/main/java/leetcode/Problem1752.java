@@ -17,9 +17,15 @@ public class Problem1752 {
                 }
             }
         }
-        int current = index;
-        int next = (index + 1) % nums.length;
-        while (next != index) {
+        int start = index - 1 % nums.length;
+        start = start < 0 ? start + nums.length : start;
+        while (nums[start] == nums[index] && start != index) {
+            start = (start - 1) % nums.length;
+            start = start < 0 ? start + nums.length : start;
+        }
+        int current = (start + 1) % nums.length;
+        int next = (current + 1) % nums.length;
+        while (next != (start + 1) % nums.length) {
             if (nums[current] > nums[next]) {
                 return false;
             }
@@ -27,16 +33,5 @@ public class Problem1752 {
             next = (next + 1) % nums.length;
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-        Problem1752 prob = new Problem1752();
-//        System.out.println(prob.check(new int[]{3,4,5,1,2})); // true
-//        System.out.println(prob.check(new int[]{2,1,3,4})); // false
-//        System.out.println(prob.check(new int[]{1,2,3})); // true
-//        System.out.println(prob.check(new int[]{1,1,1})); // true
-//        System.out.println(prob.check(new int[]{2,1})); // true
-        System.out.println(prob.check(new int[]{6,10,6})); // true
-        System.out.println(prob.check(new int[]{6,10,7})); // false
     }
 }
