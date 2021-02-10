@@ -37,5 +37,6 @@ public class Problem1752 {
 //        System.out.println(prob.check(new int[]{1,1,1})); // true
 //        System.out.println(prob.check(new int[]{2,1})); // true
         System.out.println(prob.check(new int[]{6,10,6})); // true
+        System.out.println(prob.check(new int[]{6,10,7})); // false
     }
 }
