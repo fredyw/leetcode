@@ -5,14 +5,16 @@ package leetcode;
  */
 public class Problem1768 {
     public String mergeAlternately(String word1, String word2) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1768 prob = new Problem1768();
-        System.out.println(prob.mergeAlternately("abc", "pqr")); // "apbqcr"
-        System.out.println(prob.mergeAlternately("ab", "pqrs")); // "apbqrs"
-        System.out.println(prob.mergeAlternately("abcd", "pq")); // "apbqcd"
+        StringBuilder answer = new StringBuilder();
+        for (int i = 0; i < Math.min(word1.length(), word2.length()); i++) {
+            answer.append(word1.charAt(i));
+            answer.append(word2.charAt(i));
+        }
+        if (word1.length() > word2.length()) {
+            answer.append(word1.substring(word2.length()));
+        } else if (word1.length() < word2.length()) {
+            answer.append(word2.substring(word1.length()));
+        }
+        return answer.toString();
     }
 }
