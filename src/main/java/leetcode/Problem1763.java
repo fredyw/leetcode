@@ -5,21 +5,20 @@ package leetcode;
  */
 public class Problem1763 {
     public String longestNiceSubstring(String s) {
-        String answer = "";
-        for (int i = 0; i < s.length(); i++) {
-            for (int j = i + 1; j < s.length(); j++) {
-                String sub = s.substring(i, j + 1);
-                if (isNice(sub)) {
-                    if (sub.length() > answer.length()) {
-                        answer = sub;
-                    }
-                }
-            }
-        }
-        return answer;
+        return getLongestNiceSubstring(s).string;
     }
 
-    private static boolean isNice(String s) {
+    private static class NiceString {
+        private final String string;
+        private final boolean nice;
+
+        public NiceString(String string, boolean nice) {
+            this.string = string;
+            this.nice = nice;
+        }
+    }
+
+    private static NiceString getLongestNiceSubstring(String s) {
         boolean[] lower = new boolean[26];
         boolean[] upper = new boolean[26];
         for (char c : s.toCharArray()) {
@@ -29,22 +28,26 @@ public class Problem1763 {
                 lower[c - 'a'] = true;
             }
         }
-        for (char c : s.toCharArray()) {
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
             if ((Character.isUpperCase(c) && !lower[c - 'A']) ||
                 (Character.isLowerCase(c) && !upper[c - 'a'])) {
-                return false;
+                NiceString ns1 = getLongestNiceSubstring(s.substring(0, i));
+                NiceString ns2 = getLongestNiceSubstring(s.substring(i + 1));
+                if (ns1.nice && ns2.nice) {
+                    if (ns1.string.length() >= ns2.string.length()) {
+                        return new NiceString(ns1.string, true);
+                    } else {
+                        return new NiceString(ns2.string, true);
+                    }
+                } else if (ns1.nice) {
+                    return ns1;
+                } else if (ns2.nice) {
+                    return ns2;
+                }
+                return new NiceString("", false);
             }
         }
-        return true;
-    }
-
-    public static void main(String[] args) {
-        Problem1763 prob = new Problem1763();
-        System.out.println(prob.longestNiceSubstring("YazaAay")); // "aAa"
-        System.out.println(prob.longestNiceSubstring("Bb")); // "Bb"
-        System.out.println(prob.longestNiceSubstring("c")); // ""
-        System.out.println(prob.longestNiceSubstring("dDzeE")); // "dD"
-        System.out.println(prob.longestNiceSubstring("aBbA")); // "aBbA"
-        System.out.println(prob.longestNiceSubstring("aBbAa")); // "aBbAa"
+        return new NiceString(s, true);
     }
 }
