@@ -5,13 +5,18 @@ package leetcode;
  */
 public class Problem1749 {
     public int maxAbsoluteSum(int[] nums) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1749 prob = new Problem1749();
-        System.out.println(prob.maxAbsoluteSum(new int[]{1,-3,2,3,-4})); // 5
-        System.out.println(prob.maxAbsoluteSum(new int[]{2,-5,1,-4,3,-2})); // 8
+        int max = nums[0];
+        int maxSoFar = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            maxSoFar = Math.max(maxSoFar + nums[i], nums[i]);
+            max = Math.max(max, maxSoFar);
+        }
+        int min = nums[0];
+        int minSoFar = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            minSoFar = Math.min(minSoFar + nums[i], nums[i]);
+            min = Math.min(min, minSoFar);
+        }
+        return Math.max(Math.abs(max), Math.abs(min));
     }
 }
