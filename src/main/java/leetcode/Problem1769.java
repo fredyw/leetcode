@@ -7,8 +7,18 @@ import java.util.Arrays;
  */
 public class Problem1769 {
     public int[] minOperations(String boxes) {
-        // TODO
-        return null;
+        int[] answer = new int[boxes.length()];
+        for (int i = 0; i < boxes.length(); i++) {
+            int count = 0;
+            for (int j = 0; j < boxes.length(); j++) {
+                if (j == i || boxes.charAt(j) == '0') {
+                    continue;
+                }
+                count += Math.abs(i - j);
+            }
+            answer[i] = count;
+        }
+        return answer;
     }
 
     public static void main(String[] args) {
