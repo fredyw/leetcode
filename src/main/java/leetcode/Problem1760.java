@@ -11,7 +11,10 @@ public class Problem1760 {
 
     public static void main(String[] args) {
         Problem1760 prob = new Problem1760();
+        System.out.println(prob.minimumSize(new int[]{9}, 1)); // 5
         System.out.println(prob.minimumSize(new int[]{9}, 2)); // 3
+        System.out.println(prob.minimumSize(new int[]{9}, 3)); // 3
+        System.out.println(prob.minimumSize(new int[]{9}, 4)); // 2
         System.out.println(prob.minimumSize(new int[]{2,4,8,2}, 4)); // 2
         System.out.println(prob.minimumSize(new int[]{7,17}, 2)); // 7
     }
