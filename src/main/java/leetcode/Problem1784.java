@@ -5,13 +5,15 @@ package leetcode;
  */
 public class Problem1784 {
     public boolean checkOnesSegment(String s) {
-        // TODO
-        return false;
-    }
-
-    public static void main(String[] args) {
-        Problem1784 prob = new Problem1784();
-        System.out.println(prob.checkOnesSegment("1001")); // false
-        System.out.println(prob.checkOnesSegment("110")); // true
+        int i = 0;
+        while (i < s.length() && s.charAt(i) == '1') {
+            i++;
+        }
+        for (; i < s.length(); i++) {
+            if (s.charAt(i) == '1') {
+                return false;
+            }
+        }
+        return true;
     }
 }
