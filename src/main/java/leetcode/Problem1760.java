@@ -5,17 +5,20 @@ package leetcode;
  */
 public class Problem1760 {
     public int minimumSize(int[] nums, int maxOperations) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1760 prob = new Problem1760();
-        System.out.println(prob.minimumSize(new int[]{9}, 1)); // 5
-        System.out.println(prob.minimumSize(new int[]{9}, 2)); // 3
-        System.out.println(prob.minimumSize(new int[]{9}, 3)); // 3
-        System.out.println(prob.minimumSize(new int[]{9}, 4)); // 2
-        System.out.println(prob.minimumSize(new int[]{2,4,8,2}, 4)); // 2
-        System.out.println(prob.minimumSize(new int[]{7,17}, 2)); // 7
+        int left = 1;
+        int right = 1_000_000_000;
+        while (left < right) {
+            int mid = (left + right) / 2;
+            int count = 0;
+            for (int num : nums) {
+                count += (num - 1) / mid;
+            }
+            if (count > maxOperations) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        return left;
     }
 }
