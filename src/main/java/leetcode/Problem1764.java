@@ -5,20 +5,29 @@ package leetcode;
  */
 public class Problem1764 {
     public boolean canChoose(int[][] groups, int[] nums) {
-        // TODO
-        return false;
-    }
-
-    public static void main(String[] args) {
-        Problem1764 prob = new Problem1764();
-        System.out.println(prob.canChoose(new int[][]{
-            {1,-1,-1},{3,-2,0}
-        }, new int[]{1,-1,0,1,-1,-1,3,-2,0})); // true
-        System.out.println(prob.canChoose(new int[][]{
-            {10,-2},{1,2,3,4}
-        }, new int[]{1,2,3,4,10,-2})); // false
-        System.out.println(prob.canChoose(new int[][]{
-            {1,2,3},{3,4}
-        }, new int[]{7,7,1,2,3,4,7,7})); // false
+        boolean answer = true;
+        int i = 0;
+        for (int[] group : groups) {
+            int j = 0;
+            int k = i;
+            boolean found = false;
+            while (j < group.length && i < nums.length) {
+                while (i < nums.length && group[j] != nums[i]) {
+                    i++;
+                }
+                for (; j < group.length && i < nums.length; i++, j++) {
+                    if (group[j] != nums[i]) {
+                        i = k++ + 1;
+                        j = 0;
+                        break;
+                    }
+                }
+                if (j == group.length) {
+                    found = true;
+                }
+            }
+            answer &= found;
+        }
+        return answer;
     }
 }
