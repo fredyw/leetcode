@@ -5,15 +5,41 @@ package leetcode;
  */
 public class Problem1774 {
     public int closestCost(int[] baseCosts, int[] toppingCosts, int target) {
-        // TODO
-        return 0;
+        int i = 0;
+        MinCost minCost = new MinCost();
+        for (int baseCost : baseCosts) {
+            if (minCost.value == -1) {
+                minCost.value = baseCost;
+            }
+            closestCost(toppingCosts, target, 0, baseCost, minCost);
+        }
+        return minCost.value;
     }
 
-    public static void main(String[] args) {
-        Problem1774 prob = new Problem1774();
-        System.out.println(prob.closestCost(new int[]{1,7}, new int[]{3,4}, 10)); // 10
-        System.out.println(prob.closestCost(new int[]{2,3}, new int[]{4,5,100}, 18)); // 17
-        System.out.println(prob.closestCost(new int[]{3,10}, new int[]{2,5}, 9)); // 8
-        System.out.println(prob.closestCost(new int[]{10}, new int[]{1}, 1)); // 10
+    private static class MinCost {
+        private int value = -1;
+    }
+
+    private static void closestCost(int[] toppingCosts, int target, int index, int cost,
+                                    MinCost minCost) {
+        if (index == toppingCosts.length || cost > target) {
+            if (Math.abs(cost - target) < Math.abs(minCost.value - target)) {
+                minCost.value = cost;
+            } else if (Math.abs(cost - target) == Math.abs(minCost.value - target)) {
+                minCost.value = Math.min(minCost.value, cost);
+            }
+            return;
+        }
+        if (Math.abs(cost - target) < Math.abs(minCost.value - target)) {
+            minCost.value = cost;
+        } else if (Math.abs(cost - target) == Math.abs(minCost.value - target)) {
+            minCost.value = Math.min(minCost.value, cost);
+        }
+        // Skip topping.
+        closestCost(toppingCosts, target, index + 1, cost, minCost);
+        // Add topping.
+        closestCost(toppingCosts, target, index + 1, cost + toppingCosts[index], minCost);
+        // Add the same topping twice.
+        closestCost(toppingCosts, target, index + 1, cost + (toppingCosts[index] * 2), minCost);
     }
 }
