@@ -5,15 +5,31 @@ package leetcode;
  */
 public class Problem1790 {
     public boolean areAlmostEqual(String s1, String s2) {
-        // TODO
-        return false;
-    }
-
-    public static void main(String[] args) {
-        Problem1790 prob = new Problem1790();
-        System.out.println(prob.areAlmostEqual("bank", "kanb")); // true
-        System.out.println(prob.areAlmostEqual("attack", "defend")); // false
-        System.out.println(prob.areAlmostEqual("kelb", "kelb")); // true
-        System.out.println(prob.areAlmostEqual("abcd", "dcba")); // false
+        int count = 0;
+        int index1 = -1;
+        int index2 = -1;
+        for (int i = 0; i < s1.length(); i++) {
+            if (s1.charAt(i) != s2.charAt(i)) {
+                if (index1 == -1) {
+                    index1 = i;
+                } else if (index2 == -1) {
+                    index2 = i;
+                }
+                count++;
+            }
+            if (count > 2) {
+                return false;
+            }
+        }
+        if (count == 0) {
+            return true;
+        }
+        if (count != 2) {
+            return false;
+        }
+        char[] chars = s2.toCharArray();
+        chars[index1] = s2.charAt(index2);
+        chars[index2] = s2.charAt(index1);
+        return s1.equals(new String(chars));
     }
 }
