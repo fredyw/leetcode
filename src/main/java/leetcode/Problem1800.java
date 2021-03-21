@@ -5,15 +5,16 @@ package leetcode;
  */
 public class Problem1800 {
     public int maxAscendingSum(int[] nums) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1800 prob = new Problem1800();
-        System.out.println(prob.maxAscendingSum(new int[]{10,20,30,5,10,50})); // 65
-        System.out.println(prob.maxAscendingSum(new int[]{10,20,30,40,50})); // 150
-        System.out.println(prob.maxAscendingSum(new int[]{12,17,15,13,10,11,12})); // 33
-        System.out.println(prob.maxAscendingSum(new int[]{100,10,1})); // 100
+        int answer = nums[0];
+        int sum = nums[0];
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] < nums[i + 1]) {
+                sum += nums[i + 1];
+            } else {
+                sum = nums[i + 1];
+            }
+            answer = Math.max(answer, sum);
+        }
+        return answer;
     }
 }
