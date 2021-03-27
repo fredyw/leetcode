@@ -1,0 +1,21 @@
+package leetcode;
+
+/**
+ * https://leetcode.com/problems/minimize-hamming-distance-after-swap-operations/
+ */
+public class Problem1722 {
+    public int minimumHammingDistance(int[] source, int[] target, int[][] allowedSwaps) {
+        // TODO
+        return 0;
+    }
+
+    public static void main(String[] args) {
+        Problem1722 prob = new Problem1722();
+        System.out.println(prob.minimumHammingDistance(
+            new int[]{1,2,3,4}, new int[]{2,1,4,5}, new int[][]{{0,1},{2,3}})); // 1
+        System.out.println(prob.minimumHammingDistance(
+            new int[]{1,2,3,4}, new int[]{1,3,2,4}, new int[][]{})); // 2
+        System.out.println(prob.minimumHammingDistance(
+            new int[]{5,1,2,4,3}, new int[]{1,5,4,2,3}, new int[][]{{0,4},{4,2},{1,3},{1,4}})); // 0
+    }
+}
