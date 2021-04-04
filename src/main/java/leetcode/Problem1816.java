@@ -5,14 +5,14 @@ package leetcode;
  */
 public class Problem1816 {
     public String truncateSentence(String s, int k) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1816 prob = new Problem1816();
-        System.out.println(prob.truncateSentence("Hello how are you Contestant", 4)); // "Hello how are you"
-        System.out.println(prob.truncateSentence("What is the solution to this problem", 4)); // "What is the solution"
-        System.out.println(prob.truncateSentence("chopper is not a tanuki", 5)); // "chopper is not a tanuki"
+        String[] words = s.split("\\s");
+        StringBuilder answer = new StringBuilder();
+        for (int i = 0; i < k; i++) {
+            if (i > 0) {
+                answer.append(" ");
+            }
+            answer.append(words[i]);
+        }
+        return answer.toString();
     }
 }
