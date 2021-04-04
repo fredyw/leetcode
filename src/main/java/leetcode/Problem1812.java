@@ -5,14 +5,15 @@ package leetcode;
  */
 public class Problem1812 {
     public boolean squareIsWhite(String coordinates) {
-        // TODO
-        return false;
+        return squareIsWhite(
+            (coordinates.charAt(0) - 'a') + 1,
+            (coordinates.charAt(1) - '0') + 1);
     }
 
-    public static void main(String[] args) {
-        Problem1812 prob = new Problem1812();
-        System.out.println(prob.squareIsWhite("a1")); // false
-        System.out.println(prob.squareIsWhite("h3")); // true
-        System.out.println(prob.squareIsWhite("c7")); // false
+    private static boolean squareIsWhite(int row, int col) {
+        if (row % 2 == 0) {
+            return col % 2 == 0;
+        }
+        return col % 2 != 0;
     }
 }
