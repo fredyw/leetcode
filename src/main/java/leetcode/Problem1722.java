@@ -17,5 +17,9 @@ public class Problem1722 {
             new int[]{1,2,3,4}, new int[]{1,3,2,4}, new int[][]{})); // 2
         System.out.println(prob.minimumHammingDistance(
             new int[]{5,1,2,4,3}, new int[]{1,5,4,2,3}, new int[][]{{0,4},{4,2},{1,3},{1,4}})); // 0
+        System.out.println(prob.minimumHammingDistance(
+            new int[]{5,1,2,4,3}, new int[]{1,5,4,2,3}, new int[][]{{0,3},{3,2},{3,1}})); // 0
+        System.out.println(prob.minimumHammingDistance(
+            new int[]{5,1,2,4,3}, new int[]{1,5,4,2,4}, new int[][]{{0,3},{3,2},{3,1}})); // 1
     }
 }
