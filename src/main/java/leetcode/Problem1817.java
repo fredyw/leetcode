@@ -7,8 +7,11 @@ import java.util.Arrays;
  */
 public class Problem1817 {
     public int[] findingUsersActiveMinutes(int[][] logs, int k) {
-        // TODO
-        return null;
+        int[] answer = new int[k];
+        for (int[] log : logs) {
+            // TODO
+        }
+        return answer;
     }
 
     public static void main(String[] args) {
