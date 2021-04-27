@@ -1,6 +1,9 @@
 package leetcode;
 
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * https://leetcode.com/problems/finding-the-users-active-minutes/
@@ -8,19 +11,16 @@ import java.util.Arrays;
 public class Problem1817 {
     public int[] findingUsersActiveMinutes(int[][] logs, int k) {
         int[] answer = new int[k];
+        Map</* user */ Integer, Set</* UAM */ Integer>> map = new HashMap<>();
         for (int[] log : logs) {
-            // TODO
+            int user = log[0];
+            int time = log[1];
+            map.putIfAbsent(user, new HashSet<>());
+            map.get(user).add(time);
+        }
+        for (Set<Integer> uamSet : map.values()) {
+            answer[uamSet.size() - 1]++;
         }
         return answer;
-    }
-
-    public static void main(String[] args) {
-        Problem1817 prob = new Problem1817();
-        System.out.println(Arrays.toString(prob.findingUsersActiveMinutes(
-            new int[][]{{0,5},{1,2},{0,2},{0,5},{1,3}}, 5
-        ))); // [0,2,0,0,0]
-        System.out.println(Arrays.toString(prob.findingUsersActiveMinutes(
-            new int[][]{{1,1},{2,2},{2,3}}, 4
-        ))); // [1,1,0,0]
     }
 }
