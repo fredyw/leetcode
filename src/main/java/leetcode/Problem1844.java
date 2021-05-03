@@ -5,13 +5,18 @@ package leetcode;
  */
 public class Problem1844 {
     public String replaceDigits(String s) {
-        // TODO
-        return null;
+        StringBuilder answer = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            if (i % 2 == 0) {
+                answer.append(s.charAt(i));
+            } else {
+                answer.append(shift(s.charAt(i - 1), s.charAt(i) - '0'));
+            }
+        }
+        return answer.toString();
     }
 
-    public static void main(String[] args) {
-        Problem1844 prob = new Problem1844();
-        System.out.println(prob.replaceDigits("a1c1e1")); // "abcdef"
-        System.out.println(prob.replaceDigits("a1b2c3d4e")); // "abbdcfdhe"
+    private static char shift(char c, int x) {
+        return (char) (c + x);
     }
 }
