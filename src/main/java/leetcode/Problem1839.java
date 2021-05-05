@@ -5,14 +5,42 @@ package leetcode;
  */
 public class Problem1839 {
     public int longestBeautifulSubstring(String word) {
-        // TODO
-        return 0;
+        int answer = 0;
+        int count = 1;
+        boolean[] vowels = new boolean[5];
+        vowels[toIndex(word.charAt(0))] = true;
+        for (int i = 0; i < word.length() - 1; i++) {
+            if (word.charAt(i) <= word.charAt(i + 1)) {
+                count++;
+            } else {
+                count = 1;
+                vowels = new boolean[5];
+            }
+            vowels[toIndex(word.charAt(i + 1))] = true;
+            boolean allVowels = true;
+            for (boolean vowel : vowels) {
+                allVowels &= vowel;
+            }
+            if (allVowels) {
+                answer = Math.max(answer, count);
+            }
+        }
+        return answer;
     }
 
-    public static void main(String[] args) {
-        Problem1839 prob = new Problem1839();
-        System.out.println(prob.longestBeautifulSubstring("aeiaaioaaaaeiiiiouuuooaauuaeiu")); // 13
-        System.out.println(prob.longestBeautifulSubstring("aeeeiiiioooauuuaeiou")); // 5
-        System.out.println(prob.longestBeautifulSubstring("a")); // 0
+    private static int toIndex(char c) {
+        if (c == 'a') {
+            return 0;
+        }
+        if (c == 'e') {
+            return 1;
+        }
+        if (c == 'i') {
+            return 2;
+        }
+        if (c == 'o') {
+            return 3;
+        }
+        return 4;
     }
 }
