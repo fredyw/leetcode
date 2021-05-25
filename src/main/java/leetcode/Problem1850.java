@@ -5,10 +5,27 @@ package leetcode;
  */
 public class Problem1850 {
     public int getMinSwaps(String num, int k) {
-        System.out.println(num);
-        String str = getKthSmallest(num, k);
-        System.out.println(str);
-        return 0;
+        String kthSmallest = getKthSmallest(num, k);
+        int start = 0;
+        for (int i = 0; i < num.length(); i++) {
+            if (num.charAt(i) != kthSmallest.charAt(i)) {
+                start = i;
+                break;
+            }
+        }
+        int answer = 0;
+        String from = num.substring(start);
+        String to = kthSmallest.substring(start);
+        while (!from.equals(to)) {
+            int i = 0;
+            while (i < from.length() && from.charAt(i) != to.charAt(0)) {
+                answer++;
+                i++;
+            }
+            from = from.substring(0, i) + from.substring(i + 1);
+            to = to.substring(1);
+        }
+        return answer;
     }
 
     private String getKthSmallest(String num, int k) {
