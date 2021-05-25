@@ -22,6 +22,14 @@ public class Problem1850 {
                 answer++;
                 i++;
             }
+            // from : 355142
+            // to   : 415253
+            // We will change it to
+            // from : 435512
+            // to   : 415253
+            // Then we omit the first index
+            // from : 35512
+            // to   : 15253
             from = from.substring(0, i) + from.substring(i + 1);
             to = to.substring(1);
         }
@@ -64,13 +72,5 @@ public class Problem1850 {
         for (int a = i, b = j; a < b; a++, b--) {
             swap(chars, a, b);
         }
-    }
-
-    public static void main(String[] args) {
-        Problem1850 prob = new Problem1850();
-        System.out.println(prob.getMinSwaps("5489355142", 4)); // 2
-        System.out.println(prob.getMinSwaps("5489355142", 12)); // 11
-        System.out.println(prob.getMinSwaps("11112", 4)); // 4
-        System.out.println(prob.getMinSwaps("00123", 1)); // 1
     }
 }
