@@ -5,13 +5,22 @@ package leetcode;
  */
 public class Problem1876 {
     public int countGoodSubstrings(String s) {
-        // TODO
-        return 0;
+        int answer = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (i + 3 > s.length()) {
+                continue;
+            }
+            String sub = s.substring(i, i + 3);
+            if (isDistinct(sub)) {
+                answer++;
+            }
+        }
+        return answer;
     }
 
-    public static void main(String[] args) {
-        Problem1876 prob = new Problem1876();
-        System.out.println(prob.countGoodSubstrings("xyzzaz")); // 1
-        System.out.println(prob.countGoodSubstrings("aababcabc")); // 4
+    private static boolean isDistinct(String s) {
+        return s.charAt(0) != s.charAt(1)
+            && s.charAt(0) != s.charAt(2)
+            && s.charAt(1) != s.charAt(2);
     }
 }
