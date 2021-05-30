@@ -1,19 +1,29 @@
 package leetcode;
 
-import java.util.Arrays;
-
 /**
  * https://leetcode.com/problems/incremental-memory-leak/
  */
 public class Problem1860 {
     public int[] memLeak(int memory1, int memory2) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1860 prob = new Problem1860();
-        System.out.println(Arrays.toString(prob.memLeak(2, 2))); // [3,1,0]
-        System.out.println(Arrays.toString(prob.memLeak(8, 11))); // [6,0,4]
+        int[] answer = new int[3];
+        int i = 1;
+        int m1 = memory1;
+        int m2 = memory2;
+        while (m1 >= 0 && m2 >= 0) {
+            if (m1 == m2 || m1 > m2) {
+                m1 -= i;
+            } else { // m1 < m2
+                m2 -= i;
+            }
+            if (m1 < 0 || m2 < 0) {
+                answer[0] = i;
+                break;
+            }
+            answer[0] = i;
+            answer[1] = m1;
+            answer[2] = m2;
+            i++;
+        }
+        return answer;
     }
 }
