@@ -5,13 +5,17 @@ package leetcode;
  */
 public class Problem1897 {
     public boolean makeEqual(String[] words) {
-        // TODO
-        return false;
-    }
-
-    public static void main(String[] args) {
-        Problem1897 prob = new Problem1897();
-        System.out.println(prob.makeEqual(new String[]{"abc","aabc","bc"})); // true
-        System.out.println(prob.makeEqual(new String[]{"ab","a"})); // false
+        int[] chars = new int[26];
+        for (String word : words) {
+            for (char c : word.toCharArray()) {
+                chars[c - 'a']++;
+            }
+        }
+        for (int n : chars) {
+            if (n % words.length != 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
