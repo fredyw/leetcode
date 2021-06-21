@@ -5,17 +5,24 @@ package leetcode;
  */
 public class Problem1884 {
     public int twoEggDrop(int n) {
-        // TODO
-        return 0;
+        int eggs = 2;
+        return twoEggDrop(n, eggs, new Integer[n + 1][eggs + 1]);
     }
 
-    public static void main(String[] args) {
-        Problem1884 prob = new Problem1884();
-        System.out.println(prob.twoEggDrop(2)); // 2
-        System.out.println(prob.twoEggDrop(3)); // 2
-        System.out.println(prob.twoEggDrop(4)); // 3
-        System.out.println(prob.twoEggDrop(5)); // 3
-        System.out.println(prob.twoEggDrop(10)); // 4
-        System.out.println(prob.twoEggDrop(100)); // 14
+    private static int twoEggDrop(int floors, int eggs, Integer[][] memo) {
+        if (eggs == 1 || floors <= 1) {
+            return floors;
+        }
+        if (memo[floors][eggs] != null) {
+            return memo[floors][eggs];
+        }
+        int min = Integer.MAX_VALUE;
+        for (int i = 1; i <= floors; i++) {
+            int a = twoEggDrop(i - 1, eggs - 1, memo); // break
+            int b = twoEggDrop(floors - i, eggs, memo); // does not break
+            min = Math.min(min, 1 + Math.max(a, b));
+        }
+        memo[floors][eggs] = min;
+        return min;
     }
 }
