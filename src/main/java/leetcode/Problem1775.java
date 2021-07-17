@@ -20,33 +20,20 @@ public class Problem1775 {
         for (int num : nums2) {
             sum2 += num;
         }
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
         int answer = 0;
-        if (sum1 < sum2) {
-            Arrays.sort(nums1);
-            for (int num : nums1) {
-                sum1 += 6 - num;
-                answer++;
-                if (sum1 >= sum2) {
-                    break;
-                }
-            }
-        } else if (sum1 > sum2) {
-            Arrays.sort(nums2);
-            for (int num : nums2) {
-                sum2 += 6 - num;
-                answer++;
-                if (sum2 >= sum1) {
-                    break;
-                }
-            }
-        }
         return answer;
     }
 
     public static void main(String[] args) {
         Problem1775 prob = new Problem1775();
-        System.out.println(prob.minOperations(new int[]{1,2,3,4,5,6}, new int[]{1,1,2,2,2,2})); // 3
-        System.out.println(prob.minOperations(new int[]{1,1,1,1,1,1,1}, new int[]{6})); // -1
-        System.out.println(prob.minOperations(new int[]{6,6}, new int[]{1})); // 3
+//        System.out.println(prob.minOperations(new int[]{1,2,3,4,5,6}, new int[]{1,1,2,2,2,2})); // 3
+//        System.out.println(prob.minOperations(new int[]{1,1,1,1,1,1,1}, new int[]{6})); // -1
+//        System.out.println(prob.minOperations(new int[]{6,6}, new int[]{1})); // 3
+//        System.out.println(prob.minOperations(new int[]{6,6,5}, new int[]{1,1})); // 3
+//        System.out.println(prob.minOperations(new int[]{1,1}, new int[]{6,6,5})); // 3
+//        System.out.println(prob.minOperations(new int[]{6,6,5}, new int[]{1,1,1})); // 3
+        System.out.println(prob.minOperations(new int[]{5,6,4,3,1,2}, new int[]{6,3,3,1,4,5,3,4,1,3,4})); // 4
     }
 }
