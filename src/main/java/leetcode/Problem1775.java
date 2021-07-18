@@ -23,17 +23,29 @@ public class Problem1775 {
         Arrays.sort(nums1);
         Arrays.sort(nums2);
         int answer = 0;
+        if (sum1 < sum2) {
+            int i = 0;
+            int j = nums2.length - 1;
+            while (sum1 < sum2) {
+                if (i < nums1.length && 6 - nums1[i] >= nums2[j] - 1) {
+                    sum1 += 6 - nums1[i++];
+                } else {
+                    sum2 -= nums2[j--] - 1;
+                }
+                answer++;
+            }
+        } else if (sum1 > sum2) {
+            int i = nums1.length - 1;
+            int j = 0;
+            while (sum1 > sum2) {
+                if (i >= 0 && nums1[i] - 1 >= 6 - nums2[j]) {
+                    sum1 -= nums1[i--] - 1;
+                } else {
+                    sum2 += 6 - nums2[j++];
+                }
+                answer++;
+            }
+        }
         return answer;
-    }
-
-    public static void main(String[] args) {
-        Problem1775 prob = new Problem1775();
-//        System.out.println(prob.minOperations(new int[]{1,2,3,4,5,6}, new int[]{1,1,2,2,2,2})); // 3
-//        System.out.println(prob.minOperations(new int[]{1,1,1,1,1,1,1}, new int[]{6})); // -1
-//        System.out.println(prob.minOperations(new int[]{6,6}, new int[]{1})); // 3
-//        System.out.println(prob.minOperations(new int[]{6,6,5}, new int[]{1,1})); // 3
-//        System.out.println(prob.minOperations(new int[]{1,1}, new int[]{6,6,5})); // 3
-//        System.out.println(prob.minOperations(new int[]{6,6,5}, new int[]{1,1,1})); // 3
-        System.out.println(prob.minOperations(new int[]{5,6,4,3,1,2}, new int[]{6,3,3,1,4,5,3,4,1,3,4})); // 4
     }
 }
