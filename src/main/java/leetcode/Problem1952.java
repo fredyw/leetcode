@@ -5,16 +5,23 @@ package leetcode;
  */
 public class Problem1952 {
     public boolean isThree(int n) {
-        // TODO
-        return false;
-    }
-
-    public static void main(String[] args) {
-        Problem1952 prob = new Problem1952();
-        System.out.println(prob.isThree(2)); // false
-        System.out.println(prob.isThree(4)); // true
-        System.out.println(prob.isThree(6)); // false
-        System.out.println(prob.isThree(49)); // true
-        System.out.println(prob.isThree(100)); // false
+        if (n == 1) {
+            return false;
+        }
+        // Having 3 divisors means 1, n and sqrt(n).
+        double d = Math.sqrt(n);
+        int i = (int) d;
+        if (d - i > 0) {
+            return false;
+        }
+        for (int j = 2; j < n; j++) {
+            if (i == j) {
+                continue;
+            }
+            if (n % j == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
