@@ -5,14 +5,21 @@ package leetcode;
  */
 public class Problem1957 {
     public String makeFancyString(String s) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1957 prob = new Problem1957();
-        System.out.println(prob.makeFancyString("leeetcode")); // leetcode
-        System.out.println(prob.makeFancyString("aaabaaaa")); // aabaa
-        System.out.println(prob.makeFancyString("aab")); // aab
+        StringBuilder answer = new StringBuilder();
+        int i = 0;
+        while (i < s.length()) {
+            int count = 0;
+            char c = s.charAt(i);
+            while (i < s.length() && c == s.charAt(i)) {
+                count++;
+                i++;
+            }
+            if (count >= 2) {
+                answer.append(c).append(c);
+            } else {
+                answer.append(c);
+            }
+        }
+        return answer.toString();
     }
 }
