@@ -5,14 +5,33 @@ package leetcode;
  */
 public class Problem1963 {
     public int minSwaps(String s) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1963 prob = new Problem1963();
-        System.out.println(prob.minSwaps("][][")); // 1
-        System.out.println(prob.minSwaps("]]][[[")); // 2
-        System.out.println(prob.minSwaps("[]")); // 0
+        char[] chars = s.toCharArray();
+        int[] openIndexes = new int[s.length() / 2];
+        int j = 0;
+        for (int i = 0; i < s.length(); i++) {
+           if (s.charAt(i) == '[') {
+               openIndexes[j++] = i;
+           }
+        }
+        int answer = 0;
+        int numOpen = 0;
+        int openIndex = openIndexes.length - 1;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '[') {
+                numOpen++;
+            } else {
+                if (numOpen - 1 < 0) {
+                    char tmp = chars[i];
+                    chars[i] = chars[openIndexes[openIndex]];
+                    chars[openIndexes[openIndex]] = tmp;
+                    openIndex--;
+                    numOpen++;
+                    answer++;
+                } else {
+                    numOpen--;
+                }
+            }
+        }
+        return answer;
     }
 }
