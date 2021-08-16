@@ -7,8 +7,27 @@ import java.util.Arrays;
  */
 public class Problem1901 {
     public int[] findPeakGrid(int[][] mat) {
-        // TODO
-        return null;
+        int maxRow = mat.length;
+        int maxCol = mat.length > 0 ? mat[0].length : 0;
+        for (int row = 0; row < maxRow; row++) {
+            for (int col = 0; col < maxCol; col++) {
+                int value = mat[row][col];
+                if (row - 1 >= 0 && value <= mat[row - 1][col]) {
+                    continue;
+                }
+                if (col + 1 < maxCol && value <= mat[row][col + 1]) {
+                    continue;
+                }
+                if (row + 1 < maxRow && value <= mat[row + 1][col]) {
+                    continue;
+                }
+                if (col - 1 >= 0 && value <= mat[row][col - 1]) {
+                    continue;
+                }
+                return new int[]{row, col};
+            }
+        }
+        return new int[]{0, 0};
     }
 
     public static void main(String[] args) {
