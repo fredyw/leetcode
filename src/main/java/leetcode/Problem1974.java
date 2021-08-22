@@ -5,14 +5,15 @@ package leetcode;
  */
 public class Problem1974 {
     public int minTimeToType(String word) {
-        // TODO
-        return 0;
-    }
-
-    public static void main(String[] args) {
-        Problem1974 prob = new Problem1974();
-        System.out.println(prob.minTimeToType("abc")); // 5
-        System.out.println(prob.minTimeToType("bza")); // 7
-        System.out.println(prob.minTimeToType("zjpc")); // 34
+        int answer = 0;
+        int s = 'a';
+        for (char c : word.toCharArray()) {
+            int diff1 = Math.abs(c - s);
+            int diff2 = Math.abs(s + 26 - c);
+            int diff3 = Math.abs(c + 26 - s);
+            answer += Math.min(diff1, Math.min(diff2, diff3)) + 1;
+            s = c;
+        }
+        return answer;
     }
 }
