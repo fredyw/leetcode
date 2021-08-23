@@ -5,14 +5,19 @@ package leetcode;
  */
 public class Problem1979 {
     public int findGCD(int[] nums) {
-        // TODO
-        return 0;
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        for (int num : nums) {
+            max = Math.max(max, num);
+            min = Math.min(min, num);
+        }
+        return gcd(min, max);
     }
 
-    public static void main(String[] args) {
-        Problem1979 prob = new Problem1979();
-        System.out.println(prob.findGCD(new int[]{2,5,6,9,10})); // 2
-        System.out.println(prob.findGCD(new int[]{7,5,6,8,3})); // 1
-        System.out.println(prob.findGCD(new int[]{3,3})); // 3
+    private static int gcd(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
+        return gcd(b, a % b);
     }
 }
