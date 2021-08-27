@@ -16,20 +16,9 @@ public class Problem1887 {
         while (map.size() > 1) {
             Map.Entry<Integer, Integer> largestEntry = map.pollFirstEntry();
             Map.Entry<Integer, Integer> nextLargest = map.firstEntry();
-            map.put(nextLargest.getKey(), nextLargest.getValue() + 1);
-            int largestEntryCount = largestEntry.getValue() - 1;
-            if (largestEntryCount > 0) {
-                map.put(largestEntry.getKey(), largestEntryCount);
-            }
-            answer++;
+            map.put(nextLargest.getKey(), nextLargest.getValue() + largestEntry.getValue());
+            answer += largestEntry.getValue();
         }
         return answer;
-    }
-
-    public static void main(String[] args) {
-        Problem1887 prob = new Problem1887();
-        System.out.println(prob.reductionOperations(new int[]{5,1,3})); // 3
-        System.out.println(prob.reductionOperations(new int[]{1,1,1})); // 0
-        System.out.println(prob.reductionOperations(new int[]{1,1,2,2,3})); // 4
     }
 }
