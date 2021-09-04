@@ -37,6 +37,12 @@ public class Problem1899 {
             {2,3,4},
             {1,2,5},
             {5,2,3}
+        }, new int[]{5,3,3})); // false
+        System.out.println(prob.mergeTriplets(new int[][]{
+            {2,5,3},
+            {2,3,4},
+            {1,2,5},
+            {5,2,3}
         }, new int[]{1,5,3})); // false
         System.out.println(prob.mergeTriplets(new int[][]{
             {2,5,3},
