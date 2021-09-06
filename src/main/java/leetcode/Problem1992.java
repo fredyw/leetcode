@@ -26,6 +26,9 @@ public class Problem1992 {
             {1,1},{1,1}
         })); // [[0,0,1,1]]
         print(prob.findFarmland(new int[][]{
+            {1,1},{0,0}
+        })); // [[0,0,0,1]]
+        print(prob.findFarmland(new int[][]{
             {0}
         })); // []
     }
