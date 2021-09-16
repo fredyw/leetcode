@@ -5,13 +5,27 @@ package leetcode;
  */
 public class Problem1690 {
     public int stoneGameVII(int[] stones) {
-        // TODO
-        return 0;
+        int sum = 0;
+        for (int stone : stones) {
+            sum += stone;
+        }
+        Integer[][] memo = new Integer[stones.length][stones.length];
+        return stoneGame(stones, sum, 0, stones.length - 1, memo);
     }
 
-    public static void main(String[] args) {
-        Problem1690 prob = new Problem1690();
-        System.out.println(prob.stoneGameVII(new int[]{5,3,1,4,2})); // 6
-        System.out.println(prob.stoneGameVII(new int[]{7,90,5,1,100,10,10,2})); // 122
+    private static int stoneGame(int[] stones, int sum, int left, int right,
+                                 Integer[][] memo) {
+        if (left == right) {
+            return 0;
+        }
+        if (memo[left][right] != null) {
+            return memo[left][right];
+        }
+        int leftSum = sum - stones[left];
+        int a =  leftSum - stoneGame(stones, leftSum, left + 1, right, memo);
+        int rightSum = sum - stones[right];
+        int b = rightSum - stoneGame(stones, rightSum, left, right - 1, memo);
+        memo[left][right] = Math.max(a, b);
+        return memo[left][right];
     }
 }
