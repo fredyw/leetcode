@@ -5,13 +5,19 @@ package leetcode;
  */
 public class Problem1734 {
     public int[] decode(int[] encoded) {
-        // TODO
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Problem1734 prob = new Problem1734();
-        System.out.println(prob.decode(new int[]{3,1})); // [1,2,3]
-        System.out.println(prob.decode(new int[]{6,5,4,6})); // [2,4,1,5,3]
+        int a = 0;
+        int n = encoded.length + 1;
+        for (int i = 0; i <= n; ++i) {
+            a ^= i;
+            if (i < n && i % 2 == 1) {
+                a ^= encoded[i];
+            }
+        }
+        int[] answer = new int[n];
+        answer[0] = a;
+        for (int i = 0; i < n - 1; ++i) {
+            answer[i + 1] = answer[i] ^ encoded[i];
+        }
+        return answer;
     }
 }
