@@ -1,12 +1,10 @@
-apply plugin: "java"
+plugin {
+    id "java"
+}
 
 sourceCompatibility = 11
 targetCompatibility = 11
 
 repositories {
     mavenCentral()
-}
-
-dependencies {
-    testCompile "junit:junit:4.12"
 }
