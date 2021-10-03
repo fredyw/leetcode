@@ -4,7 +4,7 @@ package leetcode
  * https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank/
  */
 class Problem1503 {
-    fun getLastMoment(n: Int, left: IntArray?, right: IntArray?): Int {
+    fun getLastMoment(n: Int, left: IntArray, right: IntArray): Int {
         // TODO
         return 0
     }
