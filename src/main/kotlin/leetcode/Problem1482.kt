@@ -1,11 +1,41 @@
 package leetcode
 
+import java.util.*
+
 /**
  * https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/
  */
 class Problem1482 {
     fun minDays(bloomDay: IntArray, m: Int, k: Int): Int {
-        TODO()
+        if (bloomDay.size < m * k) {
+            return -1
+        }
+        val set = TreeSet<Int>()
+        for (day in bloomDay) {
+            set += day
+        }
+        for (day in set) {
+            var bouquets = m
+            var flowers = k
+            var i = 0
+            while (i < bloomDay.size) {
+                while (i < bloomDay.size && bloomDay[i] <= day) {
+                    if (flowers - 1 == 0) {
+                        bouquets--
+                        flowers = k
+                    } else {
+                        flowers--
+                    }
+                    if (bouquets == 0) {
+                        return day
+                    }
+                    i++
+                }
+                flowers = k
+                i++
+            }
+        }
+        return -1
     }
 }
 
