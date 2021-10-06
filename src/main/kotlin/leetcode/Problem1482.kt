@@ -1,6 +1,6 @@
 package leetcode
 
-import java.util.*
+import kotlin.math.min
 
 /**
  * https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/
@@ -10,11 +10,8 @@ class Problem1482 {
         if (bloomDay.size < m * k) {
             return -1
         }
-        val set = TreeSet<Int>()
+        var answer = Int.MAX_VALUE
         for (day in bloomDay) {
-            set += day
-        }
-        for (day in set) {
             var bouquets = m
             var flowers = k
             var i = 0
@@ -27,7 +24,7 @@ class Problem1482 {
                         flowers--
                     }
                     if (bouquets == 0) {
-                        return day
+                        answer = min(answer, day)
                     }
                     i++
                 }
@@ -35,7 +32,7 @@ class Problem1482 {
                 i++
             }
         }
-        return -1
+        return if (answer == Int.MAX_VALUE) -1 else answer
     }
 }
 
