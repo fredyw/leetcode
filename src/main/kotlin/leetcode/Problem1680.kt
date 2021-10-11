@@ -5,13 +5,24 @@ package leetcode
  */
 class Problem1680 {
     fun concatenatedBinary(n: Int): Int {
-        TODO()
+        var answer = 0L
+        for (i in 1..n) {
+            answer = if (i == 1) {
+                1
+            } else {
+                (i + (answer shl bitSize(i))) % 1_000_000_007
+            }
+        }
+        return answer.toInt()
     }
-}
 
-fun main() {
-    val prob = Problem1680()
-    println(prob.concatenatedBinary(1)) // 1
-    println(prob.concatenatedBinary(3)) // 27
-    println(prob.concatenatedBinary(12)) // 505379714
+    private fun bitSize(n: Int): Int {
+        var length = 0
+        var i = n
+        while (i > 0) {
+            i = i shr 1
+            length++
+        }
+        return length
+    }
 }
