@@ -1,11 +1,27 @@
 package leetcode
 
+import kotlin.math.max
+
 /**
  * https://leetcode.com/problems/maximum-erasure-value/
  */
 class Problem1695 {
     fun maximumUniqueSubarray(nums: IntArray): Int {
-        TODO()
+        var answer = 0
+        for (i in nums.indices) {
+            val set = mutableSetOf<Int>()
+            var sum = 0
+            for (j in i until nums.size) {
+                if (nums[j] in set) {
+                    break
+                } else {
+                    set += nums[j]
+                    sum += nums[j]
+                }
+            }
+            answer = max(answer, sum)
+        }
+        return answer
     }
 }
 
@@ -15,4 +31,5 @@ fun main() {
     println(prob.maximumUniqueSubarray(intArrayOf(5,2,1,2,5,2,1,2,5))) // 8
     println(prob.maximumUniqueSubarray(intArrayOf(2,4,4,4,5,6,3,4,3))) // 18
     println(prob.maximumUniqueSubarray(intArrayOf(3,4,5,3,8,4,6))) // 26
+    println(prob.maximumUniqueSubarray(intArrayOf(187,470,25,436,538,809,441,167,477,110,275,133,666,345,411,459,490,266,987,965,429,166,809,340,467,318,125,165,809,610,31,585,970,306,42,189,169,743,78,810,70,382,367,490,787,670,476,278,775,673,299,19,893,817,971,458,409,886,434))) // 16911
 }
