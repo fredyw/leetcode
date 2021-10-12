@@ -8,16 +8,18 @@ import kotlin.math.max
 class Problem1695 {
     fun maximumUniqueSubarray(nums: IntArray): Int {
         var answer = 0
-        for (i in nums.indices) {
-            val set = mutableSetOf<Int>()
-            var sum = 0
-            for (j in i until nums.size) {
-                if (nums[j] in set) {
-                    break
-                } else {
-                    set += nums[j]
-                    sum += nums[j]
-                }
+        val map = mutableMapOf<Int, Int>()
+        var sum = 0
+        var index = 0
+        while (index < nums.size) {
+            if (nums[index] in map) {
+                sum = 0
+                index = map[nums[index]]!! + 1
+                map.clear()
+            } else {
+                sum += nums[index]
+                map[nums[index]] = index
+                index++
             }
             answer = max(answer, sum)
         }
