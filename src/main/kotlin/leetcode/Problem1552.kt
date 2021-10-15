@@ -15,4 +15,7 @@ fun main() {
     println(prob.maxDistance(intArrayOf(5,4,3,2,1,1000000000), 2)) // 999999999
     println(prob.maxDistance(intArrayOf(5,4,3,2,1,1000000000), 3)) // 4
     println(prob.maxDistance(intArrayOf(5,4,3,2,1,1000000000), 4)) // 2
+    println(prob.maxDistance(intArrayOf(5,4,3,2,1,1000000000), 4)) // 2
+    println(prob.maxDistance(intArrayOf(1,2,60,75,85,100), 4)) // 15
+    println(prob.maxDistance(intArrayOf(1,2,60,75,85,100), 5)) // 10
 }
