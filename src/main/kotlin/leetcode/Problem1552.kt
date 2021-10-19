@@ -5,17 +5,34 @@ package leetcode
  */
 class Problem1552 {
     fun maxDistance(position: IntArray, m: Int): Int {
-        TODO()
+        position.sort()
+        var answer = 0
+        var lo = 1
+        var hi = position[position.size - 1]
+        while (lo <= hi) {
+            val mid = lo + (hi - lo) / 2
+            if (canApplyForce(position, m, mid)) {
+                lo = mid + 1
+                answer = mid
+            } else {
+                hi = mid - 1
+            }
+        }
+        return answer
     }
-}
 
-fun main() {
-    val prob = Problem1552()
-    println(prob.maxDistance(intArrayOf(1,2,3,4,7), 3)) // 3
-    println(prob.maxDistance(intArrayOf(5,4,3,2,1,1000000000), 2)) // 999999999
-    println(prob.maxDistance(intArrayOf(5,4,3,2,1,1000000000), 3)) // 4
-    println(prob.maxDistance(intArrayOf(5,4,3,2,1,1000000000), 4)) // 2
-    println(prob.maxDistance(intArrayOf(5,4,3,2,1,1000000000), 4)) // 2
-    println(prob.maxDistance(intArrayOf(1,2,60,75,85,100), 4)) // 15
-    println(prob.maxDistance(intArrayOf(1,2,60,75,85,100), 5)) // 10
+    private fun canApplyForce(positions: IntArray, m: Int, value: Int): Boolean {
+        var count = m - 1
+        var prevPosition = positions[0]
+        for (i in 1 until positions.size) {
+            if (positions[i] - prevPosition >= value) {
+                prevPosition = positions[i]
+                count--
+            }
+            if (count == 0) {
+                return true
+            }
+        }
+        return false
+    }
 }
