@@ -1,31 +1,31 @@
 package leetcode
 
+import java.util.*
+
 /**
  * https://leetcode.com/problems/design-authentication-manager/
  */
 class Problem1797 {
     class AuthenticationManager(private val timeToLive: Int) {
+        private val tokenToExpirationTimeMap = mutableMapOf<String, Int>()
+        private val expirationTimeSet = TreeSet<Int>()
+
         fun generate(tokenId: String, currentTime: Int) {
-            TODO()
+            tokenToExpirationTimeMap[tokenId] = currentTime + timeToLive
+            expirationTimeSet += currentTime + timeToLive
         }
 
         fun renew(tokenId: String, currentTime: Int) {
-            TODO()
+            val expirationTime = tokenToExpirationTimeMap[tokenId] ?: return
+            if (currentTime < expirationTime) {
+                tokenToExpirationTimeMap[tokenId] = currentTime + timeToLive
+                expirationTimeSet -= expirationTime
+                expirationTimeSet += currentTime + timeToLive
+            }
         }
 
         fun countUnexpiredTokens(currentTime: Int): Int {
-            TODO()
+            return expirationTimeSet.tailSet(currentTime, false).size
         }
     }
-}
-
-fun main() {
-    val authenticationManager = Problem1797.AuthenticationManager(5)
-    authenticationManager.renew("aaa", 1) // No token exists with tokenId "aaa" at time 1, so nothing happens.
-    authenticationManager.generate("aaa", 2) // Generates a new token with tokenId "aaa" at time 2.
-    println(authenticationManager.countUnexpiredTokens(6)) // The token with tokenId "aaa" is the only unexpired one at time 6, so return 1.
-    authenticationManager.generate("bbb", 7) // Generates a new token with tokenId "bbb" at time 7.
-    authenticationManager.renew("aaa", 8) // The token with tokenId "aaa" expired at time 7, and 8 >= 7, so at time 8 the renew request is ignored, and nothing happens.
-    authenticationManager.renew("bbb", 10) // The token with tokenId "bbb" is unexpired at time 10, so the renew request is fulfilled and now the token will expire at time 15.
-    println(authenticationManager.countUnexpiredTokens(15)) // The token with tokenId "bbb" expires at time 15, and the token with tokenId "aaa" expired at time 7, so currently no token is unexpired, so return 0.
 }
