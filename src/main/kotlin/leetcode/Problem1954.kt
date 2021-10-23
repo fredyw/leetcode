@@ -5,35 +5,25 @@ package leetcode
  */
 class Problem1954 {
     fun minimumPerimeter(neededApples: Long): Long {
-        TODO()
-    }
-
-    private fun numApples(n: Long): Long {
-        var totalApples = 0L
-        for (i in 1..n) {
-            // *-----*
-            // |     |
-            // *     *
-            // |     |
-            // *-----*
-            var apples = i * 4L + ((i + i) * 4L)
-            for (j in 1 until i) {
-                // -**-**-
-                // *     *
-                // |     |
-                // *     *
-                // -**-**-
-                apples += (i + j) * 8L
+        var answer = 0L
+        var lo = 1L
+        var hi = neededApples
+        while (lo <= hi) {
+            val mid = lo + ((hi - lo) / 2)
+            // When it overflows, it will produce a negative number.
+            val numApples = numApples(mid)
+            println("$lo < $mid < $hi --> $numApples")
+            if (numApples < 0 || neededApples <= numApples) {
+                answer = mid
+                hi = mid - 1
+            } else {
+                lo = mid + 1
             }
-            totalApples += apples
         }
-        return totalApples
+        return answer * 8
     }
-}
 
-fun main() {
-    val prob = Problem1954()
-    println(prob.minimumPerimeter(1)) // 8
-    println(prob.minimumPerimeter(13)) // 16
-    println(prob.minimumPerimeter(1000000000)) // 5040
+    fun numApples(n: Long): Long {
+        return 2 * (n * (n + 1) * (2 * n + 1))
+    }
 }
