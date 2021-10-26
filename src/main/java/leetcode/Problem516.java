@@ -6,11 +6,11 @@ package leetcode;
 public class Problem516 {
     public int longestPalindromeSubseq(String s) {
         Integer[][] memo = new Integer[s.length()][s.length()];
-        return longestPalindromSubsequence(s, 0, s.length() - 1, memo);
+        return longestPalindromeSubsequence(s, 0, s.length() - 1, memo);
     }
 
-    private static int longestPalindromSubsequence(String str, int i, int j,
-                                                   Integer[][] memo) {
+    private static int longestPalindromeSubsequence(String str, int i, int j,
+                                                    Integer[][] memo) {
         if (i > j) {
             return 0;
         }
@@ -22,11 +22,11 @@ public class Problem516 {
         }
         int max = 0;
         if (str.charAt(i) == str.charAt(j)) {
-            max = 2 + longestPalindromSubsequence(str, i + 1, j - 1, memo);
+            max = 2 + longestPalindromeSubsequence(str, i + 1, j - 1, memo);
         } else {
             max = Math.max(
-                longestPalindromSubsequence(str, i + 1, j, memo),
-                longestPalindromSubsequence(str, i, j - 1, memo));
+                longestPalindromeSubsequence(str, i + 1, j, memo),
+                longestPalindromeSubsequence(str, i, j - 1, memo));
         }
         memo[i][j] = max;
         return max;
