@@ -1,5 +1,6 @@
 package leetcode
 
+import java.lang.StringBuilder
 import kotlin.math.max
 
 /**
@@ -7,40 +8,32 @@ import kotlin.math.max
  */
 class Problem2002 {
     fun maxProduct(s: String): Int {
-        return longestPalindrome(s,
-            i = 0,
-            j = s.length - 1,
-            memo = Array(s.length) { IntArray(s.length) { -1 } })
+        return maxProduct(s, 0, "", "")
     }
 
-    private fun longestPalindrome(s: String, i: Int, j: Int, memo: Array<IntArray>): Int {
-        if (i > j) {
-            return 0
-        }
-        if (i == j) {
+    private fun maxProduct(s: String, i: Int, word1: String, word2: String): Int {
+        if (s.length == i) {
+            if (isPalindrome(word1) && isPalindrome(word2)) {
+                return word1.length * word2.length
+            }
             return 1
         }
-        if (memo[i][j] != -1) {
-            return memo[i][j]
-        }
-        val max = if (s[i] == s[j]) {
-            2 + longestPalindrome(s, i + 1, j - 1, memo)
-        } else {
-            max(
-                longestPalindrome(s, i + 1, j, memo),
-                longestPalindrome(s, i, j - 1, memo)
-            )
-        }
-        memo[i][j] = max
-        return max
+        val a = maxProduct(s, i + 1, word1 + s[i], word2)
+        val b = maxProduct(s, i + 1, word1, word2 + s[i])
+        val c = maxProduct(s, i + 1, word1, word2)
+        return max(a, max(b, c))
     }
-}
 
-fun main() {
-    val prob = Problem2002()
-    println(prob.maxProduct("leetcodecom")) // 9
-    println(prob.maxProduct("bb")) // 1
-    println(prob.maxProduct("accbcaxxcxx")) // 25
-    println(prob.maxProduct("abcba")) // 6
-    println(prob.maxProduct("aaa")) // 2
+    private fun isPalindrome(s: String): Boolean {
+        var i = 0
+        var j = s.length - 1
+        while (i < j) {
+            if (s[i] != s[j]) {
+                return false
+            }
+            i++
+            j--
+        }
+        return true
+    }
 }
