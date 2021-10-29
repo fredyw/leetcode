@@ -11,74 +11,34 @@ class Problem1895 {
         val maxCol = if (maxRow > 0) grid[0].size else 0
         val rowSums = Array(maxRow) { IntArray(maxCol) }
         val colSums = Array(maxRow) { IntArray(maxCol) }
+        val rightDiagonalSums =  Array(maxRow) { IntArray(maxCol) }
+        val leftDiagonalSums =  Array(maxRow) { IntArray(maxCol) }
         for (row in 0 until maxRow) {
             for (col in 0 until maxCol) {
+                // Direction: --
                 rowSums[row][col] = if (col == 0) {
                     grid[row][col]
                 } else {
                     rowSums[row][col - 1] + grid[row][col]
                 }
-                for (row in 0 until maxRow) {
-                    colSums[row][col] = if (row == 0) {
-                        grid[row][col]
-                    } else {
-                        colSums[row - 1][col] + grid[row][col]
-                    }
-                }
-            }
-        }
-        val rightDiagonalSums =  Array(maxRow) { IntArray(maxCol) }
-        for (row in 0 until maxRow) {
-            var r = row
-            var c = 0
-            while (r < maxRow && c < maxCol) {
-                rightDiagonalSums[r][c] = if (c == 0) {
-                    grid[r][c]
+                // Direction: |
+                colSums[row][col] = if (row == 0) {
+                    grid[row][col]
                 } else {
-                    rightDiagonalSums[r - 1][c - 1] + grid[r][c]
+                    colSums[row - 1][col] + grid[row][col]
                 }
-                r++
-                c++
-            }
-        }
-        for (col in 0 until maxCol) {
-            var r = 0
-            var c = col
-            while (r < maxRow && c < maxCol) {
-                rightDiagonalSums[r][c] = if (r == 0) {
-                    grid[r][c]
+                // Direction: \
+                rightDiagonalSums[row][col] = if (row == 0 || col == 0) {
+                    grid[row][col]
                 } else {
-                    rightDiagonalSums[r - 1][c - 1] + grid[r][c]
+                    rightDiagonalSums[row - 1][col - 1] + grid[row][col]
                 }
-                r++
-                c++
-            }
-        }
-        val leftDiagonalSums =  Array(maxRow) { IntArray(maxCol) }
-        for (row in maxRow - 1 downTo 0) {
-            var r = row
-            var c = maxCol - 1
-            while (r < maxRow && c >= 0) {
-                leftDiagonalSums[r][c] = if (c == maxCol - 1) {
-                    grid[r][c]
+                // Direction: /
+                leftDiagonalSums[row][col] = if (row == 0 || col == maxCol - 1) {
+                    grid[row][col]
                 } else {
-                    leftDiagonalSums[r - 1][c + 1] + grid[r][c]
+                    leftDiagonalSums[row - 1][col + 1] + grid[row][col]
                 }
-                r++
-                c--
-            }
-        }
-        for (col in maxCol - 1 downTo 0) {
-            var r = 0
-            var c = col
-            while (r < maxRow && c >= 0) {
-                leftDiagonalSums[r][c] = if (r == 0) {
-                    grid[r][c]
-                } else {
-                    leftDiagonalSums[r - 1][c + 1] + grid[r][c]
-                }
-                r++
-                c--
             }
         }
         var answer = 1
@@ -133,19 +93,4 @@ class Problem1895 {
         }
         return true
     }
-}
-
-fun main() {
-    val prob = Problem1895()
-    println(prob.largestMagicSquare(arrayOf(
-        intArrayOf(7,1,4,5,6),
-        intArrayOf(2,5,1,6,4),
-        intArrayOf(1,5,4,3,2),
-        intArrayOf(1,2,7,3,4),
-    ))) // 3
-    println(prob.largestMagicSquare(arrayOf(
-        intArrayOf(5,1,3,1),
-        intArrayOf(9,3,3,1),
-        intArrayOf(1,3,3,8),
-    ))) // 2
 }
