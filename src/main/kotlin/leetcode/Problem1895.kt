@@ -10,6 +10,7 @@ class Problem1895 {
         val maxRow = grid.size
         val maxCol = if (maxRow > 0) grid[0].size else 0
         val rowSums = Array(maxRow) { IntArray(maxCol) }
+        val colSums = Array(maxRow) { IntArray(maxCol) }
         for (row in 0 until maxRow) {
             for (col in 0 until maxCol) {
                 rowSums[row][col] = if (col == 0) {
@@ -17,15 +18,12 @@ class Problem1895 {
                 } else {
                     rowSums[row][col - 1] + grid[row][col]
                 }
-            }
-        }
-        val colSums = Array(maxRow) { IntArray(maxCol) }
-        for (col in 0 until maxCol) {
-            for (row in 0 until maxRow) {
-                colSums[row][col] = if (row == 0) {
-                    grid[row][col]
-                } else {
-                    colSums[row - 1][col] + grid[row][col]
+                for (row in 0 until maxRow) {
+                    colSums[row][col] = if (row == 0) {
+                        grid[row][col]
+                    } else {
+                        colSums[row - 1][col] + grid[row][col]
+                    }
                 }
             }
         }
