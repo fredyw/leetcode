@@ -14,4 +14,8 @@ fun main() {
     println(prob.countPalindromicSubsequence("aabca")) // 3
     println(prob.countPalindromicSubsequence("adc")) // 0
     println(prob.countPalindromicSubsequence("bbcbaba")) // 4
+    println(prob.countPalindromicSubsequence("aabbcabbc")) // 8
+    println(prob.countPalindromicSubsequence("aabbcabbcb")) // 8
+    println(prob.countPalindromicSubsequence("aabbccabbc")) // 9
+    println(prob.countPalindromicSubsequence("aabaabaacb")) // 5
 }
