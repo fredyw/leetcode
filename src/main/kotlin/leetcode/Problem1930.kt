@@ -5,17 +5,25 @@ package leetcode
  */
 class Problem1930 {
     fun countPalindromicSubsequence(s: String): Int {
-        TODO()
+        val lastIndexMap = mutableMapOf<Char, Int>()
+        for ((index, char) in s.withIndex()) {
+            lastIndexMap[char] = index
+        }
+        val charMap = mutableMapOf<Char, MutableSet<Char>>()
+        for ((index, char) in s.withIndex()) {
+            for (c in charMap.keys) {
+                if (index < lastIndexMap[c]!!) {
+                    val chars = charMap[c]
+                    if (chars != null) {
+                        chars += char
+                    }
+                }
+            }
+            val chars = charMap[char]
+            if (chars == null) {
+                charMap[char] = mutableSetOf()
+            }
+        }
+        return charMap.values.map { it.size }.fold(0) {sum, size -> sum + size }
     }
-}
-
-fun main() {
-    val prob = Problem1930()
-    println(prob.countPalindromicSubsequence("aabca")) // 3
-    println(prob.countPalindromicSubsequence("adc")) // 0
-    println(prob.countPalindromicSubsequence("bbcbaba")) // 4
-    println(prob.countPalindromicSubsequence("aabbcabbc")) // 8
-    println(prob.countPalindromicSubsequence("aabbcabbcb")) // 8
-    println(prob.countPalindromicSubsequence("aabbccabbc")) // 9
-    println(prob.countPalindromicSubsequence("aabaabaacb")) // 5
 }
