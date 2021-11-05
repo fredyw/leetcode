@@ -14,4 +14,6 @@ fun main() {
     println(prob.getMaximumConsecutive(intArrayOf(1,3))) // 2
     println(prob.getMaximumConsecutive(intArrayOf(1,1,1,4))) // 8
     println(prob.getMaximumConsecutive(intArrayOf(1,4,10,3,1))) // 20
+    println(prob.getMaximumConsecutive(intArrayOf(1,2,3,5))) // 12
+    println(prob.getMaximumConsecutive(intArrayOf(1,1,9))) // 3
 }
