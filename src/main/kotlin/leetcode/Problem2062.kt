@@ -5,14 +5,24 @@ package leetcode
  */
 class Problem2062 {
     fun countVowelSubstrings(word: String): Int {
-        TODO()
+        var answer = 0
+        for (i in word.indices) {
+            var vowels = mutableSetOf<Char>()
+            for (j in i until word.length) {
+                if (isVowel(word[j])) {
+                    vowels.add(word[j])
+                    if (vowels.size == 5) {
+                        answer++
+                    }
+                } else {
+                    break
+                }
+            }
+        }
+        return answer
     }
-}
 
-fun main() {
-    val prob = Problem2062()
-    println(prob.countVowelSubstrings("aeiouu")) // 2
-    println(prob.countVowelSubstrings("unicornarihan")) // 0
-    println(prob.countVowelSubstrings("cuaieuouac")) // 7
-    println(prob.countVowelSubstrings("bbaeixoubb")) // 0
+    private fun isVowel(char: Char): Boolean {
+        return char == 'a' || char == 'e' || char == 'i' || char == 'o' || char == 'u'
+    }
 }
