@@ -14,4 +14,5 @@ fun main() {
     println(prob.countVowelSubstrings("aeiouu")) // 2
     println(prob.countVowelSubstrings("unicornarihan")) // 0
     println(prob.countVowelSubstrings("cuaieuouac")) // 7
+    println(prob.countVowelSubstrings("bbaeixoubb")) // 0
 }
