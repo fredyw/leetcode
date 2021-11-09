@@ -20,9 +20,9 @@ class Problem1482 {
         while (min <= max) {
             val mid = min + ((max - min) / 2)
             if (isValid(bloomDay, m, k, mid)) {
-                max--
+                max = mid - 1
             } else {
-                min++
+                min = mid + 1
             }
         }
         return min
