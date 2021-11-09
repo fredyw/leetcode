@@ -1,18 +1,31 @@
 package leetcode
 
+import kotlin.math.max
+
 /**
  * https://leetcode.com/problems/reducing-dishes/
  */
 class Problem1402 {
     fun maxSatisfaction(satisfaction: IntArray): Int {
-        TODO()
+        satisfaction.sort()
+        return maxSatisfaction(satisfaction, 0, 1, Array(satisfaction.size) {
+            IntArray(
+                satisfaction.size + 1
+            ) { -1 }
+        })
     }
-}
 
-fun main() {
-    val prob = Problem1402()
-    println(prob.maxSatisfaction(intArrayOf(-1,-8,0,5,-9))) // 14
-    println(prob.maxSatisfaction(intArrayOf(4,3,2))) // 20
-    println(prob.maxSatisfaction(intArrayOf(-1,-4,-5))) // 0
-    println(prob.maxSatisfaction(intArrayOf(-2,5,-1,0,3,-3))) // 35
+    private fun maxSatisfaction(satisfaction: IntArray, index: Int, time: Int, memo: Array<IntArray>): Int {
+        if (satisfaction.size == index) {
+            return 0
+        }
+        if (memo[index][time] != -1) {
+            return memo[index][time]
+        }
+        val m = max(
+            maxSatisfaction(satisfaction, index + 1, time, memo),
+            maxSatisfaction(satisfaction, index + 1, time + 1, memo) + satisfaction[index] * time)
+        memo[index][time] = m
+        return m
+    }
 }
