@@ -12,7 +12,6 @@ class Problem1954 {
             val mid = lo + ((hi - lo) / 2)
             // When it overflows, it will produce a negative number.
             val numApples = numApples(mid)
-            println("$lo < $mid < $hi --> $numApples")
             if (numApples < 0 || neededApples <= numApples) {
                 answer = mid
                 hi = mid - 1
