@@ -1,5 +1,8 @@
 package leetcode
 
+import kotlin.math.max
+import kotlin.math.min
+
 /**
  * https://leetcode.com/problems/find-the-minimum-and-maximum-number-of-nodes-between-critical-points/
  */
@@ -9,39 +12,33 @@ class Problem2058 {
     }
 
     fun nodesBetweenCriticalPoints(head: ListNode?): IntArray {
-        TODO()
-    }
-}
-
-fun build(list: List<Int>): Problem2058.ListNode? {
-    var head: Problem2058.ListNode? = null
-    var current: Problem2058.ListNode? = null
-    for ((index, num) in list.withIndex()) {
-        if (index == 0) {
-            head = Problem2058.ListNode(num)
-            current = head
-        } else {
-            current?.next = Problem2058.ListNode(num)
-            current = current?.next
+        var previous: ListNode? = head
+        var current: ListNode? = previous?.next ?: return intArrayOf(-1, -1)
+        var next: ListNode? = current?.next ?: return intArrayOf(-1, -1)
+        var min = -1
+        var max = -1
+        var position = 2
+        val positions = mutableListOf<Int>()
+        while (next != null) {
+            var found = false
+            if (previous!!.`val` < current!!.`val` && current!!.`val` > next!!.`val`) {
+                positions += position
+                found = true
+            } else if (previous!!.`val` > current!!.`val` && current!!.`val` < next!!.`val`) {
+                positions += position
+                found = true
+            }
+            if (found && positions.size >= 2) {
+                min = if (min == -1) position - positions[positions.size - 2]
+                    else min(min, position - positions[positions.size - 2])
+                max = if (max == -1) position - positions[0]
+                    else max(max, position - positions[0])
+            }
+            previous = current
+            current = next
+            next = next.next
+            position++
         }
+        return intArrayOf(min, max)
     }
-    return head
-}
-
-fun Problem2058.ListNode.toList(): List<Int> {
-    val list = mutableListOf<Int>()
-    var node = this
-    while (node.next != null) {
-        list += node.`val`
-        node = node.next as Problem2058.ListNode
-    }
-    return list
-}
-
-fun main() {
-    val prob = Problem2058()
-    println(prob.equals(build(listOf(3,1)))) // [-1,-1]
-    println(prob.equals(build(listOf(5,3,1,2,5,1,2)))) // [1,3]
-    println(prob.equals(build(listOf(1,3,2,2,3,2,2,2,7)))) // [3,3]
-    println(prob.equals(build(listOf(2,3,3,2)))) // [-1,-1]
 }
