@@ -15,4 +15,5 @@ fun main() {
     println(prob.countVowels("abc")) // 3
     println(prob.countVowels("ltcd")) // 0
     println(prob.countVowels("noosabasboosa")) // 237
+    println(prob.countVowels("bac")) // 4
 }
