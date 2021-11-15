@@ -7,6 +7,10 @@ class Problem2063 {
     fun countVowels(word: String): Long {
         TODO()
     }
+
+    private fun isVowel(char: Char): Boolean {
+        return char == 'a' || char == 'e' || char == 'i' || char == 'o' || char == 'u'
+    }
 }
 
 fun main() {
