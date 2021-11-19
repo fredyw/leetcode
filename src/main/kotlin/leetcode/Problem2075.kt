@@ -5,14 +5,25 @@ package leetcode
  */
 class Problem2075 {
     fun decodeCiphertext(encodedText: String, rows: Int): String {
-        TODO()
+        val cols = encodedText.length / rows
+        var answer = StringBuilder()
+        var row = 0
+        var col = 0
+        var count = 0
+        while (true) {
+            if (row == rows) {
+                row = 0
+                col -= rows - 1
+            }
+            if (col == cols) {
+                break
+            }
+            val index = (row * cols) + col
+            answer.append(encodedText[index])
+            row++
+            col++
+            count++
+        }
+        return answer.trimEnd().toString()
     }
-}
-
-fun main() {
-    val prob = Problem2075()
-    println(prob.decodeCiphertext("ch   ie   pr", 3)) // "cipher"
-    println(prob.decodeCiphertext("iveo    eed   l te   olc", 4)) // "i love leetcode"
-    println(prob.decodeCiphertext("coding", 1)) // "coding"
-    println(prob.decodeCiphertext(" b  ac", 2)) // " abc"
 }
