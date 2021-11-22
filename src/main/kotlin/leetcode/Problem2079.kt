@@ -5,13 +5,17 @@ package leetcode
  */
 class Problem2079 {
     fun wateringPlants(plants: IntArray, capacity: Int): Int {
-        TODO()
+        var answer = 0
+        var water = capacity
+        for ((index, plant) in plants.withIndex()) {
+            if (water - plant < 0) {
+                water = capacity - plant
+                answer += (index * 2) + 1
+            } else {
+                water -= plant
+                answer++
+            }
+        }
+        return answer
     }
-}
-
-fun main() {
-    val prob = Problem2079()
-    println(prob.wateringPlants(intArrayOf(2,2,3,3), 5)) // 14
-    println(prob.wateringPlants(intArrayOf(1,1,1,4,2,3), 4)) // 30
-    println(prob.wateringPlants(intArrayOf(7,7,7,7,7,7,7), 8)) // 49
 }
