@@ -1,17 +1,33 @@
 package leetcode
 
+import kotlin.math.max
+
 /**
  * https://leetcode.com/problems/two-furthest-houses-with-different-colors/
  */
 class Problem2078 {
     fun maxDistance(colors: IntArray): Int {
-        TODO()
+        val prefixMap = HashMap<Int, Int>()
+        val suffixMap = HashMap<Int, Int>()
+        for ((index, color) in colors.withIndex()) {
+            if (color !in prefixMap) {
+                prefixMap += color to index
+            }
+        }
+        for (index in (colors.size - 1) downTo 0) {
+            if (colors[index] !in suffixMap) {
+                suffixMap += colors[index] to index
+            }
+        }
+        var answer = 0
+        for ((key1, index1) in prefixMap) {
+            for ((key2, index2) in suffixMap) {
+                if (key1 == key2) {
+                    continue
+                }
+                answer = max(answer, index2 - index1)
+            }
+        }
+        return answer
     }
-}
-
-fun main() {
-    val prob = Problem2078()
-    println(prob.maxDistance(intArrayOf(1,1,1,6,1,1,1))) // 3
-    println(prob.maxDistance(intArrayOf(1,8,3,8,3))) // 4
-    println(prob.maxDistance(intArrayOf(0,1))) // 1
 }
