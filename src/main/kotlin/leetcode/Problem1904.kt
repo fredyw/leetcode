@@ -14,4 +14,6 @@ fun main() {
     println(prob.numberOfRounds("12:01", "12:44")) // 1
     println(prob.numberOfRounds("20:00", "06:00")) // 40
     println(prob.numberOfRounds("00:00", "23:59")) // 95
+    println(prob.numberOfRounds("12:01", "12:16")) // 0
+    println(prob.numberOfRounds("12:15", "12:20")) // 0
 }
