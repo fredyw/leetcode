@@ -10,11 +10,6 @@ class Problem1904 {
         if (startHour > finishHour || (startHour == finishHour && startMinute > finishMinute)) {
            finishHour += 24
         }
-        val roundsInHours = if (startMinute <= finishMinute) (finishHour - startHour) * 4
-            else (finishHour - startHour - 1) * 4
-        if (startMinute > finishMinute) {
-            finishMinute += 60
-        }
         when (startMinute) {
             in 1..15 -> {
                 startMinute = 15
@@ -29,6 +24,7 @@ class Problem1904 {
                 startMinute = 60
             }
         }
+        finishMinute += 60
         when (finishMinute) {
             in 1..14 -> {
                 finishMinute = 0
@@ -55,26 +51,8 @@ class Problem1904 {
                 finishMinute = 105
             }
         }
-        val roundsInMinutes = if (startMinute > finishMinute) 0 else (finishMinute - startMinute) / 15
-        return roundsInHours + roundsInMinutes
+        val roundsInHours = (finishHour - startHour - 1) * 4
+        val roundsInMinutes = (finishMinute - startMinute) / 15
+        return if (roundsInHours + roundsInMinutes < 0) 0 else roundsInHours + roundsInMinutes
     }
-}
-
-fun main() {
-    val prob = Problem1904()
-//    println(prob.numberOfRounds("12:01", "12:44")) // 1
-//    println(prob.numberOfRounds("20:00", "06:00")) // 40
-//    println(prob.numberOfRounds("00:00", "23:59")) // 95
-//    println(prob.numberOfRounds("00:01", "23:59")) // 94
-//    println(prob.numberOfRounds("05:44", "23:00")) // 69
-//    println(prob.numberOfRounds("05:44", "23:15")) // 70
-//    println(prob.numberOfRounds("12:01", "12:16")) // 0
-//    println(prob.numberOfRounds("12:15", "12:20")) // 0
-//    println(prob.numberOfRounds("12:20", "12:15")) // 95
-//    println(prob.numberOfRounds("12:01", "13:46")) // 6
-//    println(prob.numberOfRounds("12:46", "13:01")) // 0
-//    println(prob.numberOfRounds("12:48", "12:49")) // 0
-//    println(prob.numberOfRounds("18:51", "04:54")) // 39
-//    println(prob.numberOfRounds("23:51", "01:54")) // 7
-    println(prob.numberOfRounds("22:51", "23:54")) // 3
 }
