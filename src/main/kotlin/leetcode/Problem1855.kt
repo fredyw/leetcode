@@ -20,23 +20,12 @@ class Problem1855 {
         var hi = nums.size - 1
         while (lo <= hi) {
             val mid = lo + ((hi - lo) / 2)
-            if (num < nums[mid]) {
+            if (num <= nums[mid]) {
                 lo = mid + 1
-            } else if (num == nums[mid]) {
-                return mid
             } else {
                 hi = mid - 1
             }
         }
         return hi
     }
-}
-
-fun main() {
-    val prob = Problem1855()
-    println(prob.maxDistance(intArrayOf(55,30,5,4,2), intArrayOf(100,20,10,10,5))) // 2
-    println(prob.maxDistance(intArrayOf(55,30,6,4,2), intArrayOf(100,20,10,10,7,6))) // 3
-    println(prob.maxDistance(intArrayOf(2,2,2), intArrayOf(10,10,1))) // 1
-    println(prob.maxDistance(intArrayOf(30,29,19,5), intArrayOf(25,25,25,25,25))) // 2
-    println(prob.maxDistance(intArrayOf(5,4), intArrayOf(3,2))) // 0
 }
