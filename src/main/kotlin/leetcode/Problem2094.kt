@@ -1,19 +1,29 @@
 package leetcode
 
+import java.util.*
+
 /**
  * https://leetcode.com/problems/finding-3-digit-even-numbers/
  */
 class Problem2094 {
     fun findEvenNumbers(digits: IntArray): IntArray {
-        TODO()
+        val answer = TreeSet<Int>()
+        for (i in digits.indices) {
+            if (digits[i] == 0) {
+                continue
+            }
+            for (j in digits.indices) {
+                if (i == j) {
+                    continue
+                }
+                for (k in digits.indices) {
+                    if (k == i || k == j || digits[k] % 2 != 0) {
+                        continue
+                    }
+                    answer += ("" + digits[i] + digits[j] + digits[k]).toInt()
+                }
+            }
+        }
+        return answer.toIntArray()
     }
-}
-
-fun main() {
-    val prob = Problem2094()
-    println(prob.findEvenNumbers(intArrayOf(2,1,3,0))) // [102,120,130,132,210,230,302,310,312,320]
-    println(prob.findEvenNumbers(intArrayOf(2,2,8,8,2))) // [222,228,282,288,822,828,882]
-    println(prob.findEvenNumbers(intArrayOf(3,7,5))) // []
-    println(prob.findEvenNumbers(intArrayOf(0,2,0,0))) // [200]
-    println(prob.findEvenNumbers(intArrayOf(0,0,0))) // []
 }
