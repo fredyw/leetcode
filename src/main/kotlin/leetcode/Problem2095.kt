@@ -9,37 +9,25 @@ class Problem2095 {
     }
 
     fun deleteMiddle(head: ListNode?): ListNode? {
-        TODO()
-    }
-}
-
-fun build(array: IntArray): Problem2095.ListNode? {
-    var head: Problem2095.ListNode? = null
-    var current: Problem2095.ListNode? = null
-    for (i in array) {
-        if (head == null) {
-            head = Problem2095.ListNode(i)
-            current = head
-        } else {
-            current?.next = Problem2095.ListNode(i)
-            current = current?.next
+        var size = 0
+        var node = head
+        while (node != null) {
+            size++
+            node = node?.next
         }
+        if (size == 1) {
+            return null
+        }
+        var middle = size / 2
+        node = head
+        var i = 0
+        while (node != null) {
+            if (i == middle - 1) {
+                node?.next = node?.next?.next
+            }
+            node = node?.next
+            i++
+        }
+        return head
     }
-    return head
-}
-
-fun print(head: Problem2095.ListNode?) {
-    var i = head
-    while (i != null) {
-        print("${i.`val`} ")
-        i = i?.next
-    }
-    println()
-}
-
-fun main() {
-    val prob = Problem2095()
-    print(prob.deleteMiddle(build(intArrayOf(1,3,4,7,1,2,6)))) // [1,3,4,1,2,6]
-    print(prob.deleteMiddle(build(intArrayOf(1,2,3,4)))) // [1,2,4]
-    print(prob.deleteMiddle(build(intArrayOf(2,1)))) // [2]
 }
