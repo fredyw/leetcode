@@ -5,13 +5,18 @@ package leetcode
  */
 class Problem2103 {
     fun countPoints(rings: String): Int {
-        TODO()
+        var i = 0
+        val map = mutableMapOf<Char, MutableSet<Char>>()
+        while (i < rings.length - 1) {
+            val color = rings[i]
+            val rod = rings[i + 1]
+            val rgb = map[rod]
+            if (rgb == null) {
+                map[rod] = mutableSetOf()
+            }
+            map[rod]!!.add(color)
+            i += 2
+        }
+        return map.values.count { it.size == 3 }
     }
-}
-
-fun main() {
-    val prob = Problem2103()
-    println(prob.countPoints("B0B6G0R6R0R6G9")) // 1
-    println(prob.countPoints("B0R0G0R9R0B0G0")) // 1
-    println(prob.countPoints("G4")) // 0
 }
