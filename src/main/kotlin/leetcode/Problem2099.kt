@@ -1,18 +1,31 @@
 package leetcode
 
+import java.util.*
+
 /**
  * https://leetcode.com/problems/find-subsequence-of-length-k-with-the-largest-sum/
  */
 class Problem2099 {
     fun maxSubsequence(nums: IntArray, k: Int): IntArray {
-        TODO()
+        val queue = PriorityQueue<Int> { a, b -> b.compareTo(a) }
+        nums.forEach { queue += it }
+        val map = mutableMapOf<Int, Int>()
+        var n = k
+        while (n > 0) {
+            val num = queue.poll()
+            map[num] = (map[num] ?: 0) + 1
+            n--
+        }
+        val answer = mutableListOf<Int>()
+        for (num in nums) {
+            val count = map[num] ?: continue
+            answer += num
+            if (count - 1 == 0) {
+                map -= num
+            } else {
+                map[num] = count - 1
+            }
+        }
+        return answer.toIntArray()
     }
-}
-
-fun main() {
-    val prob = Problem2099()
-    println(prob.maxSubsequence(intArrayOf(2,1,3,3), 2).contentToString()) // [3,3]
-    println(prob.maxSubsequence(intArrayOf(-1,-2,3,4), 3).contentToString()) // [-1,3,4]
-    println(prob.maxSubsequence(intArrayOf(-1,-2,4,3), 3).contentToString()) // [-1,4,3]
-    println(prob.maxSubsequence(intArrayOf(3,4,3,3), 2).contentToString()) // [3,4]
 }
