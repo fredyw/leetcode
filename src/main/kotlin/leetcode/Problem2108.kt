@@ -5,13 +5,24 @@ package leetcode
  */
 class Problem2108 {
     fun firstPalindrome(words: Array<String>): String {
-        TODO()
+        for (word in words) {
+            if (isPalindrome(word)) {
+                return word
+            }
+        }
+        return ""
     }
-}
 
-fun main() {
-    val prob = Problem2108()
-    println(prob.firstPalindrome(arrayOf("abc","car","ada","racecar","cool"))) // "ada"
-    println(prob.firstPalindrome(arrayOf("notapalindrome","racecar"))) // "racecar"
-    println(prob.firstPalindrome(arrayOf("def","ghi"))) // ""
+    private fun isPalindrome(word: String): Boolean {
+        var i = 0
+        var j = word.length - 1
+        while (i < j) {
+            if (word[i] != word[j]) {
+                return false
+            }
+            i++
+            j--
+        }
+        return true
+    }
 }
