@@ -5,12 +5,23 @@ package leetcode
  */
 class Problem1968 {
     fun rearrangeArray(nums: IntArray): IntArray {
-        TODO()
+        nums.sort()
+        val mid = nums.size / 2
+        val answer = IntArray(nums.size)
+        var i = 0
+        var j = 0
+        while (i <= mid && j < nums.size) {
+            answer[j] = nums[i]
+            i++
+            j += 2
+        }
+        i = if (nums.size % 2 == 0) mid else mid + 1
+        j = 1
+        while (i < nums.size && j < nums.size) {
+            answer[j] = nums[i]
+            i++
+            j += 2
+        }
+        return answer
     }
-}
-
-fun main() {
-    val prob = Problem1968()
-    println(prob.rearrangeArray(intArrayOf(1,2,3,4,5)).contentToString()) // [1,2,4,5,3]
-    println(prob.rearrangeArray(intArrayOf(6,2,0,9,7)).contentToString()) // [9,7,6,2,0]
 }
