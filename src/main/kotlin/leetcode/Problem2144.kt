@@ -1,16 +1,17 @@
 package leetcode
 
+import kotlin.math.max
+
 /**
  * https://leetcode.com/problems/maximum-number-of-words-found-in-sentences/
  */
 class Problem2144 {
     fun mostWordsFound(sentences: Array<String>): Int {
-        TODO()
+        var answer = 0
+        for (sentence in sentences) {
+            println(sentence.split(" ").toSet().size)
+            answer = max(answer, sentence.split(" ").size)
+        }
+        return answer
     }
-}
-
-fun main() {
-    val prob = Problem2144()
-    println(prob.mostWordsFound(arrayOf("alice and bob love leetcode", "i think so too", "this is great thanks very much"))) // 6
-    println(prob.mostWordsFound(arrayOf("please wait", "continue to fight", "continue to win"))) // 3
 }
