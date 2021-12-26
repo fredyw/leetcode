@@ -5,13 +5,6 @@ package leetcode
  */
 class Problem2199 {
     fun isSameAfterReversals(num: Int): Boolean {
-        TODO()
+        return (num == 0) || num % 10 != 0
     }
-}
-
-fun main() {
-    val prob = Problem2199()
-    println(prob.isSameAfterReversals(526)) // true
-    println(prob.isSameAfterReversals(1800)) // false
-    println(prob.isSameAfterReversals(0)) // true
 }
