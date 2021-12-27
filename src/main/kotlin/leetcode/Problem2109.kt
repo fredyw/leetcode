@@ -5,13 +5,16 @@ package leetcode
  */
 class Problem2109 {
     fun addSpaces(s: String, spaces: IntArray): String {
-        TODO()
+        var answer = StringBuilder()
+        var j = 0
+        for (i in s.indices) {
+            if (j < spaces.size && i == spaces[j]) {
+                answer.append(' ').append(s[i])
+                j++
+            } else {
+                answer.append(s[i])
+            }
+        }
+        return answer.toString()
     }
-}
-
-fun main() {
-    val prob = Problem2109()
-    println(prob.addSpaces("LeetcodeHelpsMeLearn", intArrayOf(8,13,15))) // "Leetcode Helps Me Learn"
-    println(prob.addSpaces("icodeinpython", intArrayOf(1,5,7,9))) // "i code in py thon"
-    println(prob.addSpaces("spacing", intArrayOf(0,1,2,3,4,5,6))) // " s p a c i n g"
 }
