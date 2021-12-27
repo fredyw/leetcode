@@ -14,4 +14,5 @@ fun main() {
     println(prob.getDescentPeriods(intArrayOf(3,2,1,4))) // 7
     println(prob.getDescentPeriods(intArrayOf(8,6,7,7))) // 4
     println(prob.getDescentPeriods(intArrayOf(1))) // 1
+    println(prob.getDescentPeriods(intArrayOf(5,4,3,2,1))) // 15
 }
