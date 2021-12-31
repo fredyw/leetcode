@@ -5,13 +5,25 @@ package leetcode
  */
 class Problem2120 {
     fun executeInstructions(n: Int, startPos: IntArray, s: String): IntArray {
-        TODO()
+        val answer = IntArray(s.length)
+        for (i in s.indices) {
+            var row = startPos[0]
+            var col = startPos[1]
+            var count = 0
+            for (j in i until s.length) {
+                when (s[j]) {
+                    'L' -> col--
+                    'U' -> row--
+                    'R' -> col++
+                    'D' -> row++
+                }
+                if (col < 0 || col == n || row < 0 || row == n) {
+                    break
+                }
+                count++
+            }
+            answer[i] = count
+        }
+        return answer
     }
-}
-
-fun main() {
-    val prob = Problem2120()
-    println(prob.executeInstructions(3, intArrayOf(0,1), "RRDDLU")) // [1,5,4,3,1,0]
-    println(prob.executeInstructions(2, intArrayOf(1,1), "LURD")) // [4,1,0,0]
-    println(prob.executeInstructions(1, intArrayOf(0,0), "LRUD")) // [0,0,0,0]
 }
