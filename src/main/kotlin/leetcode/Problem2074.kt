@@ -1,5 +1,7 @@
 package leetcode
 
+import java.util.*
+
 /**
  * https://leetcode.com/problems/reverse-nodes-in-even-length-groups/
  */
@@ -9,38 +11,61 @@ class Problem2074 {
     }
 
     fun reverseEvenLengthGroups(head: ListNode?): ListNode? {
-        TODO()
-    }
-}
-
-fun build(list: List<Int>): Problem2074.ListNode? {
-    var head: Problem2074.ListNode? = null
-    var current: Problem2074.ListNode? = null
-    for (n in list) {
-        if (head == null) {
-            head = Problem2074.ListNode(n)
-            current = head
-        } else {
-            current?.next = Problem2074.ListNode(n)
-            current = current?.next
+        var finalList = mutableListOf<Int>()
+        var oddList = LinkedList<Int>()
+        var evenList = LinkedList<Int>()
+        var node = head
+        var group = 1
+        var count = 0
+        while (node != null) {
+            if (group % 2 == 0) {
+                while (!oddList.isEmpty()) {
+                    finalList.add(oddList.removeFirst())
+                }
+                evenList.add(node.`val`)
+            } else {
+                while (!evenList.isEmpty()) {
+                    finalList.add(evenList.removeLast())
+                }
+                oddList.add(node.`val`)
+            }
+            count++
+            if (count == group) {
+                group++
+                count = 0
+            }
+            node = node.next
         }
+        if (!oddList.isEmpty()) {
+            val even = oddList.size % 2 == 0
+            while (!oddList.isEmpty()) {
+                finalList.add(if (even) {
+                    oddList.removeLast()
+                } else {
+                    oddList.removeFirst()
+                })
+            }
+        } else if (!evenList.isEmpty()) {
+            val even = evenList.size % 2 == 0
+            while (!evenList.isEmpty()) {
+                finalList.add(if (even) {
+                    evenList.removeLast()
+                } else {
+                    evenList.removeFirst()
+                })
+            }
+        }
+        var answer: ListNode? = null
+        node = null
+        for (e in finalList) {
+            if (node == null) {
+                node = ListNode(e)
+                answer = node
+            } else {
+                node.next = ListNode(e)
+                node = node.next
+            }
+        }
+        return answer
     }
-    return head
-}
-
-fun print(head: Problem2074.ListNode): List<Int> {
-    var list = mutableListOf<Int>()
-    var node: Problem2074.ListNode? = head
-    while (node != null) {
-        list.add(node.`val`)
-        node = node.next
-    }
-    return list
-}
-
-fun main() {
-    val prob = Problem2074()
-    prob.reverseEvenLengthGroups(build(listOf(5,2,6,3,9,1,7,3,8,4))) // [5,6,2,3,9,1,4,8,3,7]
-    prob.reverseEvenLengthGroups(build(listOf(1,1,0,6))) // [1,0,1,6]
-    prob.reverseEvenLengthGroups(build(listOf(1,1,0,6,5))) // [1,0,1,5,6]
 }
