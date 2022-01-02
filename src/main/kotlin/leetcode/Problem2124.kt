@@ -5,13 +5,6 @@ package leetcode
  */
 class Problem2124 {
     fun checkString(s: String): Boolean {
-        TODO()
+        return s.matches("a*b*".toRegex())
     }
-}
-
-fun main() {
-    val prob = Problem2124()
-    println(prob.checkString("aaabbb")) // true
-    println(prob.checkString("abab")) // false
-    println(prob.checkString("bbb")) // true
 }
