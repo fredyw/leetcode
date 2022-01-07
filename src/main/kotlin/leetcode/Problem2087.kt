@@ -5,12 +5,33 @@ package leetcode
  */
 class Problem2087 {
     fun minCost(startPos: IntArray, homePos: IntArray, rowCosts: IntArray, colCosts: IntArray): Int {
-        TODO()
+        var answer = 0
+        if (startPos[0] < homePos[0]) {
+            var row = startPos[0] + 1
+            while (row <= homePos[0]) {
+                answer += rowCosts[row]
+                row++
+            }
+        } else if (startPos[0] > homePos[0]) {
+            var row = startPos[0] - 1
+            while (row >= homePos[0]) {
+                answer += rowCosts[row]
+                row--
+            }
+        }
+        if (startPos[1] < homePos[1]) {
+            var col = startPos[1] + 1
+            while (col <= homePos[1]) {
+                answer += colCosts[col]
+                col++
+            }
+        } else if (startPos[1] > homePos[1]) {
+            var col = startPos[1] - 1
+            while (col >= homePos[1]) {
+                answer += colCosts[col]
+                col--
+            }
+        }
+        return answer
     }
-}
-
-fun main() {
-    val prob = Problem2087()
-    println(prob.minCost(intArrayOf(1, 0), intArrayOf(2, 3), intArrayOf(5, 4, 3), intArrayOf(8, 2, 6, 7))) // 18
-    println(prob.minCost(intArrayOf(0, 0), intArrayOf(0, 0), intArrayOf(5), intArrayOf(26))) // 0
 }
