@@ -1,13 +1,26 @@
 package leetcode
 
 class Problem1865 {
-    class FindSumPairs(nums1: IntArray, nums2: IntArray) {
+    class FindSumPairs(val nums1: IntArray, val nums2: IntArray) {
+        private val nums1Map = mutableMapOf<Int, Int>()
+
+        init {
+            for (num in nums1) {
+                nums1Map[num] = (nums1Map[num] ?: 0) + 1
+            }
+        }
+
         fun add(index: Int, `val`: Int) {
-            TODO()
+            nums2[index] += `val`
         }
 
         fun count(tot: Int): Int {
-            TODO()
+            var count = 0
+            for (num2 in nums2) {
+                val num1 = tot - num2
+                count += nums1Map[num1] ?: 0
+            }
+            return count
         }
     }
 }
