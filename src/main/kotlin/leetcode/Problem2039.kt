@@ -17,5 +17,6 @@ fun main() {
     println(prob.networkBecomesIdle(arrayOf(intArrayOf(0,1), intArrayOf(1,2)), intArrayOf(0,10,3))) // 8
     println(prob.networkBecomesIdle(arrayOf(intArrayOf(0,1), intArrayOf(1,2)), intArrayOf(0,10,30))) // 5
     println(prob.networkBecomesIdle(arrayOf(intArrayOf(0,1), intArrayOf(1,2)), intArrayOf(0,1,1))) // 8
+    println(prob.networkBecomesIdle(arrayOf(intArrayOf(0,1), intArrayOf(1,2)), intArrayOf(0,1,2))) // 7
     println(prob.networkBecomesIdle(arrayOf(intArrayOf(0,1), intArrayOf(0,2), intArrayOf(1,2)), intArrayOf(0,10,10))) // 3
 }
