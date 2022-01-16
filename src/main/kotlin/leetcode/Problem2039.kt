@@ -1,11 +1,32 @@
 package leetcode
 
+import java.util.*
+
 /**
  * https://leetcode.com/problems/the-time-when-the-network-becomes-idle/
  */
 class Problem2039 {
     fun networkBecomesIdle(edges: Array<IntArray>, patience: IntArray): Int {
+        val adjList = buildAdjList(edges)
+        val list = LinkedList<Int>()
+        list.add(0)
+        while (!list.isEmpty()) {
+            list.remove()
+        }
         TODO()
+    }
+
+    private fun buildAdjList(edges: Array<IntArray>): Map<Int, List<Int>> {
+        val map = mutableMapOf<Int, MutableList<Int>>()
+        for (edge in edges) {
+            val list1 = map[edge[0]] ?: mutableListOf()
+            list1 += edge[1]
+            map[edge[0]] = list1
+            val list2 = map[edge[1]] ?: mutableListOf()
+            list2 += edge[0]
+            map[edge[1]] = list2
+        }
+        return map
     }
 }
 
@@ -24,5 +45,6 @@ fun main() {
     println(prob.networkBecomesIdle(arrayOf(intArrayOf(0,1), intArrayOf(1,2), intArrayOf(2,3), intArrayOf(3,4)), intArrayOf(0,1,1,1,3))) // 15
     println(prob.networkBecomesIdle(arrayOf(intArrayOf(0,1), intArrayOf(1,2), intArrayOf(2,3), intArrayOf(3,4)), intArrayOf(0,1,1,1,4))) // 13
     println(prob.networkBecomesIdle(arrayOf(intArrayOf(0,1), intArrayOf(1,2), intArrayOf(2,3), intArrayOf(3,4)), intArrayOf(0,1,1,1,5))) // 14
+    println(prob.networkBecomesIdle(arrayOf(intArrayOf(0,1), intArrayOf(1,2), intArrayOf(2,3), intArrayOf(3,4)), intArrayOf(0,1,1,1,6))) // 15
     println(prob.networkBecomesIdle(arrayOf(intArrayOf(0,1), intArrayOf(0,2), intArrayOf(1,2)), intArrayOf(0,10,10))) // 3
 }
