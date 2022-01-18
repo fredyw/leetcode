@@ -1,17 +1,23 @@
 package leetcode
 
+import java.util.*
+
 /**
  * https://leetcode.com/problems/find-the-most-competitive-subsequence/
  */
 class Problem1673 {
     fun mostCompetitive(nums: IntArray, k: Int): IntArray {
-        TODO()
+        val stack = Stack<Int>()
+        var i = 0
+        while (i < nums.size) {
+            while (!stack.isEmpty() && stack.peek() > nums[i] && stack.size + nums.size - i > k) {
+                stack.pop()
+            }
+            if (stack.size < k) {
+                stack.add(nums[i])
+            }
+            i++
+        }
+        return stack.toIntArray()
     }
-}
-
-fun main() {
-    val prob = Problem1673()
-    println(prob.mostCompetitive(intArrayOf(3,5,2,6), 2)) // [2,6]
-    println(prob.mostCompetitive(intArrayOf(2,4,3,3,5,4,9,6), 4)) // [2,3,3,4]
-    println(prob.mostCompetitive(intArrayOf(4,3,3,5,4,9,6,2), 4)) // [3,3,4,2]
 }
