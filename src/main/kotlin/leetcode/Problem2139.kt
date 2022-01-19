@@ -14,4 +14,6 @@ fun main() {
     println(prob.minMoves(5, 0)) // 4
     println(prob.minMoves(19, 2)) // 7
     println(prob.minMoves(10, 4)) // 4
+    println(prob.minMoves(15, 3)) // 6
+    println(prob.minMoves(100, 4)) // 10
 }
