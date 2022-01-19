@@ -5,15 +5,18 @@ package leetcode
  */
 class Problem2139 {
     fun minMoves(target: Int, maxDoubles: Int): Int {
-        TODO()
+        var moves = 0
+        var n = target
+        var d = maxDoubles
+        while (n > 1 && d > 0) {
+            if (n % 2 != 0) {
+                moves += 2
+            } else {
+                moves++
+            }
+            n /= 2
+            d--
+        }
+        return moves + n - 1
     }
-}
-
-fun main() {
-    val prob = Problem2139()
-    println(prob.minMoves(5, 0)) // 4
-    println(prob.minMoves(19, 2)) // 7
-    println(prob.minMoves(10, 4)) // 4
-    println(prob.minMoves(15, 3)) // 6
-    println(prob.minMoves(100, 4)) // 10
 }
