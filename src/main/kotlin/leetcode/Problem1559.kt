@@ -16,8 +16,7 @@ class Problem1559 {
                     col++
                     continue
                 }
-                val counts = Array(grid.size) { IntArray(maxCol) }
-                if (containsCycle(grid, maxRow, maxCol, grid[row][col], visited, counts, row, col, 1)) {
+                if (containsCycle(grid, maxRow, maxCol, grid[row][col], visited, -1, -1, row, col)) {
                     return true
                 }
                 col++
@@ -28,56 +27,35 @@ class Problem1559 {
     }
 
     private fun containsCycle(grid: Array<CharArray>, maxRow: Int, maxCol: Int, char: Char,
-                              visited: Array<BooleanArray>, counts: Array<IntArray>,
-                              row: Int, col: Int, count: Int): Boolean {
-        if (row < 0 || row == maxRow || col < 0 || col == maxCol) {
-            return false
-        }
-        if (grid[row][col] != char) {
-            return false
-        }
-        if (visited[row][col]) {
-            if (count - counts[row][col] >= 4) {
-                return true
-            }
-            return false
-        }
-        visited[row][col] = true
-        counts[row][col] = count
-        val up = containsCycle(grid, maxRow, maxCol, char, visited, counts, row - 1, col, count + 1)
-        val right = containsCycle(grid, maxRow, maxCol, char, visited, counts, row, col + 1, count + 1)
-        val down = containsCycle(grid, maxRow, maxCol, char, visited, counts, row + 1, col, count + 1)
-        val left = containsCycle(grid, maxRow, maxCol, char, visited, counts, row, col - 1, count + 1)
-        return up || right || down || left
-    }
-}
+                              visited: Array<BooleanArray>, previousRow: Int, previousCol: Int,
+                              currentRow: Int, currentCol: Int): Boolean {
 
-fun main() {
-    val prob = Problem1559()
-    println(prob.containsCycle(arrayOf(
-        charArrayOf('a','a','a','a'),
-        charArrayOf('a','b','b','a'),
-        charArrayOf('a','b','b','a'),
-        charArrayOf('a','a','a','a')))) // true
-    println(prob.containsCycle(arrayOf(
-        charArrayOf('c','c','c','a'),
-        charArrayOf('c','d','c','c'),
-        charArrayOf('c','c','e','c'),
-        charArrayOf('f','c','c','c')))) // true
-    println(prob.containsCycle(arrayOf(
-        charArrayOf('a','b','b'),
-        charArrayOf('b','z','b'),
-        charArrayOf('b','b','a')))) // false
-    println(prob.containsCycle(arrayOf(
-        charArrayOf('f','c','b','d','f','a','e','e','a','c','e'),
-        charArrayOf('d','f','f','c','c','a','b','b','a','c','f'),
-        charArrayOf('e','d','d','a','d','d','d','c','f','b','e'),
-        charArrayOf('e','a','d','d','a','e','e','a','c','f','b'),
-        charArrayOf('d','c','f','a','b','c','c','d','e','c','b'),
-        charArrayOf('d','a','e','d','a','a','a','e','f','a','b'),
-        charArrayOf('d','f','e','a','f','b','c','b','d','a','e'),
-        charArrayOf('c','f','d','c','d','a','e','e','a','a','e'),
-        charArrayOf('f','b','c','e','e','b','e','b','a','a','a'),
-        charArrayOf('d','d','b','c','b','f','a','c','b','c','d'),
-        charArrayOf('e','e','c','c','e','b','e','f','b','c','d')))) // true
+        if (visited[currentRow][currentCol]) {
+            return false
+        }
+        visited[currentRow][currentCol] = true
+        for ((r, c) in arrayOf(intArrayOf(1, 0), intArrayOf(-1, 0), intArrayOf(0, 1), intArrayOf(0, -1))) {
+            val newRow = currentRow + r
+            val newCol = currentCol + c
+            if (newRow < 0 || newRow == maxRow || newCol < 0 || newCol == maxCol) {
+                continue
+            }
+            if (grid[newRow][newCol] != char) {
+                continue
+            }
+            if (!(previousRow == newRow && previousCol == newCol)) {
+                if (visited[newRow][newCol]) {
+                    return true
+                }
+                if (containsCycle(
+                        grid, maxRow, maxCol, char, visited, currentRow, currentCol,
+                        newRow, newCol
+                    )
+                ) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
 }
