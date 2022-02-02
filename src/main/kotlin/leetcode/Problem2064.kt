@@ -15,4 +15,5 @@ fun main() {
     println(prob.minimizedMaximum(7, intArrayOf(15,10,10))) // 5
     println(prob.minimizedMaximum(1, intArrayOf(100000))) // 100000
     println(prob.minimizedMaximum(6, intArrayOf(100,10))) // 20
+    println(prob.minimizedMaximum(6, intArrayOf(100,7,43))) // 34
 }
