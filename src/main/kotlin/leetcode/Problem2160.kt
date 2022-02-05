@@ -5,12 +5,8 @@ package leetcode
  */
 class Problem2160 {
     fun minimumSum(num: Int): Int {
-        TODO()
+        val chars = num.toString().toCharArray()
+        chars.sort()
+        return "${chars[0]}${chars[2]}".toInt() + "${chars[1]}${chars[3]}".toInt()
     }
-}
-
-fun main() {
-    val prob = Problem2160()
-    println(prob.minimumSum(2932)) // 52
-    println(prob.minimumSum(4009)) // 13
 }
