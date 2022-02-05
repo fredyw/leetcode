@@ -1,19 +1,38 @@
 package leetcode
 
+import kotlin.math.max
+
 /**
  * https://leetcode.com/problems/minimized-maximum-of-products-distributed-to-any-store/
  */
 class Problem2064 {
     fun minimizedMaximum(n: Int, quantities: IntArray): Int {
-        TODO()
+        var min = 1
+        var max = quantities[0]
+        for (i in 1 until quantities.size) {
+            max = max(max, quantities[i])
+        }
+        var answer = 0
+        while (min <= max) {
+            val mid = (min + max) / 2
+            if (canDistribute(n, quantities, mid)) {
+                max = mid - 1
+                answer = mid
+            } else {
+                min = mid + 1
+            }
+        }
+        return answer
     }
-}
 
-fun main() {
-    val prob = Problem2064()
-    println(prob.minimizedMaximum(6, intArrayOf(11,6))) // 3
-    println(prob.minimizedMaximum(7, intArrayOf(15,10,10))) // 5
-    println(prob.minimizedMaximum(1, intArrayOf(100000))) // 100000
-    println(prob.minimizedMaximum(6, intArrayOf(100,10))) // 20
-    println(prob.minimizedMaximum(6, intArrayOf(100,7,43))) // 34
+    private fun canDistribute(stores: Int, quantities: IntArray, x: Int): Boolean {
+        var n = stores
+        for (quantity in quantities) {
+            n -= if (quantity % x == 0) quantity / x else (quantity / x) + 1
+            if (n < 0) {
+                return false
+            }
+        }
+        return true
+    }
 }
