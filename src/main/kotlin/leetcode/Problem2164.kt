@@ -5,12 +5,23 @@ package leetcode
  */
 class Problem2164 {
     fun sortEvenOdd(nums: IntArray): IntArray {
-        TODO()
+        val odd = mutableListOf<Int>()
+        val even = mutableListOf<Int>()
+        for (i in nums.indices) {
+            if (i % 2 == 0) {
+                even += nums[i]
+            } else {
+                odd += nums[i]
+            }
+        }
+        odd.sortDescending()
+        even.sort()
+        val answer = IntArray(nums.size)
+        var oddIndex = 0
+        var evenIndex = 0
+        for (i in nums.indices) {
+            answer[i] = if (i % 2 == 0) even[evenIndex++] else odd[oddIndex++]
+        }
+        return answer
     }
-}
-
-fun main() {
-    val prob = Problem2164()
-    println(prob.sortEvenOdd(intArrayOf(4,1,2,3))) // [2,3,4,1]
-    println(prob.sortEvenOdd(intArrayOf(2,1))) // [2,1]
 }
