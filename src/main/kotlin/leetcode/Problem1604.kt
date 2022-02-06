@@ -5,7 +5,26 @@ package leetcode
  */
 class Problem1604 {
     fun alertNames(keyName: Array<String>, keyTime: Array<String>): List<String> {
-        TODO()
+        val map = mutableMapOf<String, MutableList<String>>()
+        for (i in keyName.indices) {
+            val times = map[keyName[i]] ?: mutableListOf()
+            times += keyTime[i]
+            map[keyName[i]] = times
+        }
+        val answer = mutableListOf<String>()
+        for ((key, value) in map) {
+            TODO()
+        }
+        answer.sort()
+        return answer
+    }
+
+    private fun difference(from: String, to: String): Int {
+        val (fromHour, fromMinute) = from.split(":")
+        val (toHour, toMinute) = to.split(":")
+        val minute = toMinute.toInt() - fromMinute.toInt()
+        val hour = (toHour.toInt() - fromHour.toInt()) * 60
+        return minute + hour
     }
 }
 
