@@ -16,6 +16,10 @@ fun main() {
         charArrayOf(' ', ' ', '#'),
         charArrayOf('#', 'c', ' ')), "abc")) // true
     println(prob.placeWordInCrossword(arrayOf(
+        charArrayOf('#', ' ', '#'),
+        charArrayOf('a', ' ', '#'),
+        charArrayOf('#', 'c', 'a')), "abc")) // true
+    println(prob.placeWordInCrossword(arrayOf(
         charArrayOf(' ', '#', 'a'),
         charArrayOf(' ', '#', 'c'),
         charArrayOf(' ', '#', 'a')), "abc")) // false
