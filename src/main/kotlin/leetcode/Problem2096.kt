@@ -12,30 +12,30 @@ class Problem2096 {
     }
 
     fun getDirections(root: TreeNode?, startValue: Int, destValue: Int): String {
-        val start = getDirection(root, startValue, "")
-        val dest = getDirection(root, destValue, "")
+        var start = getDirection(root, startValue, "")
+        var dest = getDirection(root, destValue, "")
         val minLength = min(start.length, dest.length)
         var i = 0
         while (i < minLength && start[i] == dest[i]) {
             i++
         }
-        val subStart = start.substring(i)
-        val subDest = dest.substring(i)
-        return "U".repeat(subStart.length) + subDest
+        start = start.substring(i)
+        dest = dest.substring(i)
+        return "U".repeat(start.length) + dest
     }
 
-    private fun getDirection(root: TreeNode?, `value`: Int, direction: String): String {
+    private fun getDirection(root: TreeNode?, `value`: Int, path: String): String {
         if (root == null) {
             return ""
         }
         if (root.`val` == value) {
-            return direction
+            return path
         }
-        val left = getDirection(root.left, value, "${direction}L")
+        val left = getDirection(root.left, value, "${path}L")
         if (left != "") {
             return left
         }
-        return getDirection(root.right, value, "${direction}R")
+        return getDirection(root.right, value, "${path}R")
     }
 }
 
