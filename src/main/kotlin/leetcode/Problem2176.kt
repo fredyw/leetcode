@@ -5,12 +5,22 @@ package leetcode
  */
 class Problem2176 {
     fun countPairs(nums: IntArray, k: Int): Int {
-        TODO()
+        val map = mutableMapOf<Int, MutableList<Int>>()
+        for (i in nums.indices) {
+            val list = map[nums[i]] ?: mutableListOf()
+            list += i
+            map[nums[i]] = list
+        }
+        var answer = 0
+        for (indexes in map.values) {
+           for (i in 0 until indexes.size) {
+               for (j in i + 1 until indexes.size) {
+                   if ((indexes[i] * indexes[j]) % k == 0) {
+                       answer++
+                   }
+               }
+           }
+        }
+        return answer
     }
-}
-
-fun main() {
-    val prob = Problem2176()
-    println(prob.countPairs(intArrayOf(3,1,2,2,2,1,3), 2)) // 4
-    println(prob.countPairs(intArrayOf(1,2,3,4), 1)) // 0
 }
