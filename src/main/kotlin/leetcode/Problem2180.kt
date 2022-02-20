@@ -5,12 +5,11 @@ package leetcode
  */
 class Problem2180 {
     fun countEven(num: Int): Int {
-        TODO()
+        val s = num.toString()
+        var sum = 0
+        for (c in s) {
+            sum += c.toInt()
+        }
+        return if (sum % 2 == 0) num / 2 else (num - 1) / 2
     }
-}
-
-fun main() {
-    val prob = Problem2180()
-    println(prob.countEven(4)) // 2
-    println(prob.countEven(30)) // 14
 }
