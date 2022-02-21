@@ -15,5 +15,7 @@ fun main() {
     println(prob.minSwaps(intArrayOf(0,1,1,1,0,0,1,1,0))) // 2
     println(prob.minSwaps(intArrayOf(1,1,0,0,1))) // 0
     println(prob.minSwaps(intArrayOf(0,1,0,1,0,1,0,1,0,1))) // 2
-
+    println(prob.minSwaps(intArrayOf(1,0,0,1,1,1,0,0,0,1,1,0))) // 2
+    println(prob.minSwaps(intArrayOf(1,0,0,1,1,1,0,0,0,1,1,0))) // 2
+    println(prob.minSwaps(intArrayOf(1,0,0,0,1,1,0,0,1,0,1,0,0,1,1,0,0))) // 3
 }
