@@ -7,14 +7,24 @@ import kotlin.math.min
  */
 class Problem2134 {
     fun minSwaps(nums: IntArray): Int {
+        val indexes = mutableListOf<Int>()
         var numOnes = 0
-        for (num in nums) {
-            if (num == 1) {
+        for (i in nums.indices) {
+            if (nums[i] == 1) {
+                if (i == 0) {
+                    if (nums[nums.size - 1] == 0) {
+                        indexes += i
+                    }
+                } else {
+                    if (nums[i - 1] == 0) {
+                        indexes += i
+                    }
+                }
                 numOnes++
             }
         }
         var answer = Int.MAX_VALUE
-        for (i in nums.indices) {
+        for (i in indexes) {
             if (nums[i] == 0) {
                 continue
             }
