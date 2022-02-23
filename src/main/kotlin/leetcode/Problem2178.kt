@@ -5,13 +5,21 @@ package leetcode
  */
 class Problem2178 {
     fun maximumEvenSplit(finalSum: Long): List<Long> {
-        TODO()
+        val answer = mutableListOf<Long>()
+        if (finalSum % 2L != 0L) {
+            return answer
+        }
+        var n = finalSum
+        var m = 2L
+        while (true) {
+            if (n - m <= m) {
+                answer += n
+                break
+            }
+            n -= m
+            answer += m
+            m += 2
+        }
+        return answer
     }
-}
-
-fun main() {
-    val prob = Problem2178()
-    println(prob.maximumEvenSplit(12)) // [2,4,6]
-    println(prob.maximumEvenSplit(7)) // []
-    println(prob.maximumEvenSplit(28)) // [6,8,2,12]
 }
