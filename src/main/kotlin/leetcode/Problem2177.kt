@@ -5,12 +5,12 @@ package leetcode
  */
 class Problem2177 {
     fun sumOfThree(num: Long): LongArray {
-        TODO()
+        val b = num / 3
+        val a = b - 1
+        val c = b + 1
+        if (a + b + c == num) {
+            return longArrayOf(a, b, c)
+        }
+        return longArrayOf()
     }
-}
-
-fun main() {
-    val prob = Problem2177()
-    println(prob.sumOfThree(33)) // [10,11,12]
-    println(prob.sumOfThree(4)) // []
 }
