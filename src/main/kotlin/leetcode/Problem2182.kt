@@ -7,14 +7,18 @@ import java.util.PriorityQueue
  */
 class Problem2182 {
     fun repeatLimitedString(s: String, repeatLimit: Int): String {
-        val map = mutableMapOf<Char, Int>()
-        for (char in s) {
-            map[char] = (map[char] ?: 0) + 1
-        }
         data class CharCount(val char: Char, val count: Int)
-        val list = map.map { CharCount(it.key, it.value) }
+        val array = IntArray(26)
+        for (char in s) {
+            array[char - 'a']++
+        }
         val queue = PriorityQueue<CharCount> {a, b -> b.char.compareTo(a.char)}
-        queue += list
+        for (i in array.indices) {
+            if (array[i] == 0) {
+                continue
+            }
+            queue += CharCount((i + 'a'.toInt()).toChar(), array[i])
+        }
         val answer = StringBuilder()
         var lastChar: Char? = null
         var lastCount = 0
@@ -22,22 +26,22 @@ class Problem2182 {
             var e1: CharCount? = null
             if (queue.isNotEmpty()) {
                 e1 = queue.remove()
+                if (lastChar == e1.char && lastCount == repeatLimit && queue.isEmpty()) {
+                    break
+                }
                 var n = if (lastChar == e1.char) lastCount else 0
                 var count = 0
                 if (e1.count > repeatLimit - n) {
-                    if (repeatLimit - n < 0) {
-                        break
-                    }
                     answer.append(e1.char.toString().repeat(repeatLimit - n))
                     count = repeatLimit - n
                     e1 = CharCount(e1.char, e1.count - (repeatLimit - n))
                 } else { // if (e1.count <= repeatLimit - n) {
                     answer.append(e1.char.toString().repeat(e1.count))
-                    count = repeatLimit - n
+                    count = e1.count
                     e1 = null
                 }
                 if (lastChar == e1?.char) {
-                    lastCount++
+                    lastCount += count
                 } else {
                     lastChar = e1?.char
                     lastCount = count
@@ -64,12 +68,4 @@ class Problem2182 {
         }
         return answer.toString()
     }
-}
-
-fun main() {
-    val prob = Problem2182()
-    println(prob.repeatLimitedString("cczazcc", 3)) // "zzcccac"
-    println(prob.repeatLimitedString("aababab", 2)) // "bbabaa"
-    println(prob.repeatLimitedString("cczazcczz", 3)) // "zzzczccca"
-    println(prob.repeatLimitedString("xyutfpopdynbadwtvmxiemmusevduloxwvpkjioizvanetecnuqbqqdtrwrkgt", 1)) // "zyxyxwxwvwvuvuvututstrtrtqpqpqponononmlmkmkjigifiededededcbaba"
 }
