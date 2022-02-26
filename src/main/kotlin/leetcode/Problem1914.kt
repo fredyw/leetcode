@@ -27,17 +27,15 @@ class Problem1914 {
         var index = 0
         var start = false
         var n = 0
-        for (i in 1..((maxRows + maxCols) + k)) {
+        for (i in 1..maxRows + maxCols + k) {
             iterate(maxRows, maxCols, length, row, col) { r, c ->
-                run {
-                    if (n == k) {
-                        start = true
-                    }
-                    if (start && index < elements.size) {
-                        grid[r][c] = elements[index++]
-                    }
-                    n++
+                if (n == k) {
+                    start = true
                 }
+                if (start && index < elements.size) {
+                    grid[r][c] = elements[index++]
+                }
+                n++
             }
         }
     }
