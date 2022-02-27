@@ -14,4 +14,6 @@ fun main() {
     println(prob.nextBeautifulNumber(1)) // 22
     println(prob.nextBeautifulNumber(1000)) // 1333
     println(prob.nextBeautifulNumber(3000)) // 3133
+    println(prob.nextBeautifulNumber(22)) // 122
+    println(prob.nextBeautifulNumber(20)) // 22
 }
