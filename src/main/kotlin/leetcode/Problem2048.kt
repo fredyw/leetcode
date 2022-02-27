@@ -19,4 +19,7 @@ fun main() {
     println(prob.nextBeautifulNumber(30)) // 122
     println(prob.nextBeautifulNumber(4278)) // 4444
     println(prob.nextBeautifulNumber(4578)) // 14444
+    println(prob.nextBeautifulNumber(3200)) // 3313
+    println(prob.nextBeautifulNumber(3330)) // 3331
+    println(prob.nextBeautifulNumber(3430)) // 4444
 }
