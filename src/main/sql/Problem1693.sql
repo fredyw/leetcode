@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/daily-leads-and-partners/
+-- https://leetcode.com/problems/daily-leads-and-partners/
 select date_id,
        make_name,
        count(distinct lead_id) as unique_leads,
