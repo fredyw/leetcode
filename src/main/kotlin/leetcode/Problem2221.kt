@@ -5,12 +5,15 @@ package leetcode
  */
 class Problem2221 {
     fun triangularSum(nums: IntArray): Int {
-        TODO()
+        var list = mutableListOf<Int>()
+        list.addAll(nums.toList())
+        while (list.size > 1) {
+            var tmp = mutableListOf<Int>()
+            for (i in 0 until list.size - 1) {
+                tmp.add((list[i] + list[i + 1]) % 10)
+            }
+            list = tmp
+        }
+        return list[0]
     }
-}
-
-fun main() {
-    val prob = Problem2221()
-    println(prob.triangularSum(intArrayOf(1,2,3,4,5))) // 8
-    println(prob.triangularSum(intArrayOf(5))) // 5
 }
