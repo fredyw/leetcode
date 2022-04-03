@@ -5,27 +5,21 @@ package leetcode
  */
 class Problem2225 {
     fun findWinners(matches: Array<IntArray>): List<List<Int>> {
-        TODO()
+        val winners = mutableSetOf<Int>()
+        val losers = mutableMapOf<Int, Int>()
+        for (match in matches) {
+            winners += match[0]
+            losers[match[1]] = (losers[match[1]] ?: 0) + 1
+        }
+        val answer1 = mutableListOf<Int>()
+        for (winner in winners) {
+            if (winner !in losers) {
+                answer1 += winner
+            }
+        }
+        val answer2 = losers.filter { it.value == 1 }.map { it.key }.toMutableList()
+        answer1.sort()
+        answer2.sort()
+        return listOf(answer1, answer2)
     }
-}
-
-fun main() {
-    val prob = Problem2225()
-    println(prob.findWinners(arrayOf(
-        intArrayOf(1,3),
-        intArrayOf(2,3),
-        intArrayOf(3,6),
-        intArrayOf(5,6),
-        intArrayOf(5,7),
-        intArrayOf(4,5),
-        intArrayOf(4,8),
-        intArrayOf(4,9),
-        intArrayOf(10,4),
-        intArrayOf(10,9)))) // [[1,2,10],[4,5,7,8]]
-    println(prob.findWinners(arrayOf(
-        intArrayOf(2,3),
-        intArrayOf(1,3),
-        intArrayOf(5,4),
-        intArrayOf(6,4)
-    ))) // [[1,2,5,6],[]]
 }
