@@ -1,7 +1,5 @@
 package leetcode
 
-import java.util.Collections
-
 /**
  * https://leetcode.com/problems/largest-number-after-digit-swaps-by-parity/
  */
@@ -18,10 +16,8 @@ class Problem2231 {
             }
         }
         var answer = CharArray(numString.length)
-        val sortedOddIndexes = oddIndexes.toMutableList()
-        val sortedEvenIndexes = evenIndexes.toMutableList()
-        Collections.sort(sortedOddIndexes, {a, b -> numString[b].compareTo(numString[a])})
-        Collections.sort(sortedEvenIndexes, {a, b -> numString[b].compareTo(numString[a])})
+        val sortedOddIndexes = oddIndexes.sortedWith(Comparator {a, b -> numString[b].compareTo(numString[a])})
+        val sortedEvenIndexes = evenIndexes.sortedWith(Comparator {a, b -> numString[b].compareTo(numString[a])})
         if (numString[0].toInt() % 2 != 0) {
             for ((i, j) in oddIndexes.withIndex()) {
                 answer[j] = numString[sortedOddIndexes[i]]
