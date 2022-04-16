@@ -12,6 +12,9 @@ class Problem2100 {
 fun main() {
     val prob = Problem2100()
     println(prob.goodDaysToRobBank(intArrayOf(5,3,3,3,5,6,2), 2)) // [2,3]
+    println(prob.goodDaysToRobBank(intArrayOf(5,3,3,3,5,6,2), 2)) // [1,2,3]
+    println(prob.goodDaysToRobBank(intArrayOf(5,3,3,5,6,2), 2)) // [2]
     println(prob.goodDaysToRobBank(intArrayOf(1,1,1,1,1), 0)) // [0,1,2,3,4]
     println(prob.goodDaysToRobBank(intArrayOf(1,2,3,4,5,6), 2)) // []
+    println(prob.goodDaysToRobBank(intArrayOf(6,5,4,2,2,3,3,3,3,4), 1)) // [3,4,6,7,8]
 }
