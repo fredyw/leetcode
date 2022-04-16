@@ -5,16 +5,31 @@ package leetcode
  */
 class Problem2100 {
     fun goodDaysToRobBank(security: IntArray, time: Int): List<Int> {
-        TODO()
+        if (time == 0) {
+            return security.mapIndexed { i, _ -> i }
+        }
+        val left = IntArray(security.size)
+        for (i in security.indices) {
+            if (i == 0 || security[i] > security[i - 1]) {
+                left[i] = 1
+            } else {
+                left[i] = left[i - 1] + 1
+            }
+        }
+        val right = IntArray(security.size)
+        for (i in security.size - 1 downTo 0) {
+            if (i == security.size - 1 || security[i] > security[i + 1]) {
+                right[i] = 1
+            } else {
+                right[i] = right[i + 1] + 1
+            }
+        }
+        val answer = mutableListOf<Int>()
+        for (i in security.indices) {
+            if (left[i] >= time + 1 && right[i] >= time + 1) {
+                answer += i
+            }
+        }
+        return answer
     }
-}
-
-fun main() {
-    val prob = Problem2100()
-    println(prob.goodDaysToRobBank(intArrayOf(5,3,3,3,5,6,2), 2)) // [2,3]
-    println(prob.goodDaysToRobBank(intArrayOf(5,3,3,3,5,6,2), 2)) // [1,2,3]
-    println(prob.goodDaysToRobBank(intArrayOf(5,3,3,5,6,2), 2)) // [2]
-    println(prob.goodDaysToRobBank(intArrayOf(1,1,1,1,1), 0)) // [0,1,2,3,4]
-    println(prob.goodDaysToRobBank(intArrayOf(1,2,3,4,5,6), 2)) // []
-    println(prob.goodDaysToRobBank(intArrayOf(6,5,4,2,2,3,3,3,3,4), 1)) // [3,4,6,7,8]
 }
