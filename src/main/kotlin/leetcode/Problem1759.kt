@@ -5,13 +5,25 @@ package leetcode
  */
 class Problem1759 {
     fun countHomogenous(s: String): Int {
-        TODO()
+        var answer: Long = 0
+        var length: Long = 1
+        for (i in 1 until s.length) {
+            if (s[i] == s[i - 1]) {
+                length++
+            } else {
+                answer += count(length) % 1_000_000_007
+                length = 1
+            }
+        }
+        answer += count(length) % 1_000_000_007
+        return answer.toInt()
     }
-}
 
-fun main() {
-    val prob = Problem1759()
-    println(prob.countHomogenous("abbcccaa")) // 13
-    println(prob.countHomogenous("xy")) // 2
-    println(prob.countHomogenous("zzzzz")) // 15
+    private fun count(n: Long): Long {
+        var sum: Long = 0
+        for (i in 1..n) {
+            sum += i
+        }
+        return sum
+    }
 }
