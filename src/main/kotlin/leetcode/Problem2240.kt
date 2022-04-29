@@ -5,12 +5,16 @@ package leetcode
  */
 class Problem2240 {
     fun waysToBuyPensPencils(total: Int, cost1: Int, cost2: Int): Long {
-        TODO()
+        var answer = 0L
+        var penSpent = 0
+        var penCount = 0
+        while (penSpent <= total) {
+            val remaining = total - penSpent
+            val pencilCount = remaining / cost2
+            answer += pencilCount + 1
+            penSpent += cost1
+            penCount++
+        }
+        return answer
     }
-}
-
-fun main() {
-    val prob = Problem2240()
-    println(prob.waysToBuyPensPencils(20, 10, 5)) // 9
-    println(prob.waysToBuyPensPencils(5, 10, 10)) // 1
 }
