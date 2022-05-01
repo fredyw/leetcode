@@ -27,10 +27,8 @@ class Problem2013 {
                 if (length == 0) {
                     continue
                 }
-                var x2 = x1 - length
-                count += numSquares(x1 = x1, y1 = y1, x2 = x2, y2 = y2)
-                x2 = x1 + length
-                count += numSquares(x1 = x1, y1 = y1, x2 = x2, y2 = y2)
+                count += numSquares(x1 = x1, y1 = y1, x2 = x1 - length, y2 = y2)
+                count += numSquares(x1 = x1, y1 = y1, x2 = x1 + length, y2 = y2)
             }
             remove(point)
             return count
