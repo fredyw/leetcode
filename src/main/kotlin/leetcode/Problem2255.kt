@@ -5,12 +5,6 @@ package leetcode
  */
 class Problem2255 {
     fun countPrefixes(words: Array<String>, s: String): Int {
-        TODO()
+        return words.count { s.startsWith(it) }
     }
-}
-
-fun main() {
-    val prob = Problem2255()
-    println(prob.countPrefixes(arrayOf("a","b","c","ab","bc","abc"), "abc")) // 3
-    println(prob.countPrefixes(arrayOf("a","a"), "aa")) // 2
 }
