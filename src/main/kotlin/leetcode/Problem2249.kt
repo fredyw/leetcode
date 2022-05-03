@@ -13,4 +13,5 @@ fun main() {
     val prob = Problem2249()
     println(prob.countLatticePoints(arrayOf(intArrayOf(2,2,1)))) // 5
     println(prob.countLatticePoints(arrayOf(intArrayOf(2,2,2), intArrayOf(3,4,1)))) // 16
+    println(prob.countLatticePoints(arrayOf(intArrayOf(2,2,2), intArrayOf(3,5,1)))) // 18
 }
