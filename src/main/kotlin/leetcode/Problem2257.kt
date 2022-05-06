@@ -5,16 +5,54 @@ package leetcode
  */
 class Problem2257 {
     fun countUnguarded(m: Int, n: Int, guards: Array<IntArray>, walls: Array<IntArray>): Int {
-        TODO()
+        val grid = Array(m) { IntArray(n) { UNGUARDED } }
+        for ((r, c) in guards) {
+            grid[r][c] = GUARD
+        }
+        for ((r, c) in walls) {
+            grid[r][c] = WALL
+        }
+        for ((r, c) in guards) {
+            // Up
+            var i = r - 1
+            while (i >= 0 && (grid[i][c] != WALL && grid[i][c] != GUARD)) {
+                grid[i][c] = GUARDED
+                i--
+            }
+            // Right
+            i = c + 1
+            while (i < n && (grid[r][i] != WALL && grid[r][i] != GUARD)) {
+                grid[r][i] = GUARDED
+                i++
+            }
+            // Down
+            i = r + 1
+            while (i < m && (grid[i][c] != WALL && grid[i][c] != GUARD)) {
+                grid[i][c] = GUARDED
+                i++
+            }
+            // Left
+            i = c - 1
+            while (i >= 0 && (grid[r][i] != WALL && grid[r][i] != GUARD)) {
+                grid[r][i] = GUARDED
+                i--
+            }
+        }
+        var answer = 0
+        for (i in 0 until m) {
+            for (j in 0 until n) {
+                if (grid[i][j] == UNGUARDED) {
+                    answer++
+                }
+            }
+        }
+        return answer
     }
-}
 
-fun main() {
-    val prob = Problem2257()
-    println(prob.countUnguarded(4, 6,
-        arrayOf(intArrayOf(0,0), intArrayOf(1,1), intArrayOf(2,3)),
-        arrayOf(intArrayOf(0,1), intArrayOf(2,2), intArrayOf(1,4)))) // 7
-    println(prob.countUnguarded(3, 3,
-        arrayOf(intArrayOf(1,1)),
-        arrayOf(intArrayOf(0,1), intArrayOf(1,0), intArrayOf(2,1), intArrayOf(1,2)))) // 4
+    companion object {
+        private const val GUARD = 1
+        private const val WALL = 2
+        private const val GUARDED = 3
+        private const val UNGUARDED = 4
+    }
 }
