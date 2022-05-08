@@ -5,13 +5,26 @@ package leetcode
  */
 class Problem2259 {
     fun removeDigit(number: String, digit: Char): String {
-        TODO()
+        var answer = ""
+        for (i in number.indices) {
+            if (digit != number[i]) {
+                continue
+            }
+            val s = when (i) {
+                0 -> {
+                    number.substring(i + 1)
+                }
+                number.length - 1 -> {
+                    number.substring(0, i)
+                }
+                else -> {
+                    number.substring(0, i) + number.substring(i + 1)
+                }
+            }
+            if (answer < s) {
+                answer = s
+            }
+        }
+        return answer
     }
-}
-
-fun main() {
-    val prob = Problem2259()
-    println(prob.removeDigit("123", '3')) // "12"
-    println(prob.removeDigit("1231", '1')) // "231"
-    println(prob.removeDigit("551", '5')) // "51"
 }
