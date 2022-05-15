@@ -5,12 +5,16 @@ package leetcode
  */
 class Problem2269 {
     fun divisorSubstrings(num: Int, k: Int): Int {
-        TODO()
+        var answer = 0
+        val s = num.toString()
+        var i = 0
+        while (i + k <= s.length) {
+            val n = s.substring(i, i + k).toInt()
+            if (n != 0 && num % n == 0) {
+                answer++
+            }
+            i++
+        }
+        return answer
     }
-}
-
-fun main() {
-    val prob = Problem2269()
-    println(prob.divisorSubstrings(240, 2)) // 2
-    println(prob.divisorSubstrings(430043, 2)) // 2
 }
