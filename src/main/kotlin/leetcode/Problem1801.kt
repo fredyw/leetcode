@@ -46,11 +46,11 @@ class Problem1801 {
         }
         var answer = 0L
         for ((_, count) in buyMap) {
-            answer += count
+            answer = (answer + count) % 1_000_000_007
         }
         for ((_, count) in sellMap) {
-            answer += count
+            answer = (answer + count) % 1_000_000_007
         }
-        return answer.toInt() % 1_000_000_007
+        return answer.toInt()
     }
 }
