@@ -14,4 +14,7 @@ fun main() {
     println(prob.minimumOperations(intArrayOf(2,4,12), 2, 12)) // 2
     println(prob.minimumOperations(intArrayOf(3,5,7), 0, -4)) // 2
     println(prob.minimumOperations(intArrayOf(2,8,16), 0, 1)) // -1
+    println(prob.minimumOperations(intArrayOf(2,3,9), 0, -4)) // 3
+    println(prob.minimumOperations(intArrayOf(2), 0, -2)) // -1
+    println(prob.minimumOperations(intArrayOf(2,2), 0, 4)) // 3
 }
