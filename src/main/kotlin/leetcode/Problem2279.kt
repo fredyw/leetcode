@@ -5,12 +5,26 @@ package leetcode
  */
 class Problem2279 {
     fun maximumBags(capacity: IntArray, rocks: IntArray, additionalRocks: Int): Int {
-        TODO()
+        var answer = 0
+        data class Bag(val capacity: Int, val rock: Int)
+        val list = mutableListOf<Bag>()
+        for ((i, c) in capacity.withIndex()) {
+            if (c == rocks[i]) {
+                answer++
+            } else {
+                list += Bag(c, rocks[i])
+            }
+        }
+        var additional = additionalRocks
+        list.sortBy { it.capacity - it.rock }
+        for (i in 0 until list.size) {
+            val diff = list[i].capacity - list[i].rock
+            if (diff > additional) {
+                break
+            }
+            additional -= diff
+            answer++
+        }
+        return answer
     }
-}
-
-fun main() {
-    val prob = Problem2279()
-    println(prob.maximumBags(intArrayOf(2,3,4,5), intArrayOf(1,2,4,4), 2)) // 3
-    println(prob.maximumBags(intArrayOf(10,2,2), intArrayOf(2,2,0), 100)) // 3
 }
