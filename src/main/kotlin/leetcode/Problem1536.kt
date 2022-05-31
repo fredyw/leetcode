@@ -5,23 +5,41 @@ package leetcode
  */
 class Problem1536 {
     fun minSwaps(grid: Array<IntArray>): Int {
-        TODO()
+        val zeroCounts = IntArray(grid.size)
+        val set = mutableSetOf<Int>()
+        for ((i, r) in grid.withIndex()) {
+            var count = 0
+            var j = r.size - 1
+            while (j >= 0 && r[j] == 0) {
+                count++
+                j--
+            }
+            for (k in grid.size - 1 downTo 0) {
+                if (count >= k && k !in set) {
+                    set += k
+                    zeroCounts[i] = grid.size - 1 - k
+                    break
+                }
+            }
+        }
+        if (set.size != grid.size) {
+            return -1
+        }
+        var answer = 0
+        // Bubble sort.
+        var swapped = true
+        while (swapped) {
+            swapped = false
+            for (i in 1 until zeroCounts.size) {
+                if (zeroCounts[i] < zeroCounts[i - 1]) {
+                    swapped = true
+                    answer++
+                    val tmp = zeroCounts[i]
+                    zeroCounts[i] = zeroCounts[i - 1]
+                    zeroCounts[i - 1] = tmp
+                }
+            }
+        }
+        return answer
     }
-}
-
-fun main() {
-    val prob = Problem1536()
-    println(prob.minSwaps(arrayOf(
-        intArrayOf(0,0,1),
-        intArrayOf(1,1,0),
-        intArrayOf(1,0,0)))) // 3
-    println(prob.minSwaps(arrayOf(
-        intArrayOf(0,1,1,0),
-        intArrayOf(0,1,1,0),
-        intArrayOf(0,1,1,0),
-        intArrayOf(0,1,1,0)))) // -1
-    println(prob.minSwaps(arrayOf(
-        intArrayOf(1,0,0),
-        intArrayOf(1,1,0),
-        intArrayOf(1,1,1)))) // 0
 }
