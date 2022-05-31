@@ -5,18 +5,21 @@ package leetcode
  */
 class Problem2284 {
     fun largestWordCount(messages: Array<String>, senders: Array<String>): String {
-        TODO()
+        var answer = ""
+        var max = 0
+        val map = mutableMapOf<String, Int>()
+        for ((index, message) in messages.withIndex()) {
+            map[senders[index]] = (map[senders[index]] ?: 0) + message.split(" ").size
+            val count = map[senders[index]] ?: 0
+            if (count > max) {
+                answer = senders[index]
+                max = count
+            } else if (count == max) {
+                if (answer < senders[index]) {
+                    answer = senders[index]
+                }
+            }
+        }
+        return answer
     }
-}
-
-fun main() {
-    val prob = Problem2284()
-    println(prob.largestWordCount(
-        arrayOf("Hello userTwooo","Hi userThree","Wonderful day Alice","Nice day userThree"),
-        arrayOf("Alice","userTwo","userThree","Alice")
-    )) // "Alice"
-    println(prob.largestWordCount(
-        arrayOf(["How is leetcode for everyone","Leetcode is useful for practice"),
-        arrayOf("Bob","Charlie")
-    )) // "Charlie"
 }
