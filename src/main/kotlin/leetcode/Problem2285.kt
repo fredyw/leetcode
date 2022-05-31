@@ -5,17 +5,20 @@ package leetcode
  */
 class Problem2285 {
     fun maximumImportance(n: Int, roads: Array<IntArray>): Long {
-        TODO()
+        val roadToCount = mutableMapOf<Int, Int>()
+        for ((a, b) in roads) {
+            roadToCount[a] = (roadToCount[a] ?: 0) + 1
+            roadToCount[b] = (roadToCount[b] ?: 0) + 1
+        }
+        var value = n
+        val roadToValue = mutableMapOf<Int, Int>()
+        for (entry in roadToCount.entries.sortedByDescending { it.value }) {
+            roadToValue[entry.key] = value--
+        }
+        var answer = 0L
+        for ((a, b) in roads) {
+            answer += (roadToValue[a] ?: 0) + (roadToValue[b] ?: 0)
+        }
+        return answer
     }
-}
-
-fun main() {
-    val prob = Problem2285()
-    println(prob.maximumImportance(5, arrayOf(
-        intArrayOf(0,1), intArrayOf(1,2), intArrayOf(2,3), intArrayOf(0,2),
-        intArrayOf(1,3), intArrayOf(2,4)
-    ))) // 43
-    println(prob.maximumImportance(5, arrayOf(
-        intArrayOf(0,3), intArrayOf(2,4), intArrayOf(1,3)
-    ))) // 20
 }
