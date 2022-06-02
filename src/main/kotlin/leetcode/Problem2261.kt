@@ -5,14 +5,24 @@ package leetcode
  */
 class Problem2261 {
     fun countDistinct(nums: IntArray, k: Int, p: Int): Int {
-        TODO()
+        val set = mutableSetOf<String>()
+        for (i in nums.indices) {
+            var count = 0
+            var j = i
+            var str = ""
+            while (j < nums.size) {
+                if (nums[j] % p == 0) {
+                    count++
+                }
+                if (count > k) {
+                    break
+                }
+                str += nums[j].toString() + ","
+                set += str
+                j++
+            }
+        }
+        println(set)
+        return set.size
     }
-}
-
-fun main() {
-    val prob = Problem2261()
-    println(prob.countDistinct(intArrayOf(2,3,3,2,2), 2, 2)) // 11
-    println(prob.countDistinct(intArrayOf(2,3,4,2,2), 2, 2)) // 9
-    println(prob.countDistinct(intArrayOf(2,3,5,2,2), 2, 2)) // 12
-    println(prob.countDistinct(intArrayOf(1,2,3,4), 4, 1)) // 10
 }
