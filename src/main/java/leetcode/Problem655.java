@@ -48,10 +48,4 @@ public class Problem655 {
         }
         return 1 + Math.max(height(root.left), height(root.right));
     }
-
-    private static void print(List<List<String>> list) {
-        for (List<String> l : list) {
-            System.out.println(l);
-        }
-    }
 }

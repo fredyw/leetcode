@@ -17,7 +17,6 @@ class Problem2210 {
                 }
             }
         }
-        println(list)
         if (list.size < 3) {
             return 0
         }

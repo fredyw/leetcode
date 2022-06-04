@@ -11,7 +11,6 @@ public class Problem165 {
         for (int i = 0; i < Math.max(ver1.length, ver2.length); i++) {
             int v1 = (i >= ver1.length) ? 0 : Integer.parseInt(ver1[i]);
             int v2 = (i >= ver2.length) ? 0 : Integer.parseInt(ver2[i]);
-            System.out.println(v1 + " " + v2);
             if (v1 < v2) {
                 return -1;
             } else if (v1 > v2) {

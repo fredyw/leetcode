@@ -68,12 +68,4 @@ public class Problem1171 {
         }
         return answer;
     }
-
-    private static void print(ListNode head) {
-        System.out.print("[ ");
-        for (ListNode n = head; n != null; n = n.next) {
-            System.out.print(n.val + " ");
-        }
-        System.out.println("]");
-    }
 }

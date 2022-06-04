@@ -21,7 +21,6 @@ public class Problem528 {
                 map.put(sum, index++);
                 sum += i;
             }
-            System.out.println(map.toString());
         }
 
         public int pickIndex() {
