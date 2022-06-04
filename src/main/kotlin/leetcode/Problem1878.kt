@@ -1,7 +1,6 @@
 package leetcode
 
 import java.util.TreeSet
-import kotlin.math.max
 
 /**
  * https://leetcode.com/problems/get-biggest-three-rhombus-sums-in-a-grid/
@@ -79,10 +78,10 @@ class Problem1878 {
     private fun rhombusSum(grid: Array<IntArray>,
                            leftDiagonalSums: MutableMap<RowCol, Int>,
                            rightDiagonalSums: MutableMap<RowCol, Int>,
-                           row: Int, col: Int): Int {
+                           row: Int, col: Int): MutableSet<Int> {
+        val set = mutableSetOf(grid[row][col])
         val maxRow = grid.size
         val maxCol = if (maxRow > 0) grid[0].size else 0
-        var max = grid[row][col]
         var r = row
         val c = col
         var length = 1
@@ -100,29 +99,9 @@ class Problem1878 {
             val sum = topLeft + topRight + bottomLeft + bottomRight -
                     (grid[r][c] + grid[r + length][c - length] +
                             grid[r + length][c + length] + grid[r + length * 2][c])
-            max = max(sum, max)
+            set += sum
             length++
         }
-
-        return max
+        return set
     }
-}
-
-fun main() {
-    val prob = Problem1878()
-    println(prob.getBiggestThree(arrayOf(
-        intArrayOf(3,4,5,1,3),
-        intArrayOf(3,3,4,2,3),
-        intArrayOf(20,30,200,40,10),
-        intArrayOf(1,5,5,4,1),
-        intArrayOf(4,3,2,2,5),
-    )).contentToString()) // [228,216,211]
-    println(prob.getBiggestThree(arrayOf(
-        intArrayOf(1,2,3),
-        intArrayOf(4,5,6),
-        intArrayOf(7,8,9),
-    )).contentToString()) // [20,9,8]
-    println(prob.getBiggestThree(arrayOf(
-        intArrayOf(7,7,7),
-    )).contentToString()) // [7]
 }
