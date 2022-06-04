@@ -29,9 +29,3 @@ class Problem2273 {
         return count1.contentEquals(count2)
     }
 }
-
-fun main() {
-    val prob = Problem2273()
-    println(prob.removeAnagrams(arrayOf("abba","baba","bbaa","cd","cd"))) // ["abba","cd"]
-    println(prob.removeAnagrams(arrayOf("a","b","c","d","e"))) // ["a","b","c","d","e"]
-}
