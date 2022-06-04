@@ -22,7 +22,6 @@ class Problem2261 {
                 j++
             }
         }
-        println(set)
         return set.size
     }
 }
