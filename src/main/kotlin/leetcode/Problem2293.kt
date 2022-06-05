@@ -1,16 +1,30 @@
 package leetcode
 
+import kotlin.math.max
+import kotlin.math.min
+
 /**
  * https://leetcode.com/problems/min-max-game/
  */
 class Problem2293 {
     fun minMaxGame(nums: IntArray): Int {
-        TODO()
+        var list = nums.toList()
+        while (list.size > 1) {
+            val tmp = mutableListOf<Int>()
+            var i = 0
+            var min = true
+            while (i < list.size - 1) {
+                tmp += if (min) {
+                    min(list[i], list[i + 1])
+                } else {
+                    max(list[i], list[i + 1])
+                }
+                min = !min
+                i += 2
+            }
+            list = tmp
+            println(list)
+        }
+        return list.first()
     }
-}
-
-fun main() {
-    val prob = Problem2293()
-    println(prob.minMaxGame(intArrayOf(1,3,5,2,4,8,2,2))) // 1
-    println(prob.minMaxGame(intArrayOf(3))) // 3
 }
