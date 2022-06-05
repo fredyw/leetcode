@@ -23,7 +23,6 @@ class Problem2293 {
                 i += 2
             }
             list = tmp
-            println(list)
         }
         return list.first()
     }
