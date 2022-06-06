@@ -5,13 +5,21 @@ package leetcode
  */
 class Problem2294 {
     fun partitionArray(nums: IntArray, k: Int): Int {
-        TODO()
+        nums.sort()
+        var answer = 0
+        var i = nums.size - 1
+        while (i >= 0) {
+            var index = nums.binarySearch(nums[i] - k, 0, i + 1)
+            if (index < 0) {
+                index = -index - 1
+            }
+            var j = index - 1
+            while (j >= 0 && nums[j] == nums[index]) {
+                j--
+            }
+            i = j
+            answer++
+        }
+        return answer
     }
-}
-
-fun main() {
-    val prob = Problem2294()
-    println(prob.partitionArray(intArrayOf(3,6,1,2,5), 2)) // 2
-    println(prob.partitionArray(intArrayOf(1,2,3), 1)) // 2
-    println(prob.partitionArray(intArrayOf(2,2,4,5), 0)) // 3
 }
