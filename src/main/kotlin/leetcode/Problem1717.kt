@@ -6,12 +6,12 @@ package leetcode
 class Problem1717 {
     fun maximumGain(s: String, x: Int, y: Int): Int {
         var answer = 0
-        var tmp = s
+        var sb = StringBuilder(s)
         while (true) {
             if (x > y) {
-                var i = tmp.indexOf("ab")
+                var i = sb.indexOf("ab")
                 if (i < 0) {
-                    i = tmp.indexOf("ba")
+                    i = sb.indexOf("ba")
                     if (i < 0) {
                         break
                     }
@@ -19,11 +19,11 @@ class Problem1717 {
                 } else {
                     answer += x
                 }
-                tmp = tmp.substring(0, i) + tmp.substring(i + 2)
+                sb.delete(i, i + 2)
             } else {
-                var i = tmp.indexOf("ba")
+                var i = sb.indexOf("ba")
                 if (i < 0) {
-                    i = tmp.indexOf("ab")
+                    i = sb.indexOf("ab")
                     if (i < 0) {
                         break
                     }
@@ -31,7 +31,7 @@ class Problem1717 {
                 } else {
                     answer += y
                 }
-                tmp = tmp.substring(0, i) + tmp.substring(i + 2)
+                sb.delete(i, i + 2)
             }
         }
         return answer
