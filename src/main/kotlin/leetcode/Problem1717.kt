@@ -1,40 +1,39 @@
 package leetcode
 
+import java.util.*
+
 /**
  * https://leetcode.com/problems/maximum-score-from-removing-substrings/
  */
 class Problem1717 {
     fun maximumGain(s: String, x: Int, y: Int): Int {
-        var answer = 0
-        var sb = StringBuilder(s)
-        while (true) {
-            if (x > y) {
-                var i = sb.indexOf("ab")
-                if (i < 0) {
-                    i = sb.indexOf("ba")
-                    if (i < 0) {
-                        break
-                    }
-                    answer += y
-                } else {
-                    answer += x
-                }
-                sb.delete(i, i + 2)
+        if (x > y) {
+            return maximumGain(s, x, y, 'a', 'b')
+        }
+        return maximumGain(s, y, x, 'b', 'a')
+    }
+
+    private fun maximumGain(s: String, value1: Int, value2: Int, first: Char, second: Char): Int {
+        var gain = 0
+        var stack1 = Stack<Char>()
+        for (i in s.indices) {
+            if (stack1.isNotEmpty() && stack1.peek() == first && s[i] == second) {
+                gain += value1
+                stack1.pop()
             } else {
-                var i = sb.indexOf("ba")
-                if (i < 0) {
-                    i = sb.indexOf("ab")
-                    if (i < 0) {
-                        break
-                    }
-                    answer += x
-                } else {
-                    answer += y
-                }
-                sb.delete(i, i + 2)
+                stack1.add(s[i])
             }
         }
-        return answer
+        val stack2 = Stack<Char>()
+        for (c in stack1) {
+            if (stack2.isNotEmpty() && stack2.peek() == second && c == first) {
+                gain += value2
+                stack2.pop()
+            } else {
+                stack2.add(c)
+            }
+        }
+        return gain
     }
 }
 
