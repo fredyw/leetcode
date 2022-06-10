@@ -23,11 +23,13 @@ fun main() {
     println(prob.maxMatrixSum(arrayOf(
         intArrayOf(1,2,3,4),
         intArrayOf(-1,-2,-3,4),
+        intArrayOf(1,2,3,4),
         intArrayOf(1,2,3,4)
     ))) // 38
     println(prob.maxMatrixSum(arrayOf(
         intArrayOf(1,2,3,4),
         intArrayOf(-1,-2,-3,-4),
-        intArrayOf(1,2,3,4)
+        intArrayOf(1,2,3,4),
+        intArrayOf(1,2,3,4),
     ))) // 40
 }
