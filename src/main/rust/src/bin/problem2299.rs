@@ -1,6 +1,7 @@
 use std::collections::HashSet;
 
-fn strong_password_checker_ii(password: String) -> bool {
+// https://leetcode.com/problems/strong-password-checker-ii/
+pub fn strong_password_checker_ii(password: String) -> bool {
     if password.len() < 8 {
         return false;
     }
