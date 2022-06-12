@@ -7,7 +7,11 @@ fn main() {
     println!(
         "{}",
         min_path_cost(
-            vec![vec![5, 3], vec![4, 0], vec![2, 1]],
+            vec![
+                vec![5, 3],
+                vec![4, 0],
+                vec![2, 1]
+            ],
             vec![
                 vec![9, 8],
                 vec![1, 5],
@@ -21,7 +25,10 @@ fn main() {
     println!(
         "{}",
         min_path_cost(
-            vec![vec![5, 1, 2], vec![4, 0, 3]],
+            vec![
+                vec![5, 1, 2],
+                vec![4, 0, 3]
+            ],
             vec![
                 vec![12, 10, 15],
                 vec![20, 23, 8],
