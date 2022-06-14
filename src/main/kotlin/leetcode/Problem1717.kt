@@ -36,9 +36,3 @@ class Problem1717 {
         return gain
     }
 }
-
-fun main() {
-    val prob = Problem1717()
-    println(prob.maximumGain("cdbcbbaaabab", 4, 5)) // 19
-    println(prob.maximumGain("aabbaaxybbaabb", 5, 4)) // 20
-}
