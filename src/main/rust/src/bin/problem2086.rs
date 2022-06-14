@@ -7,4 +7,7 @@ fn main() {
     println!("{}", minimum_buckets(String::from("H..H"))); // 2
     println!("{}", minimum_buckets(String::from(".H.H."))); // 1
     println!("{}", minimum_buckets(String::from(".HHH."))); // -1
+    println!("{}", minimum_buckets(String::from(".H..H..H."))); // 3
+    println!("{}", minimum_buckets(String::from(".H.H..H."))); // 2
+    println!("{}", minimum_buckets(String::from(".H.H.H."))); // 2
 }
