@@ -1,16 +1,19 @@
 // https://leetcode.com/problems/find-the-kth-largest-integer-in-the-array/
 pub fn kth_largest_number(nums: Vec<String>, k: i32) -> String {
+    fn pad(s: &str, length: usize) -> String {
+        "0".repeat(length) + &s.to_owned()
+    }
     let mut nums = nums.clone();
     nums.sort_by(|a, b| {
         if a.len() > b.len() {
-            todo!()
+            return pad(&b, a.len() - b.len()).cmp(a);
         }
         if a.len() < b.len() {
-            todo!()
+            return b.cmp(&pad(a, b.len() - a.len()));
         }
         b.cmp(a)
     });
-    "Hello".to_string()
+    nums[k as usize - 1].to_owned()
 }
 
 fn main() {
