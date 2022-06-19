@@ -4,7 +4,6 @@ pub fn kth_smallest_prime_fraction(arr: Vec<i32>, k: i32) -> Vec<i32> {
     let mut fractions: Vec<Fraction> = vec![];
     for i in 0..arr.len() {
         for j in i + 1..arr.len() {
-            // println!("{} / {} = {}", arr[i], arr[j], i as f64 / j as f64);
             fractions.push(Fraction(arr[i], arr[j]));
         }
     }
