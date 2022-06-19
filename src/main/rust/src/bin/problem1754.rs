@@ -7,9 +7,13 @@ fn main() {
     println!(
         "{}",
         largest_merge(String::from("cabaa"), String::from("bcaaa"))
-    ); // cbcabaaaaa
+    ); // "cbcabaaaaa"
     println!(
         "{}",
         largest_merge(String::from("abcabc"), String::from("abdcaba"))
-    ); // abdcabcabcaba
+    ); // "abdcabcabcaba"
+    println!(
+        "{}",
+        largest_merge(String::from("abb"), String::from("acde"))
+    ); // "acdeabb"
 }
