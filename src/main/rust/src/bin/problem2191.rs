@@ -3,24 +3,20 @@ pub fn sort_jumbled(mapping: Vec<i32>, nums: Vec<i32>) -> Vec<i32> {
     fn pad(s: &str, length: usize) -> String {
         "0".repeat(length) + &s.to_owned()
     }
-    let mut sorted_nums = nums.clone();
     let longest = nums.iter().map(|a| a.to_string().len()).max().unwrap();
-    sorted_nums.sort_by(|a, b| {
-        let a: Vec<char> = a.to_string().chars().collect();
-        let mut s1 = String::from("");
-        for c in a {
-            s1.push_str(&mapping[c as usize - '0' as usize].to_string());
-        }
-        let b: Vec<char> = b.to_string().chars().collect();
-        let mut s2 = String::from("");
-        for c in b {
-            s2.push_str(&mapping[c as usize - '0' as usize].to_string());
-        }
-        let s1 = pad(&s1, longest - s1.len());
-        let s2 = pad(&s2, longest - s2.len());
-        s1.cmp(&s2)
-    });
-    sorted_nums
+    let mut sorted_nums: Vec<(i32, String)> = nums
+        .iter()
+        .map(|a| {
+            let chars: Vec<char> = a.to_string().chars().collect();
+            let mut s = String::from("");
+            for c in chars {
+                s.push_str(&mapping[c as usize - '0' as usize].to_string());
+            }
+            (*a, pad(&s, longest - s.len()))
+        })
+        .collect();
+    sorted_nums.sort_by(|a, b| a.1.cmp(&b.1));
+    sorted_nums.iter().map(|a| a.0).collect()
 }
 
 fn main() {
