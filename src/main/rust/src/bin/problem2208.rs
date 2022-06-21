@@ -8,7 +8,7 @@ pub fn halve_array(nums: Vec<i32>) -> i32 {
     impl Eq for Wrapper {}
     impl Ord for Wrapper {
         fn cmp(&self, other: &Self) -> Ordering {
-            self.0.partial_cmp(&other.0).unwrap()
+            self.partial_cmp(&other).unwrap()
         }
     }
     let mut answer = 0;
