@@ -4,7 +4,18 @@ pub fn min_operations_max_profit(
     boarding_cost: i32,
     running_cost: i32,
 ) -> i32 {
-    todo!()
+    let mut answer = 0;
+    let mut i = 1;
+    let mut wait = 0;
+    for customer in customers {
+        todo!();
+        i += 1;
+    }
+    if answer < 0 {
+        -1
+    } else {
+        answer
+    }
 }
 
 fn main() {
