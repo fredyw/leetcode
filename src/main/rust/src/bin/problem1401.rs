@@ -8,7 +8,17 @@ pub fn check_overlap(
     x2: i32,
     y2: i32,
 ) -> bool {
-    todo!()
+    fn find(a1: i32, a2: i32, a_center: i32) -> i32 {
+        if a1 <= a_center && a_center <= a2 {
+            0
+        } else if a1 > a_center {
+            a1 - a_center
+        } else {
+            // a2 > a_center
+            a_center - a2
+        }
+    }
+    find(x1, x2, x_center).pow(2) + find(y1, y2, y_center).pow(2) <= radius.pow(2)
 }
 
 fn main() {
