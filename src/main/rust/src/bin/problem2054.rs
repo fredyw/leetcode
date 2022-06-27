@@ -1,8 +1,9 @@
 use std::cmp;
+use std::cmp::Reverse;
+use std::collections::BinaryHeap;
 
 // https://leetcode.com/problems/two-best-non-overlapping-events/
-pub fn max_two_events(events: Vec<Vec<i32>>) -> i32 {
-    let mut events = events.clone();
+pub fn max_two_events(mut events: Vec<Vec<i32>>) -> i32 {
     events.sort_by(|a, b| {
         let start_time1 = &a[0];
         let end_time1 = &a[1];
@@ -16,17 +17,20 @@ pub fn max_two_events(events: Vec<Vec<i32>>) -> i32 {
         }
     });
     let mut answer = 0;
+    let mut max = 0;
+    let mut heap: BinaryHeap<(Reverse<i32>, Reverse<i32>)> = BinaryHeap::new();
     for i in 0..events.len() {
-        let end_time1 = &events[i][1];
-        let value1 = &events[i][2];
-        answer = cmp::max(answer, *value1);
-        for j in (i + 1)..events.len() {
-            let start_time2 = &events[j][0];
-            let value2 = &events[j][2];
-            if end_time1 < start_time2 {
-                answer = cmp::max(answer, value1 + value2);
+        let start_time = &events[i][0];
+        let end_time = &events[i][1];
+        let value = &events[i][2];
+        while !heap.is_empty() {
+            if heap.peek().unwrap().0 .0 >= *start_time {
+                break;
             }
+            max = cmp::max(max, heap.pop().unwrap().1 .0);
         }
+        answer = cmp::max(answer, max + value);
+        heap.push((Reverse(*end_time), Reverse(*value)));
     }
     answer
 }
