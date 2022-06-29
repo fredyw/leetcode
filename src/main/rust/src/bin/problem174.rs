@@ -8,5 +8,13 @@ fn main() {
         "{}",
         calculate_minimum_hp(vec![vec![-2, -3, 3], vec![-5, -10, 1], vec![10, 30, -5]])
     ); // 7
+    println!(
+        "{}",
+        calculate_minimum_hp(vec![vec![2, -3, 3], vec![-5, -10, 1], vec![10, 30, -5]])
+    ); // 3
+    println!(
+        "{}",
+        calculate_minimum_hp(vec![vec![2, 3, 3], vec![-5, -10, 1], vec![10, 30, 5]])
+    ); // 1
     println!("{}", calculate_minimum_hp(vec![vec![0]])); // 1
 }
