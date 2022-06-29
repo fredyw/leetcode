@@ -18,4 +18,7 @@ fn main() {
             vec![vec![2, 3], vec![0, 2], vec![0, 5], vec![3, 5]]
         )
     ); // [-1,1,1,3]
+    println!("{:?}", min_difference(vec![1, 3, 3, 1], vec![vec![0, 3]])); // [2]
+    println!("{:?}", min_difference(vec![3, 3, 3, 1], vec![vec![0, 3]])); // [2]
+    println!("{:?}", min_difference(vec![3, 3, 3, 3], vec![vec![0, 3]])); // [-1]
 }
