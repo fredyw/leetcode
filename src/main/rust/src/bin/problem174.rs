@@ -1,16 +1,16 @@
 // https://leetcode.com/problems/dungeon-game/
 pub fn calculate_minimum_hp(dungeon: Vec<Vec<i32>>) -> i32 {
     fn f(dungeon: &Vec<Vec<i32>>, row: i32, col: i32, memo: &mut Vec<Vec<i32>>) -> i32 {
-        let max_rows = dungeon.len() as i32;
-        let max_cols = if max_rows > 0 { dungeon[0].len() } else { 0 } as i32;
-        if row == max_rows || col == max_cols {
+        let max_row = dungeon.len() as i32;
+        let max_col = if max_row > 0 { dungeon[0].len() } else { 0 } as i32;
+        if row == max_row || col == max_col {
             return i32::MAX;
         }
         if memo[row as usize][col as usize] != -1 {
             return memo[row as usize][col as usize];
         }
         let value = &dungeon[row as usize][col as usize];
-        if row == max_rows - 1 && col == max_cols - 1 {
+        if row == max_row - 1 && col == max_col - 1 {
             return if *value <= 0 { -value + 1 } else { 1 };
         }
         let right = f(dungeon, row, col + 1, memo);
