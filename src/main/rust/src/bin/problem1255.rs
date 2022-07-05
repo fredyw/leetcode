@@ -1,6 +1,56 @@
 // https://leetcode.com/problems/maximum-score-words-formed-by-letters/
 pub fn max_score_words(words: Vec<String>, letters: Vec<char>, score: Vec<i32>) -> i32 {
-    todo!()
+    fn get_max_score(
+        words: &Vec<String>,
+        letter_counts: &mut Vec<i32>,
+        scores: &Vec<i32>,
+        index: usize,
+    ) -> i32 {
+        let mut max_score = 0;
+        for i in index..words.len() {
+            let word = &words[i];
+            let mut chars: Vec<char> = word.chars().collect();
+            if valid_word(letter_counts, &mut chars) {
+                let score = get_score(scores, &chars);
+                max_score =
+                    max_score.max(get_max_score(words, letter_counts, scores, i + 1) + score);
+                for c in chars.iter() {
+                    letter_counts[*c as usize - 'a' as usize] += 1;
+                }
+            }
+        }
+        max_score
+    }
+
+    fn valid_word(letter_counts: &mut Vec<i32>, chars: &Vec<char>) -> bool {
+        let mut tmp = vec![0; 26];
+        for c in chars {
+            let i = *c as usize - 'a' as usize;
+            tmp[i] += 1;
+            letter_counts[i] -= 1;
+            if letter_counts[i] < 0 {
+                for j in 0..tmp.len() {
+                    letter_counts[j] += tmp[j];
+                }
+                return false;
+            }
+        }
+        true
+    }
+
+    fn get_score(scores: &Vec<i32>, chars: &Vec<char>) -> i32 {
+        let mut score = 0;
+        for c in chars {
+            score += scores[*c as usize - 'a' as usize];
+        }
+        score
+    }
+
+    let mut letter_counts = vec![0; 26];
+    for c in letters {
+        letter_counts[c as usize - 'a' as usize] += 1;
+    }
+    get_max_score(&words, &mut letter_counts, &score, 0)
 }
 
 fn main() {
