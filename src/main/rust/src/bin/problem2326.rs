@@ -13,7 +13,69 @@ impl ListNode {
 }
 
 pub fn spiral_matrix(m: i32, n: i32, head: Option<Box<ListNode>>) -> Vec<Vec<i32>> {
-    todo!()
+    enum Direction {
+        UP,
+        RIGHT,
+        DOWN,
+        LEFT,
+    }
+    let mut min_row = 0;
+    let mut min_col = 0;
+    let mut max_row = m;
+    let mut max_col = n;
+    let mut answer = vec![vec![-1; max_col as usize]; max_row as usize];
+    let mut row = 0;
+    let mut col = 0;
+    let mut direction = Direction::RIGHT;
+    let mut current = &head;
+    loop {
+        match current {
+            Some(a) => {
+                answer[row as usize][col as usize] = a.val;
+                match direction {
+                    Direction::RIGHT => {
+                        if col + 1 < max_col {
+                            col += 1;
+                        } else {
+                            direction = Direction::DOWN;
+                            row += 1;
+                        }
+                    }
+                    Direction::DOWN => {
+                        if row + 1 < max_row {
+                            row += 1;
+                        } else {
+                            direction = Direction::LEFT;
+                            col -= 1;
+                        }
+                    }
+                    Direction::LEFT => {
+                        if col - 1 >= min_col {
+                            col -= 1;
+                        } else {
+                            direction = Direction::UP;
+                            row -= 1;
+                        }
+                    }
+                    Direction::UP => {
+                        if row - 1 > min_row {
+                            row -= 1;
+                        } else {
+                            direction = Direction::RIGHT;
+                            col += 1;
+                            min_col += 1;
+                            min_row += 1;
+                            max_row -= 1;
+                            max_col -= 1;
+                        }
+                    }
+                }
+                current = &a.next;
+            }
+            None => break,
+        }
+    }
+    answer
 }
 
 fn build_linked_list(v: Vec<i32>) -> Option<Box<ListNode>> {
