@@ -33,7 +33,6 @@ pub fn check_move(board: Vec<Vec<char>>, r_move: i32, c_move: i32, color: char) 
         count >= 1 && r >= 0 && r < n && c >= 0 && c < n && &board[r as usize][c as usize] == &color
     }
 
-    let n = 8;
     // Top
     if check(&board, r_move - 1, c_move, color, |r| r - 1, |c| c) {
         return true;

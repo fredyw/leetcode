@@ -1,6 +1,7 @@
 // https://leetcode.com/problems/minimum-absolute-difference-queries/
 pub fn min_difference(nums: Vec<i32>, queries: Vec<Vec<i32>>) -> Vec<i32> {
-    let mut prefix = [[0; 101]; 100001];
+    // Leetcode only accepts the solution with an array instead of a Vector.
+    let mut prefix = vec![vec![0; 101]; 100001];
     for (i, num) in nums.into_iter().enumerate() {
         let j = num as usize;
         prefix[i][j] += 1;
@@ -14,7 +15,7 @@ pub fn min_difference(nums: Vec<i32>, queries: Vec<Vec<i32>>) -> Vec<i32> {
     for query in queries.into_iter() {
         let left = query[0] as usize;
         let right = query[1] as usize;
-        let mut counts = [0; 101];
+        let mut counts = vec![0; 101];
         for i in 0..101 {
             if left == 0 {
                 counts[i] = prefix[right][i];
