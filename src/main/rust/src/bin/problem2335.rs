@@ -1,6 +1,14 @@
 // https://leetcode.com/problems/minimum-amount-of-time-to-fill-cups/
 pub fn fill_cups(amount: Vec<i32>) -> i32 {
-    todo!()
+    let mut answer = 0;
+    let mut v = amount.clone();
+    while v[0] > 0 || v[1] > 0 || v[2] > 0 {
+        v.sort();
+        v[1] -= 1;
+        v[2] -= 1;
+        answer += 1;
+    }
+    answer
 }
 
 fn main() {
