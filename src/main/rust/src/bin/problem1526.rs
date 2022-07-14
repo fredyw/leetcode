@@ -1,6 +1,14 @@
 // https://leetcode.com/problems/minimum-number-of-increments-on-subarrays-to-form-a-target-array/
 pub fn min_number_operations(target: Vec<i32>) -> i32 {
-    todo!()
+    let mut answer = 0;
+    let mut previous = 0;
+    for current in target {
+        if current - previous > 0 {
+            answer += current - previous;
+        }
+        previous = current;
+    }
+    answer
 }
 
 fn main() {
