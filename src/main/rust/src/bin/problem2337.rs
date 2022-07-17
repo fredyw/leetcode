@@ -1,6 +1,40 @@
 // https://leetcode.com/problems/move-pieces-to-obtain-a-string/
 pub fn can_change(start: String, target: String) -> bool {
-    todo!()
+    fn swap(v: &mut Vec<char>, i: usize, j: usize) {
+        let tmp = v[i];
+        v[i] = v[j];
+        v[j] = tmp;
+    }
+
+    let mut start: Vec<char> = start.chars().into_iter().collect();
+    let target: Vec<char> = target.chars().into_iter().collect();
+    let mut i = 0;
+    let mut j = 0;
+    while i < target.len() {
+        if start[i] != target[i] {
+            if target[i] == 'L' {
+                if start[i] != '_' {
+                    return false;
+                }
+                while j < start.len() && start[j] == '_' {
+                    j += 1;
+                }
+                if start[j] != 'L' {
+                    return false;
+                }
+                swap(&mut start, i, j);
+            } else if target[i] == 'R' {
+                return false;
+            } else {
+                if start[i] != 'R' {
+                    return false;
+                }
+            }
+        }
+        println!("{:?}", start);
+        i += 1;
+    }
+    true
 }
 
 fn main() {
