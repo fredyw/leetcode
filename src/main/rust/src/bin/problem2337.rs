@@ -19,7 +19,7 @@ pub fn can_change(start: String, target: String) -> bool {
                 while j < start.len() && start[j] == '_' {
                     j += 1;
                 }
-                if start[j] != 'L' {
+                if j == start.len() || start[j] != 'L' {
                     return false;
                 }
                 swap(&mut start, i, j);
@@ -29,10 +29,17 @@ pub fn can_change(start: String, target: String) -> bool {
                 if start[i] != 'R' {
                     return false;
                 }
+                while j < start.len() && start[j] == 'R' {
+                    j += 1;
+                }
+                if j == start.len() || start[j] != '_' {
+                    return false;
+                }
+                swap(&mut start, i, j);
             }
         }
-        println!("{:?}", start);
         i += 1;
+        j = j.max(i);
     }
     true
 }
@@ -42,8 +49,8 @@ fn main() {
         "{}",
         can_change(String::from("_L__R__R_"), String::from("L______RR"))
     ); // true
-    println!("{}", can_change(String::from("R_L_"), String::from("__LR"))); // true
-    println!("{}", can_change(String::from("_R"), String::from("R_"))); // true
+    println!("{}", can_change(String::from("R_L_"), String::from("__LR"))); // false
+    println!("{}", can_change(String::from("_R"), String::from("R_"))); // false
     println!("{}", can_change(String::from("LLLR"), String::from("LRRR"))); // false
     println!(
         "{}",
@@ -52,5 +59,6 @@ fn main() {
     println!(
         "{}",
         can_change(String::from("__L_RL__R__"), String::from("L___RL_R___"))
-    ); // true
+    ); // false
+    println!("{}", can_change(String::from("_"), String::from("L"))); // false
 }
