@@ -10,4 +10,8 @@ fn main() {
         earliest_full_bloom(vec![1, 2, 3, 2], vec![2, 1, 2, 1])
     ); // 9
     println!("{}", earliest_full_bloom(vec![1], vec![1])); // 2
+    println!(
+        "{}",
+        earliest_full_bloom(vec![3, 1, 5, 3], vec![2, 3, 1, 4])
+    ); // 13
 }
