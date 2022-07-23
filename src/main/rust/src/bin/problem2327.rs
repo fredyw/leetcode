@@ -16,7 +16,7 @@ pub fn people_aware_of_secret(n: i32, delay: i32, forget: i32) -> i32 {
         sum
     }
 
-    let mut memo = vec![vec![-1i64; (n + delay + 1) as usize]; (n + delay + 1) as usize];
+    let mut memo = vec![vec![-1i64; (n + delay + 1) as usize]; (n + 1) as usize];
     (f(n, delay, forget, 1, &mut memo) % 1_000_000_007) as i32
 }
 
