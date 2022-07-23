@@ -30,9 +30,10 @@ pub fn people_aware_of_secret(n: i32, delay: i32, forget: i32) -> i32 {
 }
 
 fn main() {
-    // println!("{}", people_aware_of_secret(6, 2, 4)); // 5
-    // println!("{}", people_aware_of_secret(4, 1, 3)); // 6
-    // println!("{}", people_aware_of_secret(10, 3, 5)); // 5
-    // println!("{}", people_aware_of_secret(1000, 500, 600)); // 100
+    println!("{}", people_aware_of_secret(6, 2, 4)); // 5
+    println!("{}", people_aware_of_secret(4, 1, 3)); // 6
+    println!("{}", people_aware_of_secret(10, 3, 5)); // 5
+    println!("{}", people_aware_of_secret(1000, 500, 600)); // 100
+    println!("{}", people_aware_of_secret(100, 20, 30)); // 6775
     println!("{}", people_aware_of_secret(1000, 2, 1000)); // 517691607
 }
