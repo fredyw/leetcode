@@ -12,6 +12,7 @@ fn main() {
     println!("{:?}", max_number(vec![3, 9], vec![8, 9], 3)); // [9,8,9]
     println!("{:?}", max_number(vec![3, 9], vec![8, 9], 3)); // [9,8,9]
     println!("{:?}", max_number(vec![9, 8, 7], vec![1, 2], 4)); // [9,8,7,2]
+    println!("{:?}", max_number(vec![3, 4, 6, 9], vec![9, 2, 5, 8, 9], 4)); // [9,9,5,8,9]
     println!(
         "{:?}",
         max_number(
