@@ -1,17 +1,47 @@
+use std::collections::{BTreeSet, HashMap};
+
 // https://leetcode.com/problems/design-a-number-container-system/
-struct NumberContainers {}
+struct NumberContainers {
+    index_to_number_map: HashMap<i32, i32>,
+    number_to_indexes_map: HashMap<i32, BTreeSet<i32>>,
+}
 
 impl NumberContainers {
     fn new() -> Self {
-        NumberContainers {}
+        NumberContainers {
+            index_to_number_map: HashMap::new(),
+            number_to_indexes_map: HashMap::new(),
+        }
     }
 
     fn change(&mut self, index: i32, number: i32) {
-        todo!()
+        match self.index_to_number_map.get(&index) {
+            Some(old_number) => match self.number_to_indexes_map.get_mut(&old_number) {
+                Some(indexes) => {
+                    indexes.remove(&index);
+                }
+                None => (),
+            },
+            None => (),
+        }
+        self.index_to_number_map.insert(index, number);
+        match self.number_to_indexes_map.get_mut(&number) {
+            Some(indexes) => {
+                indexes.insert(index);
+            }
+            None => {
+                let mut set: BTreeSet<i32> = BTreeSet::new();
+                set.insert(index);
+                self.number_to_indexes_map.insert(number, set);
+            }
+        }
     }
 
     fn find(&self, number: i32) -> i32 {
-        todo!()
+        match self.number_to_indexes_map.get(&number) {
+            Some(set) => *set.iter().next().unwrap_or(&-1),
+            None => -1,
+        }
     }
 }
 
@@ -24,5 +54,8 @@ fn main() {
     nc.change(5, 10);
     println!("{}", nc.find(10)); // 1
     nc.change(1, 20);
-    println!("{}", nc.find(10)); // 2.
+    println!("{}", nc.find(10)); // 2
+    nc.change(2, 20);
+    println!("{}", nc.find(10)); // 3
+    println!("{}", nc.find(20)); // 1
 }
