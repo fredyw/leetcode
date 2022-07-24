@@ -3,10 +3,10 @@ struct NumberContainers {}
 
 impl NumberContainers {
     fn new() -> Self {
-        todo!()
+        NumberContainers {}
     }
 
-    fn change(&self, index: i32, number: i32) {
+    fn change(&mut self, index: i32, number: i32) {
         todo!()
     }
 
@@ -16,7 +16,7 @@ impl NumberContainers {
 }
 
 fn main() {
-    let nc = NumberContainers::new();
+    let mut nc = NumberContainers::new();
     println!("{}", nc.find(10)); // -1
     nc.change(2, 10);
     nc.change(1, 10);
