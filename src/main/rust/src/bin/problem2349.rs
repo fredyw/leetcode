@@ -38,10 +38,9 @@ impl NumberContainers {
     }
 
     fn find(&self, number: i32) -> i32 {
-        match self.number_to_indexes_map.get(&number) {
-            Some(set) => *set.iter().next().unwrap_or(&-1),
-            None => -1,
-        }
+        self.number_to_indexes_map
+            .get(&number)
+            .map_or(-1, |set| *set.iter().next().unwrap_or(&-1))
     }
 }
 
