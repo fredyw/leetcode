@@ -15,14 +15,10 @@ impl NumberContainers {
     }
 
     fn change(&mut self, index: i32, number: i32) {
-        match self.index_to_number_map.get(&index) {
-            Some(old_number) => match self.number_to_indexes_map.get_mut(&old_number) {
-                Some(indexes) => {
-                    indexes.remove(&index);
-                }
-                None => (),
-            },
-            None => (),
+        if let Some(old_number) = self.index_to_number_map.get(&index) {
+            if let Some(indexes) = self.number_to_indexes_map.get_mut(&old_number) {
+                indexes.remove(&index);
+            }
         }
         self.index_to_number_map.insert(index, number);
         match self.number_to_indexes_map.get_mut(&number) {
