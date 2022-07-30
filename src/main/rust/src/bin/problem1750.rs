@@ -3,12 +3,12 @@ pub fn minimum_length(s: String) -> i32 {
     let bytes = s.as_bytes();
     let mut i = 0;
     let mut j = bytes.len() - 1;
-    while i <= j && bytes[i] == bytes[j] {
+    while i < j && bytes[i] == bytes[j] {
         let tmp = bytes[i];
         while i <= j && bytes[i] == bytes[j] {
             i += 1;
         }
-        while i <= j && tmp == bytes[j] {
+        while i < j && tmp == bytes[j] {
             j -= 1;
         }
     }
