@@ -1,15 +1,33 @@
-use std::collections::{BTreeMap, BTreeSet};
+use std::collections::{BTreeMap, BTreeSet, HashMap};
 
 // https://leetcode.com/problems/tweet-counts-per-frequency/
-struct TweetCounts {}
+struct TweetCounts {
+    map: HashMap<String, BTreeMap<i32, i32>>,
+}
 
 impl TweetCounts {
     fn new() -> Self {
-        TweetCounts {}
+        TweetCounts {
+            map: HashMap::new(),
+        }
     }
 
     fn record_tweet(&mut self, tweet_name: String, time: i32) {
-        todo!()
+        match self.map.get_mut(&tweet_name) {
+            Some(m) => match m.get_mut(&time) {
+                Some(m) => {
+                    *m += 1;
+                }
+                None => {
+                    m.insert(time, 1);
+                }
+            },
+            None => {
+                let mut m: BTreeMap<i32, i32> = BTreeMap::new();
+                m.insert(time, 1);
+                self.map.insert(tweet_name, m);
+            }
+        }
     }
 
     fn get_tweet_counts_per_frequency(
@@ -20,11 +38,16 @@ impl TweetCounts {
         end_time: i32,
     ) -> Vec<i32> {
         match tweet_name.as_str() {
-            "minute" => (),
+            "minute" => {
+                let mut time = start_time;
+                while time < end_time {
+                    time += 60;
+                }
+            }
             "hour" => (),
             _ => (),
         };
-        todo!()
+        vec![]
     }
 }
 
