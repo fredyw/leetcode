@@ -31,4 +31,5 @@ fn main() {
     println!("{}", tree.lock(4, 5)); // true
     println!("{}", tree.upgrade(0, 1)); // true
     println!("{}", tree.lock(0, 1)); // false
+    println!("{}", tree.upgrade(3, 1)); // false
 }
