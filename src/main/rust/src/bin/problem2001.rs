@@ -17,12 +17,12 @@ pub fn interchangeable_rectangles(rectangles: Vec<Vec<i32>>) -> i64 {
     }
 
     let mut answer: i64 = 0;
-    let mut map: HashMap<String, i32> = HashMap::new();
+    let mut map: HashMap<(i32, i32), i32> = HashMap::new();
     for rectangle in rectangles.into_iter() {
         let gcd = gcd(rectangle[0], rectangle[1]);
-        let s = format!("{}/{}", rectangle[0] / gcd, rectangle[1] / gcd);
-        let count = map.get(&s).unwrap_or(&0) + 1;
-        map.insert(s, count);
+        let key = (rectangle[0] / gcd, rectangle[1] / gcd);
+        let count = map.get(&key).unwrap_or(&0) + 1;
+        map.insert(key, count);
     }
     answer += map
         .into_iter()
