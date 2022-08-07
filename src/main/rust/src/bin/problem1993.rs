@@ -1,8 +1,9 @@
 use std::collections::HashMap;
 
-// https://leetcode.com/problems/operations-on-tree/
+// https://leetcode.com/problems/operatigions-on-tree/
 struct LockingTree {
-    tree: HashMap<i32, Vec<i32>>,
+    parent_to_children: HashMap<i32, Vec<i32>>,
+    child_to_parent: HashMap<i32, i32>,
     locks: HashMap<i32, i32>,
 }
 
@@ -12,13 +13,16 @@ struct LockingTree {
  */
 impl LockingTree {
     fn new(parent: Vec<i32>) -> Self {
-        let mut tree = HashMap::new();
+        let mut parent_to_children = HashMap::new();
+        let mut child_to_parent = HashMap::new();
         for (num, parent) in parent.into_iter().enumerate() {
-            let children = tree.entry(parent).or_insert(vec![]);
+            let children = parent_to_children.entry(parent).or_insert(vec![]);
             (*children).push(num as i32);
+            child_to_parent.insert(num as i32, parent);
         }
         LockingTree {
-            tree,
+            parent_to_children,
+            child_to_parent,
             locks: HashMap::new(),
         }
     }
@@ -48,27 +52,22 @@ impl LockingTree {
 
     fn upgrade(&mut self, num: i32, user: i32) -> bool {
         fn has_locked_ancestor(
-            tree: &HashMap<i32, Vec<i32>>,
+            child_to_parent: &HashMap<i32, i32>,
             locks: &HashMap<i32, i32>,
-            num_target: i32,
             num: i32,
-            locked: bool,
         ) -> bool {
-            if num == num_target {
-                return locked;
+            let mut parent = child_to_parent.get(&num);
+            while let Some(p) = parent {
+                if locks.get(p).is_some() {
+                    return true;
+                }
+                parent = child_to_parent.get(p);
             }
-            let mut has_locked = match locks.get(&num) {
-                Some(_) => true && !tree.get(&num).is_none(),
-                None => false,
-            };
-            for child in tree.get(&num).unwrap_or(&vec![]).iter() {
-                has_locked |= has_locked_ancestor(tree, locks, num_target, *child, has_locked);
-            }
-            has_locked
+            false
         }
 
         fn has_locked_descendent(
-            tree: &HashMap<i32, Vec<i32>>,
+            parent_to_children: &HashMap<i32, Vec<i32>>,
             locks: &mut HashMap<i32, i32>,
             num: i32,
         ) -> bool {
@@ -79,8 +78,8 @@ impl LockingTree {
                 }
                 None => false,
             };
-            for child in tree.get(&num).unwrap_or(&vec![]).iter() {
-                has_locked |= has_locked_descendent(tree, locks, *child);
+            for child in parent_to_children.get(&num).unwrap_or(&vec![]).iter() {
+                has_locked |= has_locked_descendent(parent_to_children, locks, *child);
             }
             has_locked
         }
@@ -88,10 +87,10 @@ impl LockingTree {
         match self.locks.get(&num) {
             Some(_) => false,
             None => {
-                if has_locked_ancestor(&self.tree, &self.locks, num, 0, false) {
+                if has_locked_ancestor(&self.child_to_parent, &self.locks, num) {
                     return false;
                 }
-                if !has_locked_descendent(&self.tree, &mut self.locks, num) {
+                if !has_locked_descendent(&self.parent_to_children, &mut self.locks, num) {
                     return false;
                 }
                 self.locks.insert(num, user);
