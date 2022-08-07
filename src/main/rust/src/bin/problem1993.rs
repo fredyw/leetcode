@@ -47,10 +47,55 @@ impl LockingTree {
     }
 
     fn upgrade(&mut self, num: i32, user: i32) -> bool {
+        fn has_locked_ancestor(
+            tree: &HashMap<i32, Vec<i32>>,
+            locks: &HashMap<i32, i32>,
+            num_target: i32,
+            num: i32,
+            locked: bool,
+        ) -> bool {
+            if num == num_target {
+                return locked;
+            }
+            let mut has_locked = match locks.get(&num) {
+                Some(_) => true,
+                None => false,
+            };
+            for child in tree.get(&num).unwrap_or(&vec![]).iter() {
+                has_locked |= has_locked_ancestor(tree, locks, num_target, *child, has_locked);
+            }
+            has_locked
+        }
+
+        fn has_locked_descendent(
+            tree: &HashMap<i32, Vec<i32>>,
+            locks: &mut HashMap<i32, i32>,
+            num: i32,
+        ) -> bool {
+            let mut has_locked = match locks.get(&num) {
+                Some(_) => {
+                    locks.remove(&num);
+                    true
+                }
+                None => false,
+            };
+            for child in tree.get(&num).unwrap_or(&vec![]).iter() {
+                has_locked |= has_locked_descendent(tree, locks, *child);
+            }
+            has_locked
+        }
+
         match self.locks.get(&num) {
             Some(_) => false,
             None => {
-                todo!()
+                if has_locked_ancestor(&self.tree, &self.locks, num, 0, false) {
+                    return false;
+                }
+                if !has_locked_descendent(&self.tree, &mut self.locks, num) {
+                    return false;
+                }
+                self.locks.insert(num, user);
+                true
             }
         }
     }
