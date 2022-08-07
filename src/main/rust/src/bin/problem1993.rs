@@ -39,7 +39,7 @@ impl LockingTree {
                 if user != *u {
                     return false;
                 }
-                self.locks.insert(num, user);
+                self.locks.remove(&num);
                 true
             }
             None => false,
@@ -58,7 +58,7 @@ impl LockingTree {
                 return locked;
             }
             let mut has_locked = match locks.get(&num) {
-                Some(_) => true,
+                Some(_) => true && !tree.get(&num).is_none(),
                 None => false,
             };
             for child in tree.get(&num).unwrap_or(&vec![]).iter() {
@@ -107,7 +107,9 @@ fn main() {
     println!("{}", tree.unlock(2, 3)); // false
     println!("{}", tree.unlock(2, 2)); // true
     println!("{}", tree.lock(4, 5)); // true
+    println!("{}", tree.lock(2, 3)); // true
     println!("{}", tree.upgrade(0, 1)); // true
     println!("{}", tree.lock(0, 1)); // false
+    println!("{}", tree.unlock(0, 1)); // true
     println!("{}", tree.upgrade(3, 1)); // false
 }
