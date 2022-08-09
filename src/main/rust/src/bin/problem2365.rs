@@ -1,6 +1,19 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/task-scheduler-ii/
 pub fn task_scheduler_ii(tasks: Vec<i32>, space: i32) -> i64 {
-    todo!()
+    let mut answer: i64 = 0;
+    let mut map: HashMap<i32, i64> = HashMap::new();
+    for task in tasks.into_iter() {
+        if let Some(day) = map.get(&task) {
+            if *day > answer {
+                answer = *day;
+            }
+        }
+        answer += 1;
+        map.insert(task, answer + space as i64);
+    }
+    answer
 }
 
 fn main() {
