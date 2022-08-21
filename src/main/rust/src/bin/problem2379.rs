@@ -1,15 +1,24 @@
 // https://leetcode.com/problems/minimum-recolors-to-get-k-consecutive-black-blocks/
 pub fn minimum_recolors(blocks: String, k: i32) -> i32 {
-    let mut answer = i32::MAX;
     let chars: Vec<char> = blocks.chars().collect();
-    for i in 0..=blocks.len() - k as usize {
-        let mut white_count = 0;
-        for j in i..i + k as usize {
-            if chars[j] == 'W' {
-                white_count += 1;
-            }
+    let mut white_count = 0;
+    let mut i = 0;
+    while i < chars.len() && i < k as usize {
+        if chars[i] == 'W' {
+            white_count += 1;
+        }
+        i += 1;
+    }
+    let mut answer = white_count;
+    while i < chars.len() {
+        if chars[i - k as usize] == 'W' {
+            white_count -= 1;
+        }
+        if chars[i] == 'W' {
+            white_count += 1;
         }
         answer = answer.min(white_count);
+        i += 1;
     }
     answer
 }
