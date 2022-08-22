@@ -20,4 +20,5 @@ fn main() {
         "{}",
         seconds_to_remove_occurrences("1000111001010010010101010101".to_string())
     ); // 15
+    println!("{}", seconds_to_remove_occurrences("1100101".to_string())); // 3
 }
