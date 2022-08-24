@@ -9,17 +9,11 @@ pub fn seconds_to_remove_occurrences(s: String) -> i32 {
             if chars[i] == '0' && chars[i + 1] == '1' {
                 chars.swap(i, i + 1);
                 count += 1;
+                i += 2;
+            } else {
+                i += 1;
             }
-            i += 1;
         }
-        println!(
-            "{}",
-            chars
-                .iter()
-                .map(|a| format!("{}", a))
-                .collect::<Vec<String>>()
-                .join("")
-        );
         if count == 0 {
             break;
         }
@@ -29,12 +23,12 @@ pub fn seconds_to_remove_occurrences(s: String) -> i32 {
 }
 
 fn main() {
-    // println!("{}", seconds_to_remove_occurrences("0110101".to_string())); // 4
-    // println!("{}", seconds_to_remove_occurrences("11100".to_string())); // 0
-    // println!(
-    //     "{}",
-    //     seconds_to_remove_occurrences("1000111001010010010101010101".to_string())
-    // ); // 15
-    // println!("{}", seconds_to_remove_occurrences("1100101".to_string())); // 3
+    println!("{}", seconds_to_remove_occurrences("0110101".to_string())); // 4
+    println!("{}", seconds_to_remove_occurrences("11100".to_string())); // 0
+    println!(
+        "{}",
+        seconds_to_remove_occurrences("1000111001010010010101010101".to_string())
+    ); // 15
+    println!("{}", seconds_to_remove_occurrences("1100101".to_string())); // 3
     println!("{}", seconds_to_remove_occurrences("0110101".to_string())); // 4
 }
