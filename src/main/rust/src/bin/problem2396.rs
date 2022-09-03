@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/strictly-palindromic-number/
 pub fn is_strictly_palindromic(n: i32) -> bool {
-    todo!()
+    false
 }
 
 fn main() {
