@@ -1,6 +1,18 @@
+use std::collections::HashSet;
+
 // https://leetcode.com/problems/find-subarrays-with-equal-sum/
 pub fn find_subarrays(nums: Vec<i32>) -> bool {
-    todo!()
+    let mut set: HashSet<i32> = HashSet::new();
+    let mut i = 0;
+    while i < nums.len() - 1 {
+        let sum = nums[i] + nums[i + 1];
+        if set.contains(&sum) {
+            return true;
+        }
+        set.insert(sum);
+        i += 1;
+    }
+    false
 }
 
 fn main() {
