@@ -9,11 +9,11 @@ pub fn nearest_exit(maze: Vec<Vec<char>>, entrance: Vec<i32>) -> i32 {
     let mut visited: Vec<Vec<bool>> = vec![vec![false; max_cols]; max_rows];
     let mut deque: VecDeque<Vec<i32>> = VecDeque::new();
     deque.push_back(entrance.clone());
+    visited[entrance[0] as usize][entrance[1] as usize] = true;
     'outer: while !deque.is_empty() {
         let length = deque.len();
         for _ in 0..length {
             let v = deque.pop_front().unwrap();
-            visited[v[0] as usize][v[1] as usize] = true;
             for (r, c) in vec![(-1, 0), (0, 1), (1, 0), (0, -1)] {
                 let row = v[0] + r;
                 let col = v[1] + c;
@@ -33,7 +33,8 @@ pub fn nearest_exit(maze: Vec<Vec<char>>, entrance: Vec<i32>) -> i32 {
                 if maze[row as usize][col as usize] == '+' {
                     continue;
                 }
-                deque.push_back(vec![v[0] + r, v[1] + c]);
+                visited[row as usize][col as usize] = true;
+                deque.push_back(vec![row, col]);
             }
         }
         answer += 1;
