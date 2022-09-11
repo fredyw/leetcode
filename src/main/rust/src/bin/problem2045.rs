@@ -1,6 +1,17 @@
+use std::collections::HashSet;
+
 // https://leetcode.com/problems/optimal-partition-of-string/
 pub fn partition_string(s: String) -> i32 {
-    todo!()
+    let mut answer = 0;
+    let mut chars: HashSet<char> = HashSet::new();
+    for c in s.chars().into_iter().collect::<Vec<char>>() {
+        if chars.contains(&c) {
+            answer += 1;
+            chars.clear();
+        }
+        chars.insert(c);
+    }
+    answer + 1
 }
 
 fn main() {
