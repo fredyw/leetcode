@@ -1,6 +1,19 @@
 // https://leetcode.com/problems/longest-nice-subarray/
 pub fn longest_nice_subarray(nums: Vec<i32>) -> i32 {
-    todo!()
+    let mut answer = 0i32;
+    let mut j = 0;
+    let mut i = 0;
+    let mut mask = 0;
+    while i < nums.len() {
+        while mask & nums[i] != 0 {
+            mask ^= nums[j];
+            j += 1;
+        }
+        mask = mask | nums[i];
+        i += 1;
+        answer = answer.max((i - j) as i32);
+    }
+    answer
 }
 
 fn main() {
