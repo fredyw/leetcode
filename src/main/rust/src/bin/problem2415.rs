@@ -1,4 +1,5 @@
 use std::cell::RefCell;
+use std::collections::VecDeque;
 use std::rc::Rc;
 
 // https://leetcode.com/problems/reverse-odd-levels-of-binary-tree/
@@ -45,17 +46,32 @@ fn main() {
         parent.as_ref().unwrap().as_ref().borrow().right.clone()
     }
 
-    let root = create_node(2);
-    let left = add_left(&root, 3);
-    add_left(&left, 8);
-    add_right(&left, 13);
-    let right = add_right(&root, 5);
-    add_left(&right, 21);
-    add_right(&right, 34);
+    fn to_tree(nodes: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
+        let mut deque: VecDeque<Option<Rc<RefCell<TreeNode>>>> = VecDeque::new();
+        let mut root: Option<Rc<RefCell<TreeNode>>> = None;
+        deque.push_back(create_node(nodes[0]));
+        let mut i = 1;
+        while i < nodes.len() {
+            let parent = deque.pop_front().unwrap();
+            deque.push_back(add_left(&parent, nodes[i]));
+            deque.push_back(add_right(&parent, nodes[i + 1]));
+            i += 2;
+            if root == None {
+                root = parent;
+            }
+        }
+        root
+    }
+
+    let root = to_tree(vec![2, 3, 5, 8, 13, 21, 34]);
     println!("{:?}", reverse_odd_levels(root)); // [2,5,3,8,13,21,34]
 
-    let root = create_node(7);
-    add_left(&root, 13);
-    add_right(&root, 11);
+    let root = to_tree(vec![7, 13, 11]);
     println!("{:?}", reverse_odd_levels(root)); // [7,11,13]
+
+    let root = to_tree(vec![0, 1, 2, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2]);
+    println!("{:?}", reverse_odd_levels(root)); // [0,2,1,0,0,0,0,2,2,2,2,1,1,1,1]
+
+    let root = to_tree(vec![0, 1, 2, 0, 0, 0, 0, 6, 7, 8, 9, 1, 2, 3, 4]);
+    println!("{:?}", reverse_odd_levels(root)); // [0,2,1,0,0,0,0,4,3,2,1,9,8,7,6]
 }
