@@ -1,3 +1,4 @@
+use std::borrow::Borrow;
 use std::cell::RefCell;
 use std::collections::VecDeque;
 use std::rc::Rc;
@@ -22,7 +23,19 @@ impl TreeNode {
 }
 
 pub fn reverse_odd_levels(root: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {
-    todo!()
+    let mut deque: VecDeque<&Option<Rc<RefCell<TreeNode>>>> = VecDeque::new();
+    deque.push_back(&root);
+    while !deque.is_empty() {
+        let node = deque.pop_front().unwrap();
+        let size = deque.len();
+        for _ in 0..size {
+            if let Some(n) = node {
+                let left = &n.as_ref().borrow().left;
+                let right = &n.as_ref().borrow().right;
+            }
+        }
+    }
+    root
 }
 
 fn main() {
