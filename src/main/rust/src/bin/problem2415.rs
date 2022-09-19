@@ -1,6 +1,6 @@
-use std::borrow::Borrow;
 use std::cell::RefCell;
 use std::collections::VecDeque;
+use std::mem::swap;
 use std::rc::Rc;
 
 // https://leetcode.com/problems/reverse-odd-levels-of-binary-tree/
@@ -23,17 +23,53 @@ impl TreeNode {
 }
 
 pub fn reverse_odd_levels(root: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {
-    let mut deque: VecDeque<&Option<Rc<RefCell<TreeNode>>>> = VecDeque::new();
-    deque.push_back(&root);
+    let mut level = 0;
+    let mut deque: VecDeque<Option<Rc<RefCell<TreeNode>>>> = VecDeque::new();
+    deque.push_back(root.clone());
     while !deque.is_empty() {
-        let node = deque.pop_front().unwrap();
         let size = deque.len();
+        let mut tmp: Vec<Option<Rc<RefCell<TreeNode>>>> = vec![];
         for _ in 0..size {
+            let node = deque.pop_front().unwrap().clone();
+            tmp.push(node.clone());
             if let Some(n) = node {
-                let left = &n.as_ref().borrow().left;
-                let right = &n.as_ref().borrow().right;
+                let left = n.as_ref().borrow().left.clone();
+                if left.is_some() {
+                    deque.push_back(left);
+                }
+                let right = n.as_ref().borrow().right.clone();
+                if right.is_some() {
+                    deque.push_back(right);
+                }
             }
         }
+        if level % 2 != 0 {
+            let mut i = 0;
+            let mut j = tmp.len() - 1;
+            while i < j {
+                swap(
+                    &mut tmp
+                        .get(i)
+                        .unwrap()
+                        .clone()
+                        .unwrap()
+                        .as_ref()
+                        .borrow_mut()
+                        .val,
+                    &mut tmp
+                        .get(j)
+                        .unwrap()
+                        .clone()
+                        .unwrap()
+                        .as_ref()
+                        .borrow_mut()
+                        .val,
+                );
+                i += 1;
+                j -= 1;
+            }
+        }
+        level += 1;
     }
     root
 }
@@ -61,17 +97,14 @@ fn main() {
 
     fn to_tree(nodes: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
         let mut deque: VecDeque<Option<Rc<RefCell<TreeNode>>>> = VecDeque::new();
-        let mut root: Option<Rc<RefCell<TreeNode>>> = None;
-        deque.push_back(create_node(nodes[0]));
+        let root = create_node(nodes[0]);
+        deque.push_back(root.clone());
         let mut i = 1;
         while i < nodes.len() {
             let parent = deque.pop_front().unwrap();
             deque.push_back(add_left(&parent, nodes[i]));
             deque.push_back(add_right(&parent, nodes[i + 1]));
             i += 2;
-            if root == None {
-                root = parent;
-            }
         }
         root
     }
