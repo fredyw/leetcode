@@ -1,6 +1,17 @@
 // https://leetcode.com/problems/length-of-the-longest-alphabetical-continuous-substring/
 pub fn longest_continuous_substring(s: String) -> i32 {
-    todo!()
+    let mut answer = 1;
+    let bytes = s.as_bytes();
+    let mut length = 1;
+    for i in 0..bytes.len() - 1 {
+        if bytes[i] + 1 == bytes[i + 1] {
+            length += 1;
+        } else {
+            length = 1;
+        }
+        answer = answer.max(length);
+    }
+    answer
 }
 
 fn main() {
@@ -10,4 +21,8 @@ fn main() {
         "{}",
         longest_continuous_substring("xyziabcdefmnrvx".to_string())
     ); // 6
+    println!(
+        "{}",
+        longest_continuous_substring("abcdefghijklmnopqrstuvwxyz".to_string())
+    ); // 26
 }
