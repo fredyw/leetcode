@@ -18,4 +18,16 @@ fn main() {
         "{}",
         min_groups(vec![vec![1, 3], vec![5, 6], vec![8, 10], vec![11, 13]])
     ); // 1
+    println!(
+        "{}",
+        min_groups(vec![
+            vec![1, 2],
+            vec![1, 5],
+            vec![1, 7],
+            vec![3, 5],
+            vec![4, 8],
+            vec![5, 6],
+            vec![7, 10]
+        ])
+    ); // 5
 }
