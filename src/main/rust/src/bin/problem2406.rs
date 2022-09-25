@@ -1,6 +1,19 @@
+use std::collections::BTreeMap;
+
 // https://leetcode.com/problems/divide-intervals-into-minimum-number-of-groups/
 pub fn min_groups(intervals: Vec<Vec<i32>>) -> i32 {
-    todo!()
+    let mut map: BTreeMap<i32, i32> = BTreeMap::new();
+    for interval in intervals.into_iter() {
+        *map.entry(interval[0]).or_insert(0) += 1;
+        *map.entry(interval[1] + 1).or_insert(0) -= 1;
+    }
+    let mut answer = 0;
+    let mut num_group = 0;
+    for count in map.into_values() {
+        num_group += count;
+        answer = answer.max(num_group);
+    }
+    answer
 }
 
 fn main() {
