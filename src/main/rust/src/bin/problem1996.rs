@@ -16,4 +16,8 @@ fn main() {
         "{}",
         number_of_weak_characters(vec![vec![1, 5], vec![10, 4], vec![4, 3]])
     ); // 1
+    println!(
+        "{}",
+        number_of_weak_characters(vec![vec![1, 5], vec![10, 4], vec![4, 3], vec![5, 5]])
+    ); // 1
 }
