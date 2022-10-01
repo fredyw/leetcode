@@ -1,26 +1,25 @@
 use std::collections::BTreeMap;
 
 // https://leetcode.com/problems/the-number-of-weak-characters-in-the-game/
-pub fn number_of_weak_characters(mut properties: Vec<Vec<i32>>) -> i32 {
+pub fn number_of_weak_characters(properties: Vec<Vec<i32>>) -> i32 {
     let mut map: BTreeMap<i32, Vec<i32>> = BTreeMap::new();
     for prop in properties.iter() {
         map.entry(prop[0]).or_insert(vec![]).push(prop[1]);
     }
-    let mut suffix_defense = vec![0; map.len()];
-    for (i, (_, defenses)) in map.iter().enumerate().rev() {
-        let max_defense = defenses.iter().max().unwrap();
-        if i == map.len() - 1 {
-            suffix_defense[i] = *max_defense;
-        } else {
-            suffix_defense[i] = *max_defense.max(&suffix_defense[i + 1]);
-        }
-    }
     let mut answer = 0;
-    for (i, (_, defenses)) in map.iter().enumerate() {
-        for defense in defenses.iter() {
-            if i + 1 < map.len() && *defense < suffix_defense[i + 1] {
-                answer += 1;
+    let mut max = 0;
+    for (i, (_, defenses)) in map.iter().enumerate().rev() {
+        if i == map.len() - 1 {
+            max = *defenses.iter().max().unwrap();
+        } else {
+            let mut tmp_max = 0;
+            for defense in defenses.iter() {
+                if *defense < max {
+                    answer += 1;
+                }
+                tmp_max = tmp_max.max(*defense);
             }
+            max = max.max(tmp_max);
         }
     }
     answer
