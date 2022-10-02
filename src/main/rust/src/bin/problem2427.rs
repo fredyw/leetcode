@@ -1,6 +1,10 @@
 // https://leetcode.com/problems/number-of-common-factors/
 pub fn common_factors(a: i32, b: i32) -> i32 {
-    todo!()
+    let mut answer = 0;
+    for i in 1..=a.min(b) {
+        answer += if a % i == 0 && b % i == 0 { 1 } else { 0 };
+    }
+    answer
 }
 
 fn main() {
