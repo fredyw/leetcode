@@ -1,6 +1,23 @@
 // https://leetcode.com/problems/the-employee-that-worked-on-the-longest-task/
 pub fn hardest_worker(n: i32, logs: Vec<Vec<i32>>) -> i32 {
-    todo!()
+    let mut answer = 0;
+    let mut max_time = 0;
+    for (i, v) in logs.iter().enumerate() {
+        if i == 0 {
+            answer = v[0];
+            max_time = v[1];
+        } else {
+            let time = v[1] - logs[i - 1][1];
+            if max_time < time {
+                answer = v[0];
+                max_time = time;
+            } else if max_time == time {
+                answer = answer.min(v[0]);
+                max_time = time;
+            }
+        }
+    }
+    answer
 }
 
 fn main() {
