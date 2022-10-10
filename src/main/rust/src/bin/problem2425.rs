@@ -1,32 +1,19 @@
-use std::collections::HashMap;
-
 // https://leetcode.com/problems/bitwise-xor-of-all-pairings/
 pub fn xor_all_nums(nums1: Vec<i32>, nums2: Vec<i32>) -> i32 {
-    let mut map1: HashMap<i32, i32> = HashMap::new();
-    for num1 in nums1.into_iter() {
-        *map1.entry(num1).or_insert(0) += 1;
+    let len1 = nums1.len();
+    let len2 = nums2.len();
+    let xor1 = nums1.into_iter().reduce(|a, b| a ^ b).unwrap();
+    let xor2 = nums2.into_iter().reduce(|a, b| a ^ b).unwrap();
+    if len1 % 2 == 0 && len2 % 2 == 0 {
+        return 0;
     }
-    let mut map2: HashMap<i32, i32> = HashMap::new();
-    for num2 in nums2.into_iter() {
-        *map2.entry(num2).or_insert(0) += 1;
+    if len1 % 2 != 0 {
+        return xor2;
     }
-    let nums1: Vec<i32> = map1
-        .iter()
-        .filter(|(_, c)| *c % 2 != 0)
-        .map(|(n, _)| *n)
-        .collect();
-    let nums2: Vec<i32> = map2
-        .iter()
-        .filter(|(_, c)| *c % 2 != 0)
-        .map(|(n, _)| *n)
-        .collect();
-    let mut answer = 0;
-    for num1 in nums1.iter() {
-        for num2 in nums2.iter() {
-            answer ^= num1 ^ num2;
-        }
+    if len2 % 2 != 0 {
+        return xor1;
     }
-    answer
+    xor1 ^ xor2
 }
 
 fn main() {
