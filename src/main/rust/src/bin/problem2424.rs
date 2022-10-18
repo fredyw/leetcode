@@ -1,20 +1,28 @@
-use std::collections::BTreeSet;
-use std::ops::Bound::Included;
+use std::collections::HashSet;
 
 // https://leetcode.com/problems/longest-uploaded-prefix/
-struct LUPrefix {}
+struct LUPrefix {
+    set: HashSet<i32>,
+    longest: i32,
+}
 
 impl LUPrefix {
     fn new(n: i32) -> Self {
-        LUPrefix {}
+        LUPrefix {
+            set: HashSet::new(),
+            longest: 0,
+        }
     }
 
     fn upload(&mut self, video: i32) {
-        todo!()
+        self.set.insert(video);
+        while self.set.contains(&(self.longest + 1)) {
+            self.longest += 1;
+        }
     }
 
     fn longest(&self) -> i32 {
-        todo!()
+        self.longest
     }
 }
 
