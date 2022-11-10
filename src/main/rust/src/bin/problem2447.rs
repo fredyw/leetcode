@@ -1,25 +1,22 @@
 // https://leetcode.com/problems/number-of-subarrays-with-gcd-equal-to-k/
 pub fn subarray_gcd(nums: Vec<i32>, k: i32) -> i32 {
-    fn gcd(nums: &[i32]) -> i32 {
-        fn f(a: i32, b: i32) -> i32 {
-            if b == 0 {
-                a
-            } else {
-                f(b, a % b)
-            }
+    fn gcd(a: i32, b: i32) -> i32 {
+        if b == 0 {
+            a
+        } else {
+            gcd(b, a % b)
         }
-
-        let mut result = nums[0];
-        for i in 1..nums.len() {
-            result = f(result, nums[i]);
-        }
-        result
     }
 
     let mut answer = 0;
     for i in 0..nums.len() {
-        for j in i + 1..=nums.len() {
-            if gcd(&nums[i..j]) == k {
+        let mut result = nums[i];
+        if result == k {
+            answer += 1;
+        }
+        for j in i + 1..nums.len() {
+            result = gcd(result, nums[j]);
+            if result == k {
                 answer += 1;
             }
         }
