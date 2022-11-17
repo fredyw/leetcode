@@ -126,4 +126,28 @@ fn main() {
             Some(8)
         ]))
     ); // 0
+    println!(
+        "{}",
+        minimum_operations(to_tree(vec![
+            Some(1),
+            Some(2),
+            Some(3),
+            Some(7),
+            Some(6),
+            Some(4),
+            Some(5)
+        ]))
+    ); // 3
+    println!(
+        "{}",
+        minimum_operations(to_tree(vec![
+            Some(1),
+            Some(2),
+            Some(3),
+            Some(7),
+            Some(6),
+            Some(5),
+            Some(4)
+        ]))
+    ); // 2
 }
