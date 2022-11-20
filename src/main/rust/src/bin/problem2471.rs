@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/minimum-number-of-operations-to-sort-a-binary-tree-by-level/
 use std::cell::RefCell;
-use std::collections::VecDeque;
+use std::collections::{HashMap, VecDeque};
 use std::rc::Rc;
 
 #[derive(Debug, PartialEq, Eq)]
@@ -22,7 +22,48 @@ impl TreeNode {
 }
 
 pub fn minimum_operations(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
-    todo!()
+    fn swap(v: &mut Vec<i32>, i: usize, j: usize) {
+        let tmp = v[i];
+        v[i] = v[j];
+        v[j] = tmp;
+    }
+
+    let mut answer = 0;
+    let mut deque: VecDeque<Option<Rc<RefCell<TreeNode>>>> = VecDeque::new();
+    deque.push_back(root.clone());
+    while !deque.is_empty() {
+        let size = deque.len();
+        let mut vec: Vec<i32> = vec![];
+        let mut map: HashMap<i32, usize> = HashMap::new();
+        for i in 0..size {
+            let node = deque.pop_front().unwrap().clone();
+            vec.push(node.as_ref().unwrap().as_ref().borrow().val);
+            map.insert(node.as_ref().unwrap().as_ref().borrow().val, i);
+            if let Some(n) = node {
+                let left = n.as_ref().borrow().left.clone();
+                if left.is_some() {
+                    deque.push_back(left);
+                }
+                let right = n.as_ref().borrow().right.clone();
+                if right.is_some() {
+                    deque.push_back(right);
+                }
+            }
+        }
+        let mut sorted_vec = vec.clone();
+        sorted_vec.sort();
+        for i in 0..vec.len() {
+            if vec[i] == sorted_vec[i] {
+                continue;
+            }
+            let n = sorted_vec[i];
+            let j = *map.get(&n).as_ref().unwrap().clone();
+            map.insert(vec[i], j);
+            swap(&mut vec, i, j);
+            answer += 1;
+        }
+    }
+    answer
 }
 
 fn main() {
