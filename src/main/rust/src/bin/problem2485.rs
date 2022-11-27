@@ -1,6 +1,14 @@
 // https://leetcode.com/problems/find-the-pivot-integer/
 pub fn pivot_integer(n: i32) -> i32 {
-    todo!()
+    let total_sum: i32 = (1..=n).into_iter().sum();
+    let mut sum = 0;
+    for i in 1..=n {
+        sum += i;
+        if sum == total_sum - sum + i {
+            return i;
+        }
+    }
+    -1
 }
 
 fn main() {
