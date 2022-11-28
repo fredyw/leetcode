@@ -11,26 +11,20 @@ pub fn minimum_fuel_cost(roads: Vec<Vec<i32>>, seats: i32) -> i64 {
         answer: &mut i64,
     ) -> i64 {
         visited[city as usize] = true;
-        let mut count = 1;
+        let mut passenger_count = 1;
         for adj in map.get(&city).unwrap().iter() {
             if visited[*adj as usize] {
                 continue;
             }
-            count += dfs(map, seats, visited, *adj, fuel + 1, answer);
+            passenger_count += dfs(map, seats, visited, *adj, fuel + 1, answer);
         }
         if city == 0 {
             return 0;
         }
-        if count == 1 {
-            *answer += 1;
-            1
-        } else if count / seats == 0 {
-            *answer += 1;
-            0
-        } else {
-            *answer += (count / seats) * fuel as i64;
-            count % seats
-        }
+        let remaining_passengers = passenger_count % seats;
+        *answer +=
+            (passenger_count / seats) * fuel as i64 + if remaining_passengers > 0 { 1 } else { 0 };
+        remaining_passengers
     }
 
     if roads.len() == 0 {
@@ -54,54 +48,54 @@ pub fn minimum_fuel_cost(roads: Vec<Vec<i32>>, seats: i32) -> i64 {
 }
 
 fn main() {
-    // println!(
-    //     "{}",
-    //     minimum_fuel_cost(vec![vec![0, 1], vec![0, 2], vec![0, 3]], 5)
-    // ); // 3
-    // println!(
-    //     "{}",
-    //     minimum_fuel_cost(
-    //         vec![
-    //             vec![3, 1],
-    //             vec![3, 2],
-    //             vec![1, 0],
-    //             vec![0, 4],
-    //             vec![0, 5],
-    //             vec![4, 6]
-    //         ],
-    //         2
-    //     )
-    // ); // 7
-    // println!("{}", minimum_fuel_cost(vec![], 1)); // 0
-    // println!(
-    //     "{}",
-    //     minimum_fuel_cost(vec![vec![0, 1], vec![1, 2], vec![2, 3], vec![3, 4]], 2)
-    // ); // 6
-    // println!(
-    //     "{}",
-    //     minimum_fuel_cost(vec![vec![0, 1], vec![1, 2], vec![2, 3], vec![3, 4]], 1)
-    // ); // 10
-    // println!(
-    //     "{}",
-    //     minimum_fuel_cost(vec![vec![0, 1], vec![0, 2], vec![1, 3], vec![1, 4]], 5)
-    // ); // 4
-    // println!(
-    //     "{}",
-    //     minimum_fuel_cost(
-    //         vec![
-    //             vec![0, 1],
-    //             vec![1, 2],
-    //             vec![1, 3],
-    //             vec![1, 4],
-    //             vec![2, 5],
-    //             vec![2, 6],
-    //             vec![2, 7],
-    //             vec![2, 8],
-    //             vec![7, 9]
-    //         ],
-    //         2
-    //     )
-    // ); // 15
+    println!(
+        "{}",
+        minimum_fuel_cost(vec![vec![0, 1], vec![0, 2], vec![0, 3]], 5)
+    ); // 3
+    println!(
+        "{}",
+        minimum_fuel_cost(
+            vec![
+                vec![3, 1],
+                vec![3, 2],
+                vec![1, 0],
+                vec![0, 4],
+                vec![0, 5],
+                vec![4, 6]
+            ],
+            2
+        )
+    ); // 7
+    println!("{}", minimum_fuel_cost(vec![], 1)); // 0
+    println!(
+        "{}",
+        minimum_fuel_cost(vec![vec![0, 1], vec![1, 2], vec![2, 3], vec![3, 4]], 2)
+    ); // 6
+    println!(
+        "{}",
+        minimum_fuel_cost(vec![vec![0, 1], vec![1, 2], vec![2, 3], vec![3, 4]], 1)
+    ); // 10
+    println!(
+        "{}",
+        minimum_fuel_cost(vec![vec![0, 1], vec![0, 2], vec![1, 3], vec![1, 4]], 5)
+    ); // 4
+    println!(
+        "{}",
+        minimum_fuel_cost(
+            vec![
+                vec![0, 1],
+                vec![1, 2],
+                vec![1, 3],
+                vec![1, 4],
+                vec![2, 5],
+                vec![2, 6],
+                vec![2, 7],
+                vec![2, 8],
+                vec![7, 9]
+            ],
+            2
+        )
+    ); // 15
     println!(
         "{}",
         minimum_fuel_cost(
