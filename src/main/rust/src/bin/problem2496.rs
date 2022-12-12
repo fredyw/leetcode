@@ -1,6 +1,15 @@
 // https://leetcode.com/problems/maximum-value-of-a-string-in-an-array/
 pub fn maximum_value(strs: Vec<String>) -> i32 {
-    todo!()
+    let mut answer = 0;
+    for s in strs.iter() {
+        let digit: String = s.chars().into_iter().filter(|c| c.is_digit(10)).collect();
+        if digit.len() != s.len() {
+            answer = answer.max(s.len() as i32);
+        } else {
+            answer = answer.max(digit.parse::<i32>().unwrap());
+        }
+    }
+    answer
 }
 
 fn main() {
