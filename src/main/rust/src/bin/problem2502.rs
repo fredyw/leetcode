@@ -42,7 +42,7 @@ impl Allocator {
     }
 
     fn free(&mut self, m_id: i32) -> i32 {
-        match self.m_id_to_indexes.get(&m_id) {
+        let index = match self.m_id_to_indexes.get(&m_id) {
             None => 0,
             Some(indexes) => {
                 for i in indexes.iter() {
@@ -50,7 +50,9 @@ impl Allocator {
                 }
                 indexes.len() as i32
             }
-        }
+        };
+        self.m_id_to_indexes.remove(&m_id);
+        index
     }
 }
 
