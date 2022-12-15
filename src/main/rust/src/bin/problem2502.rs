@@ -1,22 +1,61 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/design-memory-allocator/
-struct Allocator {}
+struct Allocator {
+    memory: Vec<i32>,
+    m_id_to_indexes: HashMap<i32, Vec<usize>>,
+}
 
 impl Allocator {
     fn new(n: i32) -> Self {
-        todo!()
+        Allocator {
+            memory: vec![0; n as usize],
+            m_id_to_indexes: HashMap::new(),
+        }
     }
 
-    fn allocate(&self, size: i32, m_id: i32) -> i32 {
-        todo!()
+    fn allocate(&mut self, size: i32, m_id: i32) -> i32 {
+        let mut index = 0;
+        let mut count = 0;
+        while index < self.memory.len() {
+            if self.memory[index] == 0 {
+                count += 1;
+                if count == size {
+                    break;
+                }
+            } else {
+                count = 0;
+            }
+            index += 1;
+        }
+        if index == self.memory.len() {
+            return -1;
+        }
+        for i in index as i32 - size + 1..=index as i32 {
+            self.m_id_to_indexes
+                .entry(m_id)
+                .or_insert(vec![])
+                .push(i as usize);
+            self.memory[i as usize] = m_id;
+        }
+        index as i32 - size + 1
     }
 
-    fn free(&self, m_id: i32) -> i32 {
-        todo!()
+    fn free(&mut self, m_id: i32) -> i32 {
+        match self.m_id_to_indexes.get(&m_id) {
+            None => 0,
+            Some(indexes) => {
+                for i in indexes.iter() {
+                    self.memory[*i] = 0;
+                }
+                indexes.len() as i32
+            }
+        }
     }
 }
 
 fn main() {
-    let allocator = Allocator::new(10);
+    let mut allocator = Allocator::new(10);
     println!("{}", allocator.allocate(1, 1)); // 0
     println!("{}", allocator.allocate(1, 2)); // 1
     println!("{}", allocator.allocate(1, 3)); // 2
