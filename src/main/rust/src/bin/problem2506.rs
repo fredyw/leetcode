@@ -1,6 +1,21 @@
+use std::collections::HashSet;
+
 // https://leetcode.com/problems/count-pairs-of-similar-strings/
 pub fn similar_pairs(words: Vec<String>) -> i32 {
-    todo!()
+    let mut v = vec![];
+    for word in words.into_iter() {
+        let chars: HashSet<char> = word.chars().collect();
+        v.push(chars);
+    }
+    let mut answer = 0;
+    for i in 0..v.len() {
+        for j in i + 1..v.len() {
+            if v[i] == v[j] {
+                answer += 1;
+            }
+        }
+    }
+    answer
 }
 
 fn main() {
