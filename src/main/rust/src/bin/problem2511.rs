@@ -5,5 +5,6 @@ pub fn capture_forts(forts: Vec<i32>) -> i32 {
 
 fn main() {
     println!("{}", capture_forts(vec![1, 0, 0, -1, 0, 0, 0, 0, 1])); // 4
-    println!("{}", capture_forts(vec![0, 0, 1, -1])); // 0
+    println!("{}", capture_forts(vec![0, 0, 1, -1])); //
+    println!("{}", capture_forts(vec![1, 0, 0, -1, 0, 0, 0, 0, 1])); // 2
 }
