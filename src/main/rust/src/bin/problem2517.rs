@@ -7,4 +7,12 @@ fn main() {
     println!("{}", maximum_tastiness(vec![13, 5, 1, 8, 21, 2], 3)); // 8
     println!("{}", maximum_tastiness(vec![1, 3, 1], 2)); // 2
     println!("{}", maximum_tastiness(vec![7, 7, 7, 7], 2)); // 0
+    println!(
+        "{}",
+        maximum_tastiness(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 2)
+    ); // 9
+    println!(
+        "{}",
+        maximum_tastiness(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3)
+    ); // 4
 }
