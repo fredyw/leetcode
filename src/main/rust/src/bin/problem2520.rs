@@ -1,6 +1,12 @@
 // https://leetcode.com/problems/count-the-digits-that-divide-a-number/
 pub fn count_digits(num: i32) -> i32 {
-    todo!()
+    let mut answer = 0;
+    for b in num.to_string().as_bytes().into_iter() {
+        if num % (b - '0' as u8) as i32 == 0 {
+            answer += 1;
+        }
+    }
+    answer
 }
 
 fn main() {
