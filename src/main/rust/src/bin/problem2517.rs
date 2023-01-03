@@ -1,11 +1,11 @@
 // https://leetcode.com/problems/maximum-tastiness-of-candy-basket/
 pub fn maximum_tastiness(mut price: Vec<i32>, k: i32) -> i32 {
-    fn check(mid: i32, price: &Vec<i32>, k: i32) -> bool {
+    fn check(diff: i32, price: &Vec<i32>, k: i32) -> bool {
         let mut count = 1;
         let mut last = price[0];
         let mut i = 1;
         while count < k && i < price.len() {
-            if price[i] - last >= mid {
+            if price[i] - last >= diff {
                 last = price[i];
                 count += 1;
             }
@@ -16,7 +16,11 @@ pub fn maximum_tastiness(mut price: Vec<i32>, k: i32) -> i32 {
 
     price.sort();
     let mut lo = 0;
-    let mut hi = *price.iter().max().unwrap();
+    let mut hi = 0;
+    for p in price.iter() {
+        lo = lo.min(*p);
+        hi = hi.max(*p);
+    }
     while lo < hi {
         let mid = lo + (hi - lo) / 2;
         if check(mid, &price, k) {
