@@ -1,6 +1,14 @@
 // https://leetcode.com/problems/sort-the-students-by-their-kth-score/
 pub fn sort_the_students(score: Vec<Vec<i32>>, k: i32) -> Vec<Vec<i32>> {
-    todo!()
+    let mut sorted_vec: Vec<(i32, Vec<i32>)> = vec![];
+    for v in score.into_iter() {
+        sorted_vec.push((v[k as usize], v));
+    }
+    sorted_vec.sort_by(|a, b| b.0.cmp(&a.0));
+    sorted_vec
+        .into_iter()
+        .map(|a| a.1)
+        .collect::<Vec<Vec<i32>>>()
 }
 
 fn main() {
