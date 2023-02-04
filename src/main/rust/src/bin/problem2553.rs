@@ -1,6 +1,14 @@
 // https://leetcode.com/problems/separate-the-digits-in-an-array/
 pub fn separate_digits(nums: Vec<i32>) -> Vec<i32> {
-    todo!()
+    nums.into_iter()
+        .flat_map(|n| {
+            let s = format!("{}", n);
+            s.as_bytes()
+                .into_iter()
+                .map(|b| (*b - '0' as u8) as i32)
+                .collect::<Vec<i32>>()
+        })
+        .collect()
 }
 
 fn main() {
