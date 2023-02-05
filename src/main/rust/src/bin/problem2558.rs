@@ -1,6 +1,13 @@
+use std::collections::BinaryHeap;
+
 // https://leetcode.com/problems/take-gifts-from-the-richest-pile/
 pub fn pick_gifts(gifts: Vec<i32>, k: i32) -> i64 {
-    todo!()
+    let mut queue: BinaryHeap<i32> = gifts.into_iter().collect();
+    for _ in 0..k {
+        let n = (queue.pop().unwrap() as f64).sqrt() as i32;
+        queue.push(n);
+    }
+    queue.into_iter().map(|n| n as i64).sum()
 }
 
 fn main() {
