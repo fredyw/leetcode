@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/find-xor-beauty-of-array/
 pub fn xor_beauty(nums: Vec<i32>) -> i32 {
-    todo!()
+    nums.into_iter().reduce(|acc, num| acc ^ num).unwrap()
 }
 
 fn main() {
