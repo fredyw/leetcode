@@ -1,6 +1,21 @@
+use std::collections::HashSet;
+
 // https://leetcode.com/problems/maximum-number-of-integers-to-choose-from-a-range-i/
 pub fn max_count(banned: Vec<i32>, n: i32, max_sum: i32) -> i32 {
-    todo!()
+    let mut answer = 0;
+    let mut sum = 0;
+    let set: HashSet<i32> = banned.iter().map(|e| *e).collect();
+    for i in 1..=n {
+        if set.contains(&i) {
+            continue;
+        }
+        sum += i;
+        if sum > max_sum {
+            break;
+        }
+        answer += 1;
+    }
+    answer
 }
 
 fn main() {
