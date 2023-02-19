@@ -1,6 +1,29 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/merge-two-2d-arrays-by-summing-values/
 pub fn merge_arrays(nums1: Vec<Vec<i32>>, nums2: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
-    todo!()
+    let mut map: HashMap<i32, i32> = HashMap::new();
+    for num in nums1.iter() {
+        let id = num[0];
+        let value = num[1];
+        *map.entry(id).or_insert(0) += value;
+    }
+    for num in nums2.iter() {
+        let id = num[0];
+        let value = num[1];
+        *map.entry(id).or_insert(0) += value;
+    }
+    let mut answer: Vec<Vec<i32>> = map
+        .iter()
+        .map(|(id, num)| {
+            let mut v = vec![];
+            v.push(*id);
+            v.push(*num);
+            v
+        })
+        .collect();
+    answer.sort_by(|a, b| a[0].cmp(&b[0]));
+    answer
 }
 
 fn main() {
