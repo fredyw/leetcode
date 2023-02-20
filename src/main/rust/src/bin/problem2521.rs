@@ -2,7 +2,7 @@ use std::collections::HashSet;
 
 // https://leetcode.com/problems/distinct-prime-factors-of-product-of-array/
 pub fn distinct_prime_factors(nums: Vec<i32>) -> i32 {
-    fn distinct_prime_factors(n: i64, set: &mut HashSet<i64>) {
+    fn distinct_prime_factors(n: i32, set: &mut HashSet<i32>) {
         for i in 2..n {
             if n % i == 0 {
                 distinct_prime_factors(i, set);
@@ -13,13 +13,11 @@ pub fn distinct_prime_factors(nums: Vec<i32>) -> i32 {
         set.insert(n);
     }
 
-    let product: i64 = nums
-        .into_iter()
-        .map(|n| n as i64)
-        .reduce(|a, b| a * b)
-        .unwrap();
-    let mut set: HashSet<i64> = HashSet::new();
-    distinct_prime_factors(product, &mut set);
+    let nums: HashSet<i32> = nums.into_iter().collect();
+    let mut set: HashSet<i32> = HashSet::new();
+    for num in nums {
+        distinct_prime_factors(num, &mut set);
+    }
     set.len() as i32
 }
 
