@@ -6,4 +6,6 @@ pub fn min_operations(n: i32) -> i32 {
 fn main() {
     println!("{}", min_operations(39)); // 3
     println!("{}", min_operations(54)); // 3
+    println!("{}", min_operations(5)); // 3
+    println!("{}", min_operations(9)); // 2
 }
