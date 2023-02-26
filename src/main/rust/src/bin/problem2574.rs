@@ -1,6 +1,18 @@
 // https://leetcode.com/problems/left-and-right-sum-differences/
 pub fn left_rigth_difference(nums: Vec<i32>) -> Vec<i32> {
-    todo!()
+    let mut left_sum = vec![0; nums.len()];
+    for i in 0..nums.len() - 1 {
+        left_sum[i + 1] = if i == 0 { 0 } else { left_sum[i] } + nums[i];
+    }
+    let mut right_sum = vec![0; nums.len()];
+    for i in (1..nums.len()).rev() {
+        right_sum[i - 1] = if i == nums.len() - 1 { 0 } else { right_sum[i] } + nums[i];
+    }
+    let mut answer = vec![0; nums.len()];
+    for i in 0..answer.len() {
+        answer[i] = (left_sum[i] - right_sum[i]).abs();
+    }
+    answer
 }
 
 fn main() {
