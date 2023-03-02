@@ -6,4 +6,5 @@ pub fn count_good(nums: Vec<i32>, k: i32) -> i64 {
 fn main() {
     println!("{}", count_good(vec![1, 1, 1, 1, 1], 10)); // 1
     println!("{}", count_good(vec![3, 1, 4, 3, 2, 2, 4], 2)); // 4
+    println!("{}", count_good(vec![1, 1, 2, 3, 4], 10)); // 0
 }
