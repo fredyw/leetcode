@@ -7,9 +7,15 @@ pub fn range_add_queries(n: i32, queries: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
         let row2 = query[2];
         let col2 = query[3];
         for r in row1..=row2 {
-            for c in col1..=col2 {
-                answer[r as usize][c as usize] += 1;
+            answer[r as usize][col1 as usize] += 1;
+            if col2 + 1 < n {
+                answer[r as usize][col2 as usize + 1] -= 1;
             }
+        }
+    }
+    for r in 0..n as usize {
+        for c in 0..n as usize {
+            answer[r][c] = if c == 0 { 0 } else { answer[r][c - 1] } + answer[r][c];
         }
     }
     answer
