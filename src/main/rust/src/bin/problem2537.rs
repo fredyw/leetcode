@@ -7,4 +7,5 @@ fn main() {
     println!("{}", count_good(vec![1, 1, 1, 1, 1], 10)); // 1
     println!("{}", count_good(vec![3, 1, 4, 3, 2, 2, 4], 2)); // 4
     println!("{}", count_good(vec![1, 1, 2, 3, 4], 10)); // 0
+    println!("{}", count_good(vec![1, 2, 2, 2], 10)); // 2
 }
