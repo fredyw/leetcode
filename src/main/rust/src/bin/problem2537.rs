@@ -7,23 +7,32 @@ pub fn count_good(nums: Vec<i32>, k: i32) -> i64 {
     }
 
     let mut answer = 0;
-    for i in 0..nums.len() {
-        let mut map: HashMap<i32, i32> = HashMap::new();
-        let mut num_pairs = 0;
-        for j in i..nums.len() {
-            *map.entry(nums[j]).or_insert(0) += 1;
-            let count = map.get(&nums[j]).unwrap();
-            if *count == 2 {
-                num_pairs += combination(*count);
-            } else if *count > 2 {
-                num_pairs -= combination(*count - 1);
-                num_pairs += combination(*count);
-            }
-            if num_pairs >= k {
-                answer += nums.len() as i64 - j as i64;
-                break;
-            }
+    let mut left = 0;
+    let mut right = 0;
+    let mut map: HashMap<i32, i32> = HashMap::new();
+    let mut num_pairs = 0;
+    while right < nums.len() {
+        *map.entry(nums[right]).or_insert(0) += 1;
+        let count = map.get(&nums[right]).unwrap();
+        if *count == 2 {
+            num_pairs += combination(*count);
+        } else if *count > 2 {
+            num_pairs -= combination(*count - 1);
+            num_pairs += combination(*count);
         }
+        while num_pairs >= k {
+            answer += nums.len() as i64 - right as i64;
+            *map.entry(nums[left]).or_insert(0) -= 1;
+            let count = map.get(&nums[left]).unwrap();
+            if *count >= 2 {
+                num_pairs -= combination(*count + 1);
+                num_pairs += combination(*count);
+            } else {
+                num_pairs -= combination(*count + 1);
+            }
+            left += 1;
+        }
+        right += 1;
     }
     answer
 }
