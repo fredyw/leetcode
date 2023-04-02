@@ -12,4 +12,5 @@ fn main() {
         "{}",
         find_the_longest_balanced_substring("00111".to_string())
     ); // 4
+    println!("{}", find_the_longest_balanced_substring("111".to_string())); // 0
 }
