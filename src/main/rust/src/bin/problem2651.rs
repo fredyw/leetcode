@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/calculate-delayed-arrival-time/
 pub fn find_delayed_arrival_time(arrival_time: i32, delayed_time: i32) -> i32 {
-    todo!()
+    (arrival_time + delayed_time) % 24
 }
 
 fn main() {
