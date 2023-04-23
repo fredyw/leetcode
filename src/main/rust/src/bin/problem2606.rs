@@ -14,12 +14,10 @@ pub fn maximum_cost_substring(s: String, chars: String, vals: Vec<i32>) -> i32 {
     }
     let mut answer = 0;
     let s: Vec<char> = s.chars().collect();
+    let mut sum = 0;
     for i in 0..s.len() {
-        let mut sum = 0;
-        for j in i..s.len() {
-            sum += map.get(&s[j]).unwrap();
-            answer = answer.max(sum);
-        }
+        sum = 0.max(sum + map.get(&s[i]).unwrap());
+        answer = answer.max(sum);
     }
     answer
 }
