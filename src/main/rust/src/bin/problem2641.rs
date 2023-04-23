@@ -60,14 +60,14 @@ fn main() {
                         if let Some(left) = nodes[i + 1] {
                             deque.push_back(add_left(&parent, left));
                         }
-                        i += 1;
                     }
-                    if i + 2 < nodes.len() {
+                    i += 1;
+                    if i + 1 < nodes.len() {
                         if let Some(right) = nodes[i + 1] {
                             deque.push_back(add_right(&parent, right));
                         }
-                        i += 1;
                     }
+                    i += 1;
                 }
             }
             root
@@ -77,8 +77,25 @@ fn main() {
     }
 
     fn to_vec(root: &Option<Rc<RefCell<TreeNode>>>) -> Vec<Option<i32>> {
-        vec![]
-        // todo!()
+        let mut v = vec![];
+        let mut deque: VecDeque<Option<Rc<RefCell<TreeNode>>>> = VecDeque::new();
+        deque.push_back(root.clone());
+        while !deque.is_empty() {
+            let node = deque.pop_front().unwrap();
+            if let Some(node) = node {
+                v.push(Some(node.borrow().val));
+                let left = node.borrow().left.clone();
+                let right = node.borrow().right.clone();
+                if left.is_none() && right.is_none() {
+                    continue;
+                }
+                deque.push_back(left);
+                deque.push_back(right);
+            } else {
+                v.push(None);
+            }
+        }
+        v
     }
 
     let root = to_tree(vec![
