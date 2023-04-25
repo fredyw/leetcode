@@ -22,26 +22,6 @@ impl TreeNode {
 }
 
 pub fn replace_value_in_tree(root: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {
-    fn create_node(value: i32) -> Option<Rc<RefCell<TreeNode>>> {
-        Some(Rc::new(RefCell::new(TreeNode::new(value))))
-    }
-
-    fn add_left(
-        parent: &Option<Rc<RefCell<TreeNode>>>,
-        value: i32,
-    ) -> Option<Rc<RefCell<TreeNode>>> {
-        parent.as_ref().unwrap().as_ref().borrow_mut().left = create_node(value);
-        parent.as_ref().unwrap().as_ref().borrow().left.clone()
-    }
-
-    fn add_right(
-        parent: &Option<Rc<RefCell<TreeNode>>>,
-        value: i32,
-    ) -> Option<Rc<RefCell<TreeNode>>> {
-        parent.as_ref().unwrap().as_ref().borrow_mut().right = create_node(value);
-        parent.as_ref().unwrap().as_ref().borrow().right.clone()
-    }
-
     let answer = root.clone();
     let mut deque: VecDeque<(Option<Rc<RefCell<TreeNode>>>, i32)> = VecDeque::new();
     deque.push_back((root, 0));
