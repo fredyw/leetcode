@@ -22,7 +22,67 @@ impl TreeNode {
 }
 
 pub fn replace_value_in_tree(root: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {
-    todo!()
+    fn create_node(value: i32) -> Option<Rc<RefCell<TreeNode>>> {
+        Some(Rc::new(RefCell::new(TreeNode::new(value))))
+    }
+
+    fn add_left(
+        parent: &Option<Rc<RefCell<TreeNode>>>,
+        value: i32,
+    ) -> Option<Rc<RefCell<TreeNode>>> {
+        parent.as_ref().unwrap().as_ref().borrow_mut().left = create_node(value);
+        parent.as_ref().unwrap().as_ref().borrow().left.clone()
+    }
+
+    fn add_right(
+        parent: &Option<Rc<RefCell<TreeNode>>>,
+        value: i32,
+    ) -> Option<Rc<RefCell<TreeNode>>> {
+        parent.as_ref().unwrap().as_ref().borrow_mut().right = create_node(value);
+        parent.as_ref().unwrap().as_ref().borrow().right.clone()
+    }
+
+    let answer = root.clone();
+    let mut deque: VecDeque<(Option<Rc<RefCell<TreeNode>>>, i32)> = VecDeque::new();
+    deque.push_back((root, 0));
+    while !deque.is_empty() {
+        let size = deque.len();
+        let mut total_sum = 0;
+        let mut v = vec![];
+        for _ in 0..size {
+            let mut sum = 0;
+            let (node, new_value) = deque.pop_front().unwrap();
+            if let Some(node) = node.clone() {
+                node.borrow_mut().val = new_value;
+                let left = node.borrow().left.clone();
+                if let Some(l) = left.clone() {
+                    let val = l.borrow().val;
+                    sum += val;
+                    total_sum += val;
+                }
+                let right = node.borrow().right.clone();
+                if let Some(r) = right.clone() {
+                    let val = r.borrow().val;
+                    sum += val;
+                    total_sum += val;
+                }
+            }
+            if let Some(node) = node.clone() {
+                let left = node.borrow().left.clone();
+                if left.is_some() {
+                    v.push((left, sum));
+                }
+                let right = node.borrow().right.clone();
+                if right.is_some() {
+                    v.push((right, sum));
+                }
+            }
+        }
+        for (node, sum) in v.into_iter() {
+            deque.push_back((node, total_sum - sum));
+        }
+    }
+    answer
 }
 
 fn main() {
