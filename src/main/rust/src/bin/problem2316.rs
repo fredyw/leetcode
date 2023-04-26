@@ -51,4 +51,8 @@ fn main() {
             vec![vec![0, 2], vec![0, 5], vec![2, 4], vec![1, 6], vec![5, 4]]
         )
     ); // 14
+    println!("{}", count_pairs(100, vec![])); // 4950
+    println!("{}", count_pairs(10, vec![])); // 45
+    println!("{}", count_pairs(10000, vec![])); // 49995000
+    println!("{}", count_pairs(10000, vec![vec![4, 5], vec![7, 8]])); // 49994998
 }
