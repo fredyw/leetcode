@@ -23,18 +23,15 @@ pub fn count_pairs(n: i32, edges: Vec<Vec<i32>>) -> i64 {
     }
 
     let mut visited = vec![false; n as usize];
-    let mut counts = vec![];
+    let mut answer = 0;
+    let mut sum = n as i64;
     for i in 0..n {
         if visited[i as usize] {
             continue;
         }
-        counts.push(dfs(&map, &mut visited, i));
-    }
-    let mut answer = 0;
-    for i in 0..counts.len() {
-        for j in i + 1..counts.len() {
-            answer += counts[i] as i64 * counts[j] as i64;
-        }
+        let count = dfs(&map, &mut visited, i) as i64;
+        sum -= count;
+        answer += sum * count;
     }
     answer
 }
