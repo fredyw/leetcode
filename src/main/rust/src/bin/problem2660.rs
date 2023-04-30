@@ -1,15 +1,26 @@
 // https://leetcode.com/problems/determine-the-winner-of-a-bowling-game/
 pub fn is_winner(player1: Vec<i32>, player2: Vec<i32>) -> i32 {
-    fn get_total(player: &Vec<i32>) -> i32 {
-        todo!()
+    fn get_score(player: &Vec<i32>) -> i32 {
+        let mut total_score = 0;
+        let mut multiply_by_two_index = 0;
+        for (i, score) in player.into_iter().enumerate() {
+            if i != 0 && i <= multiply_by_two_index {
+                total_score += 2 * score;
+            } else {
+                total_score += score;
+            }
+            if *score == 10 {
+                multiply_by_two_index = i + 2;
+            }
+        }
+        total_score
     }
 
-    let total_player1 = get_total(&player1);
-    let total_player2 = get_total(&player2);
-    for i in 0..player2.len() {}
-    if total_player1 > total_player2 {
+    let player1_score = get_score(&player1);
+    let player2_score = get_score(&player2);
+    if player1_score > player2_score {
         1
-    } else if total_player1 < total_player2 {
+    } else if player1_score < player2_score {
         2
     } else {
         0
