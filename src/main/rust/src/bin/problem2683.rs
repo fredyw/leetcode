@@ -7,4 +7,5 @@ fn main() {
     println!("{}", does_valid_array_exist(vec![1, 1, 0])); // true
     println!("{}", does_valid_array_exist(vec![1, 1])); // true
     println!("{}", does_valid_array_exist(vec![1, 0])); // false
+    println!("{}", does_valid_array_exist(vec![1, 1, 1, 0])); // false
 }
