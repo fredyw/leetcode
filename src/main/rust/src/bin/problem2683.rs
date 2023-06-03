@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/neighboring-bitwise-xor/
 pub fn does_valid_array_exist(derived: Vec<i32>) -> bool {
-    todo!()
+    derived.into_iter().reduce(|acc, i| acc ^ i).unwrap() == 0
 }
 
 fn main() {
