@@ -1,6 +1,19 @@
 // https://leetcode.com/problems/sum-in-a-matrix/
-pub fn matrix_sum(nums: Vec<Vec<i32>>) -> i32 {
-    todo!()
+pub fn matrix_sum(mut nums: Vec<Vec<i32>>) -> i32 {
+    for i in 0..nums.len() {
+        nums[i].sort();
+    }
+    let mut answer = 0;
+    let max_row = nums.len();
+    let max_col = if max_row > 0 { nums[0].len() } else { 0 };
+    for col in 0..max_col {
+        let mut max = 0;
+        for row in 0..max_row {
+            max = max.max(nums[row][col]);
+        }
+        answer += max;
+    }
+    answer
 }
 
 fn main() {
