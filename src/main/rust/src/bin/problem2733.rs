@@ -1,6 +1,17 @@
 // https://leetcode.com/problems/neither-minimum-nor-maximum/
 pub fn find_non_min_or_max(nums: Vec<i32>) -> i32 {
-    todo!()
+    let mut min = i32::MAX;
+    let mut max = i32::MIN;
+    for num in nums.iter() {
+        min = min.min(*num);
+        max = max.max(*num);
+    }
+    for num in nums.iter() {
+        if *num != min && *num != max {
+            return *num;
+        }
+    }
+    -1
 }
 
 fn main() {
