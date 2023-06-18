@@ -1,5 +1,5 @@
 use std::cell::RefCell;
-use std::cmp::max;
+use std::cmp::{max, min};
 use std::collections::VecDeque;
 use std::rc::Rc;
 
@@ -54,16 +54,32 @@ pub fn min_increments(n: i32, cost: Vec<i32>) -> i32 {
         root
     }
 
-    fn get_max(root: &Option<Rc<RefCell<TreeNode>>>) -> i32 {
+    fn get_max_sum(root: &Option<Rc<RefCell<TreeNode>>>, sum: i32) -> i32 {
         let left = root.as_ref().unwrap().borrow().left.clone();
         let right = root.as_ref().unwrap().borrow().right.clone();
+        let new_sum = root.as_ref().unwrap().borrow().value + sum;
         if left.is_none() && right.is_none() {
-            let value = root.as_ref().unwrap().borrow().value;
+            return new_sum;
         }
-        max(get_max(&left), get_max(&right))
+        max(get_max_sum(&left, new_sum), get_max_sum(&right, new_sum))
     }
 
-    0
+    fn min_increments(root: &Option<Rc<RefCell<TreeNode>>>, sum: i32, max_sum: i32) -> i32 {
+        let left = root.as_ref().unwrap().borrow().left.clone();
+        let right = root.as_ref().unwrap().borrow().right.clone();
+        let new_sum = root.as_ref().unwrap().borrow().value + sum;
+        if left.is_none() && right.is_none() {
+            return max_sum - new_sum;
+        }
+        let left_increment = min_increments(&left, new_sum, max_sum);
+        let right_increment = min_increments(&right, new_sum, max_sum);
+        let min_increment = min(left_increment, right_increment);
+        0
+    }
+
+    let root = to_tree(&cost);
+    let max_sum = get_max_sum(&root, 0);
+    min_increments(&root, 0, max_sum)
 }
 
 fn main() {
