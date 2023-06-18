@@ -1,4 +1,5 @@
 use std::cell::RefCell;
+use std::cmp::max;
 use std::collections::VecDeque;
 use std::rc::Rc;
 
@@ -25,16 +26,16 @@ pub fn min_increments(n: i32, cost: Vec<i32>) -> i32 {
         parent: &Option<Rc<RefCell<TreeNode>>>,
         value: i32,
     ) -> Option<Rc<RefCell<TreeNode>>> {
-        parent.as_ref().unwrap().as_ref().borrow_mut().left = TreeNode::new(value);
-        parent.as_ref().unwrap().as_ref().borrow().left.clone()
+        parent.as_ref().unwrap().borrow_mut().left = TreeNode::new(value);
+        parent.as_ref().unwrap().borrow().left.clone()
     }
 
     fn add_right(
         parent: &Option<Rc<RefCell<TreeNode>>>,
         value: i32,
     ) -> Option<Rc<RefCell<TreeNode>>> {
-        parent.as_ref().unwrap().as_ref().borrow_mut().right = TreeNode::new(value);
-        parent.as_ref().unwrap().as_ref().borrow().right.clone()
+        parent.as_ref().unwrap().borrow_mut().right = TreeNode::new(value);
+        parent.as_ref().unwrap().borrow().right.clone()
     }
 
     fn to_tree(cost: &Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
@@ -52,6 +53,16 @@ pub fn min_increments(n: i32, cost: Vec<i32>) -> i32 {
         }
         root
     }
+
+    fn get_max(root: &Option<Rc<RefCell<TreeNode>>>) -> i32 {
+        let left = root.as_ref().unwrap().borrow().left.clone();
+        let right = root.as_ref().unwrap().borrow().right.clone();
+        if left.is_none() && right.is_none() {
+            let value = root.as_ref().unwrap().borrow().value;
+        }
+        max(get_max(&left), get_max(&right))
+    }
+
     0
 }
 
