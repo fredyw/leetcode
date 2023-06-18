@@ -64,22 +64,30 @@ pub fn min_increments(n: i32, cost: Vec<i32>) -> i32 {
         max(get_max_sum(&left, new_sum), get_max_sum(&right, new_sum))
     }
 
-    fn min_increments(root: &Option<Rc<RefCell<TreeNode>>>, sum: i32, max_sum: i32) -> i32 {
+    fn min_increments(
+        root: &Option<Rc<RefCell<TreeNode>>>,
+        sum: i32,
+        max_sum: i32,
+        answer: &mut i32,
+    ) -> i32 {
         let left = root.as_ref().unwrap().borrow().left.clone();
         let right = root.as_ref().unwrap().borrow().right.clone();
         let new_sum = root.as_ref().unwrap().borrow().value + sum;
         if left.is_none() && right.is_none() {
             return max_sum - new_sum;
         }
-        let left_increment = min_increments(&left, new_sum, max_sum);
-        let right_increment = min_increments(&right, new_sum, max_sum);
+        let left_increment = min_increments(&left, new_sum, max_sum, answer);
+        let right_increment = min_increments(&right, new_sum, max_sum, answer);
         let min_increment = min(left_increment, right_increment);
-        0
+        *answer += (left_increment - min_increment) + (right_increment - min_increment);
+        min_increment
     }
 
+    let mut answer = 0;
     let root = to_tree(&cost);
     let max_sum = get_max_sum(&root, 0);
-    min_increments(&root, 0, max_sum)
+    min_increments(&root, 0, max_sum, &mut answer);
+    answer
 }
 
 fn main() {
