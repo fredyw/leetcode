@@ -1,6 +1,13 @@
 // https://leetcode.com/problems/find-the-value-of-the-partition/
-pub fn find_value_of_partition(nums: Vec<i32>) -> i32 {
-    todo!()
+pub fn find_value_of_partition(mut nums: Vec<i32>) -> i32 {
+    let mut answer = i32::MAX;
+    nums.sort();
+    let mut i = 0;
+    while i < nums.len() - 1 {
+        answer = answer.min((nums[i] - nums[i + 1]).abs());
+        i += 1;
+    }
+    answer
 }
 
 fn main() {
