@@ -8,7 +8,15 @@ pub fn count_beautiful_pairs(nums: Vec<i32>) -> i32 {
         }
     }
 
-    todo!()
+    let mut answer = 0;
+    for i in 0..nums.len() {
+        for j in i + 1..nums.len() {
+            if gcd(nums[i], nums[j]) == 1 {
+                answer += 1;
+            }
+        }
+    }
+    answer
 }
 
 fn main() {
