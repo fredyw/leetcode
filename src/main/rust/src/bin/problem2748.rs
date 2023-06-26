@@ -11,7 +11,11 @@ pub fn count_beautiful_pairs(nums: Vec<i32>) -> i32 {
     let mut answer = 0;
     for i in 0..nums.len() {
         for j in i + 1..nums.len() {
-            if gcd(nums[i], nums[j]) == 1 {
+            let first = format!("{}", nums[i]);
+            let last = format!("{}", nums[j]);
+            let first = first.chars().collect::<Vec<char>>()[0] as i32 - '0' as i32;
+            let last = last.chars().collect::<Vec<char>>()[last.len() - 1] as i32 - '0' as i32;
+            if gcd(first, last) == 1 {
                 answer += 1;
             }
         }
