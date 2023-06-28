@@ -1,17 +1,17 @@
 // https://leetcode.com/problems/maximum-subsequence-score/
 pub fn max_score(nums1: Vec<i32>, nums2: Vec<i32>, k: i32) -> i64 {
-    let mut v: Vec<(usize, i32)> = nums1.iter().map(|n| *n).enumerate().collect();
-    v.sort_by(|a, b| nums2[b.0].cmp(&nums2[a.0]));
-    println!("{:?}", v);
-    let mut sum: i64 = 0;
+    let mut nums: Vec<(i32, i32)> = nums1.into_iter().zip(nums2).collect();
+    nums.sort_by(|a, b| b.1.cmp(&a.1));
+    println!("{:?}", nums);
+    let mut sum = 0_i64;
     let mut min = i64::MAX;
     let mut count = 0;
-    for (i, n) in v.iter() {
+    for (n1, n2) in nums.iter() {
         if count == k {
             break;
         }
-        sum += *n as i64;
-        min = min.min(nums2[*i] as i64);
+        sum += *n1 as i64;
+        min = min.min(*n2 as i64);
         count += 1;
     }
     sum * min
