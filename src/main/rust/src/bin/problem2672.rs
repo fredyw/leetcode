@@ -1,6 +1,7 @@
 // https://leetcode.com/problems/number-of-adjacent-elements-with-the-same-color/
 pub fn color_the_array(n: i32, queries: Vec<Vec<i32>>) -> Vec<i32> {
-    todo!()
+    let mut answer = vec![0; queries.len()];
+    answer
 }
 
 fn main() {
