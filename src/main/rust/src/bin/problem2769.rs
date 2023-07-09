@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/find-the-maximum-achievable-number/
 pub fn the_maximum_achievable_x(num: i32, t: i32) -> i32 {
-    todo!()
+    num + 2 * t
 }
 
 fn main() {
