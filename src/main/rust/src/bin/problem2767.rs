@@ -1,11 +1,8 @@
 // https://leetcode.com/problems/partition-string-into-minimum-beautiful-substrings/
 pub fn minimum_beautiful_substrings(s: String) -> i32 {
     fn is_power_of_5(n: i32) -> bool {
-        let mut x = n;
-        while x > 1 && x % 5 == 0 {
-            x /= 5;
-        }
-        x == 1
+        let exp = f32::log(n as f32, 5.0);
+        5i32.pow(exp as u32) == n
     }
 
     fn minimum_beautiful_substrings(chars: &Vec<char>, i: usize, num: i32) -> i32 {
