@@ -1,6 +1,14 @@
 // https://leetcode.com/problems/split-strings-by-separator/
 pub fn split_words_by_separator(words: Vec<String>, separator: char) -> Vec<String> {
-    todo!()
+    let mut answer = vec![];
+    for word in words.into_iter() {
+        for s in word.split(separator).into_iter() {
+            if !s.is_empty() {
+                answer.push(s.to_string());
+            }
+        }
+    }
+    answer
 }
 
 fn main() {
