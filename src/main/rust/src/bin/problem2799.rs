@@ -23,7 +23,7 @@ pub fn count_complete_subarrays(nums: Vec<i32>) -> i32 {
         } else {
             j += 1;
         }
-        if j < i {
+        if j <= i {
             j += 1;
         }
     }
@@ -37,5 +37,9 @@ fn main() {
     //     "{}",
     //     count_complete_subarrays(vec![459, 459, 962, 1579, 1435, 756, 1872, 1597])
     // ); // 2
-    println!("{}", count_complete_subarrays(vec![1454, 1789, 1454])); // 3
+    // println!("{}", count_complete_subarrays(vec![1454, 1789, 1454])); // 3
+    println!(
+        "{}",
+        count_complete_subarrays(vec![381, 1304, 381, 758, 1304, 381, 758])
+    ); // 14
 }
