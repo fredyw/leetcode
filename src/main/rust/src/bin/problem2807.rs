@@ -22,7 +22,48 @@ pub fn insert_greatest_common_divisors(head: Option<Box<ListNode>>) -> Option<Bo
         }
         gcd(a, b - a)
     }
-    todo!()
+
+    fn to_vec(node: Option<Box<ListNode>>) -> Vec<i32> {
+        let mut node = node;
+        let mut v: Vec<i32> = vec![];
+        while let Some(n) = node {
+            v.push(n.val);
+            node = n.next
+        }
+        v
+    }
+
+    fn to_linked_list(v: Vec<i32>) -> Option<Box<ListNode>> {
+        let mut head: Option<Box<ListNode>> = None;
+        let mut current = &mut head;
+        for i in v.iter() {
+            match current {
+                Some(a) => {
+                    a.next = Some(Box::new(ListNode::new(*i)));
+                    current = &mut a.next;
+                }
+                None => {
+                    head = Some(Box::new(ListNode::new(*i)));
+                    current = &mut head;
+                }
+            }
+        }
+        head
+    }
+
+    let mut answer: Vec<i32> = vec![];
+    let v = to_vec(head);
+    let mut i = 0;
+    while i + 1 < v.len() {
+        let gcd = gcd(v[i], v[i + 1]);
+        answer.push(v[i]);
+        answer.push(gcd);
+        i += 1;
+    }
+    if i < v.len() {
+        answer.push(v[i]);
+    }
+    to_linked_list(answer)
 }
 
 fn to_linked_list(v: Vec<i32>) -> Option<Box<ListNode>> {
@@ -43,12 +84,12 @@ fn to_linked_list(v: Vec<i32>) -> Option<Box<ListNode>> {
     head
 }
 
-fn to_vec(node: &Option<Box<ListNode>>) -> Vec<i32> {
+fn to_vec(node: Option<Box<ListNode>>) -> Vec<i32> {
     let mut node = node;
     let mut v: Vec<i32> = vec![];
     while let Some(n) = node {
         v.push(n.val);
-        node = &n.next
+        node = n.next
     }
     v
 }
@@ -56,12 +97,12 @@ fn to_vec(node: &Option<Box<ListNode>>) -> Vec<i32> {
 fn main() {
     println!(
         "{:?}",
-        to_vec(&insert_greatest_common_divisors(to_linked_list(vec![
+        to_vec(insert_greatest_common_divisors(to_linked_list(vec![
             18, 6, 10, 3
         ])))
     ); // [18,6,6,2,10,1,3]
     println!(
         "{:?}",
-        to_vec(&insert_greatest_common_divisors(to_linked_list(vec![7])))
+        to_vec(insert_greatest_common_divisors(to_linked_list(vec![7])))
     ); // [7]
 }
