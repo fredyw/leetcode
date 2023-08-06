@@ -3,29 +3,23 @@ pub fn final_string(s: String) -> String {
     let mut answer: Vec<char> = vec![];
     let chars: Vec<char> = s.chars().collect();
     let mut i = 0;
-    let mut j = 0;
-    while j < chars.len() {
-        if chars[j] == 'i' {
+    while i < chars.len() {
+        if chars[i] == 'i' {
             let mut count = 0;
-            let mut k = j;
-            while k < chars.len() && chars[k] == 'i' {
+            let mut j = i;
+            while j < chars.len() && chars[j] == 'i' {
                 count += 1;
-                k += 1;
+                j += 1;
             }
-            let v = &mut chars[i..j].to_vec();
             if count % 2 != 0 {
-                v.reverse();
-                answer.append(v);
-            } else {
-                answer.append(v);
+                answer.reverse();
             }
-            j = k;
-            i = k;
+            i = j;
         } else {
-            j += 1;
+            answer.push(chars[i]);
+            i += 1;
         }
     }
-    answer.append(&mut chars[i..j].to_vec());
     answer.into_iter().collect()
 }
 
