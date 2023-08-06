@@ -12,12 +12,12 @@ pub fn final_string(s: String) -> String {
                 count += 1;
                 k += 1;
             }
-            let sub = &mut chars[i..j].to_vec();
+            let v = &mut chars[i..j].to_vec();
             if count % 2 != 0 {
-                sub.reverse();
-                answer.append(sub);
+                v.reverse();
+                answer.append(v);
             } else {
-                answer.append(sub);
+                answer.append(v);
             }
             j = k;
             i = k;
@@ -25,10 +25,13 @@ pub fn final_string(s: String) -> String {
             j += 1;
         }
     }
+    answer.append(&mut chars[i..j].to_vec());
     answer.into_iter().collect()
 }
 
 fn main() {
     println!("{}", final_string("string".to_string())); // "rtsng"
     println!("{}", final_string("poiinter".to_string())); // "ponter"
+    println!("{}", final_string("abcdef".to_string())); // "abcdef"
+    println!("{}", final_string("viwif".to_string())); // "wvf"
 }
