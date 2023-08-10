@@ -10,10 +10,7 @@ pub fn add_minimum(word: String) -> i32 {
         }
         if chars[i] >= chars[i + 1] {
             answer += 2;
-            i += 1;
-            continue;
-        }
-        if chars[i] < chars[i + 1] {
+        } else {
             i += 1;
             if i >= chars.len() {
                 answer += 1;
@@ -28,9 +25,7 @@ pub fn add_minimum(word: String) -> i32 {
                 i += 1;
                 continue;
             }
-            if chars[i] < chars[i + 1] {
-                i += 1;
-            }
+            i += 1;
         }
         i += 1;
     }
@@ -42,6 +37,6 @@ fn main() {
     println!("{}", add_minimum("aaa".to_string())); // 6
     println!("{}", add_minimum("abc".to_string())); // 0
     println!("{}", add_minimum("aaabbcaccaacca".to_string())); // 16
-    println!("{}", add_minimum("aaaaab".to_string())); // 16
+    println!("{}", add_minimum("aaaaab".to_string())); // 9
     println!("{}", add_minimum("ab".to_string())); // 1
 }
