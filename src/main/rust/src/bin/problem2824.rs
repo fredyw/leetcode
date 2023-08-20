@@ -1,6 +1,14 @@
 // https://leetcode.com/problems/count-pairs-whose-sum-is-less-than-target/
 pub fn count_pairs(nums: Vec<i32>, target: i32) -> i32 {
-    todo!()
+    let mut answer = 0;
+    for i in 0..nums.len() {
+        for j in i + 1..nums.len() {
+            if nums[i] + nums[j] < target {
+                answer += 1;
+            }
+        }
+    }
+    answer
 }
 
 fn main() {
