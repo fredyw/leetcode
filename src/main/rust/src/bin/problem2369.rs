@@ -38,4 +38,6 @@ pub fn valid_partition(nums: Vec<i32>) -> bool {
 fn main() {
     println!("{}", valid_partition(vec![4, 4, 4, 5, 6])); // true
     println!("{}", valid_partition(vec![1, 1, 1, 2])); // false
+    println!("{}", valid_partition(vec![1, 1, 1, 1])); // true
+    println!("{}", valid_partition(vec![1, 1, 1, 1, 1])); // true
 }
