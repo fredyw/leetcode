@@ -1,6 +1,10 @@
 // https://leetcode.com/problems/check-if-a-string-is-an-acronym-of-words/
 pub fn is_acronym(words: Vec<String>, s: String) -> bool {
-    todo!()
+    words
+        .into_iter()
+        .map(|c| *c.chars().collect::<Vec<char>>().get(0).unwrap())
+        .collect::<String>()
+        == s
 }
 
 fn main() {
