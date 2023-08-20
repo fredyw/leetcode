@@ -1,38 +1,31 @@
 // https://leetcode.com/problems/check-if-there-is-a-valid-partition-for-the-array/
 pub fn valid_partition(nums: Vec<i32>) -> bool {
-    #[derive(Debug, PartialEq, Eq)]
-    enum Type {
-        Initial,
-        Equal,
-        Increasing,
+    fn valid_partition(nums: &Vec<i32>, i: usize, memo: &mut Vec<Option<bool>>) -> bool {
+        if i == nums.len() {
+            return true;
+        }
+        if let Some(m) = memo[i] {
+            return m;
+        }
+        let mut found = false;
+        if i + 1 < nums.len() {
+            if nums[i] == nums[i + 1] {
+                found |= valid_partition(nums, i + 2, memo);
+            }
+        }
+        if i + 2 < nums.len() {
+            if nums[i] == nums[i + 1] && nums[i + 1] == nums[i + 2] {
+                found |= valid_partition(nums, i + 3, memo);
+            } else if nums[i] + 1 == nums[i + 1] && nums[i + 1] + 1 == nums[i + 2] {
+                found |= valid_partition(nums, i + 3, memo);
+            }
+        }
+        memo[i] = Some(found);
+        found
     }
 
-    fn valid_partition(nums: &Vec<i32>, index: usize, count: i32, t: Type) -> bool {
-        if index == nums.len() {
-            return (t == Type::Equal && count == 2) || count == 3;
-        }
-        if count == 1 {
-            if nums[index - 1] == nums[index] {
-                return valid_partition(nums, index + 1, count + 1, Type::Equal);
-            }
-            if nums[index - 1] + 1 == nums[index] {
-                return valid_partition(nums, index + 1, count + 1, Type::Increasing);
-            }
-        }
-        if count == 2 {
-            if t == Type::Equal && nums[index - 1] == nums[index] {
-                return valid_partition(nums, index + 1, count + 1, Type::Equal)
-                    || valid_partition(nums, index + 1, 1, Type::Initial);
-            }
-            if t == Type::Increasing && nums[index - 1] + 1 == nums[index] {
-                return valid_partition(nums, index + 1, count + 1, Type::Increasing);
-            }
-        }
-        // count == 3
-        valid_partition(nums, index + 1, 1, Type::Initial)
-    }
-
-    valid_partition(&nums, 1, 1, Type::Initial)
+    let mut memo = vec![None; nums.len()];
+    valid_partition(&nums, 0, &mut memo)
 }
 
 fn main() {
