@@ -42,18 +42,18 @@ pub fn double_it(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
     }
 
     let v = to_vec(&head);
-    let mut double_v: Vec<i32> = vec![];
+    let mut answer: Vec<i32> = vec![];
     let mut carry = false;
     for i in (0..v.len()).rev() {
         let d = v[i] * 2;
-        double_v.push(if carry { d + 1 } else { d } % 10);
+        answer.push(if carry { d + 1 } else { d } % 10);
         carry = d >= 10;
     }
     if carry {
-        double_v.push(1);
+        answer.push(1);
     }
-    double_v.reverse();
-    to_linked_list(double_v)
+    answer.reverse();
+    to_linked_list(answer)
 }
 
 fn to_linked_list(v: Vec<i32>) -> Option<Box<ListNode>> {
