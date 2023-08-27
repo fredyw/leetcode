@@ -12,7 +12,6 @@ pub fn furthest_distance_from_origin(moves: String) -> i32 {
         }
     }
     for c in chars.into_iter() {
-        // Always choose 'L' for '_'.
         if c == 'L' {
             answer -= 1;
         } else if c == 'R' {
