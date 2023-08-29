@@ -4,8 +4,8 @@ pub fn maximum_detonation(bombs: Vec<Vec<i32>>) -> i32 {
         x * x
     }
 
-    fn distance(x1: i64, y1: i64, x2: i64, y2: i64) -> i64 {
-        (square((x1 - x2).abs()) as f64 + square((y1 - y2).abs()) as f64).sqrt() as i64
+    fn distance(x1: i64, y1: i64, x2: i64, y2: i64) -> f64 {
+        (square((x1 - x2).abs()) as f64 + square((y1 - y2).abs()) as f64).sqrt()
     }
 
     fn within_range(bomb1: &Vec<i32>, bomb2: &Vec<i32>) -> bool {
@@ -15,7 +15,7 @@ pub fn maximum_detonation(bombs: Vec<Vec<i32>>) -> i32 {
         let x2 = bomb2[0] as i64;
         let y2 = bomb2[1] as i64;
         let r2 = bomb2[2] as i64;
-        distance(x1, y1, x2, y2) < r1 + r2
+        distance(x1, y1, x2, y2) < r1 as f64 + r2 as f64
     }
 
     fn build_adj_list(bombs: &Vec<Vec<i32>>) -> Vec<Vec<usize>> {
