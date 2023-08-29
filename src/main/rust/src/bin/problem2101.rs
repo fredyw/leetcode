@@ -1,5 +1,19 @@
+use std::collections::HashSet;
+
 // https://leetcode.com/problems/detonate-the-maximum-bombs/
 pub fn maximum_detonation(bombs: Vec<Vec<i32>>) -> i32 {
+    fn square(x: i64) -> i64 {
+        x * x
+    }
+
+    fn distance(x1: i64, y1: i64, x2: i64, y2: i64) -> i64 {
+        (square((x1 - x2).abs()) as f64 + square((y1 - y2).abs()) as f64).sqrt() as i64
+    }
+
+    fn within_range(x1: i64, y1: i64, r1: i64, x2: i64, y2: i64, r2: i64) -> bool {
+        distance(x1, y1, x2, y2) < r1 + r2
+    }
+
     todo!()
 }
 
