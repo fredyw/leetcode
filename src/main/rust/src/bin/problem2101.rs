@@ -8,22 +8,23 @@ pub fn maximum_detonation(bombs: Vec<Vec<i32>>) -> i32 {
         (square((x1 - x2).abs()) as f64 + square((y1 - y2).abs()) as f64).sqrt()
     }
 
-    fn within_range(bomb1: &Vec<i32>, bomb2: &Vec<i32>) -> bool {
+    fn can_detonate(bomb1: &Vec<i32>, bomb2: &Vec<i32>) -> bool {
         let x1 = bomb1[0] as i64;
         let y1 = bomb1[1] as i64;
         let r1 = bomb1[2] as i64;
         let x2 = bomb2[0] as i64;
         let y2 = bomb2[1] as i64;
-        let r2 = bomb2[2] as i64;
-        distance(x1, y1, x2, y2) < r1 as f64 + r2 as f64
+        distance(x1, y1, x2, y2) <= r1 as f64
     }
 
     fn build_adj_list(bombs: &Vec<Vec<i32>>) -> Vec<Vec<usize>> {
         let mut adj_list: Vec<Vec<usize>> = vec![vec![]; bombs.len()];
         for i in 0..bombs.len() {
             for j in i + 1..bombs.len() {
-                if within_range(&bombs[i], &bombs[j]) {
+                if can_detonate(&bombs[i], &bombs[j]) {
                     adj_list[i].push(j);
+                }
+                if can_detonate(&bombs[j], &bombs[i]) {
                     adj_list[j].push(i);
                 }
             }
@@ -45,11 +46,8 @@ pub fn maximum_detonation(bombs: Vec<Vec<i32>>) -> i32 {
 
     let mut answer = 0;
     let adj_list = build_adj_list(&bombs);
-    let mut visited: Vec<bool> = vec![false; bombs.len()];
     for i in 0..bombs.len() {
-        if !visited[i] {
-            answer = answer.max(max_detonation(&adj_list, i, &mut visited) + 1);
-        }
+        answer = answer.max(max_detonation(&adj_list, i, &mut vec![false; bombs.len()]) + 1);
     }
     answer
 }
