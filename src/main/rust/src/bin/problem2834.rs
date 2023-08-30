@@ -1,6 +1,28 @@
+use std::collections::HashSet;
+
 // https://leetcode.com/problems/find-the-minimum-possible-sum-of-a-beautiful-array/
 pub fn minimum_possible_sum(n: i32, target: i32) -> i64 {
-    todo!()
+    let mut answer = 0;
+    let mut n = n;
+    let target = target as i64;
+    let mut ignore: HashSet<i64> = HashSet::new();
+    let mut i: i64 = 1;
+    loop {
+        if n == 0 {
+            break;
+        }
+        if ignore.contains(&i) {
+            i += 1;
+            continue;
+        }
+        if target - i > 0 {
+            ignore.insert(target - i);
+        }
+        answer += i;
+        n -= 1;
+        i += 1;
+    }
+    answer
 }
 
 fn main() {
