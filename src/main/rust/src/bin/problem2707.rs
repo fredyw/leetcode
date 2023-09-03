@@ -22,4 +22,11 @@ fn main() {
             vec!["hello".to_string(), "world".to_string()]
         )
     ); // 3
+    println!(
+        "{}",
+        min_extra_char(
+            "abc".to_string(),
+            vec!["xyz".to_string(), "def".to_string()]
+        )
+    ); // 0
 }
