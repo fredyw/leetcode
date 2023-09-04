@@ -17,11 +17,11 @@ pub fn min_speed_on_time(dist: Vec<i32>, hour: f64) -> i32 {
 
     let mut answer = i32::MAX;
     let mut start = 1;
-    let mut end = i32::MAX as i64;
+    let mut end = 10000000;
     while start <= end {
         let mid = start + ((end - start) / 2);
-        if is_possible(&dist, hour, mid as i32) {
-            answer = answer.min(mid as i32);
+        if is_possible(&dist, hour, mid) {
+            answer = answer.min(mid);
             end = mid - 1;
         } else {
             start = mid + 1;
