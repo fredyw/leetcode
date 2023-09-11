@@ -29,4 +29,26 @@ fn main() {
             vec!["xyz".to_string(), "def".to_string()]
         )
     ); // 0
+    println!(
+        "{}",
+        min_extra_char(
+            "leetscodeleetcode".to_string(),
+            vec![
+                "leet".to_string(),
+                "code".to_string(),
+                "leetcode".to_string()
+            ]
+        )
+    ); // 1
+    println!(
+        "{}",
+        min_extra_char(
+            "leetcode".to_string(),
+            vec![
+                "leet".to_string(),
+                "code".to_string(),
+                "leetcode".to_string()
+            ]
+        )
+    ); // 0
 }
