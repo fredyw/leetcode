@@ -39,6 +39,13 @@ fn main() {
     println!(
         "{}",
         min_extra_char(
+            "adbecf".to_string(),
+            vec!["abc".to_string(), "def".to_string()]
+        )
+    ); // 6
+    println!(
+        "{}",
+        min_extra_char(
             "leetscodeleetcode".to_string(),
             vec![
                 "leet".to_string(),
