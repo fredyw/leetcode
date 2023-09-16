@@ -65,4 +65,11 @@ fn main() {
             ]
         )
     ); // 0
+    println!(
+        "{}",
+        min_extra_char(
+            "codewarriorleetcode".to_string(),
+            vec!["code".to_string(), "codewarrior".to_string()]
+        )
+    ); // 4
 }
