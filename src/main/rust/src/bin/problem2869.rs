@@ -1,6 +1,15 @@
+use std::collections::HashSet;
+
 // https://leetcode.com/problems/minimum-operations-to-collect-elements/description/
 pub fn min_operations(nums: Vec<i32>, k: i32) -> i32 {
-    todo!()
+    let mut set: HashSet<i32> = (1..=k).into_iter().collect();
+    for (i, n) in nums.iter().rev().enumerate() {
+        set.remove(n);
+        if set.len() == 0 {
+            return i as i32 + 1;
+        }
+    }
+    nums.len() as i32 + 1
 }
 
 fn main() {
