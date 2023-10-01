@@ -7,4 +7,6 @@ fn main() {
     println!("{}", maximum_triplet_value(vec![12, 6, 1, 2, 7])); // 77
     println!("{}", maximum_triplet_value(vec![1, 10, 3, 4, 19])); // 133
     println!("{}", maximum_triplet_value(vec![1, 2, 3])); // 0
+    println!("{}", maximum_triplet_value(vec![5, 4, 3, 2, 1])); // 4
+    println!("{}", maximum_triplet_value(vec![1, 2, 3, 4, 5])); // 0
 }
