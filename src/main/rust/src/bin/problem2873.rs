@@ -1,11 +1,15 @@
 // https://leetcode.com/problems/maximum-value-of-an-ordered-triplet-i/description/
 pub fn maximum_triplet_value(nums: Vec<i32>) -> i64 {
+    let mut max_numbers: Vec<i32> = vec![0; nums.len()];
+    let mut max = 0;
+    for i in (0..nums.len()).rev() {
+        max = max.max(nums[i]);
+        max_numbers[i] = max;
+    }
     let mut answer = 0;
-    for i in 0..nums.len() {
-        for j in i + 1..nums.len() {
-            for k in j + 1..nums.len() {
-                answer = answer.max((nums[i] as i64 - nums[j] as i64) * nums[k] as i64);
-            }
+    for i in 0..nums.len() - 2 {
+        for j in i + 1..nums.len() - 1 {
+            answer = answer.max((nums[i] as i64 - nums[j] as i64) * max_numbers[j + 1] as i64);
         }
     }
     answer
