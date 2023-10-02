@@ -1,6 +1,14 @@
 // https://leetcode.com/problems/maximum-value-of-an-ordered-triplet-i/description/
 pub fn maximum_triplet_value(nums: Vec<i32>) -> i64 {
-    todo!()
+    let mut answer = 0;
+    for i in 0..nums.len() {
+        for j in i + 1..nums.len() {
+            for k in j + 1..nums.len() {
+                answer = answer.max((nums[i] as i64 - nums[j] as i64) * nums[k] as i64);
+            }
+        }
+    }
+    answer
 }
 
 fn main() {
