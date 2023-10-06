@@ -2,9 +2,13 @@
 pub fn count_ways(mut nums: Vec<i32>) -> i32 {
     nums.sort();
     let mut answer = 0;
-    for (i, n) in nums.iter().enumerate() {
-        if *n < (i + 1) as i32 {
-            answer += 1;
+    if nums[0] != 0 {
+        answer += 1;
+    }
+    nums.push(i32::MAX);
+    for i in 0..nums.len() - 1 {
+        if nums[i] < (i + 1) as i32 && nums[i + 1] > (i + 1) as i32 {
+            answer += 1
         }
     }
     answer
