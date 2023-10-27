@@ -29,4 +29,30 @@ fn main() {
             vec![1, 0, 1, 1]
         )
     ); // ["a","b","c"]
+    println!(
+        "{:?}",
+        get_words_in_longest_subsequence(
+            4,
+            vec![
+                "a".to_string(),
+                "b".to_string(),
+                "c".to_string(),
+                "def".to_string()
+            ],
+            vec![1, 0, 1, 1]
+        )
+    ); // ["a","b","c"]
+    println!(
+        "{:?}",
+        get_words_in_longest_subsequence(
+            4,
+            vec![
+                "a".to_string(),
+                "b".to_string(),
+                "c".to_string(),
+                "def".to_string()
+            ],
+            vec![1, 0, 1, 1]
+        )
+    ); // ["a","b","c","def"]
 }
