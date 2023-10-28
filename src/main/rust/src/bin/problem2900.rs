@@ -4,7 +4,36 @@ pub fn get_words_in_longest_subsequence(
     words: Vec<String>,
     groups: Vec<i32>,
 ) -> Vec<String> {
-    todo!()
+    let mut zero_first = vec![];
+    let mut one_first = vec![];
+    let mut zero = true;
+    let mut one = true;
+    for i in 0..n as usize {
+        if groups[i] == 0 {
+            if zero {
+                zero_first.push(words[i].clone());
+                zero = !zero;
+            }
+            if !one {
+                one_first.push(words[i].clone());
+                one = !one;
+            }
+        } else {
+            if !zero {
+                zero_first.push(words[i].clone());
+                zero = !zero;
+            }
+            if one {
+                one_first.push(words[i].clone());
+                one = !one;
+            }
+        }
+    }
+    if zero_first.len() > one_first.len() {
+        zero_first
+    } else {
+        one_first
+    }
 }
 
 fn main() {
@@ -52,7 +81,7 @@ fn main() {
                 "c".to_string(),
                 "def".to_string()
             ],
-            vec![1, 0, 1, 1]
+            vec![1, 0, 1, 0]
         )
     ); // ["a","b","c","def"]
 }
