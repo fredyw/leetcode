@@ -5,28 +5,19 @@ pub fn minimum_sum(nums: Vec<i32>) -> i32 {
     let mut min_forward = i32::MAX;
     let mut min_backward = i32::MAX;
     let mut i = 0;
-    let mut j = nums.len() - 1;
+    let mut j: isize = nums.len() as isize - 1;
     while i < nums.len() {
         min_forward = min_forward.min(nums[i]);
-        min_backward = min_backward.min(nums[j]);
+        min_backward = min_backward.min(nums[j as usize]);
         min_prefix[i] = min_forward;
-        min_suffix[j] = min_backward;
+        min_suffix[j as usize] = min_backward;
         i += 1;
-        j -= 0;
+        j -= 1;
     }
     let mut answer = i32::MAX;
-    println!("forward_prefix: {:?}", min_prefix);
-    println!("backward_suffix: {:?}", min_suffix);
     for i in 1..nums.len() - 1 {
         if min_prefix[i - 1] < nums[i] && nums[i] > min_suffix[i + 1] {
             let sum = min_prefix[i - 1] + nums[i] + min_suffix[i + 1];
-            println!(
-                "a = {}, b = {}, c = {}, sum: {}",
-                min_prefix[i - 1],
-                nums[i],
-                min_suffix[i + 1],
-                sum
-            );
             answer = answer.min(sum);
         }
     }
