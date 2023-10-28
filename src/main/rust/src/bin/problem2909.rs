@@ -18,11 +18,14 @@ pub fn minimum_sum(nums: Vec<i32>) -> i32 {
     println!("forward_prefix: {:?}", min_prefix);
     println!("backward_suffix: {:?}", min_suffix);
     for i in 1..nums.len() - 1 {
-        if min_prefix[i] < nums[i] && nums[i] > min_suffix[i] {
-            let sum = min_prefix[i] + nums[i] + min_suffix[i];
+        if min_prefix[i - 1] < nums[i] && nums[i] > min_suffix[i + 1] {
+            let sum = min_prefix[i - 1] + nums[i] + min_suffix[i + 1];
             println!(
                 "a = {}, b = {}, c = {}, sum: {}",
-                min_prefix[i], nums[i], min_suffix[i], sum
+                min_prefix[i - 1],
+                nums[i],
+                min_suffix[i + 1],
+                sum
             );
             answer = answer.min(sum);
         }
@@ -36,6 +39,6 @@ pub fn minimum_sum(nums: Vec<i32>) -> i32 {
 
 fn main() {
     println!("{}", minimum_sum(vec![8, 6, 1, 5, 3])); // 9
-                                                      // println!("{}", minimum_sum(vec![5, 4, 8, 7, 10, 2])); // 13
-                                                      // println!("{}", minimum_sum(vec![6, 5, 4, 3, 4, 5])); // -1
+    println!("{}", minimum_sum(vec![5, 4, 8, 7, 10, 2])); // 13
+    println!("{}", minimum_sum(vec![6, 5, 4, 3, 4, 5])); // -1
 }
