@@ -1,6 +1,16 @@
 // https://leetcode.com/problems/distribute-candies-among-children-i/description/
 pub fn distribute_candies(n: i32, limit: i32) -> i32 {
-    todo!()
+    let mut answer = 0;
+    for i in 0..=limit {
+        for j in 0..=limit {
+            for k in 0..=limit {
+                if i + j + k == n {
+                    answer += 1;
+                }
+            }
+        }
+    }
+    answer
 }
 
 fn main() {
