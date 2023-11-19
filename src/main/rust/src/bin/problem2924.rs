@@ -12,5 +12,5 @@ fn main() {
     println!(
         "{}",
         find_champion(3, vec![vec![0, 1], vec![1, 2], vec![0, 2]])
-    ); // -1
+    ); // 0
 }
