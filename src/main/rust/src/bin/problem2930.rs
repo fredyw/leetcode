@@ -7,4 +7,5 @@ fn main() {
     println!("{}", string_count(4)); // 12
     println!("{}", string_count(10)); // 83943898
     println!("{}", string_count(3)); // 0
+    println!("{}", string_count(5)); // 1460
 }
