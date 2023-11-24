@@ -6,4 +6,5 @@ pub fn string_count(n: i32) -> i32 {
 fn main() {
     println!("{}", string_count(4)); // 12
     println!("{}", string_count(10)); // 83943898
+    println!("{}", string_count(3)); // 0
 }
