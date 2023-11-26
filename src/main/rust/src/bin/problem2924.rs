@@ -2,7 +2,6 @@
 pub fn find_champion(n: i32, edges: Vec<Vec<i32>>) -> i32 {
     let mut v = vec![false; n as usize];
     for edge in edges.iter() {
-        let from = edge[0];
         let to = edge[1];
         v[to as usize] = true;
     }
