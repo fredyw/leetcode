@@ -1,6 +1,11 @@
 // https://leetcode.com/problems/find-words-containing-character/description/
 pub fn find_words_containing(words: Vec<String>, x: char) -> Vec<i32> {
-    todo!()
+    words
+        .iter()
+        .enumerate()
+        .map(|(i, w)| if w.contains(x) { i as i32 } else { -1 })
+        .filter(|&i| i != -1)
+        .collect()
 }
 
 fn main() {
