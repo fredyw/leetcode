@@ -8,16 +8,17 @@ pub fn are_similar(mat: Vec<Vec<i32>>, k: i32) -> bool {
         for col in 0..n {
             if row % 2 == 0 {
                 // left
-                // println!("new_col: {}", n + ((col as i32 - 1) % k as usize));
-                shifted_mat[row][col] = mat[row][col + (col as i32 - k) as usize % n];
+                let i = (col as i32 - k) % n as i32;
+                shifted_mat[row][col] = mat[row][if i < 0 {
+                    (n as i32 + i) as usize
+                } else {
+                    i as usize
+                }];
             } else {
                 // right
                 shifted_mat[row][col] = mat[row][(col + k as usize) % n];
             }
         }
-    }
-    for v in shifted_mat.iter() {
-        println!("{:?}", v);
     }
     mat == shifted_mat
 }
@@ -30,6 +31,6 @@ fn main() {
             2
         )
     ); // true
-       // println!("{}", are_similar(vec![vec![2, 2], vec![2, 2]], 3)); // true
-       // println!("{}", are_similar(vec![vec![1, 2]], 1)); // false
+    println!("{}", are_similar(vec![vec![2, 2], vec![2, 2]], 3)); // true
+    println!("{}", are_similar(vec![vec![1, 2]], 1)); // false
 }
