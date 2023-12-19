@@ -9,5 +9,6 @@ fn main() {
     println!("{}", beautiful_substrings("bcdf".to_string(), 1)); // 0
     println!("{}", beautiful_substrings("abbaa".to_string(), 1)); // 4
     println!("{}", beautiful_substrings("abbaaa".to_string(), 1)); // 4
+    println!("{}", beautiful_substrings("abbaaab".to_string(), 1)); // 6
     println!("{}", beautiful_substrings("aaabb".to_string(), 1)); // 2
 }
