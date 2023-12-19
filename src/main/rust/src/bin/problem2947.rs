@@ -1,6 +1,26 @@
 // https://leetcode.com/problems/count-beautiful-substrings-i/description/
 pub fn beautiful_substrings(s: String, k: i32) -> i32 {
-    todo!()
+    fn is_vowel(b: u8) -> bool {
+        b == 'a' as u8 || b == 'e' as u8 || b == 'i' as u8 || b == 'o' as u8 || b == 'u' as u8
+    }
+
+    let mut answer = 0;
+    let bytes = s.as_bytes();
+    for i in 0..bytes.len() {
+        let mut vowel_count = 0;
+        let mut consonant_count = 0;
+        for j in i..bytes.len() {
+            if is_vowel(bytes[j]) {
+                vowel_count += 1;
+            } else {
+                consonant_count += 1;
+            }
+            if vowel_count == consonant_count && (vowel_count * consonant_count) % k == 0 {
+                answer += 1;
+            }
+        }
+    }
+    answer
 }
 
 fn main() {
