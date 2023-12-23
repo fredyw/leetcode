@@ -7,4 +7,5 @@ fn main() {
     println!("{}", minimum_steps("101".to_string())); // 1
     println!("{}", minimum_steps("100".to_string())); // 2
     println!("{}", minimum_steps("0111".to_string())); // 0
+    println!("{}", minimum_steps("1001001101".to_string())); // 10
 }
