@@ -1,6 +1,21 @@
 // https://leetcode.com/problems/separate-black-and-white-balls/description/
 pub fn minimum_steps(s: String) -> i64 {
-    todo!()
+    let mut answer = 0;
+    let mut chars: Vec<char> = s.chars().collect();
+    let mut j = chars.len() as i32 - 1;
+    while j >= 0 && chars[j as usize] == '1' {
+        j -= 1;
+    }
+    let mut i = j - 1;
+    while i >= 0 {
+        if chars[i as usize] == '1' {
+            chars.swap(i as usize, j as usize);
+            j -= 1;
+            answer += j as i64 - i as i64 + 1;
+        }
+        i -= 1;
+    }
+    answer
 }
 
 fn main() {
