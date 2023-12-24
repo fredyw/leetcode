@@ -7,4 +7,8 @@ fn main() {
     println!("{}", incremovable_subarray_count(vec![1, 2, 3, 4])); // 10
     println!("{}", incremovable_subarray_count(vec![6, 5, 7, 8])); // 7
     println!("{}", incremovable_subarray_count(vec![8, 7, 6, 6])); // 3
+    println!(
+        "{}",
+        incremovable_subarray_count(vec![1, 2, 3, 1, 4, 5, 2, 6, 7, 8, 1, 2, 9])
+    ); // 11
 }
