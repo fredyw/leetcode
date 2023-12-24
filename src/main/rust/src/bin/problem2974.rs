@@ -1,6 +1,12 @@
 // https://leetcode.com/problems/minimum-number-game/description/
-pub fn number_game(nums: Vec<i32>) -> Vec<i32> {
-    todo!()
+pub fn number_game(mut nums: Vec<i32>) -> Vec<i32> {
+    nums.sort();
+    let mut i = 0;
+    while i + 1 < nums.len() {
+        nums.swap(i, i + 1);
+        i += 2;
+    }
+    nums
 }
 
 fn main() {
