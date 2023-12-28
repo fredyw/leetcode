@@ -7,4 +7,5 @@ fn main() {
     println!("{}", eliminate_maximum(vec![1, 3, 4], vec![1, 1, 1])); // 3
     println!("{}", eliminate_maximum(vec![1, 1, 2, 3], vec![1, 1, 1, 1])); // 1
     println!("{}", eliminate_maximum(vec![3, 2, 4], vec![5, 3, 2])); // 1
+    println!("{}", eliminate_maximum(vec![3, 4, 1], vec![1, 1, 1])); // 3
 }
