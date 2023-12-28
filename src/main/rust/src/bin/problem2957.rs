@@ -5,5 +5,6 @@ pub fn remove_almost_equal_characters(word: String) -> i32 {
 
 fn main() {
     println!("{}", remove_almost_equal_characters("aaaaa".to_string())); // 2
+    println!("{}", remove_almost_equal_characters("abddez".to_string())); // 2
     println!("{}", remove_almost_equal_characters("zyxyxyz".to_string())); // 3
 }
