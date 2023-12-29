@@ -8,4 +8,6 @@ fn main() {
     println!("{}", remove_almost_equal_characters("abddez".to_string())); // 2
     println!("{}", remove_almost_equal_characters("zyxyxyz".to_string())); // 3
     println!("{}", remove_almost_equal_characters("abc".to_string())); // 1
+    println!("{}", remove_almost_equal_characters("azb".to_string())); // 0
+    println!("{}", remove_almost_equal_characters("aab".to_string())); // 1
 }
