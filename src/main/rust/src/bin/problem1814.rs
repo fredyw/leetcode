@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/count-nice-pairs-in-an-array/description/
 pub fn count_nice_pairs(nums: Vec<i32>) -> i32 {
     fn reverse(mut n: i32) -> i32 {
@@ -10,19 +12,18 @@ pub fn count_nice_pairs(nums: Vec<i32>) -> i32 {
         reversed
     }
 
-    let mut reversed = vec![];
+    // nums[i] + rev(nums[j]) == nums[j] + rev(nums[i])
+    // nums[i] - rev(nums[i]) == nums[j] - rev(nums[j])
+    let mut map: HashMap<i32, i64> = HashMap::new();
     for &num in nums.iter() {
-        reversed.push(reverse(num));
+        *map.entry(num - reverse(num)).or_insert(0) += 1;
     }
     let mut answer: i64 = 0;
-    for i in 0..nums.len() {
-        for j in i + 1..nums.len() {
-            if nums[i] + reversed[j] == reversed[i] + nums[j] {
-                answer = (answer + 1) % 1_000_000_007;
-            }
-        }
+    for &num in nums.iter() {
+        let count = map.get(&(num - reverse(num))).unwrap() - 1;
+        answer += count;
     }
-    answer as i32
+    ((answer / 2) % 1_000_000_007) as i32
 }
 
 fn main() {
