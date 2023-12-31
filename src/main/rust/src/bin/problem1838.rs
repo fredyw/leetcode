@@ -7,4 +7,5 @@ fn main() {
     println!("{}", max_frequency(vec![1, 2, 4], 5)); // 3
     println!("{}", max_frequency(vec![1, 4, 8, 13], 5)); // 2
     println!("{}", max_frequency(vec![3, 9, 6], 2)); // 1
+    println!("{}", max_frequency(vec![1, 4, 6, 10, 12, 17], 10)); // 3
 }
