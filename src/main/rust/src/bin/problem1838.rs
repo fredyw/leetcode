@@ -8,9 +8,10 @@ pub fn max_frequency(mut nums: Vec<i32>, k: i32) -> i32 {
         let mut n = k;
         while j >= 0 {
             n -= nums[i] - nums[j as usize];
-            if n >= 0 {
-                count += 1;
+            if n < 0 {
+                break;
             }
+            count += 1;
             j -= 1;
         }
         answer = answer.max(count);
