@@ -2,17 +2,22 @@
 pub fn max_frequency(mut nums: Vec<i32>, k: i32) -> i32 {
     nums.sort();
     let mut answer = 0;
-    for i in (0..nums.len()).rev() {
-        let mut count = 1;
-        let mut j = i as isize - 1;
-        let mut n = k;
-        while j >= 0 {
-            n -= nums[i] - nums[j as usize];
-            if n < 0 {
-                break;
+    let mut right = nums.len() as isize - 1;
+    let mut left = right - 1;
+    let mut count = 1;
+    let mut n = k;
+    while left >= 0 {
+        let diff = nums[right as usize] - nums[left as usize];
+        if n - diff < 0 {
+            if n < k {
+                n += nums[right as usize] - nums[right as usize - 1];
             }
+            right -= 1;
+            count -= 1;
+        } else {
             count += 1;
-            j -= 1;
+            left -= 1;
+            n -= diff;
         }
         answer = answer.max(count);
     }
