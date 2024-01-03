@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/frequency-of-the-most-frequent-element/description/
 pub fn max_frequency(mut nums: Vec<i32>, k: i32) -> i32 {
     nums.sort();
-    let mut answer = 0;
+    let mut answer = 1;
     let mut right = nums.len() as isize - 1;
     let mut left = right - 1;
     let mut count = 1;
