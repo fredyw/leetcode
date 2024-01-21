@@ -1,6 +1,11 @@
 // https://leetcode.com/problems/divide-an-array-into-subarrays-with-minimum-cost-i/description/
 pub fn minimum_cost(nums: Vec<i32>) -> i32 {
-    todo!()
+    let mut sub = vec![];
+    for i in 1..nums.len() {
+        sub.push(nums[i]);
+    }
+    sub.sort();
+    nums[0] + sub[0] + sub[1]
 }
 
 fn main() {
