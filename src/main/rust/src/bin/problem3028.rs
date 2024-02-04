@@ -1,6 +1,14 @@
 // https://leetcode.com/problems/ant-on-the-boundary/
 pub fn return_to_boundary_count(nums: Vec<i32>) -> i32 {
-    todo!()
+    let mut answer = 0;
+    let mut sum = 0;
+    for num in nums.iter() {
+        sum += num;
+        if sum == 0 {
+            answer += 1;
+        }
+    }
+    answer
 }
 
 fn main() {
