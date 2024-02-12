@@ -1,6 +1,24 @@
 // https://leetcode.com/problems/number-of-subarrays-that-match-a-pattern-i/description/
 pub fn count_matching_subarrays(nums: Vec<i32>, pattern: Vec<i32>) -> i32 {
-    todo!()
+    let mut answer = 0;
+    for i in 0..nums.len() {
+        let mut j = i;
+        let mut k = 0;
+        while j + 1 < nums.len() && k < pattern.len() {
+            if !((pattern[k] == 0 && nums[j] == nums[j + 1])
+                || (pattern[k] < 0 && nums[j] > nums[j + 1])
+                || (pattern[k] > 0 && nums[j] < nums[j + 1]))
+            {
+                break;
+            }
+            j += 1;
+            k += 1;
+        }
+        if k == pattern.len() {
+            answer += 1;
+        }
+    }
+    answer
 }
 
 fn main() {
