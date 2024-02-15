@@ -7,4 +7,5 @@ fn main() {
     println!("{}", minimize_array_value(vec![3, 7, 1, 6])); // 5
     println!("{}", minimize_array_value(vec![10, 1])); // 10
     println!("{}", minimize_array_value(vec![1, 1, 1, 1])); // 1
+    println!("{}", minimize_array_value(vec![1, 10])); // 6
 }
