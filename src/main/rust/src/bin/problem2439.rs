@@ -22,6 +22,7 @@ fn main() {
     // println!("{}", minimize_array_value(vec![10, 1])); // 10
     // println!("{}", minimize_array_value(vec![1, 1, 1, 1])); // 1
     // println!("{}", minimize_array_value(vec![1, 10])); // 6
+    // println!("{}", minimize_array_value(vec![5, 4, 3, 2, 1])); // 5
     println!("{}", minimize_array_value(vec![1, 2, 3, 4, 5])); // 3
                                                                // println!("{}", minimize_array_value(vec![1, 2, 4, 3, 4, 10, 2])); // 4
 }
