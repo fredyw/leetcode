@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/minimize-maximum-of-array/description/
-pub fn minimize_array_value(nums: Vec<i32>) -> i32 {
+pub fn minimize_array_value(mut nums: Vec<i32>) -> i32 {
     let mut answer = nums[0];
     for i in 1..nums.len() {
         if nums[i - 1] < nums[i] {
@@ -9,6 +9,7 @@ pub fn minimize_array_value(nums: Vec<i32>) -> i32 {
             } else {
                 nums[i - 1] + n
             };
+            nums[i] = nums[i] - mid;
             answer = answer.max(mid);
         } else {
             answer = answer.max(nums[i]);
@@ -23,6 +24,6 @@ fn main() {
     // println!("{}", minimize_array_value(vec![1, 1, 1, 1])); // 1
     // println!("{}", minimize_array_value(vec![1, 10])); // 6
     // println!("{}", minimize_array_value(vec![5, 4, 3, 2, 1])); // 5
-    println!("{}", minimize_array_value(vec![1, 2, 3, 4, 5])); // 3
-                                                               // println!("{}", minimize_array_value(vec![1, 2, 4, 3, 4, 10, 2])); // 4
+    // println!("{}", minimize_array_value(vec![1, 2, 3, 4, 5])); // 3
+    println!("{}", minimize_array_value(vec![1, 2, 4, 3, 4, 10])); // 4
 }
