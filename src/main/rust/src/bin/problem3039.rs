@@ -10,8 +10,17 @@ pub fn last_non_empty_string(s: String) -> String {
     for (_, count) in map.iter() {
         max_count = max_count.max(*count);
     }
+    let mut map: HashMap<char, u32> = map
+        .into_iter()
+        .filter(|(_, count)| *count == max_count)
+        .collect();
     let mut answer = String::new();
-    // TODO
+    for c in s.chars() {
+        if map.contains_key(&c) {
+            answer.push(c);
+            map.remove(&c);
+        }
+    }
     answer
 }
 
