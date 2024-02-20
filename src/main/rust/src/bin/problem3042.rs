@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/   count-prefix-and-suffix-pairs-i/description/
+// https://leetcode.com/problems/count-prefix-and-suffix-pairs-i/description/
 pub fn count_prefix_suffix_pairs(words: Vec<String>) -> i32 {
     let mut answer = 0;
     for i in 0..words.len() {
