@@ -7,4 +7,5 @@ fn main() {
     println!("{:?}", count_of_pairs(3, 1, 3)); // [6,0,0]
     println!("{:?}", count_of_pairs(5, 2, 4)); // [10,8,2,0,0]
     println!("{:?}", count_of_pairs(4, 1, 1)); // [6,4,2,0]
+    println!("{:?}", count_of_pairs(5, 1, 5)); // [10,10,0,0,0]
 }
