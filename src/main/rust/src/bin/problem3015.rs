@@ -1,9 +1,9 @@
-use std::collections::{HashMap, VecDeque};
+use std::collections::VecDeque;
 
 // https://leetcode.com/problems/count-the-number-of-houses-at-a-certain-distance-i/description/
 pub fn count_of_pairs(n: i32, x: i32, y: i32) -> Vec<i32> {
-    fn bfs(graph: &HashMap<i32, Vec<i32>>, start: i32, answer: &mut Vec<i32>) {
-        let mut deque: VecDeque<i32> = VecDeque::new();
+    fn bfs(graph: &Vec<Vec<usize>>, start: usize, answer: &mut Vec<i32>) {
+        let mut deque: VecDeque<usize> = VecDeque::new();
         let mut visited: Vec<bool> = vec![false; graph.len()];
         let mut i: i32 = -1;
         deque.push_back(start);
@@ -11,32 +11,30 @@ pub fn count_of_pairs(n: i32, x: i32, y: i32) -> Vec<i32> {
             let size = deque.len();
             for _ in 0..size {
                 let house = deque.pop_front().unwrap();
-                if visited[house as usize - 1] {
+                if visited[house] {
                     continue;
                 }
                 if i >= 0 {
                     answer[i as usize] += 1;
                 }
-                visited[house as usize - 1] = true;
-                if let Some(neighbors) = graph.get(&house) {
-                    for neighbor in neighbors.iter() {
-                        deque.push_back(*neighbor);
-                    }
+                visited[house] = true;
+                for neighbor in graph[house].iter() {
+                    deque.push_back(*neighbor);
                 }
             }
             i += 1;
         }
     }
 
-    let mut graph: HashMap<i32, Vec<i32>> = HashMap::new();
-    graph.entry(x).or_insert(vec![]).push(y);
-    graph.entry(y).or_insert(vec![]).push(x);
-    for i in 1..n {
-        graph.entry(i).or_insert(vec![]).push(i + 1);
-        graph.entry(i + 1).or_insert(vec![]).push(i);
+    let mut graph: Vec<Vec<usize>> = vec![vec![]; n as usize];
+    graph[x as usize - 1].push(y as usize - 1);
+    graph[y as usize - 1].push(x as usize - 1);
+    for i in 0..n as usize - 1 {
+        graph[i].push(i + 1);
+        graph[i + 1].push(i);
     }
     let mut answer = vec![0; n as usize];
-    for i in 1..=n {
+    for i in 0..n as usize {
         bfs(&graph, i, &mut answer);
     }
     answer
