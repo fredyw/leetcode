@@ -24,11 +24,11 @@ impl DataStream {
 }
 
 fn main() {
-    // let mut data_stream = DataStream::new(4, 3);
-    // println!("{}", data_stream.consec(4)); // false
-    // println!("{}", data_stream.consec(4)); // false
-    // println!("{}", data_stream.consec(4)); // true
-    // println!("{}", data_stream.consec(3)); // false
+    let mut data_stream = DataStream::new(4, 3);
+    println!("{}", data_stream.consec(4)); // false
+    println!("{}", data_stream.consec(4)); // false
+    println!("{}", data_stream.consec(4)); // true
+    println!("{}", data_stream.consec(3)); // false
 
     let mut data_stream  = DataStream::new(1, 2);
     println!("{}", data_stream.consec(1)); // false
