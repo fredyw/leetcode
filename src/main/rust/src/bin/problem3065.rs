@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/minimum-operations-to-exceed-threshold-value-i/description/
 pub fn min_operations(nums: Vec<i32>, k: i32) -> i32 {
-    todo!()
+    nums.into_iter().filter(|n| *n < k).count() as i32
 }
 
 fn main() {
