@@ -13,8 +13,8 @@ pub fn minimum_boxes(apple: Vec<i32>, mut capacity: Vec<i32>) -> i32 {
 }
 
 fn main() {
-    // println!("{}", minimum_boxes(vec![1, 3, 2], vec![4, 3, 1, 5, 2])); // 2
-    // println!("{}", minimum_boxes(vec![5, 5, 5], vec![2, 4, 2, 7])); // 4
+    println!("{}", minimum_boxes(vec![1, 3, 2], vec![4, 3, 1, 5, 2])); // 2
+    println!("{}", minimum_boxes(vec![5, 5, 5], vec![2, 4, 2, 7])); // 4
     println!(
         "{}",
         minimum_boxes(vec![9, 8, 8, 2, 3, 1, 6], vec![10, 1, 4, 10, 8, 5])
