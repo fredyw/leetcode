@@ -1,13 +1,17 @@
 // https://leetcode.com/problems/maximum-score-after-applying-operations-on-a-tree/
 pub fn maximum_score_after_operations(edges: Vec<Vec<i32>>, values: Vec<i32>) -> i64 {
+    fn is_leaf(tree: &Vec<Vec<usize>>, node: usize, has_parent: bool) -> bool {
+        tree[node].len() == 1 && has_parent
+    }
+
     fn dfs(
         tree: &Vec<Vec<usize>>,
         values: &Vec<i32>,
         root: usize,
+        has_parent: bool,
         visited: &mut Vec<bool>,
     ) -> (i64, i64) {
-        // TODO: check if a node is a leaf.
-        if tree[root].len() == 1 {
+        if is_leaf(tree, root, has_parent) {
             return (0, values[root] as i64);
         }
         visited[root] = true;
@@ -17,7 +21,7 @@ pub fn maximum_score_after_operations(edges: Vec<Vec<i32>>, values: Vec<i32>) ->
             if visited[*child] {
                 continue;
             }
-            let (score, sum) = dfs(tree, values, *child, visited);
+            let (score, sum) = dfs(tree, values, *child, true, visited);
             total_score += score;
             total_sum += sum;
         }
@@ -33,32 +37,32 @@ pub fn maximum_score_after_operations(edges: Vec<Vec<i32>>, values: Vec<i32>) ->
         tree[to].push(from);
     }
     let mut visited = vec![false; values.len()];
-    let (score, _) = dfs(&tree, &values, 0, &mut visited);
+    let (score, _) = dfs(&tree, &values, 0, false, &mut visited);
     score
 }
 
 fn main() {
-    // println!(
-    //     "{}",
-    //     maximum_score_after_operations(
-    //         vec![vec![0, 1], vec![0, 2], vec![0, 3], vec![2, 4], vec![4, 5]],
-    //         vec![5, 2, 5, 2, 1, 1]
-    //     )
-    // ); // 11
-    // println!(
-    //     "{}",
-    //     maximum_score_after_operations(
-    //         vec![
-    //             vec![0, 1],
-    //             vec![0, 2],
-    //             vec![1, 3],
-    //             vec![1, 4],
-    //             vec![2, 5],
-    //             vec![2, 6]
-    //         ],
-    //         vec![20, 10, 9, 7, 4, 3, 5]
-    //     )
-    // ); // 40
+    println!(
+        "{}",
+        maximum_score_after_operations(
+            vec![vec![0, 1], vec![0, 2], vec![0, 3], vec![2, 4], vec![4, 5]],
+            vec![5, 2, 5, 2, 1, 1]
+        )
+    ); // 11
+    println!(
+        "{}",
+        maximum_score_after_operations(
+            vec![
+                vec![0, 1],
+                vec![0, 2],
+                vec![1, 3],
+                vec![1, 4],
+                vec![2, 5],
+                vec![2, 6]
+            ],
+            vec![20, 10, 9, 7, 4, 3, 5]
+        )
+    ); // 40
     println!(
         "{}",
         maximum_score_after_operations(
