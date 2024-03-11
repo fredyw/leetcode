@@ -6,7 +6,8 @@ pub fn maximum_score_after_operations(edges: Vec<Vec<i32>>, values: Vec<i32>) ->
         root: usize,
         visited: &mut Vec<bool>,
     ) -> (i64, i64) {
-        if tree[root].is_empty() {
+        // TODO: check if a node is a leaf.
+        if tree[root].len() == 1 {
             return (0, values[root] as i64);
         }
         visited[root] = true;
@@ -21,7 +22,6 @@ pub fn maximum_score_after_operations(edges: Vec<Vec<i32>>, values: Vec<i32>) ->
             total_sum += sum;
         }
         let max_score = total_sum.max(total_score + values[root] as i64);
-        println!("max score for {} = {}", root, max_score);
         return (max_score, values[root] as i64 + total_sum);
     }
 
@@ -45,33 +45,33 @@ fn main() {
     //         vec![5, 2, 5, 2, 1, 1]
     //     )
     // ); // 11
+    // println!(
+    //     "{}",
+    //     maximum_score_after_operations(
+    //         vec![
+    //             vec![0, 1],
+    //             vec![0, 2],
+    //             vec![1, 3],
+    //             vec![1, 4],
+    //             vec![2, 5],
+    //             vec![2, 6]
+    //         ],
+    //         vec![20, 10, 9, 7, 4, 3, 5]
+    //     )
+    // ); // 40
     println!(
         "{}",
         maximum_score_after_operations(
             vec![
-                vec![0, 1],
-                vec![0, 2],
-                vec![1, 3],
-                vec![1, 4],
-                vec![2, 5],
-                vec![2, 6]
+                vec![7, 0],
+                vec![3, 1],
+                vec![6, 2],
+                vec![4, 3],
+                vec![4, 5],
+                vec![4, 6],
+                vec![4, 7]
             ],
-            vec![20, 10, 9, 7, 4, 3, 5]
+            vec![2, 16, 23, 17, 22, 21, 8, 6]
         )
-    ); // 40
-       // println!(
-       //     "{}",
-       //     maximum_score_after_operations(
-       //         vec![
-       //             vec![7, 0],
-       //             vec![3, 1],
-       //             vec![6, 2],
-       //             vec![4, 3],
-       //             vec![4, 5],
-       //             vec![4, 6],
-       //             vec![4, 7]
-       //         ],
-       //         vec![2, 16, 23, 17, 22, 21, 8, 6]
-       //     )
-       // ); // 113
+    ); // 113
 }
