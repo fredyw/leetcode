@@ -1,6 +1,60 @@
+use std::collections::HashSet;
+
 // https://leetcode.com/problems/minimum-operations-to-write-the-letter-y-on-a-grid/description/
 pub fn minimum_operations_to_write_y(grid: Vec<Vec<i32>>) -> i32 {
-    todo!()
+    #[derive(Debug)]
+    struct Count {
+        zero: u32,
+        one: u32,
+        two: u32,
+    }
+
+    let n = grid.len();
+    let mut y_indexes: HashSet<(usize, usize)> = HashSet::new();
+    let mut row = 0;
+    let mut col = 0;
+    while col < n / 2 {
+        y_indexes.insert((row, col));
+        y_indexes.insert((row, n - 1 - col));
+        row += 1;
+        col += 1;
+    }
+    while row < n {
+        y_indexes.insert((row, col));
+        row += 1;
+    }
+    let mut inside_y_count = Count {
+        zero: 0,
+        one: 0,
+        two: 0,
+    };
+    let mut outside_y_count = Count {
+        zero: 0,
+        one: 0,
+        two: 0,
+    };
+    for row in 0..n {
+        for col in 0..n {
+            if y_indexes.contains(&(row, col)) {
+                if grid[row][col] == 0 {
+                    inside_y_count.zero += 1;
+                } else if grid[row][col] == 1 {
+                    inside_y_count.one += 1;
+                } else {
+                    inside_y_count.two += 1;
+                }
+            } else {
+                if grid[row][col] == 0 {
+                    outside_y_count.zero += 1;
+                } else if grid[row][col] == 1 {
+                    outside_y_count.one += 1;
+                } else {
+                    outside_y_count.two += 1;
+                }
+            }
+        }
+    }
+    0
 }
 
 fn main() {
