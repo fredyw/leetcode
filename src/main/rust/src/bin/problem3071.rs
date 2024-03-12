@@ -4,9 +4,9 @@ use std::collections::HashSet;
 pub fn minimum_operations_to_write_y(grid: Vec<Vec<i32>>) -> i32 {
     #[derive(Debug)]
     struct Count {
-        zero: u32,
-        one: u32,
-        two: u32,
+        zero: i32,
+        one: i32,
+        two: i32,
     }
 
     let n = grid.len();
@@ -54,7 +54,19 @@ pub fn minimum_operations_to_write_y(grid: Vec<Vec<i32>>) -> i32 {
             }
         }
     }
-    0
+    // inside: 0, outside: 1
+    let a = inside_y_count.one + inside_y_count.two + outside_y_count.zero + outside_y_count.two;
+    // inside: 1, outside: 0
+    let b = inside_y_count.zero + inside_y_count.two + outside_y_count.one + outside_y_count.two;
+    // inside: 1, outside: 2
+    let c = inside_y_count.zero + inside_y_count.two + outside_y_count.zero + outside_y_count.one;
+    // inside: 2, outside: 1
+    let d = inside_y_count.zero + inside_y_count.one + outside_y_count.zero + outside_y_count.two;
+    // inside: 0, outside: 2
+    let e = inside_y_count.one + inside_y_count.two + outside_y_count.zero + outside_y_count.one;
+    // inside: 2, outside: 0
+    let f = inside_y_count.zero + inside_y_count.one + outside_y_count.one + outside_y_count.two;
+    a.min(b.min(c.min(d.min(e.min(f)))))
 }
 
 fn main() {
