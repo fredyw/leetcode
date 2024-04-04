@@ -6,4 +6,5 @@ pub fn count_subarrays(nums: Vec<i32>, k: i32) -> i64 {
 fn main() {
     println!("{}", count_subarrays(vec![1, 3, 2, 3, 3], 2)); // 6
     println!("{}", count_subarrays(vec![1, 4, 2, 1], 3)); // 0
+    println!("{}", count_subarrays(vec![2, 1, 3, 2, 3, 1, 1], 2)); // 9
 }
