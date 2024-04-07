@@ -31,4 +31,17 @@ fn main() {
             3
         )
     ); // [2,0,0,0,0,0,2]
+    println!(
+        "{:?}",
+        count_pairs_of_connectable_servers(
+            vec![
+                vec![0, 1, 1],
+                vec![1, 2, 5],
+                vec![2, 3, 13],
+                vec![3, 4, 9],
+                vec![4, 5, 2]
+            ],
+            2
+        )
+    ); // [0,0,2,0,2,0]
 }
