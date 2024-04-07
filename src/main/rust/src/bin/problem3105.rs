@@ -1,6 +1,23 @@
 // https://leetcode.com/problems/longest-strictly-increasing-or-strictly-decreasing-subarray/description/
 pub fn longest_monotonic_subarray(nums: Vec<i32>) -> i32 {
-    todo!()
+    let mut answer = 1;
+    let mut inc_length = 1;
+    let mut dec_length = 1;
+    for i in 0..nums.len() - 1 {
+        if nums[i] < nums[i + 1] {
+            inc_length += 1;
+        } else {
+            inc_length = 1;
+        }
+        answer = answer.max(inc_length);
+        if nums[i] > nums[i + 1] {
+            dec_length += 1;
+        } else {
+            dec_length = 1;
+        }
+        answer = answer.max(dec_length);
+    }
+    answer
 }
 
 fn main() {
