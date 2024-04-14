@@ -1,6 +1,11 @@
 // https://leetcode.com/problems/score-of-a-string/description/
 pub fn score_of_string(s: String) -> i32 {
-    todo!()
+    let mut answer = 0;
+    let bytes = s.as_bytes();
+    for i in 0..s.len() - 1 {
+        answer += (bytes[i] as i32 - bytes[i + 1] as i32).abs();
+    }
+    answer
 }
 
 fn main() {
