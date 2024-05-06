@@ -18,7 +18,13 @@ pub fn count_pairs_of_connectable_servers(edges: Vec<Vec<i32>>, signal_speed: i3
         visited: &mut Vec<bool>,
         answer: &mut Vec<i32>,
     ) {
-        if sum % signal_speed == 0 {}
+        let mut connectable = false;
+        if has_connectable || node == from {
+            connectable = true;
+        }
+        if connectable && sum % signal_speed == 0 {
+            answer[node] += 1;
+        }
         visited[from] = true;
         for edge in graph.get(&from).unwrap_or(&vec![]) {
             if visited[edge.to] {
@@ -29,7 +35,7 @@ pub fn count_pairs_of_connectable_servers(edges: Vec<Vec<i32>>, signal_speed: i3
                 signal_speed,
                 node,
                 edge.to,
-                has_connectable,
+                connectable,
                 sum + edge.weight,
                 visited,
                 answer,
@@ -46,6 +52,10 @@ pub fn count_pairs_of_connectable_servers(edges: Vec<Vec<i32>>, signal_speed: i3
             .entry(from)
             .or_insert(vec![])
             .push(Edge { to, weight });
+        graph
+            .entry(to)
+            .or_insert(vec![])
+            .push(Edge { to: from, weight });
     }
 
     let mut answer = vec![0; graph.len()];
@@ -83,31 +93,31 @@ fn main() {
             1
         )
     ); // [0,4,6,6,4,0]
-    println!(
-        "{:?}",
-        count_pairs_of_connectable_servers(
-            vec![
-                vec![0, 6, 3],
-                vec![6, 5, 3],
-                vec![0, 3, 1],
-                vec![3, 2, 7],
-                vec![3, 1, 6],
-                vec![3, 4, 2]
-            ],
-            3
-        )
-    ); // [2,0,0,0,0,0,2]
-    println!(
-        "{:?}",
-        count_pairs_of_connectable_servers(
-            vec![
-                vec![0, 1, 1],
-                vec![1, 2, 5],
-                vec![2, 3, 13],
-                vec![3, 4, 9],
-                vec![4, 5, 2]
-            ],
-            2
-        )
-    ); // [0,0,2,0,2,0]
+       // println!(
+       //     "{:?}",
+       //     count_pairs_of_connectable_servers(
+       //         vec![
+       //             vec![0, 6, 3],
+       //             vec![6, 5, 3],
+       //             vec![0, 3, 1],
+       //             vec![3, 2, 7],
+       //             vec![3, 1, 6],
+       //             vec![3, 4, 2]
+       //         ],
+       //         3
+       //     )
+       // ); // [2,0,0,0,0,0,2]
+       // println!(
+       //     "{:?}",
+       //     count_pairs_of_connectable_servers(
+       //         vec![
+       //             vec![0, 1, 1],
+       //             vec![1, 2, 5],
+       //             vec![2, 3, 13],
+       //             vec![3, 4, 9],
+       //             vec![4, 5, 2]
+       //         ],
+       //         2
+       //     )
+       // ); // [0,0,2,0,2,0]
 }
