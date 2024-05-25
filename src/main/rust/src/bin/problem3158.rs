@@ -1,6 +1,18 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/find-the-xor-of-numbers-which-appear-twice/description/
 pub fn duplicate_numbers_xor(nums: Vec<i32>) -> i32 {
-    todo!()
+    let mut answer = 0;
+    let mut map: HashMap<i32, i32> = HashMap::new();
+    for num in nums {
+        *map.entry(num).or_insert(0) += 1
+    }
+    for (num, count) in map.iter() {
+        if *count == 2 {
+            answer ^= num;
+        }
+    }
+    answer
 }
 
 fn main() {
