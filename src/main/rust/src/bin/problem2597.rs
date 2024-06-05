@@ -7,4 +7,5 @@ fn main() {
     println!("{}", beautiful_subsets(vec![2, 4, 6], 2)); // 4
     println!("{}", beautiful_subsets(vec![1], 1)); // 1
     println!("{}", beautiful_subsets(vec![2, 4, 6, 9], 2)); // 9
+    println!("{}", beautiful_subsets(vec![2, 4, 6, 8], 2)); // 7
 }
