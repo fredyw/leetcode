@@ -31,4 +31,5 @@ fn main() {
     // println!("{}", beautiful_subsets(vec![2, 4, 6, 8], 2)); // 7
     // println!("{}", beautiful_subsets(vec![10, 4, 5, 7, 2, 1], 3)); // 23
     println!("{}", beautiful_subsets(vec![1, 2, 3, 5], 3)); // 11
+    println!("{}", beautiful_subsets(vec![1, 1, 1, 4, 4, 4], 2)); // 64
 }
