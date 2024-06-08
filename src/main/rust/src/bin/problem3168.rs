@@ -1,6 +1,16 @@
 // https://leetcode.com/problems/minimum-number-of-chairs-in-a-waiting-room/description/
 pub fn minimum_chairs(s: String) -> i32 {
-    todo!()
+    let mut answer = 0;
+    let mut num_chair = 0;
+    for char in s.chars() {
+        if char == 'E' {
+            num_chair += 1;
+        } else {
+            num_chair -= 1;
+        }
+        answer = answer.max(num_chair);
+    }
+    answer
 }
 
 fn main() {
