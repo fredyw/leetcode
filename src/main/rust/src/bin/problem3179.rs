@@ -6,4 +6,5 @@ pub fn value_after_k_seconds(n: i32, k: i32) -> i32 {
 fn main() {
     println!("{}", value_after_k_seconds(4, 5)); // 56
     println!("{}", value_after_k_seconds(5, 3)); // 35
+    println!("{}", value_after_k_seconds(5, 4)); // 70
 }
