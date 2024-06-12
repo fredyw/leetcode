@@ -21,4 +21,5 @@ fn main() {
     println!("{}", min_insertions("mbadm".to_string())); // 2
     println!("{}", min_insertions("leetcode".to_string())); // 5
     println!("{}", min_insertions("zjveiiwvc".to_string())); // 5
+    println!("{}", min_insertions("zjveieiwvc".to_string())); // 5
 }
