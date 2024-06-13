@@ -15,4 +15,5 @@ fn main() {
             vec![vec![0, 1], vec![1, 2], vec![2, 3], vec![1, 3], vec![1, 4]]
         )
     ); // true
+    println!("{}", valid_tree(4, vec![vec![0, 1], vec![2, 3]])); // true
 }
