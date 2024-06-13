@@ -1,5 +1,5 @@
 use std::cell::RefCell;
-use std::collections::VecDeque;
+use std::collections::{BTreeMap, VecDeque};
 use std::rc::Rc;
 
 #[derive(Debug, PartialEq, Eq)]
@@ -22,6 +22,13 @@ impl TreeNode {
 
 // https://leetcode.com/problems/binary-tree-vertical-order-traversal/description/
 pub fn vertical_order(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<Vec<i32>> {
+    let mut deque: VecDeque<Option<Rc<RefCell<TreeNode>>>> = VecDeque::new();
+    deque.push_back(root.clone());
+    while !deque.is_empty() {
+        let current = deque.pop_front().unwrap();
+        let left = current.as_ref().unwrap().borrow().left.clone();
+        let right = current.as_ref().unwrap().borrow().right.clone();
+    }
     todo!()
 }
 
@@ -34,16 +41,16 @@ fn main() {
         parent: &Option<Rc<RefCell<TreeNode>>>,
         value: i32,
     ) -> Option<Rc<RefCell<TreeNode>>> {
-        parent.as_ref().unwrap().as_ref().borrow_mut().left = create_node(value);
-        parent.as_ref().unwrap().as_ref().borrow().left.clone()
+        parent.as_ref().unwrap().borrow_mut().left = create_node(value);
+        parent.as_ref().unwrap().borrow().left.clone()
     }
 
     fn add_right(
         parent: &Option<Rc<RefCell<TreeNode>>>,
         value: i32,
     ) -> Option<Rc<RefCell<TreeNode>>> {
-        parent.as_ref().unwrap().as_ref().borrow_mut().right = create_node(value);
-        parent.as_ref().unwrap().as_ref().borrow().right.clone()
+        parent.as_ref().unwrap().borrow_mut().right = create_node(value);
+        parent.as_ref().unwrap().borrow().right.clone()
     }
 
     fn to_tree(nodes: Vec<Option<i32>>) -> Option<Rc<RefCell<TreeNode>>> {
