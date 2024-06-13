@@ -22,14 +22,26 @@ impl TreeNode {
 
 // https://leetcode.com/problems/binary-tree-vertical-order-traversal/description/
 pub fn vertical_order(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<Vec<i32>> {
-    let mut deque: VecDeque<Option<Rc<RefCell<TreeNode>>>> = VecDeque::new();
-    deque.push_back(root.clone());
-    while !deque.is_empty() {
-        let current = deque.pop_front().unwrap();
-        let left = current.as_ref().unwrap().borrow().left.clone();
-        let right = current.as_ref().unwrap().borrow().right.clone();
+    if root.is_none() {
+        return vec![];
     }
-    todo!()
+    let mut map: BTreeMap<i32, Vec<i32>> = BTreeMap::new();
+    let mut deque: VecDeque<(i32, Option<Rc<RefCell<TreeNode>>>)> = VecDeque::new();
+    deque.push_back((0, root.clone()));
+    while let Some((n, current)) = deque.pop_front() {
+        map.entry(n)
+            .or_insert(vec![])
+            .push(current.as_ref().unwrap().borrow().val);
+        let left = current.as_ref().unwrap().borrow().left.clone();
+        if left.is_some() {
+            deque.push_back((n - 1, left.clone()));
+        }
+        let right = current.as_ref().unwrap().borrow().right.clone();
+        if right.is_some() {
+            deque.push_back((n + 1, right.clone()));
+        }
+    }
+    map.into_iter().map(|(_, v)| v).collect()
 }
 
 fn main() {
@@ -54,6 +66,9 @@ fn main() {
     }
 
     fn to_tree(nodes: Vec<Option<i32>>) -> Option<Rc<RefCell<TreeNode>>> {
+        if nodes.len() == 0 {
+            return None;
+        }
         let mut deque: VecDeque<Option<Rc<RefCell<TreeNode>>>> = VecDeque::new();
         let root = create_node(nodes[0].unwrap());
         deque.push_back(root.clone());
@@ -121,4 +136,5 @@ fn main() {
             Some(5),
         ]))
     ); // [[4],[9,5],[3,0,1],[8,2],[7]]
+    println!("{:?}", vertical_order(to_tree(vec![]))); // [[4],[9,5],[3,0,1],[8,2],[7]]
 }
