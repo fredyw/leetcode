@@ -26,14 +26,11 @@ pub fn largest_island(grid: Vec<Vec<i32>>) -> i32 {
                     let update = largest_island(grid, next_row, next_col, !change, visited) + 1;
                     let skip = largest_island(grid, next_row, next_col, change, visited);
                     max = max.max(update.max(skip));
-                } else {
-                    max = max.max(largest_island(grid, next_row, next_col, change, visited));
                 }
             } else {
                 max = max.max(largest_island(grid, next_row, next_col, change, visited) + 1);
             }
         }
-        visited[row as usize][col as usize] = false;
         max
     }
 
@@ -61,4 +58,20 @@ fn main() {
     println!("{}", largest_island(vec![vec![1, 1], vec![1, 1]])); // 4
     println!("{}", largest_island(vec![vec![0, 0], vec![0, 0]])); // 1
     println!("{}", largest_island(vec![vec![0, 0], vec![1, 0]])); // 2
+    println!(
+        "{}",
+        largest_island(vec![vec![1, 0, 1], vec![0, 0, 0], vec![0, 1, 1]])
+    ); // 4
+    println!(
+        "{}",
+        largest_island(vec![
+            vec![0, 0, 0, 0, 0, 0, 0],
+            vec![0, 1, 1, 1, 1, 0, 0],
+            vec![0, 1, 0, 0, 1, 0, 0],
+            vec![1, 0, 1, 0, 1, 0, 0],
+            vec![0, 1, 0, 0, 1, 0, 0],
+            vec![0, 1, 0, 0, 1, 0, 0],
+            vec![0, 1, 1, 1, 1, 0, 0]
+        ])
+    ); // 18
 }
