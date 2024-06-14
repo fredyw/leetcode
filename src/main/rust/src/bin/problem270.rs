@@ -22,38 +22,35 @@ impl TreeNode {
 
 // https://leetcode.com/problems/closest-binary-search-tree-value/
 pub fn closest_value(root: Option<Rc<RefCell<TreeNode>>>, target: f64) -> i32 {
-    let mid_value = root.as_ref().unwrap().borrow().val;
-    let mid_diff = (mid_value as f64 - target).abs();
-    let left_node = root.as_ref().unwrap().borrow().left.clone();
-    let left_value = if let Some(left) = left_node.clone() {
-        left.as_ref().borrow().val
-    } else {
-        0
-    };
-    let left_diff = (left_value as f64 - target).abs();
-    let right_node = root.as_ref().unwrap().borrow().right.clone();
-    let right_value = if let Some(right) = right_node.clone() {
-        right.as_ref().borrow().val
-    } else {
-        0
-    };
-    let right_diff = (right_value as f64 - target).abs();
-    if mid_diff < left_diff && mid_diff < right_diff {
-        return root.as_ref().unwrap().borrow().val;
-    }
-    if left_diff <= right_diff {
-        if left_node.is_none() {
-            mid_value
-        } else {
-            closest_value(left_node, target)
+    fn closest_value(root: Option<Rc<RefCell<TreeNode>>>, target: f64, closest: &mut i32) {
+        if root.is_none() {
+            return;
         }
-    } else {
-        if right_node.is_none() {
-            mid_value
+        let mid_value = root.as_ref().unwrap().borrow().val;
+        if (mid_value as f64 - target).abs() < (*closest as f64 - target).abs()
+            || ((mid_value as f64 - target).abs() == (*closest as f64 - target).abs()
+                && mid_value < *closest)
+        {
+            *closest = mid_value;
+        }
+        if target <= mid_value as f64 {
+            closest_value(
+                root.as_ref().unwrap().borrow().left.clone(),
+                target,
+                closest,
+            );
         } else {
-            closest_value(right_node, target)
+            closest_value(
+                root.as_ref().unwrap().borrow().right.clone(),
+                target,
+                closest,
+            );
         }
     }
+
+    let mut answer = root.as_ref().unwrap().borrow().val;
+    closest_value(root, target, &mut answer);
+    answer
 }
 
 fn main() {
@@ -126,4 +123,25 @@ fn main() {
             0.428571
         )
     ); // 1
+    println!(
+        "{}",
+        closest_value(
+            to_tree(vec![Some(5), Some(1), Some(100), None, None, Some(6)]),
+            2.5
+        )
+    ); // 1
+    println!(
+        "{}",
+        closest_value(
+            to_tree(vec![Some(4), Some(2), Some(5), Some(1), Some(3)]),
+            4.5
+        )
+    ); // 4
+    println!(
+        "{}",
+        closest_value(
+            to_tree(vec![Some(4), Some(2), Some(5), Some(1), Some(3)]),
+            3.5
+        )
+    ); // 3
 }
