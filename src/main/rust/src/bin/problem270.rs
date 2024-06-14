@@ -22,7 +22,38 @@ impl TreeNode {
 
 // https://leetcode.com/problems/closest-binary-search-tree-value/
 pub fn closest_value(root: Option<Rc<RefCell<TreeNode>>>, target: f64) -> i32 {
-    todo!()
+    let mid_value = root.as_ref().unwrap().borrow().val;
+    let mid_diff = (mid_value as f64 - target).abs();
+    let left_node = root.as_ref().unwrap().borrow().left.clone();
+    let left_value = if let Some(left) = left_node.clone() {
+        left.as_ref().borrow().val
+    } else {
+        0
+    };
+    let left_diff = (left_value as f64 - target).abs();
+    let right_node = root.as_ref().unwrap().borrow().right.clone();
+    let right_value = if let Some(right) = right_node.clone() {
+        right.as_ref().borrow().val
+    } else {
+        0
+    };
+    let right_diff = (right_value as f64 - target).abs();
+    if mid_diff < left_diff && mid_diff < right_diff {
+        return root.as_ref().unwrap().borrow().val;
+    }
+    if left_diff <= right_diff {
+        if left_node.is_none() {
+            mid_value
+        } else {
+            closest_value(left_node, target)
+        }
+    } else {
+        if right_node.is_none() {
+            mid_value
+        } else {
+            closest_value(right_node, target)
+        }
+    }
 }
 
 fn main() {
@@ -83,5 +114,16 @@ fn main() {
             3.714286
         )
     ); // 4
-    println!("{}", closest_value(to_tree(vec![Some(1)]), 4.428571)); // 4
+    println!("{}", closest_value(to_tree(vec![Some(1)]), 4.428571)); // 1
+    println!(
+        "{}",
+        closest_value(to_tree(vec![Some(2), Some(1), Some(3)]), 0.142857)
+    ); // 1
+    println!(
+        "{}",
+        closest_value(
+            to_tree(vec![Some(3), Some(1), Some(4), None, Some(2)]),
+            0.428571
+        )
+    ); // 1
 }
