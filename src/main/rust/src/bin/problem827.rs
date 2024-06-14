@@ -50,7 +50,6 @@ pub fn largest_island(grid: Vec<Vec<i32>>) -> i32 {
                 answer = answer
                     .max(largest_island(&grid, row as i32, col as i32, false, &mut visited) + 1);
             }
-            println!("answer: {}", answer);
         }
     }
     answer
