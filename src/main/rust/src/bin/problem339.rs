@@ -6,7 +6,18 @@ pub enum NestedInteger {
 
 // https://leetcode.com/problems/nested-list-weight-sum/description/
 pub fn depth_sum(nested_list: Vec<NestedInteger>) -> i32 {
-    todo!()
+    fn depth_sum(nested_list: &Vec<NestedInteger>, depth: i32) -> i32 {
+        let mut sum = 0;
+        for nested in nested_list.iter() {
+            sum += match nested {
+                NestedInteger::Int(i) => i * depth,
+                NestedInteger::List(v) => depth_sum(v, depth + 1),
+            }
+        }
+        sum
+    }
+
+    depth_sum(&nested_list, 1)
 }
 
 fn main() {
