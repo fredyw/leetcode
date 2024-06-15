@@ -1,46 +1,69 @@
+use std::cell::RefCell;
+use std::collections::HashMap;
+use std::rc::Rc;
+
 // https://leetcode.com/problems/making-a-large-island/description/
 pub fn largest_island(grid: Vec<Vec<i32>>) -> i32 {
-    fn largest_island(
+    fn island_size(
         grid: &Vec<Vec<i32>>,
         row: i32,
         col: i32,
-        mut convert: bool,
         visited: &mut Vec<Vec<bool>>,
+        island: &mut HashMap<(i32, i32), Rc<RefCell<i32>>>,
+        rc_size: Rc<RefCell<i32>>,
     ) -> i32 {
         let n = grid.len() as i32;
-        let mut max = 0;
         if row < 0 || col < 0 || row == n || col == n {
             return 0;
         }
         if visited[row as usize][col as usize] {
             return 0;
         }
-        visited[row as usize][col as usize] = true;
         if grid[row as usize][col as usize] == 0 {
-            if convert {
-                return 0;
-            }
-            convert = true;
+            return 0;
         }
-        let island = 1;
+        visited[row as usize][col as usize] = true;
+        island.insert((row, col), rc_size.clone());
+        let mut size = 1;
         for (r, c) in [(0, 1), (0, -1), (1, 0), (-1, 0)] {
-            max = max.max(largest_island(grid, row + r, col + c, convert, visited) + island);
+            size += island_size(grid, row + r, col + c, visited, island, rc_size.clone());
         }
-        max
+        size
     }
 
     let mut answer = 0;
     let n = grid.len();
+    let mut visited = vec![vec![false; n]; n];
+    let mut island: HashMap<(i32, i32), Rc<RefCell<i32>>> = HashMap::new();
     for row in 0..n {
         for col in 0..n {
-            let mut visited = vec![vec![false; n]; n];
-            answer = answer.max(largest_island(
+            let mut rc_size = Rc::new(RefCell::new(0));
+            let size = island_size(
                 &grid,
                 row as i32,
                 col as i32,
-                false,
                 &mut visited,
-            ));
+                &mut island,
+                rc_size.clone(),
+            );
+            *rc_size.borrow_mut() = size;
+            answer = answer.max(size);
+        }
+    }
+    for row in 0..n as i32 {
+        for col in 0..n as i32 {
+            // Attempt to make an island.
+            if grid[row as usize][col as usize] == 0 {
+                let mut total_size = 0;
+                for (r, c) in [(0, 1), (0, -1), (1, 0), (-1, 0)] {
+                    let next_row = row + r;
+                    let next_col = col + c;
+                    if let Some(size) = island.get(&(next_row, next_col)) {
+                        total_size += *size.borrow();
+                    }
+                }
+                answer = answer.max(total_size + 1);
+            }
         }
     }
     answer
