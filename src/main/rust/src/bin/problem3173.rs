@@ -1,6 +1,10 @@
 // https://leetcode.com/problems/bitwise-or-of-adjacent-elements/description/
 pub fn or_array(nums: Vec<i32>) -> Vec<i32> {
-    todo!()
+    let mut answer: Vec<i32> = vec![];
+    for i in 0..nums.len() - 1 {
+        answer.push(nums[i] | nums[i + 1]);
+    }
+    answer
 }
 
 fn main() {
