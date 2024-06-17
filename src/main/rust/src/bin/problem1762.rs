@@ -1,15 +1,23 @@
 // https://leetcode.com/problems/buildings-with-an-ocean-view/description/
 pub fn find_buildings(heights: Vec<i32>) -> Vec<i32> {
-    let mut answer = vec![];
-    let mut i = 0;
-    while i < heights.len() {
-        let mut j = i + 1;
-        while j < heights.len() && heights[i] >= heights[j] {
-            j += 1;
+    let mut answer = vec![-1; heights.len()];
+    let mut vec: Vec<usize> = vec![];
+    for i in 0..heights.len() {
+        while let Some(&last_index) = vec.last() {
+            if heights[i] < heights[last_index] {
+                break;
+            }
+            vec.pop();
+            answer[last_index] = heights[i];
         }
-        i = j;
+        vec.push(i);
     }
     answer
+        .into_iter()
+        .enumerate()
+        .filter(|(_, h)| *h == -1)
+        .map(|(i, _)| i as i32)
+        .collect()
 }
 
 fn main() {
