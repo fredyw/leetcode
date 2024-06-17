@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/buildings-with-an-ocean-view/description/
 pub fn find_buildings(heights: Vec<i32>) -> Vec<i32> {
+    // Use monotonic stack to find the next greater elements.
     let mut answer = vec![-1; heights.len()];
     let mut vec: Vec<usize> = vec![];
     for i in 0..heights.len() {
