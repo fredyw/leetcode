@@ -1,14 +1,28 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/dot-product-of-two-sparse-vectors/description/
-struct SparseVector {}
+struct SparseVector {
+    map: HashMap<usize, i32>,
+}
 
 impl SparseVector {
     fn new(nums: Vec<i32>) -> Self {
-        todo!()
+        let mut map: HashMap<usize, i32> = HashMap::new();
+        for (i, num) in nums.into_iter().enumerate() {
+            if num != 0 {
+                map.insert(i, num);
+            }
+        }
+        SparseVector { map }
     }
 
     // Return the dotProduct of two sparse vectors
     fn dot_product(&self, vec: SparseVector) -> i32 {
-        todo!()
+        let mut product = 0;
+        for (i, n) in self.map.iter() {
+            product += n * vec.map.get(i).unwrap_or(&0);
+        }
+        product
     }
 }
 
