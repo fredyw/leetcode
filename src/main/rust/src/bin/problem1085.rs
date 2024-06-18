@@ -1,6 +1,17 @@
 // https://leetcode.com/problems/sum-of-digits-in-the-minimum-number/description/
 pub fn sum_of_digits(nums: Vec<i32>) -> i32 {
-    todo!()
+    let min = nums.iter().min().unwrap();
+    let mut n = *min;
+    let mut sum = 0;
+    while n > 0 {
+        sum += n % 10;
+        n /= 10;
+    }
+    if sum % 2 == 0 {
+        1
+    } else {
+        0
+    }
 }
 
 fn main() {
