@@ -24,4 +24,8 @@ pub fn str2tree(s: String) -> Option<Rc<RefCell<TreeNode>>> {
     todo!()
 }
 
-fn main() {}
+fn main() {
+    println!("{:?}", str2tree("4(2(3)(1))(6(5))".to_string())); // [4,2,6,3,1,5]
+    println!("{:?}", str2tree("4(2(3)(1))(6(5)(7))".to_string())); // [4,2,6,3,1,5,7]
+    println!("{:?}", str2tree("-4(2(3)(1))(6(5)(7))".to_string())); // [-4,2,6,3,1,5,7]
+}
