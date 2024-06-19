@@ -22,7 +22,28 @@ impl TreeNode {
 
 // https://leetcode.com/problems/find-all-the-lonely-nodes/
 pub fn get_lonely_nodes(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
-    todo!()
+    fn get_lonely_nodes(
+        root: &Option<Rc<RefCell<TreeNode>>>,
+        lonely: bool,
+        lonely_nodes: &mut Vec<i32>,
+    ) {
+        if root.is_none() {
+            return;
+        }
+        let value = root.as_ref().unwrap().borrow().val;
+        if lonely {
+            lonely_nodes.push(value);
+        }
+        let left = root.as_ref().unwrap().borrow().left.clone();
+        let right = root.as_ref().unwrap().borrow().right.clone();
+        let lonely = (left.is_some() && right.is_none()) || (left.is_none() && right.is_some());
+        get_lonely_nodes(&left, lonely, lonely_nodes);
+        get_lonely_nodes(&right, lonely, lonely_nodes);
+    }
+
+    let mut answer = vec![];
+    get_lonely_nodes(&root, false, &mut answer);
+    answer
 }
 
 fn create_node(value: i32) -> Option<Rc<RefCell<TreeNode>>> {
@@ -112,4 +133,5 @@ fn main() {
             Some(22),
         ]))
     ); // [77,55,33,66,44,22]
+    println!("{:?}", get_lonely_nodes(to_tree(vec![]))); // []
 }
