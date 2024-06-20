@@ -7,4 +7,5 @@ fn main() {
     println!("{}", missing_element(vec![4, 7, 9, 10], 1)); // 5
     println!("{}", missing_element(vec![4, 7, 9, 10], 3)); // 8
     println!("{}", missing_element(vec![1, 2, 4], 3)); // 6
+    println!("{}", missing_element(vec![1, 2, 3], 3)); // 6
 }
