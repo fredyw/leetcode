@@ -1,6 +1,21 @@
+use std::collections::HashSet;
+
 // https://leetcode.com/problems/index-pairs-of-a-string/description/
 pub fn index_pairs(text: String, words: Vec<String>) -> Vec<Vec<i32>> {
-    todo!()
+    let mut set: HashSet<&str> = HashSet::new();
+    for word in words.iter() {
+        set.insert(word);
+    }
+    let mut answer: Vec<Vec<i32>> = vec![];
+    for i in 0..text.len() {
+        for j in i + 1..=text.len() {
+            let sub = &text[i..j];
+            if set.contains(sub) {
+                answer.push(vec![i as i32, j as i32 - 1]);
+            }
+        }
+    }
+    answer
 }
 
 fn main() {
