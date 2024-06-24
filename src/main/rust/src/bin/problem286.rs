@@ -12,16 +12,16 @@ pub fn walls_and_gates(rooms: &mut Vec<Vec<i32>>) {
         let mut visited: Vec<Vec<bool>> = vec![vec![false; max_col as usize]; max_row as usize];
         let mut deque: VecDeque<(i32, i32, i32)> = VecDeque::new();
         deque.push_back((row, col, 0));
-        while let Some(&(current_row, current_col, current_distance)) = deque.front() {
+        while !deque.is_empty() {
             let size = deque.len();
-            deque.pop_front();
-            if visited[current_row as usize][current_col as usize] {
-                continue;
-            }
-            visited[current_row as usize][current_col as usize] = true;
-            rooms[current_row as usize][current_col as usize] =
-                rooms[current_row as usize][current_col as usize].min(current_distance);
             for _ in 0..size {
+                let (current_row, current_col, current_distance) = deque.pop_front().unwrap();
+                if visited[current_row as usize][current_col as usize] {
+                    continue;
+                }
+                visited[current_row as usize][current_col as usize] = true;
+                rooms[current_row as usize][current_col as usize] =
+                    rooms[current_row as usize][current_col as usize].min(current_distance);
                 for (r, c) in [(0, -1), (0, 1), (-1, 0), (1, 0)] {
                     let next_row = current_row + r;
                     let next_col = current_col + c;
