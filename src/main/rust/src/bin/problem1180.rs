@@ -5,5 +5,5 @@ pub fn count_letters(s: String) -> i32 {
 
 fn main() {
     println!("{}", count_letters("aaaba".to_string())); // 8
-    println!("{}", count_letters("aaaaaaaaaa".to_string())); // 5
+    println!("{}", count_letters("aaaaaaaaaa".to_string())); // 55
 }
