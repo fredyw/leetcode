@@ -4,36 +4,36 @@ use std::collections::HashSet;
 pub fn num_distinct_islands(grid: Vec<Vec<i32>>) -> i32 {
     fn dfs(
         grid: &Vec<Vec<i32>>,
-        row: i32,
-        col: i32,
-        direction: char,
+        actual_row: i32,
+        actual_col: i32,
+        virtual_row: i32,
+        virtual_col: i32,
         island: &mut String,
         visited: &mut Vec<Vec<bool>>,
     ) {
         let max_rows = grid.len() as i32;
         let max_cols = if max_rows > 0 { grid[0].len() } else { 0 } as i32;
-        if row < 0
-            || row == max_rows
-            || col < 0
-            || col == max_cols
-            || visited[row as usize][col as usize]
-            || grid[row as usize][col as usize] == 0
+        if actual_row < 0
+            || actual_row == max_rows
+            || actual_col < 0
+            || actual_col == max_cols
+            || visited[actual_row as usize][actual_col as usize]
+            || grid[actual_row as usize][actual_col as usize] == 0
         {
             return;
         }
-        visited[row as usize][col as usize] = true;
-        island.push(direction);
+        visited[actual_row as usize][actual_col as usize] = true;
+        island.push_str(&format!("{virtual_row},{virtual_col}|"));
         for (r, c) in [(-1, 0), (0, 1), (1, 0), (0, -1)] {
-            let direction = if r == -1 {
-                'u'
-            } else if r == 1 {
-                'd'
-            } else if c == -1 {
-                'l'
-            } else {
-                'r'
-            };
-            dfs(grid, row + r, col + c, direction, island, visited);
+            dfs(
+                grid,
+                actual_row + r,
+                actual_col + c,
+                virtual_row + r,
+                virtual_col + c,
+                island,
+                visited,
+            );
         }
     }
 
@@ -49,11 +49,11 @@ pub fn num_distinct_islands(grid: Vec<Vec<i32>>) -> i32 {
                     &grid,
                     row as i32,
                     col as i32,
-                    's',
+                    0,
+                    0,
                     &mut island,
                     &mut visited,
                 );
-                println!("island: {island}");
                 islands.insert(island);
             }
         }
@@ -62,29 +62,24 @@ pub fn num_distinct_islands(grid: Vec<Vec<i32>>) -> i32 {
 }
 
 fn main() {
-    // println!(
-    //     "{}",
-    //     num_distinct_islands(vec![
-    //         vec![1, 1, 0, 0, 0],
-    //         vec![1, 1, 0, 0, 0],
-    //         vec![0, 0, 0, 1, 1],
-    //         vec![0, 0, 0, 1, 1]
-    //     ])
-    // ); // 1
-    // println!(
-    //     "{}",
-    //     num_distinct_islands(vec![
-    //         vec![1, 1, 0, 1, 1],
-    //         vec![1, 0, 0, 0, 0],
-    //         vec![0, 0, 0, 0, 1],
-    //         vec![1, 1, 0, 1, 1]
-    //     ])
-    // ); // 3
-
-    // 00101011100001001001110111000110110101010000011110
-    // 00100111001010011001000101110000000111000101101000
-    // 01010111001100001010111011100010101000111110010010
-    // 10100101001001110100001010010111010001110000111111
+    println!(
+        "{}",
+        num_distinct_islands(vec![
+            vec![1, 1, 0, 0, 0],
+            vec![1, 1, 0, 0, 0],
+            vec![0, 0, 0, 1, 1],
+            vec![0, 0, 0, 1, 1]
+        ])
+    ); // 1
+    println!(
+        "{}",
+        num_distinct_islands(vec![
+            vec![1, 1, 0, 1, 1],
+            vec![1, 0, 0, 0, 0],
+            vec![0, 0, 0, 0, 1],
+            vec![1, 1, 0, 1, 1]
+        ])
+    ); // 3
     println!(
         "{}",
         num_distinct_islands(vec![
@@ -106,4 +101,21 @@ fn main() {
             ]
         ])
     ); // 15
+    println!(
+        "{}",
+        num_distinct_islands(vec![
+            vec![
+                0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0,
+                0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0
+            ],
+            vec![
+                0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0,
+                0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0
+            ]
+        ])
+    ); // 9
+    println!(
+        "{}",
+        num_distinct_islands(vec![vec![1, 1, 0, 1, 1], vec![0, 1, 0, 1, 0]])
+    ); // 2
 }
