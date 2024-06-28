@@ -53,6 +53,7 @@ pub fn num_distinct_islands(grid: Vec<Vec<i32>>) -> i32 {
                     &mut island,
                     &mut visited,
                 );
+                println!("island: {island}");
                 islands.insert(island);
             }
         }
@@ -61,24 +62,29 @@ pub fn num_distinct_islands(grid: Vec<Vec<i32>>) -> i32 {
 }
 
 fn main() {
-    println!(
-        "{}",
-        num_distinct_islands(vec![
-            vec![1, 1, 0, 0, 0],
-            vec![1, 1, 0, 0, 0],
-            vec![0, 0, 0, 1, 1],
-            vec![0, 0, 0, 1, 1]
-        ])
-    ); // 1
-    println!(
-        "{}",
-        num_distinct_islands(vec![
-            vec![1, 1, 0, 1, 1],
-            vec![1, 0, 0, 0, 0],
-            vec![0, 0, 0, 0, 1],
-            vec![1, 1, 0, 1, 1]
-        ])
-    ); // 3
+    // println!(
+    //     "{}",
+    //     num_distinct_islands(vec![
+    //         vec![1, 1, 0, 0, 0],
+    //         vec![1, 1, 0, 0, 0],
+    //         vec![0, 0, 0, 1, 1],
+    //         vec![0, 0, 0, 1, 1]
+    //     ])
+    // ); // 1
+    // println!(
+    //     "{}",
+    //     num_distinct_islands(vec![
+    //         vec![1, 1, 0, 1, 1],
+    //         vec![1, 0, 0, 0, 0],
+    //         vec![0, 0, 0, 0, 1],
+    //         vec![1, 1, 0, 1, 1]
+    //     ])
+    // ); // 3
+
+    // 00101011100001001001110111000110110101010000011110
+    // 00100111001010011001000101110000000111000101101000
+    // 01010111001100001010111011100010101000111110010010
+    // 10100101001001110100001010010111010001110000111111
     println!(
         "{}",
         num_distinct_islands(vec![
