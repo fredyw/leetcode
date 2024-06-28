@@ -6,5 +6,5 @@ pub fn generate_possible_next_moves(current_state: String) -> Vec<String> {
 fn main() {
     println!("{:?}", generate_possible_next_moves("++++".to_string())); // ["--++","+--+","++--"]
     println!("{:?}", generate_possible_next_moves("+".to_string())); // []
-    println!("{:?}", generate_possible_next_moves("++++".to_string())); // ["--+++","+--++","++--+","+++--"]
+    println!("{:?}", generate_possible_next_moves("+++++".to_string())); // ["--+++","+--++","++--+","+++--"]
 }
