@@ -1,6 +1,16 @@
+use std::collections::HashSet;
+
 // https://leetcode.com/problems/intersection-of-three-sorted-arrays/description/
 pub fn arrays_intersection(arr1: Vec<i32>, arr2: Vec<i32>, arr3: Vec<i32>) -> Vec<i32> {
-    todo!()
+    let mut answer = vec![];
+    let set2: HashSet<i32> = arr2.into_iter().collect();
+    let set3: HashSet<i32> = arr3.into_iter().collect();
+    for num in arr1.into_iter() {
+        if set2.contains(&num) && set3.contains(&num) {
+            answer.push(num);
+        }
+    }
+    answer
 }
 
 fn main() {
