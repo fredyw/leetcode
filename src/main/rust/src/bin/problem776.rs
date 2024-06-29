@@ -125,4 +125,18 @@ fn main() {
         5,
     );
     println!("{:?}", vec![to_vec(&split[0]), to_vec(&split[1])]); // [[4,2,5,1,3],[6,null,7]]
+
+    let split = split_bst(
+        to_tree(vec![
+            Some(4),
+            Some(2),
+            Some(6),
+            Some(1),
+            Some(3),
+            Some(5),
+            Some(10),
+        ]),
+        7,
+    );
+    println!("{:?}", vec![to_vec(&split[0]), to_vec(&split[1])]); // [[4,2,6,1,3,5],[10]]
 }
