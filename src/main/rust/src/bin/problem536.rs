@@ -1,7 +1,6 @@
 use std::cell::RefCell;
 use std::collections::VecDeque;
 use std::rc::Rc;
-use std::sync::mpsc::channel;
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
