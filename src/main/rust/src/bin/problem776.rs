@@ -108,6 +108,7 @@ fn main() {
         2,
     );
     println!("{:?}", vec![to_vec(&split[0]), to_vec(&split[1])]); // [[2,1],[4,3,6,null,null,5,7]]
+
     let split = split_bst(to_tree(vec![Some(1)]), 1);
     println!("{:?}", vec![to_vec(&split[0]), to_vec(&split[1])]); // [[1],[]]
 }
