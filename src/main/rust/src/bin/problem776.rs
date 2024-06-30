@@ -1,5 +1,6 @@
 use std::cell::RefCell;
 use std::collections::VecDeque;
+use std::ptr::null;
 use std::rc::Rc;
 
 #[derive(Debug, PartialEq, Eq)]
@@ -139,4 +140,39 @@ fn main() {
         7,
     );
     println!("{:?}", vec![to_vec(&split[0]), to_vec(&split[1])]); // [[4,2,6,1,3,5],[10]]
+
+    let split = split_bst(
+        to_tree(vec![
+            Some(20),
+            Some(8),
+            Some(25),
+            Some(2),
+            Some(16),
+            None,
+            None,
+            None,
+            None,
+            Some(13),
+        ]),
+        14,
+    );
+    println!("{:?}", vec![to_vec(&split[0]), to_vec(&split[1])]); // [[8,2,13],[20,16,25]]
+
+    let split = split_bst(
+        to_tree(vec![
+            Some(20),
+            Some(8),
+            Some(25),
+            Some(2),
+            Some(16),
+            None,
+            None,
+            None,
+            None,
+            Some(13),
+            Some(18),
+        ]),
+        17,
+    );
+    println!("{:?}", vec![to_vec(&split[0]), to_vec(&split[1])]); // [[8,2,16,null,null,13],[20,18,25]]
 }
