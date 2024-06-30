@@ -17,10 +17,8 @@ pub fn min_meeting_rooms(intervals: Vec<Vec<i32>>) -> i32 {
     while i < intervals.len() - 1 {
         if intervals[i].1 > intervals[i + 1].0 {
             answer += 1;
-            i += 2;
-        } else {
-            i += 1;
         }
+        i += 1;
     }
     answer
 }
@@ -39,12 +37,12 @@ fn main() {
     //     "{}",
     //     min_meeting_rooms(vec![vec![6, 15], vec![13, 20], vec![6, 17]])
     // ); // 3
+    // println!(
+    //     "{}",
+    //     min_meeting_rooms(vec![vec![6, 15], vec![13, 20], vec![6, 17], vec![20, 23]])
+    // ); // 3
     println!(
         "{}",
-        min_meeting_rooms(vec![vec![6, 15], vec![13, 20], vec![6, 17], vec![20, 23]])
-    ); // 3
-       // println!(
-       //     "{}",
-       //     min_meeting_rooms(vec![vec![2, 11], vec![6, 16], vec![11, 16]])
-       // ); // 2
+        min_meeting_rooms(vec![vec![2, 11], vec![6, 16], vec![11, 16]])
+    ); // 2
 }
