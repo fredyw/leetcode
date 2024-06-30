@@ -20,6 +20,14 @@ impl TreeNode {
     }
 }
 
+// https://leetcode.com/problems/split-bst/
+pub fn split_bst(
+    root: Option<Rc<RefCell<TreeNode>>>,
+    target: i32,
+) -> Vec<Option<Rc<RefCell<TreeNode>>>> {
+    todo!()
+}
+
 fn create_node(value: i32) -> Option<Rc<RefCell<TreeNode>>> {
     Some(Rc::new(RefCell::new(TreeNode::new(value))))
 }
@@ -84,14 +92,6 @@ fn to_vec(root: &Option<Rc<RefCell<TreeNode>>>) -> Vec<Option<i32>> {
         }
     }
     v
-}
-
-// https://leetcode.com/problems/split-bst/
-pub fn split_bst(
-    root: Option<Rc<RefCell<TreeNode>>>,
-    target: i32,
-) -> Vec<Option<Rc<RefCell<TreeNode>>>> {
-    todo!()
 }
 
 fn main() {
