@@ -1,6 +1,12 @@
 // https://leetcode.com/problems/check-if-an-array-is-consecutive/description/
-pub fn is_consecutive(nums: Vec<i32>) -> bool {
-    todo!()
+pub fn is_consecutive(mut nums: Vec<i32>) -> bool {
+    nums.sort();
+    for i in 0..nums.len() - 1 {
+        if nums[i] + 1 != nums[i + 1] {
+            return false;
+        }
+    }
+    true
 }
 
 fn main() {
