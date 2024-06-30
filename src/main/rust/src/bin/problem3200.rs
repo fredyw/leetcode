@@ -1,6 +1,27 @@
 // https://leetcode.com/problems/maximum-height-of-a-triangle/description/
 pub fn max_height_of_triangle(red: i32, blue: i32) -> i32 {
-    todo!()
+    fn triangle(mut a: i32, mut b: i32) -> i32 {
+        let mut i = 0;
+        let mut a_first = true;
+        loop {
+            if a_first {
+                if a - i < 0 {
+                    break;
+                }
+                a -= i;
+            } else {
+                if b - i < 0 {
+                    break;
+                }
+                b -= i;
+            }
+            a_first = !a_first;
+            i += 1;
+        }
+        i - 1
+    }
+
+    triangle(red, blue).max(triangle(blue, red))
 }
 
 fn main() {
