@@ -1,6 +1,5 @@
 use std::cell::RefCell;
 use std::collections::VecDeque;
-use std::ptr::null;
 use std::rc::Rc;
 
 #[derive(Debug, PartialEq, Eq)]
@@ -26,7 +25,22 @@ pub fn split_bst(
     root: Option<Rc<RefCell<TreeNode>>>,
     target: i32,
 ) -> Vec<Option<Rc<RefCell<TreeNode>>>> {
-    todo!()
+    fn f(root: Option<Rc<RefCell<TreeNode>>>, target: i32) -> Vec<Option<Rc<RefCell<TreeNode>>>> {
+        if root.is_none() {
+            return vec![None, None];
+        }
+        if root.as_ref().unwrap().borrow().val > target {
+            let split = f(root.as_ref().unwrap().borrow().left.clone(), target);
+            root.as_ref().unwrap().borrow_mut().left = split[1].clone();
+            vec![split[0].clone(), root]
+        } else {
+            let split = f(root.as_ref().unwrap().borrow().right.clone(), target);
+            root.as_ref().unwrap().borrow_mut().right = split[0].clone();
+            vec![root, split[1].clone()]
+        }
+    }
+
+    f(root, target)
 }
 
 fn create_node(value: i32) -> Option<Rc<RefCell<TreeNode>>> {
@@ -83,14 +97,17 @@ fn to_vec(root: &Option<Rc<RefCell<TreeNode>>>) -> Vec<Option<i32>> {
             v.push(Some(node.borrow().val));
             let left = node.borrow().left.clone();
             let right = node.borrow().right.clone();
-            if left.is_none() && right.is_none() {
-                continue;
-            }
             deque.push_back(left);
             deque.push_back(right);
         } else {
             v.push(None);
         }
+    }
+    while let Some(node) = v.last() {
+        if node.is_some() {
+            break;
+        }
+        v.pop();
     }
     v
 }
