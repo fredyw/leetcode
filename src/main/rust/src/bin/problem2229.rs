@@ -1,8 +1,18 @@
+use std::collections::HashSet;
+
 // https://leetcode.com/problems/check-if-an-array-is-consecutive/description/
-pub fn is_consecutive(mut nums: Vec<i32>) -> bool {
-    nums.sort();
-    for i in 0..nums.len() - 1 {
-        if nums[i] + 1 != nums[i + 1] {
+pub fn is_consecutive(nums: Vec<i32>) -> bool {
+    let n = nums.len();
+    let min = nums.iter().min().unwrap();
+    let mut set: HashSet<i32> = HashSet::new();
+    for num in nums.iter() {
+        if set.contains(&num) {
+            return false;
+        }
+        set.insert(*num);
+    }
+    for i in *min..*min + (n as i32) {
+        if !set.contains(&i) {
             return false;
         }
     }
