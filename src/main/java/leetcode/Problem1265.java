@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.Stack;
+
 // https://leetcode.com/problems/print-immutable-linked-list-in-reverse/
 public class Problem1265 {
     interface ImmutableListNode {
@@ -8,6 +10,13 @@ public class Problem1265 {
     }
 
     public void printLinkedListInReverse(ImmutableListNode head) {
-        // TODO
+        Stack<ImmutableListNode> stack = new Stack<>();
+        while (head != null) {
+            stack.push(head);
+            head = head.getNext();
+        }
+        while (!stack.isEmpty()) {
+            stack.pop().printValue();
+        }
     }
 }
