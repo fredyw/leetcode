@@ -18,8 +18,6 @@ public class Problem426 {
         }
     }
 
-    ;
-
     public Node treeToDoublyList(Node root) {
         // TODO
         return null;
