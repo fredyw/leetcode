@@ -19,10 +19,33 @@ public class Problem426 {
     }
 
     public Node treeToDoublyList(Node root) {
-        // TODO
-        return null;
+        if (root == null) {
+            return null;
+        }
+        Wrapper wrapper = new Wrapper();
+        treeToDoubleList(root, wrapper);
+        wrapper.current.right = wrapper.root;
+        wrapper.root.left = wrapper.current;
+        return wrapper.root;
     }
 
-    public static void main(String[] args) {
+    private static class Wrapper {
+        private Node root;
+        private Node current;
+    }
+
+    private static void treeToDoubleList(Node root, Wrapper wrapper) {
+        if (root == null) {
+            return;
+        }
+        treeToDoubleList(root.left, wrapper);
+        if (wrapper.root == null) {
+            wrapper.root = root;
+        } else {
+            wrapper.current.right = root;
+            root.left = wrapper.current;
+        }
+        wrapper.current = root;
+        treeToDoubleList(root.right, wrapper);
     }
 }
