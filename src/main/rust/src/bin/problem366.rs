@@ -75,4 +75,18 @@ fn main() {
         find_leaves(to_tree(vec![Some(1), Some(2), Some(3), Some(4), Some(5)]))
     ); // [[4,5,3],[2],[1]]
     println!("{:?}", find_leaves(to_tree(vec![Some(1)]))); // [[1]]
+    println!(
+        "{:?}",
+        find_leaves(to_tree(vec![
+            Some(1),
+            Some(2),
+            Some(3),
+            Some(4),
+            Some(5),
+            Some(6),
+            None,
+            Some(7),
+            Some(8)
+        ]))
+    ); // [[7,8,5,6],[4,3],[2],[1]]
 }
