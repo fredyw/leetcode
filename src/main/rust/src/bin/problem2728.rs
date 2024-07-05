@@ -22,8 +22,19 @@ impl Street {
 }
 
 // https://leetcode.com/problems/count-houses-in-a-circular-street/description/
-pub fn house_count(street: Street, k: i32) -> i32 {
-    todo!()
+pub fn house_count(mut street: Street, k: i32) -> i32 {
+    for _ in 0..k {
+        street.close_door();
+        street.move_right();
+    }
+    street.open_door();
+    street.move_right();
+    let mut answer = 0;
+    while !street.is_door_open() {
+        street.move_right();
+        answer += 1;
+    }
+    answer
 }
 
 fn main() {}
