@@ -19,14 +19,22 @@ public class Problem1490 {
             children = new ArrayList<>();
         }
 
-        public Node(int _val,ArrayList<Node> children) {
-            val = _val;
+        public Node(int val, ArrayList<Node> children) {
+            this.val = val;
             this.children = children;
         }
     }
 
     public Node cloneTree(Node root) {
-        // TODO
-        return null;
+        if (root == null) {
+            return null;
+        }
+        Node node = new Node(root.val);
+        List<Node> children = new ArrayList<>();
+        for (Node child : root.children) {
+            children.add(cloneTree(child));
+        }
+        node.children = children;
+        return node;
     }
 }
