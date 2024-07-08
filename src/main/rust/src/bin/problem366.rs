@@ -22,7 +22,32 @@ impl TreeNode {
 
 // https://leetcode.com/problems/find-leaves-of-binary-tree/description/
 pub fn find_leaves(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<Vec<i32>> {
-    todo!()
+    fn dfs(root: Option<Rc<RefCell<TreeNode>>>, nodes: &mut Vec<(i32, i32)>) -> i32 {
+        if root.is_none() {
+            return 0;
+        }
+        let left = dfs(root.as_ref().unwrap().borrow().left.clone(), nodes);
+        let right = dfs(root.as_ref().unwrap().borrow().right.clone(), nodes);
+        let n = 1 + left.max(right);
+        nodes.push((n, root.as_ref().unwrap().borrow().val));
+        n
+    }
+
+    let mut nodes: Vec<(i32, i32)> = vec![];
+    dfs(root, &mut nodes);
+    nodes.sort();
+    let mut answer: Vec<Vec<i32>> = vec![];
+    let mut i = 0;
+    while i < nodes.len() {
+        let n = nodes[i].0;
+        let mut v = vec![];
+        while i < nodes.len() && nodes[i].0 == n {
+            v.push(nodes[i].1);
+            i += 1;
+        }
+        answer.push(v);
+    }
+    answer
 }
 
 fn create_node(value: i32) -> Option<Rc<RefCell<TreeNode>>> {
