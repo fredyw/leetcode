@@ -21,34 +21,17 @@ public class Problem145 {
     }
 
     public List<Integer> postorderTraversal(TreeNode root) {
-        List<Integer> result = new ArrayList<>();
+        List<Integer> answer = new ArrayList<>();
+        postorderTraversal(root, answer);
+        return answer;
+    }
+
+    private static void postorderTraversal(TreeNode root, List<Integer> values) {
         if (root == null) {
-            return result;
+            return;
         }
-        Set<TreeNode> set = new HashSet<>();
-        Stack<TreeNode> stack = new Stack<>();
-        stack.add(root);
-        while (!stack.isEmpty()) {
-            TreeNode node = stack.pop();
-            if ((node.left == null || set.contains(node.left))
-                && (node.right == null || set.contains(node.right))) {
-                set.add(node);
-                result.add(node.val);
-                continue;
-            }
-            stack.add(node);
-            if (node.left == null || set.contains(node.left)) {
-                if (node.right != null) {
-                    stack.add(node.right);
-                    continue;
-                }
-            }
-            TreeNode n = node.left;
-            while (n != null) {
-                stack.add(n);
-                n = n.left;
-            }
-        }
-        return result;
+        postorderTraversal(root.left, values);
+        postorderTraversal(root.right, values);
+        values.add(root.val);
     }
 }
