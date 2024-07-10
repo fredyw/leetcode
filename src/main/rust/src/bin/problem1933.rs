@@ -12,7 +12,7 @@ pub fn is_decomposable(s: String) -> bool {
             length += 1;
         }
         if length % 3 == 0 {
-            length_three_count += length_three_count / 3;
+            length_three_count += length / 3;
         } else if length == 2 {
             length_two_count += 1;
             if length_two_count > 1 {
@@ -22,23 +22,24 @@ pub fn is_decomposable(s: String) -> bool {
             if length < 2 {
                 return false;
             }
-            if length - 2 % 3 != 0 {
+            if (length - 2) % 3 != 0 {
                 return false;
             }
+            length_three_count += (length - 2) / 3;
             length_two_count += 1;
             if length_two_count > 1 {
                 return false;
             }
         }
     }
-    println!("{length_two_count}");
-    length_two_count == 1 && length_three_count > 0
+    length_two_count == 1 && length_three_count >= 0
 }
 
 fn main() {
-    // println!("{}", is_decomposable("000111000".to_string())); // false
+    println!("{}", is_decomposable("000111000".to_string())); // false
     println!("{}", is_decomposable("00011111222".to_string())); // true
-                                                                // println!("{}", is_decomposable("011100022233".to_string())); // false
-                                                                // println!("{}", is_decomposable("11100022233".to_string())); // true
-                                                                // println!("{}", is_decomposable("33".to_string())); // false
+    println!("{}", is_decomposable("011100022233".to_string())); // false
+    println!("{}", is_decomposable("11100022233".to_string())); // true
+    println!("{}", is_decomposable("33".to_string())); // false
+    println!("{}", is_decomposable("00".to_string())); // true
 }
