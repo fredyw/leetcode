@@ -24,7 +24,41 @@ impl TreeNode {
 pub fn upside_down_binary_tree(
     root: Option<Rc<RefCell<TreeNode>>>,
 ) -> Option<Rc<RefCell<TreeNode>>> {
-    todo!()
+    fn create_node(value: i32) -> Option<Rc<RefCell<TreeNode>>> {
+        Some(Rc::new(RefCell::new(TreeNode::new(value))))
+    }
+
+    fn add_left(
+        parent: &Option<Rc<RefCell<TreeNode>>>,
+        value: i32,
+    ) -> Option<Rc<RefCell<TreeNode>>> {
+        parent.as_ref().unwrap().borrow_mut().left = create_node(value);
+        parent.as_ref().unwrap().borrow().left.clone()
+    }
+
+    fn add_right(
+        parent: &Option<Rc<RefCell<TreeNode>>>,
+        value: i32,
+    ) -> Option<Rc<RefCell<TreeNode>>> {
+        parent.as_ref().unwrap().borrow_mut().right = create_node(value);
+        parent.as_ref().unwrap().borrow().right.clone()
+    }
+
+    fn post_order(
+        root: Option<Rc<RefCell<TreeNode>>>,
+        nodes: &mut Vec<Option<Rc<RefCell<TreeNode>>>>,
+    ) {
+        if root.is_none() {
+            return;
+        }
+        post_order(root.as_ref().unwrap().borrow().left.clone(), nodes);
+        post_order(root.as_ref().unwrap().borrow().right.clone(), nodes);
+        nodes.push(create_node(root.as_ref().unwrap().borrow().val));
+    }
+
+    post_order(root, &mut vec![]);
+    let mut answer = None;
+    answer
 }
 
 fn create_node(value: i32) -> Option<Rc<RefCell<TreeNode>>> {
@@ -97,6 +131,32 @@ fn to_vec(root: &Option<Rc<RefCell<TreeNode>>>) -> Vec<Option<i32>> {
 }
 
 fn main() {
+    // println!(
+    //     "{:?}",
+    //     to_vec(&upside_down_binary_tree(to_tree(vec![
+    //         Some(1),
+    //         Some(2),
+    //         Some(3),
+    //         Some(4),
+    //         Some(5)
+    //     ])))
+    // ); // [4,5,2,null,null,3,1]
+    // println!("{:?}", to_vec(&upside_down_binary_tree(to_tree(vec![])))); // []
+    // println!(
+    //     "{:?}",
+    //     to_vec(&upside_down_binary_tree(to_tree(vec![Some(1)])))
+    // ); // [1]
+    // println!(
+    //     "{:?}",
+    //     to_vec(&upside_down_binary_tree(to_tree(vec![
+    //         Some(1),
+    //         Some(2),
+    //         None,
+    //         Some(3),
+    //         None,
+    //         Some(4),
+    //     ])))
+    // ); // [4,null,3,null,2,null,1]
     println!(
         "{:?}",
         to_vec(&upside_down_binary_tree(to_tree(vec![
@@ -104,12 +164,11 @@ fn main() {
             Some(2),
             Some(3),
             Some(4),
-            Some(5)
+            Some(5),
+            None,
+            None,
+            Some(6),
+            Some(7)
         ])))
-    ); // [4,5,2,null,null,3,1]
-    println!("{:?}", to_vec(&upside_down_binary_tree(to_tree(vec![])))); // []
-    println!(
-        "{:?}",
-        to_vec(&upside_down_binary_tree(to_tree(vec![Some(1)])))
-    ); // [1]
+    ); // [6,7,4,null,null,5,2,null,null,3,1]
 }
