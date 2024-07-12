@@ -1,6 +1,22 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/longest-common-subsequence-between-sorted-arrays/description/
 pub fn longest_common_subsequence(arrays: Vec<Vec<i32>>) -> Vec<i32> {
-    todo!()
+    let mut map: HashMap<i32, i32> = HashMap::new();
+    for array in arrays.iter() {
+        for n in array.iter() {
+            *map.entry(*n).or_insert(0) += 1;
+        }
+    }
+    let mut answer = vec![];
+    for n in arrays[0].iter() {
+        if let Some(count) = map.get(&n) {
+            if *count == arrays.len() as i32 {
+                answer.push(*n);
+            }
+        }
+    }
+    answer
 }
 
 fn main() {
