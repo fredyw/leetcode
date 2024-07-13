@@ -5,7 +5,13 @@ unsafe fn common_set_bits(num: i32) -> i32 {
 }
 
 unsafe fn find_number() -> i32 {
-    todo!()
+    let mut answer = 0;
+    for i in 0..31 {
+        if common_set_bits(i << i) > 0 {
+            answer |= i << i;
+        }
+    }
+    answer
 }
 
 fn main() {}
