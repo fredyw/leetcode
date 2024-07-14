@@ -6,4 +6,6 @@ pub fn find_permutation(s: String) -> Vec<i32> {
 fn main() {
     println!("{:?}", find_permutation("I".to_string())); // [1,2]
     println!("{:?}", find_permutation("DI".to_string())); // [2,1,3]
+    println!("{:?}", find_permutation("DIDIDIIIIDIIDID".to_string())); // [2,1,4,3,6,5,7,8,9,11,10,12,14,13,16,15]
+    println!("{:?}", find_permutation("IDDI".to_string())); // [1,4,3,2,5]
 }
