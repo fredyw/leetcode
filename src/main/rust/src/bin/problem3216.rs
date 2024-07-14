@@ -6,4 +6,5 @@ pub fn get_smallest_string(s: String) -> String {
 fn main() {
     println!("{}", get_smallest_string("45320".to_string())); // "43520"
     println!("{}", get_smallest_string("001".to_string())); // "001"
+    println!("{}", get_smallest_string("453201".to_string())); // "435201"
 }
