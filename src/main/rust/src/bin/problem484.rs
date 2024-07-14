@@ -8,4 +8,7 @@ fn main() {
     println!("{:?}", find_permutation("DI".to_string())); // [2,1,3]
     println!("{:?}", find_permutation("DIDIDIIIIDIIDID".to_string())); // [2,1,4,3,6,5,7,8,9,11,10,12,14,13,16,15]
     println!("{:?}", find_permutation("IDDI".to_string())); // [1,4,3,2,5]
+    println!("{:?}", find_permutation("IIII".to_string())); // [1,2,3,4,5]
+    println!("{:?}", find_permutation("DDDD".to_string())); // [1,2,3,5,4]
+    println!("{:?}", find_permutation("IIID".to_string())); // [4,3,2,1,5]
 }
