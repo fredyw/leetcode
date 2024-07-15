@@ -1,5 +1,6 @@
 use std::cell::RefCell;
 use std::collections::VecDeque;
+use std::iter::Successors;
 use std::rc::Rc;
 
 #[derive(Debug, PartialEq, Eq)]
@@ -25,7 +26,33 @@ pub fn inorder_successor(
     root: Option<Rc<RefCell<TreeNode>>>,
     p: Option<Rc<RefCell<TreeNode>>>,
 ) -> Option<Rc<RefCell<TreeNode>>> {
-    todo!()
+    fn inorder_successor(
+        root: Option<Rc<RefCell<TreeNode>>>,
+        p_val: i32,
+        successor: &mut Option<Rc<RefCell<TreeNode>>>,
+    ) {
+        if root.is_none() {
+            return;
+        }
+        let val = root.as_ref().unwrap().borrow().val;
+        if val > p_val {
+            inorder_successor(
+                root.as_ref().unwrap().borrow().left.clone(),
+                p_val,
+                successor,
+            );
+        } else {
+            inorder_successor(
+                root.as_ref().unwrap().borrow().right.clone(),
+                p_val,
+                successor,
+            );
+        }
+    }
+
+    let mut answer = None;
+    inorder_successor(root, p.as_ref().unwrap().borrow().val, &mut answer);
+    answer
 }
 
 fn create_node(value: i32) -> Option<Rc<RefCell<TreeNode>>> {
@@ -66,58 +93,58 @@ fn to_tree(nodes: Vec<Option<i32>>) -> Option<Rc<RefCell<TreeNode>>> {
 }
 
 fn main() {
-    println!(
-        "{:?}",
-        inorder_successor(to_tree(vec![Some(2), Some(1), Some(3)]), create_node(1))
-    ); // 2
-    println!(
-        "{:?}",
-        inorder_successor(
-            to_tree(vec![
-                Some(5),
-                Some(3),
-                Some(6),
-                Some(2),
-                Some(4),
-                None,
-                None,
-                Some(1)
-            ]),
-            create_node(6)
-        )
-    ); // None
-    println!(
-        "{:?}",
-        inorder_successor(
-            to_tree(vec![
-                Some(5),
-                Some(3),
-                Some(6),
-                Some(2),
-                Some(4),
-                None,
-                None,
-                Some(1)
-            ]),
-            create_node(2)
-        )
-    ); // 3
-    println!(
-        "{:?}",
-        inorder_successor(
-            to_tree(vec![
-                Some(5),
-                Some(3),
-                Some(6),
-                Some(2),
-                Some(4),
-                None,
-                None,
-                Some(1)
-            ]),
-            create_node(3)
-        )
-    ); // 4
+    // println!(
+    //     "{:?}",
+    //     inorder_successor(to_tree(vec![Some(2), Some(1), Some(3)]), create_node(1))
+    // ); // 2
+    // println!(
+    //     "{:?}",
+    //     inorder_successor(
+    //         to_tree(vec![
+    //             Some(5),
+    //             Some(3),
+    //             Some(6),
+    //             Some(2),
+    //             Some(4),
+    //             None,
+    //             None,
+    //             Some(1)
+    //         ]),
+    //         create_node(6)
+    //     )
+    // ); // None
+    // println!(
+    //     "{:?}",
+    //     inorder_successor(
+    //         to_tree(vec![
+    //             Some(5),
+    //             Some(3),
+    //             Some(6),
+    //             Some(2),
+    //             Some(4),
+    //             None,
+    //             None,
+    //             Some(1)
+    //         ]),
+    //         create_node(2)
+    //     )
+    // ); // 3
+    // println!(
+    //     "{:?}",
+    //     inorder_successor(
+    //         to_tree(vec![
+    //             Some(5),
+    //             Some(3),
+    //             Some(6),
+    //             Some(2),
+    //             Some(4),
+    //             None,
+    //             None,
+    //             Some(1)
+    //         ]),
+    //         create_node(3)
+    //     )
+    // ); // 4
     println!(
         "{:?}",
         inorder_successor(
