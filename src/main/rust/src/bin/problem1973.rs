@@ -1,6 +1,5 @@
 use std::cell::RefCell;
 use std::collections::VecDeque;
-use std::ptr::{eq, null};
 use std::rc::Rc;
 
 #[derive(Debug, PartialEq, Eq)]
@@ -23,7 +22,22 @@ impl TreeNode {
 
 // https://leetcode.com/problems/count-nodes-equal-to-sum-of-descendants/description/
 pub fn equal_to_descendants(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
-    todo!()
+    fn equal_to_descendants(root: Option<Rc<RefCell<TreeNode>>>, count: &mut i32) -> i32 {
+        if root.is_none() {
+            return 0;
+        }
+        let val = root.as_ref().unwrap().borrow().val;
+        let left = equal_to_descendants(root.as_ref().unwrap().borrow().left.clone(), count);
+        let right = equal_to_descendants(root.as_ref().unwrap().borrow().right.clone(), count);
+        if left + right == val {
+            *count += 1;
+        }
+        left + right + val
+    }
+
+    let mut answer = 0;
+    equal_to_descendants(root, &mut answer);
+    answer
 }
 
 fn create_node(value: i32) -> Option<Rc<RefCell<TreeNode>>> {
