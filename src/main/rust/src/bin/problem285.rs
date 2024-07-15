@@ -1,6 +1,5 @@
 use std::cell::RefCell;
 use std::collections::VecDeque;
-use std::ptr::null;
 use std::rc::Rc;
 
 #[derive(Debug, PartialEq, Eq)]
