@@ -32,10 +32,10 @@ public class Problem236 {
         boolean parent = root.val == p.val || root.val == q.val;
         boolean left = lowestCommonAncestor(root.left, p, q, lca);
         boolean right = lowestCommonAncestor(root.right, p, q, lca);
-        if ((parent && left) || (parent && right) || (left && right)) {
+        if (parent || (left && right)) {
             lca.node = root;
             return true;
         }
-        return left || parent || right;
+        return left || right;
     }
 }
