@@ -1,5 +1,17 @@
 // https://leetcode.com/problems/find-the-k-th-lucky-number/description/
 pub fn kth_lucky_number(k: i32) -> String {
+    fn f(chars: &mut Vec<char>, i: usize) {
+        if i == chars.len() {
+            println!("{}", chars.iter().collect::<String>());
+            return;
+        }
+        for char in ['4', '7'] {
+            let tmp = chars[i];
+            chars[i] = char;
+            f(chars, i + 1);
+        }
+    }
+
     todo!()
 }
 
