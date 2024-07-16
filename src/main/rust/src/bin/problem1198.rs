@@ -1,6 +1,21 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/find-smallest-common-element-in-all-rows/description/
 pub fn smallest_common_element(mat: Vec<Vec<i32>>) -> i32 {
-    todo!()
+    let mut map: HashMap<i32, i32> = HashMap::new();
+    for i in 0..mat.len() {
+        for j in 0..mat[i].len() {
+            *map.entry(mat[i][j]).or_insert(0) += 1;
+        }
+    }
+    for n in mat[0].iter() {
+        if let Some(count) = map.get(&n) {
+            if *count == mat.len() as i32 {
+                return *n;
+            }
+        }
+    }
+    -1
 }
 
 fn main() {
