@@ -13,4 +13,8 @@ fn main() {
         remove_ones(vec![vec![1, 1, 0], vec![0, 0, 0], vec![0, 0, 0]])
     ); // false
     println!("{}", remove_ones(vec![vec![0]])); // true
+    println!(
+        "{}",
+        remove_ones(vec![vec![0, 1, 0], vec![1, 1, 1], vec![0, 1, 0]])
+    ); // false
 }
