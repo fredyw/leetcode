@@ -95,4 +95,9 @@ fn main() {
             Some(1)
         ]))
     ); // 2
+    println!("{}", largest_bst_subtree(to_tree(vec![Some(1), Some(2)]))); // 1
+    println!(
+        "{}",
+        largest_bst_subtree(to_tree(vec![Some(1), None, Some(2)]))
+    ); // 2
 }
