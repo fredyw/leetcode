@@ -22,38 +22,41 @@ impl TreeNode {
 
 // https://leetcode.com/problems/largest-bst-subtree/description/
 pub fn largest_bst_subtree(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
-    fn largest_bst_subtree(root: Option<Rc<RefCell<TreeNode>>>, max_size: &mut i32) -> (bool, i32) {
+    fn valid_bst(
+        root: Option<Rc<RefCell<TreeNode>>>,
+        node: &mut Option<i32>,
+        size: &mut i32,
+    ) -> bool {
         if root.is_none() {
-            return (true, 0);
+            return true;
         }
-        let mut size = 1;
-        let parent_val = root.as_ref().unwrap().borrow().val;
-        let mut valid = true;
-        if let Some(left_node) = root.as_ref().unwrap().borrow().left.clone() {
-            if left_node.borrow().val >= parent_val {
-                valid = false;
+        let val = root.as_ref().unwrap().borrow().val;
+        *size += 1;
+        let left = valid_bst(root.as_ref().unwrap().borrow().left.clone(), node, size);
+        if !left {
+            return false;
+        }
+        if let Some(v) = *node {
+            if val <= v {
+                return false;
             }
-            let (v, s) =
-                largest_bst_subtree(root.as_ref().unwrap().borrow().left.clone(), max_size);
-            valid &= v;
-            size += s;
         }
-        if let Some(right_node) = root.as_ref().unwrap().borrow().right.clone() {
-            if right_node.borrow().val <= parent_val {
-                valid = false;
-            }
-            let (v, s) =
-                largest_bst_subtree(root.as_ref().unwrap().borrow().right.clone(), max_size);
-            valid &= v;
-            size += s;
-        }
+        *node = Some(val);
+        let right = valid_bst(root.as_ref().unwrap().borrow().right.clone(), node, size);
+        right
+    }
 
+    fn largest_bst_subtree(root: Option<Rc<RefCell<TreeNode>>>, max_size: &mut i32) {
+        if root.is_none() {
+            return;
+        }
+        let mut size = 0;
+        let valid = valid_bst(root.clone(), &mut None, &mut size);
         if valid {
             *max_size = (*max_size).max(size);
-            (valid, size)
-        } else {
-            (valid, 0)
         }
+        largest_bst_subtree(root.as_ref().unwrap().borrow().left.clone(), max_size);
+        largest_bst_subtree(root.as_ref().unwrap().borrow().right.clone(), max_size);
     }
 
     let mut answer = 0;
@@ -106,43 +109,43 @@ fn to_tree(nodes: Vec<Option<i32>>) -> Option<Rc<RefCell<TreeNode>>> {
 }
 
 fn main() {
-    // println!(
-    //     "{}",
-    //     largest_bst_subtree(to_tree(vec![
-    //         Some(10),
-    //         Some(5),
-    //         Some(15),
-    //         Some(1),
-    //         Some(8),
-    //         None,
-    //         Some(7)
-    //     ]))
-    // ); // 3
-    // println!(
-    //     "{}",
-    //     largest_bst_subtree(to_tree(vec![
-    //         Some(4),
-    //         Some(2),
-    //         Some(7),
-    //         Some(2),
-    //         Some(3),
-    //         Some(5),
-    //         None,
-    //         Some(2),
-    //         None,
-    //         None,
-    //         None,
-    //         None,
-    //         None,
-    //         Some(1)
-    //     ]))
-    // ); // 2
-    // println!("{}", largest_bst_subtree(to_tree(vec![Some(1), Some(2)]))); // 1
-    // println!(
-    //     "{}",
-    //     largest_bst_subtree(to_tree(vec![Some(1), None, Some(2)]))
-    // ); // 2
-    // println!("{}", largest_bst_subtree(to_tree(vec![Some(1)]))); // 1
+    println!(
+        "{}",
+        largest_bst_subtree(to_tree(vec![
+            Some(10),
+            Some(5),
+            Some(15),
+            Some(1),
+            Some(8),
+            None,
+            Some(7)
+        ]))
+    ); // 3
+    println!(
+        "{}",
+        largest_bst_subtree(to_tree(vec![
+            Some(4),
+            Some(2),
+            Some(7),
+            Some(2),
+            Some(3),
+            Some(5),
+            None,
+            Some(2),
+            None,
+            None,
+            None,
+            None,
+            None,
+            Some(1)
+        ]))
+    ); // 2
+    println!("{}", largest_bst_subtree(to_tree(vec![Some(1), Some(2)]))); // 1
+    println!(
+        "{}",
+        largest_bst_subtree(to_tree(vec![Some(1), None, Some(2)]))
+    ); // 2
+    println!("{}", largest_bst_subtree(to_tree(vec![Some(1)]))); // 1
     println!(
         "{}",
         largest_bst_subtree(to_tree(vec![
