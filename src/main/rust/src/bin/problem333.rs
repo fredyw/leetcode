@@ -22,41 +22,30 @@ impl TreeNode {
 
 // https://leetcode.com/problems/largest-bst-subtree/description/
 pub fn largest_bst_subtree(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
-    fn valid_bst(
+    fn largest_bst_subtree(
         root: Option<Rc<RefCell<TreeNode>>>,
-        node: &mut Option<i32>,
-        size: &mut i32,
-    ) -> bool {
+        max_size: &mut i32,
+    ) -> (bool, i32, i32, i32) {
         if root.is_none() {
-            return true;
+            return (true, 0, i32::MAX, i32::MIN);
         }
-        let val = root.as_ref().unwrap().borrow().val;
-        *size += 1;
-        let left = valid_bst(root.as_ref().unwrap().borrow().left.clone(), node, size);
-        if !left {
-            return false;
+        let parent_val = root.as_ref().unwrap().borrow().val;
+        let (left_valid, left_size, left_min, left_max) =
+            largest_bst_subtree(root.as_ref().unwrap().borrow().left.clone(), max_size);
+        let (right_valid, right_size, right_min, right_max) =
+            largest_bst_subtree(root.as_ref().unwrap().borrow().right.clone(), max_size);
+        if left_valid && right_valid && left_max < parent_val && parent_val < right_min {
+            let new_size = left_size + right_size + 1;
+            *max_size = (*max_size).max(new_size);
+            (
+                true,
+                new_size,
+                left_min.min(parent_val),
+                parent_val.max(right_max),
+            )
+        } else {
+            (false, 0, i32::MAX, i32::MIN)
         }
-        if let Some(v) = *node {
-            if val <= v {
-                return false;
-            }
-        }
-        *node = Some(val);
-        let right = valid_bst(root.as_ref().unwrap().borrow().right.clone(), node, size);
-        right
-    }
-
-    fn largest_bst_subtree(root: Option<Rc<RefCell<TreeNode>>>, max_size: &mut i32) {
-        if root.is_none() {
-            return;
-        }
-        let mut size = 0;
-        let valid = valid_bst(root.clone(), &mut None, &mut size);
-        if valid {
-            *max_size = (*max_size).max(size);
-        }
-        largest_bst_subtree(root.as_ref().unwrap().borrow().left.clone(), max_size);
-        largest_bst_subtree(root.as_ref().unwrap().borrow().right.clone(), max_size);
     }
 
     let mut answer = 0;
