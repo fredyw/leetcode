@@ -6,7 +6,11 @@ pub fn find_lonely_pixel(picture: Vec<Vec<char>>) -> i32 {
 fn main() {
     println!(
         "{}",
-        find_lonely_pixel(vec![vec!['W', 'W', 'B'], vec!['W', 'B', 'W']])
+        find_lonely_pixel(vec![
+            vec!['W', 'W', 'B'],
+            vec!['W', 'B', 'W'],
+            vec!['B', 'W', 'W']
+        ])
     ); // 3
     println!(
         "{}",
@@ -16,4 +20,12 @@ fn main() {
             vec!['B', 'B', 'B']
         ])
     ); // 0
+    println!(
+        "{}",
+        find_lonely_pixel(vec![
+            vec!['W', 'W', 'B'],
+            vec!['W', 'B', 'W'],
+            vec!['B', 'B', 'W']
+        ])
+    ); // 1
 }
