@@ -1,24 +1,26 @@
-use std::collections::HashSet;
-
 // https://leetcode.com/problems/count-substrings-without-repeating-character/description/
 pub fn number_of_special_substrings(s: String) -> i32 {
     fn series(n: i32) -> i32 {
         (n * (1 + n)) / 2
     }
 
+    fn index(n: u8) -> usize {
+        (n - 'a' as u8) as usize
+    }
+
     let mut answer = 0;
     let bytes = s.as_bytes();
-    let mut set: HashSet<u8> = HashSet::new();
+    let mut set: Vec<bool> = vec![false; 26];
     let mut curr = 0;
     let mut prev = 0;
     while curr < bytes.len() {
-        if set.contains(&bytes[curr]) {
+        if set[index(bytes[curr])] {
             answer += series((curr - prev) as i32);
-            set.remove(&bytes[prev]);
+            set[index(bytes[prev])] = false;
             prev += 1;
             answer -= series((curr - prev) as i32);
         } else {
-            set.insert(bytes[curr]);
+            set[index(bytes[curr])] = true;
             curr += 1;
         }
     }
