@@ -11,16 +11,12 @@ impl Solution {
         let mut n = n;
         let mut i = 0;
         while n > 0 {
-            let mut buf4 = [' ', ' ', ' ', ' '];
-            let m = self.read4(&mut buf4);
+            let m = self.read4(&mut buf[i..i + 4]);
             answer += m.min(n);
-            for j in 0..m.min(n) as usize {
-                buf[i] = buf4[j];
-                i += 1;
-            }
             if m < 4 {
                 break;
             }
+            i += m as usize;
             n -= m;
         }
         answer
