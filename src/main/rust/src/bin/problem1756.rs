@@ -12,8 +12,12 @@ impl MRUQueue {
     fn fetch(&mut self, k: i32) -> i32 {
         let size = self.queue.len();
         let n = self.queue[k as usize - 1];
-        self.queue.swap(size - 1, n as usize);
-        println!("queue: {:?}", self.queue);
+        if size > 1 {
+            for i in (k as usize - 1)..=size - 2 {
+                self.queue[i] = self.queue[i + 1];
+            }
+        }
+        self.queue[size - 1] = n;
         n
     }
 }
@@ -24,4 +28,8 @@ fn main() {
     println!("{}", queue.fetch(5)); // 6
     println!("{}", queue.fetch(2)); // 2
     println!("{}", queue.fetch(8)); // 2
+    println!("{}", queue.fetch(1)); // 2
+
+    let mut queue = MRUQueue::new(1);
+    println!("{}", queue.fetch(1)); // 1
 }
