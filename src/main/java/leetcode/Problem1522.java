@@ -39,19 +39,22 @@ public class Problem1522 {
         if (root == null) {
             return 0;
         }
-        int firstMax = Integer.MIN_VALUE;
-        int secondMax = Integer.MIN_VALUE;
+        int firstMaxDepth = 0;
+        int secondMaxDepth = 0;
         for (Node child : root.children) {
-            int depth = diameter(child, diameter);
-            if (firstMax == Integer.MIN_VALUE) {
-                firstMax = depth;
-                secondMax = depth;
-            } else if (firstMax <= depth) {
-                secondMax = firstMax;
-                firstMax = depth;
+            int depth = diameter(child, diameter) + 1;
+            if (firstMaxDepth == 0) {
+                firstMaxDepth = depth;
+                diameter.val = Math.max(diameter.val, firstMaxDepth);
+            } else if (firstMaxDepth <= depth) {
+                secondMaxDepth = firstMaxDepth;
+                firstMaxDepth = depth;
+                diameter.val = Math.max(diameter.val, firstMaxDepth + secondMaxDepth);
+            } else if (secondMaxDepth < firstMaxDepth) {
+                secondMaxDepth = Math.max(secondMaxDepth, depth);
+                diameter.val = Math.max(diameter.val, firstMaxDepth + secondMaxDepth);
             }
-            diameter.val = Math.max(diameter.val, firstMax + secondMax);
         }
-        return firstMax + 1;
+        return firstMaxDepth;
     }
 }
