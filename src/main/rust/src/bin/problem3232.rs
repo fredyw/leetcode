@@ -1,6 +1,15 @@
 // https://leetcode.com/problems/find-if-digit-game-can-be-won/description/
 pub fn can_alice_win(nums: Vec<i32>) -> bool {
-    todo!()
+    let mut single_digit_count = 0;
+    let mut double_digit_count = 0;
+    for num in nums {
+        if num < 10 {
+            single_digit_count += num;
+        } else {
+            double_digit_count += num;
+        }
+    }
+    single_digit_count != double_digit_count
 }
 
 fn main() {
