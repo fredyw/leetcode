@@ -13,7 +13,34 @@ impl ListNode {
 
 // https://leetcode.com/problems/delete-n-nodes-after-m-nodes-of-a-linked-list/description/
 pub fn delete_nodes(head: Option<Box<ListNode>>, m: i32, n: i32) -> Option<Box<ListNode>> {
-    todo!()
+    let mut v: Vec<i32> = vec![];
+    let mut node = &head;
+    while let Some(n) = node {
+        v.push(n.val);
+        node = &n.next
+    }
+    let mut head = None;
+    let mut current = &mut head;
+    let mut i = 0;
+    while i < v.len() {
+        let mut j = m;
+        while j > 0 && i < v.len() {
+            match current {
+                None => {
+                    head = Some(Box::new(ListNode::new(v[i])));
+                    current = &mut head;
+                }
+                Some(node) => {
+                    node.next = Some(Box::new(ListNode::new(v[i])));
+                    current = &mut node.next;
+                }
+            }
+            i += 1;
+            j -= 1;
+        }
+        i += n as usize;
+    }
+    head
 }
 
 fn to_linked_list(v: Vec<i32>) -> Option<Box<ListNode>> {
@@ -60,5 +87,5 @@ fn main() {
             1,
             3
         ))
-    ); // [1,2,6,7,11,12]
+    ); // [1,5,9]
 }
