@@ -1,6 +1,15 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/substrings-that-begin-and-end-with-the-same-letter/
 pub fn number_of_substrings(s: String) -> i64 {
-    todo!()
+    let mut answer: i64 = 0;
+    let mut map: HashMap<char, i64> = HashMap::new();
+    for c in s.chars() {
+        let count = map.entry(c).or_insert(0);
+        *count += 1;
+        answer += *count;
+    }
+    answer
 }
 
 fn main() {
