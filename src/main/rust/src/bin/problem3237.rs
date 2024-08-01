@@ -1,6 +1,21 @@
+use std::collections::HashSet;
+
 // https://leetcode.com/problems/alt-and-tab-simulation/description/
 pub fn simulation_result(windows: Vec<i32>, queries: Vec<i32>) -> Vec<i32> {
-    todo!()
+    let mut answer = vec![];
+    let mut set: HashSet<i32> = HashSet::new();
+    for i in (0..queries.len()).rev() {
+        if !set.contains(&queries[i]) {
+            answer.push(queries[i]);
+            set.insert(queries[i]);
+        }
+    }
+    for i in 0..windows.len() {
+        if !set.contains(&windows[i]) {
+            answer.push(windows[i]);
+        }
+    }
+    answer
 }
 
 fn main() {
