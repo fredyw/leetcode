@@ -10,30 +10,25 @@ public class Problem1666 {
     }
 
     public Node flipBinaryTree(Node root, Node leaf) {
-        Answer answer = new Answer();
-        flipBinaryTree(root, leaf, answer);
-        return answer.root;
+        return flipBinaryTree(root, leaf, null);
     }
 
-    private static class Answer {
-        private Node root;
-    }
-
-    private static void flipBinaryTree(Node root, Node leaf, Answer answer) {
-        if (root == null) {
-            return;
+    private static Node flipBinaryTree(Node root, Node node, Node newParent) {
+        Node oldParent = node.parent;
+        node.parent = newParent;
+        if (node.left == newParent) {
+            node.left = null;
         }
-        if (root.val == leaf.val) {
-            answer.root = root;
-            root.parent = null;
-            return;
+        if (node.right == newParent) {
+            node.right = null;
         }
-        flipBinaryTree(root.left, leaf, answer);
-        flipBinaryTree(root.right, leaf, answer);
-        if (root.parent != null) {
-            root.parent = root.left;
+        if (node == root) {
+            return node;
         }
-        root.right = root.left;
-        root.left = root.parent;
+        if (node.left != null) {
+            node.right = node.left;
+        }
+        node.left = flipBinaryTree(root, oldParent, node);
+        return node;
     }
 }
