@@ -1,17 +1,55 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/design-neighbor-sum-service/
-struct NeighborSum {}
+struct NeighborSum {
+    grid: Vec<Vec<i32>>,
+    row_cols: HashMap<i32, (usize, usize)>,
+    num_rows: isize,
+    num_cols: isize,
+}
 
 impl NeighborSum {
     fn new(grid: Vec<Vec<i32>>) -> Self {
-        NeighborSum {}
+        let num_rows = grid.len();
+        let num_cols = if num_rows > 0 { grid[0].len() } else { 0 };
+        let mut row_cols = HashMap::new();
+        for i in 0..num_rows {
+            for j in 0..num_cols {
+                row_cols.insert(grid[i][j], (i, j));
+            }
+        }
+        NeighborSum {
+            grid,
+            row_cols,
+            num_rows: num_rows as isize,
+            num_cols: num_cols as isize,
+        }
     }
 
     fn adjacent_sum(&self, value: i32) -> i32 {
-        todo!()
+        let (row, col) = self.row_cols.get(&value).unwrap();
+        let mut sum = 0;
+        for (r, c) in [(-1, 0), (0, 1), (1, 0), (0, -1)] {
+            let row = *row as isize + r;
+            let col = *col as isize + c;
+            if row >= 0 && col >= 0 && row < self.num_rows && col < self.num_cols {
+                sum += self.grid[row as usize][col as usize];
+            }
+        }
+        sum
     }
 
     fn diagonal_sum(&self, value: i32) -> i32 {
-        todo!()
+        let (row, col) = self.row_cols.get(&value).unwrap();
+        let mut sum = 0;
+        for (r, c) in [(-1, 1), (1, 1), (1, -1), (-1, -1)] {
+            let row = *row as isize + r;
+            let col = *col as isize + c;
+            if row >= 0 && col >= 0 && row < self.num_rows && col < self.num_cols {
+                sum += self.grid[row as usize][col as usize];
+            }
+        }
+        sum
     }
 }
 
