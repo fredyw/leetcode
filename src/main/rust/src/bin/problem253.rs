@@ -1,20 +1,19 @@
-use std::cmp::Reverse;
-use std::collections::BinaryHeap;
+use std::collections::BTreeMap;
 
 // https://leetcode.com/problems/meeting-rooms-ii/description/
 pub fn min_meeting_rooms(intervals: Vec<Vec<i32>>) -> i32 {
-    let mut intervals: Vec<(i32, i32)> = intervals.into_iter().map(|v| (v[0], v[1])).collect();
-    intervals.sort();
-    let mut answer = 1;
-    let mut heap: BinaryHeap<Reverse<i32>> = BinaryHeap::new();
-    heap.push(Reverse(intervals[0].1));
-    for i in 1..intervals.len() {
-        if heap.peek().unwrap().0 > intervals[i].0 {
-            answer += 1;
-        } else {
-            heap.pop();
-        }
-        heap.push(Reverse(intervals[i].1));
+    let mut prefix_sum: BTreeMap<i32, i32> = BTreeMap::new();
+    for interval in intervals.into_iter() {
+        let start = interval[0];
+        let end = interval[1];
+        *prefix_sum.entry(start).or_insert(0) += 1;
+        *prefix_sum.entry(end).or_insert(0) -= 1;
+    }
+    let mut answer = 0;
+    let mut sum = 0;
+    for (_, count) in prefix_sum.iter() {
+        sum += *count;
+        answer = answer.max(sum);
     }
     answer
 }
