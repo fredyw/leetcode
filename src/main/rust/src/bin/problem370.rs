@@ -1,6 +1,15 @@
 // https://leetcode.com/problems/range-addition/description/
 pub fn get_modified_array(length: i32, updates: Vec<Vec<i32>>) -> Vec<i32> {
-    todo!()
+    let mut answer: Vec<i32> = vec![0; length as usize];
+    for update in updates {
+        let from = update[0] as usize;
+        let to = update[1] as usize;
+        let inc = update[2];
+        for i in from..=to {
+            answer[i] += inc;
+        }
+    }
+    answer
 }
 
 fn main() {
