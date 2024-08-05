@@ -2,18 +2,18 @@ use std::collections::BTreeMap;
 
 // https://leetcode.com/problems/meeting-rooms-ii/description/
 pub fn min_meeting_rooms(intervals: Vec<Vec<i32>>) -> i32 {
-    let mut prefix_sum: BTreeMap<i32, i32> = BTreeMap::new();
+    let mut map: BTreeMap<i32, i32> = BTreeMap::new();
     for interval in intervals.into_iter() {
         let start = interval[0];
         let end = interval[1];
-        *prefix_sum.entry(start).or_insert(0) += 1;
-        *prefix_sum.entry(end).or_insert(0) -= 1;
+        *map.entry(start).or_insert(0) += 1;
+        *map.entry(end).or_insert(0) -= 1;
     }
     let mut answer = 0;
-    let mut sum = 0;
-    for (_, count) in prefix_sum.iter() {
-        sum += *count;
-        answer = answer.max(sum);
+    let mut prefix_sum = 0;
+    for (_, count) in map.iter() {
+        prefix_sum += *count;
+        answer = answer.max(prefix_sum);
     }
     answer
 }
