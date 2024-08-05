@@ -4,9 +4,15 @@ pub fn get_modified_array(length: i32, updates: Vec<Vec<i32>>) -> Vec<i32> {
     for update in updates {
         let from = update[0] as usize;
         let to = update[1] as usize;
-        let inc = update[2];
-        for i in from..=to {
-            answer[i] += inc;
+        let val = update[2];
+        answer[from] += val;
+        if to < length as usize - 1 {
+            answer[to + 1] -= val;
+        }
+    }
+    for i in 0..length as usize {
+        if i > 0 {
+            answer[i] += answer[i - 1];
         }
     }
     answer
