@@ -1,5 +1,5 @@
 use std::cell::RefCell;
-use std::collections::VecDeque;
+use std::collections::{HashSet, VecDeque};
 use std::rc::Rc;
 
 #[derive(Debug, PartialEq, Eq)]
@@ -26,7 +26,26 @@ pub fn two_sum_bs_ts(
     root2: Option<Rc<RefCell<TreeNode>>>,
     target: i32,
 ) -> bool {
-    todo!()
+    fn to_set(root: Option<Rc<RefCell<TreeNode>>>, set: &mut HashSet<i32>) {
+        if root.is_none() {
+            return;
+        }
+        set.insert(root.as_ref().unwrap().borrow().val);
+        to_set(root.as_ref().unwrap().borrow().left.clone(), set);
+        to_set(root.as_ref().unwrap().borrow().right.clone(), set);
+    }
+
+    let mut set1: HashSet<i32> = HashSet::new();
+    to_set(root1, &mut set1);
+    let mut set2: HashSet<i32> = HashSet::new();
+    to_set(root2, &mut set2);
+
+    for n in set1 {
+        if set2.contains(&(target - n)) {
+            return true;
+        }
+    }
+    false
 }
 
 fn create_node(value: i32) -> Option<Rc<RefCell<TreeNode>>> {
