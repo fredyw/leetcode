@@ -1,5 +1,23 @@
 // https://leetcode.com/problems/generalized-abbreviation/
 pub fn generate_abbreviations(word: String) -> Vec<String> {
+    fn generate_abbreviations(
+        chars: &Vec<char>,
+        index: usize,
+        count: i32,
+        is_number: bool,
+        abbr: &mut Vec<char>,
+    ) {
+        if index == chars.len() {
+            return;
+        }
+        if is_number {
+            generate_abbreviations(chars, index + 1, 0, false, abbr);
+        } else {
+            generate_abbreviations(chars, index + 1, 0, true, abbr);
+            generate_abbreviations(chars, index + 1, count + 1, false, abbr);
+        }
+    }
+
     todo!()
 }
 
