@@ -8,10 +8,19 @@ pub fn delete_tree_nodes(nodes: i32, parent: Vec<i32>, value: Vec<i32>) -> i32 {
     ) -> (i32, i32) {
         let mut num_nodes = 1;
         let mut sum = values[node];
-        for adj in graph[node].iter() {
-            let (n, s) = delete_tree_node(graph, values, *adj, num_deleted_nodes);
+        let mut child_sum = 0;
+        for child in graph[node].iter() {
+            let (n, s) = delete_tree_node(graph, values, *child, num_deleted_nodes);
             num_nodes += n;
             sum += s;
+            if s == 0 {
+                child_sum += s;
+            }
+        }
+        if sum == 0 {
+            *num_deleted_nodes += num_nodes;
+        } else {
+            *num_deleted_nodes += child_sum;
         }
         (num_nodes, sum)
     }
