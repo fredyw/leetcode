@@ -1,6 +1,20 @@
 // https://leetcode.com/problems/delete-tree-nodes/description/
 pub fn delete_tree_nodes(nodes: i32, parent: Vec<i32>, value: Vec<i32>) -> i32 {
-    fn delete_tree_node(graph: &Vec<Vec<usize>>, node: usize) {}
+    fn delete_tree_node(
+        graph: &Vec<Vec<usize>>,
+        values: &Vec<i32>,
+        node: usize,
+        num_deleted_nodes: &mut i32,
+    ) -> (i32, i32) {
+        let mut num_nodes = 1;
+        let mut sum = values[node];
+        for adj in graph[node].iter() {
+            let (n, s) = delete_tree_node(graph, values, *adj, num_deleted_nodes);
+            num_nodes += n;
+            sum += s;
+        }
+        (num_nodes, sum)
+    }
 
     let mut graph: Vec<Vec<usize>> = vec![vec![]; nodes as usize];
     let mut root = 0;
@@ -12,8 +26,9 @@ pub fn delete_tree_nodes(nodes: i32, parent: Vec<i32>, value: Vec<i32>) -> i32 {
         }
     }
 
-    delete_tree_node(&graph, root);
-    0
+    let mut num_deleted_nodes = 0;
+    let (total_num_nodes, sum) = delete_tree_node(&graph, &value, root, &mut num_deleted_nodes);
+    total_num_nodes - num_deleted_nodes
 }
 
 fn main() {
@@ -32,5 +47,13 @@ fn main() {
     println!(
         "{}",
         delete_tree_nodes(7, vec![-1, 0, 0, 1, 2, 2, 2], vec![1, -2, 4, 0, -2, 0, 0])
+    ); // 2
+    println!(
+        "{}",
+        delete_tree_nodes(7, vec![-1, 0, 0, 1, 2, 2, 2], vec![1, -2, 4, 0, 0, 0, 0])
+    ); // 3
+    println!(
+        "{}",
+        delete_tree_nodes(7, vec![-1, 0, 0, 1, 2, 2, 2], vec![1, -2, 0, 0, 0, 0, 0])
     ); // 2
 }
