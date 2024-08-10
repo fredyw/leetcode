@@ -21,8 +21,16 @@ fn main() {
         "{}",
         delete_tree_nodes(7, vec![-1, 0, 0, 1, 2, 2, 2], vec![1, -2, 4, 0, -2, -1, -1])
     ); // 2
-       // println!(
-       //     "{}",
-       //     delete_tree_nodes(7, vec![-1, 0, 0, 1, 2, 2, 2], vec![1, -2, 4, 0, -2, -1, -2])
-       // ); // 6
+    println!(
+        "{}",
+        delete_tree_nodes(7, vec![-1, 0, 0, 1, 2, 2, 2], vec![1, -2, 4, 0, -2, -1, -2])
+    ); // 6
+    println!(
+        "{}",
+        delete_tree_nodes(7, vec![-1, 0, 0, 1, 2, 2, 2], vec![1, -2, -2, 0, -2, 0, 0])
+    ); // 4
+    println!(
+        "{}",
+        delete_tree_nodes(7, vec![-1, 0, 0, 1, 2, 2, 2], vec![1, -2, 4, 0, -2, 0, 0])
+    ); // 2
 }
