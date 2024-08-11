@@ -1,28 +1,30 @@
 // https://leetcode.com/problems/delete-tree-nodes/description/
 pub fn delete_tree_nodes(nodes: i32, parent: Vec<i32>, value: Vec<i32>) -> i32 {
-    fn delete_tree_node(
-        graph: &Vec<Vec<usize>>,
-        values: &Vec<i32>,
-        node: usize,
-        num_deleted_nodes: &mut i32,
-    ) -> (i32, i32) {
-        let mut num_nodes = 1;
+    struct Result {
+        total_num_nodes: i32,
+        sum: i32,
+        num_deleted_nodes: i32,
+    }
+
+    fn delete_tree_node(graph: &Vec<Vec<usize>>, values: &Vec<i32>, node: usize) -> Result {
+        let mut total_num_nodes = 1;
         let mut sum = values[node];
-        let mut child_sum = 0;
+        let mut num_deleted_nodes = 0;
         for child in graph[node].iter() {
-            let (n, s) = delete_tree_node(graph, values, *child, num_deleted_nodes);
-            num_nodes += n;
-            sum += s;
-            if s == 0 {
-                child_sum += s;
-            }
+            let r = delete_tree_node(graph, values, *child);
+            total_num_nodes += r.total_num_nodes;
+            num_deleted_nodes += r.num_deleted_nodes;
+            sum += r.sum;
         }
-        if sum == 0 {
-            *num_deleted_nodes += num_nodes;
-        } else {
-            *num_deleted_nodes += child_sum;
+        Result {
+            total_num_nodes,
+            sum,
+            num_deleted_nodes: if sum == 0 {
+                total_num_nodes
+            } else {
+                num_deleted_nodes
+            },
         }
-        (num_nodes, sum)
     }
 
     let mut graph: Vec<Vec<usize>> = vec![vec![]; nodes as usize];
@@ -35,9 +37,8 @@ pub fn delete_tree_nodes(nodes: i32, parent: Vec<i32>, value: Vec<i32>) -> i32 {
         }
     }
 
-    let mut num_deleted_nodes = 0;
-    let (total_num_nodes, sum) = delete_tree_node(&graph, &value, root, &mut num_deleted_nodes);
-    total_num_nodes - num_deleted_nodes
+    let r = delete_tree_node(&graph, &value, root);
+    r.total_num_nodes - r.num_deleted_nodes
 }
 
 fn main() {
@@ -64,5 +65,9 @@ fn main() {
     println!(
         "{}",
         delete_tree_nodes(7, vec![-1, 0, 0, 1, 2, 2, 2], vec![1, -2, 0, 0, 0, 0, 0])
+    ); //
+    println!(
+        "{}",
+        delete_tree_nodes(7, vec![-1, 0, 0, 1, 2, 2, 2], vec![0, 0, 0, 0, 0, 0, 0])
     ); // 2
 }
