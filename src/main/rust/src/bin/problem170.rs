@@ -1,17 +1,30 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/two-sum-iii-data-structure-design/description/
-struct TwoSum {}
+struct TwoSum {
+    map: HashMap<i32, i32>,
+}
 
 impl TwoSum {
     fn new() -> Self {
-        TwoSum {}
+        TwoSum {
+            map: HashMap::new(),
+        }
     }
 
     fn add(&mut self, number: i32) {
-        todo!()
+        *self.map.entry(number).or_insert(0) += 1;
     }
 
     fn find(&self, value: i32) -> bool {
-        todo!()
+        for n in self.map.keys() {
+            if let Some(count) = self.map.get(&(value - n)) {
+                if (*n == value - n && *count > 1) || *n != value - n {
+                    return true;
+                }
+            }
+        }
+        false
     }
 }
 
