@@ -30,14 +30,14 @@ public class Problem2674 {
             }
             nodes.add(node);
         }
-        var first = nodes.get(0);
+        var first = nodes.getFirst();
         if (nodes.size() % 2 == 0) {
             nodes.get((nodes.size() / 2) - 1).next = first;
         } else {
             nodes.get(nodes.size() / 2).next = first;
         }
         var second = nodes.get((int) Math.ceil((double) nodes.size() / 2));
-        nodes.get(nodes.size() - 1).next = second;
+        nodes.getLast().next = second;
         return new ListNode[]{first, second};
     }
 }
