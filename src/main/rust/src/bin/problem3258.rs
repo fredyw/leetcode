@@ -12,7 +12,7 @@ pub fn count_k_constraint_substrings(s: String, k: i32) -> i32 {
         } else {
             num_ones += 1;
         }
-        if num_zeros > k && num_ones > k {
+        while num_zeros > k && num_ones > k {
             if chars[j] == '0' {
                 num_zeros -= 1;
             } else {
@@ -37,4 +37,5 @@ fn main() {
         "{}",
         count_k_constraint_substrings("101001010100101111010101".to_string(), 4)
     ); // 200
+    println!("{}", count_k_constraint_substrings("000011".to_string(), 1)); // 18
 }
