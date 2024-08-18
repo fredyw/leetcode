@@ -9,4 +9,14 @@ fn main() {
         "{}",
         min_moves(vec![vec![0, 0], vec![0, 1], vec![0, 2], vec![0, 3]])
     ); // 3
+    println!(
+        "{}",
+        min_moves(vec![
+            vec![0, 0],
+            vec![0, 1],
+            vec![1, 0],
+            vec![1, 1],
+            vec![4, 4]
+        ])
+    ); // 8
 }
