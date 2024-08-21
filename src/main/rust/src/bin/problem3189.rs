@@ -1,26 +1,14 @@
-use std::cmp::Ordering;
-
 // https://leetcode.com/problems/minimum-moves-to-get-a-peaceful-board/description/
 pub fn min_moves(mut rooks: Vec<Vec<i32>>) -> i32 {
-    let mut n = rooks.len();
-    rooks.sort_by(|a, b| {
-        let cmp = a[0].cmp(&b[0]);
-        match cmp {
-            Ordering::Equal => a[1].cmp(&b[1]),
-            _ => cmp,
-        }
-    });
+    rooks.sort_by(|a, b| a[0].cmp(&b[0]));
     let mut answer = 0;
-    println!("before {:?}", rooks);
-    for i in (0..n).rev() {
+    for i in (0..rooks.len()).rev() {
         answer += (i as i32 - rooks[i][0]).abs();
-        rooks[i][0] = i as i32;
     }
-    for i in (0..n).rev() {
+    rooks.sort_by(|a, b| a[1].cmp(&b[1]));
+    for i in (0..rooks.len()).rev() {
         answer += (i as i32 - rooks[i][1]).abs();
-        rooks[i][1] = i as i32;
     }
-    println!("after  {:?}", rooks);
     answer
 }
 
