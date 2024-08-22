@@ -30,7 +30,19 @@ public class Problem2689 {
     }
 
     public char getKthCharacter(RopeTreeNode root, int k) {
-        // TODO
-        return ' ';
+        StringBuilder sb = new StringBuilder();
+        toString(root, sb);
+        return sb.charAt(k - 1);
+    }
+
+    private static void toString(RopeTreeNode root, StringBuilder sb) {
+        if (root == null) {
+            return;
+        }
+        if (root.len == 0) {
+            sb.append(root.val);
+        }
+        toString(root.left, sb);
+        toString(root.left, sb);
     }
 }
