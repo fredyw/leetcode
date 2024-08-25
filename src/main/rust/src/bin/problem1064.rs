@@ -1,6 +1,11 @@
 // https://leetcode.com/problems/fixed-point/description/
 pub fn fixed_point(arr: Vec<i32>) -> i32 {
-    todo!()
+    for (i, n) in arr.iter().enumerate() {
+        if i as i32 == *n {
+            return *n;
+        }
+    }
+    -1
 }
 
 fn main() {
