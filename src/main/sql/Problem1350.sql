@@ -1,0 +1,1 @@
+-- https://leetcode.com/problems/students-with-invalid-departments/description/
