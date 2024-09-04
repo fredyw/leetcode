@@ -22,7 +22,32 @@ impl TreeNode {
 
 // https://leetcode.com/problems/find-the-level-of-tree-with-minimum-sum/description/
 pub fn minimum_level(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
-    todo!()
+    let mut answer = 0;
+    let mut min_sum: i64 = 0;
+    let mut deque: VecDeque<Rc<RefCell<TreeNode>>> = VecDeque::new();
+    deque.push_back(root.unwrap());
+    let mut level = 1;
+    while !deque.is_empty() {
+        let size = deque.len();
+        let mut sum: i64 = 0;
+        for _ in 0..size {
+            if let Some(node) = deque.pop_front() {
+                sum += node.borrow().val as i64;
+                if let Some(left) = node.as_ref().borrow().left.clone() {
+                    deque.push_back(left);
+                }
+                if let Some(right) = node.as_ref().borrow().right.clone() {
+                    deque.push_back(right);
+                }
+            }
+        }
+        if level == 1 || min_sum > sum {
+            answer = level;
+            min_sum = sum;
+        }
+        level += 1;
+    }
+    answer
 }
 
 fn create_node(value: i32) -> Option<Rc<RefCell<TreeNode>>> {
