@@ -35,4 +35,15 @@ fn main() {
             "qwe".to_string()
         ])
     ); // ""
+    println!(
+        "{}",
+        longest_word(vec![
+            "ki".to_string(),
+            "kir".to_string(),
+            "kira".to_string(),
+            "kiran".to_string()
+        ])
+    ); // ""
+    println!("{}", longest_word(vec!["a".to_string()])); // "a"
+    println!("{}", longest_word(vec!["a".to_string(), "app".to_string()])); // "a"
 }
