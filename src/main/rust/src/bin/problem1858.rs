@@ -54,16 +54,32 @@ pub fn longest_word(words: Vec<String>) -> String {
             self.roots.extend(new_nodes);
         }
 
-        fn find(&self, chars: Vec<char>, index: usize) {}
+        fn longest_word(&self, chars: Vec<char>, set: &HashSet<String>, answer: &mut String) {
+            fn longest_word(
+                chars: &Vec<char>,
+                index: usize,
+                node: &Node,
+                set: &HashSet<String>,
+                answer: &mut String,
+            ) {
+            }
+
+            let index = 0;
+            for node in self.roots.iter() {
+                if set.contains(&node.value.to_string()) {
+                    longest_word(&chars, index + 1, node, set, answer);
+                }
+            }
+        }
     }
 
-    let mut answer = String::new();
     let mut set: HashSet<String> = HashSet::new();
     let mut trie = Trie::new();
     for word in words.iter() {
         set.insert(word.to_string());
         trie.insert(word.chars().collect());
     }
+    let mut answer = String::new();
     for word in words.into_iter() {
         let chars: Vec<char> = word.chars().collect();
     }
