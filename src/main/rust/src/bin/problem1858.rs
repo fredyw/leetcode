@@ -58,14 +58,14 @@ pub fn longest_word(words: Vec<String>) -> String {
                 prefix: &mut String,
                 answer: &mut String,
             ) {
-                if prefix.len() > answer.len() {
-                    *answer = prefix.to_owned();
-                } else if prefix.len() == answer.len() {
-                    if prefix.cmp(&answer).is_lt() {
-                        *answer = prefix.to_owned();
-                    }
-                }
                 if set.contains(prefix) {
+                    if prefix.len() > answer.len() {
+                        *answer = prefix.to_owned();
+                    } else if prefix.len() == answer.len() {
+                        if prefix.cmp(&answer).is_lt() {
+                            *answer = prefix.to_owned();
+                        }
+                    }
                     for (char, child) in node.children.iter() {
                         prefix.push(*char);
                         longest_word(child, set, prefix, answer);
