@@ -146,4 +146,13 @@ fn main() {
         "{}",
         longest_word(vec!["b".to_string(), "ab".to_string(), "a".to_string()])
     ); // "ab"
+    println!(
+        "{}",
+        longest_word(vec![
+            "c".to_string(),
+            "b".to_string(),
+            "z".to_string(),
+            "za".to_string(),
+        ])
+    ); // "za"
 }
