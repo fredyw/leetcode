@@ -76,9 +76,6 @@ pub fn longest_word(words: Vec<String>) -> String {
 
             for (char, root) in self.roots.iter() {
                 if set.contains(&char.to_string()) {
-                    if answer.is_empty() || char.to_string().cmp(answer).is_lt() {
-                        *answer = char.to_string().to_string();
-                    }
                     let mut prefix = String::new();
                     prefix.push(*char);
                     longest_word(root, set, &mut prefix, answer);
