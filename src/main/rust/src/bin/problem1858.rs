@@ -1,73 +1,87 @@
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 
 // https://leetcode.com/problems/longest-word-with-all-prefixes/description/
 pub fn longest_word(words: Vec<String>) -> String {
+    #[derive(Debug)]
     struct Trie {
-        roots: Vec<Node>,
+        roots: HashMap<char, Node>,
     }
 
+    #[derive(Debug)]
     struct Node {
-        value: char,
-        children: Vec<Node>,
+        children: HashMap<char, Node>,
     }
 
     impl Node {
-        fn new(value: char) -> Self {
+        fn new() -> Self {
             Self {
-                value,
-                children: vec![],
+                children: HashMap::new(),
             }
         }
     }
 
     impl Trie {
         fn new() -> Self {
-            Self { roots: vec![] }
+            Self {
+                roots: HashMap::new(),
+            }
         }
 
         fn insert(&mut self, chars: Vec<char>) {
             fn insert(chars: &Vec<char>, index: usize, node: &mut Node) {
-                let mut new_nodes = vec![];
-                for node in node.children.iter_mut() {
-                    if node.value == chars[index] {
-                        insert(&chars, index + 1, node);
-                    } else {
-                        let mut root = Node::new(chars[index]);
-                        insert(&chars, index + 1, &mut root);
-                        new_nodes.push(root);
-                    }
+                if index == chars.len() {
+                    return;
                 }
-                node.children.extend(new_nodes);
-            }
-
-            let mut new_nodes = vec![];
-            let mut index = 0;
-            for node in self.roots.iter_mut() {
-                if node.value == chars[index] {
-                    insert(&chars, index + 1, node);
+                if let Some(child) = node.children.get_mut(&chars[index]) {
+                    insert(&chars, index + 1, child);
                 } else {
-                    let mut root = Node::new(chars[index]);
-                    insert(&chars, index + 1, &mut root);
-                    new_nodes.push(root);
+                    let mut child = Node::new();
+                    insert(&chars, index + 1, &mut child);
+                    node.children.insert(chars[index], child);
                 }
-            }
-            self.roots.extend(new_nodes);
-        }
-
-        fn longest_word(&self, chars: Vec<char>, set: &HashSet<String>, answer: &mut String) {
-            fn longest_word(
-                chars: &Vec<char>,
-                index: usize,
-                node: &Node,
-                set: &HashSet<String>,
-                answer: &mut String,
-            ) {
             }
 
             let index = 0;
-            for node in self.roots.iter() {
-                if set.contains(&node.value.to_string()) {
-                    longest_word(&chars, index + 1, node, set, answer);
+            if let Some(root) = self.roots.get_mut(&chars[index]) {
+                insert(&chars, index + 1, root);
+            } else {
+                let mut root = Node::new();
+                insert(&chars, index + 1, &mut root);
+                self.roots.insert(chars[index], root);
+            }
+        }
+
+        fn longest_word(&self, set: &HashSet<String>, answer: &mut String) {
+            fn longest_word(
+                node: &Node,
+                set: &HashSet<String>,
+                prefix: &mut String,
+                answer: &mut String,
+            ) {
+                if set.contains(prefix) {
+                    if prefix.len() > answer.len() {
+                        *answer = prefix.to_owned();
+                    } else if prefix.len() == answer.len() {
+                        if prefix.cmp(&answer).is_lt() {
+                            *answer = prefix.to_owned();
+                        }
+                    }
+                    for (char, child) in node.children.iter() {
+                        prefix.push(*char);
+                        longest_word(child, set, prefix, answer);
+                        prefix.pop();
+                    }
+                }
+            }
+
+            for (char, root) in self.roots.iter() {
+                if set.contains(&char.to_string()) {
+                    if answer.is_empty() || char.to_string().cmp(answer).is_lt() {
+                        *answer = char.to_string().to_string();
+                    }
+                    let mut prefix = String::new();
+                    prefix.push(*char);
+                    longest_word(root, set, &mut prefix, answer);
                 }
             }
         }
@@ -80,9 +94,7 @@ pub fn longest_word(words: Vec<String>) -> String {
         trie.insert(word.chars().collect());
     }
     let mut answer = String::new();
-    for word in words.into_iter() {
-        let chars: Vec<char> = word.chars().collect();
-    }
+    trie.longest_word(&set, &mut answer);
     answer
 }
 
@@ -129,4 +141,9 @@ fn main() {
     ); // ""
     println!("{}", longest_word(vec!["a".to_string()])); // "a"
     println!("{}", longest_word(vec!["a".to_string(), "app".to_string()])); // "a"
+    println!("{}", longest_word(vec!["a".to_string(), "b".to_string()])); // "a"
+    println!(
+        "{}",
+        longest_word(vec!["b".to_string(), "ab".to_string(), "a".to_string()])
+    ); // "ab"
 }
