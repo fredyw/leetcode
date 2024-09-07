@@ -50,4 +50,5 @@ fn main() {
     println!("{}", self_divisible_permutation_count(2)); // 1
     println!("{}", self_divisible_permutation_count(3)); // 3
     println!("{}", self_divisible_permutation_count(4)); // 4
+    println!("{}", self_divisible_permutation_count(12)); // 63504
 }
