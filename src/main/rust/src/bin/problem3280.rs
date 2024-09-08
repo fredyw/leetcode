@@ -1,6 +1,12 @@
 // https://leetcode.com/problems/convert-date-to-binary/description/
 pub fn convert_date_to_binary(date: String) -> String {
-    todo!()
+    let split: Vec<&str> = date.split("-").collect();
+    format!(
+        "{:b}-{:b}-{:b}",
+        split[0].parse::<i32>().unwrap(),
+        split[1].parse::<i32>().unwrap(),
+        split[2].parse::<i32>().unwrap()
+    )
 }
 
 fn main() {
