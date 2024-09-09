@@ -13,12 +13,14 @@ pub fn path_sum(nums: Vec<i32>) -> i32 {
             let val = if let Some(v) = m.get(&position) {
                 *v
             } else {
-                0
+                return;
             };
-            path_sum(map, depth + 1, (position * 2) - 1, sum + val, answer);
-            path_sum(map, depth + 1, position * 2, sum + val, answer);
-        } else {
-            *answer += sum;
+            if map.get(&(depth + 1)).is_some() {
+                path_sum(map, depth + 1, (position * 2) - 1, sum + val, answer);
+                path_sum(map, depth + 1, position * 2, sum + val, answer);
+            } else {
+                *answer += sum + val;
+            }
         }
     }
 
@@ -47,7 +49,7 @@ pub fn path_sum(nums: Vec<i32>) -> i32 {
 fn main() {
     // println!("{}", path_sum(vec![113, 215, 221])); // 12
     // println!("{}", path_sum(vec![113, 221])); // 4
-    // println!("{}", path_sum(vec![113, 212, 221, 331, 341])); // 15
-    // println!("{}", path_sum(vec![113, 212, 221, 311, 321, 331, 341])); // 22
-    println!("{}", path_sum(vec![113])); // 3
+    println!("{}", path_sum(vec![113, 212, 221, 331, 341])); // 15
+                                                             // println!("{}", path_sum(vec![113, 212, 221, 311, 321, 331, 341])); // 22
+                                                             // println!("{}", path_sum(vec![113])); // 3
 }
