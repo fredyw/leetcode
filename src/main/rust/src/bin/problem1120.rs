@@ -22,7 +22,26 @@ impl TreeNode {
 }
 
 pub fn maximum_average_subtree(root: Option<Rc<RefCell<TreeNode>>>) -> f64 {
-    todo!()
+    fn maximum_average_subtree(
+        root: Option<Rc<RefCell<TreeNode>>>,
+        answer: &mut f64,
+    ) -> (i32, i32) {
+        if root.is_none() {
+            return (0, 0);
+        }
+        let (left_count, left_sum) =
+            maximum_average_subtree(root.as_ref().unwrap().borrow().left.clone(), answer);
+        let (right_count, right_sum) =
+            maximum_average_subtree(root.as_ref().unwrap().borrow().right.clone(), answer);
+        let total_count = left_count + right_count + 1;
+        let total_sum = left_sum + right_sum + root.as_ref().unwrap().borrow().val;
+        *answer = answer.max(total_sum as f64 / total_count as f64);
+        (total_count, total_sum)
+    }
+
+    let mut answer = 0.0;
+    maximum_average_subtree(root, &mut answer);
+    answer
 }
 
 fn create_node(value: i32) -> Option<Rc<RefCell<TreeNode>>> {
