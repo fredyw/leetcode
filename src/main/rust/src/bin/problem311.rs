@@ -1,10 +1,18 @@
 // https://leetcode.com/problems/sparse-matrix-multiplication/
 pub fn multiply(mat1: Vec<Vec<i32>>, mat2: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
-    let mut sparse_mat2: Vec<Vec<i32>> = vec![vec![]; mat2[0].len()];
+    let mut sparse_mat1: Vec<Vec<usize>> = vec![vec![]; mat1.len()];
+    for row in 0..mat1.len() {
+        for col in 0..mat1[row].len() {
+            if mat1[row][col] != 0 {
+                sparse_mat1[row].push(col);
+            }
+        }
+    }
+    let mut sparse_mat2: Vec<Vec<usize>> = vec![vec![]; mat2[0].len()];
     for col in 0..mat2[0].len() {
         for row in 0..mat2.len() {
             if mat2[row][col] != 0 {
-                sparse_mat2[col].push(mat2[row][col]);
+                sparse_mat2[col].push(row);
             }
         }
     }
