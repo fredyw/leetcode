@@ -1,6 +1,18 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/the-two-sneaky-numbers-of-digitville/
 pub fn get_sneaky_numbers(nums: Vec<i32>) -> Vec<i32> {
-    todo!()
+    let mut map: HashMap<i32, i32> = HashMap::new();
+    for num in nums.into_iter() {
+        *map.entry(num).or_insert(0) += 1;
+    }
+    let mut answer = vec![];
+    for (num, count) in map.iter() {
+        if *count > 1 {
+            answer.push(*num);
+        }
+    }
+    answer
 }
 
 fn main() {
