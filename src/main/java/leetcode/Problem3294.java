@@ -16,7 +16,7 @@ public class Problem3294 {
         while (head.prev != null) {
             head = head.prev;
         }
-        List<Integer> answer = new ArrayList();
+        List<Integer> answer = new ArrayList<>();
         for (var n = head; n != null; n = n.next) {
             answer.add(n.val);
         }
