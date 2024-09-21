@@ -1,6 +1,12 @@
 // https://leetcode.com/problems/median-of-a-row-wise-sorted-matrix/description/
 pub fn matrix_median(grid: Vec<Vec<i32>>) -> i32 {
-    todo!()
+    let mut min = i32::MAX;
+    let mut max = i32::MIN;
+    for i in 0..grid.len() {
+        min = min.min(grid[i][0]);
+        max = max.max(grid[i][grid[i].len() - 1]);
+    }
+    0
 }
 
 fn main() {
