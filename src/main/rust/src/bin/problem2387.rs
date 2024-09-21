@@ -30,7 +30,7 @@ pub fn matrix_median(grid: Vec<Vec<i32>>) -> i32 {
             count += get_element_count(&grid[i], mid);
         }
         if count <= median {
-            low += mid + 1;
+            low = mid + 1;
         } else {
             high = mid - 1;
         }
