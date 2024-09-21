@@ -1,6 +1,14 @@
 // https://leetcode.com/problems/count-pairs-in-two-arrays/description/
 pub fn count_pairs(nums1: Vec<i32>, nums2: Vec<i32>) -> i64 {
-    todo!()
+    let mut answer = 0;
+    for i in 0..nums1.len() {
+        for j in i + 1..nums1.len() {
+            if nums1[i] + nums1[j] > nums2[i] + nums2[j] {
+                answer += 1;
+            }
+        }
+    }
+    answer
 }
 
 fn main() {
