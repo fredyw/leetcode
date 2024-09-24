@@ -6,4 +6,6 @@ pub fn does_alice_win(s: String) -> bool {
 fn main() {
     println!("{}", does_alice_win("leetcoder".to_string())); // true
     println!("{}", does_alice_win("bbcd".to_string())); // false
+    println!("{}", does_alice_win("a".to_string())); // true
+    println!("{}", does_alice_win("b".to_string())); // false
 }
