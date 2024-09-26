@@ -12,11 +12,6 @@ pub fn minimum_operations(mut nums: Vec<i32>) -> i32 {
             i += 1;
             j -= 2;
             answer += 1;
-        } else if nums[i] + nums[i + 1] == nums[j] {
-            nums[i + 1] += nums[i];
-            i += 2;
-            j -= 1;
-            answer += 1;
         } else {
             nums[i + 1] += nums[i];
             i += 1;
