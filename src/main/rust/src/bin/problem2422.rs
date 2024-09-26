@@ -33,4 +33,5 @@ fn main() {
     println!("{}", minimum_operations(vec![1])); // 0
     println!("{}", minimum_operations(vec![1, 1])); // 0
     println!("{}", minimum_operations(vec![1, 2])); // 1
+    println!("{}", minimum_operations(vec![1, 2, 3, 1])); // 1
 }
