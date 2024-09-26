@@ -7,10 +7,9 @@ pub fn minimum_operations(mut nums: Vec<i32>) -> i32 {
         if nums[i] == nums[j] {
             i += 1;
             j -= 1;
-        } else if nums[i] == nums[j] + nums[j - 1] {
+        } else if nums[i] > nums[j] {
             nums[j - 1] += nums[j];
-            i += 1;
-            j -= 2;
+            j -= 1;
             answer += 1;
         } else {
             nums[i + 1] += nums[i];
