@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/minimum-cost-to-convert-string-i/
 pub fn minimum_cost(
     source: String,
@@ -6,7 +8,22 @@ pub fn minimum_cost(
     changed: Vec<char>,
     cost: Vec<i32>,
 ) -> i64 {
-    todo!()
+    fn build_graph(
+        original: &Vec<char>,
+        changed: &Vec<char>,
+        cost: &Vec<i32>,
+    ) -> HashMap<char, Vec<(char, i32)>> {
+        let mut graph = HashMap::new();
+        for i in 0..original.len() {
+            graph
+                .entry(original[i])
+                .or_insert(Vec::new())
+                .push((changed[i], cost[i]));
+        }
+        graph
+    }
+
+    0
 }
 
 fn main() {
