@@ -23,27 +23,30 @@ pub fn minimum_cost(
         graph
     }
 
-    fn shortest_path(
-        graph: &HashMap<char, Vec<(char, i32)>>,
-        source: char,
-        shortest_path: &HashMap<char, HashMap<char, i32>>,
-    ) {
+    fn shortest_path(graph: &HashMap<char, Vec<(char, i32)>>, source: char) -> HashMap<char, i32> {
         todo!()
     }
 
     let mut answer = 0;
     let source: Vec<char> = source.chars().collect();
     let target: Vec<char> = target.chars().collect();
-    let mut shortest_path: HashMap<char, HashMap<char, i32>> = HashMap::new();
+    let graph = build_graph(&original, &changed, &cost);
+    let mut shortest_path_map: HashMap<char, HashMap<char, i32>> = HashMap::new();
     for i in 0..source.len() {
-        if let Some(map) = shortest_path.get(&source[i]) {
+        if let Some(map) = shortest_path_map.get(&source[i]) {
             if let Some(cost) = map.get(&target[i]) {
                 answer += *cost as i64;
             } else {
                 return -1;
             }
         } else {
-            return -1;
+            let map = shortest_path(&graph, source[i]);
+            if let Some(cost) = map.get(&target[i]) {
+                answer += *cost as i64;
+            } else {
+                return -1;
+            }
+            shortest_path_map.insert(source[i], map);
         }
     }
     answer
