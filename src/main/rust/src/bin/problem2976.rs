@@ -29,9 +29,6 @@ pub fn minimum_cost(
         source: char,
     ) -> HashMap<char, Option<i32>> {
         let mut shortest_path: HashMap<char, Option<i32>> = HashMap::new();
-        for c in 'a'..='z' {
-            shortest_path.insert(c, None);
-        }
         shortest_path.insert(source, Some(0));
         let mut heap: BinaryHeap<Reverse<(i32, char)>> = BinaryHeap::new();
         heap.push(Reverse((0, source)));
@@ -40,7 +37,7 @@ pub fn minimum_cost(
                 let (_, from) = e.0;
                 for (to, cost) in graph.get(&from).unwrap_or(&vec![]) {
                     let from_cost = shortest_path.get(&from).unwrap().unwrap();
-                    let to_cost = shortest_path.get(to).unwrap().unwrap_or(i32::MAX);
+                    let to_cost = shortest_path.get(to).unwrap_or(&None).unwrap_or(i32::MAX);
                     if to_cost > from_cost + cost {
                         let new_cost = from_cost + cost;
                         shortest_path.insert(*to, Some(new_cost));
