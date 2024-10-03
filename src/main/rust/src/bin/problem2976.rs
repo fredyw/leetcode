@@ -1,4 +1,5 @@
-use std::collections::HashMap;
+use std::cmp::Reverse;
+use std::collections::{BinaryHeap, HashMap};
 
 // https://leetcode.com/problems/minimum-cost-to-convert-string-i/
 pub fn minimum_cost(
@@ -23,26 +24,58 @@ pub fn minimum_cost(
         graph
     }
 
-    fn shortest_path(graph: &HashMap<char, Vec<(char, i32)>>, source: char) -> HashMap<char, i32> {
-        todo!()
+    fn shortest_path(
+        graph: &HashMap<char, Vec<(char, i32)>>,
+        source: char,
+    ) -> HashMap<char, Option<i32>> {
+        let mut shortest_path: HashMap<char, Option<i32>> = HashMap::new();
+        for c in 'a'..='z' {
+            shortest_path.insert(c, None);
+        }
+        shortest_path.insert(source, Some(0));
+        let mut heap: BinaryHeap<Reverse<(i32, char)>> = BinaryHeap::new();
+        heap.push(Reverse((0, source)));
+        while !heap.is_empty() {
+            if let Some(e) = heap.pop() {
+                let (_, from) = e.0;
+                for (to, cost) in graph.get(&from).unwrap_or(&vec![]) {
+                    let from_cost = shortest_path.get(&from).unwrap().unwrap();
+                    let to_cost = shortest_path.get(to).unwrap().unwrap_or(i32::MAX);
+                    if to_cost > from_cost + cost {
+                        let new_cost = from_cost + cost;
+                        shortest_path.insert(*to, Some(new_cost));
+                        heap.push(Reverse((new_cost, *to)));
+                    }
+                }
+            }
+        }
+        shortest_path
     }
 
     let mut answer = 0;
     let source: Vec<char> = source.chars().collect();
     let target: Vec<char> = target.chars().collect();
     let graph = build_graph(&original, &changed, &cost);
-    let mut shortest_path_map: HashMap<char, HashMap<char, i32>> = HashMap::new();
+    let mut shortest_path_map: HashMap<char, HashMap<char, Option<i32>>> = HashMap::new();
     for i in 0..source.len() {
         if let Some(map) = shortest_path_map.get(&source[i]) {
             if let Some(cost) = map.get(&target[i]) {
-                answer += *cost as i64;
+                if let Some(cost) = *cost {
+                    answer += cost as i64;
+                } else {
+                    return -1;
+                }
             } else {
                 return -1;
             }
         } else {
             let map = shortest_path(&graph, source[i]);
             if let Some(cost) = map.get(&target[i]) {
-                answer += *cost as i64;
+                if let Some(cost) = *cost {
+                    answer += cost as i64;
+                } else {
+                    return -1;
+                }
             } else {
                 return -1;
             }
