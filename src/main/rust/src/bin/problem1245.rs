@@ -15,4 +15,5 @@ fn main() {
             vec![4, 5]
         ])
     ); // 4
+    println!("{}", tree_diameter(vec![vec![1, 0], vec![0, 2]])); // 2
 }
