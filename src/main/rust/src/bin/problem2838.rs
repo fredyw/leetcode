@@ -1,7 +1,21 @@
 // https://leetcode.com/problems/maximum-coins-heroes-can-collect/description/
 pub fn maximum_coins(heroes: Vec<i32>, monsters: Vec<i32>, coins: Vec<i32>) -> Vec<i64> {
-    fn get_coins(monster: &Vec<(i32, i32)>, hero: i32) -> i64 {
-        0
+    fn get_coins(monster_sums: &Vec<(i32, i64)>, hero: i32) -> i64 {
+        let mut low: isize = 0;
+        let mut high = monster_sums.len() as isize - 1;
+        while low <= high {
+            let mid = low + (high - low) / 2;
+            if monster_sums[mid as usize].0 <= hero {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        if high < 0 {
+            0
+        } else {
+            monster_sums[high as usize].1
+        }
     }
 
     let mut monsters: Vec<(i32, i32)> = monsters
@@ -10,9 +24,15 @@ pub fn maximum_coins(heroes: Vec<i32>, monsters: Vec<i32>, coins: Vec<i32>) -> V
         .map(|(i, m)| (m, coins[i]))
         .collect();
     monsters.sort();
+    let mut monster_sums: Vec<(i32, i64)> = vec![];
+    let mut prefix_sum = 0;
+    for (i, (m, c)) in monsters.iter().enumerate() {
+        prefix_sum += *c as i64;
+        monster_sums.push((*m, prefix_sum));
+    }
     let mut answer = vec![];
     for hero in heroes {
-        answer.push(get_coins(&monsters, hero));
+        answer.push(get_coins(&monster_sums, hero));
     }
     answer
 }
