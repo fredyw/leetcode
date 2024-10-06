@@ -26,9 +26,9 @@ pub fn maximum_coins(heroes: Vec<i32>, monsters: Vec<i32>, coins: Vec<i32>) -> V
     monsters.sort();
     let mut monster_sums: Vec<(i32, i64)> = vec![];
     let mut prefix_sum = 0;
-    for (i, (m, c)) in monsters.iter().enumerate() {
-        prefix_sum += *c as i64;
-        monster_sums.push((*m, prefix_sum));
+    for (i, (m, c)) in monsters.into_iter().enumerate() {
+        prefix_sum += c as i64;
+        monster_sums.push((m, prefix_sum));
     }
     let mut answer = vec![];
     for hero in heroes {
