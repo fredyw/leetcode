@@ -1,6 +1,20 @@
 // https://leetcode.com/problems/maximum-coins-heroes-can-collect/description/
 pub fn maximum_coins(heroes: Vec<i32>, monsters: Vec<i32>, coins: Vec<i32>) -> Vec<i64> {
-    todo!()
+    fn get_coins(monster: &Vec<(i32, i32)>, hero: i32) -> i64 {
+        0
+    }
+
+    let mut monsters: Vec<(i32, i32)> = monsters
+        .into_iter()
+        .enumerate()
+        .map(|(i, m)| (m, coins[i]))
+        .collect();
+    monsters.sort();
+    let mut answer = vec![];
+    for hero in heroes {
+        answer.push(get_coins(&monsters, hero));
+    }
+    answer
 }
 
 fn main() {
