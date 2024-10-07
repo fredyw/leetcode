@@ -16,4 +16,8 @@ fn main() {
         "{}",
         max_boxes_in_warehouse(vec![1, 2, 3], vec![1, 2, 3, 4])
     ); // 1
+    println!(
+        "{}",
+        max_boxes_in_warehouse(vec![1, 5, 3, 4, 2], vec![2, 5, 3, 3, 4, 1])
+    ); // 2
 }
