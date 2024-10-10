@@ -13,14 +13,9 @@ pub fn max_boxes_in_warehouse(mut boxes: Vec<i32>, warehouse: Vec<i32>) -> i32 {
     let mut i: isize = prefix_min.len() as isize - 1;
     let mut j = 0;
     while i >= 0 && j < boxes.len() {
-        let mut k = j;
-        while k < boxes.len() {
-            if boxes[k] <= prefix_min[i as usize] {
-                answer += 1;
-                j += 1;
-                break;
-            }
-            k += 1;
+        if boxes[j] <= prefix_min[i as usize] {
+            answer += 1;
+            j += 1;
         }
         i -= 1;
     }
