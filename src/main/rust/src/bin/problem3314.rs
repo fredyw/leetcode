@@ -1,6 +1,19 @@
 // https://leetcode.com/problems/construct-the-minimum-bitwise-array-i/description/
 pub fn min_bitwise_array(nums: Vec<i32>) -> Vec<i32> {
-    todo!()
+    let mut answer = vec![];
+    for num in nums {
+        if num % 2 == 0 {
+            answer.push(-1);
+        } else {
+            for i in 1..num {
+                if i | (i + 1) == num {
+                    answer.push(i);
+                    break;
+                }
+            }
+        }
+    }
+    answer
 }
 
 fn main() {
