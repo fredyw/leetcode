@@ -8,9 +8,9 @@ pub fn find_x_sum(nums: Vec<i32>, k: i32, x: i32) -> Vec<i32> {
     for i in 0..nums.len() {
         length += 1;
         if length > k {
-            let count = map.entry(nums[i] - nums[i - (k as usize - 1)]).or_insert(0);
+            let count = map.entry(nums[i - k as usize]).or_insert(0);
             if *count - 1 == 0 {
-                map.remove(&(nums[i] - nums[i - (k as usize - 1)]));
+                map.remove(&(nums[i - k as usize]));
             } else {
                 *count -= 1;
             }
@@ -33,6 +33,6 @@ pub fn find_x_sum(nums: Vec<i32>, k: i32, x: i32) -> Vec<i32> {
 }
 
 fn main() {
-    // println!("{:?}", find_x_sum(vec![1, 1, 2, 2, 3, 4, 2, 3], 6, 2)); // [6,10,12]
+    println!("{:?}", find_x_sum(vec![1, 1, 2, 2, 3, 4, 2, 3], 6, 2)); // [6,10,12]
     println!("{:?}", find_x_sum(vec![3, 8, 7, 8, 7, 5], 2, 2)); // [11,15,15,15,12]
 }
