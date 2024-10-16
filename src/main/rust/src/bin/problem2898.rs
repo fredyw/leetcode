@@ -9,4 +9,5 @@ fn main() {
     println!("{}", max_score(vec![1, 5, 3])); // 5
     println!("{}", max_score(vec![1])); // 1
     println!("{}", max_score(vec![1, 2, 3])); // 6
+    println!("{}", max_score(vec![1, 2, 1, 1, 5])); // 8
 }
