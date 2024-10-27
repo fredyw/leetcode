@@ -1,5 +1,14 @@
+use std::cmp::Reverse;
+use std::collections::BinaryHeap;
+
 // https://leetcode.com/problems/the-number-of-the-smallest-unoccupied-chair/description/
-pub fn smallest_chair(times: Vec<Vec<i32>>, target_friend: i32) -> i32 {
+pub fn smallest_chair(mut times: Vec<Vec<i32>>, target_friend: i32) -> i32 {
+    times.sort_by(|a, b| a[0].cmp(&b[0]));
+    let mut heap: BinaryHeap<Reverse<(i32, usize)>> = BinaryHeap::new();
+    for (i, t) in times.iter().enumerate() {
+        let arrival = t[0];
+        let leaving = t[1];
+    }
     todo!()
 }
 
