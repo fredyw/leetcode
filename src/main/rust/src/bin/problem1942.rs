@@ -32,4 +32,8 @@ fn main() {
         "{}",
         smallest_chair(vec![vec![1, 4], vec![2, 3], vec![5, 6]], 1)
     ); // 0
+    println!(
+        "{}",
+        smallest_chair(vec![vec![1, 4], vec![2, 3], vec![4, 6]], 2)
+    ); // 0
 }
