@@ -36,4 +36,50 @@ fn main() {
         "{}",
         smallest_chair(vec![vec![1, 4], vec![2, 3], vec![4, 6]], 2)
     ); // 0
+    println!(
+        "{}",
+        smallest_chair(vec![vec![1, 3], vec![2, 4], vec![4, 6]], 2)
+    ); // 0
+    println!(
+        "{}",
+        smallest_chair(
+            vec![
+                vec![1, 5],
+                vec![2, 6],
+                vec![3, 20],
+                vec![4, 8],
+                vec![5, 6],
+                vec![7, 8]
+            ],
+            3
+        )
+    ); // 3
+    println!(
+        "{}",
+        smallest_chair(
+            vec![
+                vec![1, 5],
+                vec![2, 6],
+                vec![3, 20],
+                vec![4, 8],
+                vec![5, 6],
+                vec![7, 8]
+            ],
+            4
+        )
+    ); // 0
+    println!(
+        "{}",
+        smallest_chair(
+            vec![
+                vec![1, 5],
+                vec![2, 6],
+                vec![3, 20],
+                vec![4, 8],
+                vec![5, 6],
+                vec![7, 8]
+            ],
+            5
+        )
+    ); // 0
 }
