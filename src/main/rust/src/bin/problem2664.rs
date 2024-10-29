@@ -1,6 +1,7 @@
 // https://leetcode.com/problems/the-knights-tour/description/
 pub fn tour_of_knight(m: i32, n: i32, r: i32, c: i32) -> Vec<Vec<i32>> {
-    todo!()
+    let mut answer: Vec<Vec<i32>> = vec![vec![-1; n as usize]; m as usize];
+    answer
 }
 
 fn main() {
