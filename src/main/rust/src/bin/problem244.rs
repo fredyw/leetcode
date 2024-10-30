@@ -27,4 +27,8 @@ fn main() {
         "{}",
         word_distance.shortest("makes".to_string(), "coding".to_string())
     ); // 1
+    println!(
+        "{}",
+        word_distance.shortest("practice".to_string(), "makes".to_string())
+    ); // 1
 }
