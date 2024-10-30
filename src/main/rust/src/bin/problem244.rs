@@ -1,5 +1,3 @@
-use std::collections::HashMap;
-
 // https://leetcode.com/problems/shortest-word-distance-ii/description/
 struct WordDistance {}
 
