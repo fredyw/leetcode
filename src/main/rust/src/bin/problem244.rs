@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet, VecDeque};
 
 // https://leetcode.com/problems/shortest-word-distance-ii/description/
 struct WordDistance {
@@ -26,7 +26,25 @@ impl WordDistance {
     }
 
     fn shortest(&self, word1: String, word2: String) -> i32 {
-        todo!()
+        let mut answer = i32::MAX;
+        let mut queue: VecDeque<(&str, i32)> = VecDeque::new();
+        let mut visited: HashSet<&str> = HashSet::new();
+        queue.push_back((&word1, 0));
+        while let Some((front, distance)) = queue.pop_front() {
+            if visited.contains(front) {
+                continue;
+            }
+            visited.insert(front);
+            if front == &word2 {
+                answer = answer.min(distance);
+            }
+            if let Some(v) = self.map.get(front) {
+                for adj in v.iter() {
+                    queue.push_back((adj, distance + 1));
+                }
+            }
+        }
+        answer
     }
 }
 
@@ -42,12 +60,16 @@ fn main() {
         "{}",
         word_distance.shortest("coding".to_string(), "practice".to_string())
     ); // 3
-    println!(
-        "{}",
-        word_distance.shortest("makes".to_string(), "coding".to_string())
-    ); // 1
-    println!(
-        "{}",
-        word_distance.shortest("practice".to_string(), "makes".to_string())
-    ); // 1
+       // println!(
+       //     "{}",
+       //     word_distance.shortest("makes".to_string(), "coding".to_string())
+       // ); // 1
+       // println!(
+       //     "{}",
+       //     word_distance.shortest("practice".to_string(), "makes".to_string())
+       // ); // 1
+       // println!(
+       //     "{}",
+       //     word_distance.shortest("perfect".to_string(), "makes".to_string())
+       // ); // 1
 }
