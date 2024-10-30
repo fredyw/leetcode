@@ -4,6 +4,10 @@ pub fn parse_ternary(expression: String) -> String {
         if index == expression.len() {
             return "".to_string();
         }
+        if index + 1 < expression.len() && expression[index + 1] == '?' {
+            parse_ternary(expression, index + 2);
+        } else {
+        }
         "".to_string()
     }
 
@@ -17,4 +21,6 @@ fn main() {
     println!("{}", parse_ternary("T?T?F:5:3".to_string())); // "F"
     println!("{}", parse_ternary("T?T?T:T:F".to_string())); // "T"
     println!("{}", parse_ternary("T?T?3:4:T?1:2".to_string())); // "3"
+    println!("{}", parse_ternary("T?T?3:4:T?5:6:T?1:2".to_string())); // "3"
+    println!("{}", parse_ternary("F?T?3:4:T?5:6:T?1:2".to_string())); // "5"
 }
