@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/ternary-expression-parser/description/
 pub fn parse_ternary(expression: String) -> String {
+    let expression: Vec<char> = expression.chars().collect();
     todo!()
 }
 
