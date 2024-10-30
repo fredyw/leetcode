@@ -26,28 +26,32 @@ pub fn kth_largest_perfect_subtree(root: Option<Rc<RefCell<TreeNode>>>, k: i32) 
         root: Option<Rc<RefCell<TreeNode>>>,
         perfect_subtrees: &mut Vec<i32>,
     ) -> (bool, i32) {
-        let node = root.unwrap();
-        let left = node.as_ref().borrow().left.clone();
-        let right = node.as_ref().borrow().right.clone();
-        if left.is_some() && right.is_some() {
-            let (left_perfect, left_count) = kth_largest_perfect_subtree(left, perfect_subtrees);
-            let (right_perfect, right_count) = kth_largest_perfect_subtree(right, perfect_subtrees);
-            if left_perfect && right_perfect && left_count == right_count {
-                perfect_subtrees.push(left_count + right_count + 1);
-                (true, left_count + right_count + 1)
+        if let Some(node) = root {
+            let left = node.as_ref().borrow().left.clone();
+            let right = node.as_ref().borrow().right.clone();
+            if left.is_none() && right.is_none() {
+                perfect_subtrees.push(1);
+                (true, 1)
             } else {
-                (false, -1)
+                let (left_perfect, left_count) =
+                    kth_largest_perfect_subtree(left, perfect_subtrees);
+                let (right_perfect, right_count) =
+                    kth_largest_perfect_subtree(right, perfect_subtrees);
+                if left_perfect && right_perfect && left_count == right_count {
+                    perfect_subtrees.push(left_count + right_count + 1);
+                    (true, left_count + right_count + 1)
+                } else {
+                    (false, -1)
+                }
             }
         } else {
-            perfect_subtrees.push(1);
-            (true, 1)
+            (false, -1)
         }
     }
 
     let mut perfect_subtrees: Vec<i32> = vec![];
     kth_largest_perfect_subtree(root, &mut perfect_subtrees);
     perfect_subtrees.sort_by(|a, b| b.cmp(&a));
-    println!("{:?}", perfect_subtrees);
     *perfect_subtrees.get(k as usize - 1).unwrap_or(&-1)
 }
 
