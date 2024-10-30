@@ -1,9 +1,28 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/shortest-word-distance-ii/description/
-struct WordDistance {}
+struct WordDistance {
+    map: HashMap<String, Vec<String>>,
+}
 
 impl WordDistance {
-    fn new(wordsDict: Vec<String>) -> Self {
-        Self {}
+    fn new(words_dict: Vec<String>) -> Self {
+        let mut map: HashMap<String, Vec<String>> = HashMap::new();
+        let mut i = 0;
+        while i < words_dict.len() {
+            if i + 1 < words_dict.len() {
+                map.entry(words_dict[i].clone())
+                    .or_insert(vec![])
+                    .push(words_dict[i + 1].clone());
+            }
+            if i > 0 {
+                map.entry(words_dict[i].clone())
+                    .or_insert(vec![])
+                    .push(words_dict[i - 1].clone());
+            }
+            i += 1;
+        }
+        Self { map }
     }
 
     fn shortest(&self, word1: String, word2: String) -> i32 {
