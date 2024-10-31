@@ -12,6 +12,10 @@ pub fn shortest_word_distance(words_dict: Vec<String>, word1: String, word2: Str
     let indexes1 = map.get(word1.as_str()).unwrap();
     let indexes2 = map.get(word2.as_str()).unwrap();
     while i < indexes1.len() && j < indexes2.len() {
+        if i == j && words_dict[indexes1[i] as usize] == words_dict[indexes2[j] as usize] {
+            i += 1;
+            continue;
+        }
         answer = answer.min((indexes1[i] - indexes2[j]).abs());
         if indexes1[i] < indexes2[j] {
             i += 1;
@@ -51,4 +55,12 @@ fn main() {
             "makes".to_string()
         )
     ); // 3
+    println!(
+        "{}",
+        shortest_word_distance(
+            vec!["a".to_string(), "b".to_string(),],
+            "a".to_string(),
+            "b".to_string()
+        )
+    ); // 1
 }
