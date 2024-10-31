@@ -5,12 +5,12 @@ pub fn reverse_words(s: &mut Vec<char>) {
     let mut j = 0;
     while j < s.len() {
         if s[j] == ' ' {
-            &s[i..j].reverse();
+            let _ = &s[i..j].reverse();
             i = j + 1;
         }
         j += 1;
     }
-    &s[i..j].reverse();
+    let _ = &s[i..j].reverse();
 }
 
 fn main() {
