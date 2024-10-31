@@ -16,9 +16,16 @@ impl WordDistance {
 
     fn shortest(&self, word1: String, word2: String) -> i32 {
         let mut answer = i32::MAX;
-        for i in self.map.get(&word1).unwrap() {
-            for j in self.map.get(&word2).unwrap() {
-                answer = answer.min((*j - *i).abs());
+        let indexes1 = self.map.get(&word1).unwrap();
+        let indexes2 = self.map.get(&word2).unwrap();
+        let mut i = 0;
+        let mut j = 0;
+        while i < indexes1.len() && j < indexes2.len() {
+            answer = answer.min((indexes1[i] - indexes2[j]).abs());
+            if indexes1[i] < indexes2[j] {
+                i += 1;
+            } else {
+                j += 1;
             }
         }
         answer
