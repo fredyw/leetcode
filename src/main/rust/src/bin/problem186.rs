@@ -1,6 +1,16 @@
 // https://leetcode.com/problems/reverse-words-in-a-string-ii/description/
 pub fn reverse_words(s: &mut Vec<char>) {
-    todo!()
+    s.reverse();
+    let mut i = 0;
+    let mut j = 0;
+    while j < s.len() {
+        if s[j] == ' ' {
+            &s[i..j].reverse();
+            i = j + 1;
+        }
+        j += 1;
+    }
+    &s[i..j].reverse();
 }
 
 fn main() {
