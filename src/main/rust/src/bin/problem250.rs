@@ -28,17 +28,14 @@ pub fn count_unival_subtrees(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
             let (left_val, left_unival) = f(root.as_ref().borrow().left.clone(), count);
             let (right_val, right_unival) = f(root.as_ref().borrow().right.clone(), count);
             if left_unival && right_unival {
-                if left_val.is_some()
+                if (left_val.is_some()
                     && right_val.is_some()
                     && left_val.unwrap() == right_val.unwrap()
-                    && right_val.unwrap() == val
+                    && right_val.unwrap() == val)
+                    || (left_val.is_some() && left_val.unwrap() == val)
+                    || (right_val.is_some() && right_val.unwrap() == val)
+                    || (left_val.is_none() && right_val.is_none())
                 {
-                    *count += 1;
-                    (Some(val), true)
-                } else if left_val.is_some() && left_val.unwrap() == val {
-                    *count += 1;
-                    (Some(val), true)
-                } else if right_val.is_some() && right_val.unwrap() == val {
                     *count += 1;
                     (Some(val), true)
                 } else {
@@ -102,41 +99,33 @@ fn to_tree(nodes: Vec<Option<i32>>) -> Option<Rc<RefCell<TreeNode>>> {
 }
 
 fn main() {
+    // println!(
+    //     "{}",
+    //     count_unival_subtrees(to_tree(vec![
+    //         Some(5),
+    //         Some(1),
+    //         Some(5),
+    //         Some(5),
+    //         Some(5),
+    //         None,
+    //         Some(5)
+    //     ]))
+    // ); // 4
+    // println!("{}", count_unival_subtrees(to_tree(vec![]))); // 0
+    // println!(
+    //     "{}",
+    //     count_unival_subtrees(to_tree(vec![
+    //         Some(5),
+    //         Some(5),
+    //         Some(5),
+    //         Some(5),
+    //         Some(5),
+    //         None,
+    //         Some(5)
+    //     ]))
+    // ); // 6
     println!(
         "{}",
-        count_unival_subtrees(to_tree(vec![
-            Some(5),
-            Some(1),
-            Some(5),
-            Some(5),
-            Some(5),
-            None,
-            Some(5)
-        ]))
-    ); // 4
-       // println!(
-       //     "{}",
-       //     count_unival_subtrees(to_tree(vec![
-       //         Some(5),
-       //         Some(1),
-       //         Some(5),
-       //         Some(5),
-       //         Some(5),
-       //         None,
-       //         Some(5)
-       //     ]))
-       // ); // 4
-       // println!("{}", count_unival_subtrees(to_tree(vec![]))); // 0
-       // println!(
-       //     "{}",
-       //     count_unival_subtrees(to_tree(vec![
-       //         Some(5),
-       //         Some(5),
-       //         Some(5),
-       //         Some(5),
-       //         Some(5),
-       //         None,
-       //         Some(5)
-       //     ]))
-       // ); // 6
+        count_unival_subtrees(to_tree(vec![Some(5), Some(5), Some(1),]))
+    ); // 2
 }
