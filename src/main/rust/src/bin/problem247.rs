@@ -1,18 +1,44 @@
 // https://leetcode.com/problems/strobogrammatic-number-ii/description/
 pub fn find_strobogrammatic(n: i32) -> Vec<String> {
-    fn find_strobogrammatic(n: i32, accu: String, answer: &mut Vec<String>) {
-        if n == 0 {
-            answer.push(accu);
-            return;
-        }
-        for char in ['1', '6', '8', '9'] {
-            find_strobogrammatic(n - 1, format!("{}{}", accu, char), answer);
+    fn find_strobogrammatic(n: i32, v: Vec<String>) -> Vec<String> {
+        if n <= 0 {
+            if v[0].len() == 1 {
+                v
+            } else {
+                v.into_iter()
+                    .filter(|v| v.as_bytes()[0] != '0' as u8)
+                    .collect()
+            }
+        } else {
+            let mut new_vec: Vec<String> = vec![];
+            for s in v {
+                new_vec.push(format!("0{}0", s));
+                new_vec.push(format!("1{}1", s));
+                new_vec.push(format!("6{}9", s));
+                new_vec.push(format!("8{}8", s));
+                new_vec.push(format!("9{}6", s));
+            }
+            find_strobogrammatic(n - 2, new_vec)
         }
     }
 
-    let mut answer = vec![];
-    find_strobogrammatic(n, String::new(), &mut answer);
-    answer
+    if n % 2 == 0 {
+        find_strobogrammatic(
+            n - 2,
+            vec![
+                "00".to_string(),
+                "11".to_string(),
+                "69".to_string(),
+                "88".to_string(),
+                "96".to_string(),
+            ],
+        )
+    } else {
+        find_strobogrammatic(
+            n - 2,
+            vec!["0".to_string(), "1".to_string(), "8".to_string()],
+        )
+    }
 }
 
 fn main() {
