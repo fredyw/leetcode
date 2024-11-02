@@ -124,8 +124,20 @@ fn main() {
     //         Some(5)
     //     ]))
     // ); // 6
+    // println!(
+    //     "{}",
+    //     count_unival_subtrees(to_tree(vec![
+    //         Some(5),
+    //         Some(1),
+    //         Some(5),
+    //         Some(5),
+    //         Some(5),
+    //         None,
+    //         Some(5)
+    //     ]))
+    // ); // 4
     println!(
         "{}",
-        count_unival_subtrees(to_tree(vec![Some(5), Some(5), Some(1),]))
+        count_unival_subtrees(to_tree(vec![Some(5), Some(5), Some(1)]))
     ); // 2
 }
