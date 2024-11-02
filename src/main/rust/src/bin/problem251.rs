@@ -15,4 +15,13 @@ impl Vector2D {
     }
 }
 
-fn main() {}
+fn main() {
+    let v = Vector2D::new(vec![vec![1, 2], vec![3], vec![4]]);
+    println!("{}", v.next()); // 1
+    println!("{}", v.next()); // 2
+    println!("{}", v.next()); // 3
+    println!("{}", v.has_next()); // True
+    println!("{}", v.has_next()); // True
+    println!("{}", v.next()); // 4
+    println!("{}", v.has_next()); // False
+}
