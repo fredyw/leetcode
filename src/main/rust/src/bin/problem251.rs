@@ -36,12 +36,17 @@ impl Vector2D {
 }
 
 fn main() {
-    let mut v = Vector2D::new(vec![vec![1, 2], vec![3], vec![4]]);
-    println!("{}", v.next()); // 1
-    println!("{}", v.next()); // 2
-    println!("{}", v.next()); // 3
-    println!("{}", v.has_next()); // true
-    println!("{}", v.has_next()); // true
-    println!("{}", v.next()); // 4
+    // let mut v = Vector2D::new(vec![vec![1, 2], vec![3], vec![4]]);
+    // println!("{}", v.next()); // 1
+    // println!("{}", v.next()); // 2
+    // println!("{}", v.next()); // 3
+    // println!("{}", v.has_next()); // true
+    // println!("{}", v.has_next()); // true
+    // println!("{}", v.next()); // 4
+    // println!("{}", v.has_next()); // false
+
+    let mut v = Vector2D::new(vec![vec![], vec![3]]);
     println!("{}", v.has_next()); // false
+    println!("{}", v.next()); // 2
+    println!("{}", v.has_next()); // 3
 }
