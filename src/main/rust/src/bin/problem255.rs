@@ -4,12 +4,13 @@ pub fn verify_preorder(preorder: Vec<i32>) -> bool {
         if *index == preorder.len() {
             return true;
         }
-        if preorder[*index] <= min || preorder[*index] >= max {
+        let val = preorder[*index];
+        if val <= min || val >= max {
             return false;
         }
         *index += 1;
-        let left = verify_preorder(preorder, index, min, preorder[*index]);
-        let right = verify_preorder(preorder, index, preorder[*index], max);
+        let left = verify_preorder(preorder, index, min, val);
+        let right = verify_preorder(preorder, index, val, max);
         left || right
     }
 
