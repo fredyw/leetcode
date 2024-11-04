@@ -1,6 +1,19 @@
 // https://leetcode.com/problems/verify-preorder-sequence-in-binary-search-tree/description/
 pub fn verify_preorder(preorder: Vec<i32>) -> bool {
-    todo!()
+    fn verify_preorder(preorder: &Vec<i32>, index: &mut usize, min: i32, max: i32) -> bool {
+        if *index == preorder.len() {
+            return true;
+        }
+        if preorder[*index] <= min || preorder[*index] >= max {
+            return false;
+        }
+        *index += 1;
+        let left = verify_preorder(preorder, index, min, preorder[*index]);
+        let right = verify_preorder(preorder, index, preorder[*index], max);
+        left || right
+    }
+
+    verify_preorder(&preorder, &mut 0, i32::MIN, i32::MAX)
 }
 
 fn main() {
