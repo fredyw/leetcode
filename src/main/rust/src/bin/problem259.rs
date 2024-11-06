@@ -47,4 +47,5 @@ fn main() {
     println!("{}", three_sum_smaller(vec![0, 0, 1], 2)); // 1
     println!("{}", three_sum_smaller(vec![-2, -2, 0, 1], 2)); // 4
     println!("{}", three_sum_smaller(vec![-2, 0, 1], 2)); // 1
+    println!("{}", three_sum_smaller(vec![0, 0, 0], 0)); // 0
 }
