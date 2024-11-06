@@ -22,6 +22,21 @@ impl TreeNode {
 
 // https://leetcode.com/problems/binary-tree-longest-consecutive-sequence/description/
 pub fn longest_consecutive(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+    fn longest_consecutive(
+        root: Option<Rc<RefCell<TreeNode>>>,
+        next_value: i32,
+        count: i32,
+        max_count: &mut i32,
+    ) {
+        if let Some(n) = root {
+            let val = n.borrow().val;
+            let new_count = if val == next_value { count + 1 } else { 1 };
+            longest_consecutive(n.borrow_mut().left.clone(), val + 1, new_count, max_count);
+            longest_consecutive(n.borrow_mut().right.clone(), val + 1, new_count, max_count);
+        } else {
+        }
+    }
+
     todo!()
 }
 
