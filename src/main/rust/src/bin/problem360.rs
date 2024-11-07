@@ -1,6 +1,15 @@
 // https://leetcode.com/problems/sort-transformed-array/description/
 pub fn sort_transformed_array(nums: Vec<i32>, a: i32, b: i32, c: i32) -> Vec<i32> {
-    todo!()
+    fn f(x: i32, a: i32, b: i32, c: i32) -> i32 {
+        (a * x * x) + (b * x) + c
+    }
+
+    let mut answer = vec![];
+    for num in nums {
+        answer.push(f(num, a, b, c));
+    }
+    answer.sort();
+    answer
 }
 
 fn main() {
