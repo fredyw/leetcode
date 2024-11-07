@@ -31,13 +31,18 @@ pub fn longest_consecutive(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
         if let Some(n) = root {
             let val = n.borrow().val;
             let new_count = if val == next_value { count + 1 } else { 1 };
+            *max_count = (*max_count).max(new_count);
             longest_consecutive(n.borrow_mut().left.clone(), val + 1, new_count, max_count);
             longest_consecutive(n.borrow_mut().right.clone(), val + 1, new_count, max_count);
         } else {
+            *max_count = (*max_count).max(count);
         }
     }
 
-    todo!()
+    let mut answer = 0;
+    let val = root.as_ref().unwrap().borrow().val;
+    longest_consecutive(root, val, 0, &mut answer);
+    answer
 }
 
 fn create_node(value: i32) -> Option<Rc<RefCell<TreeNode>>> {
