@@ -6,4 +6,6 @@ pub fn max_a(n: i32) -> i32 {
 fn main() {
     println!("{}", max_a(3)); // 3
     println!("{}", max_a(7)); // 9
+    println!("{}", max_a(5)); // 5
+    println!("{}", max_a(50)); // 1327104
 }
