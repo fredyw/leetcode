@@ -9,18 +9,17 @@ pub fn max_a(n: i32) -> i32 {
         if let Some(m) = memo.get(&(n, buffer, num_a)) {
             return *m;
         }
-        let print_a = max_a(n - 1, buffer, num_a + 1, memo) + 1;
+        let print_a_or_paste = if buffer > 0 {
+            max_a(n - 1, buffer, num_a + buffer, memo) + buffer
+        } else {
+            max_a(n - 1, buffer, num_a + 1, memo) + 1
+        };
         let copy_paste = if n - 3 >= 0 {
             max_a(n - 3, num_a, num_a * 2, memo) + num_a
         } else {
             0
         };
-        let paste = if buffer > 0 {
-            max_a(n - 1, buffer, num_a + buffer, memo) + buffer
-        } else {
-            0
-        };
-        let max = print_a.max(copy_paste.max(paste));
+        let max = print_a_or_paste.max(copy_paste);
         memo.insert((n, buffer, num_a), max);
         max
     }
