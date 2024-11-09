@@ -12,8 +12,9 @@ impl Codec {
             .map(|s| {
                 s.as_bytes()
                     .into_iter()
-                    .map(|&b| format!("{},", b))
-                    .collect::<String>()
+                    .map(|&b| format!("{}", b))
+                    .collect::<Vec<String>>()
+                    .join(",")
             })
             .collect::<Vec<String>>()
             .join("|")
