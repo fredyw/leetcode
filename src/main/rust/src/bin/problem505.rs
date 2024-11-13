@@ -12,10 +12,10 @@ pub fn shortest_distance(maze: Vec<Vec<i32>>, start: Vec<i32>, destination: Vec<
         if visited[row as usize][col as usize] {
             return None;
         }
-        visited[row as usize][col as usize] = true;
         if row == destination.0 && col == destination.1 {
             return Some(0);
         }
+        visited[row as usize][col as usize] = true;
         // up
         let mut num_moves = 0;
         let mut r = row;
@@ -80,6 +80,7 @@ pub fn shortest_distance(maze: Vec<Vec<i32>>, start: Vec<i32>, destination: Vec<
         } else {
             i32::MAX
         };
+        visited[row as usize][col as usize] = false;
         let min = up.min(right.min(down.min(left)));
         if min == i32::MAX {
             None
@@ -100,48 +101,48 @@ pub fn shortest_distance(maze: Vec<Vec<i32>>, start: Vec<i32>, destination: Vec<
 }
 
 fn main() {
-    // println!(
-    //     "{}",
-    //     shortest_distance(
-    //         vec![
-    //             vec![0, 0, 1, 0, 0],
-    //             vec![0, 0, 0, 0, 0],
-    //             vec![0, 0, 0, 1, 0],
-    //             vec![1, 1, 0, 1, 1],
-    //             vec![0, 0, 0, 0, 0]
-    //         ],
-    //         vec![0, 4],
-    //         vec![4, 4]
-    //     )
-    // ); // 12
-    // println!(
-    //     "{}",
-    //     shortest_distance(
-    //         vec![
-    //             vec![0, 0, 1, 0, 0],
-    //             vec![0, 0, 0, 0, 0],
-    //             vec![0, 0, 0, 1, 0],
-    //             vec![1, 1, 0, 1, 1],
-    //             vec![0, 0, 0, 0, 0]
-    //         ],
-    //         vec![0, 4],
-    //         vec![3, 2]
-    //     )
-    // ); // -1
-    // println!(
-    //     "{}",
-    //     shortest_distance(
-    //         vec![
-    //             vec![0, 0, 0, 0, 0],
-    //             vec![1, 1, 0, 0, 1],
-    //             vec![0, 0, 0, 0, 0],
-    //             vec![0, 1, 0, 0, 1],
-    //             vec![0, 1, 0, 0, 0]
-    //         ],
-    //         vec![4, 3],
-    //         vec![0, 1]
-    //     )
-    // ); // -1
+    println!(
+        "{}",
+        shortest_distance(
+            vec![
+                vec![0, 0, 1, 0, 0],
+                vec![0, 0, 0, 0, 0],
+                vec![0, 0, 0, 1, 0],
+                vec![1, 1, 0, 1, 1],
+                vec![0, 0, 0, 0, 0]
+            ],
+            vec![0, 4],
+            vec![4, 4]
+        )
+    ); // 12
+    println!(
+        "{}",
+        shortest_distance(
+            vec![
+                vec![0, 0, 1, 0, 0],
+                vec![0, 0, 0, 0, 0],
+                vec![0, 0, 0, 1, 0],
+                vec![1, 1, 0, 1, 1],
+                vec![0, 0, 0, 0, 0]
+            ],
+            vec![0, 4],
+            vec![3, 2]
+        )
+    ); // -1
+    println!(
+        "{}",
+        shortest_distance(
+            vec![
+                vec![0, 0, 0, 0, 0],
+                vec![1, 1, 0, 0, 1],
+                vec![0, 0, 0, 0, 0],
+                vec![0, 1, 0, 0, 1],
+                vec![0, 1, 0, 0, 0]
+            ],
+            vec![4, 3],
+            vec![0, 1]
+        )
+    ); // -1
     println!(
         "{}",
         shortest_distance(
@@ -156,16 +157,20 @@ fn main() {
             vec![2, 1]
         )
     ); // 9
-       // println!(
-       //     "{}",
-       //     shortest_distance(vec![vec![0, 1], vec![0, 0]], vec![0, 0], vec![1, 1])
-       // ); // 2
-       // println!(
-       //     "{}",
-       //     shortest_distance(vec![vec![0, 0], vec![0, 0]], vec![0, 0], vec![1, 1])
-       // ); // 2
-       // println!(
-       //     "{}",
-       //     shortest_distance(vec![vec![0, 0]], vec![0, 0], vec![0, 1])
-       // ); // 1
+    println!(
+        "{}",
+        shortest_distance(vec![vec![0, 1], vec![0, 0]], vec![0, 0], vec![1, 1])
+    ); // 2
+    println!(
+        "{}",
+        shortest_distance(vec![vec![0, 0], vec![0, 0]], vec![0, 0], vec![1, 1])
+    ); // 2
+    println!(
+        "{}",
+        shortest_distance(vec![vec![0, 0]], vec![0, 0], vec![0, 1])
+    ); // 1
+    println!(
+        "{}",
+        shortest_distance(vec![vec![0, 0], vec![0, 0]], vec![0, 0], vec![1, 0])
+    ); // 1
 }
