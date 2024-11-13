@@ -23,8 +23,12 @@ pub fn shortest_distance(maze: Vec<Vec<i32>>, start: Vec<i32>, destination: Vec<
             num_moves += 1;
             r -= 1;
         }
-        let up = if let Some(d) = shortest_distance(maze, (r, col), destination, visited) {
-            d + num_moves
+        let up = if num_moves > 0 {
+            if let Some(d) = shortest_distance(maze, (r, col), destination, visited) {
+                d + num_moves
+            } else {
+                i32::MAX
+            }
         } else {
             i32::MAX
         };
@@ -35,8 +39,12 @@ pub fn shortest_distance(maze: Vec<Vec<i32>>, start: Vec<i32>, destination: Vec<
             num_moves += 1;
             c += 1;
         }
-        let right = if let Some(d) = shortest_distance(maze, (row, c), destination, visited) {
-            d + num_moves
+        let right = if num_moves > 0 {
+            if let Some(d) = shortest_distance(maze, (row, c), destination, visited) {
+                d + num_moves
+            } else {
+                i32::MAX
+            }
         } else {
             i32::MAX
         };
@@ -47,8 +55,12 @@ pub fn shortest_distance(maze: Vec<Vec<i32>>, start: Vec<i32>, destination: Vec<
             num_moves += 1;
             r += 1;
         }
-        let down = if let Some(d) = shortest_distance(maze, (r, col), destination, visited) {
-            d + num_moves
+        let down = if num_moves > 0 {
+            if let Some(d) = shortest_distance(maze, (r, col), destination, visited) {
+                d + num_moves
+            } else {
+                i32::MAX
+            }
         } else {
             i32::MAX
         };
@@ -59,12 +71,15 @@ pub fn shortest_distance(maze: Vec<Vec<i32>>, start: Vec<i32>, destination: Vec<
             num_moves += 1;
             c -= 1;
         }
-        let left = if let Some(d) = shortest_distance(maze, (row, c), destination, visited) {
-            d + num_moves
+        let left = if num_moves > 0 {
+            if let Some(d) = shortest_distance(maze, (row, c), destination, visited) {
+                d + num_moves
+            } else {
+                i32::MAX
+            }
         } else {
             i32::MAX
         };
-        visited[row as usize][col as usize] = false;
         let min = up.min(right.min(down.min(left)));
         if min == i32::MAX {
             None
