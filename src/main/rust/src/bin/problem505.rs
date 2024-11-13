@@ -9,56 +9,62 @@ pub fn shortest_distance(maze: Vec<Vec<i32>>, start: Vec<i32>, destination: Vec<
         let num_rows = maze.len() as i32;
         let num_cols = if num_rows > 0 { maze[0].len() } else { 0 } as i32;
         let (row, col) = start;
-        if row < 0 || row == num_rows || col < 0 || col == num_cols {
-            return None;
-        }
         if visited[row as usize][col as usize] {
             return None;
         }
         visited[row as usize][col as usize] = true;
         if row == destination.0 && col == destination.1 {
-            return Some(1);
+            return Some(0);
         }
         // up
+        let mut num_moves = 0;
         let mut r = row;
-        while r >= 0 && maze[r as usize][col as usize] == 0 {
+        while r - 1 >= 0 && maze[r as usize - 1][col as usize] == 0 {
+            num_moves += 1;
             r -= 1;
         }
-        let up = if let Some(d) = shortest_distance(maze, (r + 1, col), destination, visited) {
-            d + 1
+        let up = if let Some(d) = shortest_distance(maze, (r, col), destination, visited) {
+            d + num_moves
         } else {
             i32::MAX
         };
         // right
+        let mut num_moves = 0;
         let mut c = col;
-        while c < num_cols && maze[row as usize][c as usize] == 0 {
+        while c + 1 < num_cols && maze[row as usize][c as usize + 1] == 0 {
+            num_moves += 1;
             c += 1;
         }
-        let right = if let Some(d) = shortest_distance(maze, (row, c - 1), destination, visited) {
-            d + 1
+        let right = if let Some(d) = shortest_distance(maze, (row, c), destination, visited) {
+            d + num_moves
         } else {
             i32::MAX
         };
         // down
+        let mut num_moves = 0;
         let mut r = row;
-        while r < num_rows && maze[r as usize][col as usize] == 0 {
+        while r + 1 < num_rows && maze[r as usize + 1][col as usize] == 0 {
+            num_moves += 1;
             r += 1;
         }
-        let down = if let Some(d) = shortest_distance(maze, (r - 1, col), destination, visited) {
-            d + 1
+        let down = if let Some(d) = shortest_distance(maze, (r, col), destination, visited) {
+            d + num_moves
         } else {
             i32::MAX
         };
         // left
+        let mut num_moves = 0;
         let mut c = col;
-        while c >= 0 && maze[row as usize][c as usize] == 0 {
+        while c - 1 >= 0 && maze[row as usize][c as usize - 1] == 0 {
+            num_moves += 1;
             c -= 1;
         }
-        let left = if let Some(d) = shortest_distance(maze, (row, c + 1), destination, visited) {
-            d + 1
+        let left = if let Some(d) = shortest_distance(maze, (row, c), destination, visited) {
+            d + num_moves
         } else {
             i32::MAX
         };
+        visited[row as usize][col as usize] = false;
         let min = up.min(right.min(down.min(left)));
         if min == i32::MAX {
             None
@@ -79,48 +85,48 @@ pub fn shortest_distance(maze: Vec<Vec<i32>>, start: Vec<i32>, destination: Vec<
 }
 
 fn main() {
-    println!(
-        "{}",
-        shortest_distance(
-            vec![
-                vec![0, 0, 1, 0, 0],
-                vec![0, 0, 0, 0, 0],
-                vec![0, 0, 0, 1, 0],
-                vec![1, 1, 0, 1, 1],
-                vec![0, 0, 0, 0, 0]
-            ],
-            vec![0, 4],
-            vec![4, 4]
-        )
-    ); // 12
-    println!(
-        "{}",
-        shortest_distance(
-            vec![
-                vec![0, 0, 1, 0, 0],
-                vec![0, 0, 0, 0, 0],
-                vec![0, 0, 0, 1, 0],
-                vec![1, 1, 0, 1, 1],
-                vec![0, 0, 0, 0, 0]
-            ],
-            vec![0, 4],
-            vec![3, 2]
-        )
-    ); // -1
-    println!(
-        "{}",
-        shortest_distance(
-            vec![
-                vec![0, 0, 0, 0, 0],
-                vec![1, 1, 0, 0, 1],
-                vec![0, 0, 0, 0, 0],
-                vec![0, 1, 0, 0, 1],
-                vec![0, 1, 0, 0, 0]
-            ],
-            vec![4, 3],
-            vec![0, 1]
-        )
-    ); // -1
+    // println!(
+    //     "{}",
+    //     shortest_distance(
+    //         vec![
+    //             vec![0, 0, 1, 0, 0],
+    //             vec![0, 0, 0, 0, 0],
+    //             vec![0, 0, 0, 1, 0],
+    //             vec![1, 1, 0, 1, 1],
+    //             vec![0, 0, 0, 0, 0]
+    //         ],
+    //         vec![0, 4],
+    //         vec![4, 4]
+    //     )
+    // ); // 12
+    // println!(
+    //     "{}",
+    //     shortest_distance(
+    //         vec![
+    //             vec![0, 0, 1, 0, 0],
+    //             vec![0, 0, 0, 0, 0],
+    //             vec![0, 0, 0, 1, 0],
+    //             vec![1, 1, 0, 1, 1],
+    //             vec![0, 0, 0, 0, 0]
+    //         ],
+    //         vec![0, 4],
+    //         vec![3, 2]
+    //     )
+    // ); // -1
+    // println!(
+    //     "{}",
+    //     shortest_distance(
+    //         vec![
+    //             vec![0, 0, 0, 0, 0],
+    //             vec![1, 1, 0, 0, 1],
+    //             vec![0, 0, 0, 0, 0],
+    //             vec![0, 1, 0, 0, 1],
+    //             vec![0, 1, 0, 0, 0]
+    //         ],
+    //         vec![4, 3],
+    //         vec![0, 1]
+    //     )
+    // ); // -1
     println!(
         "{}",
         shortest_distance(
@@ -135,4 +141,16 @@ fn main() {
             vec![2, 1]
         )
     ); // 9
+       // println!(
+       //     "{}",
+       //     shortest_distance(vec![vec![0, 1], vec![0, 0]], vec![0, 0], vec![1, 1])
+       // ); // 2
+       // println!(
+       //     "{}",
+       //     shortest_distance(vec![vec![0, 0], vec![0, 0]], vec![0, 0], vec![1, 1])
+       // ); // 2
+       // println!(
+       //     "{}",
+       //     shortest_distance(vec![vec![0, 0]], vec![0, 0], vec![0, 1])
+       // ); // 1
 }
