@@ -1,103 +1,45 @@
 // https://leetcode.com/problems/the-maze-ii/description/
 pub fn shortest_distance(maze: Vec<Vec<i32>>, start: Vec<i32>, destination: Vec<i32>) -> i32 {
-    fn shortest_distance(
-        maze: &Vec<Vec<i32>>,
-        start: (i32, i32),
-        destination: (i32, i32),
-        visited: &mut Vec<Vec<bool>>,
-    ) -> Option<i32> {
+    fn shortest_distance(maze: &Vec<Vec<i32>>, start: (i32, i32), distance: &mut Vec<Vec<i32>>) {
         let num_rows = maze.len() as i32;
         let num_cols = if num_rows > 0 { maze[0].len() } else { 0 } as i32;
         let (row, col) = start;
-        if visited[row as usize][col as usize] {
-            return None;
-        }
-        if row == destination.0 && col == destination.1 {
-            return Some(0);
-        }
-        visited[row as usize][col as usize] = true;
-        // up
-        let mut num_moves = 0;
-        let mut r = row;
-        while r - 1 >= 0 && maze[r as usize - 1][col as usize] == 0 {
-            num_moves += 1;
-            r -= 1;
-        }
-        let up = if num_moves > 0 {
-            if let Some(d) = shortest_distance(maze, (r, col), destination, visited) {
-                d + num_moves
-            } else {
-                i32::MAX
+        for (r, c) in [(-1, 0), (0, 1), (1, 0), (0, -1)] {
+            let mut new_row = row + r;
+            let mut new_col = col + c;
+            let mut count = 0;
+            while new_row >= 0
+                && new_row < num_rows
+                && new_col >= 0
+                && new_col < num_cols
+                && maze[new_row as usize][new_col as usize] == 0
+            {
+                new_row += r;
+                new_col += c;
+                count += 1;
             }
-        } else {
-            i32::MAX
-        };
-        // right
-        let mut num_moves = 0;
-        let mut c = col;
-        while c + 1 < num_cols && maze[row as usize][c as usize + 1] == 0 {
-            num_moves += 1;
-            c += 1;
-        }
-        let right = if num_moves > 0 {
-            if let Some(d) = shortest_distance(maze, (row, c), destination, visited) {
-                d + num_moves
-            } else {
-                i32::MAX
+            new_row -= r;
+            new_col -= c;
+            if distance[row as usize][col as usize] + count
+                < distance[new_row as usize][new_col as usize]
+            {
+                distance[new_row as usize][new_col as usize] =
+                    distance[row as usize][col as usize] + count;
+                shortest_distance(maze, (new_row, new_col), distance);
             }
-        } else {
-            i32::MAX
-        };
-        // down
-        let mut num_moves = 0;
-        let mut r = row;
-        while r + 1 < num_rows && maze[r as usize + 1][col as usize] == 0 {
-            num_moves += 1;
-            r += 1;
-        }
-        let down = if num_moves > 0 {
-            if let Some(d) = shortest_distance(maze, (r, col), destination, visited) {
-                d + num_moves
-            } else {
-                i32::MAX
-            }
-        } else {
-            i32::MAX
-        };
-        // left
-        let mut num_moves = 0;
-        let mut c = col;
-        while c - 1 >= 0 && maze[row as usize][c as usize - 1] == 0 {
-            num_moves += 1;
-            c -= 1;
-        }
-        let left = if num_moves > 0 {
-            if let Some(d) = shortest_distance(maze, (row, c), destination, visited) {
-                d + num_moves
-            } else {
-                i32::MAX
-            }
-        } else {
-            i32::MAX
-        };
-        visited[row as usize][col as usize] = false;
-        let min = up.min(right.min(down.min(left)));
-        if min == i32::MAX {
-            None
-        } else {
-            Some(min)
         }
     }
 
     let num_rows = maze.len();
     let num_cols = if num_rows > 0 { maze[0].len() } else { 0 };
-    shortest_distance(
-        &maze,
-        (start[0], start[1]),
-        (destination[0], destination[1]),
-        &mut vec![vec![false; num_cols]; num_rows],
-    )
-    .unwrap_or(-1)
+    let mut distance = vec![vec![i32::MAX; num_cols]; num_rows];
+    distance[start[0] as usize][start[1] as usize] = 0;
+    shortest_distance(&maze, (start[0], start[1]), &mut distance);
+    if distance[destination[0] as usize][destination[1] as usize] == i32::MAX {
+        -1
+    } else {
+        distance[destination[0] as usize][destination[1] as usize]
+    }
 }
 
 fn main() {
