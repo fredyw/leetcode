@@ -9,39 +9,28 @@ pub fn has_path(maze: Vec<Vec<i32>>, start: Vec<i32>, destination: Vec<i32>) -> 
         let num_rows = maze.len() as i32;
         let num_cols = if num_rows > 0 { maze[0].len() } else { 0 } as i32;
         let (row, col) = start;
-        if row < 0 || row == num_rows || col < 0 || col == num_cols {
-            return false;
-        }
         if visited[row as usize][col as usize] {
             return false;
         }
         visited[row as usize][col as usize] = true;
-        let found = row == destination.0 && col == destination.1;
-        // up
-        let mut r = row;
-        while r >= 0 && maze[r as usize][col as usize] == 0 {
-            r -= 1;
+        let mut found = row == destination.0 && col == destination.1;
+        for (r, c) in [(-1, 0), (0, 1), (1, 0), (0, -1)] {
+            let mut new_row = row + r;
+            let mut new_col = col + c;
+            while new_row >= 0
+                && new_row < num_rows
+                && new_col >= 0
+                && new_col < num_cols
+                && maze[new_row as usize][new_col as usize] == 0
+            {
+                new_row += r;
+                new_col += c;
+            }
+            new_row -= r;
+            new_col -= c;
+            found |= has_path(maze, (new_row, new_col), destination, visited);
         }
-        let up = has_path(maze, (r + 1, col), destination, visited);
-        // right
-        let mut c = col;
-        while c < num_cols && maze[row as usize][c as usize] == 0 {
-            c += 1;
-        }
-        let right = has_path(maze, (row, c - 1), destination, visited);
-        // down
-        let mut r = row;
-        while r < num_rows && maze[r as usize][col as usize] == 0 {
-            r += 1;
-        }
-        let down = has_path(maze, (r - 1, col), destination, visited);
-        // left
-        let mut c = col;
-        while c >= 0 && maze[row as usize][c as usize] == 0 {
-            c -= 1;
-        }
-        let left = has_path(maze, (row, c + 1), destination, visited);
-        found || up || right || down || left
+        found
     }
 
     let num_rows = maze.len();
