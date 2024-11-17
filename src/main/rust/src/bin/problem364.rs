@@ -54,4 +54,12 @@ fn main() {
             ])
         ])
     ); // 17
+    NestedInteger::List(vec![]);
+    println!(
+        "{}",
+        depth_sum_inverse(vec![
+            NestedInteger::Int(1),
+            NestedInteger::List(vec![NestedInteger::List(vec![])])
+        ])
+    ); // 2
 }
