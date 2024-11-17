@@ -7,6 +7,7 @@ pub enum NestedInteger {
 // https://leetcode.com/problems/nested-list-weight-sum-ii/description/
 pub fn depth_sum_inverse(nested_list: Vec<NestedInteger>) -> i32 {
     fn max_depth(nested_list: &Vec<NestedInteger>, depth: i32, max: &mut i32) {
+        *max = (*max).max(depth - 1);
         for e in nested_list {
             match e {
                 NestedInteger::Int(_) => {
