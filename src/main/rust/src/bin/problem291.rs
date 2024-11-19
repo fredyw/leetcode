@@ -14,13 +14,13 @@ pub fn word_pattern_match(pattern: String, s: String) -> bool {
             return true;
         }
         let mut found = false;
-        'outer: for i in pattern_index + 1..=pattern.len() {
+        for i in pattern_index + 1..=pattern.len() {
             let p1 = &pattern[pattern_index..pattern_index + 1];
             for j in string_index + 1..=string.len() {
                 let s2 = &string[string_index..j];
                 if let Some(s1) = pattern_to_string_map.get(p1) {
                     if *s1 != s2 {
-                        continue 'outer;
+                        continue;
                     }
                 }
                 if let Some(p2) = string_to_pattern_map.get(s2) {
