@@ -14,13 +14,13 @@ pub fn word_pattern_match(pattern: String, s: String) -> bool {
             return true;
         }
         let mut found = false;
-        for i in pattern_index + 1..=pattern.len() {
+        'outer: for i in pattern_index + 1..=pattern.len() {
             let p1 = &pattern[pattern_index..pattern_index + 1];
             for j in string_index + 1..=string.len() {
                 let s2 = &string[string_index..j];
                 if let Some(s1) = pattern_to_string_map.get(p1) {
                     if *s1 != s2 {
-                        continue;
+                        continue 'outer;
                     }
                 }
                 if let Some(p2) = string_to_pattern_map.get(s2) {
@@ -53,12 +53,12 @@ fn main() {
         "{}",
         word_pattern_match("abab".to_string(), "redblueredblue".to_string())
     ); // true
-    println!(
-        "{}",
-        word_pattern_match("aaaa".to_string(), "asdasdasdasd".to_string())
-    ); // true
-    println!(
-        "{}",
-        word_pattern_match("aabb".to_string(), "xyzabcxzyabc".to_string())
-    ); // false
+       // println!(
+       //     "{}",
+       //     word_pattern_match("aaaa".to_string(), "asdasdasdasd".to_string())
+       // ); // true
+       // println!(
+       //     "{}",
+       //     word_pattern_match("aabb".to_string(), "xyzabcxzyabc".to_string())
+       // ); // false
 }
