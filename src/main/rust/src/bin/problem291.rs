@@ -10,11 +10,8 @@ pub fn word_pattern_match(pattern: String, s: String) -> bool {
         pattern_to_string_map: &mut HashMap<&'a str, &'a str>,
         string_set: &mut HashSet<&'a str>,
     ) -> bool {
-        if pattern_index == pattern.len() && string_index == string.len() {
-            return true;
-        }
-        if pattern_index >= pattern.len() || string_index >= string.len() {
-            return false;
+        if pattern_index == pattern.len() {
+            return string_index == string.len();
         }
         let possible_p = &pattern[pattern_index..pattern_index + 1];
         if let Some(found_s) = pattern_to_string_map.get(possible_p) {
