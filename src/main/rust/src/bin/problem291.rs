@@ -10,26 +10,28 @@ pub fn word_pattern_match(pattern: String, s: String) -> bool {
         pattern_to_string_map: &mut HashMap<&'a str, &'a str>,
         string_to_pattern_map: &mut HashMap<&'a str, &'a str>,
     ) -> bool {
-        if pattern_index == pattern.len() {
+        if pattern_index == pattern.len() && string_index == string.len() {
             return true;
         }
         let mut found = false;
         for i in pattern_index + 1..=pattern.len() {
-            let p1 = &pattern[pattern_index..pattern_index + 1];
+            let possible_p = &pattern[pattern_index..pattern_index + 1];
+            println!("p[{}] = {}", pattern_index, possible_p);
             for j in string_index + 1..=string.len() {
-                let s2 = &string[string_index..j];
-                if let Some(s1) = pattern_to_string_map.get(p1) {
-                    if *s1 != s2 {
+                let possible_s = &string[string_index..j];
+                println!("  - s[{}..{}] = {}", string_index, j, possible_s);
+                if let Some(found_s) = pattern_to_string_map.get(possible_p) {
+                    if *found_s != possible_s {
                         continue;
                     }
                 }
-                if let Some(p2) = string_to_pattern_map.get(s2) {
-                    if p1 != *p2 {
+                if let Some(found_p) = string_to_pattern_map.get(possible_s) {
+                    if *found_p != possible_p {
                         continue;
                     }
                 }
-                string_to_pattern_map.insert(s2, p1);
-                pattern_to_string_map.insert(p1, s2);
+                string_to_pattern_map.insert(possible_s, possible_p);
+                pattern_to_string_map.insert(possible_p, possible_s);
                 found |= word_pattern_match(
                     pattern,
                     string,
@@ -38,8 +40,8 @@ pub fn word_pattern_match(pattern: String, s: String) -> bool {
                     pattern_to_string_map,
                     string_to_pattern_map,
                 );
-                pattern_to_string_map.remove(p1);
-                string_to_pattern_map.insert(s2, p1);
+                pattern_to_string_map.remove(possible_p);
+                string_to_pattern_map.remove(possible_s);
             }
         }
         found
@@ -53,12 +55,12 @@ fn main() {
         "{}",
         word_pattern_match("abab".to_string(), "redblueredblue".to_string())
     ); // true
-       // println!(
-       //     "{}",
-       //     word_pattern_match("aaaa".to_string(), "asdasdasdasd".to_string())
-       // ); // true
-       // println!(
-       //     "{}",
-       //     word_pattern_match("aabb".to_string(), "xyzabcxzyabc".to_string())
-       // ); // false
+    println!(
+        "{}",
+        word_pattern_match("aaaa".to_string(), "asdasdasdasd".to_string())
+    ); // true
+    println!(
+        "{}",
+        word_pattern_match("aabb".to_string(), "xyzabcxzyabc".to_string())
+    ); // false
 }
