@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 // https://leetcode.com/problems/word-pattern-ii/description/
 pub fn word_pattern_match(pattern: String, s: String) -> bool {
@@ -8,59 +8,77 @@ pub fn word_pattern_match(pattern: String, s: String) -> bool {
         pattern_index: usize,
         string_index: usize,
         pattern_to_string_map: &mut HashMap<&'a str, &'a str>,
-        string_to_pattern_map: &mut HashMap<&'a str, &'a str>,
+        string_set: &mut HashSet<&'a str>,
     ) -> bool {
-        if pattern_index == pattern.len() && string_index == string.len() {
+        if pattern_index == pattern.len() {
             return true;
         }
-        let mut found = false;
-        for i in pattern_index + 1..=pattern.len() {
-            let possible_p = &pattern[pattern_index..pattern_index + 1];
-            println!("p[{}] = {}", pattern_index, possible_p);
-            for j in string_index + 1..=string.len() {
-                let possible_s = &string[string_index..j];
-                println!("  - s[{}..{}] = {}", string_index, j, possible_s);
-                if let Some(found_s) = pattern_to_string_map.get(possible_p) {
-                    if *found_s != possible_s {
-                        continue;
-                    }
-                }
-                if let Some(found_p) = string_to_pattern_map.get(possible_s) {
-                    if *found_p != possible_p {
-                        continue;
-                    }
-                }
-                string_to_pattern_map.insert(possible_s, possible_p);
-                pattern_to_string_map.insert(possible_p, possible_s);
-                found |= word_pattern_match(
-                    pattern,
-                    string,
-                    i,
-                    j,
-                    pattern_to_string_map,
-                    string_to_pattern_map,
-                );
-                pattern_to_string_map.remove(possible_p);
-                string_to_pattern_map.remove(possible_s);
+        let possible_p = &pattern[pattern_index..pattern_index + 1];
+        if let Some(found_s) = pattern_to_string_map.get(possible_p) {
+            if string_index + found_s.len() > string.len() {
+                return false;
             }
+            let possible_s = &string[string_index..string_index + found_s.len()];
+            if possible_s != *found_s {
+                return false;
+            }
+            return word_pattern_match(
+                pattern,
+                string,
+                pattern_index + 1,
+                string_index + found_s.len(),
+                pattern_to_string_map,
+                string_set,
+            );
+        }
+        let mut found = false;
+        for i in string_index..string.len() {
+            let possible_s = &string[string_index..i + 1];
+            if string_set.contains(possible_s) {
+                continue;
+            }
+            pattern_to_string_map.insert(possible_p, possible_s);
+            string_set.insert(possible_s);
+            found |= word_pattern_match(
+                pattern,
+                string,
+                pattern_index + 1,
+                i + 1,
+                pattern_to_string_map,
+                string_set,
+            );
+            string_set.remove(possible_s);
+            pattern_to_string_map.remove(possible_p);
         }
         found
     }
 
-    word_pattern_match(&pattern, &s, 0, 0, &mut HashMap::new(), &mut HashMap::new())
+    word_pattern_match(&pattern, &s, 0, 0, &mut HashMap::new(), &mut HashSet::new())
 }
 
 fn main() {
+    // println!(
+    //     "{}",
+    //     word_pattern_match("abab".to_string(), "redblueredblue".to_string())
+    // ); // true
+    // println!(
+    //     "{}",
+    //     word_pattern_match("aaaa".to_string(), "asdasdasdasd".to_string())
+    // ); // true
+    // println!(
+    //     "{}",
+    //     word_pattern_match("aabb".to_string(), "xyzabcxzyabc".to_string())
+    // ); // false
+    // println!(
+    //     "{}",
+    //     word_pattern_match("ab".to_string(), "abc".to_string())
+    // ); // true
+    // println!(
+    //     "{}",
+    //     word_pattern_match("abb".to_string(), "abc".to_string())
+    // ); // false
     println!(
         "{}",
-        word_pattern_match("abab".to_string(), "redblueredblue".to_string())
-    ); // true
-    println!(
-        "{}",
-        word_pattern_match("aaaa".to_string(), "asdasdasdasd".to_string())
-    ); // true
-    println!(
-        "{}",
-        word_pattern_match("aabb".to_string(), "xyzabcxzyabc".to_string())
+        word_pattern_match("sucks".to_string(), "teezmmmmteez".to_string())
     ); // false
 }
