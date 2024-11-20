@@ -10,8 +10,11 @@ pub fn word_pattern_match(pattern: String, s: String) -> bool {
         pattern_to_string_map: &mut HashMap<&'a str, &'a str>,
         string_set: &mut HashSet<&'a str>,
     ) -> bool {
-        if pattern_index == pattern.len() {
+        if pattern_index == pattern.len() && string_index == string.len() {
             return true;
+        }
+        if pattern_index >= pattern.len() || string_index >= string.len() {
+            return false;
         }
         let possible_p = &pattern[pattern_index..pattern_index + 1];
         if let Some(found_s) = pattern_to_string_map.get(possible_p) {
@@ -57,26 +60,26 @@ pub fn word_pattern_match(pattern: String, s: String) -> bool {
 }
 
 fn main() {
-    // println!(
-    //     "{}",
-    //     word_pattern_match("abab".to_string(), "redblueredblue".to_string())
-    // ); // true
-    // println!(
-    //     "{}",
-    //     word_pattern_match("aaaa".to_string(), "asdasdasdasd".to_string())
-    // ); // true
-    // println!(
-    //     "{}",
-    //     word_pattern_match("aabb".to_string(), "xyzabcxzyabc".to_string())
-    // ); // false
-    // println!(
-    //     "{}",
-    //     word_pattern_match("ab".to_string(), "abc".to_string())
-    // ); // true
-    // println!(
-    //     "{}",
-    //     word_pattern_match("abb".to_string(), "abc".to_string())
-    // ); // false
+    println!(
+        "{}",
+        word_pattern_match("abab".to_string(), "redblueredblue".to_string())
+    ); // true
+    println!(
+        "{}",
+        word_pattern_match("aaaa".to_string(), "asdasdasdasd".to_string())
+    ); // true
+    println!(
+        "{}",
+        word_pattern_match("aabb".to_string(), "xyzabcxzyabc".to_string())
+    ); // false
+    println!(
+        "{}",
+        word_pattern_match("ab".to_string(), "abc".to_string())
+    ); // true
+    println!(
+        "{}",
+        word_pattern_match("abb".to_string(), "abc".to_string())
+    ); // false
     println!(
         "{}",
         word_pattern_match("sucks".to_string(), "teezmmmmteez".to_string())
