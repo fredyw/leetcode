@@ -5,37 +5,74 @@ pub fn max_killed_enemies(grid: Vec<Vec<char>>) -> i32 {
     let num_cols = if num_rows > 0 { grid[0].len() } else { 0 };
     let mut left_sums = vec![vec![0; num_cols]; num_rows];
     let mut right_sums = vec![vec![0; num_cols]; num_rows];
-    for i in 0..num_rows {
-        for j in 0..num_cols {
-            if grid[i][j] == 'W' {
-                left_sums[i][j] = 0;
-            } else if grid[i][j] == 'E' {
-                left_sums[i][j] = if j as isize - 1 < 0 {
+    for row in 0..num_rows {
+        for col in 0..num_cols {
+            if grid[row][col] == 'W' {
+                left_sums[row][col] = 0;
+            } else if grid[row][col] == 'E' {
+                left_sums[row][col] = if col as isize - 1 < 0 {
                     0
                 } else {
-                    left_sums[i][j - 1]
+                    left_sums[row][col - 1]
                 } + 1;
             } else {
-                left_sums[i][j] = if j as isize - 1 < 0 {
+                left_sums[row][col] = if col as isize - 1 < 0 {
                     0
                 } else {
-                    left_sums[i][j - 1]
+                    left_sums[row][col - 1]
                 };
             }
-            let k = num_cols - j - 1;
-            if grid[i][k] == 'W' {
-                right_sums[i][k] = 0;
-            } else if grid[i][k] == 'E' {
-                right_sums[i][k] = if k + 1 == num_cols {
+            let right_col = num_cols - col - 1;
+            if grid[row][right_col] == 'W' {
+                right_sums[row][right_col] = 0;
+            } else if grid[row][right_col] == 'E' {
+                right_sums[row][right_col] = if right_col + 1 == num_cols {
                     0
                 } else {
-                    right_sums[i][k + 1]
+                    right_sums[row][right_col + 1]
                 } + 1;
             } else {
-                right_sums[i][k] = if k + 1 == num_cols {
+                right_sums[row][right_col] = if right_col + 1 == num_cols {
                     0
                 } else {
-                    right_sums[i][k + 1]
+                    right_sums[row][right_col + 1]
+                };
+            }
+        }
+    }
+    let mut up_sums = vec![vec![0; num_cols]; num_rows];
+    let mut down_sums = vec![vec![0; num_cols]; num_rows];
+    for col in 0..num_cols {
+        for row in 0..num_rows {
+            if grid[row][col] == 'W' {
+                up_sums[row][col] = 0;
+            } else if grid[row][col] == 'E' {
+                up_sums[row][col] = if row as isize - 1 < 0 {
+                    0
+                } else {
+                    up_sums[row - 1][col]
+                } + 1;
+            } else {
+                up_sums[row][col] = if row as isize - 1 < 0 {
+                    0
+                } else {
+                    up_sums[row - 1][col]
+                };
+            }
+            let down_row = num_rows - row - 1;
+            if grid[down_row][col] == 'W' {
+                down_sums[down_row][col] = 0;
+            } else if grid[down_row][col] == 'E' {
+                down_sums[down_row][col] = if down_row + 1 == num_rows {
+                    0
+                } else {
+                    down_sums[down_row + 1][col]
+                } + 1;
+            } else {
+                down_sums[down_row][col] = if down_row + 1 == num_rows {
+                    0
+                } else {
+                    down_sums[down_row + 1][col]
                 };
             }
         }
@@ -53,7 +90,17 @@ pub fn max_killed_enemies(grid: Vec<Vec<char>>) -> i32 {
                 } else {
                     right_sums[row][col + 1]
                 };
-                let count = left + right;
+                let up = if row as isize - 1 < 0 {
+                    0
+                } else {
+                    up_sums[row - 1][col]
+                };
+                let down = if row + 1 == num_rows {
+                    0
+                } else {
+                    down_sums[row + 1][col]
+                };
+                let count = left + right + up + down;
                 answer = answer.max(count);
             }
         }
