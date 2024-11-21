@@ -2,7 +2,7 @@
 struct PhoneDirectory {}
 
 impl PhoneDirectory {
-    fn new(maxNumbers: i32) -> Self {
+    fn new(max_numbers: i32) -> Self {
         Self {}
     }
 
