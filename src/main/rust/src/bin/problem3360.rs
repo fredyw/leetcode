@@ -1,6 +1,14 @@
 // https://leetcode.com/problems/stone-removal-game/description/
-pub fn can_alice_win(n: i32) -> bool {
-    todo!()
+pub fn can_alice_win(mut n: i32) -> bool {
+    let mut alice = false;
+    for i in (1..=10).rev() {
+        if n - i < 0 {
+            break;
+        }
+        alice = !alice;
+        n -= i;
+    }
+    alice
 }
 
 fn main() {
