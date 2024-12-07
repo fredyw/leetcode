@@ -19,6 +19,10 @@ fn main() {
     let fs = FileSystem::new();
     println!("{}", fs.create_path("/a".to_string(), 1)); // true
     println!("{}", fs.get("/a".to_string())); // 1
+    println!("{}", fs.create_path("/a/b".to_string(), 2)); // true
+    println!("{}", fs.get("/a/b".to_string())); // 2
+    println!("{}", fs.create_path("/a/b/c/d".to_string(), 3)); // false
+    println!("{}", fs.get("/a/b/c".to_string())); // -1
 
     let fs = FileSystem::new();
     println!("{}", fs.create_path("/leet".to_string(), 1)); // true
