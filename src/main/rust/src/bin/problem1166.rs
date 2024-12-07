@@ -19,7 +19,7 @@ impl FileSystem {
         }
         if let Some(index) = path.rfind('/') {
             let parent = &path[0..index];
-            if !self.map.contains_key(parent) {
+            if !self.map.contains_key(parent) || self.map.contains_key(&path) {
                 return false;
             }
             self.map.insert(path, value);
@@ -49,4 +49,10 @@ fn main() {
     println!("{}", fs.get("/leet/code".to_string())); // 2
     println!("{}", fs.create_path("/c/d".to_string(), 1)); // false
     println!("{}", fs.get("/c".to_string())); // -1
+
+    let mut fs = FileSystem::new();
+    println!("{}", fs.create_path("/leet".to_string(), 1)); // true
+    println!("{}", fs.create_path("/leet/code".to_string(), 2)); // true
+    println!("{}", fs.create_path("/leet/code".to_string(), 3)); // false
+    println!("{}", fs.get("/leet/code".to_string())); // 2
 }
