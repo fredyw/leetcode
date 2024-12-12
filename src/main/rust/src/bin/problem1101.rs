@@ -4,33 +4,35 @@ use std::collections::HashMap;
 pub fn earliest_acq(mut logs: Vec<Vec<i32>>, n: i32) -> i32 {
     struct UnionFind {
         // Child to parent
-        v: HashMap<char, char>,
+        map: HashMap<i32, i32>,
     }
 
     impl UnionFind {
         fn new() -> UnionFind {
-            UnionFind { v: HashMap::new() }
+            UnionFind {
+                map: HashMap::new(),
+            }
         }
 
-        fn union(&mut self, a: char, b: char) {
-            if self.v.get(&a).is_none() {
-                self.v.insert(a, a);
+        fn union(&mut self, a: i32, b: i32) {
+            if self.map.get(&a).is_none() {
+                self.map.insert(a, a);
             }
-            if self.v.get(&b).is_none() {
-                self.v.insert(b, b);
+            if self.map.get(&b).is_none() {
+                self.map.insert(b, b);
             }
             let root_a = self.find(a).unwrap();
             let root_b = self.find(b).unwrap();
             if root_a > root_b {
-                self.v.insert(root_a, root_b);
+                self.map.insert(root_a, root_b);
             } else if root_a < root_b {
-                self.v.insert(root_b, root_a);
+                self.map.insert(root_b, root_a);
             }
         }
 
-        fn find(&self, a: char) -> Option<char> {
+        fn find(&self, a: i32) -> Option<i32> {
             let mut child = a;
-            while let Some(parent) = self.v.get(&child) {
+            while let Some(parent) = self.map.get(&child) {
                 if *parent == child {
                     return Some(*parent);
                 }
@@ -38,10 +40,23 @@ pub fn earliest_acq(mut logs: Vec<Vec<i32>>, n: i32) -> i32 {
             }
             None
         }
+
+        fn len(&self) -> usize {
+            println!("{:?}", self.map);
+            self.map.len()
+        }
     }
 
     logs.sort_by(|a, b| a[0].cmp(&b[0]));
-    0
+    let mut uf = UnionFind::new();
+    for log in logs {
+        let timestamp = log[0];
+        let friend_a = log[1];
+        let friend_b = log[2];
+        uf.union(friend_a, friend_b);
+        if uf.len() as i32 == n {}
+    }
+    -1
 }
 
 fn main() {
@@ -61,17 +76,17 @@ fn main() {
             6
         )
     ); // 20190301
-    println!(
-        "{}",
-        earliest_acq(
-            vec![
-                vec![0, 2, 0],
-                vec![1, 0, 1],
-                vec![3, 0, 3],
-                vec![4, 1, 2],
-                vec![7, 3, 1]
-            ],
-            4
-        )
-    ); // 3
+       // println!(
+       //     "{}",
+       //     earliest_acq(
+       //         vec![
+       //             vec![0, 2, 0],
+       //             vec![1, 0, 1],
+       //             vec![3, 0, 3],
+       //             vec![4, 1, 2],
+       //             vec![7, 3, 1]
+       //         ],
+       //         4
+       //     )
+       // ); // 3
 }
