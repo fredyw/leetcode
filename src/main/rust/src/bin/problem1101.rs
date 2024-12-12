@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 // https://leetcode.com/problems/the-earliest-moment-when-everyone-become-friends/description/
 pub fn earliest_acq(mut logs: Vec<Vec<i32>>, n: i32) -> i32 {
@@ -21,29 +21,19 @@ pub fn earliest_acq(mut logs: Vec<Vec<i32>>, n: i32) -> i32 {
             if self.map.get(&b).is_none() {
                 self.map.insert(b, b);
             }
-            let root_a = self.find(a).unwrap();
-            let root_b = self.find(b).unwrap();
-            if root_a > root_b {
-                self.map.insert(root_a, root_b);
-            } else if root_a < root_b {
-                self.map.insert(root_b, root_a);
-            }
-        }
-
-        fn find(&self, a: i32) -> Option<i32> {
-            let mut child = a;
-            while let Some(parent) = self.map.get(&child) {
-                if *parent == child {
-                    return Some(*parent);
+            let root_a = *self.map.get(&a).unwrap();
+            let root_b = *self.map.get(&b).unwrap();
+            if root_a != root_b {
+                for (_, v) in self.map.iter_mut() {
+                    if *v == root_b {
+                        *v = root_a;
+                    }
                 }
-                child = *parent;
             }
-            None
         }
 
-        fn len(&self) -> usize {
-            println!("{:?}", self.map);
-            self.map.len()
+        fn map(&self) -> &HashMap<i32, i32> {
+            &self.map
         }
     }
 
@@ -54,7 +44,13 @@ pub fn earliest_acq(mut logs: Vec<Vec<i32>>, n: i32) -> i32 {
         let friend_a = log[1];
         let friend_b = log[2];
         uf.union(friend_a, friend_b);
-        if uf.len() as i32 == n {}
+        let mut set: HashSet<i32> = HashSet::new();
+        for (_, v) in uf.map().iter() {
+            set.insert(*v);
+        }
+        if uf.map().len() as i32 == n && set.len() == 1 {
+            return timestamp;
+        }
     }
     -1
 }
@@ -76,17 +72,31 @@ fn main() {
             6
         )
     ); // 20190301
-       // println!(
-       //     "{}",
-       //     earliest_acq(
-       //         vec![
-       //             vec![0, 2, 0],
-       //             vec![1, 0, 1],
-       //             vec![3, 0, 3],
-       //             vec![4, 1, 2],
-       //             vec![7, 3, 1]
-       //         ],
-       //         4
-       //     )
-       // ); // 3
+    println!(
+        "{}",
+        earliest_acq(
+            vec![
+                vec![0, 2, 0],
+                vec![1, 0, 1],
+                vec![3, 0, 3],
+                vec![4, 1, 2],
+                vec![7, 3, 1]
+            ],
+            4
+        )
+    ); // 3
+    println!(
+        "{}",
+        earliest_acq(
+            vec![
+                vec![20190101, 0, 1],
+                vec![20190104, 3, 4],
+                vec![20190107, 2, 3],
+                vec![20190211, 1, 5],
+                vec![20190224, 2, 4],
+                vec![20190301, 0, 5],
+            ],
+            6
+        )
+    ); // -1
 }
