@@ -1,4 +1,4 @@
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 
 // https://leetcode.com/problems/the-earliest-moment-when-everyone-become-friends/description/
 pub fn earliest_acq(mut logs: Vec<Vec<i32>>, n: i32) -> i32 {
@@ -14,41 +14,49 @@ pub fn earliest_acq(mut logs: Vec<Vec<i32>>, n: i32) -> i32 {
             }
         }
 
-        fn union(&mut self, a: i32, b: i32) {
+        fn union(&mut self, a: i32, b: i32) -> bool {
             if self.map.get(&a).is_none() {
                 self.map.insert(a, a);
             }
             if self.map.get(&b).is_none() {
                 self.map.insert(b, b);
             }
-            let root_a = *self.map.get(&a).unwrap();
-            let root_b = *self.map.get(&b).unwrap();
-            if root_a != root_b {
-                for (_, v) in self.map.iter_mut() {
-                    if *v == root_b {
-                        *v = root_a;
-                    }
-                }
+            let root_a = self.find(a).unwrap();
+            let root_b = self.find(b).unwrap();
+            if root_a > root_b {
+                self.map.insert(root_a, root_b);
+                true
+            } else if root_a < root_b {
+                self.map.insert(root_b, root_a);
+                true
+            } else {
+                false
             }
         }
 
-        fn map(&self) -> &HashMap<i32, i32> {
-            &self.map
+        fn find(&self, a: i32) -> Option<i32> {
+            let mut child = a;
+            while let Some(parent) = self.map.get(&child) {
+                if *parent == child {
+                    return Some(*parent);
+                }
+                child = *parent;
+            }
+            None
         }
     }
 
     logs.sort_by(|a, b| a[0].cmp(&b[0]));
     let mut uf = UnionFind::new();
+    let mut count = n;
     for log in logs {
         let timestamp = log[0];
         let friend_a = log[1];
         let friend_b = log[2];
-        uf.union(friend_a, friend_b);
-        let mut set: HashSet<i32> = HashSet::new();
-        for (_, v) in uf.map().iter() {
-            set.insert(*v);
+        if uf.union(friend_a, friend_b) {
+            count -= 1;
         }
-        if uf.map().len() as i32 == n && set.len() == 1 {
+        if count == 1 {
             return timestamp;
         }
     }
