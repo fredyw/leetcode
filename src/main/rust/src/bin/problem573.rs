@@ -6,6 +6,10 @@ pub fn min_distance(
     squirrel: Vec<i32>,
     nuts: Vec<Vec<i32>>,
 ) -> i32 {
+    fn distsance(x1: i32, y1: i32, x2: i32, y2: i32) -> i32 {
+        (x1 - x2).abs() + (y1 - y2).abs()
+    }
+
     todo!()
 }
 
