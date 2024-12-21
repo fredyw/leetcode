@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/squirrel-simulation/description/
 pub fn min_distance(
-    height: i32,
-    width: i32,
+    _height: i32,
+    _width: i32,
     tree: Vec<i32>,
     squirrel: Vec<i32>,
     nuts: Vec<Vec<i32>>,
@@ -10,24 +10,16 @@ pub fn min_distance(
         (x1 - x2).abs() + (y1 - y2).abs()
     }
 
-    let mut answer = i32::MAX;
-    let mut min_x = 0;
-    let mut min_y = 0;
+    let mut answer = 0;
+    let mut max_distance = i32::MIN;
     for nut in nuts.iter() {
-        let distance = distance(squirrel[0], squirrel[1], nut[0], nut[1]);
-        if distance <= answer {
-            answer = distance;
-            min_x = nut[0];
-            min_y = nut[1];
-        }
-    }
-    answer += distance(min_x, min_y, tree[0], tree[1]);
-    for nut in nuts.iter() {
-        if nut[0] == min_x && nut[1] == min_y {
-            continue;
-        }
         answer += distance(tree[0], tree[1], nut[0], nut[1]) * 2;
+        max_distance = max_distance.max(
+            distance(nut[0], nut[1], tree[0], tree[1])
+                - distance(nut[0], nut[1], squirrel[0], squirrel[1]),
+        );
     }
+    answer -= max_distance;
     answer
 }
 
