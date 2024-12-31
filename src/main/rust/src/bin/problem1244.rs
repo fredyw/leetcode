@@ -23,10 +23,11 @@ impl Leaderboard {
                 }
             }
             *s += score;
+            *self.scores.entry(*s).or_insert(0) += 1;
         } else {
             self.players.insert(player_id, score);
+            *self.scores.entry(score).or_insert(0) += 1;
         }
-        *self.scores.entry(score).or_insert(0) += 1;
     }
 
     fn top(&self, k: i32) -> i32 {
@@ -61,18 +62,18 @@ impl Leaderboard {
 }
 
 fn main() {
-    // let mut leaderboard = Leaderboard::new();
-    // leaderboard.add_score(1, 73);
-    // leaderboard.add_score(2, 56);
-    // leaderboard.add_score(3, 39);
-    // leaderboard.add_score(4, 51);
-    // leaderboard.add_score(5, 4);
-    // println!("{}", leaderboard.top(1)); // 73
-    // println!("{}", leaderboard.top(3)); // 180
-    // leaderboard.reset(1);
-    // leaderboard.reset(2);
-    // leaderboard.add_score(2, 51);
-    // println!("{}", leaderboard.top(3)); // 141
+    let mut leaderboard = Leaderboard::new();
+    leaderboard.add_score(1, 73);
+    leaderboard.add_score(2, 56);
+    leaderboard.add_score(3, 39);
+    leaderboard.add_score(4, 51);
+    leaderboard.add_score(5, 4);
+    println!("{}", leaderboard.top(1)); // 73
+    println!("{}", leaderboard.top(3)); // 180
+    leaderboard.reset(1);
+    leaderboard.reset(2);
+    leaderboard.add_score(2, 51);
+    println!("{}", leaderboard.top(3)); // 141
 
     let mut leaderboard = Leaderboard::new();
     leaderboard.add_score(1, 13);
