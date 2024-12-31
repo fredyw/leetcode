@@ -33,16 +33,13 @@ impl Leaderboard {
     fn top(&self, k: i32) -> i32 {
         let mut sum = 0;
         let mut i = 0;
-        for (score, count) in self.scores.iter().rev() {
-            if i + count <= k {
-                sum += *score * *count;
-                i += count;
-            } else {
-                sum += *score * (i + count - k);
-                i += i + count - k;
-            }
-            if i == k {
-                break;
+        'outer: for (score, count) in self.scores.iter().rev() {
+            for _ in 0..*count {
+                sum += *score;
+                i += 1;
+                if i == k {
+                    break 'outer;
+                }
             }
         }
         sum
