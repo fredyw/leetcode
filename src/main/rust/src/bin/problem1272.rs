@@ -1,6 +1,8 @@
 // https://leetcode.com/problems/remove-interval/description/
 pub fn remove_interval(intervals: Vec<Vec<i32>>, to_be_removed: Vec<i32>) -> Vec<Vec<i32>> {
-    todo!()
+    let mut answer = vec![];
+    for interval in intervals.iter() {}
+    answer
 }
 
 fn main() {
@@ -22,4 +24,8 @@ fn main() {
             vec![-1, 4]
         )
     ); // [[-5,-4],[-3,-2],[4,5],[8,9]]
+    println!(
+        "{:?}",
+        remove_interval(vec![vec![0, 2], vec![3, 4], vec![5, 7]], vec![2, 5])
+    ); // [[0,2],[5,7]]
 }
