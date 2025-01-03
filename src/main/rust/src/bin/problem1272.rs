@@ -1,7 +1,16 @@
 // https://leetcode.com/problems/remove-interval/description/
 pub fn remove_interval(intervals: Vec<Vec<i32>>, to_be_removed: Vec<i32>) -> Vec<Vec<i32>> {
     let mut answer = vec![];
-    for interval in intervals.iter() {}
+    for interval in intervals.iter() {
+        if interval[0] < to_be_removed[0] && to_be_removed[0] < interval[1] {
+            answer.push(vec![interval[0], to_be_removed[0]]);
+        }
+        if interval[0] < to_be_removed[1] && to_be_removed[1] < interval[1] {
+            answer.push(vec![to_be_removed[1], interval[1]]);
+        } else {
+            answer.push(interval.clone());
+        }
+    }
     answer
 }
 
