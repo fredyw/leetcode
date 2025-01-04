@@ -1,12 +1,18 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/implement-trie-ii-prefix-tree/description/
-struct Trie {}
+struct Trie {
+    children: HashMap<char, Trie>,
+}
 
 impl Trie {
     fn new() -> Self {
-        Self {}
+        Self {
+            children: HashMap::new(),
+        }
     }
 
-    fn insert(&self, word: String) {}
+    fn insert(&mut self, word: String) {}
 
     fn count_words_equal_to(&self, word: String) -> i32 {
         todo!()
@@ -16,7 +22,7 @@ impl Trie {
         todo!()
     }
 
-    fn erase(&self, word: String) {}
+    fn erase(&mut self, word: String) {}
 }
 
 fn main() {
