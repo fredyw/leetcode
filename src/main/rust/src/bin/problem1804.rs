@@ -77,4 +77,5 @@ fn main() {
     println!("{}", trie.count_words_starting_with("app".to_string())); // 1
     trie.erase("apple".to_string());
     println!("{}", trie.count_words_starting_with("app".to_string())); // 0
+    println!("{}", trie.count_words_starting_with("foo".to_string())); // 0
 }
