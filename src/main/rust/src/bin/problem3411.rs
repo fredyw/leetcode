@@ -8,11 +8,40 @@ pub fn max_length(nums: Vec<i32>) -> i32 {
         }
     }
 
+    fn gcd_arr(nums: &[i32]) -> i32 {
+        let mut result = nums[0];
+        for &num in &nums[1..] {
+            result = gcd(result, num);
+        }
+        result
+    }
+
     fn lcm(a: i32, b: i32) -> i32 {
         (a * b) / gcd(a, b)
     }
 
-    todo!()
+    fn lcm_arr(nums: &[i32]) -> i32 {
+        let mut result = nums[0];
+        for &num in &nums[1..] {
+            result = lcm(result, num);
+        }
+        result
+    }
+
+    fn prod_arr(nums: &[i32]) -> i32 {
+        nums.iter().product()
+    }
+
+    let mut answer = 0;
+    for i in 0..nums.len() {
+        for j in i + 1..=nums.len() {
+            let s = &nums[i..j];
+            if prod_arr(s) == gcd_arr(s) * lcm_arr(s) {
+                answer = answer.max(j as i32 - i as i32);
+            }
+        }
+    }
+    answer
 }
 
 fn main() {
