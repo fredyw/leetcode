@@ -5,7 +5,7 @@ pub fn max_sum_after_operation(nums: Vec<i32>) -> i32 {
             return 0;
         }
         let mut max = if square {
-            f(nums, i + 1, false, answer) + nums[i]
+            f(nums, i + 1, true, answer) + nums[i]
         } else {
             let squared = f(nums, i + 1, true, answer) + (nums[i] * nums[i]);
             let non_squared = f(nums, i + 1, false, answer) + nums[i];
