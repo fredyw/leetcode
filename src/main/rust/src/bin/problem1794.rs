@@ -9,4 +9,7 @@ fn main() {
         count_quadruples("abcd".to_string(), "bccda".to_string())
     ); // 1
     println!("{}", count_quadruples("ab".to_string(), "cd".to_string())); // 0
+    println!("{}", count_quadruples("aa".to_string(), "aa".to_string())); // 1
+    println!("{}", count_quadruples("aa".to_string(), "aa".to_string())); // 1
+    println!("{}", count_quadruples("aa".to_string(), "aaa".to_string())); // 1
 }
