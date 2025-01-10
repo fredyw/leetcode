@@ -5,7 +5,7 @@ pub fn count_quadruples(first_string: String, second_string: String) -> i32 {
     let first_string = first_string.as_bytes();
     let second_string = second_string.as_bytes();
     let mut char_to_index_map: HashMap<u8, usize> = HashMap::new();
-    for i in 0..second_string.len() {
+    for i in (0..second_string.len()).rev() {
         if !char_to_index_map.contains_key(&second_string[i]) {
             char_to_index_map.insert(second_string[i], i);
         }
