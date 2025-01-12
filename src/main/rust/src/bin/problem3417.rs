@@ -1,6 +1,28 @@
 // https://leetcode.com/problems/zigzag-grid-traversal-with-skip/description/
 pub fn zigzag_traversal(grid: Vec<Vec<i32>>) -> Vec<i32> {
-    todo!()
+    let num_rows = grid.len();
+    let num_cols = if num_rows > 0 { grid[0].len() } else { 0 };
+    let mut answer = vec![];
+    for row in 0..num_rows {
+        if row % 2 == 0 {
+            let mut col = 0;
+            while col < num_cols {
+                answer.push(grid[row][col]);
+                col += 2;
+            }
+        } else {
+            let mut col = if num_cols % 2 == 0 {
+                num_cols - 1
+            } else {
+                num_cols - 2
+            } as isize;
+            while col >= 0 {
+                answer.push(grid[row][col as usize]);
+                col -= 2;
+            }
+        }
+    }
+    answer
 }
 
 fn main() {
