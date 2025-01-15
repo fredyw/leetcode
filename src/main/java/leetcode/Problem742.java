@@ -30,9 +30,10 @@ public class Problem742 {
 
     public int findClosestLeaf(TreeNode root, int k) {
         Map<Integer, List<Integer>> graph = new HashMap<>();
-        buildGraph(root, graph);
+        Set<Integer> leaves = new HashSet<>();
+        buildGraph(root, graph, leaves);
         Answer answer = new Answer();
-        findClosestLeaf(graph, new HashSet<>(), k, 0, answer);
+        findClosestLeaf(graph, leaves, new HashSet<>(), k, 0, answer);
         return answer.node;
     }
 
@@ -42,9 +43,10 @@ public class Problem742 {
     }
 
     private static void findClosestLeaf(Map<Integer, List<Integer>> graph,
+                                        Set<Integer> leaves,
                                         Set<Integer> visited, int k, int length,
                                         Answer answer) {
-        if (graph.get(k).isEmpty() || graph.get(k).size() == 1) {
+        if (leaves.contains(k)) {
             if (answer.node == 0) {
                 answer.length = length;
                 answer.node = k;
@@ -52,22 +54,24 @@ public class Problem742 {
                 answer.length = length;
                 answer.node = k;
             }
-            return;
         }
         visited.add(k);
         var children = graph.get(k);
-        for (int i = 0; i < children.size(); i++) {
-            int child = children.get(i);
+        for (int child : children) {
             if (visited.contains(child)) {
                 continue;
             }
-            findClosestLeaf(graph, visited, child, length + 1, answer);
+            findClosestLeaf(graph, leaves, visited, child, length + 1, answer);
         }
     }
 
-    private static void buildGraph(TreeNode root, Map<Integer, List<Integer>> graph) {
+    private static void buildGraph(TreeNode root, Map<Integer, List<Integer>> graph,
+                                   Set<Integer> leaves) {
         if (root == null) {
             return;
+        }
+        if (root.left == null && root.right == null) {
+            leaves.add(root.val);
         }
         if (!graph.containsKey(root.val)) {
             graph.put(root.val, new ArrayList<>());
@@ -78,8 +82,8 @@ public class Problem742 {
         if (root.right != null) {
             addToGraph(graph, root.val, root.right.val);
         }
-        buildGraph(root.left, graph);
-        buildGraph(root.right, graph);
+        buildGraph(root.left, graph, leaves);
+        buildGraph(root.right, graph, leaves);
     }
 
     private static void addToGraph(Map<Integer, List<Integer>> graph, int a, int b) {
