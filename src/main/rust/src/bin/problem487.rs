@@ -1,6 +1,14 @@
 // https://leetcode.com/problems/max-consecutive-ones-ii/description/
 pub fn find_max_consecutive_ones(nums: Vec<i32>) -> i32 {
     let mut answer = 0;
+    let mut prev = 0;
+    let mut current = 0;
+    let mut zero_count = 0;
+    while current < nums.len() {
+        if nums[current] == 0 {
+            zero_count += 1;
+        }
+    }
     answer
 }
 
