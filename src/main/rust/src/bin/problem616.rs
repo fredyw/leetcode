@@ -22,24 +22,29 @@ pub fn add_bold_tag(s: String, words: Vec<String>) -> String {
                 }
             }
         }
-        if is_bold && i > bold_i {
+        if is_bold && i >= bold_j {
             answer.push_str("<b>");
             answer.push_str(&s[bold_i..bold_j]);
             answer.push_str("</b>");
             is_bold = false;
         }
     }
+    if is_bold {
+        answer.push_str("<b>");
+        answer.push_str(&s[bold_i..bold_j]);
+        answer.push_str("</b>");
+    }
     answer
 }
 
 fn main() {
-    // println!(
-    //     "{}",
-    //     add_bold_tag(
-    //         "abcxyz123".to_string(),
-    //         vec!["abc".to_string(), "123".to_string()]
-    //     )
-    // ); // "<b>abc</b>xyz<b>123</b>"
+    println!(
+        "{}",
+        add_bold_tag(
+            "abcxyz123".to_string(),
+            vec!["abc".to_string(), "123".to_string()]
+        )
+    ); // "<b>abc</b>xyz<b>123</b>"
     println!(
         "{}",
         add_bold_tag(
@@ -47,19 +52,19 @@ fn main() {
             vec!["aa".to_string(), "b".to_string()]
         )
     ); // "<b>aaabbb</b>"
-       // println!(
-       //     "{}",
-       //     add_bold_tag("aaaaa".to_string(), vec!["aaaa".to_string()])
-       // ); // "<b>aaaaa</b>"
-       // println!(
-       //     "{}",
-       //     add_bold_tag(
-       //         "abcxyz123".to_string(),
-       //         vec![
-       //             "abc".to_string(),
-       //             "123".to_string(),
-       //             "abcxyz123".to_string()
-       //         ]
-       //     )
-       // ); // "<b>abcxyz123</b>"
+    println!(
+        "{}",
+        add_bold_tag("aaaaa".to_string(), vec!["aaaa".to_string()])
+    ); // "<b>aaaaa</b>"
+    println!(
+        "{}",
+        add_bold_tag(
+            "abcxyz123".to_string(),
+            vec![
+                "abc".to_string(),
+                "123".to_string(),
+                "abcxyz123".to_string()
+            ]
+        )
+    ); // "<b>abcxyz123</b>"
 }
