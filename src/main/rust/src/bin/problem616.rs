@@ -34,6 +34,7 @@ pub fn add_bold_tag(s: String, words: Vec<String>) -> String {
         answer.push_str(&s[bold_i..bold_j]);
         answer.push_str("</b>");
     }
+    answer.push_str(&s[bold_j..]);
     answer
 }
 
