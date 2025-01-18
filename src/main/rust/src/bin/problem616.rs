@@ -12,6 +12,7 @@ pub fn add_bold_tag(s: String, words: Vec<String>) -> String {
             let sub = &s[i..j];
             if words.contains(sub) {
                 if !is_bold {
+                    answer.push_str(&s[bold_j..i]);
                     bold_i = i;
                     bold_j = j;
                     is_bold = true;
@@ -19,7 +20,6 @@ pub fn add_bold_tag(s: String, words: Vec<String>) -> String {
                     bold_i = bold_i.min(i);
                     bold_j = bold_j.max(j);
                 }
-                println!("{}", sub);
             }
         }
         if is_bold && i > bold_i {
