@@ -67,4 +67,11 @@ fn main() {
             ]
         )
     ); // "<b>abcxyz123</b>"
+    println!(
+        "{}",
+        add_bold_tag(
+            "aaabbcc".to_string(),
+            vec!["aaa".to_string(), "aab".to_string(), "bc".to_string()]
+        )
+    ); // "<b>aaabbc</b>c"
 }
