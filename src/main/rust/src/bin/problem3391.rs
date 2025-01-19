@@ -30,5 +30,5 @@ fn main() {
     matrix.set_cell(2, 1, 1);
     println!("{}", matrix.largest_matrix()); // 2
     matrix.unset_cell(2, 1, 1);
-    matrix.largest_matrix(); // 3
+    println!("{}", matrix.largest_matrix()); // 3
 }
