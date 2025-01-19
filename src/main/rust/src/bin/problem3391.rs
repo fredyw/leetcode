@@ -25,4 +25,10 @@ fn main() {
     println!("{}", matrix.largest_matrix()); // 2
     matrix.unset_cell(2, 1, 1);
     println!("{}", matrix.largest_matrix()); // 3
+
+    let matrix = Matrix3D::new(4);
+    matrix.set_cell(2, 1, 1);
+    println!("{}", matrix.largest_matrix()); // 2
+    matrix.unset_cell(2, 1, 1);
+    matrix.largest_matrix(); // 3
 }
