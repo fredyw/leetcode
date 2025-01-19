@@ -1,6 +1,11 @@
 // https://leetcode.com/problems/sum-of-variable-length-subarrays/description/
 pub fn subarray_sum(nums: Vec<i32>) -> i32 {
-    todo!()
+    let mut answer = 0;
+    for i in 0..nums.len() {
+        let start = 0.max(i as i32 - nums[i]) as usize;
+        answer += &nums[start..=i].iter().sum();
+    }
+    answer
 }
 
 fn main() {
