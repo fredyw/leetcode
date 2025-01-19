@@ -49,6 +49,6 @@ public class Problem2773 {
         }
         visited.add(root.val);
         getLeaves(root.left, visited, leaves);
-        getLeaves(root.left, visited, leaves);
+        getLeaves(root.right, visited, leaves);
     }
 }
