@@ -8,8 +8,10 @@ pub fn minimum_length(s: String) -> i32 {
     }
     let mut answer = s.len() as i32;
     for (_, count) in map.iter() {
-        if count % 3 == 0 {
-            answer -= count;
+        let mut c = *count;
+        while c >= 3 {
+            c -= 2;
+            answer -= 2;
         }
     }
     answer
