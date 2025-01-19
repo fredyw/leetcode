@@ -13,13 +13,15 @@ impl Matrix3D {
     }
 
     fn set_cell(&mut self, x: i32, y: i32, z: i32) {
-        self.matrix_3d[x as usize][y as usize][z as usize] += 1;
-        self.matrix[x as usize] += 1;
+        if self.matrix_3d[x as usize][y as usize][z as usize] == 0 {
+            self.matrix_3d[x as usize][y as usize][z as usize] = 1;
+            self.matrix[x as usize] += 1;
+        }
     }
 
     fn unset_cell(&mut self, x: i32, y: i32, z: i32) {
-        if self.matrix_3d[x as usize][y as usize][z as usize] > 0 {
-            self.matrix_3d[x as usize][y as usize][z as usize] -= 1;
+        if self.matrix_3d[x as usize][y as usize][z as usize] == 1 {
+            self.matrix_3d[x as usize][y as usize][z as usize] = 0;
             self.matrix[x as usize] -= 1;
         }
     }
@@ -55,4 +57,16 @@ fn main() {
     matrix.unset_cell(1, 2, 5);
     matrix.unset_cell(2, 3, 1);
     println!("{}", matrix.largest_matrix()); // 6
+
+    let mut matrix = Matrix3D::new(3);
+    matrix.set_cell(0, 0, 0);
+    matrix.unset_cell(1, 1, 1);
+    matrix.unset_cell(1, 1, 2);
+    matrix.unset_cell(1, 0, 1);
+    matrix.set_cell(2, 1, 2);
+    matrix.unset_cell(0, 2, 1);
+    matrix.set_cell(0, 0, 0);
+    println!("{}", matrix.largest_matrix()); // 2
+    matrix.unset_cell(2, 2, 0);
+    println!("{}", matrix.largest_matrix()); // 2
 }
