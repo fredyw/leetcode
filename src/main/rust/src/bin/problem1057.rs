@@ -4,24 +4,29 @@ pub fn assign_bikes(workers: Vec<Vec<i32>>, bikes: Vec<Vec<i32>>) -> Vec<i32> {
         (x1 - x2).abs() + (y1 - y2).abs()
     }
 
-    let mut worker_bikes: Vec<Vec<(i32, usize)>> = vec![vec![]; workers.len()];
-    for i in 0..workers.len() {
-        for j in 0..bikes.len() {
-            let distance = manhattan(workers[i][0], workers[i][1], bikes[j][0], bikes[j][1]);
-            worker_bikes[i].push((distance, j));
+    let mut v: Vec<(i32, usize, usize)> = vec![];
+    for worker in 0..workers.len() {
+        for bike in 0..bikes.len() {
+            let distance = manhattan(
+                workers[worker][0],
+                workers[worker][1],
+                bikes[bike][0],
+                bikes[bike][1],
+            );
+            v.push((distance, worker, bike));
         }
-        worker_bikes[i].sort_by(|a, b| a.cmp(b));
     }
+    v.sort_by(|a, b| a.cmp(&b));
     let mut answer = vec![0; workers.len()];
-    let mut assigned = vec![false; bikes.len()];
-    for (i, v) in worker_bikes.iter().enumerate() {
-        for (d, j) in v.iter() {
-            if !assigned[*j] {
-                answer[i] = *j as i32;
-                assigned[*j] = true;
-                break;
-            }
+    let mut workers_assigned = vec![false; workers.len()];
+    let mut bikes_assigned = vec![false; bikes.len()];
+    for (_, worker, bike) in v.iter() {
+        if workers_assigned[*worker] || bikes_assigned[*bike] {
+            continue;
         }
+        workers_assigned[*worker] = true;
+        bikes_assigned[*bike] = true;
+        answer[*worker] = *bike as i32;
     }
     answer
 }
