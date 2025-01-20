@@ -12,13 +12,12 @@ pub fn assign_bikes(workers: Vec<Vec<i32>>, bikes: Vec<Vec<i32>>) -> Vec<i32> {
         }
         worker_bikes[i].sort_by(|a, b| a.cmp(b));
     }
-    println!("{:?}", worker_bikes);
     let mut answer = vec![0; workers.len()];
     let mut assigned = vec![false; bikes.len()];
     for (i, v) in worker_bikes.iter().enumerate() {
         for (d, j) in v.iter() {
             if !assigned[*j] {
-                answer[i] = *d;
+                answer[i] = *j as i32;
                 assigned[*j] = true;
                 break;
             }
@@ -37,6 +36,13 @@ fn main() {
         assign_bikes(
             vec![vec![0, 0], vec![1, 1], vec![2, 0]],
             vec![vec![1, 0], vec![2, 2], vec![2, 1]]
+        )
+    ); // [0,2,1]
+    println!(
+        "{:?}",
+        assign_bikes(
+            vec![vec![0, 0], vec![1, 1], vec![2, 0]],
+            vec![vec![1, 0], vec![2, 2], vec![2, 1], vec![3, 1]]
         )
     ); // [0,2,1]
 }
