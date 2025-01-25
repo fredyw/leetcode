@@ -22,7 +22,7 @@ impl TreeNode {
 }
 
 struct BSTIterator {
-    index: usize,
+    index: isize,
     nodes: Vec<i32>,
 }
 
@@ -40,25 +40,25 @@ impl BSTIterator {
 
         let mut nodes = vec![];
         inorder(root, &mut nodes);
-        Self { index: 0, nodes }
+        Self { index: -1, nodes }
     }
 
     fn has_next(&self) -> bool {
-        self.index != self.nodes.len()
+        self.index != self.nodes.len() as isize - 1
     }
 
     fn next(&mut self) -> i32 {
-        let val = self.nodes[self.index];
+        let val = self.nodes[(self.index + 1) as usize];
         self.index += 1;
         val
     }
 
     fn has_prev(&self) -> bool {
-        self.index != 0
+        self.index != -1
     }
 
     fn prev(&mut self) -> i32 {
-        let val = self.nodes[self.index];
+        let val = self.nodes[(self.index - 1) as usize];
         self.index -= 1;
         val
     }
