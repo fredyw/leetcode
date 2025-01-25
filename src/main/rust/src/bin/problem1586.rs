@@ -44,7 +44,7 @@ impl BSTIterator {
     }
 
     fn has_next(&self) -> bool {
-        self.index != self.nodes.len() as isize - 1
+        self.index < self.nodes.len() as isize - 1
     }
 
     fn next(&mut self) -> i32 {
@@ -54,7 +54,7 @@ impl BSTIterator {
     }
 
     fn has_prev(&self) -> bool {
-        self.index != -1
+        self.index > 0
     }
 
     fn prev(&mut self) -> i32 {
