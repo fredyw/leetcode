@@ -21,27 +21,46 @@ impl TreeNode {
     }
 }
 
-struct BSTIterator {}
+struct BSTIterator {
+    index: usize,
+    nodes: Vec<i32>,
+}
 
 impl BSTIterator {
     fn new(root: Option<Rc<RefCell<TreeNode>>>) -> Self {
-        Self {}
+        fn inorder(root: Option<Rc<RefCell<TreeNode>>>, inorder_nodes: &mut Vec<i32>) {
+            if let Some(node) = root {
+                let left = node.as_ref().borrow().left.clone();
+                let right = node.as_ref().borrow().right.clone();
+                inorder(left, inorder_nodes);
+                inorder_nodes.push(node.as_ref().borrow().val);
+                inorder(right, inorder_nodes);
+            }
+        }
+
+        let mut nodes = vec![];
+        inorder(root, &mut nodes);
+        Self { index: 0, nodes }
     }
 
     fn has_next(&self) -> bool {
-        todo!()
+        self.index != self.nodes.len()
     }
 
-    fn next(&self) -> i32 {
-        todo!()
+    fn next(&mut self) -> i32 {
+        let val = self.nodes[self.index];
+        self.index += 1;
+        val
     }
 
     fn has_prev(&self) -> bool {
-        todo!()
+        self.index != 0
     }
 
-    fn prev(&self) -> i32 {
-        todo!()
+    fn prev(&mut self) -> i32 {
+        let val = self.nodes[self.index];
+        self.index -= 1;
+        val
     }
 }
 
@@ -90,7 +109,7 @@ fn to_tree(nodes: Vec<Option<i32>>) -> Option<Rc<RefCell<TreeNode>>> {
 }
 
 fn main() {
-    let iter = BSTIterator::new(to_tree(vec![
+    let mut iter = BSTIterator::new(to_tree(vec![
         Some(7),
         Some(3),
         Some(15),
