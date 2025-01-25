@@ -109,25 +109,32 @@ fn to_tree(nodes: Vec<Option<i32>>) -> Option<Rc<RefCell<TreeNode>>> {
 }
 
 fn main() {
-    let mut iter = BSTIterator::new(to_tree(vec![
-        Some(7),
-        Some(3),
-        Some(15),
-        None,
-        None,
-        Some(9),
-        Some(20),
-    ]));
-    println!("{}", iter.next()); // 3
-    println!("{}", iter.next()); // 7
-    println!("{}", iter.prev()); // 3
-    println!("{}", iter.next()); // 7
+    // let mut iter = BSTIterator::new(to_tree(vec![
+    //     Some(7),
+    //     Some(3),
+    //     Some(15),
+    //     None,
+    //     None,
+    //     Some(9),
+    //     Some(20),
+    // ]));
+    // println!("{}", iter.next()); // 3
+    // println!("{}", iter.next()); // 7
+    // println!("{}", iter.prev()); // 3
+    // println!("{}", iter.next()); // 7
+    // println!("{}", iter.has_next()); // true
+    // println!("{}", iter.next()); // 9
+    // println!("{}", iter.next()); // 15
+    // println!("{}", iter.next()); // 20
+    // println!("{}", iter.has_next()); // false
+    // println!("{}", iter.has_prev()); // true
+    // println!("{}", iter.prev()); // 15
+    // println!("{}", iter.prev()); // 9
+
+    let mut iter = BSTIterator::new(to_tree(vec![Some(1)]));
+    println!("{}", iter.has_prev()); // false
     println!("{}", iter.has_next()); // true
-    println!("{}", iter.next()); // 9
-    println!("{}", iter.next()); // 15
-    println!("{}", iter.next()); // 20
+    println!("{}", iter.next()); // true
+    println!("{}", iter.has_prev()); // false
     println!("{}", iter.has_next()); // false
-    println!("{}", iter.has_prev()); // true
-    println!("{}", iter.prev()); // 15
-    println!("{}", iter.prev()); // 9
 }
