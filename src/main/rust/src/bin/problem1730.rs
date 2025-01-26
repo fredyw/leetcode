@@ -1,6 +1,48 @@
+use std::collections::VecDeque;
+
 // https://leetcode.com/problems/shortest-path-to-get-food/description/
 pub fn get_food(grid: Vec<Vec<char>>) -> i32 {
-    todo!()
+    fn get_person_index(grid: &Vec<Vec<char>>) -> (i32, i32) {
+        for i in 0..grid.len() {
+            for j in 0..grid[i].len() {
+                if grid[i][j] == '*' {
+                    return (i as i32, j as i32);
+                }
+            }
+        }
+        (-1, -1)
+    }
+
+    let num_rows = grid.len();
+    let num_cols = if num_rows > 0 { grid[0].len() } else { 0 };
+    let (row, col) = get_person_index(&grid);
+    let mut deque: VecDeque<(i32, i32)> = VecDeque::new();
+    deque.push_back((row, col));
+    let mut visited = vec![vec![false; num_cols]; num_rows];
+    let mut length = 0;
+    while !deque.is_empty() {
+        length += 1;
+        let n = deque.len();
+        for _ in 0..n {
+            let (row, col) = deque.pop_front().unwrap();
+            if row < 0
+                || row == num_rows as i32
+                || col < 0
+                || col == num_cols as i32
+                || visited[row as usize][col as usize]
+            {
+                continue;
+            }
+            visited[row as usize][col as usize] = true;
+            if grid[row as usize][col as usize] == '#' {
+                return length;
+            }
+            for (r, c) in [(-1, 0), (0, 1), (1, 0), (0, -1)] {
+                deque.push_back((row + r, col + c));
+            }
+        }
+    }
+    -1
 }
 
 fn main() {
