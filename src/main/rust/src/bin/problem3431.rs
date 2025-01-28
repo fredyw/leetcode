@@ -1,15 +1,20 @@
-use std::mem;
-
 // https://leetcode.com/problems/minimum-unlocked-indices-to-sort-nums/description/
-pub fn min_unlocked_indices(mut nums: Vec<i32>, locked: Vec<i32>) -> i32 {
+pub fn min_unlocked_indices(mut nums: Vec<i32>, mut locked: Vec<i32>) -> i32 {
+    let mut answer = 0;
     for i in 0..nums.len() - 1 {
         if nums[i] > nums[i + 1] {
-            if locked[i] == 0 && nums[i] - nums[i + 1] == 1 {
-                mem::swap(nums, i, i + 1);
+            if nums[i] - nums[i + 1] == 1 {
+                if locked[i] == 1 {
+                    answer += 1;
+                    locked[i] = 0;
+                }
+                nums.swap(i, i + 1);
+            } else {
+                return -1;
             }
         }
     }
-    todo!()
+    answer
 }
 
 fn main() {
