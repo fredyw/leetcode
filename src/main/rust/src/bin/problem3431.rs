@@ -1,38 +1,21 @@
 // https://leetcode.com/problems/minimum-unlocked-indices-to-sort-nums/description/
-pub fn min_unlocked_indices(mut nums: Vec<i32>, mut locked: Vec<i32>) -> i32 {
-    fn is_sorted(nums: &Vec<i32>) -> bool {
-        for i in 0..nums.len() - 1 {
-            if nums[i] > nums[i + 1] {
-                return false;
-            }
-        }
-        true
-    }
-
+pub fn min_unlocked_indices(nums: Vec<i32>, locked: Vec<i32>) -> i32 {
     let mut answer = 0;
-    loop {
-        let mut num_swaps = 0;
-        for i in 0..nums.len() - 1 {
-            if nums[i] > nums[i + 1] {
-                if nums[i] - nums[i + 1] == 1 {
-                    if locked[i] == 1 {
-                        answer += 1;
-                        locked[i] = 0;
-                    }
-                    nums.swap(i, i + 1);
-                    num_swaps += 1;
-                } else {
-                    return -1;
-                }
+    let mut num_locks = 0;
+    let mut max = 1;
+    for i in 0..nums.len() {
+        if max < nums[i] {
+            max = nums[i];
+            num_locks = 0;
+        }
+        if nums[i] < max {
+            if nums[i] + 1 < max {
+                return -1;
             }
+            answer += num_locks;
+            num_locks = 0;
         }
-        let is_sorted = is_sorted(&nums);
-        if is_sorted {
-            break;
-        }
-        if num_swaps == 0 {
-            return -1;
-        }
+        num_locks += locked[i];
     }
     answer
 }
