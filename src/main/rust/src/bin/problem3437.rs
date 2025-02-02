@@ -1,6 +1,14 @@
 // https://leetcode.com/problems/permutations-iii/
 pub fn permute(n: i32) -> Vec<Vec<i32>> {
-    todo!()
+    fn permute(nums: &mut Vec<i32>) -> Vec<Vec<i32>> {
+        todo!()
+    }
+
+    let mut nums: Vec<i32> = vec![];
+    for i in 1..=n {
+        nums.push(i);
+    }
+    permute(&mut nums)
 }
 
 fn main() {
