@@ -2,12 +2,11 @@
 pub fn permute(n: i32) -> Vec<Vec<i32>> {
     fn permute(
         nums: &mut Vec<i32>,
-        n: usize,
         visited: &mut Vec<bool>,
         accu: &mut Vec<i32>,
         permutations: &mut Vec<Vec<i32>>,
     ) {
-        if n == 0 {
+        if accu.len() == nums.len() {
             permutations.push(accu.clone());
             return;
         }
@@ -25,7 +24,7 @@ pub fn permute(n: i32) -> Vec<Vec<i32>> {
             }
             visited[j] = true;
             accu.push(nums[j]);
-            permute(nums, n - 1, visited, accu, permutations);
+            permute(nums, visited, accu, permutations);
             accu.pop();
             visited[j] = false;
         }
@@ -37,7 +36,7 @@ pub fn permute(n: i32) -> Vec<Vec<i32>> {
     }
     let mut answer = vec![];
     let n = nums.len();
-    permute(&mut nums, n, &mut vec![false; n], &mut vec![], &mut answer);
+    permute(&mut nums, &mut vec![false; n], &mut vec![], &mut answer);
     answer
 }
 
