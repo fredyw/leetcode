@@ -44,13 +44,12 @@ pub fn max_tastiness(
         } else {
             0
         };
-        let dont_eat = if let Some(t) =
-            max_tastiness(price, tastiness, max_amount, max_coupons - 1, index + 1)
-        {
-            t
-        } else {
-            0
-        };
+        let dont_eat =
+            if let Some(t) = max_tastiness(price, tastiness, max_amount, max_coupons, index + 1) {
+                t
+            } else {
+                0
+            };
         let max_tastiness = eat_without_coupon.max(eat_with_coupon.max(dont_eat));
         Some(max_tastiness)
     }
