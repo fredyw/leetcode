@@ -29,14 +29,18 @@ pub fn max_tastiness(
         } else {
             0
         };
-        let eat_with_coupon = if let Some(t) = max_tastiness(
-            price,
-            tastiness,
-            max_amount - (price[index] / 2),
-            max_coupons - 1,
-            index + 1,
-        ) {
-            t + tastiness[index]
+        let eat_with_coupon = if max_coupons > 0 {
+            if let Some(t) = max_tastiness(
+                price,
+                tastiness,
+                max_amount - (price[index] / 2),
+                max_coupons - 1,
+                index + 1,
+            ) {
+                t + tastiness[index]
+            } else {
+                0
+            }
         } else {
             0
         };
