@@ -29,45 +29,16 @@ pub fn max_boxes_in_warehouse(mut boxes: Vec<i32>, mut warehouse: Vec<i32>) -> i
         i += 1;
         j -= 1;
     }
+    warehouse.sort();
+    let mut answer = 0;
     let mut box_index = 0;
-    let mut answer = if warehouse_min_value >= boxes[0] {
-        box_index += 1;
-        1
-    } else {
-        0
-    };
-    let mut warehouse_left_index = warehouse_min_index as i32 - 1;
-    let mut warehouse_right_index = warehouse_min_index as i32 + 1;
-    while (warehouse_left_index >= 0 || warehouse_right_index < warehouse.len() as i32)
-        && box_index < boxes.len()
-    {
-        let mut can_go_left = false;
-        let mut can_go_right = false;
-        if warehouse_left_index < 0 {
-            can_go_right = true;
-        } else if warehouse_right_index == warehouse.len() as i32 {
-            can_go_left = true;
-        } else {
-            if warehouse[warehouse_left_index as usize] < warehouse[warehouse_right_index as usize]
-            {
-                can_go_left = true;
-            } else {
-                can_go_right = true;
-            }
+    let mut warehouse_index = 0;
+    while box_index < boxes.len() && warehouse_index < warehouse.len() {
+        if boxes[box_index] <= warehouse[warehouse_index] {
+            answer += 1;
+            box_index += 1;
         }
-        if can_go_left {
-            if warehouse[warehouse_left_index as usize] >= boxes[box_index] {
-                answer += 1;
-                box_index += 1;
-            }
-            warehouse_left_index -= 1;
-        } else if can_go_right {
-            if warehouse[warehouse_right_index as usize] >= boxes[box_index] {
-                answer += 1;
-                box_index += 1;
-            }
-            warehouse_right_index += 1;
-        }
+        warehouse_index += 1;
     }
     answer
 }
