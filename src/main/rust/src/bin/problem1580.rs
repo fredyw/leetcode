@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/put-boxes-into-the-warehouse-ii/
-pub fn max_boxes_in_warehouse(mut boxes: Vec<i32>, warehouse: Vec<i32>) -> i32 {
+pub fn max_boxes_in_warehouse(mut boxes: Vec<i32>, mut warehouse: Vec<i32>) -> i32 {
     boxes.sort();
     let mut warehouse_min_index = 0;
     let mut warehouse_min_value = i32::MAX;
@@ -8,6 +8,18 @@ pub fn max_boxes_in_warehouse(mut boxes: Vec<i32>, warehouse: Vec<i32>) -> i32 {
             warehouse_min_value = *val;
             warehouse_min_index = i;
         }
+    }
+    let mut i = 1;
+    let mut j = warehouse.len() - 2;
+    while i < warehouse_min_index || j > warehouse_min_index {
+        if i < warehouse_min_index {
+            warehouse[i] = warehouse[i].min(warehouse[i - 1]);
+        }
+        if j > warehouse_min_index {
+            warehouse[j] = warehouse[j].min(warehouse[j + 1]);
+        }
+        i += 1;
+        j -= 1;
     }
     let mut box_index = 0;
     let mut answer = if warehouse_min_value >= boxes[0] {
@@ -68,8 +80,9 @@ fn main() {
     //     "{}",
     //     max_boxes_in_warehouse(vec![1, 2, 3], vec![1, 2, 3, 4])
     // ); // 3
-    println!(
-        "{}",
-        max_boxes_in_warehouse(vec![4, 5, 6, 2], vec![3, 2, 6, 3, 3, 7])
-    ); // 2
+    // println!(
+    //     "{}",
+    //     max_boxes_in_warehouse(vec![4, 5, 6, 2], vec![3, 2, 6, 3, 3, 7])
+    // ); // 2
+    println!("{}", max_boxes_in_warehouse(vec![1], vec![1])); // 2
 }
