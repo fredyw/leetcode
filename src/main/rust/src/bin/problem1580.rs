@@ -9,14 +9,22 @@ pub fn max_boxes_in_warehouse(mut boxes: Vec<i32>, mut warehouse: Vec<i32>) -> i
             warehouse_min_index = i;
         }
     }
-    let mut i = 1;
-    let mut j = warehouse.len() - 2;
+    let mut i = 0;
+    let mut j = warehouse.len() - 1;
     while i < warehouse_min_index || j > warehouse_min_index {
         if i < warehouse_min_index {
-            warehouse[i] = warehouse[i].min(warehouse[i - 1]);
+            warehouse[i] = if i == 0 {
+                warehouse[i]
+            } else {
+                warehouse[i].min(warehouse[i - 1])
+            };
         }
         if j > warehouse_min_index {
-            warehouse[j] = warehouse[j].min(warehouse[j + 1]);
+            warehouse[j] = if j == warehouse.len() - 1 {
+                warehouse[j]
+            } else {
+                warehouse[j].min(warehouse[j + 1])
+            };
         }
         i += 1;
         j -= 1;
@@ -65,24 +73,24 @@ pub fn max_boxes_in_warehouse(mut boxes: Vec<i32>, mut warehouse: Vec<i32>) -> i
 }
 
 fn main() {
-    // println!(
-    //     "{}",
-    //     max_boxes_in_warehouse(vec![1, 2, 2, 3, 4], vec![3, 4, 1, 2])
-    // ); // 4
-    // println!(
-    //     "{}",
-    //     max_boxes_in_warehouse(vec![3, 5, 5, 2], vec![2, 1, 3, 4, 5])
-    // ); // 3
-    // println!("{}", max_boxes_in_warehouse(vec![1, 2, 3], vec![3, 2, 4])); // 3
-    // println!("{}", max_boxes_in_warehouse(vec![1, 2, 3], vec![3, 4, 2])); // 3
-    // println!("{}", max_boxes_in_warehouse(vec![2, 2, 2], vec![1, 1, 1])); // 0
-    // println!(
-    //     "{}",
-    //     max_boxes_in_warehouse(vec![1, 2, 3], vec![1, 2, 3, 4])
-    // ); // 3
-    // println!(
-    //     "{}",
-    //     max_boxes_in_warehouse(vec![4, 5, 6, 2], vec![3, 2, 6, 3, 3, 7])
-    // ); // 2
-    println!("{}", max_boxes_in_warehouse(vec![1], vec![1])); // 2
+    println!(
+        "{}",
+        max_boxes_in_warehouse(vec![1, 2, 2, 3, 4], vec![3, 4, 1, 2])
+    ); // 4
+    println!(
+        "{}",
+        max_boxes_in_warehouse(vec![3, 5, 5, 2], vec![2, 1, 3, 4, 5])
+    ); // 3
+    println!("{}", max_boxes_in_warehouse(vec![1, 2, 3], vec![3, 2, 4])); // 3
+    println!("{}", max_boxes_in_warehouse(vec![1, 2, 3], vec![3, 4, 2])); // 3
+    println!("{}", max_boxes_in_warehouse(vec![2, 2, 2], vec![1, 1, 1])); // 0
+    println!(
+        "{}",
+        max_boxes_in_warehouse(vec![1, 2, 3], vec![1, 2, 3, 4])
+    ); // 3
+    println!(
+        "{}",
+        max_boxes_in_warehouse(vec![4, 5, 6, 2], vec![3, 2, 6, 3, 3, 7])
+    ); // 2
+    println!("{}", max_boxes_in_warehouse(vec![1], vec![1])); // 1
 }
