@@ -1,7 +1,10 @@
 // https://leetcode.com/problems/number-of-distinct-binary-strings-after-applying-operations/description/
 pub fn count_distinct_strings(s: String, k: i32) -> i32 {
-    let answer: u64 = 2u64.pow(s.len() as u32) / 2u64.pow(k as u32 - 1);
-    (answer % 1_000_000_007) as i32
+    let mut answer = 1;
+    for _ in 0..(s.len() as i32 - k + 1) {
+        answer = (2 * answer) % 1_000_000_007;
+    }
+    answer
 }
 
 fn main() {
