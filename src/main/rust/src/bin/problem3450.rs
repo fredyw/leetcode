@@ -1,6 +1,18 @@
+use std::collections::{HashMap, HashSet};
+
 // https://leetcode.com/problems/maximum-students-on-a-single-bench/description/
 pub fn max_students_on_bench(students: Vec<Vec<i32>>) -> i32 {
-    todo!()
+    let mut map: HashMap<i32, HashSet<i32>> = HashMap::new();
+    for s in students.iter() {
+        let student = s[0];
+        let bench = s[1];
+        map.entry(bench).or_insert(HashSet::new()).insert(student);
+    }
+    let mut answer = 0;
+    for (_, set) in map.iter() {
+        answer = answer.max(set.len() as i32);
+    }
+    answer
 }
 
 fn main() {
