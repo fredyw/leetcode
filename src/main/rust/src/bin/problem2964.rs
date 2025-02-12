@@ -7,10 +7,13 @@ pub fn divisible_triplet_count(mut nums: Vec<i32>, d: i32) -> i32 {
         nums[i] = nums[i] % d;
         *map.entry(nums[i]).or_insert(0) += 1;
     }
-    println!("{:?}", nums);
     let mut answer = 0;
+    let mut map1: HashMap<i32, i32> = HashMap::new();
     for i in 0..nums.len() {
-        for j in i + 1..nums.len() {
+        *map1.entry(nums[i]).or_insert(0) += 1;
+        let mut map2: HashMap<i32, i32> = HashMap::new();
+        for j in i + 1..nums.len() - 1 {
+            *map2.entry(nums[j]).or_insert(0) += 1;
             // (a + b) % d = 0
             // b = (d - (a % d)) % d
             let a = nums[i] + nums[j];
@@ -18,13 +21,8 @@ pub fn divisible_triplet_count(mut nums: Vec<i32>, d: i32) -> i32 {
             if let Some(count) = map.get(&b) {
                 answer += *count;
                 // Remove duplicates.
-                if nums[i] == b {
-                    answer -= 1;
-                }
-                if nums[j] == b {
-                    answer -= 1;
-                }
-                println!("a: {a}, b: {b}, count: {count}");
+                answer -= map1.get(&b).unwrap_or(&0);
+                answer -= map2.get(&b).unwrap_or(&0);
             }
         }
     }
@@ -33,6 +31,6 @@ pub fn divisible_triplet_count(mut nums: Vec<i32>, d: i32) -> i32 {
 
 fn main() {
     println!("{}", divisible_triplet_count(vec![3, 3, 4, 7, 8], 5)); // 3
-                                                                     // println!("{}", divisible_triplet_count(vec![3, 3, 3, 3], 3)); // 4
-                                                                     // println!("{}", divisible_triplet_count(vec![3, 3, 3, 3], 6)); // 0
+    println!("{}", divisible_triplet_count(vec![3, 3, 3, 3], 3)); // 4
+    println!("{}", divisible_triplet_count(vec![3, 3, 3, 3], 6)); // 0
 }
