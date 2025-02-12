@@ -12,7 +12,7 @@ pub fn divisible_triplet_count(mut nums: Vec<i32>, d: i32) -> i32 {
     for i in 0..nums.len() {
         *map1.entry(nums[i]).or_insert(0) += 1;
         let mut map2: HashMap<i32, i32> = HashMap::new();
-        for j in i + 1..nums.len() - 1 {
+        for j in i + 1..nums.len() {
             *map2.entry(nums[j]).or_insert(0) += 1;
             // (a + b) % d = 0
             // b = (d - (a % d)) % d
