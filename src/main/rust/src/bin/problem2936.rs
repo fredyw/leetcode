@@ -15,7 +15,17 @@ impl BigArray {
 }
 
 pub fn count_blocks(nums: BigArray) -> i32 {
-    todo!()
+    let mut answer = 0;
+    let mut count = 0;
+    for i in 0..nums.size() - 1 {
+        if nums.at(i) != nums.at(i + 1) {
+            count = 1;
+            answer += 1;
+        } else {
+            count += 1;
+        }
+    }
+    answer
 }
 
 fn main() {}
