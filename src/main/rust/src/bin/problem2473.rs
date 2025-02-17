@@ -1,5 +1,33 @@
+use std::cmp::Reverse;
+use std::collections::{BinaryHeap, HashMap};
+
 // https://leetcode.com/problems/minimum-cost-to-buy-apples/description/
 pub fn min_cost(n: i32, roads: Vec<Vec<i32>>, apple_cost: Vec<i32>, k: i32) -> Vec<i64> {
+    fn shortest_path(
+        graph: &HashMap<char, Vec<(char, i32)>>,
+        source: char,
+    ) -> HashMap<char, Option<i32>> {
+        let mut shortest_path: HashMap<char, Option<i32>> = HashMap::new();
+        shortest_path.insert(source, Some(0));
+        let mut heap: BinaryHeap<Reverse<(i32, char)>> = BinaryHeap::new();
+        heap.push(Reverse((0, source)));
+        while !heap.is_empty() {
+            if let Some(e) = heap.pop() {
+                let (_, from) = e.0;
+                for (to, cost) in graph.get(&from).unwrap_or(&vec![]) {
+                    let from_cost = shortest_path.get(&from).unwrap().unwrap();
+                    let to_cost = shortest_path.get(to).unwrap_or(&None).unwrap_or(i32::MAX);
+                    if to_cost > from_cost + cost {
+                        let new_cost = from_cost + cost;
+                        shortest_path.insert(*to, Some(new_cost));
+                        heap.push(Reverse((new_cost, *to)));
+                    }
+                }
+            }
+        }
+        shortest_path
+    }
+
     let mut answer: Vec<i64> = vec![i64::MAX; n as usize];
     let mut dp: Vec<Vec<i64>> = vec![vec![0; n as usize]; n as usize];
     for i in 0..n as usize {
