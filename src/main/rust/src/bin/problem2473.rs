@@ -22,14 +22,14 @@ pub fn min_cost(n: i32, roads: Vec<Vec<i32>>, apple_cost: Vec<i32>, k: i32) -> V
         answer[to] =
             answer[to].min(dp[to][from] + apple_cost[from] as i64 + (k as i64 * dp[to][from]));
     }
-    for k in 0..n as usize {
-        for i in 0..n as usize {
-            for j in 0..n as usize {
-                if dp[i][k] == i64::MAX || dp[k][j] == i64::MAX {
+    for c in 0..n as usize {
+        for a in 0..n as usize {
+            for b in 0..n as usize {
+                if dp[a][c] == i64::MAX || dp[c][b] == i64::MAX {
                     continue;
                 }
-                dp[i][j] = dp[i][j].min(dp[i][k] + dp[k][j]);
-                answer[i] = answer[i].min(dp[i][j] + apple_cost[j] as i64 + (k as i64 * dp[i][j]));
+                dp[a][b] = dp[a][b].min(dp[a][c] + dp[c][b]);
+                answer[a] = answer[a].min(dp[a][b] + apple_cost[b] as i64 + (k as i64 * dp[a][b]));
             }
         }
     }
@@ -52,13 +52,13 @@ fn main() {
             2
         )
     ); // [54,42,48,51]
-       // println!(
-       //     "{:?}",
-       //     min_cost(
-       //         3,
-       //         vec![vec![1, 2, 5], vec![2, 3, 1], vec![3, 1, 2]],
-       //         vec![2, 3, 1],
-       //         3
-       //     )
-       // ); // [2,3,1]
+    println!(
+        "{:?}",
+        min_cost(
+            3,
+            vec![vec![1, 2, 5], vec![2, 3, 1], vec![3, 1, 2]],
+            vec![2, 3, 1],
+            3
+        )
+    ); // [2,3,1]
 }
