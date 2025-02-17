@@ -1,5 +1,5 @@
 use std::cmp::Reverse;
-use std::collections::{BinaryHeap, HashMap};
+use std::collections::BinaryHeap;
 
 // https://leetcode.com/problems/minimum-cost-to-buy-apples/description/
 pub fn min_cost(n: i32, roads: Vec<Vec<i32>>, apple_cost: Vec<i32>, k: i32) -> Vec<i64> {
@@ -16,26 +16,27 @@ pub fn min_cost(n: i32, roads: Vec<Vec<i32>>, apple_cost: Vec<i32>, k: i32) -> V
     }
 
     fn shortest_path(
+        n: usize,
         graph: &Vec<Vec<(usize, i64)>>,
         apple_cost: &Vec<i32>,
         k: i64,
         source: usize,
     ) -> i64 {
-        let mut shortest_path: HashMap<usize, Option<i64>> = HashMap::new();
-        shortest_path.insert(source, Some(0));
+        let mut shortest_path: Vec<i64> = vec![i64::MAX; n];
+        shortest_path[source] = 0;
         let mut heap: BinaryHeap<Reverse<(i64, usize)>> = BinaryHeap::new();
         heap.push(Reverse((0, source)));
         let mut min_cost = i64::MAX;
         while !heap.is_empty() {
             if let Some(e) = heap.pop() {
                 let (current_cost, from) = e.0;
-                min_cost = min_cost.min(apple_cost[from as usize] as i64 + (k + 1) * current_cost);
+                min_cost = min_cost.min(apple_cost[from] as i64 + (k + 1) * current_cost);
                 for (to, cost) in graph[from].iter() {
-                    let from_cost = shortest_path.get(&from).unwrap().unwrap();
-                    let to_cost = shortest_path.get(to).unwrap_or(&None).unwrap_or(i64::MAX);
+                    let from_cost = shortest_path[from];
+                    let to_cost = shortest_path[*to];
                     if to_cost > from_cost + cost {
                         let new_cost = from_cost + cost;
-                        shortest_path.insert(*to, Some(new_cost));
+                        shortest_path[*to] = new_cost;
                         heap.push(Reverse((new_cost, *to)));
                     }
                 }
@@ -47,7 +48,13 @@ pub fn min_cost(n: i32, roads: Vec<Vec<i32>>, apple_cost: Vec<i32>, k: i32) -> V
     let mut answer: Vec<i64> = vec![];
     let graph = build_graph(n as usize, &roads);
     for i in 0..n {
-        answer.push(shortest_path(&graph, &apple_cost, k as i64, i as usize));
+        answer.push(shortest_path(
+            n as usize,
+            &graph,
+            &apple_cost,
+            k as i64,
+            i as usize,
+        ));
     }
     answer
 }
