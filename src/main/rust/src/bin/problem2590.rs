@@ -4,7 +4,7 @@ use std::collections::{HashMap, HashSet};
 #[derive(Debug)]
 struct TodoList {
     tasks: HashMap<i32, HashMap<i32, Task>>,
-    task_ids: HashMap<i32, i32>,
+    task_id: i32,
 }
 
 #[derive(Debug)]
@@ -30,7 +30,7 @@ impl TodoList {
     fn new() -> Self {
         Self {
             tasks: HashMap::new(),
-            task_ids: HashMap::new(),
+            task_id: 0,
         }
     }
 
@@ -41,15 +41,13 @@ impl TodoList {
         due_date: i32,
         tags: Vec<String>,
     ) -> i32 {
-        let task_id = self.task_ids.entry(user_id).or_insert(0);
-        *task_id += 1;
-        let task_id = *task_id;
+        self.task_id += 1;
         let tasks = self.tasks.entry(user_id).or_insert(HashMap::new());
         tasks.insert(
-            task_id,
+            self.task_id,
             Task::new(task_description, due_date, tags.into_iter().collect()),
         );
-        task_id
+        self.task_id
     }
 
     fn get_all_tasks(&self, user_id: i32) -> Vec<String> {
