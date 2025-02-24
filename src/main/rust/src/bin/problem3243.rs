@@ -1,7 +1,22 @@
+use std::collections::VecDeque;
+
 // https://leetcode.com/problems/shortest-distance-after-road-addition-queries-i/
 pub fn shortest_distance_after_queries(n: i32, queries: Vec<Vec<i32>>) -> Vec<i32> {
     fn shortest_path(graph: &Vec<Vec<usize>>, start: usize) -> i32 {
-        0
+        let mut shortest_distance = i32::MAX;
+        let mut deque: VecDeque<(usize, i32)> = VecDeque::new();
+        deque.push_back((start, 0));
+        while !deque.is_empty() {
+            if let Some((node, distance)) = deque.pop_front() {
+                if node == graph.len() - 1 {
+                    shortest_distance = shortest_distance.min(distance);
+                }
+                for adj in graph[node].iter() {
+                    deque.push_back((*adj, distance + 1));
+                }
+            }
+        }
+        shortest_distance
     }
 
     let mut graph: Vec<Vec<usize>> = vec![vec![]; n as usize];
@@ -23,8 +38,8 @@ fn main() {
         "{:?}",
         shortest_distance_after_queries(5, vec![vec![2, 4], vec![0, 2], vec![0, 4]])
     ); // [3,2,1]
-       // println!(
-       //     "{:?}",
-       //     shortest_distance_after_queries(4, vec![vec![0, 3], vec![0, 2]])
-       // ); // [1,1]
+    println!(
+        "{:?}",
+        shortest_distance_after_queries(4, vec![vec![0, 3], vec![0, 2]])
+    ); // [1,1]
 }
