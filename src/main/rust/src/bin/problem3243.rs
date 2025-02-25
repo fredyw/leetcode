@@ -4,6 +4,7 @@ use std::collections::VecDeque;
 pub fn shortest_distance_after_queries(n: i32, queries: Vec<Vec<i32>>) -> Vec<i32> {
     fn shortest_path(graph: &Vec<Vec<usize>>, start: usize, shortest_paths: &mut Vec<i32>) {
         let mut deque: VecDeque<(usize, i32)> = VecDeque::new();
+        let mut visited: Vec<bool> = vec![false; graph.len()];
         deque.push_back((
             start,
             if shortest_paths[start] == i32::MAX {
@@ -16,7 +17,11 @@ pub fn shortest_distance_after_queries(n: i32, queries: Vec<Vec<i32>>) -> Vec<i3
             if let Some((node, distance)) = deque.pop_front() {
                 shortest_paths[node] = shortest_paths[node].min(distance);
                 for adj in graph[node].iter() {
+                    if visited[*adj] {
+                        continue;
+                    }
                     deque.push_back((*adj, distance + 1));
+                    visited[*adj] = true;
                 }
             }
         }
