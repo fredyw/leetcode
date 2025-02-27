@@ -40,37 +40,48 @@ pub fn generate_sentences(synonyms: Vec<Vec<String>>, text: String) -> Vec<Strin
 }
 
 fn main() {
-    println!(
-        "{:?}",
-        generate_sentences(
-            vec![
-                vec!["happy".to_string(), "joy".to_string()],
-                vec!["sad".to_string(), "sorrow".to_string()],
-                vec!["joy".to_string(), "cheerful".to_string()]
-            ],
-            "I am happy today but was sad yesterday".to_string()
-        )
-    ); // ["I am cheerful today but was sad yesterday","I am cheerful today but was sorrow yesterday","I am happy today but was sad yesterday","I am happy today but was sorrow yesterday","I am joy today but was sad yesterday","I am joy today but was sorrow yesterday"]
-    println!(
-        "{:?}",
-        generate_sentences(
-            vec![
-                vec!["happy".to_string(), "joy".to_string()],
-                vec!["cheerful".to_string(), "glad".to_string()]
-            ],
-            "I am happy today but was sad yesterday".to_string()
-        )
-    ); // ["I am happy today but was sad yesterday","I am joy today but was sad yesterday"]
+    // println!(
+    //     "{:?}",
+    //     generate_sentences(
+    //         vec![
+    //             vec!["happy".to_string(), "joy".to_string()],
+    //             vec!["sad".to_string(), "sorrow".to_string()],
+    //             vec!["joy".to_string(), "cheerful".to_string()]
+    //         ],
+    //         "I am happy today but was sad yesterday".to_string()
+    //     )
+    // ); // ["I am cheerful today but was sad yesterday","I am cheerful today but was sorrow yesterday","I am happy today but was sad yesterday","I am happy today but was sorrow yesterday","I am joy today but was sad yesterday","I am joy today but was sorrow yesterday"]
+    // println!(
+    //     "{:?}",
+    //     generate_sentences(
+    //         vec![
+    //             vec!["happy".to_string(), "joy".to_string()],
+    //             vec!["cheerful".to_string(), "glad".to_string()]
+    //         ],
+    //         "I am happy today but was sad yesterday".to_string()
+    //     )
+    // ); // ["I am happy today but was sad yesterday","I am joy today but was sad yesterday"]
+    // println!(
+    //     "{:?}",
+    //     generate_sentences(
+    //         vec![
+    //             vec!["a".to_string(), "b".to_string()],
+    //             vec!["b".to_string(), "c".to_string()],
+    //             vec!["x".to_string(), "y".to_string()],
+    //             vec!["y".to_string(), "z".to_string()],
+    //         ],
+    //         "a x".to_string()
+    //     )
+    // ); // ["a x","a y","a z","b x","b y","b z","c x","c y","c z"]
     println!(
         "{:?}",
         generate_sentences(
             vec![
                 vec!["a".to_string(), "b".to_string()],
-                vec!["b".to_string(), "c".to_string()],
                 vec!["x".to_string(), "y".to_string()],
-                vec!["y".to_string(), "z".to_string()],
+                vec!["i".to_string(), "j".to_string()],
             ],
-            "a x".to_string()
+            "a x i".to_string()
         )
-    ); // ["a x","a y","a z","b x","b y","b z","c x","c y","c z"]
+    ); // ["a x i","a x j","a y i","a y j","b x i","b x j","b y i","b y j"]
 }
