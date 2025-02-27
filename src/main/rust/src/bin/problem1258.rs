@@ -17,6 +17,14 @@ pub fn generate_sentences(synonyms: Vec<Vec<String>>, text: String) -> Vec<Strin
         while let Some(to) = synonyms.get(&from) {
             from = to.to_owned();
             words[indexes[index]] = to.clone();
+            println!(
+                "- {}",
+                words
+                    .iter()
+                    .map(|w| w.clone())
+                    .collect::<Vec<_>>()
+                    .join(" ")
+            );
             gen(synonyms, words, indexes, index + 1, sentences);
             words[indexes[index]] = words[indexes[index]].clone();
         }
