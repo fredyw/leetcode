@@ -3,7 +3,7 @@ use std::collections::{BTreeSet, HashMap, HashSet};
 // https://leetcode.com/problems/synonymous-sentences/description/
 pub fn generate_sentences(synonyms: Vec<Vec<String>>, text: String) -> Vec<String> {
     fn gen(
-        synonyms: &HashMap<String, String>,
+        synonyms: &HashMap<String, Vec<String>>,
         words: &mut Vec<String>,
         indexes: &Vec<usize>,
         index: usize,
@@ -13,9 +13,10 @@ pub fn generate_sentences(synonyms: Vec<Vec<String>>, text: String) -> Vec<Strin
         if index == indexes.len() {
             return;
         }
-        let from = words[indexes[index]].clone();
-        gen(synonyms, words, indexes, index + 1, sentences);
         let mut visited: HashSet<String> = HashSet::new();
+        let from = words[indexes[index]].clone();
+        visited.insert(from.clone());
+        gen(synonyms, words, indexes, index + 1, sentences);
         while let Some(to) = synonyms.get(&words[indexes[index]]) {
             if visited.contains(to) {
                 break;
@@ -51,12 +52,12 @@ pub fn generate_sentences(synonyms: Vec<Vec<String>>, text: String) -> Vec<Strin
     let mut words: Vec<String> = text.split(" ").map(|w| w.to_owned()).collect();
     let mut indexes: Vec<usize> = vec![];
     for (i, word) in words.iter().enumerate() {
-        if synonyms.contains_key(word) {
+        if synonym_map.contains_key(word) {
             indexes.push(i);
         }
     }
     let mut answer = BTreeSet::new();
-    gen(&synonyms, &mut words, &indexes, 0, &mut answer);
+    gen(&synonym_map, &mut words, &indexes, 0, &mut answer);
     answer.into_iter().collect()
 }
 
