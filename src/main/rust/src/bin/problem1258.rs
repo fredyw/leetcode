@@ -14,8 +14,7 @@ pub fn generate_sentences(synonyms: Vec<Vec<String>>, text: String) -> Vec<Strin
             return;
         }
         let mut visited: HashSet<&str> = HashSet::new();
-        let from = words[indexes[index]];
-        visited.insert(&from);
+        visited.insert(&words[indexes[index]]);
         gen(synonym_map, words, indexes, index + 1, sentences);
         while let Some(synonyms) = synonym_map.get(words[indexes[index]]) {
             let mut count = 0;
@@ -32,7 +31,6 @@ pub fn generate_sentences(synonyms: Vec<Vec<String>>, text: String) -> Vec<Strin
                 break;
             }
         }
-        words[indexes[index]] = from;
     }
 
     let mut synonym_map: HashMap<&str, Vec<&str>> = HashMap::new();
