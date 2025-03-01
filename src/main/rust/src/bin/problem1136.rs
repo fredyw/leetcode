@@ -9,4 +9,9 @@ fn main() {
         "{}",
         minimum_semesters(3, vec![vec![1, 2], vec![2, 3], vec![3, 1]])
     ); // -1
+    println!(
+        "{}",
+        minimum_semesters(3, vec![vec![1, 2], vec![2, 3], vec![3, 1], vec![4, 1]])
+    ); // -1
+    println!("{}", minimum_semesters(3, vec![vec![1, 2], vec![2, 3]])); // 3
 }
