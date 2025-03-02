@@ -19,13 +19,15 @@ pub fn minimum_semesters(n: i32, relations: Vec<Vec<i32>>) -> i32 {
     }
     let mut answer = 0;
     while !graph.is_empty() {
+        let mut to_be_removed: Vec<i32> = vec![];
         let mut to_be_updated: Vec<i32> = vec![];
         let mut has_removal = false;
-        for (node, count) in in_degrees.iter() {
+        for (node, count) in in_degrees.iter_mut() {
             if *count == 0 {
                 for adj in graph.get(node).unwrap_or(&vec![]) {
                     to_be_updated.push(*adj);
                 }
+                to_be_removed.push(*node);
                 graph.remove(node);
                 has_removal = true;
             }
@@ -33,6 +35,9 @@ pub fn minimum_semesters(n: i32, relations: Vec<Vec<i32>>) -> i32 {
         // Has cycle.
         if !has_removal {
             return -1;
+        }
+        for node in to_be_removed {
+            in_degrees.remove(&node);
         }
         for node in to_be_updated {
             *in_degrees.entry(node).or_insert(0) -= 1;
