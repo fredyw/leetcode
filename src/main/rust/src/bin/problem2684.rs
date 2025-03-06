@@ -1,6 +1,51 @@
 // https://leetcode.com/problems/maximum-number-of-moves-in-a-grid/description/
 pub fn max_moves(grid: Vec<Vec<i32>>) -> i32 {
-    todo!()
+    fn max_moves(grid: &Vec<Vec<i32>>, row: i32, col: i32, memo: &mut Vec<Vec<i32>>) -> i32 {
+        let num_rows = grid.len() as i32;
+        let num_cols = if num_rows > 0 { grid[0].len() } else { 0 } as i32;
+        if memo[row as usize][col as usize] != -1 {
+            return memo[row as usize][col as usize];
+        }
+        let a = if row - 1 >= 0
+            && col + 1 < num_cols
+            && grid[row as usize][col as usize] < grid[row as usize - 1][col as usize + 1]
+        {
+            max_moves(grid, row - 1, col + 1, memo) + 1
+        } else {
+            0
+        };
+        let b = if col + 1 < num_cols
+            && grid[row as usize][col as usize] < grid[row as usize][col as usize + 1]
+        {
+            max_moves(grid, row, col + 1, memo) + 1
+        } else {
+            0
+        };
+        let c = if row + 1 < num_rows
+            && col + 1 < num_cols
+            && grid[row as usize][col as usize] < grid[row as usize + 1][col as usize + 1]
+        {
+            max_moves(grid, row + 1, col + 1, memo) + 1
+        } else {
+            0
+        };
+        let max = a.max(b.max(c));
+        memo[row as usize][col as usize] = max;
+        max
+    }
+
+    let mut answer = 0;
+    let num_rows = grid.len();
+    let num_cols = if num_rows > 0 { grid[0].len() } else { 0 };
+    for row in 0..grid.len() {
+        answer = answer.max(max_moves(
+            &grid,
+            row as i32,
+            0,
+            &mut vec![vec![-1; num_cols]; num_rows],
+        ));
+    }
+    answer
 }
 
 fn main() {
