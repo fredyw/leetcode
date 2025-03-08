@@ -12,4 +12,9 @@ fn main() {
         "{:?}",
         find_subtree_sizes(vec![-1, 0, 4, 0, 1], "abbba".to_string())
     ); // [5,2,1,1,1]
+    println!(
+        "{:?}",
+        find_subtree_sizes(vec![-1, 0, 0, 1, 1, 1, 3], "abaabcb".to_string())
+    ); // [7,4,1,1,1,1,1]
+    println!("{:?}", find_subtree_sizes(vec![-1, 0, 1], "a".to_string())); // [3,2,1]
 }
