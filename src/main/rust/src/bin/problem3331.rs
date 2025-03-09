@@ -43,12 +43,12 @@ pub fn find_subtree_sizes(mut parent: Vec<i32>, s: String) -> Vec<i32> {
         size
     }
 
-    let tree: Vec<Vec<usize>> = build_tree(&parent);
+    let original_tree: Vec<Vec<usize>> = build_tree(&parent);
     let chars: Vec<char> = s.chars().collect();
-    update_parents(&tree, &chars, 0, &mut parent, &mut HashMap::new());
-    let tree = build_tree(&parent); // update the graph
+    update_parents(&original_tree, &chars, 0, &mut parent, &mut HashMap::new());
+    let updated_tree = build_tree(&parent);
     let mut answer = vec![0; parent.len()];
-    count_subtree_sizes(&tree, 0, &mut answer);
+    count_subtree_sizes(&updated_tree, 0, &mut answer);
     answer
 }
 
