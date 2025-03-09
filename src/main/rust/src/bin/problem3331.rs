@@ -26,7 +26,6 @@ fn main() {
     ); // [5,4,1,2,1]
     println!(
         "{:?}",
-        find_subtree_sizes(vec![-1,0,1,2], "abab".to_string())
+        find_subtree_sizes(vec![-1, 0, 1, 2], "abab".to_string())
     ); // [4,2,1,1]
-}
 }
