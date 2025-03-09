@@ -1,6 +1,20 @@
 // https://leetcode.com/problems/fruits-into-baskets-ii/description/
 pub fn num_of_unplaced_fruits(fruits: Vec<i32>, baskets: Vec<i32>) -> i32 {
-    todo!()
+    let mut answer = fruits.len() as i32;
+    let mut visited: Vec<bool> = vec![false; baskets.len()];
+    for i in 0..fruits.len() {
+        for j in 0..baskets.len() {
+            if visited[j] {
+                continue;
+            }
+            if fruits[i] <= baskets[j] {
+                visited[j] = true;
+                answer -= 1;
+                break;
+            }
+        }
+    }
+    answer
 }
 
 fn main() {
