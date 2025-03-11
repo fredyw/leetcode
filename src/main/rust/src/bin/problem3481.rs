@@ -49,4 +49,15 @@ fn main() {
             "%A%_%B%_%C%".to_string()
         )
     ); // "bce_ace_abcace"
+    println!(
+        "{}",
+        apply_substitutions(
+            vec![
+                vec!["C".to_string(), "abc%B%".to_string()],
+                vec!["A".to_string(), "bce".to_string()],
+                vec!["B".to_string(), "ace".to_string()]
+            ],
+            "%A%_%B%_%C%".to_string()
+        )
+    ); // "bce_ace_abcace"
 }
