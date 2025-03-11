@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 // https://leetcode.com/problems/apply-substitutions/
 pub fn apply_substitutions(replacements: Vec<Vec<String>>, text: String) -> String {
-    fn substitute(s: &str, map: &HashMap<String, String>) -> String {
+    fn substitute(s: &str, map: &HashMap<&str, &str>) -> String {
         let mut string = String::new();
         let chars: Vec<char> = s.chars().collect();
         let mut i = 0;
@@ -15,7 +15,7 @@ pub fn apply_substitutions(replacements: Vec<Vec<String>>, text: String) -> Stri
                     j += 1;
                 }
                 i = j;
-                string.push_str(map.get(&s).unwrap());
+                string.push_str(&substitute(map.get(s.as_str()).unwrap(), map));
             } else {
                 string.push(chars[i]);
             }
@@ -24,15 +24,11 @@ pub fn apply_substitutions(replacements: Vec<Vec<String>>, text: String) -> Stri
         string
     }
 
-    let mut map: HashMap<String, String> = HashMap::new();
-    for replacement in replacements {
-        map.insert(replacement[0].clone(), replacement[1].clone());
+    let mut map: HashMap<&str, &str> = HashMap::new();
+    for replacement in replacements.iter() {
+        map.insert(&replacement[0], &replacement[1]);
     }
-    let mut answer = substitute(&text, &map);
-    while answer.contains(&"%") {
-        answer = substitute(&answer, &map);
-    }
-    answer
+    substitute(&text, &map)
 }
 
 fn main() {
