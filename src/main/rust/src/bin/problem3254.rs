@@ -27,5 +27,5 @@ fn main() {
     println!("{:?}", results_array(vec![2, 2, 2, 2, 2], 4)); // [-1,-1]
     println!("{:?}", results_array(vec![3, 2, 3, 2, 3, 2], 2)); // [-1,3,-1,3,-1]
     println!("{:?}", results_array(vec![3, 2, 3, 4, 2, 3, 4, 2], 3)); // [-1,4,-1,-1,4,-1]
-    println!("{:?}", results_array(vec![1, 2, 3, 4, 5, 6, 7, 8], 3)); // [3,4,5,6,7,8]]
+    println!("{:?}", results_array(vec![1, 2, 3, 4, 5, 6, 7, 8], 3)); // [3,4,5,6,7,8]
 }
