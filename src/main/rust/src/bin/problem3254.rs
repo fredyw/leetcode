@@ -3,16 +3,16 @@ pub fn results_array(nums: Vec<i32>, k: i32) -> Vec<i32> {
     let mut answer = vec![];
     let mut i = 0;
     while i < nums.len() - k as usize + 1 {
-        let mut has_power = true;
+        let mut is_sorted = true;
         let mut j = i;
         while i + (k as usize) - 1 < nums.len() && j < i + k as usize - 1 {
             if nums[j] + 1 != nums[j + 1] {
-                has_power = false;
+                is_sorted = false;
                 break;
             }
             j += 1;
         }
-        if has_power {
+        if is_sorted {
             answer.push(nums[j]);
         } else {
             answer.push(-1);
