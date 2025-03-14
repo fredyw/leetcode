@@ -5,14 +5,14 @@ pub fn results_array(nums: Vec<i32>, k: i32) -> Vec<i32> {
     }
     let mut answer = vec![-1; nums.len() - k as usize + 1];
     let mut count = 1;
-    for i in 0..nums.len() - 1 {
-        if nums[i] + 1 == nums[i + 1] {
+    for i in 1..nums.len() {
+        if nums[i - 1] + 1 == nums[i] {
             count += 1;
         } else {
             count = 1;
         }
         if count >= k {
-            answer[(i as i32 - k + 2) as usize] = nums[i + 1];
+            answer[(i as i32 - k + 1) as usize] = nums[i];
         }
     }
     answer
