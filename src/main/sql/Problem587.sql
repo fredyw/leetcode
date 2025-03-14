@@ -6,7 +6,7 @@ with request_sent_count as (
     )
 ),
 request_accepted_count as (
-select cast(count(*) as decimal) as count from (
+    select cast(count(*) as decimal) as count from (
         select distinct requester_id, accepter_id
         from RequestAccepted
     )
