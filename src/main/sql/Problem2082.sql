@@ -1,0 +1,1 @@
+-- https://leetcode.com/problems/the-number-of-rich-customers/description/
