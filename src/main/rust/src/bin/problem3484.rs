@@ -39,8 +39,8 @@ impl Spreadsheet {
     }
 
     fn to_row_col(&self, cell: &str) -> (usize, usize) {
-        let row = *(&cell[0..1].chars().next().unwrap()) as usize - 'A' as usize;
-        let col = *(&cell[1..].parse::<usize>().unwrap());
+        let row = *(&cell[1..].parse::<usize>().unwrap()) - 1;
+        let col = *(&cell[0..1].chars().next().unwrap()) as usize - 'A' as usize;
         (row, col)
     }
 }
@@ -54,4 +54,11 @@ fn main() {
     println!("{}", spreadsheet.get_value("=A1+B2".to_string())); // 25
     spreadsheet.reset_cell("A1".to_string());
     println!("{}", spreadsheet.get_value("=A1+B2".to_string())); // 15
+
+    let mut spreadsheet = Spreadsheet::new(458);
+    println!("{}", spreadsheet.get_value("=O126+10272".to_string())); // 12
+
+    let mut spreadsheet = Spreadsheet::new(24);
+    spreadsheet.set_cell("B24".to_string(), 66688);
+    spreadsheet.reset_cell("O15".to_string());
 }
