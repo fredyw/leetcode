@@ -1,6 +1,29 @@
+use std::collections::HashSet;
+
 // https://leetcode.com/problems/maximum-unique-subarray-sum-after-deletion/description/
 pub fn max_sum(nums: Vec<i32>) -> i32 {
-    todo!()
+    let mut answer = 0;
+    let mut set: HashSet<i32> = HashSet::new();
+    let mut all_negative = true;
+    let mut max = i32::MIN;
+    for num in nums.iter() {
+        if *num > 0 {
+            all_negative = false;
+        }
+        max = max.max(*num);
+        if set.contains(num) {
+            continue;
+        }
+        if answer + num > answer {
+            answer += num;
+        }
+        set.insert(*num);
+    }
+    if all_negative {
+        max
+    } else {
+        answer
+    }
 }
 
 fn main() {
