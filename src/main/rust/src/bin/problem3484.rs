@@ -1,21 +1,47 @@
 // https://leetcode.com/problems/design-spreadsheet/
-struct Spreadsheet {}
+struct Spreadsheet {
+    grid: Vec<Vec<i32>>,
+}
 
 impl Spreadsheet {
     fn new(rows: i32) -> Self {
-        Self {}
+        Self {
+            grid: vec![vec![0; 26]; rows as usize],
+        }
     }
 
     fn set_cell(&mut self, cell: String, value: i32) {
-        todo!()
+        let (row, col) = self.to_row_col(&cell);
+        self.grid[row][col] = value;
     }
 
-    fn reset_cell(&self, cell: String) {
-        todo!()
+    fn reset_cell(&mut self, cell: String) {
+        let (row, col) = self.to_row_col(&cell);
+        self.grid[row][col] = 0;
     }
 
     fn get_value(&self, formula: String) -> i32 {
-        todo!()
+        let split = &formula[1..].split("+").collect::<Vec<&str>>();
+        let mut sum = 0;
+        if let Ok(n) = split[0].parse::<i32>() {
+            sum += n;
+        } else {
+            let (row, col) = self.to_row_col(split[0]);
+            sum += self.grid[row][col];
+        }
+        if let Ok(n) = split[1].parse::<i32>() {
+            sum += n;
+        } else {
+            let (row, col) = self.to_row_col(split[1]);
+            sum += self.grid[row][col];
+        }
+        sum
+    }
+
+    fn to_row_col(&self, cell: &str) -> (usize, usize) {
+        let row = *(&cell[0..1].chars().next().unwrap()) as usize - 'A' as usize;
+        let col = *(&cell[1..].parse::<usize>().unwrap());
+        (row, col)
     }
 }
 
