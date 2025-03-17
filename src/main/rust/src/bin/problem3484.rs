@@ -55,7 +55,7 @@ fn main() {
     spreadsheet.reset_cell("A1".to_string());
     println!("{}", spreadsheet.get_value("=A1+B2".to_string())); // 15
 
-    let mut spreadsheet = Spreadsheet::new(458);
+    let spreadsheet = Spreadsheet::new(458);
     println!("{}", spreadsheet.get_value("=O126+10272".to_string())); // 12
 
     let mut spreadsheet = Spreadsheet::new(24);
