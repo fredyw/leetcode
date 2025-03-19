@@ -1,13 +1,9 @@
 // https://leetcode.com/problems/phone-number-prefix/description/
-pub fn phone_prefix(numbers: Vec<String>) -> bool {
-    for (i, num1) in numbers.iter().enumerate() {
-        for (j, num2) in numbers.iter().enumerate() {
-            if i == j {
-                continue;
-            }
-            if num1.starts_with(num2) {
-                return false;
-            }
+pub fn phone_prefix(mut numbers: Vec<String>) -> bool {
+    numbers.sort();
+    for i in 0..numbers.len() - 1 {
+        if numbers[i + 1].starts_with(&numbers[i]) {
+            return false;
         }
     }
     true
