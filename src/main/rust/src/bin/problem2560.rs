@@ -1,5 +1,11 @@
 // https://leetcode.com/problems/house-robber-iv/
 pub fn min_capability(nums: Vec<i32>, k: i32) -> i32 {
+    let mut min = i32::MAX;
+    let mut max = i32::MIN;
+    for num in nums.iter() {
+        min = min.min(*num);
+        max = max.max(*num);
+    }
     todo!()
 }
 
