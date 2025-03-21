@@ -1,0 +1,1 @@
+-- https://leetcode.com/problems/highest-salaries-difference/description/
