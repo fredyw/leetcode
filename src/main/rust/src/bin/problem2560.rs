@@ -6,7 +6,10 @@ pub fn min_capability(nums: Vec<i32>, k: i32) -> i32 {
         min = min.min(*num);
         max = max.max(*num);
     }
-    todo!()
+    while min < max {
+        let mid = (min + min) / 2;
+    }
+    min
 }
 
 fn main() {
