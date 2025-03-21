@@ -7,7 +7,21 @@ pub fn min_capability(nums: Vec<i32>, k: i32) -> i32 {
         max = max.max(*num);
     }
     while min < max {
-        let mid = (min + min) / 2;
+        let mid = (min + max) / 2;
+        let mut i = 0;
+        let mut thefts = 0;
+        while i < nums.len() {
+            if nums[i] <= mid {
+                thefts += 1;
+                i += 1;
+            }
+            i += 1;
+        }
+        if thefts >= k {
+            max = mid;
+        } else {
+            min = mid + 1;
+        }
     }
     min
 }
