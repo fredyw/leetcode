@@ -1,26 +1,18 @@
 // https://leetcode.com/problems/maximize-score-after-pair-deletions/
 pub fn max_score(nums: Vec<i32>) -> i32 {
-    fn max_score(nums: &Vec<i32>, i: usize, j: usize, memo: &mut Vec<Vec<i32>>) -> i32 {
-        if j - i + 1 <= 2 {
-            return 0;
+    let mut answer = nums.iter().sum::<i32>();
+    if nums.len() % 2 == 0 {
+        let mut min = i32::MAX;
+        for i in 0..nums.len() - 1 {
+            let n = nums[i] + nums[i + 1];
+            min = min.min(n);
         }
-        if memo[i][j] != -1 {
-            return memo[i][j];
-        }
-        let a = max_score(nums, i + 2, j, memo) + nums[i] + nums[i + 1];
-        let b = max_score(nums, i, j - 2, memo) + nums[j] + nums[j - 1];
-        let c = max_score(nums, i + 1, j - 1, memo) + nums[i] + nums[j];
-        let max = a.max(b.max(c));
-        memo[i][j] = max;
-        max
+        answer -= min;
+    } else {
+        let min = *nums.iter().min().unwrap();
+        answer -= min;
     }
-
-    max_score(
-        &nums,
-        0,
-        nums.len() - 1,
-        &mut vec![vec![-1; nums.len()]; nums.len()],
-    )
+    answer
 }
 
 fn main() {
