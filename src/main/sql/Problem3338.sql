@@ -1,0 +1,1 @@
+-- https://leetcode.com/problems/second-highest-salary-ii/description/
