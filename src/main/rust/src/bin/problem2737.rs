@@ -37,4 +37,13 @@ fn main() {
             vec![0, 1]
         )
     ); // -1
+    println!(
+        "{}",
+        minimum_distance(
+            4,
+            vec![vec![1, 0, 1], vec![2, 3, 3], vec![3, 2, 2]],
+            3,
+            vec![0, 1]
+        )
+    ); // 5
 }
