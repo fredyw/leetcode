@@ -1,6 +1,12 @@
 // https://leetcode.com/problems/minimum-cost-to-reach-every-position/description/
 pub fn min_costs(cost: Vec<i32>) -> Vec<i32> {
-    todo!()
+    let mut answer = vec![];
+    let mut min = i32::MAX;
+    for c in cost {
+        min = min.min(c);
+        answer.push(min);
+    }
+    answer
 }
 
 fn main() {
