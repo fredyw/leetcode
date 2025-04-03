@@ -3,8 +3,8 @@ use std::cmp::Ordering;
 // https://leetcode.com/problems/make-lexicographically-smallest-array-by-swapping-elements/
 pub fn lexicographically_smallest_array(mut nums: Vec<i32>, limit: i32) -> Vec<i32> {
     nums.sort_by(|a, b| {
-        if (*a - *b).abs() <= limit {
-            a.cmp(&b)
+        if (a - b).abs() <= limit {
+            a.cmp(b)
         } else {
             Ordering::Equal
         }
@@ -25,4 +25,8 @@ fn main() {
         "{:?}",
         lexicographically_smallest_array(vec![1, 7, 28, 19, 10], 3)
     ); // [1,7,28,19,10]
+    println!(
+        "{:?}",
+        lexicographically_smallest_array(vec![1, 60, 34, 84, 62, 56, 39, 76, 49, 38], 4)
+    ); // [1,56,34,84,60,62,38,76,49,39]
 }
