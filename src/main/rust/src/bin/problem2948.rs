@@ -1,6 +1,15 @@
+use std::cmp::Ordering;
+
 // https://leetcode.com/problems/make-lexicographically-smallest-array-by-swapping-elements/
-pub fn lexicographically_smallest_array(nums: Vec<i32>, limit: i32) -> Vec<i32> {
-    todo!()
+pub fn lexicographically_smallest_array(mut nums: Vec<i32>, limit: i32) -> Vec<i32> {
+    nums.sort_by(|a, b| {
+        if (*a - *b).abs() <= limit {
+            a.cmp(&b)
+        } else {
+            Ordering::Equal
+        }
+    });
+    nums
 }
 
 fn main() {
