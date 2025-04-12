@@ -1,8 +1,11 @@
 -- https://leetcode.com/problems/the-number-of-users-that-are-eligible-for-discount/
-CREATE OR REPLACE FUNCTION getUserIDs(startDate DATE, endDate DATE, minAmount INT) RETURNS INT AS $$
-BEGIN
-  RETURN (
-	  
-  );
-END;
-$$ LANGUAGE plpgsql;
+create or replace function getUserIDs(startDate date, endDate date, minAmount int) returns int as $$
+begin
+    return (
+	    select count(distinct user_id) as user_cnt
+        from Purchases
+        where time_stamp between startDate and endDate
+              and amount >= minAmount
+    );
+end;
+$$ language plpgsql;
