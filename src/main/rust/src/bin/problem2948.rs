@@ -2,16 +2,19 @@
 pub fn lexicographically_smallest_array(nums: Vec<i32>, limit: i32) -> Vec<i32> {
     let mut sorted_nums = nums.clone();
     sorted_nums.sort();
-    let mut groups: Vec<Vec<(usize, i32)>> = vec![];
+    let mut groups: Vec<Vec<i32>> = vec![];
     let mut same_group = false;
     for i in 0..sorted_nums.len() - 1 {
         if sorted_nums[i + 1] - sorted_nums[i] <= limit {
             if !same_group {
                 groups.push(vec![]);
             }
-            groups.last_mut().unwrap().push((i, sorted_nums[i]));
+            groups.last_mut().unwrap().push(sorted_nums[i]);
             same_group = true;
         } else {
+            if same_group {
+                groups.last_mut().unwrap().push(sorted_nums[i]);
+            }
             same_group = false;
         }
     }
