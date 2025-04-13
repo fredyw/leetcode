@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/minimum-operations-to-make-array-sum-divisible-by-k/description/
 pub fn min_operations(nums: Vec<i32>, k: i32) -> i32 {
-    todo!()
+    nums.iter().sum::<i32>() % k
 }
 
 fn main() {
