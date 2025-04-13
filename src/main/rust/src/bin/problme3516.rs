@@ -1,6 +1,12 @@
 // https://leetcode.com/problems/find-closest-person/description/
 pub fn find_closest(x: i32, y: i32, z: i32) -> i32 {
-    todo!()
+    if (x - z).abs() < (y - z).abs() {
+        1
+    } else if (x - z).abs() > (y - z).abs() {
+        2
+    } else {
+        0
+    }
 }
 
 fn main() {
