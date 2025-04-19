@@ -15,4 +15,8 @@ fn main() {
         "{:?}",
         same_end_substring_count("abcd".to_string(), vec![vec![0, 3]])
     ); // [4]
+    println!(
+        "{:?}",
+        same_end_substring_count("aaaabbbccd".to_string(), vec![vec![0, 9]])
+    ); // [20]
 }
