@@ -1,6 +1,20 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/number-of-same-end-substrings/description/
 pub fn same_end_substring_count(s: String, queries: Vec<Vec<i32>>) -> Vec<i32> {
-    todo!()
+    let mut answer = vec![];
+    for query in queries {
+        let sub = &s[query[0] as usize..=query[1] as usize];
+        let mut map: HashMap<char, i32> = HashMap::new();
+        let mut sum = 0;
+        for c in sub.chars() {
+            let count = map.entry(c).or_insert(0);
+            *count += 1;
+            sum += *count;
+        }
+        answer.push(sum);
+    }
+    answer
 }
 
 fn main() {
