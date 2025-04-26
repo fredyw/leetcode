@@ -16,8 +16,10 @@ pub fn minimum_cost(target: String, words: Vec<String>, costs: Vec<i32>) -> i32 
         let sub = &target[index..];
         for (word, cost) in words.iter() {
             if sub.starts_with(word) {
-                min_cost =
-                    min_cost.min(minimum_cost(target, words, index + word.len(), memo) + *cost);
+                let min = minimum_cost(target, words, index + word.len(), memo);
+                if min != i32::MAX {
+                    min_cost = min_cost.min(min + *cost);
+                }
             }
         }
         memo[index] = min_cost;
@@ -74,4 +76,12 @@ fn main() {
             vec![100, 1, 1, 10, 5]
         )
     ); // 7
+    println!(
+        "{}",
+        minimum_cost(
+            "wvgafw".to_string(),
+            vec!["wvgafw".to_string(), "w".to_string()],
+            vec![1, 2]
+        )
+    ); // -1
 }
