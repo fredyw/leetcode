@@ -1,16 +1,26 @@
 // https://leetcode.com/problems/construct-string-with-minimum-cost-easy/description/
 pub fn minimum_cost(target: String, words: Vec<String>, costs: Vec<i32>) -> i32 {
-    fn minimum_cost(target: &str, words: &Vec<(String, i32)>, index: usize) -> i32 {
+    fn minimum_cost(
+        target: &str,
+        words: &Vec<(String, i32)>,
+        index: usize,
+        memo: &mut Vec<i32>,
+    ) -> i32 {
         if index == target.len() {
             return 0;
+        }
+        if memo[index] != -1 {
+            return memo[index];
         }
         let mut min_cost = i32::MAX;
         let sub = &target[index..];
         for (word, cost) in words.iter() {
             if sub.starts_with(word) {
-                min_cost = min_cost.min(minimum_cost(target, words, index + word.len()) + *cost);
+                min_cost =
+                    min_cost.min(minimum_cost(target, words, index + word.len(), memo) + *cost);
             }
         }
+        memo[index] = min_cost;
         min_cost
     }
 
@@ -18,6 +28,7 @@ pub fn minimum_cost(target: String, words: Vec<String>, costs: Vec<i32>) -> i32 
         &target,
         &words.into_iter().zip(costs.into_iter()).collect(),
         0,
+        &mut vec![-1; target.len()],
     );
     if answer == i32::MAX {
         -1
