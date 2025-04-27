@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/factor-combinations/description/
 pub fn get_factors(n: i32) -> Vec<Vec<i32>> {
-    todo!()
+    (2..=n.isqrt()).map(|x| vec![x, n / x]).collect()
 }
 
 fn main() {
