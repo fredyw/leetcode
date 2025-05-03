@@ -11,4 +11,17 @@ impl ValidWordAbbr {
     }
 }
 
-fn main() {}
+fn main() {
+    let valid_word_abbr = ValidWordAbbr::new(vec![
+        "deer".to_string(),
+        "door".to_string(),
+        "cake".to_string(),
+        "card".to_string(),
+    ]);
+    valid_word_abbr.is_unique("dear".to_string()); // false
+    valid_word_abbr.is_unique("cart".to_string()); // true
+    valid_word_abbr.is_unique("cane".to_string()); // false
+    valid_word_abbr.is_unique("make".to_string()); // true
+    valid_word_abbr.is_unique("cake".to_string()); // true
+    valid_word_abbr.is_unique("deer".to_string()); // false
+}
