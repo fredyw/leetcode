@@ -56,5 +56,5 @@ fn main() {
     //     "{}",
     //     is_one_edit_distance("ab".to_string(), "ar".to_string())
     // ); // true
-    println!("{}", is_one_edit_distance("a".to_string(), "".to_string())); // false
+    println!("{}", is_one_edit_distance("a".to_string(), "".to_string())); // true
 }
