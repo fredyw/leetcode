@@ -13,21 +13,27 @@ impl ValidWordAbbr {
             *abbrs.entry(abbr(word)).or_insert(0) += 1;
         }
         let words = dictionary.into_iter().collect();
+        println!("{:?}", abbrs);
         Self { abbrs, words }
     }
 
     fn is_unique(&self, word: String) -> bool {
-        if !self.words.contains(&word) {
+        let abbr = abbr(&word);
+        let has_abbr = self.abbrs.contains_key(&abbr);
+        let has_words = self.words.contains(&word);
+        if !has_abbr || !has_words {
             return true;
         }
-        if let Some(count) = self.abbrs.get(&abbr(&word)) {
+        let has_unique_abbr = if let Some(count) = self.abbrs.get(&abbr(&word)) {
             if *count > 1 {
-                return false;
+                false
+            } else {
+                true
             }
         } else {
-            return true;
-        }
-        false
+            true
+        };
+        has_words && has_unique_abbr
     }
 }
 
