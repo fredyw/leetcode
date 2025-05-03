@@ -30,6 +30,12 @@ pub fn is_one_edit_distance(s: String, t: String) -> bool {
         found
     }
 
+    if s == t {
+        return false;
+    }
+    if s.len() <= 1 && t.len() <= 1 {
+        return true;
+    }
     let s: Vec<char> = s.chars().collect();
     let t: Vec<char> = t.chars().collect();
     is_one_edit_distance(
@@ -43,18 +49,26 @@ pub fn is_one_edit_distance(s: String, t: String) -> bool {
 }
 
 fn main() {
-    // println!(
-    //     "{}",
-    //     is_one_edit_distance("ab".to_string(), "acb".to_string())
-    // ); // true
-    // println!("{}", is_one_edit_distance("".to_string(), "".to_string())); // false
-    // println!(
-    //     "{}",
-    //     is_one_edit_distance("ab".to_string(), "a".to_string())
-    // ); // true
-    // println!(
-    //     "{}",
-    //     is_one_edit_distance("ab".to_string(), "ar".to_string())
-    // ); // true
+    println!(
+        "{}",
+        is_one_edit_distance("ab".to_string(), "acb".to_string())
+    ); // true
+    println!("{}", is_one_edit_distance("".to_string(), "".to_string())); // false
+    println!(
+        "{}",
+        is_one_edit_distance("ab".to_string(), "a".to_string())
+    ); // true
+    println!(
+        "{}",
+        is_one_edit_distance("ab".to_string(), "ar".to_string())
+    ); // true
     println!("{}", is_one_edit_distance("a".to_string(), "".to_string())); // true
+    println!(
+        "{}",
+        is_one_edit_distance("ab".to_string(), "ab".to_string())
+    ); // false
+    println!(
+        "{}",
+        is_one_edit_distance("aaaaaaaaa".to_string(), "aaaaaaaaaa".to_string())
+    ); // true
 }
