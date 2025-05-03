@@ -8,36 +8,32 @@ struct ValidWordAbbr {
 
 impl ValidWordAbbr {
     fn new(dictionary: Vec<String>) -> Self {
+        let words: HashSet<String> = dictionary.into_iter().collect();
         let mut abbrs: HashMap<String, u32> = HashMap::new();
-        for word in dictionary.iter() {
+        for word in words.iter() {
             *abbrs.entry(abbr(word)).or_insert(0) += 1;
         }
-        let words = dictionary.into_iter().collect();
-        println!("{:?}", abbrs);
         Self { abbrs, words }
     }
 
     fn is_unique(&self, word: String) -> bool {
         let abbr = abbr(&word);
-        let has_abbr = self.abbrs.contains_key(&abbr);
-        let has_words = self.words.contains(&word);
-        if !has_abbr || !has_words {
-            return true;
-        }
-        let has_unique_abbr = if let Some(count) = self.abbrs.get(&abbr(&word)) {
-            if *count > 1 {
-                false
+        if let Some(count) = self.abbrs.get(&abbr) {
+            if *count == 1 {
+                self.words.contains(&word)
             } else {
-                true
+                false
             }
         } else {
             true
-        };
-        has_words && has_unique_abbr
+        }
     }
 }
 
 fn abbr(word: &str) -> String {
+    if word.len() <= 2 {
+        return word.to_string();
+    }
     format!(
         "{}{}{}",
         &word[0..1],
@@ -59,4 +55,7 @@ fn main() {
     println!("{}", valid_word_abbr.is_unique("make".to_string())); // true
     println!("{}", valid_word_abbr.is_unique("cake".to_string())); // true
     println!("{}", valid_word_abbr.is_unique("deer".to_string())); // false
+
+    let valid_word_abbr = ValidWordAbbr::new(vec!["a".to_string(), "a".to_string()]);
+    println!("{}", valid_word_abbr.is_unique("a".to_string())); // true
 }
