@@ -21,7 +21,7 @@ pub fn is_one_edit_distance(s: String, t: String) -> bool {
         if memo[i][j][c] != -1 {
             return memo[i][j][c] == 1;
         }
-        let has_change = s[i] != t[j] || change;
+        let has_change = (i as i32 - j as i32).abs() >= 1 || s[i] != t[j] || change;
         let remove = is_one_edit_distance(s, t, i, j + 1, has_change, memo);
         let add = is_one_edit_distance(s, t, i + 1, j, has_change, memo);
         let replace = is_one_edit_distance(s, t, i + 1, j + 1, has_change, memo);
@@ -30,7 +30,7 @@ pub fn is_one_edit_distance(s: String, t: String) -> bool {
         found
     }
 
-    if s == t {
+    if s == t || (s.len() as i32 - t.len() as i32).abs() > 1 {
         return false;
     }
     if s.len() <= 1 && t.len() <= 1 {
@@ -70,5 +70,13 @@ fn main() {
     println!(
         "{}",
         is_one_edit_distance("aaaaaaaaa".to_string(), "aaaaaaaaaa".to_string())
+    ); // true
+    println!(
+        "{}",
+        is_one_edit_distance("a".to_string(), "aa".to_string())
+    ); // true
+    println!(
+        "{}",
+        is_one_edit_distance("aa".to_string(), "a".to_string())
     ); // true
 }
