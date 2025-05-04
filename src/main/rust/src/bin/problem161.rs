@@ -27,11 +27,7 @@ pub fn is_one_edit_distance(s: String, t: String) -> bool {
             return false;
         }
     }
-    if count == 0 {
-        s.len() - i == 1 || t.len() - j == 1
-    } else {
-        count == 1
-    }
+    (count == 0 && s.len() - i == 1 || t.len() - j == 1) || count == 1
 }
 
 fn main() {
