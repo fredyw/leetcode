@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/one-edit-distance/description/
 pub fn is_one_edit_distance(s: String, t: String) -> bool {
-    if s == t || (s.len() as i32 - t.len() as i32).abs() > 1 {
+    if (s.len() as i32 - t.len() as i32).abs() > 1 {
         return false;
     }
     let s: Vec<char> = s.chars().collect();
