@@ -9,13 +9,13 @@ pub fn num_ways(n: i32, k: i32) -> i32 {
             if prev_colors[0] == color && prev_colors[1] == color {
                 continue;
             }
-            let mut colors = [-1; 2];
+            let mut colors = prev_colors.clone();
             if prev_colors[0] == -1 {
                 colors[0] = color;
             } else if prev_colors[1] == -1 {
                 colors[1] = color;
             } else {
-                colors[0] = prev_colors[1];
+                colors[0] = colors[1];
                 colors[1] = color;
             }
             count += num_ways(n, k, index + 1, colors);
@@ -28,7 +28,7 @@ pub fn num_ways(n: i32, k: i32) -> i32 {
 
 fn main() {
     println!("{}", num_ways(3, 2)); // 6
-                                    // println!("{}", num_ways(1, 1)); // 1
-                                    // println!("{}", num_ways(7, 2)); // 42
-                                    // println!("{}", num_ways(2, 3)); // 9
+    println!("{}", num_ways(1, 1)); // 1
+    println!("{}", num_ways(7, 2)); // 42
+    println!("{}", num_ways(2, 3)); // 9
 }
