@@ -1,11 +1,14 @@
 // https://leetcode.com/problems/paint-fence/
 pub fn num_ways(n: i32, k: i32) -> i32 {
-    fn num_ways(n: i32, k: i32, index: i32, prev_colors: [i32; 2]) -> i32 {
-        if index == n {
+    fn num_ways(n: i32, k: i32, prev_colors: [i32; 2], memo: &mut Vec<Vec<Vec<i32>>>) -> i32 {
+        if n == 0 {
             return 1;
         }
+        if memo[n as usize][prev_colors[0] as usize][prev_colors[1] as usize] != -1 {
+            return memo[n as usize][prev_colors[0] as usize][prev_colors[1] as usize];
+        }
         let mut count = 0;
-        for color in 0..k {
+        for color in 1..=k {
             if prev_colors[0] == color && prev_colors[1] == color {
                 continue;
             }
@@ -18,12 +21,18 @@ pub fn num_ways(n: i32, k: i32) -> i32 {
                 colors[0] = colors[1];
                 colors[1] = color;
             }
-            count += num_ways(n, k, index + 1, colors);
+            count += num_ways(n - 1, k, colors, memo);
         }
+        memo[n as usize][prev_colors[0] as usize][prev_colors[1] as usize] = count;
         count
     }
 
-    num_ways(n, k, 0, [-1, -1])
+    num_ways(
+        n,
+        k,
+        [0, 0],
+        &mut vec![vec![vec![-1; k as usize + 1]; k as usize + 1]; n as usize + 1],
+    )
 }
 
 fn main() {
