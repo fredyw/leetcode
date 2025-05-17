@@ -1,53 +1,31 @@
 // https://leetcode.com/problems/minimum-time-to-visit-all-houses/description/
 pub fn min_total_time(forward: Vec<i32>, backward: Vec<i32>, queries: Vec<i32>) -> i64 {
+    fn value_or_zero(v: &Vec<i32>, index: i32) -> i64 {
+        if index < 0 || index as usize >= v.len() {
+            0
+        } else {
+            v[index as usize] as i64
+        }
+    }
+
     fn forward_time(forward_sum: &Vec<i32>, from: i32, to: i32) -> i64 {
         if from == to {
             return 0;
         }
         if from < to {
-            return forward_sum[to as usize - 1] as i64
-                - if from - 1 < 0 {
-                    0
-                } else {
-                    forward_sum[from as usize - 1] as i64
-                };
+            return value_or_zero(forward_sum, to - 1) - value_or_zero(forward_sum, from - 1);
         }
-        forward_sum[forward_sum.len() - 1] as i64
-            - if from - 1 < 0 {
-                0
-            } else {
-                forward_sum[from as usize - 1] as i64
-            }
-            + if to - 1 < 0 {
-                0
-            } else {
-                forward_sum[to as usize - 1] as i64
-            }
+        value_or_zero(forward_sum, forward_sum.len() as i32 - 1)
+            - value_or_zero(forward_sum, from - 1)
+            + value_or_zero(forward_sum, to - 1)
     }
 
     fn backward_time(backward_sum: &Vec<i32>, from: i32, to: i32) -> i64 {
         if from == to {
             return 0;
         }
-        if from < to {
-            return backward_sum[to as usize - 1] as i64
-                - if from - 1 < 0 {
-                    0
-                } else {
-                    backward_sum[from as usize - 1] as i64
-                };
-        }
-        backward_sum[backward_sum.len() - 1] as i64
-            - if from - 1 < 0 {
-                0
-            } else {
-                backward_sum[from as usize - 1] as i64
-            }
-            + if to - 1 < 0 {
-                0
-            } else {
-                backward_sum[to as usize - 1] as i64
-            }
+        if from < to {}
+        0
     }
 
     let mut forward_sum: Vec<i32> = vec![0; forward.len()];
