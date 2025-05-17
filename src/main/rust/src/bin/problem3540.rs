@@ -29,7 +29,25 @@ pub fn min_total_time(forward: Vec<i32>, backward: Vec<i32>, queries: Vec<i32>) 
         if from == to {
             return 0;
         }
-        i64::MAX
+        if from < to {
+            return backward_sum[to as usize - 1] as i64
+                - if from - 1 < 0 {
+                    0
+                } else {
+                    backward_sum[from as usize - 1] as i64
+                };
+        }
+        backward_sum[backward_sum.len() - 1] as i64
+            - if from - 1 < 0 {
+                0
+            } else {
+                backward_sum[from as usize - 1] as i64
+            }
+            + if to - 1 < 0 {
+                0
+            } else {
+                backward_sum[to as usize - 1] as i64
+            }
     }
 
     let mut forward_sum: Vec<i32> = vec![0; forward.len()];
