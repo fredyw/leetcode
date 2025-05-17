@@ -1,10 +1,34 @@
 // https://leetcode.com/problems/minimum-time-to-visit-all-houses/description/
 pub fn min_total_time(forward: Vec<i32>, backward: Vec<i32>, queries: Vec<i32>) -> i64 {
     fn forward_time(forward_sum: &Vec<i32>, from: i32, to: i32) -> i64 {
-        todo!()
+        if from == to {
+            return 0;
+        }
+        if from < to {
+            return forward_sum[to as usize - 1] as i64
+                - if from - 1 < 0 {
+                    0
+                } else {
+                    forward_sum[from as usize - 1] as i64
+                };
+        }
+        forward_sum[forward_sum.len() - 1] as i64
+            - if from - 1 < 0 {
+                0
+            } else {
+                forward_sum[from as usize - 1] as i64
+            }
+            + if to - 1 < 0 {
+                0
+            } else {
+                forward_sum[to as usize - 1] as i64
+            }
     }
 
     fn backward_time(backward_sum: &Vec<i32>, from: i32, to: i32) -> i64 {
+        if from == to {
+            return 0;
+        }
         todo!()
     }
 
