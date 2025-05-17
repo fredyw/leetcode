@@ -24,7 +24,9 @@ pub fn min_total_time(forward: Vec<i32>, backward: Vec<i32>, queries: Vec<i32>) 
         if from == to {
             return 0;
         }
-        if from < to {}
+        if from > to {
+            return value_or_zero(backward_sum, from + 1) - value_or_zero(backward_sum, to + 1);
+        }
         0
     }
 
