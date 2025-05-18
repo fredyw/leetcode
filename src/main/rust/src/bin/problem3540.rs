@@ -1,14 +1,14 @@
 // https://leetcode.com/problems/minimum-time-to-visit-all-houses/description/
 pub fn min_total_time(forward: Vec<i32>, backward: Vec<i32>, queries: Vec<i32>) -> i64 {
-    fn value_or_zero(v: &Vec<i32>, index: i32) -> i64 {
+    fn value_or_zero(v: &Vec<i64>, index: i32) -> i64 {
         if index < 0 || index as usize >= v.len() {
             0
         } else {
-            v[index as usize] as i64
+            v[index as usize]
         }
     }
 
-    fn forward_time(forward_sum: &Vec<i32>, from: i32, to: i32) -> i64 {
+    fn forward_time(forward_sum: &Vec<i64>, from: i32, to: i32) -> i64 {
         if from == to {
             0
         } else if from < to {
@@ -20,7 +20,7 @@ pub fn min_total_time(forward: Vec<i32>, backward: Vec<i32>, queries: Vec<i32>) 
         }
     }
 
-    fn backward_time(backward_sum: &Vec<i32>, from: i32, to: i32) -> i64 {
+    fn backward_time(backward_sum: &Vec<i64>, from: i32, to: i32) -> i64 {
         if from == to {
             0
         } else if from > to {
@@ -31,20 +31,20 @@ pub fn min_total_time(forward: Vec<i32>, backward: Vec<i32>, queries: Vec<i32>) 
         }
     }
 
-    let mut forward_sum: Vec<i32> = vec![0; forward.len()];
+    let mut forward_sum: Vec<i64> = vec![0; forward.len()];
     for i in 0..forward.len() {
         if i == 0 {
-            forward_sum[i] = forward[i];
+            forward_sum[i] = forward[i] as i64;
         } else {
-            forward_sum[i] = forward_sum[i - 1] + forward[i];
+            forward_sum[i] = forward_sum[i - 1] + forward[i] as i64;
         }
     }
-    let mut backward_sum: Vec<i32> = vec![0; backward.len()];
+    let mut backward_sum: Vec<i64> = vec![0; backward.len()];
     for i in (0..backward.len()).rev() {
         if i == backward.len() - 1 {
-            backward_sum[i] = backward[i];
+            backward_sum[i] = backward[i] as i64;
         } else {
-            backward_sum[i] = backward_sum[i + 1] + backward[i];
+            backward_sum[i] = backward_sum[i + 1] + backward[i] as i64;
         }
     }
     let mut answer = 0;
