@@ -10,24 +10,25 @@ pub fn min_total_time(forward: Vec<i32>, backward: Vec<i32>, queries: Vec<i32>) 
 
     fn forward_time(forward_sum: &Vec<i32>, from: i32, to: i32) -> i64 {
         if from == to {
-            return 0;
+            0
+        } else if from < to {
+            value_or_zero(forward_sum, to - 1) - value_or_zero(forward_sum, from - 1)
+        } else {
+            value_or_zero(forward_sum, forward_sum.len() as i32 - 1)
+                - value_or_zero(forward_sum, from - 1)
+                + value_or_zero(forward_sum, to - 1)
         }
-        if from < to {
-            return value_or_zero(forward_sum, to - 1) - value_or_zero(forward_sum, from - 1);
-        }
-        value_or_zero(forward_sum, forward_sum.len() as i32 - 1)
-            - value_or_zero(forward_sum, from - 1)
-            + value_or_zero(forward_sum, to - 1)
     }
 
     fn backward_time(backward_sum: &Vec<i32>, from: i32, to: i32) -> i64 {
         if from == to {
-            return 0;
+            0
+        } else if from > to {
+            value_or_zero(backward_sum, from + 1) - value_or_zero(backward_sum, to + 1)
+        } else {
+            value_or_zero(backward_sum, 0) - value_or_zero(backward_sum, to + 1)
+                + value_or_zero(backward_sum, from + 1)
         }
-        if from > to {
-            return value_or_zero(backward_sum, from + 1) - value_or_zero(backward_sum, to + 1);
-        }
-        0
     }
 
     let mut forward_sum: Vec<i32> = vec![0; forward.len()];
@@ -51,6 +52,9 @@ pub fn min_total_time(forward: Vec<i32>, backward: Vec<i32>, queries: Vec<i32>) 
     let mut answer = 0;
     let mut from = 0;
     for to in queries {
+        let forward_t = forward_time(&forward_sum, from, to);
+        let backward_t = backward_time(&backward_sum, from, to);
+        println!("from {from}, to {to} ==> forward_t: {forward_t} vs backward_t: {backward_t}");
         let min = forward_time(&forward_sum, from, to).min(backward_time(&backward_sum, from, to));
         answer += min;
         from = to;
@@ -63,8 +67,8 @@ fn main() {
         "{}",
         min_total_time(vec![1, 4, 4], vec![4, 1, 2], vec![1, 2, 0, 2])
     ); // 12
-    println!(
-        "{}",
-        min_total_time(vec![1, 1, 1, 1], vec![2, 2, 2, 2], vec![1, 2, 3, 0])
-    ); // 4
+       // println!(
+       //     "{}",
+       //     min_total_time(vec![1, 1, 1, 1], vec![2, 2, 2, 2], vec![1, 2, 3, 0])
+       // ); // 4
 }
