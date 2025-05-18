@@ -24,10 +24,10 @@ pub fn min_total_time(forward: Vec<i32>, backward: Vec<i32>, queries: Vec<i32>) 
         if from == to {
             0
         } else if from > to {
-            value_or_zero(backward_sum, from + 1) - value_or_zero(backward_sum, to + 1)
+            value_or_zero(backward_sum, to + 1) - value_or_zero(backward_sum, from + 1)
         } else {
-            value_or_zero(backward_sum, 0) - value_or_zero(backward_sum, to + 1)
-                + value_or_zero(backward_sum, from + 1)
+            value_or_zero(backward_sum, 0) - value_or_zero(backward_sum, from + 1)
+                + value_or_zero(backward_sum, to + 1)
         }
     }
 
@@ -39,7 +39,6 @@ pub fn min_total_time(forward: Vec<i32>, backward: Vec<i32>, queries: Vec<i32>) 
             forward_sum[i] = forward_sum[i - 1] + forward[i];
         }
     }
-    println!("{:?}", forward_sum);
     let mut backward_sum: Vec<i32> = vec![0; backward.len()];
     for i in (0..backward.len()).rev() {
         if i == backward.len() - 1 {
@@ -48,15 +47,10 @@ pub fn min_total_time(forward: Vec<i32>, backward: Vec<i32>, queries: Vec<i32>) 
             backward_sum[i] = backward_sum[i + 1] + backward[i];
         }
     }
-    println!("{:?}", backward_sum);
     let mut answer = 0;
     let mut from = 0;
     for to in queries {
-        let forward_t = forward_time(&forward_sum, from, to);
-        let backward_t = backward_time(&backward_sum, from, to);
-        println!("from {from}, to {to} ==> forward_t: {forward_t} vs backward_t: {backward_t}");
-        let min = forward_time(&forward_sum, from, to).min(backward_time(&backward_sum, from, to));
-        answer += min;
+        answer += forward_time(&forward_sum, from, to).min(backward_time(&backward_sum, from, to));
         from = to;
     }
     answer
@@ -67,8 +61,8 @@ fn main() {
         "{}",
         min_total_time(vec![1, 4, 4], vec![4, 1, 2], vec![1, 2, 0, 2])
     ); // 12
-       // println!(
-       //     "{}",
-       //     min_total_time(vec![1, 1, 1, 1], vec![2, 2, 2, 2], vec![1, 2, 3, 0])
-       // ); // 4
+    println!(
+        "{}",
+        min_total_time(vec![1, 1, 1, 1], vec![2, 2, 2, 2], vec![1, 2, 3, 0])
+    ); // 4
 }
