@@ -1,11 +1,20 @@
-use std::collections::{HashMap, VecDeque};
+use std::collections::HashMap;
 
 // https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/description/
 pub fn length_of_longest_substring_k_distinct(s: String, k: i32) -> i32 {
     let bytes = s.as_bytes();
-    let mut map: HashMap<u8, i32> = HashMap::new();
+    let mut map: HashMap<u8, usize> = HashMap::new();
     let mut answer = 0;
-    for i in 0..bytes.len() {}
+    let mut j = 0;
+    for i in 0..bytes.len() {
+        map.insert(bytes[i], i);
+        if map.len() > k as usize {
+            let index = *map.get(&bytes[j]).unwrap();
+            map.remove(&bytes[j]);
+            j = index + 1;
+        }
+        answer = answer.max(i as i32 - j as i32 + 1);
+    }
     answer
 }
 
@@ -18,4 +27,8 @@ fn main() {
         "{}",
         length_of_longest_substring_k_distinct("aa".to_string(), 1)
     ); // 2
+    println!(
+        "{}",
+        length_of_longest_substring_k_distinct("abaccc".to_string(), 2)
+    ); // 4
 }
