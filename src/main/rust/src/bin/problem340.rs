@@ -9,9 +9,10 @@ pub fn length_of_longest_substring_k_distinct(s: String, k: i32) -> i32 {
     for i in 0..bytes.len() {
         map.insert(bytes[i], i);
         if map.len() > k as usize {
-            let index = *map.get(&bytes[j]).unwrap();
-            map.remove(&bytes[j]);
-            j = index + 1;
+            if let Some(&mut index) = map.get_mut(&bytes[j]) {
+                map.remove(&bytes[j]);
+                j = index;
+            }
         }
         answer = answer.max(i as i32 - j as i32 + 1);
     }
@@ -19,16 +20,36 @@ pub fn length_of_longest_substring_k_distinct(s: String, k: i32) -> i32 {
 }
 
 fn main() {
+    // println!(
+    //     "{}",
+    //     length_of_longest_substring_k_distinct("eceba".to_string(), 2)
+    // ); // 3
+    // println!(
+    //     "{}",
+    //     length_of_longest_substring_k_distinct("aa".to_string(), 1)
+    // ); // 2
+    // println!(
+    //     "{}",
+    //     length_of_longest_substring_k_distinct("abaccc".to_string(), 2)
+    // ); // 4
+    // println!(
+    //     "{}",
+    //     length_of_longest_substring_k_distinct("a".to_string(), 0)
+    // ); // 0
     println!(
         "{}",
-        length_of_longest_substring_k_distinct("eceba".to_string(), 2)
-    ); // 3
-    println!(
-        "{}",
-        length_of_longest_substring_k_distinct("aa".to_string(), 1)
-    ); // 2
-    println!(
-        "{}",
-        length_of_longest_substring_k_distinct("abaccc".to_string(), 2)
-    ); // 4
+        length_of_longest_substring_k_distinct("ab".to_string(), 1)
+    ); // 1
+       // println!(
+       //     "{}",
+       //     length_of_longest_substring_k_distinct("aab".to_string(), 1)
+       // ); // 2
+       // println!(
+       //     "{}",
+       //     length_of_longest_substring_k_distinct("abc".to_string(), 2)
+       // ); // 2
+       // println!(
+       //     "{}",
+       //     length_of_longest_substring_k_distinct("abc".to_string(), 3)
+       // ); // 3
 }
