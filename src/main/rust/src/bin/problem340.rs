@@ -11,7 +11,7 @@ pub fn length_of_longest_substring_k_distinct(s: String, k: i32) -> i32 {
         if map.len() > k as usize {
             if let Some(&mut index) = map.get_mut(&bytes[j]) {
                 map.remove(&bytes[j]);
-                j = index;
+                j = index + 1;
             }
         }
         answer = answer.max(i as i32 - j as i32 + 1);
@@ -32,14 +32,18 @@ fn main() {
     //     "{}",
     //     length_of_longest_substring_k_distinct("abaccc".to_string(), 2)
     // ); // 4
-    // println!(
-    //     "{}",
-    //     length_of_longest_substring_k_distinct("a".to_string(), 0)
-    // ); // 0
     println!(
         "{}",
-        length_of_longest_substring_k_distinct("ab".to_string(), 1)
-    ); // 1
+        length_of_longest_substring_k_distinct("aabaaccccccccc".to_string(), 2)
+    ); // 11
+       // println!(
+       //     "{}",
+       //     length_of_longest_substring_k_distinct("a".to_string(), 0)
+       // ); // 0
+       // println!(
+       //     "{}",
+       //     length_of_longest_substring_k_distinct("ab".to_string(), 1)
+       // ); // 1
        // println!(
        //     "{}",
        //     length_of_longest_substring_k_distinct("aab".to_string(), 1)
