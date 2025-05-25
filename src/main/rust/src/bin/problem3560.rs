@@ -11,4 +11,5 @@ fn main() {
     println!("{}", min_cutting_cost(4, 4, 6)); // 0
     println!("{}", min_cutting_cost(20, 60, 100)); // 0
     println!("{}", min_cutting_cost(4, 3, 3)); // 3
+    println!("{}", min_cutting_cost(6, 3, 3)); // 9
 }
