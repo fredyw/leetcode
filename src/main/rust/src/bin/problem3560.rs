@@ -1,9 +1,12 @@
 // https://leetcode.com/problems/find-minimum-log-transportation-cost/description/
 pub fn min_cutting_cost(n: i32, m: i32, k: i32) -> i64 {
-    if n < k && m < k {
-        return 0;
+    if n <= k && m <= k {
+        0
+    } else if n > k {
+        (n as i64 - k as i64) * k as i64
+    } else {
+        (m as i64 - k as i64) * k as i64
     }
-    todo!()
 }
 
 fn main() {
