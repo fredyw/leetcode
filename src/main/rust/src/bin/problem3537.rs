@@ -5,7 +5,7 @@ pub fn special_grid(n: i32) -> Vec<Vec<i32>> {
         answer[row + 1][col] = *num + 1;
         answer[row + 1][col - 1] = *num + 2;
         answer[row][col - 1] = *num + 3;
-        *num += 3;
+        *num += 4;
     }
 
     let mut answer = vec![vec![0; 2u32.pow(n as u32) as usize]; 2u32.pow(n as u32) as usize];
