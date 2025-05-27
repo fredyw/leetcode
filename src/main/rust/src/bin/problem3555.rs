@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/smallest-subarray-to-sort-in-every-sliding-window/description/
 pub fn min_subarray_sort(nums: Vec<i32>, k: i32) -> Vec<i32> {
+    let mut sorted_nums = nums.clone();
+    sorted_nums.sort();
     todo!()
 }
 
