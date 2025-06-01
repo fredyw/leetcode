@@ -1,0 +1,1 @@
+-- https://leetcode.com/problems/manager-of-the-largest-department/description/
