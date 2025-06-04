@@ -9,4 +9,5 @@ fn main() {
         split_looped_string(vec!["abc".to_string(), "xyz".to_string()])
     ); // "zyxcba"
     println!("{}", split_looped_string(vec!["abc".to_string()])); // "cba"
+    println!("{}", split_looped_string(vec!["xyz".to_string()])); // "zyx"
 }
