@@ -1,5 +1,11 @@
 // https://leetcode.com/problems/find-the-shortest-superstring-ii/description/
 pub fn shortest_superstring(s1: String, s2: String) -> String {
+    if s1.contains(&s2) {
+        return s1;
+    }
+    if s2.contains(&s1) {
+        return s2;
+    }
     let mut string1 = "".to_string();
     for i in 0..s1.len() {
         let sub = &s1[i..];
