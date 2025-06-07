@@ -12,4 +12,8 @@ fn main() {
         "{}",
         shortest_superstring("aa".to_string(), "aaa".to_string())
     ); // "aaa"
+    println!(
+        "{}",
+        shortest_superstring("abc".to_string(), "xyz".to_string())
+    ); // "abcxyz"
 }
