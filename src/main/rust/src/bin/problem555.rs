@@ -18,7 +18,6 @@ fn main() {
             "xyz".to_string()
         ])
     ); // "zyxcbafed"
-
     println!(
         "{}",
         split_looped_string(vec![
@@ -27,4 +26,8 @@ fn main() {
             "xyz".to_string()
         ])
     ); // "zzyxxabax"
+    println!(
+        "{}",
+        split_looped_string(vec!["a".to_string(), "b".to_string(), "c".to_string()])
+    ); // "cab"
 }
