@@ -18,6 +18,7 @@ pub fn split_looped_string(mut strs: Vec<String>) -> String {
                 for k in 0..i {
                     new_string.push_str(&strs[k]);
                 }
+                new_string.push_str(&s[0..j]);
                 if new_string > answer {
                     answer = new_string;
                 }
