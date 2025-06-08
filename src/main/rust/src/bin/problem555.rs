@@ -10,4 +10,12 @@ fn main() {
     ); // "zyxcba"
     println!("{}", split_looped_string(vec!["abc".to_string()])); // "cba"
     println!("{}", split_looped_string(vec!["xyz".to_string()])); // "zyx"
+    println!(
+        "{}",
+        split_looped_string(vec![
+            "abc".to_string(),
+            "def".to_string(),
+            "xyz".to_string()
+        ])
+    ); // "zyxcbafed"
 }
