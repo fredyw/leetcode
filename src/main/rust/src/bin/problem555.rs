@@ -18,4 +18,13 @@ fn main() {
             "xyz".to_string()
         ])
     ); // "zyxcbafed"
+
+    println!(
+        "{}",
+        split_looped_string(vec![
+            "xab".to_string(),
+            "axz".to_string(),
+            "xyz".to_string()
+        ])
+    ); // "zzyxxabax"
 }
