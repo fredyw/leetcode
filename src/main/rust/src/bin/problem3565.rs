@@ -42,14 +42,15 @@ pub fn find_path(grid: Vec<Vec<i32>>, k: i32) -> Vec<Vec<i32>> {
             );
         }
         path.pop();
+        visited[row as usize][col as usize] = false;
     }
 
-    let num_rows = grid.len() as isize;
-    let num_cols = if num_rows > 0 { grid[0].len() } else { 0 } as isize;
-    let mut visited = vec![vec![false; num_cols as usize]; num_rows as usize];
-    let mut answer = Vec::new();
+    let num_rows = grid.len();
+    let num_cols = if num_rows > 0 { grid[0].len() } else { 0 };
+    let mut visited = vec![vec![false; num_cols]; num_rows];
     for row in 0..grid.len() {
         for col in 0..grid[row].len() {
+            let mut answer = Vec::new();
             find_path(
                 &grid,
                 row as isize,
@@ -59,14 +60,17 @@ pub fn find_path(grid: Vec<Vec<i32>>, k: i32) -> Vec<Vec<i32>> {
                 &mut vec![],
                 &mut answer,
             );
+            if answer.len() == num_rows * num_cols {
+                return answer;
+            }
         }
     }
-    answer
+    vec![]
 }
 
 fn main() {
     println!("{:?}", find_path(vec![vec![0, 0, 0], vec![0, 1, 2]], 2)); // [[0,0],[1,0],[1,1],[1,2],[0,2],[0,1]]
     println!("{:?}", find_path(vec![vec![1, 0, 4], vec![3, 0, 2]], 4)); // []
     println!("{:?}", find_path(vec![vec![0, 0, 0], vec![1, 0, 2]], 2)); // [[0,0],[1,0],[1,1],[1,2],[0,2],[0,1]]
-    println!("{:?}", find_path(vec![vec![0, 0, 0], vec![0, 1, 2]], 2)); // []
+    println!("{:?}", find_path(vec![vec![0, 0, 0], vec![0, 1, 2]], 2)); // [[0,0],[1,0],[1,1],[1,2],[0,2],[0,1]]
 }
