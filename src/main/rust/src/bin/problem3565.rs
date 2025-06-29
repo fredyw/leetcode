@@ -5,30 +5,63 @@ pub fn find_path(grid: Vec<Vec<i32>>, k: i32) -> Vec<Vec<i32>> {
         row: isize,
         col: isize,
         k: i32,
-        count: &mut i32,
         visited: &mut Vec<Vec<bool>>,
-    ) -> bool {
+        path: &mut Vec<Vec<i32>>,
+        answer: &mut Vec<Vec<i32>>,
+    ) {
         let num_rows = grid.len() as isize;
         let num_cols = if num_rows > 0 { grid[0].len() } else { 0 } as isize;
-        if *count == grid.len() as i32 {
-            return true;
+        if path.len() as isize == num_rows * num_cols {
+            *answer = path.clone();
+            return;
         }
         if row < 0
             || row == num_rows
             || col < 0
             || col == num_cols
             || visited[row as usize][col as usize]
+            || (grid[row as usize][col as usize] != 0 && grid[row as usize][col as usize] != k)
         {
-            return false;
+            return;
         }
         visited[row as usize][col as usize] = true;
+        path.push(vec![row as i32, col as i32]);
         for (r, c) in [(-1, 0), (0, 1), (1, 0), (0, -1)] {
-            if find_path(grid, row + r, col + c, k, count, visited) {}
+            find_path(
+                grid,
+                row + r,
+                col + c,
+                if grid[row as usize][col as usize] != 0 {
+                    k + 1
+                } else {
+                    k
+                },
+                visited,
+                path,
+                answer,
+            );
         }
-        true
+        path.pop();
     }
 
-    todo!()
+    let num_rows = grid.len() as isize;
+    let num_cols = if num_rows > 0 { grid[0].len() } else { 0 } as isize;
+    let mut visited = vec![vec![false; num_cols as usize]; num_rows as usize];
+    let mut answer = Vec::new();
+    for row in 0..grid.len() {
+        for col in 0..grid[row].len() {
+            find_path(
+                &grid,
+                row as isize,
+                col as isize,
+                1,
+                &mut visited,
+                &mut vec![],
+                &mut answer,
+            );
+        }
+    }
+    answer
 }
 
 fn main() {
