@@ -40,6 +40,7 @@ pub fn min_cost(m: i32, n: i32) -> i32 {
 }
 
 fn main() {
-    println!("{}", min_cost(1, 1)); // 1
-    println!("{}", min_cost(2, 1)); // 3
+    // println!("{}", min_cost(1, 1)); // 1
+    // println!("{}", min_cost(2, 1)); // 3
+    println!("{}", min_cost(2, 2)); // -1
 }
