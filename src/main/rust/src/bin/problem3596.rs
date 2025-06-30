@@ -7,23 +7,31 @@ pub fn min_cost(m: i32, n: i32) -> i32 {
         col: i32,
         dest: (usize, usize),
         step: i32,
+        visited: &mut Vec<Vec<bool>>,
     ) -> i32 {
-        if row < 0 || col < 0 || row == num_rows || col == num_cols {
+        if row < 0
+            || col < 0
+            || row == num_rows
+            || col == num_cols
+            || visited[row as usize][col as usize]
+        {
             return i32::MAX;
         }
         let val = (row + 1) * (col + 1);
         if row as usize == dest.0 && col as usize == dest.1 {
             return val;
         }
+        visited[row as usize][col as usize] = true;
         let cost = if step % 2 == 0 {
-            let left = min_cost(num_rows, num_cols, row, col - 1, dest, step + 1);
-            let up = min_cost(num_rows, num_cols, row - 1, col, dest, step + 1);
+            let left = min_cost(num_rows, num_cols, row, col - 1, dest, step + 1, visited);
+            let up = min_cost(num_rows, num_cols, row - 1, col, dest, step + 1, visited);
             left.min(up)
         } else {
-            let right = min_cost(num_rows, num_cols, row, col + 1, dest, step + 1);
-            let down = min_cost(num_rows, num_cols, row + 1, col, dest, step + 1);
+            let right = min_cost(num_rows, num_cols, row, col + 1, dest, step + 1, visited);
+            let down = min_cost(num_rows, num_cols, row + 1, col, dest, step + 1, visited);
             right.min(down)
         };
+        visited[row as usize][col as usize] = false;
         if cost == i32::MAX {
             cost
         } else {
@@ -31,7 +39,15 @@ pub fn min_cost(m: i32, n: i32) -> i32 {
         }
     }
 
-    let cost = min_cost(m, n, 0, 0, (m as usize - 1, n as usize - 1), 1);
+    let cost = min_cost(
+        m,
+        n,
+        0,
+        0,
+        (m as usize - 1, n as usize - 1),
+        1,
+        &mut vec![vec![false; n as usize]; m as usize],
+    );
     if cost == i32::MAX {
         -1
     } else {
@@ -40,7 +56,7 @@ pub fn min_cost(m: i32, n: i32) -> i32 {
 }
 
 fn main() {
-    // println!("{}", min_cost(1, 1)); // 1
-    // println!("{}", min_cost(2, 1)); // 3
+    println!("{}", min_cost(1, 1)); // 1
+    println!("{}", min_cost(2, 1)); // 3
     println!("{}", min_cost(2, 2)); // -1
 }
