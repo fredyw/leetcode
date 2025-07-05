@@ -2,29 +2,64 @@ use std::collections::{HashMap, HashSet};
 
 // https://leetcode.com/problems/maximize-the-number-of-target-nodes-after-connecting-trees-i/description/
 pub fn max_target_nodes(edges1: Vec<Vec<i32>>, edges2: Vec<Vec<i32>>, k: i32) -> Vec<i32> {
-    fn count(graph: &HashMap<i32, Vec<i32>>, node: i32, k: i32, visited: &mut HashSet<i32>) -> i32 {
+    #[derive(Eq, PartialEq, Hash, Debug)]
+    struct Node {
+        tree: i32,
+        value: i32,
+    }
+
+    impl Node {
+        fn one(value: i32) -> Node {
+            Node { tree: 1, value }
+        }
+
+        fn two(value: i32) -> Node {
+            Node { tree: 2, value }
+        }
+    }
+
+    fn count<'a>(
+        graph: &'a HashMap<Node, Vec<Node>>,
+        node: &'a Node,
+        k: i32,
+        visited: &mut HashSet<&'a Node>,
+    ) -> i32 {
         if k == 0 {
             return 0;
         }
         let mut c = 0;
         visited.insert(node);
-        for adj in graph.get(&node).unwrap_or(&vec![]) {
-            if !visited.contains(adj) {
-                c += count(graph, *adj, k - 1, visited) + 1;
+        if let Some(v) = graph.get(&node) {
+            for adj in v.iter() {
+                if !visited.contains(adj) {
+                    c += count(graph, adj, k - 1, visited) + 1;
+                }
             }
         }
         c
     }
 
-    let mut graph1: HashMap<i32, Vec<i32>> = HashMap::new();
+    let mut graph1: HashMap<Node, Vec<Node>> = HashMap::new();
     for edge in edges1 {
-        graph1.entry(edge[0]).or_insert(vec![]).push(edge[1]);
-        graph1.entry(edge[1]).or_insert(vec![]).push(edge[0]);
+        graph1
+            .entry(Node::one(edge[0]))
+            .or_insert(vec![])
+            .push(Node::one(edge[1]));
+        graph1
+            .entry(Node::one(edge[1]))
+            .or_insert(vec![])
+            .push(Node::one(edge[0]));
     }
-    let mut graph2: HashMap<i32, Vec<i32>> = HashMap::new();
+    let mut graph2: HashMap<Node, Vec<Node>> = HashMap::new();
     for edge in edges2 {
-        graph2.entry(edge[0]).or_insert(vec![]).push(edge[1]);
-        graph2.entry(edge[1]).or_insert(vec![]).push(edge[0]);
+        graph2
+            .entry(Node::two(edge[0]))
+            .or_insert(vec![])
+            .push(Node::two(edge[1]));
+        graph2
+            .entry(Node::two(edge[1]))
+            .or_insert(vec![])
+            .push(Node::two(edge[0]));
     }
     vec![]
 }
