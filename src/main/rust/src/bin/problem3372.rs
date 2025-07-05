@@ -33,8 +33,10 @@ pub fn max_target_nodes(edges1: Vec<Vec<i32>>, edges2: Vec<Vec<i32>>, k: i32) ->
         graph2.entry(edge[1]).or_insert(vec![]).push(edge[0]);
     }
     let mut counts2: Vec<i32> = vec![0; graph2.len()];
-    for node in graph2.keys() {
-        counts2[*node as usize] = count(&graph2, *node, k - 1, &mut HashSet::new()) + 1;
+    if k > 0 {
+        for node in graph2.keys() {
+            counts2[*node as usize] = count(&graph2, *node, k - 1, &mut HashSet::new()) + 1;
+        }
     }
     let mut answer: Vec<i32> = vec![0; counts1.len()];
     for (i, c1) in counts1.iter().enumerate() {
@@ -74,6 +76,6 @@ fn main() {
     ); // [6,3,3,3,3]
     println!(
         "{:?}",
-        max_target_nodes(vec![vec![0, 1]], vec![vec![0, 1]], 1)
+        max_target_nodes(vec![vec![0, 1]], vec![vec![0, 1]], 0)
     ); // [1,1]
 }
