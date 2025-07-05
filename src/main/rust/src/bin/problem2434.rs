@@ -7,4 +7,5 @@ fn main() {
     println!("{}", robot_with_string("zza".to_string())); // "azz"
     println!("{}", robot_with_string("bac".to_string())); // "abc"
     println!("{}", robot_with_string("bdda".to_string())); // "addb"
+    println!("{}", robot_with_string("badc".to_string())); // "abcd"
 }
