@@ -1,6 +1,23 @@
 // https://leetcode.com/problems/using-a-robot-to-print-the-lexicographically-smallest-string/description/
 pub fn robot_with_string(s: String) -> String {
-    todo!()
+    let mut counts = vec![0; 26];
+    for c in s.chars() {
+        counts[(c as u8 - b'a') as usize] += 1;
+    }
+    let mut vec = vec![];
+    let mut answer = String::new();
+    let mut min = b'a';
+    for c in s.chars() {
+        vec.push(c);
+        counts[(c as u8 - b'a') as usize] -= 1;
+        while min != b'z' && counts[(min - b'a') as usize] == 0 {
+            min += 1;
+        }
+        while !vec.is_empty() && vec.last().unwrap() <= &(min as char) {
+            answer.push(vec.pop().unwrap());
+        }
+    }
+    answer
 }
 
 fn main() {
