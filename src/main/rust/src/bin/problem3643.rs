@@ -1,6 +1,24 @@
 // https://leetcode.com/problems/flip-square-submatrix-vertically/description/
-pub fn reverse_submatrix(grid: Vec<Vec<i32>>, x: i32, y: i32, k: i32) -> Vec<Vec<i32>> {
-    todo!()
+pub fn reverse_submatrix(mut grid: Vec<Vec<i32>>, x: i32, y: i32, k: i32) -> Vec<Vec<i32>> {
+    let mut sub: Vec<Vec<i32>> = vec![];
+    for row in x..x + k {
+        let mut v = vec![];
+        for col in y..y + k {
+            v.push(grid[row as usize][col as usize]);
+        }
+        sub.push(v);
+    }
+    sub.reverse();
+    let mut r = 0;
+    for row in x..x + k {
+        let mut c = 0;
+        for col in y..y + k {
+            grid[row as usize][col as usize] = sub[r][c];
+            c += 1;
+        }
+        r += 1;
+    }
+    grid
 }
 
 fn main() {
