@@ -10,29 +10,37 @@ pub fn min_time_to_reach(move_time: Vec<Vec<i32>>) -> i32 {
     distance[0][0] = Some(0);
     let mut heap: BinaryHeap<Reverse<(i32, usize, usize)>> = BinaryHeap::new();
     heap.push(Reverse((0, 0, 0)));
-    while let Some(Reverse((dist, src_row, src_col))) = heap.pop() {
-        if visited[src_row][src_col] {
+    while let Some(Reverse((_, row, col))) = heap.pop() {
+        if visited[row][col] {
             continue;
         }
-        visited[src_row as usize][src_col as usize] = true;
+        visited[row][col] = true;
         for (r, c) in [(-1, 0), (1, 0), (0, -1), (0, 1)].iter() {
-            let row = src_row as isize + r;
-            let col = src_col as isize + c;
-            if row < 0 || col < 0 || row == num_rows as isize || col == num_cols as isize {
+            let next_row = row as isize + r;
+            let next_col = col as isize + c;
+            if next_row < 0
+                || next_col < 0
+                || next_row == num_rows as isize
+                || next_col == num_cols as isize
+            {
                 continue;
             }
-            if let Some(dist) = distance[src_row as usize][src_col as usize] {
-                let new_dist = dist.max(move_time[row as usize][col as usize]) + 1;
-                if distance[row as usize][col as usize].unwrap_or(i32::MAX) > new_dist {
-                    distance[row as usize][col as usize] = Some(new_dist);
-                    heap.push(Reverse((new_dist, row as usize, col as usize)));
+            let new_dist = distance[row][col]
+                .unwrap()
+                .max(move_time[next_row as usize][next_col as usize])
+                + 1;
+            if let Some(dist) = distance[next_row as usize][next_col as usize] {
+                if dist > new_dist {
+                    distance[next_row as usize][next_col as usize] = Some(new_dist);
+                    heap.push(Reverse((new_dist, next_row as usize, next_col as usize)));
                 }
             } else {
-                todo!()
+                distance[next_row as usize][next_col as usize] = Some(new_dist);
+                heap.push(Reverse((new_dist, next_row as usize, next_col as usize)));
             }
         }
     }
-    distance[num_rows - 1][num_cols].unwrap()
+    distance[num_rows - 1][num_cols - 1].unwrap()
 }
 
 fn main() {
