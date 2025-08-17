@@ -11,4 +11,5 @@ fn main() {
         "{}",
         longest_subarray(vec![1, 2, 1, 1, 1, 1, 1, 1, 3, 1, 2, 3, 4], 2)
     ); // 11
+    println!("{}", longest_subarray(vec![1, 2, 3, 4, 5], 0)); // 5
 }
