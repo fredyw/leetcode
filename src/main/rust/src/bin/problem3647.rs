@@ -1,5 +1,3 @@
-use std::collections::HashMap;
-
 // https://leetcode.com/problems/maximum-weight-in-two-bags/description/
 pub fn max_weight(weights: Vec<i32>, w1: i32, w2: i32) -> i32 {
     fn max_weight(
@@ -7,13 +5,13 @@ pub fn max_weight(weights: Vec<i32>, w1: i32, w2: i32) -> i32 {
         w1: i32,
         w2: i32,
         index: usize,
-        memo: &mut HashMap<(usize, i32, i32), i32>,
+        memo: &mut Vec<Vec<Vec<i32>>>,
     ) -> i32 {
         if index == weights.len() {
             return 0;
         }
-        if let Some(v) = memo.get(&(index, w1, w2)) {
-            return *v;
+        if memo[index][w1 as usize][w2 as usize] != -1 {
+            return memo[index][w1 as usize][w2 as usize];
         }
         let a = max_weight(weights, w1, w2, index + 1, memo);
         let b = if w1 - weights[index] >= 0 {
@@ -27,11 +25,17 @@ pub fn max_weight(weights: Vec<i32>, w1: i32, w2: i32) -> i32 {
             0
         };
         let max = a.max(b).max(c);
-        memo.insert((index, w1, w2), max);
+        memo[index][w1 as usize][w2 as usize] += max;
         max
     }
 
-    max_weight(&weights, w1, w2, 0, &mut HashMap::new())
+    max_weight(
+        &weights,
+        w1,
+        w2,
+        0,
+        &mut vec![vec![vec![-1; w2 as usize + 1]; w1 as usize + 1]; weights.len()],
+    )
 }
 
 fn main() {
