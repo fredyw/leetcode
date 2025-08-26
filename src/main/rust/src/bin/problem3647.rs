@@ -1,6 +1,10 @@
 // https://leetcode.com/problems/maximum-weight-in-two-bags/description/
 pub fn max_weight(weights: Vec<i32>, w1: i32, w2: i32) -> i32 {
-    todo!()
+    fn max_weight(weights: &Vec<i32>, w1: i32, w2: i32) -> i32 {
+        todo!()
+    }
+
+    max_weight(&weights, w1, w2)
 }
 
 fn main() {
