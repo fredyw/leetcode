@@ -5,12 +5,12 @@ pub fn max_weight(weights: Vec<i32>, w1: i32, w2: i32) -> i32 {
             return 0;
         }
         let a = max_weight(weights, w1, w2, index + 1);
-        let b = if w1 - weights[index] > 0 {
+        let b = if w1 - weights[index] >= 0 {
             max_weight(weights, w1 - weights[index], w2, index + 1) + weights[index]
         } else {
             0
         };
-        let c = if w2 - weights[index] > 0 {
+        let c = if w2 - weights[index] >= 0 {
             max_weight(weights, w1, w2 - weights[index], index + 1) + weights[index]
         } else {
             0
