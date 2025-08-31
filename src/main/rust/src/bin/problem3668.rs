@@ -1,6 +1,15 @@
+use std::collections::HashSet;
+
 // https://leetcode.com/problems/restore-finishing-order/description/
 pub fn recover_order(order: Vec<i32>, friends: Vec<i32>) -> Vec<i32> {
-    todo!()
+    let mut answer = vec![];
+    let friends: HashSet<i32> = friends.iter().cloned().collect();
+    for o in order {
+        if friends.contains(&o) {
+            answer.push(o);
+        }
+    }
+    answer
 }
 
 fn main() {
