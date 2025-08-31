@@ -1,6 +1,7 @@
 // https://leetcode.com/problems/sort-array-by-absolute-value/
-pub fn sort_by_absolute_value(nums: Vec<i32>) -> Vec<i32> {
-    todo!()
+pub fn sort_by_absolute_value(mut nums: Vec<i32>) -> Vec<i32> {
+    nums.sort_by(|a, b| a.abs().cmp(&b.abs()));
+    nums
 }
 
 fn main() {
