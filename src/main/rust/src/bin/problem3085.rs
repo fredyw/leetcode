@@ -1,6 +1,13 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/minimum-deletions-to-make-string-k-special/description/
 pub fn minimum_deletions(word: String, k: i32) -> i32 {
-    todo!()
+    let mut freq: HashMap<char, i32> = HashMap::new();
+    for char in word.chars() {
+        *freq.entry(char).or_insert(0) += 1;
+    }
+    println!("{:?}", freq);
+    0
 }
 
 fn main() {
