@@ -6,8 +6,19 @@ pub fn minimum_deletions(word: String, k: i32) -> i32 {
     for char in word.chars() {
         *freq.entry(char).or_insert(0) += 1;
     }
-    println!("{:?}", freq);
-    0
+    let mut answer = i32::MAX;
+    for (_, target_count) in &freq {
+        let mut deletions = 0;
+        for (_, current_count) in &freq {
+            if target_count > current_count {
+                deletions += current_count;
+            } else if target_count + k < *current_count {
+                deletions += *current_count - *target_count - k;
+            }
+        }
+        answer = answer.min(deletions);
+    }
+    answer
 }
 
 fn main() {
