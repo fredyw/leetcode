@@ -5,6 +5,7 @@ pub fn min_sensors(n: i32, m: i32, k: i32) -> i32 {
     while row < n {
         let mut col = k;
         while col < m {
+            println!("({row}, {col})");
             col += k + 1;
             answer += 1;
         }
@@ -21,4 +22,5 @@ fn main() {
     // println!("{}", min_sensors(5, 5, 1)); // 4
     // println!("{}", min_sensors(2, 2, 2)); // 1
     println!("{}", min_sensors(6, 5, 1)); // 4
+                                          // println!("{}", min_sensors(44, 69, 8)); // 15
 }
