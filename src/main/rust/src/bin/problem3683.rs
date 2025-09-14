@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/earliest-time-to-finish-one-task/description/
 pub fn earliest_time(tasks: Vec<Vec<i32>>) -> i32 {
-    todo!()
+    tasks.iter().map(|x| x[0] + x[1]).min().unwrap()
 }
 
 fn main() {
