@@ -1,14 +1,13 @@
+use std::collections::HashSet;
+
 // https://leetcode.com/problems/smallest-absent-positive-greater-than-average/description/
-pub fn smallest_absent(mut nums: Vec<i32>) -> i32 {
-    nums.sort_unstable();
-    let avg = (nums.iter().sum::<i32>() as f32 / nums.len() as f32).ceil() as i32;
-    println!("avg: {avg}");
-    let mut answer = 0;
-    let mut i = 0;
-    while i < nums.len() && avg >= nums[i] {
-        i += 1;
+pub fn smallest_absent(nums: Vec<i32>) -> i32 {
+    let set = nums.iter().copied().collect::<HashSet<i32>>();
+    let mut avg = (nums.iter().sum::<i32>() as f32 / nums.len() as f32).ceil() as i32;
+    while set.contains(&avg) {
+        avg += 1;
     }
-    answer
+    avg
 }
 
 fn main() {
