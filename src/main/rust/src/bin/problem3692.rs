@@ -1,5 +1,11 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/majority-frequency-characters/
 pub fn majority_frequency_group(s: String) -> String {
+    let mut map: HashMap<char, i32> = HashMap::new();
+    for c in s.chars() {
+        *map.entry(c).or_insert(0) += 1;
+    }
     todo!()
 }
 
