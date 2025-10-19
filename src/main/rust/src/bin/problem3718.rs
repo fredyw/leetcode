@@ -1,6 +1,15 @@
+use std::collections::HashSet;
+
 // https://leetcode.com/problems/smallest-missing-multiple-of-k/description/
 pub fn missing_multiple(nums: Vec<i32>, k: i32) -> i32 {
-    todo!()
+    let nums: HashSet<i32> = nums.into_iter().collect();
+    let mut n = k;
+    loop {
+        if !nums.contains(&n) {
+            return n;
+        }
+        n += k;
+    }
 }
 
 fn main() {
