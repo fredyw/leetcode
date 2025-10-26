@@ -1,6 +1,11 @@
 // https://leetcode.com/problems/remove-zeros-in-decimal-representation/description/
 pub fn remove_zeros(n: i64) -> i64 {
-    todo!()
+    n.to_string()
+        .chars()
+        .filter(|c| *c != '0')
+        .collect::<String>()
+        .parse()
+        .unwrap()
 }
 
 fn main() {
