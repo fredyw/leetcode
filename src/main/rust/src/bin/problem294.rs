@@ -2,24 +2,31 @@ use std::collections::HashMap;
 
 // https://leetcode.com/problems/flip-game-ii/description/
 pub fn can_win(current_state: String) -> bool {
-    fn can_win(state: String, memo: &mut HashMap<String, bool>) -> bool {
-        if let Some(&result) = memo.get(&state) {
+    fn can_win(state: &mut Vec<char>, memo: &mut HashMap<String, bool>) -> bool {
+        let s: String = state.iter().collect();
+        if let Some(&result) = memo.get(&s) {
             return result;
         }
-        for i in 0..state.len().saturating_sub(1) {
-            if &state[i..i + 2] == "++" {
-                let next_state = format!("{}{}{}", &state[..i], "--", &state[i + 2..]);
-                if !can_win(next_state, memo) {
-                    memo.insert(state, true);
+        for i in 0..state.len() - 1 {
+            if state[i] == '+' && state[i + 1] == '+' {
+                state[i] = '-';
+                state[i + 1] = '-';
+                if !can_win(state, memo) {
+                    state[i] = '+';
+                    state[i + 1] = '+';
+                    memo.insert(s, true);
                     return true;
                 }
+                state[i] = '+';
+                state[i + 1] = '+';
             }
         }
-        memo.insert(state, false);
+        memo.insert(s, false);
         false
     }
 
-    can_win(current_state, &mut HashMap::new())
+    let mut state: Vec<char> = current_state.chars().collect();
+    can_win(&mut state, &mut HashMap::new())
 }
 
 fn main() {
