@@ -1,6 +1,16 @@
 // https://leetcode.com/problems/longest-fibonacci-subarray/description/
 pub fn longest_subarray(nums: Vec<i32>) -> i32 {
-    todo!()
+    let mut answer = 0;
+    let mut length = 2;
+    for i in 0..nums.len() - 2 {
+        if nums[i] + nums[i + 1] == nums[i + 2] {
+            length += 1;
+        } else {
+            length = 2;
+        }
+        answer = answer.max(length);
+    }
+    answer
 }
 
 fn main() {
