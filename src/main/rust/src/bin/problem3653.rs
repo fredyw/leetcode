@@ -1,6 +1,17 @@
 // https://leetcode.com/problems/xor-after-range-multiplication-queries-i/description/
-pub fn xor_after_queries(nums: Vec<i32>, queries: Vec<Vec<i32>>) -> i32 {
-    todo!()
+pub fn xor_after_queries(mut nums: Vec<i32>, queries: Vec<Vec<i32>>) -> i32 {
+    for query in &queries {
+        let l = query[0];
+        let r = query[1];
+        let k = query[2];
+        let v = query[3] as i64;
+        let mut i = l;
+        while i <= r {
+            nums[i as usize] = ((nums[i as usize] as i64 * v) % 1_000_000_007) as i32;
+            i += k;
+        }
+    }
+    nums.into_iter().reduce(|acc, x| acc ^ x).unwrap()
 }
 
 fn main() {
