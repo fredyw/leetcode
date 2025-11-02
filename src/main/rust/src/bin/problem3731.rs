@@ -1,6 +1,21 @@
+use std::collections::HashSet;
+
 // https://leetcode.com/problems/find-missing-elements/description/
 pub fn find_missing_elements(nums: Vec<i32>) -> Vec<i32> {
-    todo!()
+    let mut min = i32::MAX;
+    let mut max = i32::MIN;
+    for num in &nums {
+        min = min.min(*num);
+        max = max.max(*num);
+    }
+    let mut answer = vec![];
+    let nums: HashSet<i32> = nums.into_iter().collect();
+    for num in min..=max {
+        if !nums.contains(&num) {
+            answer.push(num);
+        }
+    }
+    answer
 }
 
 fn main() {
