@@ -1,6 +1,7 @@
 // https://leetcode.com/problems/minimum-moves-to-equal-array-elements-iii/description/
 pub fn min_moves(nums: Vec<i32>) -> i32 {
-    todo!()
+    let max = nums.iter().max().unwrap();
+    nums.iter().map(|num| max - num).sum()
 }
 
 fn main() {
