@@ -1,19 +1,29 @@
 // https://leetcode.com/problems/maximum-array-hopping-score-ii
 pub fn max_score(nums: Vec<i32>) -> i64 {
-    fn max_score(nums: &Vec<i32>, i: usize, memo: &mut Vec<i64>) -> i64 {
-        if memo[i] != -1 {
-            return memo[i];
+    let mut suffix_max: Vec<(usize, i32)> = vec![(0, 0); nums.len()];
+    for i in (0..nums.len()).rev() {
+        if i == nums.len() - 1 {
+            suffix_max[i] = (i, nums[i]);
+        } else {
+            if suffix_max[i + 1].1 > nums[i] {
+                suffix_max[i] = suffix_max[i + 1];
+            } else {
+                suffix_max[i] = (i, nums[i]);
+            }
         }
-        let mut max = 0;
-        for j in i + 1..nums.len() {
-            let score = max_score(nums, j, memo) + ((j as i64 - i as i64) * nums[j] as i64);
-            max = max.max(score);
-        }
-        memo[i] = max;
-        max
     }
-
-    max_score(&nums, 0, &mut vec![-1; nums.len()])
+    let mut answer = 0;
+    let mut i = 0;
+    let mut j = suffix_max[0].0;
+    while j < suffix_max.len() {
+        answer += (j as i64 - i as i64) * suffix_max[j].1 as i64;
+        if j + 1 >= suffix_max.len() {
+            break;
+        }
+        i = j;
+        j = suffix_max[j + 1].0;
+    }
+    answer
 }
 
 fn main() {
