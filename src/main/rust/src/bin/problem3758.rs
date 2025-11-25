@@ -8,4 +8,5 @@ fn main() {
     println!("{}", convert_number("ninexsix".to_string())); // "96"
     println!("{}", convert_number("zeero".to_string())); // "
     println!("{}", convert_number("tw".to_string())); // ""
+    println!("{}", convert_number("oneforthree".to_string())); // "13"
 }
