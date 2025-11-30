@@ -1,6 +1,16 @@
+use std::collections::HashSet;
+
 // https://leetcode.com/problems/maximum-substrings-with-distinct-start/
 pub fn max_distinct(s: String) -> i32 {
-    todo!()
+    let mut answer = 0;
+    let mut set: HashSet<char> = HashSet::new();
+    for char in s.chars() {
+        if !set.contains(&char) {
+            answer += 1;
+        }
+        set.insert(char);
+    }
+    answer
 }
 
 fn main() {
