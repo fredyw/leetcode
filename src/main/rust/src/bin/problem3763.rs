@@ -1,6 +1,21 @@
 // https://leetcode.com/problems/maximum-total-sum-with-threshold-constraints/
 pub fn max_sum(nums: Vec<i32>, threshold: Vec<i32>) -> i64 {
-    todo!()
+    let mut zip: Vec<(i32, i32)> = threshold
+        .iter()
+        .zip(nums.iter())
+        .map(|(t, n)| (*t, *n))
+        .collect();
+    zip.sort();
+    let mut answer = 0;
+    let mut step = 1;
+    for (t, n) in zip {
+        if step < t {
+            break;
+        }
+        answer += n as i64;
+        step += 1;
+    }
+    answer
 }
 
 fn main() {
