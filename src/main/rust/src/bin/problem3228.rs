@@ -2,13 +2,13 @@
 pub fn max_operations(s: String) -> i32 {
     let mut answer = 0;
     let mut one_idx = s.len(); // initial value
-    for (i, char) in s.chars().rev().enumerate() {
-        println!("index: {i}");
-        if one_idx == s.len() {
+    let bytes = s.as_bytes();
+    for i in (0..bytes.len()).rev() {
+        if bytes[i] == b'1' && one_idx == s.len() {
             one_idx = i;
-        } else {
+        } else if bytes[i] == b'1' {
             answer += (one_idx - i) as i32 - 1;
-            one_idx = i;
+            one_idx -= 1;
         }
     }
     answer
