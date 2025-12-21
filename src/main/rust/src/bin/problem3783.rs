@@ -1,0 +1,10 @@
+// https://leetcode.com/problems/mirror-distance-of-an-integer/description/
+pub fn mirror_distance(n: i32) -> i32 {
+    todo!()
+}
+
+fn main() {
+    println!("{}", mirror_distance(25)); // 27
+    println!("{}", mirror_distance(10)); // 9
+    println!("{}", mirror_distance(7)); // 10
+}
