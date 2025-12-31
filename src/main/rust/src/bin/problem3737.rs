@@ -1,6 +1,19 @@
 // https://leetcode.com/problems/count-subarrays-with-majority-element-i/description/
 pub fn count_majority_subarrays(nums: Vec<i32>, target: i32) -> i32 {
-    todo!()
+    let mut answer = 0;
+    for i in 0..nums.len() {
+        let mut count = 0;
+        for j in i..nums.len() {
+            if nums[j] == target {
+                count += 1;
+            }
+            let length = j - i + 1;
+            if count > length / 2 {
+                answer += 1;
+            }
+        }
+    }
+    answer
 }
 
 fn main() {
