@@ -1,6 +1,16 @@
+use std::collections::HashSet;
+
 // https://leetcode.com/problems/count-residue-prefixes/description/
 pub fn residue_prefixes(s: String) -> i32 {
-    todo!()
+    let mut answer = 0;
+    let mut counts: HashSet<char> = HashSet::new();
+    for (i, c) in s.chars().enumerate() {
+        counts.insert(c);
+        if counts.len() == (i + 1) % 3 {
+            answer += 1;
+        }
+    }
+    answer
 }
 
 fn main() {
