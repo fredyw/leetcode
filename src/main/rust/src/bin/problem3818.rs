@@ -1,6 +1,13 @@
 // https://leetcode.com/problems/minimum-prefix-removal-to-make-array-strictly-increasing/description/
 pub fn minimum_prefix_length(nums: Vec<i32>) -> i32 {
-    todo!()
+    let mut i = nums.len() - 1;
+    while i > 0 {
+        if nums[i - 1] >= nums[i] {
+            break;
+        }
+        i -= 1;
+    }
+    i as i32
 }
 
 fn main() {
