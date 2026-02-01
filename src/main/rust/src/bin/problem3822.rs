@@ -27,7 +27,7 @@ fn main() {
     oms.add_order(1, "buy".to_string(), 1);
     oms.add_order(2, "buy".to_string(), 1);
     oms.add_order(3, "sell".to_string(), 2);
-    println!("{:?}", oms.get_orders_at_price("buy".to_string(), 1)); // [[2, 1]
+    println!("{:?}", oms.get_orders_at_price("buy".to_string(), 1)); // [2, 1]
     oms.modify_order(1, 3);
     oms.modify_order(2, 1);
     println!("{:?}", oms.get_orders_at_price("buy".to_string(), 1)); // [2]
