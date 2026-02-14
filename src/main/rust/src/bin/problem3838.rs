@@ -1,6 +1,16 @@
 // https://leetcode.com/problems/weighted-word-mapping/
 pub fn map_word_weights(words: Vec<String>, weights: Vec<i32>) -> String {
-    todo!()
+    words
+        .iter()
+        .map(|word| {
+            let sum = word
+                .chars()
+                .map(|c| weights[c as usize - 'a' as usize])
+                .sum::<i32>()
+                % 26;
+            (b'z' - (sum as u8)) as char
+        })
+        .collect()
 }
 
 fn main() {
