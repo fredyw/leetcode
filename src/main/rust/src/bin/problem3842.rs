@@ -1,6 +1,22 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/toggle-light-bulbs/description/
 pub fn toggle_light_bulbs(bulbs: Vec<i32>) -> Vec<i32> {
-    todo!()
+    let mut answer: HashMap<i32, bool> = HashMap::new();
+    for i in 0..bulbs.len() {
+        if let Some(on) = answer.get_mut(&bulbs[i]) {
+            *on = !*on;
+        } else {
+            answer.insert(bulbs[i], true);
+        }
+    }
+    let mut answer: Vec<i32> = answer
+        .into_iter()
+        .filter(|(_, on)| *on)
+        .map(|(bulb, _)| bulb)
+        .collect();
+    answer.sort_unstable();
+    answer
 }
 
 fn main() {
