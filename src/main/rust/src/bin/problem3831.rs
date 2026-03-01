@@ -22,7 +22,43 @@ impl TreeNode {
 
 // https://leetcode.com/problems/median-of-a-binary-search-tree-level/
 pub fn level_median(root: Option<Rc<RefCell<TreeNode>>>, level: i32) -> i32 {
-    todo!()
+    let mut queue: VecDeque<Option<Rc<RefCell<TreeNode>>>> = VecDeque::new();
+    queue.push_back(root);
+    let mut cur_level = 0;
+    while !queue.is_empty() {
+        if cur_level == level {
+            break;
+        }
+        let size = queue.len();
+        for _ in 0..size {
+            if let Some(node) = queue.pop_front() {
+                if let Some(node) = node.as_ref() {
+                    if node.borrow().left.is_some() {
+                        queue.push_back(node.borrow().left.clone());
+                    }
+                    if node.borrow().right.is_some() {
+                        queue.push_back(node.borrow().right.clone());
+                    }
+                }
+            }
+        }
+        cur_level += 1;
+    }
+    if queue.is_empty() {
+        -1
+    } else {
+        let mut nums = queue
+            .into_iter()
+            .filter_map(|n| n.map(|n| n.borrow().val).or(None))
+            .collect::<Vec<i32>>();
+        nums.sort_unstable();
+        let mid = nums.len() / 2;
+        if nums.len() % 2 == 0 {
+            nums[mid - 1].max(nums[mid])
+        } else {
+            nums[mid]
+        }
+    }
 }
 
 fn create_node(value: i32) -> Option<Rc<RefCell<TreeNode>>> {
@@ -79,4 +115,5 @@ fn main() {
         level_median(to_tree(vec![Some(6), Some(3), Some(8)]), 1)
     ); // 8
     println!("{}", level_median(to_tree(vec![Some(2), Some(1)]), 2)); // -1
+    println!("{}", level_median(to_tree(vec![Some(2), Some(1)]), 0)); // 2
 }
