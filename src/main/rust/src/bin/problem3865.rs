@@ -1,6 +1,12 @@
 // https://leetcode.com/problems/reverse-k-subarrays/description/
-pub fn reverse_subarrays(nums: Vec<i32>, k: i32) -> Vec<i32> {
-    todo!()
+pub fn reverse_subarrays(mut nums: Vec<i32>, k: i32) -> Vec<i32> {
+    let mut i = 0;
+    let n = nums.len() / k as usize;
+    while i < nums.len() {
+        nums[i..i + n].reverse();
+        i += n;
+    }
+    nums
 }
 
 fn main() {
