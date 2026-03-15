@@ -2,23 +2,24 @@ use std::collections::HashMap;
 
 // https://leetcode.com/problems/delayed-count-of-equal-elements/description/
 pub fn delayed_count(nums: Vec<i32>, k: i32) -> Vec<i32> {
-    let mut map_total_count: HashMap<i32, i32> = HashMap::new();
-    for num in &nums {
-        *map_total_count.entry(*num).or_insert(0) += 1;
+    let mut answer = vec![0; nums.len()];
+    let k = k as usize;
+    let mut map: HashMap<i32, i32> = HashMap::new();
+    for i in k + 1..nums.len() {
+        *map.entry(nums[i]).or_insert(0) += 1;
     }
-    let mut answer = Vec::with_capacity(nums.len());
-    let mut map_count: HashMap<i32, i32> = HashMap::new();
-    for i in 0..nums.len() {
-        *map_count.entry(nums[i]).or_insert(0) += 1;
-        let mut j = i + 1;
-        let mut count = 0;
-        while j < nums.len() && j < i + (k as usize) + 1 {
-            if nums[j] == nums[i] {
-                count += 1;
-            }
-            j += 1;
+    let mut i = 0;
+    while i + k + 1 < nums.len() {
+        if let Some(count) = map.get(&nums[i]) {
+            answer[i] = *count;
         }
-        answer.push(map_total_count[&nums[i]] - (map_count[&nums[i]] + count));
+        if let Some(count) = map.get_mut(&nums[i + k + 1]) {
+            *count -= 1;
+            if *count == 0 {
+                map.remove(&nums[i + k + 1]);
+            }
+        }
+        i += 1;
     }
     answer
 }
