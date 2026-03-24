@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/construct-uniform-parity-array-i/description/
 pub fn uniform_array(nums1: Vec<i32>) -> bool {
-    todo!()
+    true
 }
 
 fn main() {
