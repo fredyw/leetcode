@@ -1,6 +1,16 @@
 // https://leetcode.com/problems/valid-subarrays-with-exactly-one-peak/description/
 pub fn valid_subarrays(nums: Vec<i32>, k: i32) -> i64 {
-    todo!()
+    let mut answer = 0;
+    let k = k as i64;
+    for i in 1..nums.len() - 1 {
+        if nums[i] > nums[i - 1] && nums[i] > nums[i + 1] {
+            let left = (i as i64).min(k) + 1;
+            let right = (nums.len() as i64 - i as i64).min(k);
+            println!("i: {i}, left = {}, right = {}", left, right);
+            answer += left * right;
+        }
+    }
+    answer
 }
 
 fn main() {
