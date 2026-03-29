@@ -9,4 +9,5 @@ fn main() {
     println!("{}", valid_subarrays(vec![4, 3, 5, 1], 2)); // 6
     println!("{}", valid_subarrays(vec![1, 4, 2, 5, 2], 5)); // 8
     println!("{}", valid_subarrays(vec![1, 3, 2, 4, 3, 5, 1, 4, 2], 2)); // 16
+    println!("{}", valid_subarrays(vec![1, 3, 2, 4, 3, 5, 1, 4, 2], 3)); // 16
 }
