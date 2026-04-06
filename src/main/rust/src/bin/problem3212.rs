@@ -41,4 +41,8 @@ fn main() {
         "{}",
         number_of_submatrices(vec![vec!['.', '.'], vec!['.', '.']])
     ); // 0
+    println!(
+        "{}",
+        number_of_submatrices(vec![vec!['X', 'X'], vec!['Y', 'Y']])
+    ); // 2
 }
