@@ -16,7 +16,7 @@ pub fn max_requests(requests: Vec<Vec<i32>>, k: i32, window: i32) -> i32 {
         let mut deque: VecDeque<i32> = VecDeque::new();
         for t in time {
             while let Some(front) = deque.front() {
-                if *front < *t - k {
+                if *front < *t - window {
                     deque.pop_front();
                 } else {
                     break;
