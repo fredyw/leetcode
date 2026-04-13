@@ -1,6 +1,17 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/maximum-requests-without-violating-the-limit/description/
 pub fn max_requests(requests: Vec<Vec<i32>>, k: i32, window: i32) -> i32 {
-    todo!()
+    let mut map: HashMap<i32, Vec<i32>> = HashMap::new();
+    for request in &requests {
+        let user = request[0];
+        let time = request[1];
+        map.entry(user).or_insert_with(Vec::new).push(time);
+    }
+    for (_, time) in &mut map {
+        time.sort_unstable();
+    }
+    0
 }
 
 fn main() {
