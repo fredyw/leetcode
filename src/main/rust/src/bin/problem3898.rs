@@ -1,6 +1,14 @@
 // https://leetcode.com/problems/find-the-degree-of-each-vertex/description/
 pub fn find_degrees(matrix: Vec<Vec<i32>>) -> Vec<i32> {
-    todo!()
+    let mut answer: Vec<i32> = vec![0; matrix.len()];
+    for m in &matrix {
+        for (i, v) in m.iter().enumerate() {
+            if *v == 1 {
+                answer[i] += 1;
+            }
+        }
+    }
+    answer
 }
 
 fn main() {
