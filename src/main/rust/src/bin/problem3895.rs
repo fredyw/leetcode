@@ -1,6 +1,14 @@
 // https://leetcode.com/problems/count-digit-appearances/description/
 pub fn count_digit_occurrences(nums: Vec<i32>, digit: i32) -> i32 {
-    todo!()
+    let mut answer = 0;
+    for num in &nums {
+        for c in num.to_string().chars() {
+            if c == std::char::from_digit(digit as u32, 10).unwrap() {
+                answer += 1;
+            }
+        }
+    }
+    answer
 }
 
 fn main() {
