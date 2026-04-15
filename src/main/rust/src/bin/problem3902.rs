@@ -22,7 +22,28 @@ impl TreeNode {
 
 // https://leetcode.com/problems/zigzag-level-sum-of-binary-tree/description/
 pub fn zigzag_level_sum(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i64> {
-    todo!()
+    let mut answer: Vec<i64> = Vec::new();
+    let mut is_odd = true;
+    let mut queue: VecDeque<Option<Rc<RefCell<TreeNode>>>> = VecDeque::new();
+    queue.push_back(root);
+    while !queue.is_empty() {
+        let size = queue.len();
+        for _ in 0..size {
+            let node = queue.pop_front();
+            if let Some(node) = node {
+                if let Some(node) = node.as_ref() {
+                    if node.borrow().left.is_some() {
+                        queue.push_back(node.borrow().left.clone());
+                    }
+                    if node.borrow().right.is_some() {
+                        queue.push_back(node.borrow().right.clone());
+                    }
+                }
+            }
+        }
+        is_odd = !is_odd;
+    }
+    answer
 }
 
 fn create_node(value: i32) -> Option<Rc<RefCell<TreeNode>>> {
