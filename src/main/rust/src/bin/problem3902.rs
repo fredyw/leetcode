@@ -28,6 +28,7 @@ pub fn zigzag_level_sum(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i64> {
     queue.push_back(root);
     while !queue.is_empty() {
         let size = queue.len();
+        let mut tmp: Vec<Option<Rc<RefCell<TreeNode>>>> = vec![];
         for _ in 0..size {
             let node = queue.pop_front();
             if let Some(node) = node {
@@ -39,8 +40,30 @@ pub fn zigzag_level_sum(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i64> {
                         queue.push_back(node.borrow().right.clone());
                     }
                 }
+                tmp.push(node);
             }
         }
+        let mut sum = 0;
+        if is_odd {
+            for node in tmp.iter() {
+                if let Some(n) = node {
+                    if n.borrow().left.is_none() {
+                        break;
+                    }
+                    sum += n.borrow().val as i64;
+                }
+            }
+        } else {
+            for node in tmp.iter().rev() {
+                if let Some(n) = node {
+                    if n.borrow().right.is_none() {
+                        break;
+                    }
+                    sum += n.borrow().val as i64;
+                }
+            }
+        }
+        answer.push(sum);
         is_odd = !is_odd;
     }
     answer
