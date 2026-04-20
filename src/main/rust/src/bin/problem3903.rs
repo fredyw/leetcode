@@ -1,6 +1,21 @@
 // https://leetcode.com/problems/smallest-stable-index-i/description/
 pub fn first_stable_index(nums: Vec<i32>, k: i32) -> i32 {
-    todo!()
+    let mut mins: Vec<i32> = vec![i32::MAX; nums.len()];
+    for (i, &n) in nums.iter().enumerate().rev() {
+        if i + 1 == nums.len() {
+            mins[i] = n;
+        } else {
+            mins[i] = mins[i + 1].min(n);
+        }
+    }
+    let mut max = 0;
+    for (i, &n) in nums.iter().enumerate() {
+        max = max.max(n);
+        if max - mins[i] <= k {
+            return i as i32;
+        }
+    }
+    -1
 }
 
 fn main() {
