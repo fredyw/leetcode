@@ -1,6 +1,6 @@
 use itertools::Itertools;
 use std::cmp::Ordering;
-use std::collections::HashMap;
+use std::collections::{HashMap, VecDeque};
 
 // https://leetcode.com/problems/sort-vowels-by-frequency/description/
 pub fn sort_vowels(s: String) -> String {
@@ -11,7 +11,7 @@ pub fn sort_vowels(s: String) -> String {
             *count += 1;
         }
     }
-    let vowel_counts: Vec<(char, (i32, usize))> = vowel_counts
+    let mut vowel_counts: VecDeque<(char, (i32, usize))> = vowel_counts
         .into_iter()
         .sorted_by(|(_, (c1, i1)), (_, (c2, i2))| {
             let cmp = c2.cmp(c1);
@@ -23,6 +23,21 @@ pub fn sort_vowels(s: String) -> String {
         })
         .collect();
     let mut answer = String::new();
+    let mut char = ' ';
+    let mut count = 0;
+    for c in s.chars() {
+        if c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' {
+            if count == 0 {
+                let (ch, (cnt, _)) = vowel_counts.pop_front().unwrap();
+                char = ch;
+                count = cnt;
+            }
+            answer.push(char);
+            count -= 1;
+        } else {
+            answer.push(c);
+        }
+    }
     answer
 }
 
