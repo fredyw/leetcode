@@ -1,6 +1,13 @@
+use std::collections::HashMap;
+
 // https://leetcode.com/problems/closest-equal-element-queries/description/
 pub fn solve_queries(nums: Vec<i32>, queries: Vec<i32>) -> Vec<i32> {
-    todo!()
+    let mut map: HashMap<i32, Vec<usize>> = HashMap::new();
+    for (i, &num) in nums.iter().enumerate() {
+        map.entry(num).or_insert(vec![]).push(i);
+    }
+    let mut answer = vec![-1; queries.len()];
+    answer
 }
 
 fn main() {
