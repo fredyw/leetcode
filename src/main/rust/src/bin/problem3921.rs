@@ -1,6 +1,18 @@
 // https://leetcode.com/problems/score-validator/description/
 pub fn score_validator(events: Vec<String>) -> Vec<i32> {
-    todo!()
+    let mut score = 0;
+    let mut counter = 0;
+    for event in events {
+        match event.as_str() {
+            "W" => counter += 1,
+            "WD" | "NB" => score += 1,
+            _ => score += event.parse::<i32>().unwrap(),
+        }
+        if counter == 10 {
+            break;
+        }
+    }
+    vec![score, counter]
 }
 
 fn main() {
