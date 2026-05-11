@@ -1,4 +1,3 @@
-use itertools::Itertools;
 use std::collections::{HashMap, VecDeque};
 
 // https://leetcode.com/problems/first-unique-number/description/
@@ -26,6 +25,8 @@ impl FirstUnique {
             if let Some(unique) = self.map.get(front) {
                 if *unique {
                     return *front;
+                } else {
+                    self.deque.pop_front();
                 }
             } else {
                 self.deque.pop_front();
@@ -54,17 +55,17 @@ fn main() {
     first_unique.add(3);
     println!("{}", first_unique.show_first_unique()); // -1
 
-    // let mut first_unique = FirstUnique::new(vec![7, 7, 7, 7, 7, 7]);
-    // println!("{}", first_unique.show_first_unique()); // -1
-    // first_unique.add(7);
-    // first_unique.add(3);
-    // first_unique.add(3);
-    // first_unique.add(7);
-    // first_unique.add(17);
-    // println!("{}", first_unique.show_first_unique()); // 17
-    //
-    // let mut first_unique = FirstUnique::new(vec![809]);
-    // println!("{}", first_unique.show_first_unique()); // 809
-    // first_unique.add(809);
-    // println!("{}", first_unique.show_first_unique()); // -1
+    let mut first_unique = FirstUnique::new(vec![7, 7, 7, 7, 7, 7]);
+    println!("{}", first_unique.show_first_unique()); // -1
+    first_unique.add(7);
+    first_unique.add(3);
+    first_unique.add(3);
+    first_unique.add(7);
+    first_unique.add(17);
+    println!("{}", first_unique.show_first_unique()); // 17
+
+    let mut first_unique = FirstUnique::new(vec![809]);
+    println!("{}", first_unique.show_first_unique()); // 809
+    first_unique.add(809);
+    println!("{}", first_unique.show_first_unique()); // -1
 }
