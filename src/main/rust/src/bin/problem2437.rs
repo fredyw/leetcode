@@ -1,37 +1,21 @@
 // https://leetcode.com/problems/number-of-valid-clock-times/
 pub fn count_time(time: String) -> i32 {
     let time = time.as_bytes();
-    let first = if time[0] == '?' as u8 && time[1] == '?' as u8 {
-        "2".to_string()
-    } else if time[0] == '?' as u8 && time[1] - '0' as u8 <= 3 {
-        "2".to_string()
-    } else if time[0] == '?' as u8 && time[1] - '0' as u8 > 3 {
-        "1".to_string()
-    } else {
-        "".to_string()
+    let hh = match (time[0], time[1]) {
+        (b'?', b'?') => 24,
+        (b'?', b'0'..=b'3') => 3,
+        (b'?', _) => 2,
+        (b'0'..=b'1', b'?') => 10,
+        (b'2', b'?') => 4,
+        _ => 1,
     };
-    let second = if time[0] == '?' as u8 && time[1] == '?' as u8 {
-        "3".to_string()
-    } else if time[0] == '2' as u8 && time[1] == '?' as u8 {
-        "3".to_string()
-    } else if (time[0] == '1' as u8 || time[0] == '0' as u8) && time[1] == '?' as u8 {
-        "9".to_string()
-    } else {
-        "".to_string()
+    let mm = match (time[3], time[4]) {
+        (b'?', b'?') => 60,
+        (b'?', _) => 6,
+        (_, b'?') => 10,
+        _ => 1,
     };
-    let third = if time[3] == '?' as u8 {
-        "5".to_string()
-    } else {
-        "".to_string()
-    };
-    let fourth = if time[4] == '?' as u8 {
-        "9".to_string()
-    } else {
-        "".to_string()
-    };
-    let hours = format!("{}{}", first, second).parse::<i32>().unwrap_or(0);
-    let minutes = format!("{}{}", third, fourth).parse::<i32>().unwrap_or(0);
-    (hours + 1) * (minutes + 1)
+    hh * mm
 }
 
 fn main() {
