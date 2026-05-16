@@ -1,5 +1,11 @@
 // https://leetcode.com/problems/minimum-subarrays-in-a-valid-split/description/
 pub fn valid_subarray_split(nums: Vec<i32>) -> i32 {
+    fn gcd(a: i32, b: i32) -> i32 {
+        if b == 0 {
+            return a;
+        }
+        gcd(b, a / b)
+    }
     todo!()
 }
 
