@@ -1,6 +1,15 @@
 // https://leetcode.com/problems/sum-of-primes-between-number-and-its-reverse/description/
 pub fn sum_of_primes_in_range(n: i32) -> i32 {
-    todo!()
+    let m = n
+        .to_string()
+        .chars()
+        .rev()
+        .collect::<String>()
+        .parse::<i32>()
+        .unwrap();
+    let start = if n < m { n } else { m };
+    let end = if n >= m { n } else { m };
+    0
 }
 
 fn main() {
