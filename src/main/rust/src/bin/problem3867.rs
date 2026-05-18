@@ -1,5 +1,8 @@
 // https://leetcode.com/problems/sum-of-gcd-of-formed-pairs/description/
 pub fn gcd_sum(nums: Vec<i32>) -> i64 {
+    fn gcd(a: i32, b: i32) -> i32 {
+        if b == 0 { a } else { gcd(b, a % b) }
+    }
     todo!()
 }
 
