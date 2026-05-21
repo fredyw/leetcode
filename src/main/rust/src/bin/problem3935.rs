@@ -16,26 +16,38 @@ pub fn power_update(nums: Vec<i32>, p: i32, queries: Vec<Vec<i32>>) -> Vec<i32> 
         result
     }
 
-    let mut heap: BinaryHeap<Reverse<i32>> = BinaryHeap::new();
+    let mut top_k: BinaryHeap<Reverse<i32>> = BinaryHeap::new();
+    let mut leftovers: BinaryHeap<i32> = BinaryHeap::new();
     for &num in &nums {
-        heap.push(Reverse(num));
+        leftovers.push(num);
     }
     let mut answer: Vec<i32> = Vec::new();
     let mut p = p;
     for query in &queries {
         let val = query[0];
         let key = query[1] as usize;
-        heap.push(Reverse(val));
-        let mut tmp: Vec<i32> = Vec::new();
-        while heap.len() > key {
-            tmp.push(heap.pop().unwrap().0);
+        if let Some(&Reverse(current_min_top)) = top_k.peek() {
+            if val > current_min_top {
+                top_k.push(Reverse(val));
+            } else {
+                leftovers.push(val);
+            }
+        } else {
+            leftovers.push(val);
         }
-        let k_largest = heap.peek().unwrap().0 as i64;
+        while top_k.len() < key {
+            if let Some(left_max) = leftovers.pop() {
+                top_k.push(Reverse(left_max));
+            }
+        }
+        while top_k.len() > key {
+            if let Some(Reverse(top_min)) = top_k.pop() {
+                leftovers.push(top_min);
+            }
+        }
+        let k_largest = top_k.peek().unwrap().0 as i64;
         p = update_p(p as i64, k_largest, 1_000_000_007_i64) as i32;
         answer.push(p);
-        for v in tmp {
-            heap.push(Reverse(v));
-        }
     }
     answer
 }
