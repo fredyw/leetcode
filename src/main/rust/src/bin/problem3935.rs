@@ -24,20 +24,17 @@ pub fn power_update(nums: Vec<i32>, p: i32, queries: Vec<Vec<i32>>) -> Vec<i32> 
     let mut p = p;
     for query in &queries {
         let val = query[0];
-        let key = query[1];
+        let key = query[1] as usize;
         heap.push(Reverse(val));
         let mut tmp: Vec<i32> = Vec::new();
-        for _ in 0..heap.len() - (heap.len() - key as usize + 1) {
+        while heap.len() > key {
             tmp.push(heap.pop().unwrap().0);
-            println!("tmp: {:?}", tmp);
-            p = update_p(p as i64, heap.peek().unwrap().0 as i64, 1_000_000_007_i64) as i32;
-            answer.push(p);
         }
+        let k_largest = heap.peek().unwrap().0 as i64;
+        p = update_p(p as i64, k_largest, 1_000_000_007_i64) as i32;
+        answer.push(p);
         for v in tmp {
             heap.push(Reverse(v));
-        }
-        if heap.len() >= 10 {
-            heap.pop();
         }
     }
     answer
@@ -48,8 +45,8 @@ fn main() {
         "{:?}",
         power_update(vec![2], 4, vec![vec![3, 1], vec![1, 2]])
     ); // [64,4096]
-    // println!(
-    //     "{:?}",
-    //     power_update(vec![7, 5], 6, vec![vec![4, 3], vec![7, 2]])
-    // ); // [1296,220296870]
+    println!(
+        "{:?}",
+        power_update(vec![7, 5], 6, vec![vec![4, 3], vec![7, 2]])
+    ); // [1296,220296870]
 }
