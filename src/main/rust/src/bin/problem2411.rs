@@ -13,13 +13,17 @@ pub fn smallest_subarrays(nums: Vec<i32>) -> Vec<i32> {
             pos += 1;
         }
         let max_index = *set.iter().max().unwrap_or(&i);
-        answer[i] = (max_index - i) as i32 + 1;
+        answer[i] = if max_index < i {
+            1
+        } else {
+            (max_index - i) as i32 + 1
+        };
     }
     answer
 }
 
 fn main() {
-    // println!("{:?}", smallest_subarrays(vec![1, 0, 2, 1, 3])); // [3,3,2,2,1]
-    // println!("{:?}", smallest_subarrays(vec![1, 2])); // [2,1]
+    println!("{:?}", smallest_subarrays(vec![1, 0, 2, 1, 3])); // [3,3,2,2,1]
+    println!("{:?}", smallest_subarrays(vec![1, 2])); // [2,1]
     println!("{:?}", smallest_subarrays(vec![1, 0])); // [1,1]
 }
