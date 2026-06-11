@@ -1,16 +1,28 @@
 // https://leetcode.com/problems/valid-binary-strings-with-cost-limit/description/
 pub fn generate_valid_strings(n: i32, k: i32) -> Vec<String> {
-    fn generate(n: i32, k: i32, prev: i32, cur: i32, sum: i32) {
-        if sum > k || n == cur {
-            return;
+    fn generate(
+        n: i32,
+        k: i32,
+        prev: i32,
+        cur: i32,
+        sum: i32,
+        chars: &mut Vec<char>,
+    ) -> Vec<String> {
+        if sum + cur > k || n == cur {
+            let s = chars.iter().collect::<String>();
+            return vec![s];
         }
-        if prev + 1 != cur {
-            generate(n, k, cur, cur + 1, sum + cur);
+        let mut strings: Vec<String> = Vec::new();
+        strings.extend(generate(n, k, prev, cur + 1, sum, chars)); // skip
+        if prev == -1 || prev + 1 != cur {
+            chars[cur as usize] = '1';
+            strings.extend(generate(n, k, cur, cur + 1, sum + cur, chars));
+            chars[cur as usize] = '0';
         }
-        generate(n, k, prev, cur + 1, sum); // skip
+        strings
     }
 
-    todo!()
+    generate(n, k, -1, 0, 0, &mut vec!['0'; n as usize])
 }
 
 fn main() {
