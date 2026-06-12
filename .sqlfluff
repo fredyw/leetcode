@@ -1,3 +1,6 @@
+[sqlfluff]
+exclude_rules = layout.cte_newline
+
 [sqlfluff:rules:capitalisation.keywords]
 capitalisation_policy = upper
 

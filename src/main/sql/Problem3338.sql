@@ -21,7 +21,6 @@ WITH ranked_salary AS (
         DENSE_RANK() OVER (PARTITION BY dept ORDER BY salary DESC) AS rank
     FROM employees
 )
-
 SELECT
     emp_id,
     dept

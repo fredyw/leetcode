@@ -6,7 +6,6 @@ WITH max_years AS (
     FROM project p JOIN employee e ON p.employee_id = e.employee_id
     GROUP BY p.project_id
 )
-
 SELECT
     p.project_id,
     e.employee_id

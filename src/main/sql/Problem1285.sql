@@ -6,7 +6,6 @@ WITH group_logs AS (
     FROM logs
     GROUP BY log_id
 )
-
 SELECT
     MIN(log_id) AS start_id,
     MAX(log_id) AS end_id

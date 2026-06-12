@@ -12,7 +12,6 @@ comments AS (
     FROM submissions
     WHERE parent_id IS NOT null
 )
-
 SELECT
     p.sub_id AS post_id,
     COUNT(c.sub_id) AS number_of_comments

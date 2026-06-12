@@ -6,6 +6,5 @@ WITH single_numbers AS (
     HAVING COUNT(num) = 1
     ORDER BY num DESC
 )
-
 SELECT MAX(num) AS num
 FROM single_numbers;

@@ -6,7 +6,6 @@ WITH max_salary_per_company AS (
     FROM salaries
     GROUP BY company_id
 )
-
 SELECT
     s.company_id,
     s.employee_id,

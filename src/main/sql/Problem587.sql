@@ -16,7 +16,6 @@ request_accepted_count AS (
         FROM requestaccepted
     )
 )
-
 SELECT
     CASE
         WHEN (SELECT count FROM request_sent_count) = 0 THEN 0.0

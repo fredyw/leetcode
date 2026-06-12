@@ -7,7 +7,6 @@ WITH borrow_counts AS (
     WHERE return_date IS null
     GROUP BY book_id
 )
-
 SELECT
     l.book_id,
     l.title,

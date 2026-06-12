@@ -9,7 +9,6 @@ WITH ranked_orders AS (
     FROM orders
     GROUP BY customer_id, product_id
 )
-
 SELECT
     r.customer_id,
     r.product_id,

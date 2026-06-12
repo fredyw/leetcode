@@ -8,6 +8,5 @@ WITH RECURSIVE Subordinates AS (
     FROM Subordinates S JOIN Employees E
         ON S.Employee_id = E.Manager_id
 )
-
 SELECT Employee_id
 FROM Subordinates;

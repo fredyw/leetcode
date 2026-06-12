@@ -14,7 +14,6 @@ trusted_contacts AS (
     FROM contacts co LEFT JOIN customers cu ON co.contact_email = cu.email
     GROUP BY co.user_id
 )
-
 SELECT
     i.invoice_id,
     cu.customer_name,

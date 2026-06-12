@@ -7,7 +7,6 @@ WITH cummulative_weight AS (
     FROM queue
     ORDER BY turn
 )
-
 SELECT person_name
 FROM cummulative_weight
 WHERE total_weight <= 1000

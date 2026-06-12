@@ -15,7 +15,6 @@ min_max_stats AS (
         MAX(count) OVER () AS max_count
     FROM activity_count
 )
-
 SELECT activity
 FROM min_max_stats
 WHERE count > min_count AND count < max_count;

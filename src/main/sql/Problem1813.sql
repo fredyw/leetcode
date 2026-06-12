@@ -6,7 +6,6 @@ WITH max_amount AS (
     FROM transactions
     GROUP BY day::date
 )
-
 SELECT t.transaction_id
 FROM transactions t JOIN max_amount m
     ON t.day::date = m.day

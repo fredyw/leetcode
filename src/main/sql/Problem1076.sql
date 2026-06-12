@@ -11,7 +11,6 @@ max_employee AS (
     SELECT MAX(count) AS max
     FROM num_employees
 )
-
 SELECT project_id
 FROM num_employees
 WHERE count = (SELECT max FROM max_employee);

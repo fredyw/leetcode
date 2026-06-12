@@ -4,7 +4,6 @@ WITH account_2021 AS (
     FROM subscriptions
     WHERE start_date <= '2021-12-31' AND end_date >= '2021-01-01'
 )
-
 SELECT COUNT(*) AS accounts_count
 FROM account_2021 a
 WHERE NOT EXISTS (

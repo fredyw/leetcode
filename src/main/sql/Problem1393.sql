@@ -16,7 +16,6 @@ sell_stocks AS (
     WHERE operation = 'Sell'
     GROUP BY stock_name
 )
-
 SELECT
     b.stock_name,
     total_sell_price - total_buy_price AS capital_gain_loss

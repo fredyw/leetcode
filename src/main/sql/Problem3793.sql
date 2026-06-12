@@ -7,7 +7,6 @@ WITH user_stats AS (
     FROM prompts
     GROUP BY user_id
 )
-
 SELECT
     user_id,
     prompt_count,

@@ -6,7 +6,6 @@ WITH team_count AS (
     FROM employee
     GROUP BY team_id
 )
-
 SELECT
     e.employee_id,
     c.team_size

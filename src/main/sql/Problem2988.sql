@@ -24,7 +24,6 @@ WITH largest_dep AS (
     FROM employees
     GROUP BY dep_id
 )
-
 SELECT
     emp_name AS manager_name,
     dep_id

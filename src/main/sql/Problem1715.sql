@@ -11,7 +11,6 @@ WITH t AS (
         (b.orange_count + c.orange_count) AS orange_count
     FROM boxes b JOIN chests c ON b.chest_id = c.chest_id
 )
-
 SELECT
     SUM(apple_count) AS apple_count,
     SUM(orange_count) AS orange_count

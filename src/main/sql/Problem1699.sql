@@ -6,7 +6,6 @@ WITH t AS (
         duration
     FROM calls
 )
-
 SELECT
     person1,
     person2,

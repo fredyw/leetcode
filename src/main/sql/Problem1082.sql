@@ -6,7 +6,6 @@ WITH aggregated_sales AS (
     FROM sales
     GROUP BY seller_id
 )
-
 SELECT seller_id
 FROM aggregated_sales
 WHERE total_price = (SELECT MAX(total_price) FROM aggregated_sales)

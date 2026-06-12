@@ -10,7 +10,6 @@ california_excellent AS (
     FROM california
     WHERE score >= 90
 )
-
 SELECT
     CASE
         WHEN

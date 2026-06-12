@@ -11,7 +11,6 @@ max_count AS (
     SELECT MAX(count) AS max_count
     FROM vote_count
 )
-
 SELECT name
 FROM vote_count
 WHERE count = (SELECT max_count FROM max_count);

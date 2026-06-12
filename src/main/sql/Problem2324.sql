@@ -18,7 +18,6 @@ ranked_totals AS (
             AS rnk
     FROM product_totals
 )
-
 SELECT
     user_id,
     product_id

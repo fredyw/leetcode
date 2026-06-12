@@ -5,7 +5,6 @@ WITH managers AS (
     GROUP BY managerid
     HAVING COUNT(managerid) >= 5
 )
-
 SELECT e.name
 FROM employee e JOIN managers m
     ON e.id = m.managerid;

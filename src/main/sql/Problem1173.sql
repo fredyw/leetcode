@@ -9,7 +9,6 @@ total_orders AS (
     SELECT CAST(COUNT(*) AS decimal) AS count
     FROM delivery
 )
-
 SELECT ROUND(
     (
         (SELECT count FROM immediate_orders

@@ -4,7 +4,6 @@ WITH u AS (
     UNION
     SELECT employee_id FROM salaries
 )
-
 SELECT u.employee_id
 FROM u
 WHERE

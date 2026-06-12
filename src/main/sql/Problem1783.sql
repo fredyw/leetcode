@@ -11,7 +11,6 @@ WITH grand_slams_won AS (
         FROM championships) AS grand_slams_count
     FROM players
 )
-
 SELECT
     player_id,
     player_name,
