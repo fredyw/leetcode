@@ -4,7 +4,6 @@ SELECT
     COUNT(DISTINCT user_id) AS active_users
 FROM activity
 WHERE
-    activity_date BETWEEN DATE_SUB(
-        '2019-07-27', INTERVAL 29 DAY
-    ) AND '2019-07-27'
+    activity_date BETWEEN CAST('2019-07-27' AS DATE)
+    - INTERVAL '29 days' AND CAST('2019-07-27' AS DATE)
 GROUP BY activity_date;

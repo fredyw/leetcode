@@ -13,7 +13,11 @@ SELECT
                         CASE WHEN action = 'Clicked' THEN 1 ELSE 0 END
                     ) AS decimal
                 )
-                + CAST(SUM(CASE WHEN action = 'Viewed' THEN 1 ELSE 0 END) AS decimal)
+                + CAST(
+                    SUM(
+                        CASE WHEN action = 'Viewed' THEN 1 ELSE 0 END
+                    ) AS decimal
+                )
             ) * 100, 2
         )
     END AS ctr

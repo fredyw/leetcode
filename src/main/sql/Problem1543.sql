@@ -1,7 +1,7 @@
 -- https://leetcode.com/problems/fix-product-name-format/
 SELECT
     LOWER(TRIM(product_name)) AS product_name,
-    DATE_FORMAT(sale_date, '%Y-%m') AS sale_date,
+    TO_CHAR(sale_date, 'YYYY-MM') AS sale_date,
     COUNT(*) AS total
 FROM Sales
 GROUP BY 1, 2

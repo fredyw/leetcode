@@ -8,5 +8,5 @@
 
 SELECT w2.Id
 FROM Weather w1
-INNER JOIN Weather w2 ON w1.recordDate = w2.recordDate - INTERVAL 1 DAY
+INNER JOIN Weather w2 ON w1.recordDate = w2.recordDate - INTERVAL '1 day'
 WHERE w1.Temperature < w2.Temperature;
