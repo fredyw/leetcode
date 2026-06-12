@@ -1,6 +1,11 @@
 -- https://leetcode.com/problems/department-top-three-salaries/
-select d.Name as 'Department', e1.Name as 'Employee', e1.Salary
-from Employee e1 join Department d on e1.DepartmentId = d.Id
-where 3 > (select count(distinct e2.Salary)
-           from Employee e2
-           where e2.Salary > e1.Salary and e1.DepartmentId = e2.DepartmentId);
+SELECT
+    d.name AS department,
+    e1.name AS employee,
+    e1.salary
+FROM employee e1 JOIN department d ON e1.departmentid = d.id
+WHERE 3 > (
+    SELECT COUNT(DISTINCT e2.salary)
+    FROM employee e2
+    WHERE e2.salary > e1.salary AND e1.departmentid = e2.departmentid
+);

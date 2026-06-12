@@ -1,5 +1,9 @@
 -- https://leetcode.com/problems/not-boring-movies/
-select id, movie, description, rating
-from cinema
-where id % 2 != 0 and description != 'boring'
-group by rating desc;
+SELECT
+    id,
+    movie,
+    description,
+    rating
+FROM cinema
+WHERE id % 2 != 0 AND description != 'boring'
+ORDER BY rating DESC;
