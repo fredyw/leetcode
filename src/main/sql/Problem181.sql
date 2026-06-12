@@ -1,4 +1,4 @@
 -- https://leetcode.com/problems/employees-earning-more-than-their-managers/
-SELECT e2.Name AS Employee
-FROM Employee e1 JOIN Employee e2 ON e1.Id = e2.ManagerId
-WHERE e1.Salary < e2.Salary;
+SELECT e2.name AS employee
+FROM employee e1 JOIN employee e2 ON e1.id = e2.managerid
+WHERE e1.salary < e2.salary;

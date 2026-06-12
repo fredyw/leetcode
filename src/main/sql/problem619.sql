@@ -1,7 +1,7 @@
 -- https://leetcode.com/problems/biggest-single-number/
 WITH single_numbers AS (
     SELECT num
-    FROM MyNumbers
+    FROM mynumbers
     GROUP BY num
     HAVING COUNT(num) = 1
     ORDER BY num DESC

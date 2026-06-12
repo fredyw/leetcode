@@ -4,5 +4,5 @@ SELECT
     team_name,
     (wins * 3) + draws AS points,
     RANK() OVER (ORDER BY (wins * 3) + draws DESC) AS position
-FROM TeamStats
+FROM teamstats
 ORDER BY points DESC, team_name ASC;

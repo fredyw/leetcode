@@ -1,7 +1,7 @@
 -- https://leetcode.com/problems/number-of-comments-per-post/description/
 WITH posts AS (
     SELECT DISTINCT sub_id
-    FROM Submissions
+    FROM submissions
     WHERE parent_id IS null
 ),
 
@@ -9,7 +9,7 @@ comments AS (
     SELECT DISTINCT
         sub_id,
         parent_id
-    FROM Submissions
+    FROM submissions
     WHERE parent_id IS NOT null
 )
 

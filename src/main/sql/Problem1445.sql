@@ -6,13 +6,13 @@ FROM
     (SELECT
         sale_date,
         sold_num
-    FROM Sales
+    FROM sales
     WHERE fruit = 'apples') AS apple_sales
 JOIN
     (SELECT
         sale_date,
         sold_num
-    FROM Sales
+    FROM sales
     WHERE fruit = 'oranges')
         AS orange_sales
     ON apple_sales.sale_date = orange_sales.sale_date

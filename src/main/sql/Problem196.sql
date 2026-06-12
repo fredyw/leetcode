@@ -6,9 +6,9 @@
 
 DELETE FROM Person
 WHERE Id NOT IN (
-    SELECT t.Id FROM (
+    SELECT T.Id FROM (
         SELECT MIN(Id) AS Id
         FROM Person
         GROUP BY Email
-    ) AS t
+    ) AS T
 );

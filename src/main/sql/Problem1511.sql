@@ -2,8 +2,8 @@
 SELECT
     c.customer_id,
     c.name
-FROM Customers c JOIN Orders o ON c.customer_id = o.customer_id
-JOIN Product p ON o.product_id = p.product_id
+FROM customers c JOIN orders o ON c.customer_id = o.customer_id
+JOIN product p ON o.product_id = p.product_id
 GROUP BY c.customer_id, c.name
 HAVING
     SUM(

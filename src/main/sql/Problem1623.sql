@@ -1,9 +1,9 @@
 -- https://leetcode.com/problems/all-valid-triplets-that-can-represent-a-country/description/
 SELECT
-    a.student_name AS member_A,
-    b.student_name AS member_B,
-    c.student_name AS member_C
-FROM SchoolA a, SchoolB b, SchoolC c
+    a.student_name AS member_a,
+    b.student_name AS member_b,
+    c.student_name AS member_c
+FROM schoola a, schoolb b, schoolc c
 WHERE
     a.student_id != b.student_id
     AND b.student_id != c.student_id

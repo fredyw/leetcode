@@ -3,7 +3,7 @@ WITH group_logs AS (
     SELECT
         log_id,
         log_id - DENSE_RANK() OVER (ORDER BY log_id) AS grp
-    FROM Logs
+    FROM logs
     GROUP BY log_id
 )
 

@@ -1,5 +1,5 @@
 [sqlfluff]
-exclude_rules = capitalisation.identifiers, ambiguous
+exclude_rules = ambiguous
 
 [sqlfluff:rules:capitalisation.keywords]
 capitalisation_policy = upper

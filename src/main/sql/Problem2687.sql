@@ -2,6 +2,6 @@
 SELECT
     bike_number,
     MAX(end_time) AS end_time
-FROM Bikes
+FROM bikes
 GROUP BY bike_number
 ORDER BY end_time DESC;

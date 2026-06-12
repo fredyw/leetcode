@@ -4,7 +4,7 @@ WITH request_sent_count AS (
         SELECT DISTINCT
             sender_id,
             send_to_id
-        FROM FriendRequest
+        FROM friendrequest
     )
 ),
 
@@ -13,7 +13,7 @@ request_accepted_count AS (
         SELECT DISTINCT
             requester_id,
             accepter_id
-        FROM RequestAccepted
+        FROM requestaccepted
     )
 )
 

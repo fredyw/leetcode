@@ -1,13 +1,13 @@
 -- https://leetcode.com/problems/the-winner-university/description/
 WITH new_york_excellent AS (
     SELECT COUNT(*) AS count
-    FROM NewYork
+    FROM newyork
     WHERE score >= 90
 ),
 
 california_excellent AS (
     SELECT COUNT(*) AS count
-    FROM California
+    FROM california
     WHERE score >= 90
 )
 

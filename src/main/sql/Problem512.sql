@@ -2,5 +2,5 @@
 SELECT DISTINCT ON (player_id)
     player_id,
     device_id
-FROM Activity
+FROM activity
 ORDER BY player_id, event_date;

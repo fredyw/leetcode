@@ -2,27 +2,27 @@
 SELECT
     d.id,
     SUM((CASE WHEN d.month = 'Jan' THEN d.revenue ELSE null END))
-        AS Jan_Revenue,
+        AS jan_revenue,
     SUM((CASE WHEN d.month = 'Feb' THEN d.revenue ELSE null END))
-        AS Feb_Revenue,
+        AS feb_revenue,
     SUM((CASE WHEN d.month = 'Mar' THEN d.revenue ELSE null END))
-        AS Mar_Revenue,
+        AS mar_revenue,
     SUM((CASE WHEN d.month = 'Apr' THEN d.revenue ELSE null END))
-        AS Apr_Revenue,
+        AS apr_revenue,
     SUM((CASE WHEN d.month = 'May' THEN d.revenue ELSE null END))
-        AS May_Revenue,
+        AS may_revenue,
     SUM((CASE WHEN d.month = 'Jun' THEN d.revenue ELSE null END))
-        AS Jun_Revenue,
+        AS jun_revenue,
     SUM((CASE WHEN d.month = 'Jul' THEN d.revenue ELSE null END))
-        AS Jul_Revenue,
+        AS jul_revenue,
     SUM((CASE WHEN d.month = 'Aug' THEN d.revenue ELSE null END))
-        AS Aug_Revenue,
+        AS aug_revenue,
     SUM((CASE WHEN d.month = 'Sep' THEN d.revenue ELSE null END))
-        AS Sep_Revenue,
+        AS sep_revenue,
     SUM((CASE WHEN d.month = 'Oct' THEN d.revenue ELSE null END))
-        AS Oct_Revenue,
+        AS oct_revenue,
     SUM((CASE WHEN d.month = 'Nov' THEN d.revenue ELSE null END))
-        AS Nov_Revenue,
-    SUM((CASE WHEN d.month = 'Dec' THEN d.revenue ELSE null END)) AS Dec_Revenue
-FROM Department d
+        AS nov_revenue,
+    SUM((CASE WHEN d.month = 'Dec' THEN d.revenue ELSE null END)) AS dec_revenue
+FROM department d
 GROUP BY d.id;

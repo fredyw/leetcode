@@ -1,6 +1,6 @@
 -- https://leetcode.com/problems/find-candidates-for-data-scientist-position/description/
 SELECT candidate_id
-FROM Candidates
+FROM candidates
 WHERE skill IN ('Python', 'Tableau', 'PostgreSQL')
 GROUP BY candidate_id
 HAVING COUNT(skill) >= 3

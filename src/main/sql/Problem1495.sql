@@ -1,6 +1,6 @@
 -- https://leetcode.com/problems/friendly-movies-streamed-last-month/description/
 SELECT DISTINCT c.title
-FROM TVProgram t JOIN Content c
+FROM tvprogram t JOIN content c
     ON t.content_id = c.content_id
 WHERE
     c.kids_content = 'Y'

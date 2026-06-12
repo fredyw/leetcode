@@ -4,6 +4,6 @@
 -- from Customers c
 -- where c.Id not in (select o.CustomerId from Orders o);
 
-SELECT c.Name AS Customers
-FROM Customers c LEFT JOIN Orders o ON c.Id = o.CustomerId
-WHERE o.CustomerId IS null;
+SELECT c.name AS customers
+FROM customers c LEFT JOIN orders o ON c.id = o.customerid
+WHERE o.customerid IS null;

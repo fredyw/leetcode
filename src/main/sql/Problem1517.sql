@@ -3,6 +3,6 @@ SELECT
     user_id,
     name,
     mail
-FROM Users
+FROM users
 WHERE
     REGEXP_LIKE(mail, '^[:alpha:][[:alnum:]|\\-._]*@leetcode\\.com$', 'i') = 1;

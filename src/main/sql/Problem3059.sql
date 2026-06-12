@@ -2,7 +2,7 @@
 SELECT
     SUBSTRING(email FROM '@(.*\.com)$') AS email_domain,
     COUNT(*) AS count
-FROM Emails
+FROM emails
 WHERE SUBSTRING(email FROM '@(.*\.com)$') IS NOT null
 GROUP BY email_domain
 ORDER BY email_domain;

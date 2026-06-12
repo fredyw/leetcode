@@ -3,8 +3,8 @@ SELECT
     sp.salesperson_id,
     sp.name,
     COALESCE(SUM(s.price), 0) AS total
-FROM Customer c JOIN Sales s
+FROM customer c JOIN sales s
     ON c.customer_id = s.customer_id
-RIGHT JOIN Salesperson sp
+RIGHT JOIN salesperson sp
     ON sp.salesperson_id = c.salesperson_id
 GROUP BY sp.salesperson_id, sp.name;

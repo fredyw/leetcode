@@ -4,7 +4,7 @@ WITH t AS (
         CASE WHEN from_id < to_id THEN from_id ELSE to_id END AS person1,
         CASE WHEN from_id > to_id THEN from_id ELSE to_id END AS person2,
         duration
-    FROM Calls
+    FROM calls
 )
 
 SELECT

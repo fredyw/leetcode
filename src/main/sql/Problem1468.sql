@@ -3,7 +3,7 @@ WITH max_salary_per_company AS (
     SELECT
         company_id,
         MAX(salary) AS max_salary
-    FROM Salaries
+    FROM salaries
     GROUP BY company_id
 )
 
@@ -20,5 +20,5 @@ SELECT
             ELSE (1 - 0.49) * salary
         END
     ) AS salary
-FROM Salaries s JOIN max_salary_per_company m
+FROM salaries s JOIN max_salary_per_company m
     ON s.company_id = m.company_id;

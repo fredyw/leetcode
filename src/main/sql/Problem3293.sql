@@ -6,5 +6,5 @@ SELECT
         ELSE p.price - ((p.price * d.discount) / 100.0)
     END AS final_price,
     p.category
-FROM Products p LEFT JOIN Discounts d ON p.category = d.category
+FROM products p LEFT JOIN discounts d ON p.category = d.category
 ORDER BY p.product_id;

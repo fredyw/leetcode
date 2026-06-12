@@ -6,7 +6,7 @@
 --                         from Weather w2
 --                         where w2.Date = subdate(w1.Date, 1));
 
-SELECT w2.Id
-FROM Weather w1
-INNER JOIN Weather w2 ON w1.recordDate = w2.recordDate - INTERVAL '1 day'
-WHERE w1.Temperature < w2.Temperature;
+SELECT w2.id
+FROM weather w1
+INNER JOIN weather w2 ON w1.recorddate = w2.recorddate - INTERVAL '1 day'
+WHERE w1.temperature < w2.temperature;

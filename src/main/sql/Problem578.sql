@@ -5,7 +5,7 @@ FROM (
         question_id,
         SUM(CASE WHEN answer_id IS NOT null THEN 1 ELSE 0 END)
         / COUNT(DISTINCT question_id) AS answer
-    FROM SurveyLog
+    FROM surveylog
     WHERE action = 'answer'
     GROUP BY question_id
 ) t

@@ -2,5 +2,5 @@
 SELECT
     person_id,
     name || '(' || SUBSTRING(profession, 1, 1) || ')' AS name
-FROM Person
+FROM person
 ORDER BY person_id DESC;

@@ -3,7 +3,7 @@ WITH num_employees AS (
     SELECT
         project_id,
         COUNT(*) AS count
-    FROM Project
+    FROM project
     GROUP BY project_id
 ),
 

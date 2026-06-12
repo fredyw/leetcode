@@ -3,7 +3,7 @@ WITH activity_count AS (
     SELECT
         activity,
         COUNT(*) AS count
-    FROM Friends
+    FROM friends
     GROUP BY activity
 ),
 

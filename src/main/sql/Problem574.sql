@@ -3,7 +3,7 @@ WITH vote_count AS (
     SELECT
         c.name,
         COUNT(*) AS count
-    FROM Candidate c JOIN Vote v ON v.candidateId = c.id
+    FROM candidate c JOIN vote v ON v.candidateid = c.id
     GROUP BY c.name
 ),
 

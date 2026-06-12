@@ -3,7 +3,7 @@ WITH aggregated_sales AS (
     SELECT
         seller_id,
         SUM(price) AS total_price
-    FROM Sales
+    FROM sales
     GROUP BY seller_id
 )
 

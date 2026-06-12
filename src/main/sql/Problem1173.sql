@@ -1,13 +1,13 @@
 -- https://leetcode.com/problems/immediate-food-delivery-i/description/
 WITH immediate_orders AS (
     SELECT CAST(COUNT(*) AS decimal) AS count
-    FROM Delivery
+    FROM delivery
     WHERE order_date = customer_pref_delivery_date
 ),
 
 total_orders AS (
     SELECT CAST(COUNT(*) AS decimal) AS count
-    FROM Delivery
+    FROM delivery
 )
 
 SELECT ROUND(

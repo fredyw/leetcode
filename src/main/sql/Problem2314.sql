@@ -5,7 +5,7 @@ WITH t AS (
         day,
         degree,
         RANK() OVER (PARTITION BY city_id ORDER BY degree DESC, day ASC) AS rnk
-    FROM Weather
+    FROM weather
 )
 
 SELECT

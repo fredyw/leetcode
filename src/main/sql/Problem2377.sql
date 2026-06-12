@@ -4,7 +4,7 @@ SELECT
     gold_medals,
     silver_medals,
     bronze_medals
-FROM Olympic
+FROM olympic
 ORDER BY
     gold_medals DESC,
     silver_medals DESC,

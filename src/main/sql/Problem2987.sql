@@ -1,6 +1,6 @@
 -- https://leetcode.com/problems/find-expensive-cities/description/
 SELECT city
-FROM Listings
+FROM listings
 GROUP BY city
-HAVING AVG(price) > (SELECT AVG(price) FROM Listings)
+HAVING AVG(price) > (SELECT AVG(price) FROM listings)
 ORDER BY city;

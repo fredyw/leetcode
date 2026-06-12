@@ -3,13 +3,13 @@ WITH t AS (
     SELECT
         apple_count,
         orange_count
-    FROM Boxes
+    FROM boxes
     WHERE chest_id IS null
     UNION ALL
     SELECT
         (b.apple_count + c.apple_count) AS apple_count,
         (b.orange_count + c.orange_count) AS orange_count
-    FROM Boxes b JOIN Chests c ON b.chest_id = c.chest_id
+    FROM boxes b JOIN chests c ON b.chest_id = c.chest_id
 )
 
 SELECT

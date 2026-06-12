@@ -21,14 +21,14 @@ WITH largest_dep AS (
     SELECT
         dep_id,
         RANK() OVER (ORDER BY COUNT(*) DESC) AS rank
-    FROM Employees
+    FROM employees
     GROUP BY dep_id
 )
 
 SELECT
     emp_name AS manager_name,
     dep_id
-FROM Employees
+FROM employees
 WHERE
     position = 'Manager' AND dep_id IN (
         SELECT dep_id FROM largest_dep

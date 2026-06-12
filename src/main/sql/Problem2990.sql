@@ -10,9 +10,9 @@
 -- group by l1.user_id
 -- order by l1.user_id;
 
-SELECT user_id FROM Loans
+SELECT user_id FROM loans
 WHERE loan_type = 'Mortgage'
 INTERSECT
-SELECT user_id FROM Loans
+SELECT user_id FROM loans
 WHERE loan_type = 'Refinance'
 ORDER BY user_id;

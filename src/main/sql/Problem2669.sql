@@ -2,6 +2,6 @@
 SELECT
     artist,
     COUNT(*) AS occurrences
-FROM Spotify
+FROM spotify
 GROUP BY artist
 ORDER BY occurrences DESC, artist ASC;

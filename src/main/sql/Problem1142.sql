@@ -4,7 +4,7 @@ FROM (
     SELECT
         user_id,
         COUNT(DISTINCT session_id) AS count
-    FROM Activity
+    FROM activity
     WHERE
         activity_date BETWEEN '2019-07-28'::date
         - interval '30 days' AND '2019-07-27'

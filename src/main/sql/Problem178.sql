@@ -4,7 +4,7 @@ SELECT
     (
         SELECT COUNT(DISTINCT Score)
         FROM Scores
-        WHERE Score >= s.Score
+        WHERE Score >= S.Score
     ) Rank
-FROM Scores s
+FROM Scores S
 ORDER BY Score DESC;

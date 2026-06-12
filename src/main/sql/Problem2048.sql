@@ -23,7 +23,7 @@ SELECT
     order_id,
     customer_id,
     order_type
-FROM Orders
+FROM orders
 WHERE
     order_type = 0
     OR (order_type = 1 AND customer_id NOT IN (

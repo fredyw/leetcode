@@ -21,6 +21,6 @@ SELECT
             ) * 100, 2
         )
     END AS ctr
-FROM Ads
+FROM ads
 GROUP BY ad_id
 ORDER BY ctr DESC, ad_id ASC;

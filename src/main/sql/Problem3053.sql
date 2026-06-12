@@ -9,5 +9,5 @@ SELECT
                     ELSE 'Isosceles'
                 END
         ELSE 'Not A Triangle'
-    END AS triangle_type
-FROM Triangles;
+    END AS TRIANGLE_TYPE
+FROM TRIANGLES;
