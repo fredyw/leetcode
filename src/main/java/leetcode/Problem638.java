@@ -2,16 +2,15 @@ package leetcode;
 
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/shopping-offers/
- */
+/** https://leetcode.com/problems/shopping-offers/ */
 public class Problem638 {
-    public int shoppingOffers(List<Integer> price, List<List<Integer>> special, List<Integer> needs) {
+    public int shoppingOffers(
+            List<Integer> price, List<List<Integer>> special, List<Integer> needs) {
         return lowestPrice(price, special, needs);
     }
 
-    private static int lowestPrice(List<Integer> prices, List<List<Integer>> specials,
-                                   List<Integer> needs) {
+    private static int lowestPrice(
+            List<Integer> prices, List<List<Integer>> specials, List<Integer> needs) {
         int min = Integer.MAX_VALUE;
         for (List<Integer> special : specials) {
             int specialPrice = special.get(special.size() - 1);

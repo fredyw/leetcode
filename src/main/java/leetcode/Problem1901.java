@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/find-a-peak-element-ii/
- */
+/** https://leetcode.com/problems/find-a-peak-element-ii/ */
 public class Problem1901 {
     public int[] findPeakGrid(int[][] mat) {
         int maxRow = mat.length;
@@ -24,22 +22,28 @@ public class Problem1901 {
                 if (col - 1 >= 0 && value <= mat[row][col - 1]) {
                     continue;
                 }
-                return new int[]{row, col};
+                return new int[] {row, col};
             }
         }
-        return new int[]{0, 0};
+        return new int[] {0, 0};
     }
 
     public static void main(String[] args) {
         Problem1901 prob = new Problem1901();
-        System.out.println(Arrays.toString(prob.findPeakGrid(new int[][]{
-            {1,4},
-            {3,2}
-        }))); // [0,1]
-        System.out.println(Arrays.toString(prob.findPeakGrid(new int[][]{
-            {10,20,15},
-            {21,30,14},
-            {7,16,32}
-        }))); // [1,1]
+        System.out.println(
+                Arrays.toString(
+                        prob.findPeakGrid(
+                                new int[][] {
+                                    {1, 4},
+                                    {3, 2}
+                                }))); // [0,1]
+        System.out.println(
+                Arrays.toString(
+                        prob.findPeakGrid(
+                                new int[][] {
+                                    {10, 20, 15},
+                                    {21, 30, 14},
+                                    {7, 16, 32}
+                                }))); // [1,1]
     }
 }

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/max-chunks-to-make-sorted/
- */
+/** https://leetcode.com/problems/max-chunks-to-make-sorted/ */
 public class Problem769 {
     public int maxChunksToSorted(int[] arr) {
         int result = 0;

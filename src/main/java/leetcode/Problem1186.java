@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-subarray-sum-with-one-deletion/
- */
+/** https://leetcode.com/problems/maximum-subarray-sum-with-one-deletion/ */
 public class Problem1186 {
     public int maximumSum(int[] arr) {
         int answer = arr[0];

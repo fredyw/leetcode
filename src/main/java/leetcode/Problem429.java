@@ -4,16 +4,13 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/n-ary-tree-level-order-traversal/
- */
+/** https://leetcode.com/problems/n-ary-tree-level-order-traversal/ */
 public class Problem429 {
     private static class Node {
         public int val;
         public List<Node> children;
 
-        public Node() {
-        }
+        public Node() {}
 
         public Node(int _val, List<Node> _children) {
             val = _val;

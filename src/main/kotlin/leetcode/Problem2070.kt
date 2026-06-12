@@ -3,9 +3,7 @@ package leetcode
 import java.util.*
 import kotlin.math.max
 
-/**
- * https://leetcode.com/problems/most-beautiful-item-for-each-query/
- */
+/** https://leetcode.com/problems/most-beautiful-item-for-each-query/ */
 class Problem2070 {
     fun maximumBeauty(items: Array<IntArray>, queries: IntArray): IntArray {
         items.sortBy { it[0] }

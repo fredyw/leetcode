@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
- */
+/** https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/ */
 public class Problem1011 {
     public int shipWithinDays(int[] weights, int D) {
         int left = 0;

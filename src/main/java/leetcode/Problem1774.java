@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/closest-dessert-cost/
- */
+/** https://leetcode.com/problems/closest-dessert-cost/ */
 public class Problem1774 {
     public int closestCost(int[] baseCosts, int[] toppingCosts, int target) {
         int i = 0;
@@ -20,8 +18,8 @@ public class Problem1774 {
         private int value = -1;
     }
 
-    private static void closestCost(int[] toppingCosts, int target, int index, int cost,
-                                    MinCost minCost) {
+    private static void closestCost(
+            int[] toppingCosts, int target, int index, int cost, MinCost minCost) {
         if (index == toppingCosts.length || cost > target) {
             if (Math.abs(cost - target) < Math.abs(minCost.value - target)) {
                 minCost.value = cost;

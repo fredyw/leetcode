@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/build-array-from-permutation/
- */
+/** https://leetcode.com/problems/build-array-from-permutation/ */
 public class Problem1920 {
     public int[] buildArray(int[] nums) {
         int[] answer = new int[nums.length];

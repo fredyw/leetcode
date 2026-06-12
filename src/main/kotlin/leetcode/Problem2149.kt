@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/rearrange-array-elements-by-sign/
- */
+/** https://leetcode.com/problems/rearrange-array-elements-by-sign/ */
 class Problem2149 {
     fun rearrangeArray(nums: IntArray): IntArray {
         val answer = IntArray(nums.size)

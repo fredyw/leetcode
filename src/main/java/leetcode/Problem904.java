@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/fruit-into-baskets/
- */
+/** https://leetcode.com/problems/fruit-into-baskets/ */
 public class Problem904 {
     public int totalFruit(int[] tree) {
         int answer = 0;
@@ -31,8 +29,10 @@ public class Problem904 {
                 tc[1] = new TypeCount(tree[i]);
                 tc[1].count++;
             }
-            answer = Math.max(answer, (tc[0] == null ? 0 : tc[0].count) +
-                (tc[1] == null ? 0 : tc[1].count));
+            answer =
+                    Math.max(
+                            answer,
+                            (tc[0] == null ? 0 : tc[0].count) + (tc[1] == null ? 0 : tc[1].count));
         }
         return answer;
     }

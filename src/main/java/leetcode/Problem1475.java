@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/final-prices-with-a-special-discount-in-a-shop/
- */
+/** https://leetcode.com/problems/final-prices-with-a-special-discount-in-a-shop/ */
 public class Problem1475 {
     public int[] finalPrices(int[] prices) {
         int[] answer = new int[prices.length];

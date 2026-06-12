@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/max-increase-to-keep-city-skyline/
- */
+/** https://leetcode.com/problems/max-increase-to-keep-city-skyline/ */
 public class Problem807 {
     public int maxIncreaseKeepingSkyline(int[][] grid) {
         int nRow = grid.length;

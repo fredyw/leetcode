@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/perfect-number/
- */
+/** https://leetcode.com/problems/perfect-number/ */
 public class Problem507 {
     public boolean checkPerfectNumber(int num) {
         if (num == 0) {

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/insufficient-nodes-in-root-to-leaf-paths/
- */
+/** https://leetcode.com/problems/insufficient-nodes-in-root-to-leaf-paths/ */
 public class Problem1080 {
     public static class TreeNode {
         int val;

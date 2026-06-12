@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/most-frequent-number-following-key-in-an-array/
- */
+/** https://leetcode.com/problems/most-frequent-number-following-key-in-an-array/ */
 class Problem2190 {
     fun mostFrequent(nums: IntArray, key: Int): Int {
         var answer = 0

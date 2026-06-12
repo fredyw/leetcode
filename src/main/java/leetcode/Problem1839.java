@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/longest-substring-of-all-vowels-in-order/
- */
+/** https://leetcode.com/problems/longest-substring-of-all-vowels-in-order/ */
 public class Problem1839 {
     public int longestBeautifulSubstring(String word) {
         int answer = 0;

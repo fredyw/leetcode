@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/summary-ranges/
- */
+/** https://leetcode.com/problems/summary-ranges/ */
 public class Problem228 {
     public List<String> summaryRanges(int[] nums) {
         List<String> result = new ArrayList<>();

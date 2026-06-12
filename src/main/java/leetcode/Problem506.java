@@ -7,9 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/relative-ranks/
- */
+/** https://leetcode.com/problems/relative-ranks/ */
 public class Problem506 {
     public String[] findRelativeRanks(int[] nums) {
         int[] copy = Arrays.copyOf(nums, nums.length);

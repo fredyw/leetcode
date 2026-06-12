@@ -1,10 +1,6 @@
 package leetcode;
 
-import java.util.Arrays;
-
-/**
- * https://leetcode.com/problems/compare-strings-by-frequency-of-the-smallest-character/
- */
+/** https://leetcode.com/problems/compare-strings-by-frequency-of-the-smallest-character/ */
 public class Problem1170 {
     public int[] numSmallerByFrequency(String[] queries, String[] words) {
         int[] answer = new int[queries.length];

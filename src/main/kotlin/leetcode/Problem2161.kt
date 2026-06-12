@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/partition-array-according-to-given-pivot/
- */
+/** https://leetcode.com/problems/partition-array-according-to-given-pivot/ */
 class Problem2161 {
     fun pivotArray(nums: IntArray, pivot: Int): IntArray {
         val left = mutableListOf<Int>()

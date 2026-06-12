@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Stack;
 import java.util.stream.Collectors;
 
-/**
- * https://leetcode.com/problems/gray-code/
- */
+/** https://leetcode.com/problems/gray-code/ */
 public class Problem89 {
     public List<Integer> grayCode(int n) {
         // using this algorithm

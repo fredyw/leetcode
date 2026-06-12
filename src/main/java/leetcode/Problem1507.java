@@ -3,9 +3,7 @@ package leetcode;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * https://leetcode.com/problems/reformat-date/
- */
+/** https://leetcode.com/problems/reformat-date/ */
 public class Problem1507 {
     public String reformatDate(String date) {
         String[] split = date.split(" ");

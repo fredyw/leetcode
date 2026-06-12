@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/truncate-sentence/
- */
+/** https://leetcode.com/problems/truncate-sentence/ */
 public class Problem1816 {
     public String truncateSentence(String s, int k) {
         String[] words = s.split("\\s");

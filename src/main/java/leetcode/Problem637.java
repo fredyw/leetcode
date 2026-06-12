@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-/**
- * https://leetcode.com/problems/average-of-levels-in-binary-tree/
- */
+/** https://leetcode.com/problems/average-of-levels-in-binary-tree/ */
 public class Problem637 {
     public static class TreeNode {
         int val;

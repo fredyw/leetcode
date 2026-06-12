@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/two-sum-iv-input-is-a-bst/
- */
+/** https://leetcode.com/problems/two-sum-iv-input-is-a-bst/ */
 public class Problem653 {
     public static class TreeNode {
         int val;

@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/make-the-string-great/
- */
+/** https://leetcode.com/problems/make-the-string-great/ */
 public class Problem1544 {
     public String makeGood(String s) {
         Stack<Character> stack = new Stack<>();
@@ -27,8 +25,8 @@ public class Problem1544 {
         char b = stack.pop();
         String aStr = "" + a;
         String bStr = "" + b;
-        if ((!bStr.equals(bStr.toLowerCase()) || !aStr.equals(bStr.toUpperCase())) &&
-            (!bStr.equals(bStr.toUpperCase()) || !aStr.equals(bStr.toLowerCase()))) {
+        if ((!bStr.equals(bStr.toLowerCase()) || !aStr.equals(bStr.toUpperCase()))
+                && (!bStr.equals(bStr.toUpperCase()) || !aStr.equals(bStr.toLowerCase()))) {
             stack.push(b);
             stack.push(a);
         }

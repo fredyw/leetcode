@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/count-number-of-homogenous-substrings/
- */
+/** https://leetcode.com/problems/count-number-of-homogenous-substrings/ */
 class Problem1759 {
     fun countHomogenous(s: String): Int {
         var answer: Long = 0

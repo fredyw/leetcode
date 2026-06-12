@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minesweeper/
- */
+/** https://leetcode.com/problems/minesweeper/ */
 public class Problem529 {
     public char[][] updateBoard(char[][] board, int[] click) {
         int row = click[0];
@@ -21,8 +19,8 @@ public class Problem529 {
         return board;
     }
 
-    private static void updateBoard(char[][] board, int maxRow, int maxCol, int row, int col,
-                                    boolean[][] visited) {
+    private static void updateBoard(
+            char[][] board, int maxRow, int maxCol, int row, int col, boolean[][] visited) {
         if (row < 0 || row >= maxRow || col < 0 || col >= maxCol) {
             return;
         }

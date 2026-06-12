@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/binary-tree-pruning/
- */
+/** https://leetcode.com/problems/binary-tree-pruning/ */
 public class Problem814 {
     public static class TreeNode {
         int val;

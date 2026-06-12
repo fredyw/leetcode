@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/generate-random-point-in-a-circle/
- */
+/** https://leetcode.com/problems/generate-random-point-in-a-circle/ */
 public class Problem478 {
     private static class Solution {
         private final double radius;
@@ -20,7 +18,7 @@ public class Problem478 {
             double area = Math.random() * Math.PI * radius * radius;
             double r = Math.sqrt(area / Math.PI);
             double theta = Math.random() * 2 * Math.PI;
-            return new double[]{Math.cos(theta) * r + x, Math.sin(theta) * r + y};
+            return new double[] {Math.cos(theta) * r + x, Math.sin(theta) * r + y};
         }
     }
 }

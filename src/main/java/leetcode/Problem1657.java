@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/determine-if-two-strings-are-close/
- */
+/** https://leetcode.com/problems/determine-if-two-strings-are-close/ */
 public class Problem1657 {
     public boolean closeStrings(String word1, String word2) {
         if (word1.length() != word2.length()) {

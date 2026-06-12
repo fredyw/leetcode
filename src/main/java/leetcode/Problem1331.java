@@ -5,9 +5,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
-/**
- * https://leetcode.com/problems/rank-transform-of-an-array/
- */
+/** https://leetcode.com/problems/rank-transform-of-an-array/ */
 public class Problem1331 {
     public int[] arrayRankTransform(int[] arr) {
         Set<Integer> set = new TreeSet<>();

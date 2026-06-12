@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/design-underground-system/
- */
+/** https://leetcode.com/problems/design-underground-system/ */
 public class Problem1396 {
     static class UndergroundSystem {
         private static class StationTime {
@@ -26,8 +24,7 @@ public class Problem1396 {
         private final Map<Integer, StationTime> checkIns = new HashMap<>();
         private final Map<String, SumCount> checkOuts = new HashMap<>();
 
-        public UndergroundSystem() {
-        }
+        public UndergroundSystem() {}
 
         public void checkIn(int id, String stationName, int t) {
             checkIns.put(id, new StationTime(stationName, t));

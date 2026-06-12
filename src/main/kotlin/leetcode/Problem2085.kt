@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/count-common-words-with-one-occurrence/
- */
+/** https://leetcode.com/problems/count-common-words-with-one-occurrence/ */
 class Problem2085 {
     fun countWords(words1: Array<String>, words2: Array<String>): Int {
         val map1 = mutableMapOf<String, Int>()

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/linked-list-components/
- */
+/** https://leetcode.com/problems/linked-list-components/ */
 public class Problem817 {
     public static class ListNode {
         int val;

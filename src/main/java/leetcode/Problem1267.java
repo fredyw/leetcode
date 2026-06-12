@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/count-servers-that-communicate/
- */
+/** https://leetcode.com/problems/count-servers-that-communicate/ */
 public class Problem1267 {
     public int countServers(int[][] grid) {
         int answer = 0;

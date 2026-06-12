@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/largest-sum-of-averages/
- */
+/** https://leetcode.com/problems/largest-sum-of-averages/ */
 public class Problem813 {
     public double largestSumOfAverages(int[] A, int K) {
         Double[][] memo = new Double[K + 1][A.length];

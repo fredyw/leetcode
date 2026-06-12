@@ -2,21 +2,21 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/russian-doll-envelopes/
- */
+/** https://leetcode.com/problems/russian-doll-envelopes/ */
 public class Problem354 {
     public int maxEnvelopes(int[][] envelopes) {
         if (envelopes.length == 0) {
             return 0;
         }
-        Arrays.sort(envelopes, (a, b) -> {
-            int cmp = Integer.compare(a[0], b[0]);
-            if (cmp == 0) {
-                return Integer.compare(a[1], b[1]);
-            }
-            return cmp;
-        });
+        Arrays.sort(
+                envelopes,
+                (a, b) -> {
+                    int cmp = Integer.compare(a[0], b[0]);
+                    if (cmp == 0) {
+                        return Integer.compare(a[1], b[1]);
+                    }
+                    return cmp;
+                });
         int max = 0;
         int[] memo = new int[envelopes.length];
         for (int i = 0; i < memo.length; i++) {

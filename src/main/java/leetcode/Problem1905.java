@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/count-sub-islands/
- */
+/** https://leetcode.com/problems/count-sub-islands/ */
 public class Problem1905 {
     public int countSubIslands(int[][] grid1, int[][] grid2) {
         int maxRow = grid1.length;
@@ -29,8 +27,14 @@ public class Problem1905 {
         return answer;
     }
 
-    private static void markIslands(int[][] grid, int maxRow, int maxCol, boolean[][] visited,
-                                    int row, int col, int islandNumber) {
+    private static void markIslands(
+            int[][] grid,
+            int maxRow,
+            int maxCol,
+            boolean[][] visited,
+            int row,
+            int col,
+            int islandNumber) {
         if (row < 0 || row == maxRow || col < 0 || col == maxCol) {
             return;
         }
@@ -48,8 +52,15 @@ public class Problem1905 {
         markIslands(grid, maxRow, maxCol, visited, row, col - 1, islandNumber);
     }
 
-    private static boolean isSubIsland(int[][] grid1, int[][] grid2, int maxRow, int maxCol,
-                                       boolean[][] visited, int row, int col, int islandNumber) {
+    private static boolean isSubIsland(
+            int[][] grid1,
+            int[][] grid2,
+            int maxRow,
+            int maxCol,
+            boolean[][] visited,
+            int row,
+            int col,
+            int islandNumber) {
         if (row < 0 || row == maxRow || col < 0 || col == maxCol) {
             return true;
         }
@@ -61,9 +72,12 @@ public class Problem1905 {
             return true;
         }
         boolean up = isSubIsland(grid1, grid2, maxRow, maxCol, visited, row - 1, col, islandNumber);
-        boolean right = isSubIsland(grid1, grid2, maxRow, maxCol, visited, row, col + 1, islandNumber);
-        boolean down = isSubIsland(grid1, grid2, maxRow, maxCol, visited, row + 1, col, islandNumber);
-        boolean left = isSubIsland(grid1, grid2, maxRow, maxCol, visited, row, col - 1, islandNumber);
+        boolean right =
+                isSubIsland(grid1, grid2, maxRow, maxCol, visited, row, col + 1, islandNumber);
+        boolean down =
+                isSubIsland(grid1, grid2, maxRow, maxCol, visited, row + 1, col, islandNumber);
+        boolean left =
+                isSubIsland(grid1, grid2, maxRow, maxCol, visited, row, col - 1, islandNumber);
         return up && right && down && left && grid1[row][col] == islandNumber;
     }
 }

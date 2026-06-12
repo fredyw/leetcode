@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/friend-circles/
- */
+/** https://leetcode.com/problems/friend-circles/ */
 public class Problem547 {
     public int findCircleNum(int[][] M) {
         UnionFind uf = new UnionFind();

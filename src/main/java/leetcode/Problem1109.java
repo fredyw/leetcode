@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/corporate-flight-bookings/
- */
+/** https://leetcode.com/problems/corporate-flight-bookings/ */
 public class Problem1109 {
     public int[] corpFlightBookings(int[][] bookings, int n) {
         int[] answer = new int[n];

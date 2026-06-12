@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
- */
+/** https://leetcode.com/problems/flatten-binary-tree-to-linked-list/ */
 public class Problem114 {
     public static class TreeNode {
         int val;

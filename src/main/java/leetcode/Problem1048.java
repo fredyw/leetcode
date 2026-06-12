@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/longest-string-chain/
- */
+/** https://leetcode.com/problems/longest-string-chain/ */
 public class Problem1048 {
     public int longestStrChain(String[] words) {
         Map<Integer, List<WordCount>> map = new HashMap<>();
@@ -41,8 +39,8 @@ public class Problem1048 {
         }
     }
 
-    private static int longestStrChain(Map<Integer, List<WordCount>> words,
-                                       WordCount wordCount, Map<String, Integer> memo) {
+    private static int longestStrChain(
+            Map<Integer, List<WordCount>> words, WordCount wordCount, Map<String, Integer> memo) {
         if (!words.containsKey(wordCount.word.length() + 1)) {
             return 0;
         }

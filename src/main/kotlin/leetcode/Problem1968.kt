@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/array-with-elements-not-equal-to-average-of-neighbors/
- */
+/** https://leetcode.com/problems/array-with-elements-not-equal-to-average-of-neighbors/ */
 class Problem1968 {
     fun rearrangeArray(nums: IntArray): IntArray {
         nums.sort()

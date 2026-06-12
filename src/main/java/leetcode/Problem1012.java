@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/complement-of-base-10-integer/
- */
+/** https://leetcode.com/problems/complement-of-base-10-integer/ */
 public class Problem1012 {
     public int bitwiseComplement(int N) {
         if (N == 0) {

@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/binary-tree-coloring-game/
- */
+/** https://leetcode.com/problems/binary-tree-coloring-game/ */
 public class Problem1145 {
     public static class TreeNode {
         int val;
@@ -47,11 +45,13 @@ public class Problem1145 {
     }
 
     private enum Type {
-        PARENT, LEFT_CHILD, RIGHT_CHILD
+        PARENT,
+        LEFT_CHILD,
+        RIGHT_CHILD
     }
 
-    private static void getAdjacents(TreeNode parent, TreeNode current,
-                                     int x, Map<Type, Integer> adjacents) {
+    private static void getAdjacents(
+            TreeNode parent, TreeNode current, int x, Map<Type, Integer> adjacents) {
         if (current == null) {
             return;
         }

@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/basic-calculator/
- */
+/** https://leetcode.com/problems/basic-calculator/ */
 public class Problem224 {
     public int calculate(String s) {
         String str = s.replaceAll("\\s+", "");

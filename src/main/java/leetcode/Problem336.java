@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/palindrome-pairs/
- */
+/** https://leetcode.com/problems/palindrome-pairs/ */
 public class Problem336 {
     public List<List<Integer>> palindromePairs(String[] words) {
         List<List<Integer>> answer = new ArrayList<>();

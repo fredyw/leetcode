@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/number-of-islands/
- */
+/** https://leetcode.com/problems/number-of-islands/ */
 public class Problem200 {
     public int numIslands(char[][] grid) {
         int maxRow = grid.length;
@@ -22,8 +20,8 @@ public class Problem200 {
         return answer;
     }
 
-    private static void numIslands(char[][] grid, int maxRow, int maxCol,
-                                   int row, int col, boolean[][] visited) {
+    private static void numIslands(
+            char[][] grid, int maxRow, int maxCol, int row, int col, boolean[][] visited) {
         if (row < 0 || row == maxRow || col < 0 || col == maxCol) {
             return;
         }

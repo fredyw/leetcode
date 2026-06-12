@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-score-after-splitting-a-string/
- */
+/** https://leetcode.com/problems/maximum-score-after-splitting-a-string/ */
 public class Problem1422 {
     public int maxScore(String s) {
         int ones = 0;

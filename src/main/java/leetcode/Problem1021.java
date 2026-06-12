@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/remove-outermost-parentheses/
- */
+/** https://leetcode.com/problems/remove-outermost-parentheses/ */
 public class Problem1021 {
     public String removeOuterParentheses(String S) {
         String answer = "";

@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/integer-to-english-words/
- */
+/** https://leetcode.com/problems/integer-to-english-words/ */
 public class Problem273 {
     public String numberToWords(int num) {
         if (num == 0) {

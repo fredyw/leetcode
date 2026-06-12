@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/check-if-n-and-its-double-exist/
- */
+/** https://leetcode.com/problems/check-if-n-and-its-double-exist/ */
 public class Problem1346 {
     public boolean checkIfExist(int[] arr) {
         Set<Integer> set = new HashSet<>();

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/binary-number-with-alternating-bits/
- */
+/** https://leetcode.com/problems/binary-number-with-alternating-bits/ */
 public class Problem693 {
     public boolean hasAlternatingBits(int n) {
         String s = Integer.toBinaryString(n);

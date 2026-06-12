@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/sort-the-matrix-diagonally/
- */
+/** https://leetcode.com/problems/sort-the-matrix-diagonally/ */
 public class Problem1329 {
     public int[][] diagonalSort(int[][] mat) {
         int maxRow = mat.length;

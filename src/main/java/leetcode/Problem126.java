@@ -11,9 +11,7 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/word-ladder-ii/
- */
+/** https://leetcode.com/problems/word-ladder-ii/ */
 public class Problem126 {
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
         Set<String> words = new HashSet<>(wordList);
@@ -33,15 +31,15 @@ public class Problem126 {
                     chars[i] = c;
                     String newWord = new String(chars);
                     if (words.contains(newWord)) {
-                        if (dist.getOrDefault(word, Integer.MAX_VALUE) + 1 <
-                            dist.getOrDefault(newWord, Integer.MAX_VALUE)) {
+                        if (dist.getOrDefault(word, Integer.MAX_VALUE) + 1
+                                < dist.getOrDefault(newWord, Integer.MAX_VALUE)) {
                             dist.put(newWord, dist.get(word) + 1);
                             List<String> list = path.getOrDefault(newWord, new ArrayList<>());
                             list.add(word);
                             path.put(newWord, list);
                             queue.add(newWord);
-                        } else if (dist.getOrDefault(word, Integer.MAX_VALUE) + 1 ==
-                            dist.getOrDefault(newWord, Integer.MAX_VALUE)) {
+                        } else if (dist.getOrDefault(word, Integer.MAX_VALUE) + 1
+                                == dist.getOrDefault(newWord, Integer.MAX_VALUE)) {
                             path.get(newWord).add(word);
                         }
                     }
@@ -56,10 +54,11 @@ public class Problem126 {
         return result;
     }
 
-    private static void buildResult(Map<String, List<String>> path,
-                                    String word,
-                                    List<String> accu,
-                                    List<List<String>> result) {
+    private static void buildResult(
+            Map<String, List<String>> path,
+            String word,
+            List<String> accu,
+            List<List<String>> result) {
         List<String> words = path.get(word);
         if (words == null) {
             Collections.reverse(accu);

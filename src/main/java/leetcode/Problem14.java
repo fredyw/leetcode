@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/longest-common-prefix/
- */
+/** https://leetcode.com/problems/longest-common-prefix/ */
 public class Problem14 {
     public String longestCommonPrefix(String[] strs) {
         StringBuilder result = new StringBuilder();

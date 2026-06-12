@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/is-graph-bipartite/
- */
+/** https://leetcode.com/problems/is-graph-bipartite/ */
 public class Problem785 {
     public boolean isBipartite(int[][] graph) {
         boolean[] visited = new boolean[graph.length];
@@ -20,9 +18,8 @@ public class Problem785 {
         private boolean isBipartite = true;
     }
 
-    private static void isBipartite(int[][] graph, int source,
-                                    boolean[] visited, boolean[] map,
-                                    Bipartite bipartite) {
+    private static void isBipartite(
+            int[][] graph, int source, boolean[] visited, boolean[] map, Bipartite bipartite) {
         visited[source] = true;
         for (int adj : graph[source]) {
             if (!visited[adj]) {

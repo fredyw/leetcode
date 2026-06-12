@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-/**
- * https://leetcode.com/problems/split-array-into-consecutive-subsequences/
- */
+/** https://leetcode.com/problems/split-array-into-consecutive-subsequences/ */
 public class Problem659 {
     public boolean isPossible(int[] nums) {
         Map<Integer, PriorityQueue<Integer>> map = new HashMap<>();

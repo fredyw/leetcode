@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/
- */
+/** https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/ */
 public class Problem947 {
     public int removeStones(int[][] stones) {
         Map<Integer, List<int[]>> xMap = new HashMap<>();
@@ -52,11 +50,12 @@ public class Problem947 {
         }
     }
 
-    private static void dfs(int[] stone,
-                            Map<Integer, List<int[]>> xMap,
-                            Map<Integer, List<int[]>> yMap,
-                            Set<String> visited,
-                            IntRef count) {
+    private static void dfs(
+            int[] stone,
+            Map<Integer, List<int[]>> xMap,
+            Map<Integer, List<int[]>> yMap,
+            Set<String> visited,
+            IntRef count) {
         count.val++;
         visited.add(toString(stone));
         List<int[]> neighbors = new ArrayList<>();

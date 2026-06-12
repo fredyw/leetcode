@@ -1,14 +1,12 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/the-number-of-full-rounds-you-have-played/
- */
+/** https://leetcode.com/problems/the-number-of-full-rounds-you-have-played/ */
 class Problem1904 {
     fun numberOfRounds(startTime: String, finishTime: String): Int {
         var (startHour, startMinute) = startTime.split(":").map { it.toInt() }
         var (finishHour, finishMinute) = finishTime.split(":").map { it.toInt() }
         if (startHour > finishHour || (startHour == finishHour && startMinute > finishMinute)) {
-           finishHour += 24
+            finishHour += 24
         }
         when (startMinute) {
             in 1..15 -> {

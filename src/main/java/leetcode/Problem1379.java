@@ -14,7 +14,8 @@ public class Problem1379 {
         }
     }
 
-    public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
+    public final TreeNode getTargetCopy(
+            final TreeNode original, final TreeNode cloned, final TreeNode target) {
         if (original == null) {
             return null;
         }

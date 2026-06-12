@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/path-in-zigzag-labelled-binary-tree/
- */
+/** https://leetcode.com/problems/path-in-zigzag-labelled-binary-tree/ */
 public class Problem1104 {
     public List<Integer> pathInZigZagTree(int label) {
         int level = (int) (Math.log10(label) / Math.log10(2));

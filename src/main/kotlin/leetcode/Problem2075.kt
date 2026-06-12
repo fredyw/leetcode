@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/decode-the-slanted-ciphertext/
- */
+/** https://leetcode.com/problems/decode-the-slanted-ciphertext/ */
 class Problem2075 {
     fun decodeCiphertext(encodedText: String, rows: Int): String {
         val cols = encodedText.length / rows

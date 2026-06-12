@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/rotate-image/
- */
+/** https://leetcode.com/problems/rotate-image/ */
 public class Problem48 {
     public void rotate(int[][] matrix) {
         int n = matrix.length;

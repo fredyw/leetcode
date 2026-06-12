@@ -6,9 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/combination-sum-ii/
- */
+/** https://leetcode.com/problems/combination-sum-ii/ */
 public class Problem40 {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         Set<List<Integer>> sets = new HashSet<>();
@@ -16,7 +14,8 @@ public class Problem40 {
         return new ArrayList<>(sets);
     }
 
-    private void combinationSum2(int[] candidates, int target, int index, List<Integer> accu, Set<List<Integer>> sets) {
+    private void combinationSum2(
+            int[] candidates, int target, int index, List<Integer> accu, Set<List<Integer>> sets) {
         if (target == 0) {
             List<Integer> newList = new ArrayList<>(accu);
             Collections.sort(newList);

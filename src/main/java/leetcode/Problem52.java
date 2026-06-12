@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/n-queens-ii/
- */
+/** https://leetcode.com/problems/n-queens-ii/ */
 public class Problem52 {
     public int totalNQueens(int n) {
         char[][] board = new char[n][n];

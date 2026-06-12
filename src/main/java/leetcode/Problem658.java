@@ -3,9 +3,7 @@ package leetcode;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/find-k-closest-elements/
- */
+/** https://leetcode.com/problems/find-k-closest-elements/ */
 public class Problem658 {
     public List<Integer> findClosestElements(List<Integer> arr, int k, int x) {
         int idx = Collections.binarySearch(arr, x);

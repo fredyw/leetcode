@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/bulb-switcher-iv/
- */
+/** https://leetcode.com/problems/bulb-switcher-iv/ */
 public class Problem1529 {
     public int minFlips(String target) {
         int i = target.length() - 1;

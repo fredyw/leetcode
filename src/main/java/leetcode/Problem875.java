@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/koko-eating-bananas/
- */
+/** https://leetcode.com/problems/koko-eating-bananas/ */
 public class Problem875 {
     public int minEatingSpeed(int[] piles, int H) {
         int lo = 1;

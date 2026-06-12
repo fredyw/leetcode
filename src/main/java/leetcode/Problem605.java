@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/can-place-flowers/
- */
+/** https://leetcode.com/problems/can-place-flowers/ */
 public class Problem605 {
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
         int idx = 0;

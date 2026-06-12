@@ -3,9 +3,7 @@ package leetcode;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-/**
- * https://leetcode.com/problems/reveal-cards-in-increasing-order/
- */
+/** https://leetcode.com/problems/reveal-cards-in-increasing-order/ */
 public class Problem950 {
     public int[] deckRevealedIncreasing(int[] deck) {
         LinkedList<Integer> index = new LinkedList<>();

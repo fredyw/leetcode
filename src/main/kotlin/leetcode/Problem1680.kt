@@ -1,17 +1,16 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/concatenation-of-consecutive-binary-numbers/
- */
+/** https://leetcode.com/problems/concatenation-of-consecutive-binary-numbers/ */
 class Problem1680 {
     fun concatenatedBinary(n: Int): Int {
         var answer = 0L
         for (i in 1..n) {
-            answer = if (i == 1) {
-                1
-            } else {
-                (i + (answer shl bitSize(i))) % 1_000_000_007
-            }
+            answer =
+                if (i == 1) {
+                    1
+                } else {
+                    (i + (answer shl bitSize(i))) % 1_000_000_007
+                }
         }
         return answer.toInt()
     }

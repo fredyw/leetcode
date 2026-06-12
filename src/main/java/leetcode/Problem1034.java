@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/coloring-a-border/
- */
+/** https://leetcode.com/problems/coloring-a-border/ */
 public class Problem1034 {
     public int[][] colorBorder(int[][] grid, int r0, int c0, int color) {
         int maxRow = grid.length;
@@ -14,9 +12,16 @@ public class Problem1034 {
         return grid;
     }
 
-    private static void colorBorder(int[][] grid, int maxRow, int maxCol,
-                                    int row, int col, int oldColor, int newColor,
-                                    boolean[][] visited, boolean[][] changed) {
+    private static void colorBorder(
+            int[][] grid,
+            int maxRow,
+            int maxCol,
+            int row,
+            int col,
+            int oldColor,
+            int newColor,
+            boolean[][] visited,
+            boolean[][] changed) {
         if (row < 0 || row == maxRow || col < 0 || col == maxCol) {
             return;
         }
@@ -31,16 +36,19 @@ public class Problem1034 {
             grid[row][col] = newColor;
             changed[row][col] = true;
         }
-        if ((row - 1 >= 0 && grid[row - 1][col] != oldColor && !changed[row - 1][col]) ||
-            (col + 1 < maxCol && grid[row][col + 1] != oldColor && !changed[row][col + 1]) ||
-            (row + 1 < maxRow && grid[row + 1][col] != oldColor && !changed[row + 1][col]) ||
-            (col - 1 >= 0 && grid[row][col - 1] != oldColor && !changed[row][col - 1])) {
+        if ((row - 1 >= 0 && grid[row - 1][col] != oldColor && !changed[row - 1][col])
+                || (col + 1 < maxCol && grid[row][col + 1] != oldColor && !changed[row][col + 1])
+                || (row + 1 < maxRow && grid[row + 1][col] != oldColor && !changed[row + 1][col])
+                || (col - 1 >= 0 && grid[row][col - 1] != oldColor && !changed[row][col - 1])) {
             grid[row][col] = newColor;
             changed[row][col] = true;
         }
         colorBorder(grid, maxRow, maxCol, row - 1, col, oldColor, newColor, visited, changed); // up
-        colorBorder(grid, maxRow, maxCol, row, col + 1, oldColor, newColor, visited, changed); // right
-        colorBorder(grid, maxRow, maxCol, row + 1, col, oldColor, newColor, visited, changed); // down
-        colorBorder(grid, maxRow, maxCol, row, col - 1, oldColor, newColor, visited, changed); // left
+        colorBorder(
+                grid, maxRow, maxCol, row, col + 1, oldColor, newColor, visited, changed); // right
+        colorBorder(
+                grid, maxRow, maxCol, row + 1, col, oldColor, newColor, visited, changed); // down
+        colorBorder(
+                grid, maxRow, maxCol, row, col - 1, oldColor, newColor, visited, changed); // left
     }
 }

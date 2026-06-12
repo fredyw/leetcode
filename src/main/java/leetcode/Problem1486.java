@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/xor-operation-in-an-array/
- */
+/** https://leetcode.com/problems/xor-operation-in-an-array/ */
 public class Problem1486 {
     public int xorOperation(int n, int start) {
         int answer = 0;

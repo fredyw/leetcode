@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/climbing-stairs/
- */
+/** https://leetcode.com/problems/climbing-stairs/ */
 public class Problem70 {
     public int climbStairs(int n) {
         Integer[] memo = new Integer[n + 1];

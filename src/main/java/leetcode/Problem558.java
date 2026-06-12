@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/quad-tree-intersection/
- */
+/** https://leetcode.com/problems/quad-tree-intersection/ */
 public class Problem558 {
     private static class Node {
         public boolean val;
@@ -12,15 +10,15 @@ public class Problem558 {
         public Node bottomLeft;
         public Node bottomRight;
 
-        public Node() {
-        }
+        public Node() {}
 
-        public Node(boolean _val,
-                    boolean _isLeaf,
-                    Node _topLeft,
-                    Node _topRight,
-                    Node _bottomLeft,
-                    Node _bottomRight) {
+        public Node(
+                boolean _val,
+                boolean _isLeaf,
+                Node _topLeft,
+                Node _topRight,
+                Node _bottomLeft,
+                Node _bottomRight) {
             val = _val;
             isLeaf = _isLeaf;
             topLeft = _topLeft;
@@ -42,11 +40,13 @@ public class Problem558 {
         Node topRight = intersect(quadTree1.topRight, quadTree2.topRight);
         Node bottomLeft = intersect(quadTree1.bottomLeft, quadTree2.bottomLeft);
         Node bottomRight = intersect(quadTree1.bottomRight, quadTree2.bottomRight);
-        if (topLeft.isLeaf && topRight.isLeaf &&
-            bottomLeft.isLeaf && bottomRight.isLeaf &&
-            topLeft.val == topRight.val &&
-            topLeft.val == bottomLeft.val &&
-            topLeft.val == bottomRight.val) {
+        if (topLeft.isLeaf
+                && topRight.isLeaf
+                && bottomLeft.isLeaf
+                && bottomRight.isLeaf
+                && topLeft.val == topRight.val
+                && topLeft.val == bottomLeft.val
+                && topLeft.val == bottomRight.val) {
             return new Node(topLeft.val, true, null, null, null, null);
         }
         return new Node(true, false, topLeft, topRight, bottomLeft, bottomRight);

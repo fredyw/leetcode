@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/most-frequent-subtree-sum/
- */
+/** https://leetcode.com/problems/most-frequent-subtree-sum/ */
 public class Problem508 {
     public static class TreeNode {
         int val;

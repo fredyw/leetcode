@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/find-resultant-array-after-removing-anagrams/
- */
+/** https://leetcode.com/problems/find-resultant-array-after-removing-anagrams/ */
 class Problem2273 {
     fun removeAnagrams(words: Array<String>): List<String> {
         var answer = mutableListOf<String>()

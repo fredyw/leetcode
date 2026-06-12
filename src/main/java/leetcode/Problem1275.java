@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/find-winner-on-a-tic-tac-toe-game/
- */
+/** https://leetcode.com/problems/find-winner-on-a-tic-tac-toe-game/ */
 public class Problem1275 {
     public String tictactoe(int[][] moves) {
         char[][] board = new char[3][3];

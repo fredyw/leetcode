@@ -18,10 +18,8 @@ public class Problem1676 {
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode[] nodes) {
         LCA lca = new LCA();
-        lowestCommonAncestor(root, Arrays.stream(nodes)
-                .map(node -> node.val)
-                .collect(Collectors.toSet()),
-            lca);
+        lowestCommonAncestor(
+                root, Arrays.stream(nodes).map(node -> node.val).collect(Collectors.toSet()), lca);
         return lca.node;
     }
 

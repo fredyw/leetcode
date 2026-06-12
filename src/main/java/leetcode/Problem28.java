@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/implement-strstr/
- */
+/** https://leetcode.com/problems/implement-strstr/ */
 public class Problem28 {
     public int strStr(String haystack, String needle) {
         if (haystack.equals(needle)) {

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/longest-turbulent-subarray/
- */
+/** https://leetcode.com/problems/longest-turbulent-subarray/ */
 public class Problem978 {
     public int maxTurbulenceSize(int[] A) {
         int max = 0;
@@ -33,6 +31,8 @@ public class Problem978 {
     }
 
     private enum Direction {
-        UP, DOWN, NONE
+        UP,
+        DOWN,
+        NONE
     }
 }

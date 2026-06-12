@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/can-i-win/
- */
+/** https://leetcode.com/problems/can-i-win/ */
 public class Problem464 {
     public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
         if (maxChoosableInteger >= desiredTotal) {
@@ -18,16 +16,17 @@ public class Problem464 {
         if (sum < desiredTotal) {
             return false;
         }
-        return canIWin(0, maxChoosableInteger, desiredTotal, 0, Player.P2,
-            new HashMap<>()) == Player.P1;
+        return canIWin(0, maxChoosableInteger, desiredTotal, 0, Player.P2, new HashMap<>())
+                == Player.P1;
     }
 
     private enum Player {
-        P1, P2
+        P1,
+        P2
     }
 
-    private static Player canIWin(int bits, int max, int desired, int accu,
-                                  Player player, Map<Integer, Player> memo) {
+    private static Player canIWin(
+            int bits, int max, int desired, int accu, Player player, Map<Integer, Player> memo) {
         if (accu >= desired) {
             return player;
         }

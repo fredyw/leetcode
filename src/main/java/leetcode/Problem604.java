@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/design-compressed-string-iterator/
- */
+/** https://leetcode.com/problems/design-compressed-string-iterator/ */
 public class Problem604 {
     public static class StringIterator {
         private final String compressedString;
@@ -16,7 +14,7 @@ public class Problem604 {
 
         public char next() {
             if (!hasNext()) {
-                return  ' ';
+                return ' ';
             }
             if (count == 0) {
                 ch = compressedString.charAt(idx);

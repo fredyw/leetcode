@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/check-if-word-equals-summation-of-two-words/
- */
+/** https://leetcode.com/problems/check-if-word-equals-summation-of-two-words/ */
 public class Problem1880 {
     public boolean isSumEqual(String firstWord, String secondWord, String targetWord) {
         return toNumber(firstWord) + toNumber(secondWord) == toNumber(targetWord);

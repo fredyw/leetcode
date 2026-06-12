@@ -6,9 +6,7 @@ import java.util.Set;
 import java.util.Stack;
 import java.util.TreeSet;
 
-/**
- * https://leetcode.com/problems/integer-to-roman/
- */
+/** https://leetcode.com/problems/integer-to-roman/ */
 public class Problem12 {
     public String intToRoman(int num) {
         Map<Integer, String> map = buildRomanNumerals();
@@ -49,7 +47,6 @@ public class Problem12 {
                         roman.append(r.roman);
                     }
                     x = x % r.integer;
-
                 }
             }
         }

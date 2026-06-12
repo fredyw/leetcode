@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/convert-to-base-2/
- */
+/** https://leetcode.com/problems/convert-to-base-2/ */
 public class Problem1017 {
     public String baseNeg2(int N) {
         if (N == 0) {

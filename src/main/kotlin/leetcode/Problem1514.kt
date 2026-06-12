@@ -2,12 +2,15 @@ package leetcode
 
 import java.util.PriorityQueue
 
-/**
- * https://leetcode.com/problems/path-with-maximum-probability/
- */
+/** https://leetcode.com/problems/path-with-maximum-probability/ */
 class Problem1514 {
-    fun maxProbability(n: Int, edges: Array<IntArray>, succProb: DoubleArray, start: Int,
-                       end: Int): Double {
+    fun maxProbability(
+        n: Int,
+        edges: Array<IntArray>,
+        succProb: DoubleArray,
+        start: Int,
+        end: Int,
+    ): Double {
         val adjList = buildAdjList(n, edges, succProb)
         val dist = DoubleArray(n) { Double.NEGATIVE_INFINITY }
         val queue = PriorityQueue<Node>()
@@ -15,7 +18,8 @@ class Problem1514 {
         while (queue.isNotEmpty()) {
             val node = queue.remove()
             for (edge in adjList[node.n]) {
-                val prob = if (dist[edge.from] == Double.NEGATIVE_INFINITY) edge.prob
+                val prob =
+                    if (dist[edge.from] == Double.NEGATIVE_INFINITY) edge.prob
                     else dist[edge.from] * edge.prob
                 if (prob > dist[edge.to]) {
                     dist[edge.to] = prob
@@ -26,7 +30,11 @@ class Problem1514 {
         return if (dist[end] == Double.NEGATIVE_INFINITY) 0.0 else dist[end]
     }
 
-    private fun buildAdjList(n: Int, edges: Array<IntArray>, succProb: DoubleArray): Array<MutableList<Edge>> {
+    private fun buildAdjList(
+        n: Int,
+        edges: Array<IntArray>,
+        succProb: DoubleArray,
+    ): Array<MutableList<Edge>> {
         val adjList = Array(n) { mutableListOf<Edge>() }
         for ((i, e) in edges.withIndex()) {
             val (from, to) = e

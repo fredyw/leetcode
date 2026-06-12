@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/greatest-common-divisor-of-strings/
- */
+/** https://leetcode.com/problems/greatest-common-divisor-of-strings/ */
 public class Problem1071 {
     public String gcdOfStrings(String str1, String str2) {
         String s1 = str1.length() >= str2.length() ? str1 : str2;

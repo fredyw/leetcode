@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/valid-mountain-array/
- */
+/** https://leetcode.com/problems/valid-mountain-array/ */
 public class Problem941 {
     public boolean validMountainArray(int[] A) {
         if (A.length <= 2) {
@@ -11,8 +9,7 @@ public class Problem941 {
         boolean increasing = true;
         boolean decreasing = false;
         for (int i = 0, j = 1; j < A.length; i++, j++) {
-            if ((increasing && A[i] >= A[j]) ||
-                (decreasing && A[i] <= A[j])) {
+            if ((increasing && A[i] >= A[j]) || (decreasing && A[i] <= A[j])) {
                 return false;
             }
             if (A[i] < A[j]) {

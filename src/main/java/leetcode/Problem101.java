@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/symmetric-tree/
- */
+/** https://leetcode.com/problems/symmetric-tree/ */
 public class Problem101 {
     public static class TreeNode {
         int val;

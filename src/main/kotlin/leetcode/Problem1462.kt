@@ -1,11 +1,12 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/course-schedule-iv/
- */
+/** https://leetcode.com/problems/course-schedule-iv/ */
 class Problem1462 {
-    fun checkIfPrerequisite(numCourses: Int, prerequisites: Array<IntArray>,
-                            queries: Array<IntArray>): List<Boolean> {
+    fun checkIfPrerequisite(
+        numCourses: Int,
+        prerequisites: Array<IntArray>,
+        queries: Array<IntArray>,
+    ): List<Boolean> {
         val adjList = buildAdjList(prerequisites)
         val dependencyMap = mutableMapOf<Int, MutableSet<Int>>()
         for (course in 0 until numCourses) {
@@ -32,8 +33,12 @@ class Problem1462 {
         return adjList
     }
 
-    private fun dfs(adjList: Map<Int, List<Int>>, visited: BooleanArray,
-                    dependencies: MutableSet<Int>, course: Int) {
+    private fun dfs(
+        adjList: Map<Int, List<Int>>,
+        visited: BooleanArray,
+        dependencies: MutableSet<Int>,
+        course: Int,
+    ) {
         visited[course] = true
         for (adj in (adjList[course] ?: listOf())) {
             if (!visited[adj]) {

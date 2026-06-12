@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.TreeSet;
 
-/**
- * https://leetcode.com/problems/super-ugly-number/
- */
+/** https://leetcode.com/problems/super-ugly-number/ */
 public class Problem313 {
     public int nthSuperUglyNumber(int n, int[] primes) {
         TreeSet<Long> set = new TreeSet<>();

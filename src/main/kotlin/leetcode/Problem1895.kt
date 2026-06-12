@@ -2,43 +2,45 @@ package leetcode
 
 import kotlin.math.max
 
-/**
- * https://leetcode.com/problems/largest-magic-square/
- */
+/** https://leetcode.com/problems/largest-magic-square/ */
 class Problem1895 {
     fun largestMagicSquare(grid: Array<IntArray>): Int {
         val maxRow = grid.size
         val maxCol = if (maxRow > 0) grid[0].size else 0
         val rowSums = Array(maxRow) { IntArray(maxCol) }
         val colSums = Array(maxRow) { IntArray(maxCol) }
-        val rightDiagonalSums =  Array(maxRow) { IntArray(maxCol) }
-        val leftDiagonalSums =  Array(maxRow) { IntArray(maxCol) }
+        val rightDiagonalSums = Array(maxRow) { IntArray(maxCol) }
+        val leftDiagonalSums = Array(maxRow) { IntArray(maxCol) }
         for (row in 0 until maxRow) {
             for (col in 0 until maxCol) {
                 // Direction: --
-                rowSums[row][col] = if (col == 0) {
-                    grid[row][col]
-                } else {
-                    rowSums[row][col - 1] + grid[row][col]
-                }
+                rowSums[row][col] =
+                    if (col == 0) {
+                        grid[row][col]
+                    } else {
+                        rowSums[row][col - 1] + grid[row][col]
+                    }
                 // Direction: |
-                colSums[row][col] = if (row == 0) {
-                    grid[row][col]
-                } else {
-                    colSums[row - 1][col] + grid[row][col]
-                }
+                colSums[row][col] =
+                    if (row == 0) {
+                        grid[row][col]
+                    } else {
+                        colSums[row - 1][col] + grid[row][col]
+                    }
                 // Direction: \
-                rightDiagonalSums[row][col] = if (row == 0 || col == 0) {
-                    grid[row][col]
-                } else {
-                    rightDiagonalSums[row - 1][col - 1] + grid[row][col]
-                }
+                rightDiagonalSums[row][col] =
+                    if (row == 0 || col == 0) {
+                        grid[row][col]
+                    } else {
+                        rightDiagonalSums[row - 1][col - 1] + grid[row][col]
+                    }
                 // Direction: /
-                leftDiagonalSums[row][col] = if (row == 0 || col == maxCol - 1) {
-                    grid[row][col]
-                } else {
-                    leftDiagonalSums[row - 1][col + 1] + grid[row][col]
-                }
+                leftDiagonalSums[row][col] =
+                    if (row == 0 || col == maxCol - 1) {
+                        grid[row][col]
+                    } else {
+                        leftDiagonalSums[row - 1][col + 1] + grid[row][col]
+                    }
             }
         }
         var answer = 1
@@ -46,8 +48,17 @@ class Problem1895 {
             for (col in 0 until maxCol) {
                 var k = 1
                 while (row + k <= maxRow && col + k <= maxCol) {
-                    if (isMagicSquare(rowSums, colSums, leftDiagonalSums, rightDiagonalSums,
-                            row, col, k)) {
+                    if (
+                        isMagicSquare(
+                            rowSums,
+                            colSums,
+                            leftDiagonalSums,
+                            rightDiagonalSums,
+                            row,
+                            col,
+                            k,
+                        )
+                    ) {
                         answer = max(answer, k)
                     }
                     k++
@@ -57,11 +68,15 @@ class Problem1895 {
         return answer
     }
 
-    private fun isMagicSquare(rowSums: Array<IntArray>,
-                              colSums: Array<IntArray>,
-                              leftDiagonalSums: Array<IntArray>,
-                              rightDiagonalSums: Array<IntArray>,
-                              row: Int, col: Int, size: Int): Boolean {
+    private fun isMagicSquare(
+        rowSums: Array<IntArray>,
+        colSums: Array<IntArray>,
+        leftDiagonalSums: Array<IntArray>,
+        rightDiagonalSums: Array<IntArray>,
+        row: Int,
+        col: Int,
+        size: Int,
+    ): Boolean {
         val maxRow = rowSums.size
         val maxCol = if (maxRow > 0) rowSums[0].size else 0
         var sum = 0
@@ -81,13 +96,16 @@ class Problem1895 {
                 return false
             }
         }
-        val rightDiagonalSum = rightDiagonalSums[row + size - 1][col + size - 1] -
+        val rightDiagonalSum =
+            rightDiagonalSums[row + size - 1][col + size - 1] -
                 (if (row - 1 >= 0 && col - 1 >= 0) rightDiagonalSums[row - 1][col - 1] else 0)
         if (sum != rightDiagonalSum) {
             return false
         }
-        val leftDiagonalSum = leftDiagonalSums[row + size - 1][col] -
-                (if (row - 1 >= 0 && col + size < maxCol) leftDiagonalSums[row - 1][col + size] else 0)
+        val leftDiagonalSum =
+            leftDiagonalSums[row + size - 1][col] -
+                (if (row - 1 >= 0 && col + size < maxCol) leftDiagonalSums[row - 1][col + size]
+                else 0)
         if (sum != leftDiagonalSum) {
             return false
         }

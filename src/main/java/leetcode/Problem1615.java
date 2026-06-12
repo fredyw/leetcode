@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximal-network-rank/
- */
+/** https://leetcode.com/problems/maximal-network-rank/ */
 public class Problem1615 {
     public int maximalNetworkRank(int n, int[][] roads) {
         int[] counts = new int[n];

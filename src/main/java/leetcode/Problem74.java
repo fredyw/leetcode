@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/search-a-2d-matrix/
- */
+/** https://leetcode.com/problems/search-a-2d-matrix/ */
 public class Problem74 {
     public boolean searchMatrix(int[][] matrix, int target) {
         // binary search

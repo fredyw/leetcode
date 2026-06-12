@@ -2,9 +2,7 @@ package leetcode
 
 import kotlin.math.min
 
-/**
- * https://leetcode.com/problems/sum-game/
- */
+/** https://leetcode.com/problems/sum-game/ */
 class Problem1927 {
     fun sumGame(num: String): Boolean {
         var mid = num.length / 2

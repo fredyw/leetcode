@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/repeated-string-match/
- */
+/** https://leetcode.com/problems/repeated-string-match/ */
 public class Problem686 {
     public int repeatedStringMatch(String A, String B) {
         String a = A;

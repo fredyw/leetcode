@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/sum-of-square-numbers/
- */
+/** https://leetcode.com/problems/sum-of-square-numbers/ */
 public class Problem633 {
     public boolean judgeSquareSum(int c) {
         if (c == 0) {

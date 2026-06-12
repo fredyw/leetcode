@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/add-and-search-word-data-structure-design/
- */
+/** https://leetcode.com/problems/add-and-search-word-data-structure-design/ */
 public class Problem211 {
     public static class WordDictionary {
         private final Node root = new Node();
@@ -12,8 +10,7 @@ public class Problem211 {
             private boolean done;
             private final Node[] children = new Node[26];
 
-            public Node() {
-            }
+            public Node() {}
 
             public Node(char ch, boolean done) {
                 this.ch = ch;

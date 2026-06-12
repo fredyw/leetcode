@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/sort-even-and-odd-indices-independently/
- */
+/** https://leetcode.com/problems/sort-even-and-odd-indices-independently/ */
 class Problem2164 {
     fun sortEvenOdd(nums: IntArray): IntArray {
         val odd = mutableListOf<Int>()

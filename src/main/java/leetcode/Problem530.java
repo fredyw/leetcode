@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-absolute-difference-in-bst/
- */
+/** https://leetcode.com/problems/minimum-absolute-difference-in-bst/ */
 public class Problem530 {
     public static class TreeNode {
         int val;

@@ -4,9 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/online-election/
- */
+/** https://leetcode.com/problems/online-election/ */
 public class Problem911 {
     private static class TopVotedCandidate {
         private final int[] times;

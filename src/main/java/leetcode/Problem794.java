@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/valid-tic-tac-toe-state/
- */
+/** https://leetcode.com/problems/valid-tic-tac-toe-state/ */
 public class Problem794 {
     public boolean validTicTacToe(String[] board) {
         int oCount = 0;

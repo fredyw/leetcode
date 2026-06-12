@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/move-zeroes/
- */
+/** https://leetcode.com/problems/move-zeroes/ */
 public class Problem283 {
     public void moveZeroes(int[] nums) {
         int idx = 0;

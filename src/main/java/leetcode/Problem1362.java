@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/closest-divisors/
- */
+/** https://leetcode.com/problems/closest-divisors/ */
 public class Problem1362 {
     public int[] closestDivisors(int num) {
         int a = num + 1;

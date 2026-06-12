@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/pour-water/
- */
+/** https://leetcode.com/problems/pour-water/ */
 public class Problem755 {
     public int[] pourWater(int[] heights, int V, int K) {
         outer:

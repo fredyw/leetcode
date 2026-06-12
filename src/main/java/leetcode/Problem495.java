@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/teemo-attacking/
- */
+/** https://leetcode.com/problems/teemo-attacking/ */
 public class Problem495 {
     public int findPoisonedDuration(int[] timeSeries, int duration) {
         int total = 0;

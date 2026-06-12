@@ -1,17 +1,14 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/spiral-matrix-ii/
- */
+/** https://leetcode.com/problems/spiral-matrix-ii/ */
 public class Problem59 {
     public int[][] generateMatrix(int n) {
         int[][] matrix = new int[n][n];
         if (n == 0) {
             return matrix;
         }
-        Direction[] directions = new Direction[]{
-            Direction.LEFT, Direction.DOWN, Direction.RIGHT, Direction.UP
-        };
+        Direction[] directions =
+                new Direction[] {Direction.LEFT, Direction.DOWN, Direction.RIGHT, Direction.UP};
         int dirIdx = 0;
         int row = 0;
         int col = 0;
@@ -68,6 +65,9 @@ public class Problem59 {
     }
 
     private static enum Direction {
-        LEFT, RIGHT, UP, DOWN
+        LEFT,
+        RIGHT,
+        UP,
+        DOWN
     }
 }

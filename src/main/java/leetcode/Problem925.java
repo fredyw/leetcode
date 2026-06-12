@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/long-pressed-name/
- */
+/** https://leetcode.com/problems/long-pressed-name/ */
 public class Problem925 {
     public boolean isLongPressedName(String name, String typed) {
         if (typed.length() < name.length()) {

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/merge-two-binary-trees/
- */
+/** https://leetcode.com/problems/merge-two-binary-trees/ */
 public class Problem617 {
     public static class TreeNode {
         int val;

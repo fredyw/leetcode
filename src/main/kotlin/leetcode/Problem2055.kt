@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/plates-between-candles/
- */
+/** https://leetcode.com/problems/plates-between-candles/ */
 class Problem2055 {
     fun platesBetweenCandles(s: String, queries: Array<IntArray>): IntArray {
         val answer = IntArray(queries.size)
@@ -22,7 +20,7 @@ class Problem2055 {
         // Keep track of the previous and next candle index positions for each plate index.
         for ((index, value) in s.withIndex()) {
             if (value == '*') {
-                prefixSums[index] = if (index - 1 < 0) 1  else prefixSums[index - 1] + 1
+                prefixSums[index] = if (index - 1 < 0) 1 else prefixSums[index - 1] + 1
             } else {
                 candles += index
                 prefixSums[index] = if (index - 1 < 0) 0 else prefixSums[index - 1]
@@ -44,23 +42,25 @@ class Problem2055 {
         for ((index, query) in queries.withIndex()) {
             var start = query[0]
             if (s[start] == '*') {
-                start = if (start < startIndex) {
-                    startIndex
-                } else if (start > endIndex) {
-                    endIndex
-                } else {
-                    previousNextCandles[start].next
-                }
+                start =
+                    if (start < startIndex) {
+                        startIndex
+                    } else if (start > endIndex) {
+                        endIndex
+                    } else {
+                        previousNextCandles[start].next
+                    }
             }
             var end = query[1]
             if (s[end] == '*') {
-                end = if (end < startIndex) {
-                    startIndex
-                } else if (end > endIndex) {
-                    endIndex
-                } else {
-                    previousNextCandles[end].previous
-                }
+                end =
+                    if (end < startIndex) {
+                        startIndex
+                    } else if (end > endIndex) {
+                        endIndex
+                    } else {
+                        previousNextCandles[end].previous
+                    }
             }
             answer[index] = if (start > end) 0 else prefixSums[end] - prefixSums[start]
         }

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/partition-array-into-three-parts-with-equal-sum/
- */
+/** https://leetcode.com/problems/partition-array-into-three-parts-with-equal-sum/ */
 public class Problem1013 {
     public boolean canThreePartsEqualSum(int[] A) {
         int sum = 0;

@@ -2,9 +2,7 @@ package leetcode
 
 import kotlin.math.max
 
-/**
- * https://leetcode.com/problems/maximum-consecutive-floors-without-special-floors/
- */
+/** https://leetcode.com/problems/maximum-consecutive-floors-without-special-floors/ */
 class Problem2274 {
     fun maxConsecutive(bottom: Int, top: Int, special: IntArray): Int {
         var answer = 0

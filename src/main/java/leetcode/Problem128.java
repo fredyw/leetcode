@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/longest-consecutive-sequence/
- */
+/** https://leetcode.com/problems/longest-consecutive-sequence/ */
 public class Problem128 {
     public int longestConsecutive(int[] nums) {
         Set<Integer> set = new HashSet<>();

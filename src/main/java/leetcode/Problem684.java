@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/redundant-connection/
- */
+/** https://leetcode.com/problems/redundant-connection/ */
 public class Problem684 {
     public int[] findRedundantConnection(int[][] edges) {
         UnionFind uf = new UnionFind();

@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/minimum-moves-to-reach-target-score/
- */
+/** https://leetcode.com/problems/minimum-moves-to-reach-target-score/ */
 class Problem2139 {
     fun minMoves(target: Int, maxDoubles: Int): Int {
         var moves = 0

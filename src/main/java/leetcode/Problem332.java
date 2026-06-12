@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-/**
- * https://leetcode.com/problems/reconstruct-itinerary/
- */
+/** https://leetcode.com/problems/reconstruct-itinerary/ */
 public class Problem332 {
     public List<String> findItinerary(String[][] tickets) {
         Map<String, List<Ticket>> map = new HashMap<>();
@@ -35,8 +33,8 @@ public class Problem332 {
         return result;
     }
 
-    private boolean findItinerary(Map<String, List<Ticket>> map, int max, String name,
-                                  int count, List<String> result) {
+    private boolean findItinerary(
+            Map<String, List<Ticket>> map, int max, String name, int count, List<String> result) {
         if (count == max) {
             return true;
         }
@@ -75,8 +73,7 @@ public class Problem332 {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             Ticket ticket = (Ticket) o;
-            return Objects.equals(from, ticket.from) &&
-                Objects.equals(to, ticket.to);
+            return Objects.equals(from, ticket.from) && Objects.equals(to, ticket.to);
         }
 
         @Override

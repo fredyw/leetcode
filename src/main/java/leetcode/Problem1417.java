@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/reformat-the-string/
- */
+/** https://leetcode.com/problems/reformat-the-string/ */
 public class Problem1417 {
     public String reformat(String s) {
         List<Character> chars = new ArrayList<>();

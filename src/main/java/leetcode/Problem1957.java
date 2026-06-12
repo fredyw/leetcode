@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/delete-characters-to-make-fancy-string/
- */
+/** https://leetcode.com/problems/delete-characters-to-make-fancy-string/ */
 public class Problem1957 {
     public String makeFancyString(String s) {
         StringBuilder answer = new StringBuilder();

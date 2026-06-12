@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/add-two-numbers/
- */
+/** https://leetcode.com/problems/add-two-numbers/ */
 public class Problem2 {
     public static class ListNode {
         int val;

@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/iterator-for-combination/
- */
+/** https://leetcode.com/problems/iterator-for-combination/ */
 public class Problem1286 {
     private static class CombinationIterator {
         private final List<String> combinations = new ArrayList<>();
@@ -23,8 +21,8 @@ public class Problem1286 {
             return index < combinations.size();
         }
 
-        private static void generateCombinations(String str, int length, int index, String accu,
-                                                 List<String> combinations) {
+        private static void generateCombinations(
+                String str, int length, int index, String accu, List<String> combinations) {
             if (accu.length() == length) {
                 combinations.add(accu);
                 return;

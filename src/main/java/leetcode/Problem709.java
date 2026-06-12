@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/to-lower-case/
- */
+/** https://leetcode.com/problems/to-lower-case/ */
 public class Problem709 {
     public String toLowerCase(String str) {
         StringBuilder sb = new StringBuilder();

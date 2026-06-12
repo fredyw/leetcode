@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/partition-labels/
- */
+/** https://leetcode.com/problems/partition-labels/ */
 public class Problem763 {
     public List<Integer> partitionLabels(String S) {
         List<Integer> result = new ArrayList<>();

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-operations-to-make-the-array-increasing/
- */
+/** https://leetcode.com/problems/minimum-operations-to-make-the-array-increasing/ */
 public class Problem1827 {
     public int minOperations(int[] nums) {
         int answer = 0;

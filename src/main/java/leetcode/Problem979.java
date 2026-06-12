@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/distribute-coins-in-binary-tree/
- */
+/** https://leetcode.com/problems/distribute-coins-in-binary-tree/ */
 public class Problem979 {
     public static class TreeNode {
         int val;

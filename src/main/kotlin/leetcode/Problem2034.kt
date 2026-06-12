@@ -2,9 +2,7 @@ package leetcode
 
 import java.util.TreeMap
 
-/**
- * https://leetcode.com/problems/stock-price-fluctuation/
- */
+/** https://leetcode.com/problems/stock-price-fluctuation/ */
 class Problem2034 {
     class StockPrice() {
         private val timestampToPriceMap = TreeMap<Int, Int>()

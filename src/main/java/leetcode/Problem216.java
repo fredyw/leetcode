@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/combination-sum-iii/
- */
+/** https://leetcode.com/problems/combination-sum-iii/ */
 public class Problem216 {
     public List<List<Integer>> combinationSum3(int k, int n) {
         List<List<Integer>> result = new ArrayList<>();
@@ -18,8 +16,14 @@ public class Problem216 {
         return result;
     }
 
-    private void combination(List<Integer> numbers, int k, int n, int idx, int sum,
-                             List<Integer> accu, List<List<Integer>> result) {
+    private void combination(
+            List<Integer> numbers,
+            int k,
+            int n,
+            int idx,
+            int sum,
+            List<Integer> accu,
+            List<List<Integer>> result) {
         if (sum == n) {
             if (k == 0) {
                 result.add(accu);

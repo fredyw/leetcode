@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/diet-plan-performance/
- */
+/** https://leetcode.com/problems/diet-plan-performance/ */
 public class Problem1176 {
     public int dietPlanPerformance(int[] calories, int k, int lower, int upper) {
         int answer = 0;

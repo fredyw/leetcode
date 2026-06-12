@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/sort-array-by-parity-ii/
- */
+/** https://leetcode.com/problems/sort-array-by-parity-ii/ */
 public class Problem922 {
     public int[] sortArrayByParityII(int[] A) {
         int[] odd = new int[(A.length / 2) + 1];

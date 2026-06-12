@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/largest-odd-number-in-string/
- */
+/** https://leetcode.com/problems/largest-odd-number-in-string/ */
 public class Problem1903 {
     public String largestOddNumber(String num) {
         for (int i = num.length() - 1; i >= 0; i--) {

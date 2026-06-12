@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/first-missing-positive/
- */
+/** https://leetcode.com/problems/first-missing-positive/ */
 public class Problem41 {
     public int firstMissingPositive(int[] nums) {
         int i = 0;

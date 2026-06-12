@@ -2,9 +2,7 @@ package leetcode
 
 import kotlin.math.min
 
-/**
- * https://leetcode.com/problems/step-by-step-directions-from-a-binary-tree-node-to-another/
- */
+/** https://leetcode.com/problems/step-by-step-directions-from-a-binary-tree-node-to-another/ */
 class Problem2096 {
     class TreeNode(var `val`: Int) {
         var left: TreeNode? = null

@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/maximum-bags-with-full-capacity-of-rocks/
- */
+/** https://leetcode.com/problems/maximum-bags-with-full-capacity-of-rocks/ */
 class Problem2279 {
     fun maximumBags(capacity: IntArray, rocks: IntArray, additionalRocks: Int): Int {
         var answer = 0

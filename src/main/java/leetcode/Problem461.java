@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/hamming-distance/
- */
+/** https://leetcode.com/problems/hamming-distance/ */
 public class Problem461 {
     public int hammingDistance(int x, int y) {
         int xor = x ^ y;

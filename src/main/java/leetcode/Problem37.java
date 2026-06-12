@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/sudoku-solver/
- */
+/** https://leetcode.com/problems/sudoku-solver/ */
 public class Problem37 {
     public void solveSudoku(char[][] board) {
         solve(board);
@@ -57,8 +55,8 @@ public class Problem37 {
         return true;
     }
 
-    private static boolean isValid(char[][] board, int startRow, int endRow,
-                                   int startCol, int endCol) {
+    private static boolean isValid(
+            char[][] board, int startRow, int endRow, int startCol, int endCol) {
         boolean[] b = new boolean[9];
         for (int i = startRow; i < endRow; i++) {
             for (int j = startCol; j < endCol; j++) {

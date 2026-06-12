@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/word-subsets/
- */
+/** https://leetcode.com/problems/word-subsets/ */
 public class Problem916 {
     public List<String> wordSubsets(String[] A, String[] B) {
         List<String> result = new ArrayList<>();

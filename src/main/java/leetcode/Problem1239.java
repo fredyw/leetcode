@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/
- */
+/** https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/ */
 public class Problem1239 {
     public int maxLength(List<String> arr) {
         int answer = 0;
@@ -17,7 +15,8 @@ public class Problem1239 {
         return answer;
     }
 
-    private static int maxLength(List<String> arr, int index, String accu, Map<String, Integer> memo) {
+    private static int maxLength(
+            List<String> arr, int index, String accu, Map<String, Integer> memo) {
         if (arr.size() == index) {
             return accu.length();
         }

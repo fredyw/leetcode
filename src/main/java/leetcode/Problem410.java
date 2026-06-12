@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/split-array-largest-sum/
- */
+/** https://leetcode.com/problems/split-array-largest-sum/ */
 public class Problem410 {
     public int splitArray(int[] nums, int m) {
         long sum = 0;

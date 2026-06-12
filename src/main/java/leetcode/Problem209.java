@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-size-subarray-sum/
- */
+/** https://leetcode.com/problems/minimum-size-subarray-sum/ */
 public class Problem209 {
     public int minSubArrayLen(int s, int[] nums) {
         int min = Integer.MAX_VALUE;

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/remove-all-occurrences-of-a-substring/
- */
+/** https://leetcode.com/problems/remove-all-occurrences-of-a-substring/ */
 public class Problem1910 {
     public String removeOccurrences(String s, String part) {
         String answer = s;

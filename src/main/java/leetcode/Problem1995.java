@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/count-special-quadruplets/
- */
+/** https://leetcode.com/problems/count-special-quadruplets/ */
 public class Problem1995 {
     public int countQuadruplets(int[] nums) {
         Map<Integer, List<Integer>> map = new HashMap<>();

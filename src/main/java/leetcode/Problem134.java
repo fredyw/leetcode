@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/gas-station/
- */
+/** https://leetcode.com/problems/gas-station/ */
 public class Problem134 {
     public int canCompleteCircuit(int[] gas, int[] cost) {
         int sum = 0;

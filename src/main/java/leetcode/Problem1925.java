@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/count-square-sum-triples/
- */
+/** https://leetcode.com/problems/count-square-sum-triples/ */
 public class Problem1925 {
     public int countTriples(int n) {
         Set</* square */ Integer> squares = new HashSet<>();

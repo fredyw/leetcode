@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/validate-binary-tree-nodes/
- */
+/** https://leetcode.com/problems/validate-binary-tree-nodes/ */
 public class Problem1361 {
     public boolean validateBinaryTreeNodes(int n, int[] leftChild, int[] rightChild) {
         int[] inCount = new int[n];

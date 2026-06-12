@@ -1,12 +1,10 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/champagne-tower/
- */
+/** https://leetcode.com/problems/champagne-tower/ */
 public class Problem799 {
     public double champagneTower(int poured, int query_row, int query_glass) {
         double[][] glasses = new double[100][100];
-        glasses[0] = new double[]{poured};
+        glasses[0] = new double[] {poured};
         for (int row = 0; row <= query_row; row++) {
             for (int col = 0; col < glasses[row].length; col++) {
                 double val = glasses[row][col];

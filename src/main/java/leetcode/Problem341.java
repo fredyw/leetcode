@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/flatten-nested-list-iterator/
- */
+/** https://leetcode.com/problems/flatten-nested-list-iterator/ */
 public class Problem341 {
     public interface NestedInteger {
         // @return true if this NestedInteger holds a single integer, rather than a nested list.

@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/design-browser-history/
- */
+/** https://leetcode.com/problems/design-browser-history/ */
 public class Problem1472 {
     static class BrowserHistory {
         private List<String> history = new ArrayList<>();

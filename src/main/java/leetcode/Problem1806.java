@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/minimum-number-of-operations-to-reinitialize-a-permutation/
- */
+/** https://leetcode.com/problems/minimum-number-of-operations-to-reinitialize-a-permutation/ */
 public class Problem1806 {
     public int reinitializePermutation(int n) {
         int[] initial = new int[n];

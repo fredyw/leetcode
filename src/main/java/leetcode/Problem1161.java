@@ -3,9 +3,7 @@ package leetcode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
- * https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/
- */
+/** https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/ */
 public class Problem1161 {
     public static class TreeNode {
         int val;

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/
- */
+/** https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/ */
 public class Problem1372 {
     public static class TreeNode {
         int val;

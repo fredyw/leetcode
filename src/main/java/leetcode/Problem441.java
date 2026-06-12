@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/arranging-coins/
- */
+/** https://leetcode.com/problems/arranging-coins/ */
 public class Problem441 {
     public int arrangeCoins(int n) {
         long sum = 0;

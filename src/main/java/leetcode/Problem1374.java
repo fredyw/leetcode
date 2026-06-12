@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/generate-a-string-with-characters-that-have-odd-counts/
- */
+/** https://leetcode.com/problems/generate-a-string-with-characters-that-have-odd-counts/ */
 public class Problem1374 {
     public String generateTheString(int n) {
         String answer = "";

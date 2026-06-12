@@ -3,9 +3,7 @@ package leetcode;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-/**
- * https://leetcode.com/problems/last-stone-weight/
- */
+/** https://leetcode.com/problems/last-stone-weight/ */
 public class Problem1046 {
     public int lastStoneWeight(int[] stones) {
         PriorityQueue<Integer> queue = new PriorityQueue<>(Comparator.reverseOrder());

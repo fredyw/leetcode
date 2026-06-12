@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/greatest-sum-divisible-by-three/
- */
+/** https://leetcode.com/problems/greatest-sum-divisible-by-three/ */
 public class Problem1262 {
     public int maxSumDivThree(int[] nums) {
         return maxSumDivThree(nums, 0, 0, new Integer[40001][3]);

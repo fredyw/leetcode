@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-/**
- * https://leetcode.com/problems/data-stream-as-disjoint-intervals/
- */
+/** https://leetcode.com/problems/data-stream-as-disjoint-intervals/ */
 public class Problem352 {
     public static class Interval {
         int start;
@@ -27,11 +25,11 @@ public class Problem352 {
 
     public static class SummaryRanges {
         private final HashMap<Integer, Interval> hashMap = new HashMap<>();
-        private final TreeMap<Integer, Interval> treeMap = new TreeMap<>((a, b) -> Integer.compare(a, b));
+        private final TreeMap<Integer, Interval> treeMap =
+                new TreeMap<>((a, b) -> Integer.compare(a, b));
 
         /** Initialize your data structure here. */
-        public SummaryRanges() {
-        }
+        public SummaryRanges() {}
 
         public void addNum(int val) {
             if (hashMap.containsKey(val)) {

@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/combinations/
- */
+/** https://leetcode.com/problems/combinations/ */
 public class Problem77 {
     public List<List<Integer>> combine(int n, int k) {
         List<List<Integer>> result = new ArrayList<>();

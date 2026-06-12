@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/crawler-log-folder/
- */
+/** https://leetcode.com/problems/crawler-log-folder/ */
 public class Problem1598 {
     public int minOperations(String[] logs) {
         Stack<String> stack = new Stack<>();

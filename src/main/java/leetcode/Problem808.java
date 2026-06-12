@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/soup-servings/
- */
+/** https://leetcode.com/problems/soup-servings/ */
 public class Problem808 {
     public double soupServings(int N) {
         int div = N / 25;
@@ -28,12 +26,12 @@ public class Problem808 {
         if (memo[a][b] != null) {
             return memo[a][b];
         }
-        double result = 0.25 * (
-            soupServings(a - 4, b, memo) +
-            soupServings(a - 3, b - 1, memo) +
-            soupServings(a - 2, b - 2, memo) +
-            soupServings(a - 1, b - 3, memo)
-        );
+        double result =
+                0.25
+                        * (soupServings(a - 4, b, memo)
+                                + soupServings(a - 3, b - 1, memo)
+                                + soupServings(a - 2, b - 2, memo)
+                                + soupServings(a - 1, b - 3, memo));
         memo[a][b] = result;
         return result;
     }

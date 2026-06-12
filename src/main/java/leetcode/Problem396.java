@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/rotate-function/
- */
+/** https://leetcode.com/problems/rotate-function/ */
 public class Problem396 {
     public int maxRotateFunction(int[] A) {
         if (A.length == 0) {

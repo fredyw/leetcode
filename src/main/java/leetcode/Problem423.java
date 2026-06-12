@@ -6,9 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/reconstruct-original-digits-from-english/
- */
+/** https://leetcode.com/problems/reconstruct-original-digits-from-english/ */
 public class Problem423 {
     public String originalDigits(String s) {
         Map<Character, Integer> charCount = new HashMap<>();

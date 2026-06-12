@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/remove-nth-node-from-end-of-list/
- */
+/** https://leetcode.com/problems/remove-nth-node-from-end-of-list/ */
 public class Problem19 {
     public static class ListNode {
         int val;

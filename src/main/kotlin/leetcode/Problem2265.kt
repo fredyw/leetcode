@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/count-nodes-equal-to-average-of-subtree/
- */
+/** https://leetcode.com/problems/count-nodes-equal-to-average-of-subtree/ */
 class Problem2265 {
     class TreeNode(var `val`: Int) {
         var left: TreeNode? = null
@@ -16,6 +14,7 @@ class Problem2265 {
     }
 
     private data class SumCount(val sum: Int = 0, val count: Int = 0)
+
     private data class IntRef(var value: Int = 0)
 
     private fun averageOfSubtree(root: TreeNode?, answer: IntRef): SumCount {

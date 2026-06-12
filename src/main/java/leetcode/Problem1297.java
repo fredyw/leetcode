@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/maximum-number-of-occurrences-of-a-substring/
- */
+/** https://leetcode.com/problems/maximum-number-of-occurrences-of-a-substring/ */
 public class Problem1297 {
     public int maxFreq(String s, int maxLetters, int minSize, int maxSize) {
         int answer = 0;
@@ -27,7 +25,6 @@ public class Problem1297 {
             } else {
                 newCount = strCount.get(sub) + 1;
                 strCount.put(sub, newCount);
-
             }
             answer = Math.max(answer, newCount);
         }

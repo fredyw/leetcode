@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/count-operations-to-obtain-zero/
- */
+/** https://leetcode.com/problems/count-operations-to-obtain-zero/ */
 class Problem2169 {
     fun countOperations(num1: Int, num2: Int): Int {
         var answer = 0

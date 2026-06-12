@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/online-stock-span/
- */
+/** https://leetcode.com/problems/online-stock-span/ */
 public class Problem901 {
     private static class StockSpanner {
         private final Stack<PriceCount> stack = new Stack<>();
@@ -19,8 +17,7 @@ public class Problem901 {
             }
         }
 
-        public StockSpanner() {
-        }
+        public StockSpanner() {}
 
         public int next(int price) {
             int count = 1;

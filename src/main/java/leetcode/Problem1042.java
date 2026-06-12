@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/flower-planting-with-no-adjacent/
- */
+/** https://leetcode.com/problems/flower-planting-with-no-adjacent/ */
 public class Problem1042 {
     public int[] gardenNoAdj(int N, int[][] paths) {
         Set<Integer>[] set = new HashSet[N + 1];

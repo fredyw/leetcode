@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/
- */
+/** https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/ */
 public class Problem430 {
     private static class Node {
         public int val;
@@ -10,8 +8,7 @@ public class Problem430 {
         public Node next;
         public Node child;
 
-        public Node() {
-        }
+        public Node() {}
 
         public Node(int _val, Node _prev, Node _next, Node _child) {
             val = _val;

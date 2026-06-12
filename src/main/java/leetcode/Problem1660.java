@@ -9,8 +9,7 @@ public class Problem1660 {
         TreeNode left;
         TreeNode right;
 
-        TreeNode() {
-        }
+        TreeNode() {}
 
         TreeNode(int val) {
             this.val = val;
@@ -29,13 +28,13 @@ public class Problem1660 {
     }
 
     private enum Direction {
-        CENTER, LEFT, RIGHT
+        CENTER,
+        LEFT,
+        RIGHT
     }
 
-    private static void correctBinaryTree(TreeNode node,
-                                          TreeNode parent,
-                                          Direction direction,
-                                          HashSet<Integer> set) {
+    private static void correctBinaryTree(
+            TreeNode node, TreeNode parent, Direction direction, HashSet<Integer> set) {
         if (node == null) {
             return;
         }

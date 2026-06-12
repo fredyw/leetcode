@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/flip-string-to-monotone-increasing/
- */
+/** https://leetcode.com/problems/flip-string-to-monotone-increasing/ */
 public class Problem926 {
     public int minFlipsMonoIncr(String S) {
         int[] sum = new int[S.length() + 1];

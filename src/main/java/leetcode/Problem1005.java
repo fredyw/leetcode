@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/maximize-sum-of-array-after-k-negations/
- */
+/** https://leetcode.com/problems/maximize-sum-of-array-after-k-negations/ */
 public class Problem1005 {
     public int largestSumAfterKNegations(int[] A, int K) {
         Arrays.sort(A);

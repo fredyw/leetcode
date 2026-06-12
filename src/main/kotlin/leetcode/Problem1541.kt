@@ -2,9 +2,7 @@ package leetcode
 
 import java.util.*
 
-/**
- * https://leetcode.com/problems/minimum-insertions-to-balance-a-parentheses-string/
- */
+/** https://leetcode.com/problems/minimum-insertions-to-balance-a-parentheses-string/ */
 class Problem1541 {
     fun minInsertions(s: String): Int {
         var answer = 0
@@ -38,4 +36,3 @@ class Problem1541 {
         return answer
     }
 }
-

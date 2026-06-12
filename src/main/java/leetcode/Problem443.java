@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/string-compression/
- */
+/** https://leetcode.com/problems/string-compression/ */
 public class Problem443 {
     public int compress(char[] chars) {
         int j = 0;

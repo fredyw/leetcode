@@ -2,9 +2,7 @@ package leetcode;
 
 import java.math.BigInteger;
 
-/**
- * https://leetcode.com/problems/additive-number/
- */
+/** https://leetcode.com/problems/additive-number/ */
 public class Problem306 {
     public boolean isAdditiveNumber(String num) {
         for (int i = 0; i < num.length(); i++) {

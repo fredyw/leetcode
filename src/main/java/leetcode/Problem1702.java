@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-binary-string-after-change/
- */
+/** https://leetcode.com/problems/maximum-binary-string-after-change/ */
 public class Problem1702 {
     public String maximumBinaryString(String binary) {
         StringBuilder answer = new StringBuilder("1".repeat(binary.length()));
@@ -23,4 +21,3 @@ public class Problem1702 {
         return answer.toString();
     }
 }
-

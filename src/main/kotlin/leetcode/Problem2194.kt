@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/cells-in-a-range-on-an-excel-sheet/
- */
+/** https://leetcode.com/problems/cells-in-a-range-on-an-excel-sheet/ */
 class Problem2194 {
     fun cellsInRange(s: String): List<String> {
         val answer = mutableListOf<String>()

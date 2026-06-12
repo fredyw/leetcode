@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/pyramid-transition-matrix/
- */
+/** https://leetcode.com/problems/pyramid-transition-matrix/ */
 public class Problem756 {
     public boolean pyramidTransition(String bottom, List<String> allowed) {
         Map<String, List<Character>> map = new HashMap<>();
@@ -30,11 +28,12 @@ public class Problem756 {
         return pyramidTransition(bottom, map, matrix, 0, 0);
     }
 
-    private static boolean pyramidTransition(String bottom,
-                                             Map<String, List<Character>> map,
-                                             List<List<Character>> matrix,
-                                             int row,
-                                             int col) {
+    private static boolean pyramidTransition(
+            String bottom,
+            Map<String, List<Character>> map,
+            List<List<Character>> matrix,
+            int row,
+            int col) {
         if (col + 1 >= matrix.get(row).size()) {
             row++;
             col = 0;

@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/build-an-array-with-stack-operations/
- */
+/** https://leetcode.com/problems/build-an-array-with-stack-operations/ */
 public class Problem1441 {
     public List<String> buildArray(int[] target, int n) {
         List<String> answer = new ArrayList<>();

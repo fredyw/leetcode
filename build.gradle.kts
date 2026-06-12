@@ -2,6 +2,7 @@ plugins {
     java
     kotlin("jvm") version "2.3.0"
     application
+    id("com.diffplug.spotless") version "8.6.0"
 }
 
 java {
@@ -27,4 +28,13 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
+}
+
+spotless {
+    java {
+        googleJavaFormat("1.35.0").aosp()
+    }
+    kotlin {
+        ktfmt().kotlinlangStyle()
+    }
 }

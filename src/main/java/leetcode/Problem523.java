@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/continuous-subarray-sum/
- */
+/** https://leetcode.com/problems/continuous-subarray-sum/ */
 public class Problem523 {
     public boolean checkSubarraySum(int[] nums, int k) {
         int sum = 0;

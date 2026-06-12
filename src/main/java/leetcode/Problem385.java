@@ -3,17 +3,14 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/mini-parser/
- */
+/** https://leetcode.com/problems/mini-parser/ */
 public class Problem385 {
     public static class NestedInteger {
         private Integer value;
         private final List<NestedInteger> nested = new ArrayList<>();
 
         // Constructor initializes an empty nested list.
-        public NestedInteger() {
-        }
+        public NestedInteger() {}
 
         // Constructor initializes a single integer.
         public NestedInteger(int value) {

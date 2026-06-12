@@ -1,14 +1,9 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/binary-tree-postorder-traversal/
- */
+/** https://leetcode.com/problems/binary-tree-postorder-traversal/ */
 public class Problem145 {
     public static class TreeNode {
         int val;

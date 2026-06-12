@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/solve-the-equation/
- */
+/** https://leetcode.com/problems/solve-the-equation/ */
 public class Problem640 {
     public String solveEquation(String equation) {
         String[] e = equation.split("=");

@@ -2,9 +2,7 @@ package leetcode
 
 import java.util.*
 
-/**
- * https://leetcode.com/problems/find-subsequence-of-length-k-with-the-largest-sum/
- */
+/** https://leetcode.com/problems/find-subsequence-of-length-k-with-the-largest-sum/ */
 class Problem2099 {
     fun maxSubsequence(nums: IntArray, k: Int): IntArray {
         val queue = PriorityQueue<Int> { a, b -> b.compareTo(a) }

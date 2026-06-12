@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/path-sum-iii/
- */
+/** https://leetcode.com/problems/path-sum-iii/ */
 public class Problem437 {
     public static class TreeNode {
         int val;

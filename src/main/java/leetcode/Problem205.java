@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/isomorphic-strings/
- */
+/** https://leetcode.com/problems/isomorphic-strings/ */
 public class Problem205 {
     public boolean isIsomorphic(String s, String t) {
         return transform(s).equals(transform(t));

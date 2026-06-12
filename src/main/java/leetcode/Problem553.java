@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/optimal-division/
- */
+/** https://leetcode.com/problems/optimal-division/ */
 public class Problem553 {
     public String optimalDivision(int[] nums) {
         if (nums.length == 1) {

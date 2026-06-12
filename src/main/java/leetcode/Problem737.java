@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/sentence-similarity-ii/
- */
+/** https://leetcode.com/problems/sentence-similarity-ii/ */
 public class Problem737 {
     public boolean areSentencesSimilarTwo(String[] words1, String[] words2, String[][] pairs) {
         if (words1.length != words2.length) {

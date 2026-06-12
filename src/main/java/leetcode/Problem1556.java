@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/thousand-separator/
- */
+/** https://leetcode.com/problems/thousand-separator/ */
 public class Problem1556 {
     public String thousandSeparator(int n) {
         String answer = "";

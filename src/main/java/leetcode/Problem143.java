@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/reorder-list/
- */
+/** https://leetcode.com/problems/reorder-list/ */
 public class Problem143 {
     public static class ListNode {
         int val;

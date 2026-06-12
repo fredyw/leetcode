@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/integer-replacement/
- */
+/** https://leetcode.com/problems/integer-replacement/ */
 public class Problem397 {
     public int integerReplacement(int n) {
         return (int) longReplacement(n);

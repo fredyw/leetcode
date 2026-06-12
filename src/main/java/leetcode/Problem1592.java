@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/rearrange-spaces-between-words/
- */
+/** https://leetcode.com/problems/rearrange-spaces-between-words/ */
 public class Problem1592 {
     public String reorderSpaces(String text) {
         int totalSpaces = 0;

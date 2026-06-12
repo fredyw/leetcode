@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/implement-trie-prefix-tree/
- */
+/** https://leetcode.com/problems/implement-trie-prefix-tree/ */
 public class Problem208 {
     public static class Trie {
         private static class Node {
@@ -10,8 +8,7 @@ public class Problem208 {
             private char value;
             private boolean complete;
 
-            public Node() {
-            }
+            public Node() {}
 
             public Node(char value) {
                 this.value = value;
@@ -20,8 +17,7 @@ public class Problem208 {
 
         private final Node root = new Node();
 
-        public Trie() {
-        }
+        public Trie() {}
 
         // Inserts a word into the trie.
         public void insert(String word) {

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/split-a-string-in-balanced-strings/
- */
+/** https://leetcode.com/problems/split-a-string-in-balanced-strings/ */
 public class Problem1221 {
     public int balancedStringSplit(String s) {
         int answer = 0;

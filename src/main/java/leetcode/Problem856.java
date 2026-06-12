@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/score-of-parentheses/
- */
+/** https://leetcode.com/problems/score-of-parentheses/ */
 public class Problem856 {
     public int scoreOfParentheses(String S) {
         return scoreOfParentheses(S, new IntRef());

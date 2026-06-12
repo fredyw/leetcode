@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/convert-bst-to-greater-tree/
- */
+/** https://leetcode.com/problems/convert-bst-to-greater-tree/ */
 public class Problem538 {
     public static class TreeNode {
         int val;

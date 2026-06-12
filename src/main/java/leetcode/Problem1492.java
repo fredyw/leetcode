@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/the-kth-factor-of-n/
- */
+/** https://leetcode.com/problems/the-kth-factor-of-n/ */
 public class Problem1492 {
     public int kthFactor(int n, int k) {
         int j = 0;

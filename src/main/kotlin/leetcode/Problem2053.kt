@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/kth-distinct-string-in-an-array/
- */
+/** https://leetcode.com/problems/kth-distinct-string-in-an-array/ */
 class Problem2053 {
     fun kthDistinct(arr: Array<String>, k: Int): String {
         val map = mutableMapOf<String, Int>()
@@ -23,4 +21,3 @@ class Problem2053 {
         return ""
     }
 }
-

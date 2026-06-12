@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/sum-of-digits-of-string-after-convert/
- */
+/** https://leetcode.com/problems/sum-of-digits-of-string-after-convert/ */
 public class Problem1945 {
     public int getLucky(String s, int k) {
         int sum = 0;

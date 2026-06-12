@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/candy/
- */
+/** https://leetcode.com/problems/candy/ */
 public class Problem135 {
     public int candy(int[] ratings) {
         int[] candies = new int[ratings.length];

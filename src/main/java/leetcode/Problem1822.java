@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/sign-of-the-product-of-an-array/
- */
+/** https://leetcode.com/problems/sign-of-the-product-of-an-array/ */
 public class Problem1822 {
     public int arraySign(int[] nums) {
         int answer;

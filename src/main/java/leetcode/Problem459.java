@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/repeated-substring-pattern/
- */
+/** https://leetcode.com/problems/repeated-substring-pattern/ */
 public class Problem459 {
     public boolean repeatedSubstringPattern(String str) {
         for (int i = 1; i <= str.length() / 2; i++) {

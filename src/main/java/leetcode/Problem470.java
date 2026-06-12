@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Random;
 
-/**
- * https://leetcode.com/problems/implement-rand10-using-rand7/
- */
+/** https://leetcode.com/problems/implement-rand10-using-rand7/ */
 public class Problem470 {
     private final Random random = new Random(System.currentTimeMillis());
 

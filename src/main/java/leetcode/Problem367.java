@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/valid-perfect-square/
- */
+/** https://leetcode.com/problems/valid-perfect-square/ */
 public class Problem367 {
     public boolean isPerfectSquare(int num) {
         double sqrt = sqrt(num);

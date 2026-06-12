@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/ones-and-zeroes/
- */
+/** https://leetcode.com/problems/ones-and-zeroes/ */
 public class Problem474 {
     public int findMaxForm(String[] strs, int m, int n) {
         ZeroOne[] array = new ZeroOne[strs.length];

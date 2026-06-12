@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/plus-one/
- */
+/** https://leetcode.com/problems/plus-one/ */
 public class Problem66 {
     public int[] plusOne(int[] digits) {
         Stack<Integer> stack = new Stack<>();

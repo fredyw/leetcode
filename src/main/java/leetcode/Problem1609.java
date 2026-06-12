@@ -3,17 +3,14 @@ package leetcode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
- * https://leetcode.com/problems/even-odd-tree/
- */
+/** https://leetcode.com/problems/even-odd-tree/ */
 public class Problem1609 {
     public static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
 
-        TreeNode() {
-        }
+        TreeNode() {}
 
         TreeNode(int val) {
             this.val = val;

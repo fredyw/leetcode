@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/validate-binary-search-tree/
- */
+/** https://leetcode.com/problems/validate-binary-search-tree/ */
 public class Problem98 {
     public static class TreeNode {
         int val;

@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/repeated-dna-sequences/
- */
+/** https://leetcode.com/problems/repeated-dna-sequences/ */
 public class Problem187 {
     public List<String> findRepeatedDnaSequences(String s) {
         Set<String> set = new HashSet<>();

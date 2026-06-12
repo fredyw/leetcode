@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/longest-substring-without-repeating-characters/
- */
+/** https://leetcode.com/problems/longest-substring-without-repeating-characters/ */
 public class Problem3 {
     public int lengthOfLongestSubstring(String s) {
         Map<Character, Integer> map = new HashMap<>();

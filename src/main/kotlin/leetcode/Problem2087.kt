@@ -1,10 +1,13 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/minimum-cost-homecoming-of-a-robot-in-a-grid/
- */
+/** https://leetcode.com/problems/minimum-cost-homecoming-of-a-robot-in-a-grid/ */
 class Problem2087 {
-    fun minCost(startPos: IntArray, homePos: IntArray, rowCosts: IntArray, colCosts: IntArray): Int {
+    fun minCost(
+        startPos: IntArray,
+        homePos: IntArray,
+        rowCosts: IntArray,
+        colCosts: IntArray,
+    ): Int {
         var answer = 0
         if (startPos[0] < homePos[0]) {
             var row = startPos[0] + 1

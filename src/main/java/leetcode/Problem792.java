@@ -6,9 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/number-of-matching-subsequences/
- */
+/** https://leetcode.com/problems/number-of-matching-subsequences/ */
 public class Problem792 {
     public int numMatchingSubseq(String S, String[] words) {
         int result = 0;

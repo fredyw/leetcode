@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/uncrossed-lines/
- */
+/** https://leetcode.com/problems/uncrossed-lines/ */
 public class Problem1035 {
     public int maxUncrossedLines(int[] A, int[] B) {
         Integer[][] memo = new Integer[A.length][B.length];

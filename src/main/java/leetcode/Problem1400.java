@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/construct-k-palindrome-strings/
- */
+/** https://leetcode.com/problems/construct-k-palindrome-strings/ */
 public class Problem1400 {
     public boolean canConstruct(String s, int k) {
         if (k > s.length()) {

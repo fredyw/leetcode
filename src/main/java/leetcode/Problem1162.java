@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/as-far-from-land-as-possible/
- */
+/** https://leetcode.com/problems/as-far-from-land-as-possible/ */
 public class Problem1162 {
     public int maxDistance(int[][] grid) {
         List<int[]> waters = new ArrayList<>();
@@ -13,9 +11,9 @@ public class Problem1162 {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
                 if (grid[i][j] == 0) {
-                    waters.add(new int[]{i, j});
+                    waters.add(new int[] {i, j});
                 } else {
-                    lands.add(new int[]{i, j});
+                    lands.add(new int[] {i, j});
                 }
             }
         }

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/sum-of-nodes-with-even-valued-grandparent/
- */
+/** https://leetcode.com/problems/sum-of-nodes-with-even-valued-grandparent/ */
 public class Problem1315 {
     public static class TreeNode {
         int val;

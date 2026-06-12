@@ -6,9 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/letter-combinations-of-a-phone-number/
- */
+/** https://leetcode.com/problems/letter-combinations-of-a-phone-number/ */
 public class Problem17 {
     public List<String> letterCombinations(String digits) {
         List<String> result = new ArrayList<>();
@@ -27,9 +25,12 @@ public class Problem17 {
         return result;
     }
 
-    private void letterCombinations(String digits,
-                                    Map<Integer, List<Character>> numbers, int n, String accu,
-                                    List<String> result) {
+    private void letterCombinations(
+            String digits,
+            Map<Integer, List<Character>> numbers,
+            int n,
+            String accu,
+            List<String> result) {
         if (n == digits.length()) {
             result.add(accu);
             return;

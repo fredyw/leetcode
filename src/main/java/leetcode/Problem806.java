@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/number-of-lines-to-write-string/
- */
+/** https://leetcode.com/problems/number-of-lines-to-write-string/ */
 public class Problem806 {
     public int[] numberOfLines(int[] widths, String S) {
         int[] result = new int[2];

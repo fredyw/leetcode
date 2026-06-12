@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
- */
+/** https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/ */
 public class Problem235 {
     public static class TreeNode {
         int val;
@@ -24,8 +22,7 @@ public class Problem235 {
         private TreeNode node;
     }
 
-    private static boolean lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q,
-                                                LCA lca) {
+    private static boolean lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q, LCA lca) {
         if (root == null) {
             return false;
         }

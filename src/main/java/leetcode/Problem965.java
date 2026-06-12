@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/univalued-binary-tree/
- */
+/** https://leetcode.com/problems/univalued-binary-tree/ */
 public class Problem965 {
     public static class TreeNode {
         int val;

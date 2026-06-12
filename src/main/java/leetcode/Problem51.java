@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/n-queens/
- */
+/** https://leetcode.com/problems/n-queens/ */
 public class Problem51 {
     public List<List<String>> solveNQueens(int n) {
         List<List<String>> result = new ArrayList<>();

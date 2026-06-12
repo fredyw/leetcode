@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/previous-permutation-with-one-swap/
- */
+/** https://leetcode.com/problems/previous-permutation-with-one-swap/ */
 public class Problem1053 {
     public int[] prevPermOpt1(int[] A) {
         for (int i = A.length - 1; i >= 0; i--) {

@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/keys-and-rooms/
- */
+/** https://leetcode.com/problems/keys-and-rooms/ */
 public class Problem841 {
     public boolean canVisitAllRooms(List<List<Integer>> rooms) {
         boolean[] visited = new boolean[rooms.size()];
@@ -19,9 +17,8 @@ public class Problem841 {
         return result;
     }
 
-    private static void canVisitAllRooms(List<List<Integer>> rooms,
-                                         List<Integer> keys,
-                                         boolean[] visited) {
+    private static void canVisitAllRooms(
+            List<List<Integer>> rooms, List<Integer> keys, boolean[] visited) {
         for (int key : keys) {
             if (!visited[key]) {
                 visited[key] = true;

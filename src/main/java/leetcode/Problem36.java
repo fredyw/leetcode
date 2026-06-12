@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/valid-sudoku/
- */
+/** https://leetcode.com/problems/valid-sudoku/ */
 public class Problem36 {
     public boolean isValidSudoku(char[][] board) {
         boolean all = isValidSudokuFullGrid(board);
@@ -44,8 +42,8 @@ public class Problem36 {
         return true;
     }
 
-    private boolean isValidSudokuSubGrid(char[][] board, int startRow, int endRow,
-                                         int startCol, int endCol) {
+    private boolean isValidSudokuSubGrid(
+            char[][] board, int startRow, int endRow, int startCol, int endCol) {
         boolean[] nums = new boolean[9];
         for (int i = startRow; i < endRow; i++) {
             for (int j = startCol; j < endCol; j++) {

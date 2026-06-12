@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/check-if-all-the-integers-in-a-range-are-covered/
- */
+/** https://leetcode.com/problems/check-if-all-the-integers-in-a-range-are-covered/ */
 public class Problem1893 {
     public boolean isCovered(int[][] ranges, int left, int right) {
         Map<Integer, Boolean> coveredMap = new HashMap<>();

@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/minimum-deletions-to-make-character-frequencies-unique/
- */
+/** https://leetcode.com/problems/minimum-deletions-to-make-character-frequencies-unique/ */
 public class Problem1647 {
     public int minDeletions(String s) {
         int[] counts = new int[26];

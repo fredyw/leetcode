@@ -2,9 +2,7 @@ package leetcode
 
 import kotlin.math.abs
 
-/**
- * https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone/
- */
+/** https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone/ */
 class Problem2037 {
     fun minMovesToSeat(seats: IntArray, students: IntArray): Int {
         var answer = 0

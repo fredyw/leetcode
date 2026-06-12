@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/baseball-game/
- */
+/** https://leetcode.com/problems/baseball-game/ */
 public class Problem682 {
     public int calPoints(String[] ops) {
         int sum = 0;

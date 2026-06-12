@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/rotate-string/
- */
+/** https://leetcode.com/problems/rotate-string/ */
 public class Problem796 {
     public boolean rotateString(String A, String B) {
         for (int x = 0; x < B.length(); x++) {

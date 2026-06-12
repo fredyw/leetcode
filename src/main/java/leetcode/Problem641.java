@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.LinkedList;
 
-/**
- * https://leetcode.com/problems/design-circular-deque/
- */
+/** https://leetcode.com/problems/design-circular-deque/ */
 public class Problem641 {
     private static class MyCircularDeque {
         private final int size;

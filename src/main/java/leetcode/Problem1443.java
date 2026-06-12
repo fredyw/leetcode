@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/minimum-time-to-collect-all-apples-in-a-tree/
- */
+/** https://leetcode.com/problems/minimum-time-to-collect-all-apples-in-a-tree/ */
 public class Problem1443 {
     public int minTime(int n, int[][] edges, List<Boolean> hasApple) {
         List<Integer>[] tree = new List[n];
@@ -26,10 +24,8 @@ public class Problem1443 {
         private int value;
     }
 
-    private static boolean minTime(List<Integer>[] tree,
-                                   List<Boolean> hasApple,
-                                   int node,
-                                   IntRef time) {
+    private static boolean minTime(
+            List<Integer>[] tree, List<Boolean> hasApple, int node, IntRef time) {
         boolean found = hasApple.get(node);
         for (int children : tree[node]) {
             time.value++;

@@ -7,9 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/largest-values-from-labels/
- */
+/** https://leetcode.com/problems/largest-values-from-labels/ */
 public class Problem1090 {
     public int largestValsFromLabels(int[] values, int[] labels, int num_wanted, int use_limit) {
         Map</*value*/ Integer, /*labels*/ List<Integer>> valueLabels = new HashMap<>();

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/map-sum-pairs/
- */
+/** https://leetcode.com/problems/map-sum-pairs/ */
 public class Problem677 {
     private static class MapSum {
         private static class Node {
@@ -18,11 +16,8 @@ public class Problem677 {
 
         private final Node[] root = new Node[26];
 
-        /**
-         * Initialize your data structure here.
-         */
-        public MapSum() {
-        }
+        /** Initialize your data structure here. */
+        public MapSum() {}
 
         public void insert(String key, int val) {
             insert(key, val, 0, root);

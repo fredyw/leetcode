@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/all-paths-from-source-to-target/
- */
+/** https://leetcode.com/problems/all-paths-from-source-to-target/ */
 public class Problem797 {
     public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
         List<List<Integer>> result = new ArrayList<>();
@@ -13,8 +11,8 @@ public class Problem797 {
         return result;
     }
 
-    private static void allPaths(int[][] graph, int source, List<Integer> accu,
-                                 List<List<Integer>> result) {
+    private static void allPaths(
+            int[][] graph, int source, List<Integer> accu, List<List<Integer>> result) {
         accu.add(source);
         if (graph[source].length == 0) {
             result.add(accu);

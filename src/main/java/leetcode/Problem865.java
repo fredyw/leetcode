@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/smallest-subtree-with-all-the-deepest-nodes/
- */
+/** https://leetcode.com/problems/smallest-subtree-with-all-the-deepest-nodes/ */
 public class Problem865 {
     public static class TreeNode {
         int val;

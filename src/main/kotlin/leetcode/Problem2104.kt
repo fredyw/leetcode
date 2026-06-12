@@ -3,9 +3,7 @@ package leetcode
 import kotlin.math.max
 import kotlin.math.min
 
-/**
- * https://leetcode.com/problems/sum-of-subarray-ranges/
- */
+/** https://leetcode.com/problems/sum-of-subarray-ranges/ */
 class Problem2104 {
     fun subArrayRanges(nums: IntArray): Long {
         var answer = 0L

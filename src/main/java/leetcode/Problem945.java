@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/minimum-increment-to-make-array-unique/
- */
+/** https://leetcode.com/problems/minimum-increment-to-make-array-unique/ */
 public class Problem945 {
     public int minIncrementForUnique(int[] A) {
         Arrays.sort(A);

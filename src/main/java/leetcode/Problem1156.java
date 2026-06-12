@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/swap-for-longest-repeated-character-substring/
- */
+/** https://leetcode.com/problems/swap-for-longest-repeated-character-substring/ */
 public class Problem1156 {
     public int maxRepOpt1(String text) {
         List<Integer>[] charIndexes = new ArrayList[26];

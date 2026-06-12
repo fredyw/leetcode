@@ -3,9 +3,7 @@ package leetcode;
 import java.util.Arrays;
 import java.util.Comparator;
 
-/**
- * https://leetcode.com/problems/car-fleet/
- */
+/** https://leetcode.com/problems/car-fleet/ */
 public class Problem853 {
     public int carFleet(int target, int[] position, int[] speed) {
         if (position.length == 0) {

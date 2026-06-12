@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/
- */
+/** https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/ */
 public class Problem1752 {
     public boolean check(int[] nums) {
         int min = 0;

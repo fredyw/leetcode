@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers/
- */
+/** https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers/ */
 public class Problem1022 {
     public static class TreeNode {
         int val;

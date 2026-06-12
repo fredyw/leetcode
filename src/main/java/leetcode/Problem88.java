@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/merge-sorted-array/
- */
+/** https://leetcode.com/problems/merge-sorted-array/ */
 public class Problem88 {
     public void merge(int A[], int m, int B[], int n) {
         int[] aux = new int[A.length];

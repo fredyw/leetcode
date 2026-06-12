@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/
- */
+/** https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/ */
 public class Problem1171 {
     public static class ListNode {
         int val;
@@ -29,7 +27,7 @@ public class Problem1171 {
             int startIdx = 0;
             int endIdx = 0;
             sum = 0;
-            boolean removed =  false;
+            boolean removed = false;
             for (int i = 0; i < nodes.size(); i++) {
                 sum += nodes.get(i).val;
                 if (map.containsKey(sum)) {
@@ -37,7 +35,8 @@ public class Problem1171 {
                     endIdx = i;
                     removed = true;
                     break;
-                } if (sum == 0) {
+                }
+                if (sum == 0) {
                     startIdx = 0;
                     endIdx = i;
                     removed = true;

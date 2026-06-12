@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/asteroid-collision/
- */
+/** https://leetcode.com/problems/asteroid-collision/ */
 public class Problem735 {
     public int[] asteroidCollision(int[] asteroids) {
         Stack<Integer> stack = new Stack<>();

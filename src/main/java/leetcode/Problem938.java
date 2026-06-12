@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/range-sum-of-bst/
- */
+/** https://leetcode.com/problems/range-sum-of-bst/ */
 public class Problem938 {
     public static class TreeNode {
         int val;

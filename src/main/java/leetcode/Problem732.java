@@ -3,15 +3,12 @@ package leetcode;
 import java.util.Map;
 import java.util.TreeMap;
 
-/**
- * https://leetcode.com/problems/my-calendar-iii/
- */
+/** https://leetcode.com/problems/my-calendar-iii/ */
 public class Problem732 {
     private static class MyCalendarThree {
-        private final Map<Integer/*num*/, Integer/*count*/> delta = new TreeMap<>();
+        private final Map<Integer /*num*/, Integer /*count*/> delta = new TreeMap<>();
 
-        public MyCalendarThree() {
-        }
+        public MyCalendarThree() {}
 
         public int book(int start, int end) {
             delta.put(start, delta.getOrDefault(start, 0) + 1); // increment start count

@@ -6,9 +6,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/word-ladder/
- */
+/** https://leetcode.com/problems/word-ladder/ */
 public class Problem127 {
     public int ladderLength(String start, String end, Set<String> dict) {
         dict.add(end);

@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/largest-perimeter-triangle/
- */
+/** https://leetcode.com/problems/largest-perimeter-triangle/ */
 public class Problem976 {
     public int largestPerimeter(int[] A) {
         Arrays.sort(A);

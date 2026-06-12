@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/unique-substrings-in-wraparound-string/
- */
+/** https://leetcode.com/problems/unique-substrings-in-wraparound-string/ */
 public class Problem467 {
     public int findSubstringInWraproundString(String p) {
         int count = 0;

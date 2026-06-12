@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/**
- * https://leetcode.com/problems/linked-list-random-node/
- */
+/** https://leetcode.com/problems/linked-list-random-node/ */
 public class Problem382 {
     public static class ListNode {
         int val;
@@ -22,8 +20,8 @@ public class Problem382 {
         private final Random random = new Random();
 
         /**
-         * @param head The linked list's head.
-         *             Note that the head is guaranteed to be not null, so it contains at least one node.
+         * @param head The linked list's head. Note that the head is guaranteed to be not null, so
+         *     it contains at least one node.
          */
         public Solution(ListNode head) {
             for (ListNode node = head; node != null; node = node.next) {
@@ -31,9 +29,7 @@ public class Problem382 {
             }
         }
 
-        /**
-         * Returns a random node's value.
-         */
+        /** Returns a random node's value. */
         public int getRandom() {
             int randomIdx = random.nextInt(values.size());
             return values.get(randomIdx);

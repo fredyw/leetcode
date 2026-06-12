@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/possible-bipartition/
- */
+/** https://leetcode.com/problems/possible-bipartition/ */
 public class Problem886 {
     public boolean possibleBipartition(int N, int[][] dislikes) {
         List<Integer>[] graph = new List[N + 1];
@@ -29,7 +27,8 @@ public class Problem886 {
         return answer;
     }
 
-    private static boolean isBipartite(List<Integer>[] graph, boolean[] visited, boolean[] blackRed, int n) {
+    private static boolean isBipartite(
+            List<Integer>[] graph, boolean[] visited, boolean[] blackRed, int n) {
         visited[n] = true;
         boolean result = true;
         for (int adj : graph[n]) {

@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/height-checker/
- */
+/** https://leetcode.com/problems/height-checker/ */
 public class Problem1051 {
     public int heightChecker(int[] heights) {
         int[] unsorted = Arrays.copyOf(heights, heights.length);

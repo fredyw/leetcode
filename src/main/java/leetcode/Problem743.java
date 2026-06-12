@@ -6,13 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-/**
- * https://leetcode.com/problems/network-delay-time/
- */
+/** https://leetcode.com/problems/network-delay-time/ */
 public class Problem743 {
     public int networkDelayTime(int[][] times, int N, int K) {
         Map<Integer, List<Edge>> graph = new HashMap<>();
-        for (int[] edge: times) {
+        for (int[] edge : times) {
             if (!graph.containsKey(edge[0])) {
                 graph.put(edge[0], new ArrayList<>());
             }

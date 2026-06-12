@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.IntStream;
 
-/**
- * https://leetcode.com/problems/find-the-winner-of-an-array-game/
- */
+/** https://leetcode.com/problems/find-the-winner-of-an-array-game/ */
 public class Problem1535 {
     public int getWinner(int[] arr, int k) {
         int first = 0;

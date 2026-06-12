@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/richest-customer-wealth/
- */
+/** https://leetcode.com/problems/richest-customer-wealth/ */
 public class Problem1672 {
     public int maximumWealth(int[][] accounts) {
         int answer = 0;

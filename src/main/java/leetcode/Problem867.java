@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/transpose-matrix/
- */
+/** https://leetcode.com/problems/transpose-matrix/ */
 public class Problem867 {
     public int[][] transpose(int[][] A) {
         int nRow = A.length;

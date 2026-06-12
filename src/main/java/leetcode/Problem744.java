@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/find-smallest-letter-greater-than-target/
- */
+/** https://leetcode.com/problems/find-smallest-letter-greater-than-target/ */
 public class Problem744 {
     public char nextGreatestLetter(char[] letters, char target) {
         int index = Arrays.binarySearch(letters, target);

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/broken-calculator/
- */
+/** https://leetcode.com/problems/broken-calculator/ */
 public class Problem991 {
     public int brokenCalc(int X, int Y) {
         int answer = 0;

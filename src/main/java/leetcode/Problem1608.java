@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/special-array-with-x-elements-greater-than-or-equal-x/
- */
+/** https://leetcode.com/problems/special-array-with-x-elements-greater-than-or-equal-x/ */
 public class Problem1608 {
     public int specialArray(int[] nums) {
         Arrays.sort(nums);

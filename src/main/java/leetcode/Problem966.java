@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/vowel-spellchecker/
- */
+/** https://leetcode.com/problems/vowel-spellchecker/ */
 public class Problem966 {
     public String[] spellchecker(String[] wordlist, String[] queries) {
         Set<String> exact = new HashSet<>();
@@ -42,8 +40,11 @@ public class Problem966 {
     private static String changeVowel(String s) {
         char[] chars = s.toCharArray();
         for (int i = 0; i < chars.length; i++) {
-            if (chars[i] == 'a' || chars[i] == 'e' || chars[i] == 'u' ||
-                chars[i] == 'i' || chars[i] == 'o') {
+            if (chars[i] == 'a'
+                    || chars[i] == 'e'
+                    || chars[i] == 'u'
+                    || chars[i] == 'i'
+                    || chars[i] == 'o') {
                 chars[i] = 'a';
             }
         }

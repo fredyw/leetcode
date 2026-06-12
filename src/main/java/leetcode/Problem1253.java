@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/reconstruct-a-2-row-binary-matrix/
- */
+/** https://leetcode.com/problems/reconstruct-a-2-row-binary-matrix/ */
 public class Problem1253 {
     public List<List<Integer>> reconstructMatrix(int upper, int lower, int[] colsum) {
         List<List<Integer>> answer = new ArrayList<>();

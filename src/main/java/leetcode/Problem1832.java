@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/check-if-the-sentence-is-pangram/
- */
+/** https://leetcode.com/problems/check-if-the-sentence-is-pangram/ */
 public class Problem1832 {
     public boolean checkIfPangram(String sentence) {
         int[] counts = new int[26];

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/fibonacci-number/
- */
+/** https://leetcode.com/problems/fibonacci-number/ */
 public class Problem509 {
     public int fib(int N) {
         return fib(N, new Integer[N + 1]);

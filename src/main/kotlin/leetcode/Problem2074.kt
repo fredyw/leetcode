@@ -2,9 +2,7 @@ package leetcode
 
 import java.util.*
 
-/**
- * https://leetcode.com/problems/reverse-nodes-in-even-length-groups/
- */
+/** https://leetcode.com/problems/reverse-nodes-in-even-length-groups/ */
 class Problem2074 {
     class ListNode(var `val`: Int) {
         var next: ListNode? = null
@@ -39,20 +37,24 @@ class Problem2074 {
         if (!oddList.isEmpty()) {
             val even = oddList.size % 2 == 0
             while (!oddList.isEmpty()) {
-                finalList.add(if (even) {
-                    oddList.removeLast()
-                } else {
-                    oddList.removeFirst()
-                })
+                finalList.add(
+                    if (even) {
+                        oddList.removeLast()
+                    } else {
+                        oddList.removeFirst()
+                    }
+                )
             }
         } else if (!evenList.isEmpty()) {
             val even = evenList.size % 2 == 0
             while (!evenList.isEmpty()) {
-                finalList.add(if (even) {
-                    evenList.removeLast()
-                } else {
-                    evenList.removeFirst()
-                })
+                finalList.add(
+                    if (even) {
+                        evenList.removeLast()
+                    } else {
+                        evenList.removeFirst()
+                    }
+                )
             }
         }
         var answer: ListNode? = null

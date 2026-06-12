@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/rabbits-in-forest/
- */
+/** https://leetcode.com/problems/rabbits-in-forest/ */
 public class Problem781 {
     public int numRabbits(int[] answers) {
         Map<Integer, Integer> map = new HashMap<>();

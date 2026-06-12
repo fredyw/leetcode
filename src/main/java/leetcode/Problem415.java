@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/add-strings/
- */
+/** https://leetcode.com/problems/add-strings/ */
 public class Problem415 {
     public String addStrings(String num1, String num2) {
         boolean carry = false;
@@ -21,7 +19,7 @@ public class Problem415 {
             }
         }
         if (i >= 0) {
-            for(; i >= 0; i--) {
+            for (; i >= 0; i--) {
                 int a = num1.charAt(i) - 48;
                 int sum = a + ((carry) ? 1 : 0);
                 result.append(sum % 10);

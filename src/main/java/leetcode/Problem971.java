@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/flip-binary-tree-to-match-preorder-traversal/
- */
+/** https://leetcode.com/problems/flip-binary-tree-to-match-preorder-traversal/ */
 public class Problem971 {
     public static class TreeNode {
         int val;
@@ -41,8 +39,8 @@ public class Problem971 {
         }
     }
 
-    private static boolean flipMatchVoyage(TreeNode current, int[] voyage, Index index,
-                                           List<Integer> answer) {
+    private static boolean flipMatchVoyage(
+            TreeNode current, int[] voyage, Index index, List<Integer> answer) {
         if (current == null) {
             index.dec();
             return true;

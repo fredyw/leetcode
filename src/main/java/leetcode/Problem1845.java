@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.TreeSet;
 
-/**
- * https://leetcode.com/problems/seat-reservation-manager/
- */
+/** https://leetcode.com/problems/seat-reservation-manager/ */
 public class Problem1845 {
     private static class SeatManager {
         private final TreeSet<Integer> set = new TreeSet<>();

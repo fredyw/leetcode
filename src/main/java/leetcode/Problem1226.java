@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.concurrent.Semaphore;
 
-/**
- * https://leetcode.com/problems/the-dining-philosophers/
- */
+/** https://leetcode.com/problems/the-dining-philosophers/ */
 public class Problem1226 {
     private static class DiningPhilosophers {
         private final Semaphore[] semaphores = new Semaphore[5];
@@ -16,12 +14,14 @@ public class Problem1226 {
         }
 
         // call the run() method of any runnable to execute its code
-        public void wantsToEat(int philosopher,
-                               Runnable pickLeftFork,
-                               Runnable pickRightFork,
-                               Runnable eat,
-                               Runnable putLeftFork,
-                               Runnable putRightFork) throws InterruptedException {
+        public void wantsToEat(
+                int philosopher,
+                Runnable pickLeftFork,
+                Runnable pickRightFork,
+                Runnable eat,
+                Runnable putLeftFork,
+                Runnable putRightFork)
+                throws InterruptedException {
             Semaphore left = semaphores[philosopher];
             Semaphore right = (philosopher == 0) ? semaphores[4] : semaphores[philosopher - 1];
 

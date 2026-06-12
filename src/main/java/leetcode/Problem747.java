@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/largest-number-greater-than-twice-of-others/
- */
+/** https://leetcode.com/problems/largest-number-greater-than-twice-of-others/ */
 public class Problem747 {
     public int dominantIndex(int[] nums) {
         if (nums.length == 1) {

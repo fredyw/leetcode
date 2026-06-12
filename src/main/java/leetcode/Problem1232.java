@@ -1,15 +1,13 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/check-if-it-is-a-straight-line/
- */
+/** https://leetcode.com/problems/check-if-it-is-a-straight-line/ */
 public class Problem1232 {
     public boolean checkStraightLine(int[][] coordinates) {
         for (int i = 0; i < coordinates.length - 2; i++) {
             if (!isColiner(
-                coordinates[i][0], coordinates[i][1],
-                coordinates[i + 1][0], coordinates[i + 1][1],
-                coordinates[i + 2][0], coordinates[i + 2][1])) {
+                    coordinates[i][0], coordinates[i][1],
+                    coordinates[i + 1][0], coordinates[i + 1][1],
+                    coordinates[i + 2][0], coordinates[i + 2][1])) {
                 return false;
             }
         }

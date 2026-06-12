@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/fraction-addition-and-subtraction/
- */
+/** https://leetcode.com/problems/fraction-addition-and-subtraction/ */
 public class Problem592 {
     public String fractionAddition(String expression) {
         List<Integer> numerators = new ArrayList<>();
@@ -17,7 +15,9 @@ public class Problem592 {
                 // get the numerator
                 i++;
                 StringBuilder number = new StringBuilder();
-                while (i < expression.length() && expression.charAt(i) >= '0' && expression.charAt(i) <= '9') {
+                while (i < expression.length()
+                        && expression.charAt(i) >= '0'
+                        && expression.charAt(i) <= '9') {
                     number.append(expression.charAt(i));
                     i++;
                 }
@@ -27,7 +27,9 @@ public class Problem592 {
                 // get the denominator
                 i++;
                 StringBuilder number = new StringBuilder();
-                while (i < expression.length() && expression.charAt(i) >= '0' && expression.charAt(i) <= '9') {
+                while (i < expression.length()
+                        && expression.charAt(i) >= '0'
+                        && expression.charAt(i) <= '9') {
                     number.append(expression.charAt(i));
                     i++;
                 }
@@ -36,7 +38,9 @@ public class Problem592 {
             } else {
                 // if the expression doesn't start with a sign
                 StringBuilder number = new StringBuilder();
-                while (i < expression.length() && expression.charAt(i) >= '0' && expression.charAt(i) <= '9') {
+                while (i < expression.length()
+                        && expression.charAt(i) >= '0'
+                        && expression.charAt(i) <= '9') {
                     number.append(expression.charAt(i));
                     i++;
                 }

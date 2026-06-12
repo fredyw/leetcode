@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/reach-a-number/
- */
+/** https://leetcode.com/problems/reach-a-number/ */
 public class Problem754 {
     public int reachNumber(int target) {
         target = Math.abs(target);

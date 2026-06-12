@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array/
- */
+/** https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array/ */
 public class Problem1287 {
     public int findSpecialInteger(int[] arr) {
         int n = (int) Math.ceil(arr.length * 0.25);

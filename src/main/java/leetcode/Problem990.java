@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/satisfiability-of-equality-equations/
- */
+/** https://leetcode.com/problems/satisfiability-of-equality-equations/ */
 public class Problem990 {
     public boolean equationsPossible(String[] equations) {
         UnionFind uf = new UnionFind();
@@ -45,8 +43,9 @@ public class Problem990 {
             if (array[b - 'a'] == null) {
                 array[b - 'a'] = b;
             }
-            if (array[a - 'a'] != null && array[b - 'a'] != null &&
-                array[a - 'a'] == array[b - 'a']) {
+            if (array[a - 'a'] != null
+                    && array[b - 'a'] != null
+                    && array[a - 'a'] == array[b - 'a']) {
                 return;
             }
             Character val = array[a - 'a'];

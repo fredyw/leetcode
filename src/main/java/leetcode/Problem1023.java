@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/camelcase-matching/
- */
+/** https://leetcode.com/problems/camelcase-matching/ */
 public class Problem1023 {
     public List<Boolean> camelMatch(String[] queries, String pattern) {
         List<Boolean> answer = new ArrayList<>();

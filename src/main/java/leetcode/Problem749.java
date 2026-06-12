@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/shortest-completing-word/
- */
+/** https://leetcode.com/problems/shortest-completing-word/ */
 public class Problem749 {
     public String shortestCompletingWord(String licensePlate, String[] words) {
         String plate = licensePlate.toLowerCase();

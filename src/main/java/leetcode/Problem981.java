@@ -5,19 +5,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeSet;
 
-/**
- * https://leetcode.com/problems/time-based-key-value-store/
- */
+/** https://leetcode.com/problems/time-based-key-value-store/ */
 public class Problem981 {
     private static final Map<String, TreeSet<ValueTimestamp>> map = new HashMap<>();
 
     private static class TimeMap {
-        public TimeMap() {
-        }
+        public TimeMap() {}
 
         public void set(String key, String value, int timestamp) {
             if (!map.containsKey(key)) {
-                TreeSet<ValueTimestamp> set = new TreeSet<>(Comparator.comparingInt(a -> a.timestamp));
+                TreeSet<ValueTimestamp> set =
+                        new TreeSet<>(Comparator.comparingInt(a -> a.timestamp));
                 set.add(new ValueTimestamp(value, timestamp));
                 map.put(key, set);
             } else {
@@ -41,7 +39,6 @@ public class Problem981 {
     private static class ValueTimestamp {
         private final String value;
         private final int timestamp;
-
 
         public ValueTimestamp(String value, int timestamp) {
             this.value = value;

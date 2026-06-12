@@ -7,9 +7,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/evaluate-division/
- */
+/** https://leetcode.com/problems/evaluate-division/ */
 public class Problem399 {
     public double[] calcEquation(String[][] equations, double[] values, String[][] queries) {
         Map<String, Set<StrValue>> map = new HashMap<>();

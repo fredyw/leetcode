@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-repeating-substring/
- */
+/** https://leetcode.com/problems/maximum-repeating-substring/ */
 public class Problem1668 {
     public int maxRepeating(String sequence, String word) {
         int answer = 0;

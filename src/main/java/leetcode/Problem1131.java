@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-of-absolute-value-expression/
- */
+/** https://leetcode.com/problems/maximum-of-absolute-value-expression/ */
 public class Problem1131 {
     public int maxAbsValExpr(int[] arr1, int[] arr2) {
         int size = arr1.length;

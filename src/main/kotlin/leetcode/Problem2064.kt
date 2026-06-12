@@ -2,9 +2,7 @@ package leetcode
 
 import kotlin.math.max
 
-/**
- * https://leetcode.com/problems/minimized-maximum-of-products-distributed-to-any-store/
- */
+/** https://leetcode.com/problems/minimized-maximum-of-products-distributed-to-any-store/ */
 class Problem2064 {
     fun minimizedMaximum(n: Int, quantities: IntArray): Int {
         var min = 1

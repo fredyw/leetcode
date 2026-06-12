@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/flood-fill/
- */
+/** https://leetcode.com/problems/flood-fill/ */
 public class Problem733 {
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
         int maxRow = image.length;
@@ -15,8 +13,15 @@ public class Problem733 {
         return image;
     }
 
-    private static void floodFill(int[][] image, int row, int col, int newColor, int originalColor,
-                                  int maxRow, int maxCol, boolean[][] visited) {
+    private static void floodFill(
+            int[][] image,
+            int row,
+            int col,
+            int newColor,
+            int originalColor,
+            int maxRow,
+            int maxCol,
+            boolean[][] visited) {
         if (row < 0 || col < 0 || row >= maxRow || col >= maxCol) {
             return;
         }

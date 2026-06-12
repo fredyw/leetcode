@@ -2,9 +2,7 @@ package leetcode
 
 import java.util.TreeMap
 
-/**
- * https://leetcode.com/problems/diagonal-traverse-ii/
- */
+/** https://leetcode.com/problems/diagonal-traverse-ii/ */
 class Problem1424 {
     fun findDiagonalOrder(nums: List<List<Int>>): IntArray {
         val map = TreeMap<Int, List<Int>>()
@@ -15,9 +13,9 @@ class Problem1424 {
         }
         val answer = mutableListOf<Int>()
         for (list in map.values) {
-           for (num in list.asReversed()) {
-               answer += num
-           }
+            for (num in list.asReversed()) {
+                answer += num
+            }
         }
         return answer.toIntArray()
     }

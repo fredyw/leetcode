@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/
- */
+/** https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/ */
 public class Problem421 {
     public int findMaximumXOR(int[] nums) {
         int max = 0;

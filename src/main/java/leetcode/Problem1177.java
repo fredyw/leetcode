@@ -6,9 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/can-make-palindrome-from-substring/
- */
+/** https://leetcode.com/problems/can-make-palindrome-from-substring/ */
 public class Problem1177 {
     public List<Boolean> canMakePaliQueries(String s, int[][] queries) {
         List<Boolean> answer = new ArrayList<>();

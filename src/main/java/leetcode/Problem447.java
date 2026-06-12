@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/number-of-boomerangs/
- */
+/** https://leetcode.com/problems/number-of-boomerangs/ */
 public class Problem447 {
     public int numberOfBoomerangs(int[][] points) {
         int result = 0;

@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/sum-of-unique-elements/
- */
+/** https://leetcode.com/problems/sum-of-unique-elements/ */
 public class Problem1748 {
     public int sumOfUnique(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();

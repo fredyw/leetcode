@@ -5,12 +5,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/minimum-genetic-mutation/
- */
+/** https://leetcode.com/problems/minimum-genetic-mutation/ */
 public class Problem433 {
     public int minMutation(String start, String end, String[] bank) {
-        char[] chars = new char[]{'A', 'C', 'G', 'T'};
+        char[] chars = new char[] {'A', 'C', 'G', 'T'};
         Set<String> set = new HashSet<>();
         for (String s : bank) {
             set.add(s);

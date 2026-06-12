@@ -1,14 +1,12 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-compatibility-score-sum/
- */
+/** https://leetcode.com/problems/maximum-compatibility-score-sum/ */
 public class Problem1947 {
     public int maxCompatibilitySum(int[][] students, int[][] mentors) {
         int[] studentArray = toArray(students);
         int[] mentorArray = toArray(mentors);
-        return maxCompatibilitySum(studentArray, mentorArray, students[0].length, 0,
-            new boolean[studentArray.length]);
+        return maxCompatibilitySum(
+                studentArray, mentorArray, students[0].length, 0, new boolean[studentArray.length]);
     }
 
     private static int[] toArray(int[][] twoDArray) {
@@ -23,8 +21,8 @@ public class Problem1947 {
         return array;
     }
 
-    private static int maxCompatibilitySum(int[] students, int[] mentors, int bitLength,
-                                           int index, boolean[] visited) {
+    private static int maxCompatibilitySum(
+            int[] students, int[] mentors, int bitLength, int index, boolean[] visited) {
         if (index == students.length) {
             return 0;
         }
@@ -35,8 +33,10 @@ public class Problem1947 {
             }
             visited[i] = true;
             int xor = students[index] ^ mentors[i];
-            int sum = maxCompatibilitySum(students, mentors, bitLength, index + 1, visited)
-                + bitLength - Integer.bitCount(xor);
+            int sum =
+                    maxCompatibilitySum(students, mentors, bitLength, index + 1, visited)
+                            + bitLength
+                            - Integer.bitCount(xor);
             max = Math.max(max, sum);
             visited[i] = false;
         }

@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/beautiful-array/
- */
+/** https://leetcode.com/problems/beautiful-array/ */
 public class Problem932 {
     public int[] beautifulArray(int N) {
         Map<Integer, int[]> memo = new HashMap<>();
@@ -21,7 +19,7 @@ public class Problem932 {
             result[0] = 1;
         } else {
             int i = 0;
-            for (int x : beautifulArray((n + 1) / 2)) {  // odds
+            for (int x : beautifulArray((n + 1) / 2)) { // odds
                 result[i++] = 2 * x - 1;
             }
             for (int x : beautifulArray(n / 2)) { // evens

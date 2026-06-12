@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/sentence-similarity/
- */
+/** https://leetcode.com/problems/sentence-similarity/ */
 public class Problem734 {
     public boolean areSentencesSimilar(String[] words1, String[] words2, String[][] pairs) {
         if (words1.length != words2.length) {
@@ -49,20 +47,22 @@ public class Problem734 {
 
     public static void main(String[] args) {
         Problem734 prob = new Problem734();
-        System.out.println(prob.areSentencesSimilar(
-            new String[]{"great", "acting", "skills"},
-            new String[]{"fine","drama","talent"},
-            new String[][]{{"great", "fine"}, {"acting","drama"}, {"skills","talent"}}
-        )); // true
-        System.out.println(prob.areSentencesSimilar(
-            new String[]{"great", "acting", "skills"},
-            new String[]{"fine","drama","talent"},
-            new String[][]{{"great", "fine"}, {"acting","drama"}}
-        )); // false
-        System.out.println(prob.areSentencesSimilar(
-            new String[]{"great", "acting", "skills"},
-            new String[]{"great","acting","skills"},
-            new String[][]{}
-        )); // true
+        System.out.println(
+                prob.areSentencesSimilar(
+                        new String[] {"great", "acting", "skills"},
+                        new String[] {"fine", "drama", "talent"},
+                        new String[][] {
+                            {"great", "fine"}, {"acting", "drama"}, {"skills", "talent"}
+                        })); // true
+        System.out.println(
+                prob.areSentencesSimilar(
+                        new String[] {"great", "acting", "skills"},
+                        new String[] {"fine", "drama", "talent"},
+                        new String[][] {{"great", "fine"}, {"acting", "drama"}})); // false
+        System.out.println(
+                prob.areSentencesSimilar(
+                        new String[] {"great", "acting", "skills"},
+                        new String[] {"great", "acting", "skills"},
+                        new String[][] {})); // true
     }
 }

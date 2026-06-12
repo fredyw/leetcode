@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Iterator;
 
-/**
- * https://leetcode.com/problems/peeking-iterator/
- */
+/** https://leetcode.com/problems/peeking-iterator/ */
 public class Problem284 {
     private static class PeekingIterator implements Iterator<Integer> {
         private final Iterator<Integer> iterator;

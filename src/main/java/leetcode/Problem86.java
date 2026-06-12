@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/partition-list/
- */
+/** https://leetcode.com/problems/partition-list/ */
 public class Problem86 {
     public static class ListNode {
         int val;

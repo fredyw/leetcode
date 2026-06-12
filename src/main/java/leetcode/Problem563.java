@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/binary-tree-tilt/
- */
+/** https://leetcode.com/problems/binary-tree-tilt/ */
 public class Problem563 {
     public static class TreeNode {
         int val;

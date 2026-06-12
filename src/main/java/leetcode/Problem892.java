@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/surface-area-of-3d-shapes/
- */
+/** https://leetcode.com/problems/surface-area-of-3d-shapes/ */
 public class Problem892 {
     public int surfaceArea(int[][] grid) {
         int result = 0;

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/binary-tree-maximum-path-sum/
- */
+/** https://leetcode.com/problems/binary-tree-maximum-path-sum/ */
 public class Problem124 {
     public static class TreeNode {
         int val;

@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/linked-list-cycle-ii/
- */
+/** https://leetcode.com/problems/linked-list-cycle-ii/ */
 public class Problem142 {
     static class ListNode {
         int val;

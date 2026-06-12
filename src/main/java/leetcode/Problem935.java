@@ -1,21 +1,19 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/knight-dialer/
- */
+/** https://leetcode.com/problems/knight-dialer/ */
 public class Problem935 {
     public int knightDialer(int N) {
         int[][] moves = new int[10][];
-        moves[0] = new int[]{4, 6};
-        moves[1] = new int[]{6, 8};
-        moves[2] = new int[]{7, 9};
-        moves[3] = new int[]{4, 8};
-        moves[4] = new int[]{0, 3, 9};
-        moves[5] = new int[]{};
-        moves[6] = new int[]{0, 1, 7};
-        moves[7] = new int[]{2, 6};
-        moves[8] = new int[]{1, 3};
-        moves[9] = new int[]{2, 4};
+        moves[0] = new int[] {4, 6};
+        moves[1] = new int[] {6, 8};
+        moves[2] = new int[] {7, 9};
+        moves[3] = new int[] {4, 8};
+        moves[4] = new int[] {0, 3, 9};
+        moves[5] = new int[] {};
+        moves[6] = new int[] {0, 1, 7};
+        moves[7] = new int[] {2, 6};
+        moves[8] = new int[] {1, 3};
+        moves[9] = new int[] {2, 4};
         Long[][] memo = new Long[N + 1][10];
         long answer = 0;
         for (int i = 0; i <= 9; i++) {

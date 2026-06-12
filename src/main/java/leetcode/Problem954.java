@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/array-of-doubled-pairs/
- */
+/** https://leetcode.com/problems/array-of-doubled-pairs/ */
 public class Problem954 {
     public boolean canReorderDoubled(int[] A) {
         Map<Integer, Integer> map = new HashMap<>();

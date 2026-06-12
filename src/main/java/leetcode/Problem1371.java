@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/find-the-longest-substring-containing-vowels-in-even-counts/
- */
+/** https://leetcode.com/problems/find-the-longest-substring-containing-vowels-in-even-counts/ */
 public class Problem1371 {
     public int findTheLongestSubstring(String s) {
         int answer = 0;

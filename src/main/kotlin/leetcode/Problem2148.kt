@@ -3,9 +3,7 @@ package leetcode
 import kotlin.math.max
 import kotlin.math.min
 
-/**
- * https://leetcode.com/problems/count-elements-with-strictly-smaller-and-greater-elements/
- */
+/** https://leetcode.com/problems/count-elements-with-strictly-smaller-and-greater-elements/ */
 class Problem2148 {
     fun countElements(nums: IntArray): Int {
         var min = nums[0]

@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-/**
- * https://leetcode.com/problems/distant-barcodes/
- */
+/** https://leetcode.com/problems/distant-barcodes/ */
 public class Problem1054 {
     public int[] rearrangeBarcodes(int[] barcodes) {
         Map<Integer, Integer> map = new HashMap<>();
@@ -19,7 +17,8 @@ public class Problem1054 {
                 map.put(barcode, map.get(barcode) + 1);
             }
         }
-        PriorityQueue<ValueCount> queue = new PriorityQueue<>((a, b) -> Integer.compare(b.count, a.count));
+        PriorityQueue<ValueCount> queue =
+                new PriorityQueue<>((a, b) -> Integer.compare(b.count, a.count));
         for (Map.Entry<Integer, Integer> e : map.entrySet()) {
             queue.add(new ValueCount(e.getKey(), e.getValue()));
         }

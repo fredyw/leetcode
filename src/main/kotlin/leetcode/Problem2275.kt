@@ -2,9 +2,7 @@ package leetcode
 
 import kotlin.math.max
 
-/**
- * https://leetcode.com/problems/largest-combination-with-bitwise-and-greater-than-zero/
- */
+/** https://leetcode.com/problems/largest-combination-with-bitwise-and-greater-than-zero/ */
 class Problem2275 {
     fun largestCombination(candidates: IntArray): Int {
         var answer = 0

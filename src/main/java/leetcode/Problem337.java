@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-/**
- * https://leetcode.com/problems/house-robber-iii/
- */
+/** https://leetcode.com/problems/house-robber-iii/ */
 public class Problem337 {
     public static class TreeNode {
         int val;
@@ -42,8 +40,7 @@ public class Problem337 {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             TreeNodeWrapper that = (TreeNodeWrapper) o;
-            return skipped == that.skipped &&
-                Objects.equals(node, that.node);
+            return skipped == that.skipped && Objects.equals(node, that.node);
         }
 
         @Override

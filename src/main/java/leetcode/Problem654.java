@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-binary-tree/
- */
+/** https://leetcode.com/problems/maximum-binary-tree/ */
 public class Problem654 {
     public static class TreeNode {
         int val;

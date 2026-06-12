@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/smallest-value-of-the-rearranged-number/
- */
+/** https://leetcode.com/problems/smallest-value-of-the-rearranged-number/ */
 class Problem2165 {
     fun smallestNumber(num: Long): Long {
         if (num > 0) {

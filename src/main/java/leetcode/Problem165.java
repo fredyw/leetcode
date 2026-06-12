@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/compare-version-numbers/
- */
+/** https://leetcode.com/problems/compare-version-numbers/ */
 public class Problem165 {
     public int compareVersion(String version1, String version2) {
         String[] ver1 = version1.split("\\.");

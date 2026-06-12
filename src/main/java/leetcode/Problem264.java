@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.TreeSet;
 
-/**
- * https://leetcode.com/problems/ugly-number-ii/
- */
+/** https://leetcode.com/problems/ugly-number-ii/ */
 public class Problem264 {
     public int nthUglyNumber(int n) {
         TreeSet<Long> uglyNumbers = new TreeSet<>();

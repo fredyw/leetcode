@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/next-permutation/
- */
+/** https://leetcode.com/problems/next-permutation/ */
 public class Problem31 {
     public void nextPermutation(int[] nums) {
         for (int current = nums.length - 2; current >= 0; current--) {

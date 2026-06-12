@@ -2,12 +2,10 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/clumsy-factorial/
- */
+/** https://leetcode.com/problems/clumsy-factorial/ */
 public class Problem1006 {
     public int clumsy(int N) {
-        char[] ops = new char[]{'*', '/', '+', '-'};
+        char[] ops = new char[] {'*', '/', '+', '-'};
         int opIdx = 0;
         Stack<Integer> numbers = new Stack<>();
         Stack<Character> operators = new Stack<>();
@@ -17,8 +15,9 @@ public class Problem1006 {
                 continue;
             }
             char op = ops[opIdx];
-            while (!operators.isEmpty() &&
-                ((op != '*' && op != '/') || (operators.peek() != '+' && operators.peek() != '-'))) {
+            while (!operators.isEmpty()
+                    && ((op != '*' && op != '/')
+                            || (operators.peek() != '+' && operators.peek() != '-'))) {
                 numbers.push(apply(numbers.pop(), numbers.pop(), operators.pop()));
             }
             numbers.add(i);

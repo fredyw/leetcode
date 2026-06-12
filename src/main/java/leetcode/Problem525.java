@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/contiguous-array/
- */
+/** https://leetcode.com/problems/contiguous-array/ */
 public class Problem525 {
     public int findMaxLength(int[] nums) {
         int max = 0;

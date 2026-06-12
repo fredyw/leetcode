@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/search-insert-position/
- */
+/** https://leetcode.com/problems/search-insert-position/ */
 public class Problem35 {
     public int searchInsert(int[] nums, int target) {
         return searchInsert(nums, target, 0, nums.length - 1);

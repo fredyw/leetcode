@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/boats-to-save-people/
- */
+/** https://leetcode.com/problems/boats-to-save-people/ */
 public class Problem881 {
     public int numRescueBoats(int[] people, int limit) {
         int answer = 0;

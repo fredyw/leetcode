@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/projection-area-of-3d-shapes/
- */
+/** https://leetcode.com/problems/projection-area-of-3d-shapes/ */
 public class Problem887 {
     public int projectionArea(int[][] grid) {
         int top = 0;

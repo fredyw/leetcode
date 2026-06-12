@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/count-square-submatrices-with-all-ones/
- */
+/** https://leetcode.com/problems/count-square-submatrices-with-all-ones/ */
 public class Problem1277 {
     public int countSquares(int[][] matrix) {
         int maxRow = matrix.length;
@@ -17,8 +15,8 @@ public class Problem1277 {
         return answer;
     }
 
-    private static int countSquares(int[][] matrix, int maxRow, int maxCol, int row, int col,
-                                    Integer[][] memo) {
+    private static int countSquares(
+            int[][] matrix, int maxRow, int maxCol, int row, int col, Integer[][] memo) {
         if (row < 0 || row == maxRow || col < 0 || col == maxCol) {
             return 0;
         }

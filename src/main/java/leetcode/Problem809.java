@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/expressive-words/
- */
+/** https://leetcode.com/problems/expressive-words/ */
 public class Problem809 {
     public int expressiveWords(String S, String[] words) {
         List<CharCount> list = new ArrayList<>();
@@ -41,8 +39,9 @@ public class Problem809 {
                         break;
                     }
                     CharCount cc = list.get(index++);
-                    if (cc.ch != word.charAt(i - 1) || cc.count < count ||
-                        (cc.count != count && cc.count < 3)) {
+                    if (cc.ch != word.charAt(i - 1)
+                            || cc.count < count
+                            || (cc.count != count && cc.count < 3)) {
                         found = false;
                         break;
                     }
@@ -56,8 +55,9 @@ public class Problem809 {
                 if (word.length() == 0) {
                     found = false;
                 } else {
-                    if (cc.ch != word.charAt(word.length() - 1) || cc.count < count ||
-                        (cc.count != count && cc.count < 3)) {
+                    if (cc.ch != word.charAt(word.length() - 1)
+                            || cc.count < count
+                            || (cc.count != count && cc.count < 3)) {
                         found = false;
                     }
                 }

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/palindromic-substrings/
- */
+/** https://leetcode.com/problems/palindromic-substrings/ */
 public class Problem647 {
     public int countSubstrings(String s) {
         return countSubstrings(s, 0, s.length(), new boolean[s.length() + 1][s.length() + 1]);

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/count-number-of-teams/
- */
+/** https://leetcode.com/problems/count-number-of-teams/ */
 public class Problem1395 {
     public int numTeams(int[] rating) {
         int[] greater = new int[rating.length];

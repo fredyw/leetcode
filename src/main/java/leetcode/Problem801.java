@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/
- */
+/** https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/ */
 public class Problem801 {
     public int minSwap(int[] A, int[] B) {
         Integer[][] memo = new Integer[A.length][2]; // 0 = no-swap, 1 = swap

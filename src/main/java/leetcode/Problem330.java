@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/patching-array/
- */
+/** https://leetcode.com/problems/patching-array/ */
 public class Problem330 {
     public int minPatches(int[] nums, int n) {
         long sum = 0;

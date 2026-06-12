@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/lucky-numbers-in-a-matrix/
- */
+/** https://leetcode.com/problems/lucky-numbers-in-a-matrix/ */
 public class Problem1380 {
     public List<Integer> luckyNumbers(int[][] matrix) {
         List<Integer> answer = new ArrayList<>();

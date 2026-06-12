@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/count-substrings-that-differ-by-one-character/
- */
+/** https://leetcode.com/problems/count-substrings-that-differ-by-one-character/ */
 public class Problem1638 {
     public int countSubstrings(String s, String t) {
         int answer = 0;

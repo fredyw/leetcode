@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/time-needed-to-inform-all-employees/
- */
+/** https://leetcode.com/problems/time-needed-to-inform-all-employees/ */
 public class Problem1376 {
     public int numOfMinutes(int n, int headID, int[] manager, int[] informTime) {
         List<Integer>[] graph = new List[manager.length];

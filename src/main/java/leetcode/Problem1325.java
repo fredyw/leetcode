@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/delete-leaves-with-a-given-value/
- */
+/** https://leetcode.com/problems/delete-leaves-with-a-given-value/ */
 public class Problem1325 {
     public static class TreeNode {
         int val;

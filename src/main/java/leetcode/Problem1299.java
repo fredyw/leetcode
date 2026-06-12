@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side/
- */
+/** https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side/ */
 public class Problem1299 {
     public int[] replaceElements(int[] arr) {
         int[] answer = new int[arr.length];

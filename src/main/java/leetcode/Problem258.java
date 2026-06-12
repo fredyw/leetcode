@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/add-digits/
- */
+/** https://leetcode.com/problems/add-digits/ */
 public class Problem258 {
     public int addDigits(int num) {
         int n = num;

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/sqrtx/
- */
+/** https://leetcode.com/problems/sqrtx/ */
 public class Problem69 {
     public int mySqrt(int x) {
         // using Newton's method

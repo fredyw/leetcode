@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/convert-integer-to-the-sum-of-two-no-zero-integers/
- */
+/** https://leetcode.com/problems/convert-integer-to-the-sum-of-two-no-zero-integers/ */
 public class Problem1317 {
     public int[] getNoZeroIntegers(int n) {
         int[] answer = new int[2];

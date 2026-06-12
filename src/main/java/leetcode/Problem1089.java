@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/duplicate-zeros/
- */
+/** https://leetcode.com/problems/duplicate-zeros/ */
 public class Problem1089 {
     public void duplicateZeros(int[] arr) {
         List<Integer> answer = new ArrayList<>();

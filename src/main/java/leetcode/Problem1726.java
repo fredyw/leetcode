@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/tuple-with-same-product/
- */
+/** https://leetcode.com/problems/tuple-with-same-product/ */
 public class Problem1726 {
     public int tupleSameProduct(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();

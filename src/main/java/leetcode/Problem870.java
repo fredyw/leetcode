@@ -3,9 +3,7 @@ package leetcode;
 import java.util.Arrays;
 import java.util.Comparator;
 
-/**
- * https://leetcode.com/problems/advantage-shuffle/
- */
+/** https://leetcode.com/problems/advantage-shuffle/ */
 public class Problem870 {
     public int[] advantageCount(int[] A, int[] B) {
         int[] answer = new int[A.length];

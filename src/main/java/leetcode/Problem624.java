@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/maximum-distance-in-arrays/
- */
+/** https://leetcode.com/problems/maximum-distance-in-arrays/ */
 public class Problem624 {
     public int maxDistance(List<List<Integer>> arrays) {
         List<Group> min = new ArrayList<>();

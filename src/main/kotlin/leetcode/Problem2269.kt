@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/find-the-k-beauty-of-a-number/
- */
+/** https://leetcode.com/problems/find-the-k-beauty-of-a-number/ */
 class Problem2269 {
     fun divisorSubstrings(num: Int, k: Int): Int {
         var answer = 0

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/relative-sort-array/
- */
+/** https://leetcode.com/problems/relative-sort-array/ */
 public class Problem1122 {
     public int[] relativeSortArray(int[] arr1, int[] arr2) {
         int[] counts = new int[1001];

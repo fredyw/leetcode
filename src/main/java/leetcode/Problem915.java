@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/partition-array-into-disjoint-intervals/
- */
+/** https://leetcode.com/problems/partition-array-into-disjoint-intervals/ */
 public class Problem915 {
     public int partitionDisjoint(int[] A) {
         int prevMaxIdx = 0;

@@ -3,27 +3,37 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/longest-increasing-path-in-a-matrix/
- */
+/** https://leetcode.com/problems/longest-increasing-path-in-a-matrix/ */
 public class Problem329 {
     public int longestIncreasingPath(int[][] matrix) {
         int max = 0;
         Map<String, Integer> memo = new HashMap<>();
         for (int row = 0; row < matrix.length; row++) {
             for (int col = 0; col < matrix[row].length; col++) {
-                int val = longestIncreasingPath(matrix, matrix.length, matrix[row].length,
-                    row, col, Integer.MIN_VALUE, memo);
+                int val =
+                        longestIncreasingPath(
+                                matrix,
+                                matrix.length,
+                                matrix[row].length,
+                                row,
+                                col,
+                                Integer.MIN_VALUE,
+                                memo);
                 max = Math.max(max, val);
             }
         }
         return max;
     }
 
-    public int longestIncreasingPath(int[][] matrix, int maxRow, int maxCol,
-                                     int row, int col, int prevValue, Map<String, Integer> memo) {
-        if (0 > row || row >= maxRow || 0 > col || col >= maxCol
-            || prevValue >= matrix[row][col]) {
+    public int longestIncreasingPath(
+            int[][] matrix,
+            int maxRow,
+            int maxCol,
+            int row,
+            int col,
+            int prevValue,
+            Map<String, Integer> memo) {
+        if (0 > row || row >= maxRow || 0 > col || col >= maxCol || prevValue >= matrix[row][col]) {
             return 0;
         }
         String key = row + "|" + col;

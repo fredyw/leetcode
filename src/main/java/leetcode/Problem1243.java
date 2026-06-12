@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/array-transformation/
- */
+/** https://leetcode.com/problems/array-transformation/ */
 public class Problem1243 {
     public List<Integer> transformArray(int[] arr) {
         while (true) {

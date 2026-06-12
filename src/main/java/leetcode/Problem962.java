@@ -3,9 +3,7 @@ package leetcode;
 import java.util.Arrays;
 import java.util.Comparator;
 
-/**
- * https://leetcode.com/problems/maximum-width-ramp/
- */
+/** https://leetcode.com/problems/maximum-width-ramp/ */
 public class Problem962 {
     public int maxWidthRamp(int[] A) {
         Integer[] indexes = new Integer[A.length];

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/same-tree/
- */
+/** https://leetcode.com/problems/same-tree/ */
 public class Problem100 {
     public class TreeNode {
         int val;

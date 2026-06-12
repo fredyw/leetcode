@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/find-the-town-judge/
- */
+/** https://leetcode.com/problems/find-the-town-judge/ */
 public class Problem997 {
     public int findJudge(int N, int[][] trust) {
         int[] trusts = new int[N + 1];

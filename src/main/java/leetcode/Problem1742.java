@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/maximum-number-of-balls-in-a-box/
- */
+/** https://leetcode.com/problems/maximum-number-of-balls-in-a-box/ */
 public class Problem1742 {
     public int countBalls(int lowLimit, int highLimit) {
         int answer = 0;

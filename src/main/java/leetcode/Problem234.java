@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/palindrome-linked-list/
- */
+/** https://leetcode.com/problems/palindrome-linked-list/ */
 public class Problem234 {
     public static class ListNode {
         int val;

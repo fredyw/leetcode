@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/vowels-of-all-substrings/
- */
+/** https://leetcode.com/problems/vowels-of-all-substrings/ */
 class Problem2063 {
     fun countVowels(word: String): Long {
         var answer = 0L

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-depth-of-binary-tree/
- */
+/** https://leetcode.com/problems/minimum-depth-of-binary-tree/ */
 public class Problem111 {
     public static class TreeNode {
         int val;

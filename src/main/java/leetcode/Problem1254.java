@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/number-of-closed-islands/
- */
+/** https://leetcode.com/problems/number-of-closed-islands/ */
 public class Problem1254 {
     public int closedIsland(int[][] grid) {
         int maxRow = grid.length;
@@ -37,9 +35,8 @@ public class Problem1254 {
         return answer;
     }
 
-    private static void dfs(int[][] grid, boolean[][] visited,
-                            int maxRow, int maxCol,
-                            int row, int col) {
+    private static void dfs(
+            int[][] grid, boolean[][] visited, int maxRow, int maxCol, int row, int col) {
         if (row < 0 || row == maxRow || col < 0 || col == maxCol) {
             return;
         }

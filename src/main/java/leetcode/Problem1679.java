@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/max-number-of-k-sum-pairs/
- */
+/** https://leetcode.com/problems/max-number-of-k-sum-pairs/ */
 public class Problem1679 {
     public int maxOperations(int[] nums, int k) {
         Map</* value */ Integer, /* count */ Integer> map = new HashMap<>();

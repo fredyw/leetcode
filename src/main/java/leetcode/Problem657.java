@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/judge-route-circle/
- */
+/** https://leetcode.com/problems/judge-route-circle/ */
 public class Problem657 {
     public boolean judgeCircle(String moves) {
         int row = 0;

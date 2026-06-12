@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/minimum-number-of-operations-to-convert-time/
- */
+/** https://leetcode.com/problems/minimum-number-of-operations-to-convert-time/ */
 class Problem2224 {
     fun convertTime(current: String, correct: String): Int {
         var diff = toMinutes(correct) - toMinutes(current)

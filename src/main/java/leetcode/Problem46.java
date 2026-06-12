@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/permutations/
- */
+/** https://leetcode.com/problems/permutations/ */
 public class Problem46 {
     public List<List<Integer>> permute(int[] num) {
         List<List<Integer>> answer = new ArrayList<>();
@@ -15,8 +13,12 @@ public class Problem46 {
         return answer;
     }
 
-    private static void permute(int[] num, int n, Set<Integer> duplicates, List<Integer> accu,
-                                List<List<Integer>> answer) {
+    private static void permute(
+            int[] num,
+            int n,
+            Set<Integer> duplicates,
+            List<Integer> accu,
+            List<List<Integer>> answer) {
         if (n == 0) {
             answer.add(new ArrayList<>(accu));
             return;

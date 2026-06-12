@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/partition-equal-subset-sum/
- */
+/** https://leetcode.com/problems/partition-equal-subset-sum/ */
 public class Problem416 {
     public boolean canPartition(int[] nums) {
         int sum = 0;
@@ -46,8 +44,9 @@ public class Problem416 {
         if (memo[index][sum] != null) {
             return memo[index][sum];
         }
-        boolean found = canPartition(nums, sum, index + 1, memo) ||
-            canPartition(nums, sum - nums[index], index + 1, memo);
+        boolean found =
+                canPartition(nums, sum, index + 1, memo)
+                        || canPartition(nums, sum - nums[index], index + 1, memo);
         memo[index][sum] = found;
         return found;
     }

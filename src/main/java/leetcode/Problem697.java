@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/degree-of-an-array/
- */
+/** https://leetcode.com/problems/degree-of-an-array/ */
 public class Problem697 {
     public int findShortestSubArray(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();

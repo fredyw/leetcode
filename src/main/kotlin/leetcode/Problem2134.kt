@@ -2,9 +2,7 @@ package leetcode
 
 import kotlin.math.min
 
-/**
- * https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together-ii/
- */
+/** https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together-ii/ */
 class Problem2134 {
     fun minSwaps(nums: IntArray): Int {
         var numOnes = 0

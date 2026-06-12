@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/longest-mountain-in-array/
- */
+/** https://leetcode.com/problems/longest-mountain-in-array/ */
 public class Problem845 {
     public int longestMountain(int[] A) {
         if (A.length == 0) {

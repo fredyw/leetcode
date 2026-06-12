@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/friends-of-appropriate-ages/
- */
+/** https://leetcode.com/problems/friends-of-appropriate-ages/ */
 public class Problem825 {
     public int numFriendRequests(int[] ages) {
         int answer = 0;

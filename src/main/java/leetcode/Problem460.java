@@ -4,14 +4,13 @@ import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/lfu-cache/
- */
+/** https://leetcode.com/problems/lfu-cache/ */
 public class Problem460 {
     static class LFUCache {
         private final Map<Integer /*key*/, Integer /*value*/> keyValues = new HashMap<>();
         private final Map<Integer /*key*/, Integer /*count*/> keyCounts = new HashMap<>();
-        private final Map<Integer /*count*/, LinkedHashSet<Integer> /*keys*/> countKeys = new HashMap<>();
+        private final Map<Integer /*count*/, LinkedHashSet<Integer> /*keys*/> countKeys =
+                new HashMap<>();
         private final int capacity;
         private int minCount = 0;
 

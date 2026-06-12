@@ -3,9 +3,7 @@ package leetcode;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/count-of-smaller-numbers-after-self/
- */
+/** https://leetcode.com/problems/count-of-smaller-numbers-after-self/ */
 public class Problem315 {
     public List<Integer> countSmaller(int[] nums) {
         int[] tmp = nums.clone();

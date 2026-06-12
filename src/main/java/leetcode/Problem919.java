@@ -1,11 +1,8 @@
 package leetcode;
 
 import java.util.LinkedList;
-import java.util.List;
 
-/**
- * https://leetcode.com/problems/complete-binary-tree-inserter/
- */
+/** https://leetcode.com/problems/complete-binary-tree-inserter/ */
 public class Problem919 {
     public static class TreeNode {
         int val;

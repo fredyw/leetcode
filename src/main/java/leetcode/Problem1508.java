@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/
- */
+/** https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/ */
 public class Problem1508 {
     public int rangeSum(int[] nums, int n, int left, int right) {
         List<Long> list = new ArrayList<>();
@@ -23,6 +21,6 @@ public class Problem1508 {
         for (int i = left - 1; i < right; i++) {
             answer += list.get(i);
         }
-        return (int) (answer  % 1_000_000_007);
+        return (int) (answer % 1_000_000_007);
     }
 }

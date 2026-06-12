@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-area-rectangle-ii/
- */
+/** https://leetcode.com/problems/minimum-area-rectangle-ii/ */
 public class Problem963 {
     public double minAreaFreeRect(int[][] points) {
         // https://stackoverflow.com/questions/2303278/find-if-4-points-on-a-plane-form-a-rectangle
@@ -12,16 +10,16 @@ public class Problem963 {
                 for (int k = j + 1; k < points.length; k++) {
                     for (int l = k + 1; l < points.length; l++) {
                         if (isRectangle(points[i], points[j], points[k], points[l])) {
-                            double area = distance(points[i], points[j]) *
-                                distance(points[j], points[k]);
+                            double area =
+                                    distance(points[i], points[j]) * distance(points[j], points[k]);
                             answer = Math.min(answer, area);
                         } else if (isRectangle(points[j], points[k], points[i], points[l])) {
-                            double area = distance(points[j], points[k]) *
-                                distance(points[k], points[i]);
+                            double area =
+                                    distance(points[j], points[k]) * distance(points[k], points[i]);
                             answer = Math.min(answer, area);
                         } else if (isRectangle(points[k], points[i], points[j], points[l])) {
-                            double area = distance(points[k], points[i]) *
-                                distance(points[i], points[j]);
+                            double area =
+                                    distance(points[k], points[i]) * distance(points[i], points[j]);
                             answer = Math.min(answer, area);
                         }
                     }

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/remove-palindromic-subsequences/
- */
+/** https://leetcode.com/problems/remove-palindromic-subsequences/ */
 public class Problem1332 {
     public int removePalindromeSub(String s) {
         if (s.isEmpty()) {

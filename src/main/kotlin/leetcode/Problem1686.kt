@@ -2,9 +2,7 @@ package leetcode
 
 import java.util.PriorityQueue
 
-/**
- * https://leetcode.com/problems/stone-game-vi/
- */
+/** https://leetcode.com/problems/stone-game-vi/ */
 class Problem1686 {
     fun stoneGameVI(aliceValues: IntArray, bobValues: IntArray): Int {
         data class Stone(val index: Int, val value: Int)
@@ -24,8 +22,6 @@ class Problem1686 {
             }
             aliceTurn = !aliceTurn
         }
-        return if (aliceValue > bobValue) 1
-        else if (aliceValue == bobValue) 0
-        else -1
+        return if (aliceValue > bobValue) 1 else if (aliceValue == bobValue) 0 else -1
     }
 }

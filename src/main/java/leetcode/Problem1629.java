@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/slowest-key/
- */
+/** https://leetcode.com/problems/slowest-key/ */
 public class Problem1629 {
     public char slowestKey(int[] releaseTimes, String keysPressed) {
         char answer = ' ';

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/sum-of-mutated-array-closest-to-target/
- */
+/** https://leetcode.com/problems/sum-of-mutated-array-closest-to-target/ */
 public class Problem1300 {
     public int findBestValue(int[] arr, int target) {
         int sum = 0;

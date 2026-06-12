@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/range-sum-query-immutable/
- */
+/** https://leetcode.com/problems/range-sum-query-immutable/ */
 public class Problem303 {
     public static class NumArray {
         private final int[] nums;

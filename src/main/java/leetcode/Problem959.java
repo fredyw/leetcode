@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/regions-cut-by-slashes/
- */
+/** https://leetcode.com/problems/regions-cut-by-slashes/ */
 public class Problem959 {
     public int regionsBySlashes(String[] grid) {
         // Create a new grid that is 3 times as big.

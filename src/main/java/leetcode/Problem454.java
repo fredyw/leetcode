@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/4sum-ii/
- */
+/** https://leetcode.com/problems/4sum-ii/ */
 public class Problem454 {
     public int fourSumCount(int[] A, int[] B, int[] C, int[] D) {
         Map<Long, Integer> map = new HashMap<>();

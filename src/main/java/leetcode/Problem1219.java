@@ -1,15 +1,19 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/path-with-maximum-gold/
- */
+/** https://leetcode.com/problems/path-with-maximum-gold/ */
 public class Problem1219 {
     public int getMaximumGold(int[][] grid) {
         int answer = 0;
         for (int row = 0; row < grid.length; row++) {
             for (int col = 0; col < grid[row].length; col++) {
-                answer = Math.max(answer,
-                    getMaximumGold(grid, row, col, new boolean[grid.length][grid[row].length]));
+                answer =
+                        Math.max(
+                                answer,
+                                getMaximumGold(
+                                        grid,
+                                        row,
+                                        col,
+                                        new boolean[grid.length][grid[row].length]));
             }
         }
         return answer;

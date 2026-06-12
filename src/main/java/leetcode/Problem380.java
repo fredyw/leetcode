@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-/**
- * https://leetcode.com/problems/insert-delete-getrandom-o1/
- */
+/** https://leetcode.com/problems/insert-delete-getrandom-o1/ */
 public class Problem380 {
     private static class Value {
         private int idx;
@@ -26,10 +24,12 @@ public class Problem380 {
         private final Random random = new Random();
 
         /** Initialize your data structure here. */
-        public RandomizedSet() {
-        }
+        public RandomizedSet() {}
 
-        /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
+        /**
+         * Inserts a value to the set. Returns true if the set did not already contain the specified
+         * element.
+         */
         public boolean insert(int val) {
             if (map.containsKey(val)) {
                 return false;
@@ -41,7 +41,9 @@ public class Problem380 {
             return true;
         }
 
-        /** Removes a value from the set. Returns true if the set contained the specified element. */
+        /**
+         * Removes a value from the set. Returns true if the set contained the specified element.
+         */
         public boolean remove(int val) {
             if (!map.containsKey(val)) {
                 return false;

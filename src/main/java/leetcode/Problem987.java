@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-/**
- * https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/
- */
+/** https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/ */
 public class Problem987 {
     public static class TreeNode {
         int val;
@@ -24,20 +22,23 @@ public class Problem987 {
         Map<Integer, List<YValue>> map = new TreeMap<>();
         verticalTraversal(root, 0, 0, map);
         List<List<Integer>> answer = new ArrayList<>();
-        map.forEach((key, value) -> {
-            Collections.sort(value, (a, b) -> {
-                int cmp = Integer.compare(b.y, a.y);
-                if (cmp == 0) {
-                    return Integer.compare(a.value, b.value);
-                }
-                return cmp;
-            });
-            List<Integer> sub = new ArrayList<>();
-            for (YValue v : value) {
-                sub.add(v.value);
-            }
-            answer.add(sub);
-        });
+        map.forEach(
+                (key, value) -> {
+                    Collections.sort(
+                            value,
+                            (a, b) -> {
+                                int cmp = Integer.compare(b.y, a.y);
+                                if (cmp == 0) {
+                                    return Integer.compare(a.value, b.value);
+                                }
+                                return cmp;
+                            });
+                    List<Integer> sub = new ArrayList<>();
+                    for (YValue v : value) {
+                        sub.add(v.value);
+                    }
+                    answer.add(sub);
+                });
         return answer;
     }
 
@@ -51,8 +52,8 @@ public class Problem987 {
         }
     }
 
-    private static void verticalTraversal(TreeNode root, int x, int y,
-                                          Map<Integer, List<YValue>> map) {
+    private static void verticalTraversal(
+            TreeNode root, int x, int y, Map<Integer, List<YValue>> map) {
         if (root == null) {
             return;
         }

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/bulb-switcher-iii/
- */
+/** https://leetcode.com/problems/bulb-switcher-iii/ */
 public class Problem1375 {
     public int numTimesAllBlue(int[] light) {
         int answer = 0;

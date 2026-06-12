@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/largest-palindrome-product/
- */
+/** https://leetcode.com/problems/largest-palindrome-product/ */
 public class Problem479 {
     public int largestPalindrome(int n) {
         if (n == 1) {

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/middle-of-the-linked-list/
- */
+/** https://leetcode.com/problems/middle-of-the-linked-list/ */
 public class Problem876 {
     public static class ListNode {
         int val;

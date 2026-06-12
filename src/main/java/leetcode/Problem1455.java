@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence/
- */
+/** https://leetcode.com/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence/ */
 public class Problem1455 {
     public int isPrefixOfWord(String sentence, String searchWord) {
         String[] words = sentence.split(" ");

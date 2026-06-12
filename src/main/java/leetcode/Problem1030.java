@@ -3,9 +3,7 @@ package leetcode;
 import java.util.Arrays;
 import java.util.Comparator;
 
-/**
- * https://leetcode.com/problems/matrix-cells-in-distance-order/
- */
+/** https://leetcode.com/problems/matrix-cells-in-distance-order/ */
 public class Problem1030 {
     public int[][] allCellsDistOrder(int R, int C, int r0, int c0) {
         Dist[] dists = new Dist[R * C];
@@ -19,7 +17,7 @@ public class Problem1030 {
         Arrays.sort(dists, Comparator.comparingInt(a -> a.dist));
         int[][] answer = new int[dists.length][2];
         for (int i = 0; i < dists.length; i++) {
-            answer[i] = new int[]{dists[i].row, dists[i].col};
+            answer[i] = new int[] {dists[i].row, dists[i].col};
         }
         return answer;
     }

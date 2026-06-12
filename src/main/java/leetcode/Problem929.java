@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/unique-email-addresses/
- */
+/** https://leetcode.com/problems/unique-email-addresses/ */
 public class Problem929 {
     public int numUniqueEmails(String[] emails) {
         Set<String> emailSet = new HashSet<>();

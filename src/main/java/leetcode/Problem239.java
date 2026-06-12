@@ -3,9 +3,7 @@ package leetcode;
 import java.util.Comparator;
 import java.util.TreeMap;
 
-/**
- * https://leetcode.com/problems/sliding-window-maximum/
- */
+/** https://leetcode.com/problems/sliding-window-maximum/ */
 public class Problem239 {
     public int[] maxSlidingWindow(int[] nums, int k) {
         if (nums.length == 0) {

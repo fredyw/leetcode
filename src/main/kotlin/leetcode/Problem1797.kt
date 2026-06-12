@@ -2,9 +2,7 @@ package leetcode
 
 import java.util.*
 
-/**
- * https://leetcode.com/problems/design-authentication-manager/
- */
+/** https://leetcode.com/problems/design-authentication-manager/ */
 class Problem1797 {
     class AuthenticationManager(private val timeToLive: Int) {
         private val tokenToExpirationTimeMap = mutableMapOf<String, Int>()

@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/serialize-and-deserialize-bst/
- */
+/** https://leetcode.com/problems/serialize-and-deserialize-bst/ */
 public class Problem449 {
     public static class TreeNode {
         int val;

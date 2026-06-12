@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/distance-between-bus-stops/
- */
+/** https://leetcode.com/problems/distance-between-bus-stops/ */
 public class Problem1184 {
     public int distanceBetweenBusStops(int[] distance, int start, int destination) {
         int[] sums = new int[distance.length];

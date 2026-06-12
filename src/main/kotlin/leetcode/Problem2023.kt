@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/number-of-pairs-of-strings-with-concatenation-equal-to-target/
- */
+/** https://leetcode.com/problems/number-of-pairs-of-strings-with-concatenation-equal-to-target/ */
 class Problem2023 {
     fun numOfPairs(nums: Array<String>, target: String): Int {
         var answer = 0

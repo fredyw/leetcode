@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/where-will-the-ball-fall/
- */
+/** https://leetcode.com/problems/where-will-the-ball-fall/ */
 public class Problem1706 {
     public int[] findBall(int[][] grid) {
         int maxRow = grid.length;

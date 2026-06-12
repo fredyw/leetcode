@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/largest-triangle-area/
- */
+/** https://leetcode.com/problems/largest-triangle-area/ */
 public class Problem812 {
     public double largestTriangleArea(int[][] points) {
         // https://en.wikipedia.org/wiki/Heron%27s_formula
@@ -20,7 +18,8 @@ public class Problem812 {
                     double b = distance(points[i], points[k]);
                     double c = distance(points[j], points[k]);
                     double s = (a + b + c) / 2;
-                    double area = Math.sqrt(s * Math.abs(s - a) * Math.abs(s - b) * Math.abs(s - c));
+                    double area =
+                            Math.sqrt(s * Math.abs(s - a) * Math.abs(s - b) * Math.abs(s - c));
                     maxArea = Math.max(maxArea, area);
                 }
             }

@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/check-if-a-string-can-break-another-string/
- */
+/** https://leetcode.com/problems/check-if-a-string-can-break-another-string/ */
 public class Problem1433 {
     public boolean checkIfCanBreak(String s1, String s2) {
         char[] c1 = s1.toCharArray();

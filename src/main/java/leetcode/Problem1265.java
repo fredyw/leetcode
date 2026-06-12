@@ -6,6 +6,7 @@ import java.util.Stack;
 public class Problem1265 {
     interface ImmutableListNode {
         void printValue(); // print the value of this node.
+
         ImmutableListNode getNext(); // return the next node.
     }
 

@@ -1,16 +1,14 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/regular-expression-matching/
- */
+/** https://leetcode.com/problems/regular-expression-matching/ */
 public class Problem10 {
     public boolean isMatch(String s, String p) {
         return isMatch(s, p, 0, 0);
     }
 
     private static boolean isMatch(String s, String p, int i, int j) {
-        if ((i == s.length() && j == p.length()) ||
-            (i == s.length() && j + 2 == p.length() && p.charAt(j + 1) == '*')) {
+        if ((i == s.length() && j == p.length())
+                || (i == s.length() && j + 2 == p.length() && p.charAt(j + 1) == '*')) {
             return true;
         }
         if (j >= p.length()) {

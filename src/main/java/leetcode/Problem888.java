@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/fair-candy-swap/
- */
+/** https://leetcode.com/problems/fair-candy-swap/ */
 public class Problem888 {
     public int[] fairCandySwap(int[] A, int[] B) {
         int sumA = 0;

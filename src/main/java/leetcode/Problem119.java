@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/pascals-triangle-ii/
- */
+/** https://leetcode.com/problems/pascals-triangle-ii/ */
 public class Problem119 {
     public List<Integer> getRow(int rowIndex) {
         List<Integer> result = new ArrayList<>();

@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/count-artifacts-that-can-be-extracted/
- */
+/** https://leetcode.com/problems/count-artifacts-that-can-be-extracted/ */
 class Problem2201 {
     fun digArtifacts(n: Int, artifacts: Array<IntArray>, dig: Array<IntArray>): Int {
         data class Cell(val row: Int, val col: Int)

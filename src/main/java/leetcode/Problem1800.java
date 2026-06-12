@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-ascending-subarray-sum/
- */
+/** https://leetcode.com/problems/maximum-ascending-subarray-sum/ */
 public class Problem1800 {
     public int maxAscendingSum(int[] nums) {
         int answer = nums[0];

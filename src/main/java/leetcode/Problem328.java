@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/odd-even-linked-list/
- */
+/** https://leetcode.com/problems/odd-even-linked-list/ */
 public class Problem328 {
     public static class ListNode {
         int val;

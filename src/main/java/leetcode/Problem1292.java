@@ -27,7 +27,9 @@ public class Problem1292 {
         for (int row = maxRow - 1; row >= 0; row--) {
             for (int col = maxCol - 1; col >= 0; col--) {
                 int sum = 0;
-                for (int side = 0; side < Math.min(maxRow, maxCol) && row - side >= 0 && col - side >= 0; side++) {
+                for (int side = 0;
+                        side < Math.min(maxRow, maxCol) && row - side >= 0 && col - side >= 0;
+                        side++) {
                     if (side == 0) {
                         sum = mat[row][col];
                     } else {

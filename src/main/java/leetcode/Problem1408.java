@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/string-matching-in-an-array/
- */
+/** https://leetcode.com/problems/string-matching-in-an-array/ */
 public class Problem1408 {
     public List<String> stringMatching(String[] words) {
         Set<String> answer = new HashSet<>();

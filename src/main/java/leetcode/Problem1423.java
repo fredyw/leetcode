@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/
- */
+/** https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/ */
 public class Problem1423 {
     public int maxScore(int[] cardPoints, int k) {
         int[] prefixSum = new int[cardPoints.length];

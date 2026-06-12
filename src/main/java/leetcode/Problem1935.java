@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-number-of-words-you-can-type/
- */
+/** https://leetcode.com/problems/maximum-number-of-words-you-can-type/ */
 public class Problem1935 {
     public int canBeTypedWords(String text, String brokenLetters) {
         String[] words = text.split(" ");

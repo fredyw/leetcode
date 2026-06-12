@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/magnetic-force-between-two-balls/
- */
+/** https://leetcode.com/problems/magnetic-force-between-two-balls/ */
 class Problem1552 {
     fun maxDistance(position: IntArray, m: Int): Int {
         position.sort()

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/second-largest-digit-in-a-string/
- */
+/** https://leetcode.com/problems/second-largest-digit-in-a-string/ */
 public class Problem1796 {
     public int secondHighest(String s) {
         int max = -1;

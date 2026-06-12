@@ -2,18 +2,18 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/video-stitching/
- */
+/** https://leetcode.com/problems/video-stitching/ */
 public class Problem1024 {
     public int videoStitching(int[][] clips, int T) {
-        Arrays.sort(clips, (a, b) -> {
-            int cmp = a[0] - b[0];
-            if (cmp == 0) {
-                return b[1] - a[1];
-            }
-            return cmp;
-        });
+        Arrays.sort(
+                clips,
+                (a, b) -> {
+                    int cmp = a[0] - b[0];
+                    if (cmp == 0) {
+                        return b[1] - a[1];
+                    }
+                    return cmp;
+                });
         if (clips[0][0] != 0) {
             return -1;
         }

@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/scramble-string/
- */
+/** https://leetcode.com/problems/scramble-string/ */
 public class Problem87 {
     public boolean isScramble(String s1, String s2) {
         Set<String> set = scramble(s1, s2, new HashMap<>());

@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/destroying-asteroids/
- */
+/** https://leetcode.com/problems/destroying-asteroids/ */
 class Problem2126 {
     fun asteroidsDestroyed(mass: Int, asteroids: IntArray): Boolean {
         asteroids.sort()

@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-/**
- * https://leetcode.com/problems/reorganize-string/
- */
+/** https://leetcode.com/problems/reorganize-string/ */
 public class Problem767 {
     public String reorganizeString(String S) {
         Map<Character, Integer> map = new HashMap<>();
@@ -17,7 +15,8 @@ public class Problem767 {
                 map.put(S.charAt(i), map.get(S.charAt(i)) + 1);
             }
         }
-        PriorityQueue<CharCount> queue = new PriorityQueue<>((a, b) -> Integer.compare(b.count, a.count));
+        PriorityQueue<CharCount> queue =
+                new PriorityQueue<>((a, b) -> Integer.compare(b.count, a.count));
         for (Map.Entry<Character, Integer> e : map.entrySet()) {
             queue.add(new CharCount(e.getKey(), e.getValue()));
         }

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/reverse-integer/
- */
+/** https://leetcode.com/problems/reverse-integer/ */
 public class Problem7 {
     public int reverse(int x) {
         int n = 0;

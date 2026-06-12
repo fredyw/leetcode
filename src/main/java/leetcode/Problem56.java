@@ -5,9 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/merge-intervals/
- */
+/** https://leetcode.com/problems/merge-intervals/ */
 public class Problem56 {
     public static class Interval {
         int start;
@@ -29,8 +27,9 @@ public class Problem56 {
         if (intervals.size() == 0) {
             return answer;
         }
-        Collections.sort(intervals,
-            Comparator.comparingInt((Interval a) -> a.start).thenComparingInt(a -> a.end));
+        Collections.sort(
+                intervals,
+                Comparator.comparingInt((Interval a) -> a.start).thenComparingInt(a -> a.end));
         int i = 0;
         answer.add(intervals.get(i++));
         while (i < intervals.size()) {

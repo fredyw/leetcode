@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/remove-invalid-parentheses/
- */
+/** https://leetcode.com/problems/remove-invalid-parentheses/ */
 public class Problem301 {
     public List<String> removeInvalidParentheses(String s) {
         int removeClose = 0;
@@ -30,8 +28,14 @@ public class Problem301 {
         return new ArrayList<>(result);
     }
 
-    private void remove(int idx, String str, int matching, int removeOpen, int removeClose,
-                        String accu, Set<String> set) {
+    private void remove(
+            int idx,
+            String str,
+            int matching,
+            int removeOpen,
+            int removeClose,
+            String accu,
+            Set<String> set) {
         if (idx == str.length()) {
             if (removeOpen == 0 && removeClose == 0 && matching == 0) {
                 set.add(accu);

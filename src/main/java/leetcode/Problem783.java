@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-distance-between-bst-nodes/
- */
+/** https://leetcode.com/problems/minimum-distance-between-bst-nodes/ */
 public class Problem783 {
     public static class TreeNode {
         int val;

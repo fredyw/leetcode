@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/shifting-letters/
- */
+/** https://leetcode.com/problems/shifting-letters/ */
 public class Problem848 {
     public String shiftingLetters(String S, int[] shifts) {
         char[] chars = S.toCharArray();

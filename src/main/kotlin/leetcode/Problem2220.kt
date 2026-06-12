@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/minimum-bit-flips-to-convert-number/
- */
+/** https://leetcode.com/problems/minimum-bit-flips-to-convert-number/ */
 class Problem2220 {
     fun minBitFlips(start: Int, goal: Int): Int {
         var answer = 0
@@ -13,7 +11,7 @@ class Problem2220 {
         } else if (s.length < g.length) {
             s = s.padStart(g.length, '0')
         }
-        for (i in (s.length - 1)downTo 0) {
+        for (i in (s.length - 1) downTo 0) {
             if (s[i] != g[i]) {
                 answer++
             }

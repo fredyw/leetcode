@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/construct-quad-tree/
- */
+/** https://leetcode.com/problems/construct-quad-tree/ */
 public class Problem427 {
     private static class Node {
         public boolean val;
@@ -12,15 +10,15 @@ public class Problem427 {
         public Node bottomLeft;
         public Node bottomRight;
 
-        public Node() {
-        }
+        public Node() {}
 
-        public Node(boolean _val,
-                    boolean _isLeaf,
-                    Node _topLeft,
-                    Node _topRight,
-                    Node _bottomLeft,
-                    Node _bottomRight) {
+        public Node(
+                boolean _val,
+                boolean _isLeaf,
+                Node _topLeft,
+                Node _topRight,
+                Node _bottomLeft,
+                Node _bottomRight) {
             val = _val;
             isLeaf = _isLeaf;
             topLeft = _topLeft;
@@ -67,10 +65,13 @@ public class Problem427 {
         Node bottomLeft = construct(grid, x1 + r, y1, x2, y1 + c - 1);
         Node bottomRight = construct(grid, x1 + r, y1 + c, x2, y2);
         if (topLeft != null && topRight != null && bottomLeft != null && bottomRight != null) {
-            if (topLeft.isLeaf && topRight.isLeaf && bottomLeft.isLeaf && bottomRight.isLeaf &&
-                topLeft.val == topRight.val &&
-                topLeft.val == bottomLeft.val &&
-                topLeft.val == bottomRight.val) {
+            if (topLeft.isLeaf
+                    && topRight.isLeaf
+                    && bottomLeft.isLeaf
+                    && bottomRight.isLeaf
+                    && topLeft.val == topRight.val
+                    && topLeft.val == bottomLeft.val
+                    && topLeft.val == bottomRight.val) {
                 return new Node(topLeft.val, true, null, null, null, null);
             }
         }

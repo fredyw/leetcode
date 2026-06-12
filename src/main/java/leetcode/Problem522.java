@@ -3,12 +3,10 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/longest-uncommon-subsequence-ii/
- */
+/** https://leetcode.com/problems/longest-uncommon-subsequence-ii/ */
 public class Problem522 {
     public int findLUSlength(String[] strs) {
-        Set<String> ignored =  new HashSet<>();
+        Set<String> ignored = new HashSet<>();
         for (int i = 0; i < strs.length; i++) {
             for (int j = i + 1; j < strs.length; j++) {
                 if (isSubsequence(strs[i], strs[j])) {
@@ -46,7 +44,8 @@ public class Problem522 {
                 break;
             }
         }
-        if (i == str1.length() || (i == (str1.length() - 1) && str1.charAt(i) == str2.charAt(j - 1))) {
+        if (i == str1.length()
+                || (i == (str1.length() - 1) && str1.charAt(i) == str2.charAt(j - 1))) {
             return true;
         }
         return false;

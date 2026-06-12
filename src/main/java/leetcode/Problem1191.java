@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/k-concatenation-maximum-sum/
- */
+/** https://leetcode.com/problems/k-concatenation-maximum-sum/ */
 public class Problem1191 {
     public int kConcatenationMaxSum(int[] arr, int k) {
         int mod = 1_000_000_007;
@@ -30,7 +28,8 @@ public class Problem1191 {
             kadane = Math.max(kadane, maxSoFar) % mod;
         }
         if (totalSum > 0) {
-            return (int) (Math.max(((totalSum * (k - 2)) % mod + suffixSum + prefixSum) % mod, kadane));
+            return (int)
+                    (Math.max(((totalSum * (k - 2)) % mod + suffixSum + prefixSum) % mod, kadane));
         }
         return (int) (Math.max((prefixSum + suffixSum) % mod, kadane));
     }

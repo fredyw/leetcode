@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/cousins-in-binary-tree/
- */
+/** https://leetcode.com/problems/cousins-in-binary-tree/ */
 public class Problem993 {
     public static class TreeNode {
         int val;
@@ -38,8 +36,8 @@ public class Problem993 {
         }
     }
 
-    private static void traverse(TreeNode root, int x, int y, int parent, int depth,
-                                 Map<Integer, DepthParent> map) {
+    private static void traverse(
+            TreeNode root, int x, int y, int parent, int depth, Map<Integer, DepthParent> map) {
         if (root == null) {
             return;
         }

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/
- */
+/** https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/ */
 public class Problem1351 {
     public int countNegatives(int[][] grid) {
         int answer = 0;

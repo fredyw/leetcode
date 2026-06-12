@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array/
- */
+/** https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array/ */
 public class Problem1464 {
     public int maxProduct(int[] nums) {
         int max1 = 0;

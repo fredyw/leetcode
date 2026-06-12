@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/construct-string-from-binary-tree/
- */
+/** https://leetcode.com/problems/construct-string-from-binary-tree/ */
 public class Problem606 {
     public static class TreeNode {
         int val;

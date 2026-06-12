@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/number-of-ways-to-buy-pens-and-pencils/
- */
+/** https://leetcode.com/problems/number-of-ways-to-buy-pens-and-pencils/ */
 class Problem2240 {
     fun waysToBuyPensPencils(total: Int, cost1: Int, cost2: Int): Long {
         var answer = 0L

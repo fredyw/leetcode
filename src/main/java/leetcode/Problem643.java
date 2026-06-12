@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-average-subarray-i/
- */
+/** https://leetcode.com/problems/maximum-average-subarray-i/ */
 public class Problem643 {
     public double findMaxAverage(int[] nums, int k) {
         double sum = 0;

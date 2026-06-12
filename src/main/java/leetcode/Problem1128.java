@@ -1,13 +1,10 @@
 package leetcode;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/number-of-equivalent-domino-pairs/
- */
+/** https://leetcode.com/problems/number-of-equivalent-domino-pairs/ */
 public class Problem1128 {
     public int numEquivDominoPairs(int[][] dominoes) {
         int answer = 0;

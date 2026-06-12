@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/cyclically-rotating-a-grid/
- */
+/** https://leetcode.com/problems/cyclically-rotating-a-grid/ */
 class Problem1914 {
     fun rotateGrid(grid: Array<IntArray>, k: Int): Array<IntArray> {
         val maxRows: Int = grid.size
@@ -21,12 +19,17 @@ class Problem1914 {
         return grid
     }
 
-    private fun rotateGrid(grid: Array<IntArray>, maxRows: Int, maxCols: Int, length: Int,
-                           row: Int, col: Int, k: Int) {
+    private fun rotateGrid(
+        grid: Array<IntArray>,
+        maxRows: Int,
+        maxCols: Int,
+        length: Int,
+        row: Int,
+        col: Int,
+        k: Int,
+    ) {
         var elements = mutableListOf<Int>()
-        iterate(maxRows, maxCols, length, row, col) { r, c ->
-            elements.add(grid[r][c])
-        }
+        iterate(maxRows, maxCols, length, row, col) { r, c -> elements.add(grid[r][c]) }
         var index = 0
         var start = false
         var n = 0
@@ -42,8 +45,14 @@ class Problem1914 {
         }
     }
 
-    private fun iterate(maxRows: Int, maxCols: Int, length: Int, row: Int, col: Int,
-                        f: (Int, Int) -> Unit) {
+    private fun iterate(
+        maxRows: Int,
+        maxCols: Int,
+        length: Int,
+        row: Int,
+        col: Int,
+        f: (Int, Int) -> Unit,
+    ) {
         // Go down.
         var r = row
         var c = col

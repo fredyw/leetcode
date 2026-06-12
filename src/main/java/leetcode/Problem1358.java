@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/
- */
+/** https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/ */
 public class Problem1358 {
     public int numberOfSubstrings(String s) {
         int a = 0;

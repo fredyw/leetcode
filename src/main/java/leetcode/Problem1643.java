@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-deletions-to-make-string-balanced/
- */
+/** https://leetcode.com/problems/minimum-deletions-to-make-string-balanced/ */
 public class Problem1643 {
     public int minimumDeletions(String s) {
         int countA = 0;

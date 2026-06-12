@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.LinkedList;
 
-/**
- * https://leetcode.com/problems/binary-search-tree-iterator/
- */
+/** https://leetcode.com/problems/binary-search-tree-iterator/ */
 public class Problem173 {
     public static class TreeNode {
         int val;

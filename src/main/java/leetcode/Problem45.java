@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/jump-game-ii/
- */
+/** https://leetcode.com/problems/jump-game-ii/ */
 public class Problem45 {
     public int jump(int[] nums) {
         int result = 0;

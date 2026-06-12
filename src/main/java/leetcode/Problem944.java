@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/delete-columns-to-make-sorted/
- */
+/** https://leetcode.com/problems/delete-columns-to-make-sorted/ */
 public class Problem944 {
     public int minDeletionSize(String[] A) {
         int maxRow = A.length;

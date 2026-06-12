@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/maximum-ice-cream-bars/
- */
+/** https://leetcode.com/problems/maximum-ice-cream-bars/ */
 public class Problem1833 {
     public int maxIceCream(int[] costs, int coins) {
         int answer = 0;

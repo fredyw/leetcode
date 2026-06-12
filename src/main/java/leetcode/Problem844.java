@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/backspace-string-compare/
- */
+/** https://leetcode.com/problems/backspace-string-compare/ */
 public class Problem844 {
     public boolean backspaceCompare(String S, String T) {
         return finalString(S).equals(finalString(T));

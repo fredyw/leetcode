@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/arithmetic-subarrays/
- */
+/** https://leetcode.com/problems/arithmetic-subarrays/ */
 public class Problem1630 {
     public List<Boolean> checkArithmeticSubarrays(int[] nums, int[] l, int[] r) {
         List<Boolean> answer = new ArrayList<>();

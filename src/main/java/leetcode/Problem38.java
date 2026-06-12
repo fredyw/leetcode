@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/count-and-say/
- */
+/** https://leetcode.com/problems/count-and-say/ */
 public class Problem38 {
     public String countAndSay(int n) {
         String str = "1";

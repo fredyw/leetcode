@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/subtree-of-another-tree/
- */
+/** https://leetcode.com/problems/subtree-of-another-tree/ */
 public class Problem572 {
     public static class TreeNode {
         int val;

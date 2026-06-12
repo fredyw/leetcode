@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/simple-bank-system/
- */
+/** https://leetcode.com/problems/simple-bank-system/ */
 class Problem2043 {
     class Bank(private val balance: LongArray) {
         fun transfer(account1: Int, account2: Int, money: Long): Boolean {

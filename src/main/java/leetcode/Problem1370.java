@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
-/**
- * https://leetcode.com/problems/increasing-decreasing-string/
- */
+/** https://leetcode.com/problems/increasing-decreasing-string/ */
 public class Problem1370 {
     public String sortString(String s) {
         TreeMap<Character, Integer> map = new TreeMap<>();
@@ -16,8 +14,8 @@ public class Problem1370 {
         String answer = "";
         boolean asc = true;
         while (map.size() > 0) {
-            List<Character> keys = asc ?
-                new ArrayList<>(map.keySet()) : new ArrayList<>(map.descendingKeySet());
+            List<Character> keys =
+                    asc ? new ArrayList<>(map.keySet()) : new ArrayList<>(map.descendingKeySet());
             for (char key : keys) {
                 answer += key;
                 int c = map.get(key) - 1;

@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/count-unguarded-cells-in-the-grid/
- */
+/** https://leetcode.com/problems/count-unguarded-cells-in-the-grid/ */
 class Problem2257 {
     fun countUnguarded(m: Int, n: Int, guards: Array<IntArray>, walls: Array<IntArray>): Int {
         val grid = Array(m) { IntArray(n) { UNGUARDED } }

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximize-distance-to-closest-person/
- */
+/** https://leetcode.com/problems/maximize-distance-to-closest-person/ */
 public class Problem849 {
     public int maxDistToClosest(int[] seats) {
         int max = 0;
@@ -10,7 +8,7 @@ public class Problem849 {
         for (int i = 0; i < seats.length; i++) {
             if (seats[i] == 1) {
                 if (prevIdx == -1) {
-                   max = Math.max(max, i);
+                    max = Math.max(max, i);
                 } else {
                     max = Math.max(max, (i - prevIdx) / 2);
                 }

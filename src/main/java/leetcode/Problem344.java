@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/reverse-string/
- */
+/** https://leetcode.com/problems/reverse-string/ */
 public class Problem344 {
     public String reverseString(String s) {
         char[] chars = s.toCharArray();

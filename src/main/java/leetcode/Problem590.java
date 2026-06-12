@@ -3,16 +3,13 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/n-ary-tree-postorder-traversal/
- */
+/** https://leetcode.com/problems/n-ary-tree-postorder-traversal/ */
 public class Problem590 {
     private static class Node {
         public int val;
         public List<Node> children;
 
-        public Node() {
-        }
+        public Node() {}
 
         public Node(int _val, List<Node> _children) {
             val = _val;

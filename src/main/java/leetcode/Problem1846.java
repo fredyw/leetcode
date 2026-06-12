@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/maximum-element-after-decreasing-and-rearranging/
- */
+/** https://leetcode.com/problems/maximum-element-after-decreasing-and-rearranging/ */
 public class Problem1846 {
     public int maximumElementAfterDecrementingAndRearranging(int[] arr) {
         Arrays.sort(arr);

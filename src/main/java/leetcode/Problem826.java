@@ -8,9 +8,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeSet;
 
-/**
- * https://leetcode.com/problems/most-profit-assigning-work/
- */
+/** https://leetcode.com/problems/most-profit-assigning-work/ */
 public class Problem826 {
     public int maxProfitAssignment(int[] difficulty, int[] profit, int[] worker) {
         DifficultyProfit[] dp = new DifficultyProfit[difficulty.length];
@@ -25,8 +23,8 @@ public class Problem826 {
             map.put(dp[i].difficulty, maxProfit);
         }
         int result = 0;
-        TreeSet<Entry<Integer, Integer>> set = new TreeSet<>(
-            Comparator.comparingInt(Entry::getKey));
+        TreeSet<Entry<Integer, Integer>> set =
+                new TreeSet<>(Comparator.comparingInt(Entry::getKey));
         set.addAll(map.entrySet());
         for (int i = 0; i < worker.length; i++) {
             Entry<Integer, Integer> entry = set.floor(new SimpleImmutableEntry<>(worker[i], 0));

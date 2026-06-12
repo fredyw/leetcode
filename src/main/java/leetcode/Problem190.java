@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/reverse-bits/
- */
+/** https://leetcode.com/problems/reverse-bits/ */
 public class Problem190 {
     // you need treat n as an unsigned value
     public int reverseBits(int n) {

@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/percentage-of-letter-in-string/
- */
+/** https://leetcode.com/problems/percentage-of-letter-in-string/ */
 class Problem2278 {
     fun percentageLetter(s: String, letter: Char): Int {
         val chars = IntArray(26)

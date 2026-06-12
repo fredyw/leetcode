@@ -3,9 +3,7 @@ package leetcode
 import kotlin.math.max
 import kotlin.math.min
 
-/**
- * https://leetcode.com/problems/sum-of-beauty-in-the-array/
- */
+/** https://leetcode.com/problems/sum-of-beauty-in-the-array/ */
 class Problem2012 {
     fun sumOfBeauties(nums: IntArray): Int {
         val left = IntArray(nums.size)

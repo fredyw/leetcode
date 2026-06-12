@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/ways-to-make-a-fair-array/
- */
+/** https://leetcode.com/problems/ways-to-make-a-fair-array/ */
 public class Problem1664 {
     public int waysToMakeFair(int[] nums) {
         int[] oddPrefixSums = new int[nums.length];
@@ -38,7 +36,7 @@ public class Problem1664 {
                 right = i - 1 >= 0 ? oddSum - oddPrefixSums[i - 1] : oddSum;
             } else {
                 left = i - 2 >= 0 ? oddPrefixSums[i - 2] : 0;
-                right = i - 1 >=  0 ? evenSum - evenPrefixSums[i - 1] : evenSum;
+                right = i - 1 >= 0 ? evenSum - evenPrefixSums[i - 1] : evenSum;
             }
             if (left + right == newSum - (left + right)) {
                 answer++;

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/
- */
+/** https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/ */
 public class Problem1209 {
     public String removeDuplicates(String s, int k) {
         String answer = s;

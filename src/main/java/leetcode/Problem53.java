@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-subarray/
- */
+/** https://leetcode.com/problems/maximum-subarray/ */
 public class Problem53 {
     public int maxSubArray(int[] nums) {
         if (nums.length == 1) {

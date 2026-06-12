@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/path-crossing/
- */
+/** https://leetcode.com/problems/path-crossing/ */
 public class Problem1496 {
     public boolean isPathCrossing(String path) {
         Set<String> set = new HashSet<>();

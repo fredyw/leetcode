@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/monotone-increasing-digits/
- */
+/** https://leetcode.com/problems/monotone-increasing-digits/ */
 public class Problem738 {
     public int monotoneIncreasingDigits(int N) {
         String str = Integer.toString(N);

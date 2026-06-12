@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.PriorityQueue;
 
-/**
- * https://leetcode.com/problems/trapping-rain-water-ii/
- */
+/** https://leetcode.com/problems/trapping-rain-water-ii/ */
 public class Problem407 {
     public int trapRainWater(int[][] heightMap) {
         // https://www.youtube.com/watch?v=cJayBq38VYw
@@ -14,7 +12,8 @@ public class Problem407 {
             maxCol = heightMap[0].length;
         }
         boolean[][] visited = new boolean[maxRow][maxCol];
-        PriorityQueue<RowCol> queue = new PriorityQueue<>((a, b) -> Integer.compare(a.value, b.value));
+        PriorityQueue<RowCol> queue =
+                new PriorityQueue<>((a, b) -> Integer.compare(a.value, b.value));
         // top
         for (int col = 0; col < maxCol; col++) {
             visited[0][col] = true;
@@ -64,14 +63,15 @@ public class Problem407 {
         return result;
     }
 
-    private static int process(int[][] heightMap,
-                                PriorityQueue<RowCol> queue,
-                                boolean[][] visited,
-                                int row,
-                                int col,
-                                int maxRow,
-                                int maxCol,
-                                int max) {
+    private static int process(
+            int[][] heightMap,
+            PriorityQueue<RowCol> queue,
+            boolean[][] visited,
+            int row,
+            int col,
+            int maxRow,
+            int maxCol,
+            int max) {
         if (row >= 0 && row < maxRow && col >= 0 && col < maxCol && !visited[row][col]) {
             int result = 0;
             int val = heightMap[row][col];

@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/next-greater-node-in-linked-list/
- */
+/** https://leetcode.com/problems/next-greater-node-in-linked-list/ */
 public class Problem1019 {
     public static class ListNode {
         int val;

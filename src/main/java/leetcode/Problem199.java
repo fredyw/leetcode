@@ -6,9 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/binary-tree-right-side-view/
- */
+/** https://leetcode.com/problems/binary-tree-right-side-view/ */
 public class Problem199 {
     public static class TreeNode {
         int val;

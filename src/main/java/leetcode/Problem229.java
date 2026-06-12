@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/majority-element-ii/
- */
+/** https://leetcode.com/problems/majority-element-ii/ */
 public class Problem229 {
     public List<Integer> majorityElement(int[] nums) {
         List<Integer> result = new ArrayList<>();
@@ -19,11 +17,12 @@ public class Problem229 {
                 map.put(num, 1);
             }
         }
-        map.forEach((num, count) -> {
-            if (nums.length / 3 < count) {
-                result.add(num);
-            }
-        });
+        map.forEach(
+                (num, count) -> {
+                    if (nums.length / 3 < count) {
+                        result.add(num);
+                    }
+                });
         return result;
     }
 }

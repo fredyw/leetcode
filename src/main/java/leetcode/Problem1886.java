@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/determine-whether-matrix-can-be-obtained-by-rotation/
- */
+/** https://leetcode.com/problems/determine-whether-matrix-can-be-obtained-by-rotation/ */
 public class Problem1886 {
     public boolean findRotation(int[][] mat, int[][] target) {
         for (int i = 0; i < 4; i++) {

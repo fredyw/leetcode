@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/find-triangular-sum-of-an-array/
- */
+/** https://leetcode.com/problems/find-triangular-sum-of-an-array/ */
 class Problem2221 {
     fun triangularSum(nums: IntArray): Int {
         var list = mutableListOf<Int>()

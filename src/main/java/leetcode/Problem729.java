@@ -3,15 +3,12 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/my-calendar-i/
- */
+/** https://leetcode.com/problems/my-calendar-i/ */
 public class Problem729 {
     private static class MyCalendar {
         private final List<int[]> list = new ArrayList<>();
 
-        public MyCalendar() {
-        }
+        public MyCalendar() {}
 
         public boolean book(int start, int end) {
             for (int[] i : list) {
@@ -19,7 +16,7 @@ public class Problem729 {
                     return false;
                 }
             }
-            list.add(new int[]{start, end});
+            list.add(new int[] {start, end});
             return true;
         }
     }

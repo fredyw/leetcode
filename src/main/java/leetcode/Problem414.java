@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/third-maximum-number/
- */
+/** https://leetcode.com/problems/third-maximum-number/ */
 public class Problem414 {
     public int thirdMax(int[] nums) {
         Integer max1 = null;

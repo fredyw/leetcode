@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/walking-robot-simulation/
- */
+/** https://leetcode.com/problems/walking-robot-simulation/ */
 public class Problem874 {
     public int robotSim(int[] commands, int[][] obstacles) {
         int max = 0;
@@ -50,7 +48,10 @@ public class Problem874 {
     }
 
     private enum Direction {
-        LEFT, RIGHT, UP, DOWN
+        LEFT,
+        RIGHT,
+        UP,
+        DOWN
     }
 
     private static Direction newDirection(Direction current, int cmd) {

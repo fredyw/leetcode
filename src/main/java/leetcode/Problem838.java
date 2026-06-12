@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/push-dominoes/
- */
+/** https://leetcode.com/problems/push-dominoes/ */
 public class Problem838 {
     public String pushDominoes(String dominoes) {
         char[] chars = new char[dominoes.length()];

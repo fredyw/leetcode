@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/battleships-in-a-board/
- */
+/** https://leetcode.com/problems/battleships-in-a-board/ */
 public class Problem419 {
     public int countBattleships(char[][] board) {
         boolean[][] marked = new boolean[board.length][board[0].length];

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-adjacent-swaps-to-reach-the-kth-smallest-number/
- */
+/** https://leetcode.com/problems/minimum-adjacent-swaps-to-reach-the-kth-smallest-number/ */
 public class Problem1850 {
     public int getMinSwaps(String num, int k) {
         String kthSmallest = getKthSmallest(num, k);

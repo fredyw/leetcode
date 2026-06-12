@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/partition-array-such-that-maximum-difference-is-k/
- */
+/** https://leetcode.com/problems/partition-array-such-that-maximum-difference-is-k/ */
 class Problem2294 {
     fun partitionArray(nums: IntArray, k: Int): Int {
         nums.sort()

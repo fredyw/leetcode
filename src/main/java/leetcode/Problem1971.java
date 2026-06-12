@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/find-if-path-exists-in-graph/
- */
+/** https://leetcode.com/problems/find-if-path-exists-in-graph/ */
 public class Problem1971 {
     public boolean validPath(int n, int[][] edges, int start, int end) {
         List<Integer>[] adjList = new List[n];

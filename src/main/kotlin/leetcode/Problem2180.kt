@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/count-integers-with-even-digit-sum/
- */
+/** https://leetcode.com/problems/count-integers-with-even-digit-sum/ */
 class Problem2180 {
     fun countEven(num: Int): Int {
         val s = num.toString()

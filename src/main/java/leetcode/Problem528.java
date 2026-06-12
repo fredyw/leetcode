@@ -3,9 +3,7 @@ package leetcode;
 import java.util.Random;
 import java.util.TreeMap;
 
-/**
- * https://leetcode.com/problems/random-pick-with-weight/
- */
+/** https://leetcode.com/problems/random-pick-with-weight/ */
 public class Problem528 {
     public static class Solution {
         private final TreeMap<Integer, Integer> map = new TreeMap<>();

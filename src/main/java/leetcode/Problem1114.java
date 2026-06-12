@@ -2,17 +2,14 @@ package leetcode;
 
 import java.util.concurrent.CountDownLatch;
 
-/**
- * https://leetcode.com/problems/print-in-order/
- */
+/** https://leetcode.com/problems/print-in-order/ */
 public class Problem1114 {
     private static class Foo {
         private final CountDownLatch latch2 = new CountDownLatch(1);
         private final CountDownLatch latch3 = new CountDownLatch(1);
         private final Object obj1 = new Object();
 
-        public Foo() {
-        }
+        public Foo() {}
 
         public void first(Runnable printFirst) throws InterruptedException {
             // printFirst.run() outputs "first". Do not change or remove this line.

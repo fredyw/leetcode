@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/reformat-phone-number/
- */
+/** https://leetcode.com/problems/reformat-phone-number/ */
 public class Problem1694 {
     public String reformatNumber(String number) {
         String num = number.replaceAll("-", "").replaceAll("\\s", "");

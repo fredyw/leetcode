@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/simplify-path/
- */
+/** https://leetcode.com/problems/simplify-path/ */
 public class Problem71 {
     public String simplifyPath(String path) {
         Stack<String> stack = new Stack<>();

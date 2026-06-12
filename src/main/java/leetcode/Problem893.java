@@ -4,9 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/groups-of-special-equivalent-strings/
- */
+/** https://leetcode.com/problems/groups-of-special-equivalent-strings/ */
 public class Problem893 {
     public int numSpecialEquivGroups(String[] A) {
         Set<String> set = new HashSet<>();

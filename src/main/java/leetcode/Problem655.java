@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/print-binary-tree/
- */
+/** https://leetcode.com/problems/print-binary-tree/ */
 public class Problem655 {
     public static class TreeNode {
         int val;
@@ -32,7 +30,8 @@ public class Problem655 {
         return result;
     }
 
-    private static void printTree(TreeNode node, int row, int colLeft, int colRight, List<List<String>> result) {
+    private static void printTree(
+            TreeNode node, int row, int colLeft, int colRight, List<List<String>> result) {
         if (node == null) {
             return;
         }

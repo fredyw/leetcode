@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/subarray-product-less-than-k/
- */
+/** https://leetcode.com/problems/subarray-product-less-than-k/ */
 public class Problem713 {
     public int numSubarrayProductLessThanK(int[] nums, int k) {
         if (k <= 0) {

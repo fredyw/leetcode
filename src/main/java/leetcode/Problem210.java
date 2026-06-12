@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/course-schedule-ii/
- */
+/** https://leetcode.com/problems/course-schedule-ii/ */
 public class Problem210 {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         Map<Integer, List<Integer>> adjList = new HashMap<>();
@@ -34,7 +32,7 @@ public class Problem210 {
         }
         boolean cycle = hasCycle(adjList);
         if (cycle) {
-            return new int[]{};
+            return new int[] {};
         }
         List<Integer> path = topologicalSort(adjList, vertices);
         int[] result = new int[path.size()];
@@ -44,8 +42,8 @@ public class Problem210 {
         return result;
     }
 
-    private List<Integer> topologicalSort(Map<Integer, List<Integer>> adjList,
-                                          Set<Integer> vertices) {
+    private List<Integer> topologicalSort(
+            Map<Integer, List<Integer>> adjList, Set<Integer> vertices) {
         Set<Integer> marked = new HashSet<>();
         List<Integer> path = new ArrayList<>();
         for (int vertex : vertices) {
@@ -56,8 +54,11 @@ public class Problem210 {
         return path;
     }
 
-    private void topologicalSort(Map<Integer, List<Integer>> adjList, int source,
-                                 Set<Integer> marked, List<Integer> path) {
+    private void topologicalSort(
+            Map<Integer, List<Integer>> adjList,
+            int source,
+            Set<Integer> marked,
+            List<Integer> path) {
         marked.add(source);
         if (adjList.containsKey(source)) {
             for (int vertex : adjList.get(source)) {
@@ -91,9 +92,12 @@ public class Problem210 {
         return false;
     }
 
-    private void hasCycle(Map<Integer, List<Integer>> graph, int source,
-                          Map<Integer, Boolean> onStack, Set<Integer> marked,
-                          Cycle cycle) {
+    private void hasCycle(
+            Map<Integer, List<Integer>> graph,
+            int source,
+            Map<Integer, Boolean> onStack,
+            Set<Integer> marked,
+            Cycle cycle) {
         if (!graph.containsKey(source)) {
             return;
         }

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/largest-plus-sign/
- */
+/** https://leetcode.com/problems/largest-plus-sign/ */
 public class Problem764 {
     public int orderOfLargestPlusSign(int N, int[][] mines) {
         int result = 0;

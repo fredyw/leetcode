@@ -1,11 +1,8 @@
 package leetcode
 
 import java.util.LinkedList
-import kotlin.math.min
 
-/**
- * https://leetcode.com/problems/minimum-operations-to-convert-number/
- */
+/** https://leetcode.com/problems/minimum-operations-to-convert-number/ */
 class Problem2059 {
     fun minimumOperations(nums: IntArray, start: Int, goal: Int): Int {
         var answer = 0

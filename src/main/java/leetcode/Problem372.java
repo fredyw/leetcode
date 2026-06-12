@@ -2,9 +2,7 @@ package leetcode;
 
 import java.math.BigInteger;
 
-/**
- * https://leetcode.com/problems/super-pow/
- */
+/** https://leetcode.com/problems/super-pow/ */
 public class Problem372 {
     public int superPow(int a, int[] b) {
         // https://en.wikipedia.org/wiki/Modular_exponentiation#Memory-efficient_method

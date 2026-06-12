@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/check-if-number-is-a-sum-of-powers-of-three/
- */
+/** https://leetcode.com/problems/check-if-number-is-a-sum-of-powers-of-three/ */
 public class Problem1780 {
     public boolean checkPowersOfThree(int n) {
         return checkPowersOfThree(n, 1);

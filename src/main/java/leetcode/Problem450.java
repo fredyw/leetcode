@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/delete-node-in-a-bst/
- */
+/** https://leetcode.com/problems/delete-node-in-a-bst/ */
 public class Problem450 {
     public static class TreeNode {
         int val;
@@ -21,7 +19,9 @@ public class Problem450 {
     }
 
     private enum Direction {
-        LEFT, RIGHT, MIDDLE
+        LEFT,
+        RIGHT,
+        MIDDLE
     }
 
     private static class NodeRef {
@@ -32,7 +32,8 @@ public class Problem450 {
         }
     }
 
-    private static void deleteNode(TreeNode node, TreeNode parent, Direction direction, int key, NodeRef ref) {
+    private static void deleteNode(
+            TreeNode node, TreeNode parent, Direction direction, int key, NodeRef ref) {
         if (node == null) {
             return;
         }

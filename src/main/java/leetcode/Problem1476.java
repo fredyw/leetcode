@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/subrectangle-queries/
- */
+/** https://leetcode.com/problems/subrectangle-queries/ */
 public class Problem1476 {
     static class SubrectangleQueries {
         private final int[][] rectangle;

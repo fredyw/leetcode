@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/subdomain-visit-count/description/
- */
+/** https://leetcode.com/problems/subdomain-visit-count/description/ */
 public class Problem811 {
     public List<String> subdomainVisits(String[] cpdomains) {
         Map<String, Integer> map = new HashMap<>();
@@ -27,9 +25,10 @@ public class Problem811 {
             }
         }
         List<String> result = new ArrayList<>();
-        map.forEach((domain, count) -> {
-            result.add(count + " " + domain);
-        });
+        map.forEach(
+                (domain, count) -> {
+                    result.add(count + " " + domain);
+                });
         return result;
     }
 }

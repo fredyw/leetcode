@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/next-closest-time/
- */
+/** https://leetcode.com/problems/next-closest-time/ */
 public class Problem681 {
     public String nextClosestTime(String time) {
         Set<Integer> nums = new HashSet<>();

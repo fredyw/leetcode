@@ -5,9 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-/**
- * https://leetcode.com/problems/01-matrix/
- */
+/** https://leetcode.com/problems/01-matrix/ */
 public class Problem542 {
     public List<List<Integer>> updateMatrix(List<List<Integer>> matrix) {
         int maxRow = matrix.size();

@@ -6,7 +6,7 @@ package leetcode;
 public class Problem1415 {
     public String getHappyString(int n, int k) {
         Ref<String> answer = new Ref<>("");
-        getHappyString(n, new char[]{'a', 'b', 'c'}, -1, "", new Ref<>(k), answer);
+        getHappyString(n, new char[] {'a', 'b', 'c'}, -1, "", new Ref<>(k), answer);
         return answer.val;
     }
 
@@ -18,12 +18,8 @@ public class Problem1415 {
         }
     }
 
-    private static boolean getHappyString(int n,
-                                          char[] chars,
-                                          int prevIdx,
-                                          String acc,
-                                          Ref<Integer> count,
-                                          Ref<String> answer) {
+    private static boolean getHappyString(
+            int n, char[] chars, int prevIdx, String acc, Ref<Integer> count, Ref<String> answer) {
         if (n == 0) {
             count.val--;
             if (count.val == 0) {

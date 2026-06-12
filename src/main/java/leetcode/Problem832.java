@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/flipping-an-image/
- */
+/** https://leetcode.com/problems/flipping-an-image/ */
 public class Problem832 {
     public int[][] flipAndInvertImage(int[][] A) {
         int nRow = A.length;

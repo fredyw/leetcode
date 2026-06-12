@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/find-mode-in-binary-search-tree/
- */
+/** https://leetcode.com/problems/find-mode-in-binary-search-tree/ */
 public class Problem501 {
     public static class TreeNode {
         int val;
@@ -28,11 +26,12 @@ public class Problem501 {
         IntRef max = new IntRef();
         findMode(root, map, max);
         List<Integer> list = new ArrayList<>();
-        map.forEach((val, count) -> {
-            if (count == max.val) {
-                list.add(val);
-            }
-        });
+        map.forEach(
+                (val, count) -> {
+                    if (count == max.val) {
+                        list.add(val);
+                    }
+                });
         int[] result = new int[list.size()];
         for (int i = 0; i < result.length; i++) {
             result[i] = list.get(i);

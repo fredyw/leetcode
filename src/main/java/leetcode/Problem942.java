@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/di-string-match/
- */
+/** https://leetcode.com/problems/di-string-match/ */
 public class Problem942 {
     public int[] diStringMatch(String S) {
         int start = 0;

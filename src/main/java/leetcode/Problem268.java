@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/missing-number/
- */
+/** https://leetcode.com/problems/missing-number/ */
 public class Problem268 {
     public int missingNumber(int[] nums) {
         int expected = 0;

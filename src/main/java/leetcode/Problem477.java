@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/total-hamming-distance/
- */
+/** https://leetcode.com/problems/total-hamming-distance/ */
 public class Problem477 {
     public int totalHammingDistance(int[] nums) {
         int result = 0;

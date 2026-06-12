@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/kth-missing-positive-number/
- */
+/** https://leetcode.com/problems/kth-missing-positive-number/ */
 public class Problem1539 {
     public int findKthPositive(int[] arr, int k) {
         int count = 0;

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/find-peak-element/
- */
+/** https://leetcode.com/problems/find-peak-element/ */
 public class Problem162 {
     public int findPeakElement(int[] nums) {
         int left = 0;

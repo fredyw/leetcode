@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/distribute-candies/
- */
+/** https://leetcode.com/problems/distribute-candies/ */
 public class Problem575 {
     public int distributeCandies(int[] candies) {
         Set<Integer> set = new HashSet<>();

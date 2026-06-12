@@ -8,9 +8,7 @@ import java.util.Objects;
 import java.util.Queue;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/shortest-path-with-alternating-colors/
- */
+/** https://leetcode.com/problems/shortest-path-with-alternating-colors/ */
 public class Problem1129 {
     public int[] shortestAlternatingPaths(int n, int[][] red_edges, int[][] blue_edges) {
         List<Integer>[] redAdjList = buildGraph(n, red_edges);
@@ -19,9 +17,10 @@ public class Problem1129 {
         Integer[] redCounts = getCounts(n, redAdjList, blueAdjList, true);
         Integer[] blueCounts = getCounts(n, redAdjList, blueAdjList, false);
         for (int i = 0; i < answer.length; i++) {
-            answer[i] = Math.min(
-                redCounts[i] == null ? Integer.MAX_VALUE : redCounts[i],
-                blueCounts[i] == null ? Integer.MAX_VALUE : blueCounts[i]);
+            answer[i] =
+                    Math.min(
+                            redCounts[i] == null ? Integer.MAX_VALUE : redCounts[i],
+                            blueCounts[i] == null ? Integer.MAX_VALUE : blueCounts[i]);
             if (answer[i] == Integer.MAX_VALUE) {
                 answer[i] = -1;
             }
@@ -29,10 +28,8 @@ public class Problem1129 {
         return answer;
     }
 
-    private static Integer[] getCounts(int n,
-                                       List<Integer>[] redAdjList,
-                                       List<Integer>[] blueAdjList,
-                                       boolean red) {
+    private static Integer[] getCounts(
+            int n, List<Integer>[] redAdjList, List<Integer>[] blueAdjList, boolean red) {
         Integer[] counts = new Integer[n];
         Set<Node> visited = new HashSet<>();
         Queue<Node> queue = new LinkedList<>();
@@ -44,8 +41,10 @@ public class Problem1129 {
             }
             List<Integer>[] adjList = current.red ? blueAdjList : redAdjList; // alternate
             List<Integer> neighbors = adjList[current.node];
-            counts[current.node] = counts[current.node] == null ?
-                current.count : Math.min(counts[current.node], current.count);
+            counts[current.node] =
+                    counts[current.node] == null
+                            ? current.count
+                            : Math.min(counts[current.node], current.count);
             visited.add(current);
             if (neighbors != null) {
                 for (int neighbor : neighbors) {
@@ -76,8 +75,7 @@ public class Problem1129 {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             Node node1 = (Node) o;
-            return node == node1.node &&
-                red == node1.red;
+            return node == node1.node && red == node1.red;
         }
 
         @Override

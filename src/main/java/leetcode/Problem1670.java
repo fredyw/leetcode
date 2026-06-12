@@ -2,16 +2,13 @@ package leetcode;
 
 import java.util.LinkedList;
 
-/**
- * https://leetcode.com/problems/design-front-middle-back-queue/
- */
+/** https://leetcode.com/problems/design-front-middle-back-queue/ */
 public class Problem1670 {
     static class FrontMiddleBackQueue {
         private final LinkedList<Integer> front = new LinkedList<>();
         private final LinkedList<Integer> back = new LinkedList<>();
 
-        public FrontMiddleBackQueue() {
-        }
+        public FrontMiddleBackQueue() {}
 
         public void pushFront(int val) {
             front.addFirst(val);

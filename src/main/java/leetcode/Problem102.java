@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/binary-tree-level-order-traversal/
- */
+/** https://leetcode.com/problems/binary-tree-level-order-traversal/ */
 public class Problem102 {
     public static class TreeNode {
         int val;

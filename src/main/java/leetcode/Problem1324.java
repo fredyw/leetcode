@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/print-words-vertically/
- */
+/** https://leetcode.com/problems/print-words-vertically/ */
 public class Problem1324 {
     public List<String> printVertically(String s) {
         String[] words = s.split(" ");

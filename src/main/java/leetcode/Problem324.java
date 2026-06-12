@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/wiggle-sort-ii/
- */
+/** https://leetcode.com/problems/wiggle-sort-ii/ */
 public class Problem324 {
     public void wiggleSort(int[] nums) {
         Arrays.sort(nums);

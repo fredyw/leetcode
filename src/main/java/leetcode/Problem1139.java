@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/largest-1-bordered-square/
- */
+/** https://leetcode.com/problems/largest-1-bordered-square/ */
 public class Problem1139 {
     public int largest1BorderedSquare(int[][] grid) {
         int answer = 0;
@@ -36,7 +34,9 @@ public class Problem1139 {
         for (int i = 0; i < maxRow; i++) {
             for (int j = 0; j < maxCol; j++) {
                 // Make sure this is a square.
-                for (int k = 1; k <= Math.min(maxRow, maxCol) && i + k <= maxRow && j + k <= maxCol; k++) {
+                for (int k = 1;
+                        k <= Math.min(maxRow, maxCol) && i + k <= maxRow && j + k <= maxCol;
+                        k++) {
                     if (isValid(rowSums, colSums, i, j, k)) {
                         answer = Math.max(answer, k * k);
                     }
@@ -53,7 +53,7 @@ public class Problem1139 {
         if (rowSums[row + k - 1][col] < k || rowSums[row + k - 1][col + k - 1] < k) {
             return false;
         }
-        if (colSums[row][col + k - 1] < k || colSums[row + k - 1][col + k -1] < k) {
+        if (colSums[row][col + k - 1] < k || colSums[row + k - 1][col + k - 1] < k) {
             return false;
         }
         return true;

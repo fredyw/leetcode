@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/rings-and-rods/
- */
+/** https://leetcode.com/problems/rings-and-rods/ */
 class Problem2103 {
     fun countPoints(rings: String): Int {
         var i = 0

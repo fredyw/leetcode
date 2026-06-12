@@ -2,9 +2,7 @@ package leetcode
 
 import kotlin.math.min
 
-/**
- * https://leetcode.com/problems/minimum-consecutive-cards-to-pick-up/
- */
+/** https://leetcode.com/problems/minimum-consecutive-cards-to-pick-up/ */
 class Problem2260 {
     fun minimumCardPickup(cards: IntArray): Int {
         var answer = -1

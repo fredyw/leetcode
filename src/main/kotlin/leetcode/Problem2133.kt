@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/check-if-every-row-and-column-contains-all-numbers/
- */
+/** https://leetcode.com/problems/check-if-every-row-and-column-contains-all-numbers/ */
 class Problem2133 {
     fun checkValid(matrix: Array<IntArray>): Boolean {
         val n = matrix.size

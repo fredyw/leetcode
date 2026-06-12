@@ -1,7 +1,6 @@
 package leetcode;
 
 import java.util.Arrays;
-import java.util.Map;
 
 // https://leetcode.com/problems/check-if-two-expression-trees-are-equivalent/
 public class Problem1612 {

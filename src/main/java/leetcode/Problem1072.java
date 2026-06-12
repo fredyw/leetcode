@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/flip-columns-for-maximum-number-of-equal-rows/
- */
+/** https://leetcode.com/problems/flip-columns-for-maximum-number-of-equal-rows/ */
 public class Problem1072 {
     public int maxEqualRowsAfterFlips(int[][] matrix) {
         int answer = 0;

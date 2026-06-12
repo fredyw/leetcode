@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/
- */
+/** https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/ */
 public class Problem1026 {
     public static class TreeNode {
         int val;

@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/most-visited-sector-in-a-circular-track/
- */
+/** https://leetcode.com/problems/most-visited-sector-in-a-circular-track/ */
 public class Problem1560 {
     public List<Integer> mostVisited(int n, int[] rounds) {
         int[] counts = new int[n];

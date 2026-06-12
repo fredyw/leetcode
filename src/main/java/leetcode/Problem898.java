@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/bitwise-ors-of-subarrays/
- */
+/** https://leetcode.com/problems/bitwise-ors-of-subarrays/ */
 public class Problem898 {
     public int subarrayBitwiseORs(int[] A) {
         Set<Integer> answer = new HashSet<>();

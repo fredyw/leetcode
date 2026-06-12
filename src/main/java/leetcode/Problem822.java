@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/card-flipping-game/
- */
+/** https://leetcode.com/problems/card-flipping-game/ */
 public class Problem822 {
     public int flipgame(int[] fronts, int[] backs) {
         boolean[] set = new boolean[2000];

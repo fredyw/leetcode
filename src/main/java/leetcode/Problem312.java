@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/burst-balloons/
- */
+/** https://leetcode.com/problems/burst-balloons/ */
 public class Problem312 {
     public int maxCoins(int[] nums) {
         List<Integer> list = new ArrayList<>();

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/reverse-string-ii/
- */
+/** https://leetcode.com/problems/reverse-string-ii/ */
 public class Problem541 {
     public String reverseStr(String s, int k) {
         StringBuilder sb = new StringBuilder();

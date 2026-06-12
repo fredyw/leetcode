@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/interval-list-intersections/
- */
+/** https://leetcode.com/problems/interval-list-intersections/ */
 public class Problem986 {
     public static class Interval {
         int start;
@@ -27,8 +25,8 @@ public class Problem986 {
         int i = 0;
         int j = 0;
         while (i < A.length && j < B.length) {
-            if ((A[i].start <= B[j].start && B[j].start <= A[i].end) ||
-                (B[j].start <= A[i].start && A[i].start <= B[j].end)) {
+            if ((A[i].start <= B[j].start && B[j].start <= A[i].end)
+                    || (B[j].start <= A[i].start && A[i].start <= B[j].end)) {
                 int start = Integer.max(A[i].start, B[j].start);
                 int end = Integer.min(A[i].end, B[j].end);
                 if (A[i].end < B[j].end) {

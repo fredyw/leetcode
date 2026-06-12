@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/single-element-in-a-sorted-array/
- */
+/** https://leetcode.com/problems/single-element-in-a-sorted-array/ */
 public class Problem540 {
     public int singleNonDuplicate(int[] nums) {
         int i = 0;

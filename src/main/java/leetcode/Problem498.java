@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/diagonal-traverse/
- */
+/** https://leetcode.com/problems/diagonal-traverse/ */
 public class Problem498 {
     public int[] findDiagonalOrder(int[][] matrix) {
         int maxRow = matrix.length;

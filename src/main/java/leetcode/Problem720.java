@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/longest-word-in-dictionary/
- */
+/** https://leetcode.com/problems/longest-word-in-dictionary/ */
 public class Problem720 {
     public String longestWord(String[] words) {
         Set<String> set = new HashSet<>();

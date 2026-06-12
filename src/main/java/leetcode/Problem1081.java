@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/
- */
+/** https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/ */
 public class Problem1081 {
     public String smallestSubsequence(String text) {
         Stack<Integer> stack = new Stack<>();
@@ -26,7 +24,7 @@ public class Problem1081 {
         }
         StringBuilder answer = new StringBuilder();
         for (int i : stack) {
-            answer.append((char)('a' + i));
+            answer.append((char) ('a' + i));
         }
         return answer.toString();
     }

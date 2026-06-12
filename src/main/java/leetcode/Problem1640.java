@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/check-array-formation-through-concatenation/
- */
+/** https://leetcode.com/problems/check-array-formation-through-concatenation/ */
 public class Problem1640 {
     public boolean canFormArray(int[] arr, int[][] pieces) {
         Map</* first element */ Integer, /* index */ Integer> map = new HashMap<>();

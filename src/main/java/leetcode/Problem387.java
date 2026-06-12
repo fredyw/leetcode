@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/first-unique-character-in-a-string/
- */
+/** https://leetcode.com/problems/first-unique-character-in-a-string/ */
 public class Problem387 {
     public int firstUniqChar(String s) {
         Map<Character, Integer> charCounts = new HashMap<>();

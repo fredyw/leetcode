@@ -2,9 +2,7 @@ package leetcode
 
 import kotlin.math.max
 
-/**
- * https://leetcode.com/problems/two-furthest-houses-with-different-colors/
- */
+/** https://leetcode.com/problems/two-furthest-houses-with-different-colors/ */
 class Problem2078 {
     fun maxDistance(colors: IntArray): Int {
         val prefixMap = HashMap<Int, Int>()

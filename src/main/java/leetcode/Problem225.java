@@ -3,9 +3,7 @@ package leetcode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
- * https://leetcode.com/problems/implement-stack-using-queues/
- */
+/** https://leetcode.com/problems/implement-stack-using-queues/ */
 public class Problem225 {
     static class MyStack {
         private Queue<Integer> list1 = new LinkedList<>();

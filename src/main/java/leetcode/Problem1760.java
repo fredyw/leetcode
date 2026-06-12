@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-limit-of-balls-in-a-bag/
- */
+/** https://leetcode.com/problems/minimum-limit-of-balls-in-a-bag/ */
 public class Problem1760 {
     public int minimumSize(int[] nums, int maxOperations) {
         int left = 1;

@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/bag-of-tokens/
- */
+/** https://leetcode.com/problems/bag-of-tokens/ */
 public class Problem948 {
     public int bagOfTokensScore(int[] tokens, int P) {
         Arrays.sort(tokens);

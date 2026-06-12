@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/ugly-number-iii/
- */
+/** https://leetcode.com/problems/ugly-number-iii/ */
 public class Problem1201 {
     public int nthUglyNumber(int n, int a, int b, int c) {
         // TODO

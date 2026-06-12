@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/number-of-operations-to-make-network-connected/
- */
+/** https://leetcode.com/problems/number-of-operations-to-make-network-connected/ */
 public class Problem1319 {
     public int makeConnected(int n, int[][] connections) {
         if (connections.length < n - 1) {

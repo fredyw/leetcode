@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/recover-a-tree-from-preorder-traversal/
- */
+/** https://leetcode.com/problems/recover-a-tree-from-preorder-traversal/ */
 public class Problem1028 {
     public static class TreeNode {
         int val;

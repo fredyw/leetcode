@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-changes-to-make-alternating-binary-string/
- */
+/** https://leetcode.com/problems/minimum-changes-to-make-alternating-binary-string/ */
 public class Problem1758 {
     public int minOperations(String s) {
         int answer = Integer.MAX_VALUE;

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/check-if-all-1s-are-at-least-length-k-places-away/
- */
+/** https://leetcode.com/problems/check-if-all-1s-are-at-least-length-k-places-away/ */
 public class Problem1437 {
     public boolean kLengthApart(int[] nums, int k) {
         int prevIdx = -1;

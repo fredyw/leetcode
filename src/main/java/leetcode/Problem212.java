@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/word-search-ii/
- */
+/** https://leetcode.com/problems/word-search-ii/ */
 public class Problem212 {
     public List<String> findWords(char[][] board, String[] words) {
         List<String> answer = new ArrayList<>();
@@ -39,8 +37,15 @@ public class Problem212 {
         return answer;
     }
 
-    private static boolean findWords(char[][] board, String word, int maxRow, int maxCol,
-                                     int row, int col, int idx, boolean[][] visited) {
+    private static boolean findWords(
+            char[][] board,
+            String word,
+            int maxRow,
+            int maxCol,
+            int row,
+            int col,
+            int idx,
+            boolean[][] visited) {
         if (idx == word.length()) {
             return true;
         }

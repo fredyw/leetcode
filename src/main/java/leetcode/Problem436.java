@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/find-right-interval/
- */
+/** https://leetcode.com/problems/find-right-interval/ */
 public class Problem436 {
     public static class Interval {
         int start;

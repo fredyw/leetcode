@@ -5,9 +5,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 
-/**
- * https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
- */
+/** https://leetcode.com/problems/populating-next-right-pointers-in-each-node/ */
 public class Problem116 {
     public static class TreeLinkNode {
         int val;

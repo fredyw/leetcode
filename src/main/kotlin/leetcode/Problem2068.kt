@@ -2,9 +2,7 @@ package leetcode
 
 import kotlin.math.abs
 
-/**
- * https://leetcode.com/problems/check-whether-two-strings-are-almost-equivalent/
- */
+/** https://leetcode.com/problems/check-whether-two-strings-are-almost-equivalent/ */
 class Problem2068 {
     fun checkAlmostEquivalent(word1: String, word2: String): Boolean {
         val charToCount1 = IntArray(26)

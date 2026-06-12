@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/replace-elements-in-an-array/
- */
+/** https://leetcode.com/problems/replace-elements-in-an-array/ */
 class Problem2295 {
     fun arrayChange(nums: IntArray, operations: Array<IntArray>): IntArray {
         val map = mutableMapOf<Int, Int>()

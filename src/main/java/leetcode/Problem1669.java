@@ -1,15 +1,12 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/merge-in-between-linked-lists/
- */
+/** https://leetcode.com/problems/merge-in-between-linked-lists/ */
 public class Problem1669 {
     public static class ListNode {
         int val;
         ListNode next;
 
-        ListNode() {
-        }
+        ListNode() {}
 
         ListNode(int val) {
             this.val = val;

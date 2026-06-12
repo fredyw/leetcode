@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/kill-process/#/description
- */
+/** https://leetcode.com/problems/kill-process/#/description */
 public class Problem582 {
     public List<Integer> killProcess(List<Integer> pid, List<Integer> ppid, int kill) {
         List<Integer> result = new ArrayList<>();

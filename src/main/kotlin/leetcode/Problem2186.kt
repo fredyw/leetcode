@@ -2,9 +2,7 @@ package leetcode
 
 import kotlin.math.abs
 
-/**
- * https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram-ii/
- */
+/** https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram-ii/ */
 class Problem2186 {
     fun minSteps(s: String, t: String): Int {
         val sCounts = IntArray(26)

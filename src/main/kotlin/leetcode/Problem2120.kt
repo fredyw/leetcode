@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/execution-of-all-suffix-instructions-staying-in-a-grid/
- */
+/** https://leetcode.com/problems/execution-of-all-suffix-instructions-staying-in-a-grid/ */
 class Problem2120 {
     fun executeInstructions(n: Int, startPos: IntArray, s: String): IntArray {
         val answer = IntArray(s.length)

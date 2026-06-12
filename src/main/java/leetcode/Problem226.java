@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/invert-binary-tree/
- */
+/** https://leetcode.com/problems/invert-binary-tree/ */
 public class Problem226 {
     public static class TreeNode {
         int val;

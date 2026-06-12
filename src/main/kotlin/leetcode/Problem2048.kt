@@ -2,15 +2,27 @@ package leetcode
 
 import kotlin.math.min
 
-/**
- * https://leetcode.com/problems/next-greater-numerically-balanced-number/
- */
+/** https://leetcode.com/problems/next-greater-numerically-balanced-number/ */
 class Problem2048 {
     fun nextBeautifulNumber(n: Int): Int {
         var answer = Answer()
         val s = n.toString()
-        val numbers = arrayOf("1", "22", "122", "333", "1333", "4444", "14444", "22333",
-            "55555", "122333", "155555", "224444", "666666")
+        val numbers =
+            arrayOf(
+                "1",
+                "22",
+                "122",
+                "333",
+                "1333",
+                "4444",
+                "14444",
+                "22333",
+                "55555",
+                "122333",
+                "155555",
+                "224444",
+                "666666",
+            )
         for (num in numbers) {
             if (s.length > num.length) {
                 continue

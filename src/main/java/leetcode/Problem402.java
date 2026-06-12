@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/remove-k-digits/
- */
+/** https://leetcode.com/problems/remove-k-digits/ */
 public class Problem402 {
     public String removeKdigits(String num, int k) {
         Stack<Integer> stack = new Stack<>();
@@ -33,8 +31,7 @@ public class Problem402 {
         }
         // Remove leading zeros.
         int i = 0;
-        while (i < result.length() && result.charAt(i++) == '0') {
-        }
+        while (i < result.length() && result.charAt(i++) == '0') {}
         return result.substring(i - 1);
     }
 }

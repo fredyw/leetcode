@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses/
- */
+/** https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses/ */
 public class Problem1614 {
     public int maxDepth(String s) {
         int answer = 0;

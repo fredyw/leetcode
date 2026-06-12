@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/smallest-integer-divisible-by-k/
- */
+/** https://leetcode.com/problems/smallest-integer-divisible-by-k/ */
 public class Problem1015 {
     public int smallestRepunitDivByK(int K) {
         if (K % 2 == 0 || K % 5 == 0) {

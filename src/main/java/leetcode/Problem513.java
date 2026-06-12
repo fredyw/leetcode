@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/find-bottom-left-tree-value/
- */
+/** https://leetcode.com/problems/find-bottom-left-tree-value/ */
 public class Problem513 {
     public static class TreeNode {
         int val;
@@ -30,8 +28,8 @@ public class Problem513 {
         private int ref;
     }
 
-    private static void findBottomLeftValue(TreeNode node, int level, IntRef max,
-                                            Map<Integer, List<Integer>> map) {
+    private static void findBottomLeftValue(
+            TreeNode node, int level, IntRef max, Map<Integer, List<Integer>> map) {
         if (node == null) {
             return;
         }

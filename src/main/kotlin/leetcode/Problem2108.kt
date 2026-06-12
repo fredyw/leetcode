@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/find-first-palindromic-string-in-the-array/
- */
+/** https://leetcode.com/problems/find-first-palindromic-string-in-the-array/ */
 class Problem2108 {
     fun firstPalindrome(words: Array<String>): String {
         for (word in words) {

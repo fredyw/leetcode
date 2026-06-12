@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/delete-node-in-a-linked-list/
- */
+/** https://leetcode.com/problems/delete-node-in-a-linked-list/ */
 public class Problem237 {
     public static class ListNode {
         int val;

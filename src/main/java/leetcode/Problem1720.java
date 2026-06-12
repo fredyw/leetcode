@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/decode-xored-array/
- */
+/** https://leetcode.com/problems/decode-xored-array/ */
 public class Problem1720 {
     public int[] decode(int[] encoded, int first) {
         int[] answer = new int[encoded.length + 1];

@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/delete-nodes-and-return-forest/
- */
+/** https://leetcode.com/problems/delete-nodes-and-return-forest/ */
 public class Problem1110 {
     public static class TreeNode {
         int val;
@@ -31,7 +29,8 @@ public class Problem1110 {
         return answer;
     }
 
-    private static boolean delNodes(TreeNode current, Set<Integer> toDelete, List<TreeNode> answer) {
+    private static boolean delNodes(
+            TreeNode current, Set<Integer> toDelete, List<TreeNode> answer) {
         if (current == null) {
             return false;
         }

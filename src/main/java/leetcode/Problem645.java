@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/set-mismatch/
- */
+/** https://leetcode.com/problems/set-mismatch/ */
 public class Problem645 {
     public int[] findErrorNums(int[] nums) {
         int duplicate = 0;
@@ -20,6 +18,6 @@ public class Problem645 {
                 break;
             }
         }
-        return new int[]{duplicate, missing};
+        return new int[] {duplicate, missing};
     }
 }

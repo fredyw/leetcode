@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/reorder-log-files/
- */
+/** https://leetcode.com/problems/reorder-log-files/ */
 public class Problem937 {
     public String[] reorderLogFiles(String[] logs) {
         List<String> letterLogs = new ArrayList<>();
@@ -18,17 +16,18 @@ public class Problem937 {
                 digitLogs.add(log);
             }
         }
-        letterLogs.sort((a, b) -> {
-            String aId = a.substring(0, a.indexOf(" "));
-            String bId = b.substring(0, b.indexOf(" "));
-            String aLetters = a.substring(a.indexOf(" "));
-            String bLetters = b.substring(b.indexOf(" "));
-            int cmp = aLetters.compareTo(bLetters);
-            if (cmp == 0) {
-                return aId.compareTo(bId);
-            }
-            return cmp;
-        });
+        letterLogs.sort(
+                (a, b) -> {
+                    String aId = a.substring(0, a.indexOf(" "));
+                    String bId = b.substring(0, b.indexOf(" "));
+                    String aLetters = a.substring(a.indexOf(" "));
+                    String bLetters = b.substring(b.indexOf(" "));
+                    int cmp = aLetters.compareTo(bLetters);
+                    if (cmp == 0) {
+                        return aId.compareTo(bId);
+                    }
+                    return cmp;
+                });
         List<String> result = new ArrayList<>();
         result.addAll(letterLogs);
         result.addAll(digitLogs);

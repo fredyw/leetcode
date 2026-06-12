@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/sum-of-beauty-of-all-substrings/
- */
+/** https://leetcode.com/problems/sum-of-beauty-of-all-substrings/ */
 public class Problem1781 {
     public int beautySum(String s) {
         int[][] counts = new int[s.length()][26];

@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/minimum-numbers-of-function-calls-to-make-target-array/
- */
+/** https://leetcode.com/problems/minimum-numbers-of-function-calls-to-make-target-array/ */
 public class Problem1558 {
     public int minOperations(int[] nums) {
         int answer = 0;

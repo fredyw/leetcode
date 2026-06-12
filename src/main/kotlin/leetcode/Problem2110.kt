@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/number-of-smooth-descent-periods-of-a-stock/
- */
+/** https://leetcode.com/problems/number-of-smooth-descent-periods-of-a-stock/ */
 class Problem2110 {
     fun getDescentPeriods(prices: IntArray): Long {
         var answer = 0L

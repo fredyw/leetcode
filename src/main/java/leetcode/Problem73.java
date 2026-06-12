@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/set-matrix-zeroes/
- */
+/** https://leetcode.com/problems/set-matrix-zeroes/ */
 public class Problem73 {
     public void setZeroes(int[][] matrix) {
         List<Zero> zeroes = new ArrayList<>();

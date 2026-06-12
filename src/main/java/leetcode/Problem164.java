@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/maximum-gap/
- */
+/** https://leetcode.com/problems/maximum-gap/ */
 public class Problem164 {
     public int maximumGap(int[] nums) {
         if (nums.length < 2) {

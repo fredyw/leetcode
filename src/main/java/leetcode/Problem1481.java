@@ -6,9 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/least-number-of-unique-integers-after-k-removals/
- */
+/** https://leetcode.com/problems/least-number-of-unique-integers-after-k-removals/ */
 public class Problem1481 {
     public int findLeastNumOfUniqueInts(int[] arr, int k) {
         Map<Integer, Integer> map = new HashMap<>();

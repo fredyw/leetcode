@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/valid-parenthesis-string/
- */
+/** https://leetcode.com/problems/valid-parenthesis-string/ */
 public class Problem678 {
     public boolean checkValidString(String s) {
         int opening = 0;

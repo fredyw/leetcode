@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/increasing-order-search-tree/
- */
+/** https://leetcode.com/problems/increasing-order-search-tree/ */
 public class Problem897 {
     public static class TreeNode {
         int val;

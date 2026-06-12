@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/sum-of-all-subset-xor-totals/
- */
+/** https://leetcode.com/problems/sum-of-all-subset-xor-totals/ */
 public class Problem1863 {
     public int subsetXORSum(int[] nums) {
         IntRef ref = new IntRef();

@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/construct-the-lexicographically-largest-valid-sequence/
- */
+/** https://leetcode.com/problems/construct-the-lexicographically-largest-valid-sequence/ */
 class Problem1718 {
     fun constructDistancedSequence(n: Int): IntArray {
         return constructDistancedSequence(n, 0, HashSet(), IntArray(n * 2 - 1)).array
@@ -10,8 +8,12 @@ class Problem1718 {
 
     private class Answer(val found: Boolean, val array: IntArray)
 
-    private fun constructDistancedSequence(n: Int, index: Int,
-                                           visited: MutableSet<Int>, array: IntArray): Answer {
+    private fun constructDistancedSequence(
+        n: Int,
+        index: Int,
+        visited: MutableSet<Int>,
+        array: IntArray,
+    ): Answer {
         if (visited.size == n) {
             return Answer(true, array)
         }

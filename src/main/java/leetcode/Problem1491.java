@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/
- */
+/** https://leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/ */
 public class Problem1491 {
     public double average(int[] salary) {
         int sum = 0;

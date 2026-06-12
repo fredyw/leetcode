@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/bulb-switcher-ii/
- */
+/** https://leetcode.com/problems/bulb-switcher-ii/ */
 public class Problem672 {
     public int flipLights(int n, int m) {
         if (m == 0) {

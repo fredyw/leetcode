@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/reordered-power-of-2/
- */
+/** https://leetcode.com/problems/reordered-power-of-2/ */
 public class Problem869 {
     public boolean reorderedPowerOf2(int N) {
         if (isPower2(N)) {

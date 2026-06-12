@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/palindrome-partitioning-ii/
- */
+/** https://leetcode.com/problems/palindrome-partitioning-ii/ */
 public class Problem132 {
     public int minCut(String s) {
         Integer[][] memo = new Integer[s.length() + 1][s.length() + 1];

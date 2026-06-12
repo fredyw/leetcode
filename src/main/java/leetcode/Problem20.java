@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/valid-parentheses/
- */
+/** https://leetcode.com/problems/valid-parentheses/ */
 public class Problem20 {
     public boolean isValid(String s) {
         char[] chars = s.toCharArray();

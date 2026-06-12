@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/squares-of-a-sorted-array/
- */
+/** https://leetcode.com/problems/squares-of-a-sorted-array/ */
 public class Problem977 {
     public int[] sortedSquares(int[] A) {
         int[] answer = new int[A.length];

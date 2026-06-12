@@ -2,9 +2,7 @@ package leetcode
 
 import kotlin.math.max
 
-/**
- * https://leetcode.com/problems/maximum-erasure-value/
- */
+/** https://leetcode.com/problems/maximum-erasure-value/ */
 class Problem1695 {
     fun maximumUniqueSubarray(nums: IntArray): Int {
         var answer = 0

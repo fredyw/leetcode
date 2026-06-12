@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/find-all-lonely-numbers-in-the-array/
- */
+/** https://leetcode.com/problems/find-all-lonely-numbers-in-the-array/ */
 class Problem2150 {
     fun findLonely(nums: IntArray): List<Int> {
         val map = mutableMapOf<Int, Int>()

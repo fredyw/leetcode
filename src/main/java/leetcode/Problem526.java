@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/beautiful-arrangement/
- */
+/** https://leetcode.com/problems/beautiful-arrangement/ */
 public class Problem526 {
     public int countArrangement(int N) {
         boolean[] processed = new boolean[N + 1];
@@ -18,10 +16,7 @@ public class Problem526 {
         int ref;
     }
 
-    private static void countArrangement(int n,
-                                         boolean[] processed,
-                                         int count,
-                                         IntRef result) {
+    private static void countArrangement(int n, boolean[] processed, int count, IntRef result) {
         if (count > n) {
             result.ref++;
             return;

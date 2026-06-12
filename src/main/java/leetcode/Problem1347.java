@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/
- */
+/** https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/ */
 public class Problem1347 {
     public int minSteps(String s, String t) {
         int[] countA = new int[26];

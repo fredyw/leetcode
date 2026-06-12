@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/check-if-binary-string-has-at-most-one-segment-of-ones/
- */
+/** https://leetcode.com/problems/check-if-binary-string-has-at-most-one-segment-of-ones/ */
 public class Problem1784 {
     public boolean checkOnesSegment(String s) {
         int i = 0;

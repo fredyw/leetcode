@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-/**
- * https://leetcode.com/problems/top-k-frequent-elements/
- */
+/** https://leetcode.com/problems/top-k-frequent-elements/ */
 public class Problem347 {
     public List<Integer> topKFrequent(int[] nums, int k) {
         List<Integer> result = new ArrayList<>();

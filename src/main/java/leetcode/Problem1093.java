@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/statistics-from-a-large-sample/
- */
+/** https://leetcode.com/problems/statistics-from-a-large-sample/ */
 public class Problem1093 {
     public double[] sampleStats(int[] count) {
         int min = Integer.MAX_VALUE;
@@ -48,6 +46,6 @@ public class Problem1093 {
                 }
             }
         }
-        return new double[]{min, max, mean, median, mode};
+        return new double[] {min, max, mean, median, mode};
     }
 }

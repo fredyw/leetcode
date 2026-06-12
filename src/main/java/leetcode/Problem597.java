@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/longest-harmonious-subsequence/
- */
+/** https://leetcode.com/problems/longest-harmonious-subsequence/ */
 public class Problem597 {
     public int findLHS(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();

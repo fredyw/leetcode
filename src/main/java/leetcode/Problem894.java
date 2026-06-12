@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/all-possible-full-binary-trees/
- */
+/** https://leetcode.com/problems/all-possible-full-binary-trees/ */
 public class Problem894 {
     public static class TreeNode {
         int val;

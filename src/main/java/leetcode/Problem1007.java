@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-domino-rotations-for-equal-row/
- */
+/** https://leetcode.com/problems/minimum-domino-rotations-for-equal-row/ */
 public class Problem1007 {
     public int minDominoRotations(int[] A, int[] B) {
         int[] aCounts = new int[6];

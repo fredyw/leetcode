@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/largest-3-same-digit-number-in-string/
- */
+/** https://leetcode.com/problems/largest-3-same-digit-number-in-string/ */
 class Problem2264 {
     fun largestGoodInteger(num: String): String {
         var answer = ""

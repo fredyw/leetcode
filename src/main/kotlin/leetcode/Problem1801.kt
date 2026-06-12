@@ -2,9 +2,7 @@ package leetcode
 
 import java.util.*
 
-/**
- * https://leetcode.com/problems/number-of-orders-in-the-backlog/
- */
+/** https://leetcode.com/problems/number-of-orders-in-the-backlog/ */
 class Problem1801 {
     fun getNumberOfBacklogOrders(orders: Array<IntArray>): Int {
         val buyMap = TreeMap<Int, Long> { a, b -> b.compareTo(a) }

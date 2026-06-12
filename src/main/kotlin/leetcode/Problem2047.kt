@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/number-of-valid-words-in-a-sentence/
- */
+/** https://leetcode.com/problems/number-of-valid-words-in-a-sentence/ */
 class Problem2047 {
     fun countValidWords(sentence: String): Int {
         var answer = 0

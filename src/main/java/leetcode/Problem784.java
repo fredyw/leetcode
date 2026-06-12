@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/letter-case-permutation/
- */
+/** https://leetcode.com/problems/letter-case-permutation/ */
 public class Problem784 {
     public List<String> letterCasePermutation(String S) {
         List<String> result = new ArrayList<>();

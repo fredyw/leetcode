@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/increasing-subsequences/
- */
+/** https://leetcode.com/problems/increasing-subsequences/ */
 public class Problem491 {
     public List<List<Integer>> findSubsequences(int[] nums) {
         List<Integer> list = new ArrayList<>();
@@ -19,7 +17,8 @@ public class Problem491 {
         return new ArrayList<>(result);
     }
 
-    private static void findSubsequences(List<Integer> nums, int idx, List<Integer> accu, Set<List<Integer>> result) {
+    private static void findSubsequences(
+            List<Integer> nums, int idx, List<Integer> accu, Set<List<Integer>> result) {
         if (accu.size() >= 2) {
             result.add(accu);
         }

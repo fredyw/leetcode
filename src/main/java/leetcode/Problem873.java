@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/length-of-longest-fibonacci-subsequence/
- */
+/** https://leetcode.com/problems/length-of-longest-fibonacci-subsequence/ */
 public class Problem873 {
     public int lenLongestFibSubseq(int[] A) {
         Map<Integer, Integer> map = new HashMap<>();
@@ -26,8 +24,8 @@ public class Problem873 {
         return max;
     }
 
-    private int lenLongestFibSubseq(int[] a, int i, int j, Map<Integer, Integer> map,
-                                    Integer[][] memo) {
+    private int lenLongestFibSubseq(
+            int[] a, int i, int j, Map<Integer, Integer> map, Integer[][] memo) {
         if (memo[i][j] != null) {
             return memo[i][j];
         }

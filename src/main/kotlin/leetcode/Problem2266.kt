@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/count-number-of-texts/
- */
+/** https://leetcode.com/problems/count-number-of-texts/ */
 class Problem2266 {
     fun countTexts(pressedKeys: String): Int {
         if (pressedKeys.length == 1) {
@@ -16,11 +14,9 @@ class Problem2266 {
         while (i < pressedKeys.length - 1) {
             if (pressedKeys[i] != pressedKeys[i + 1]) {
                 val numDigits = numDigits(pressedKeys[i])
-                answer = (answer * countTexts(
-                    numDigits,
-                    length,
-                    if (numDigits == 3) memo3 else memo4
-                )) % 1_000_000_007
+                answer =
+                    (answer * countTexts(numDigits, length, if (numDigits == 3) memo3 else memo4)) %
+                        1_000_000_007
                 length = 1
             } else {
                 length++
@@ -28,11 +24,9 @@ class Problem2266 {
             i++
         }
         val numDigits = numDigits(pressedKeys[i])
-        answer = (answer * countTexts(
-            numDigits,
-            length,
-            if (numDigits == 3) memo3 else memo4
-        )) % 1_000_000_007
+        answer =
+            (answer * countTexts(numDigits, length, if (numDigits == 3) memo3 else memo4)) %
+                1_000_000_007
         return answer.toInt()
     }
 

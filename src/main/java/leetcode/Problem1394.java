@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/find-lucky-integer-in-an-array/
- */
+/** https://leetcode.com/problems/find-lucky-integer-in-an-array/ */
 public class Problem1394 {
     public int findLucky(int[] arr) {
         Map</* number= */ Integer, /* count= */ Integer> map = new HashMap<>();

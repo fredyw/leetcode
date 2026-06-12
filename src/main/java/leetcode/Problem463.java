@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/island-perimeter/
- */
+/** https://leetcode.com/problems/island-perimeter/ */
 public class Problem463 {
     public int islandPerimeter(int[][] grid) {
         int maxRow = grid.length;
@@ -18,8 +16,8 @@ public class Problem463 {
         return 0;
     }
 
-    private static int visit(int[][] grid, boolean[][] visited, int maxRow, int maxCol,
-                             int row, int col) {
+    private static int visit(
+            int[][] grid, boolean[][] visited, int maxRow, int maxCol, int row, int col) {
         if (row < 0 || row >= maxRow || col < 0 || col >= maxCol) {
             return 1;
         }

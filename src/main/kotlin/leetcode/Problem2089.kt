@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/find-target-indices-after-sorting-array/
- */
+/** https://leetcode.com/problems/find-target-indices-after-sorting-array/ */
 class Problem2089 {
     fun targetIndices(nums: IntArray, target: Int): List<Int> {
         nums.sort()

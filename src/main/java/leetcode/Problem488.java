@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/zuma-game/
- */
+/** https://leetcode.com/problems/zuma-game/ */
 public class Problem488 {
     public int findMinStep(String board, String hand) {
         Map<Character, Integer> handMap = new HashMap<>();
@@ -43,7 +41,7 @@ public class Problem488 {
             }
             i = j;
         }
-        return  min;
+        return min;
     }
 
     private static String remove(String board) {

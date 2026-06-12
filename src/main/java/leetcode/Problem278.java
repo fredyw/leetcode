@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/first-bad-version/
- */
+/** https://leetcode.com/problems/first-bad-version/ */
 public class Problem278 {
     public static class VersionControl {
         public boolean isBadVersion(int version) {

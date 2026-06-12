@@ -3,15 +3,14 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/last-stone-weight-ii/
- */
+/** https://leetcode.com/problems/last-stone-weight-ii/ */
 public class Problem1049 {
     public int lastStoneWeightII(int[] stones) {
         return lastStoneWeight(stones, 0, 0, new HashMap<>());
     }
 
-    private static int lastStoneWeight(int[] stones, int index, int result, Map<String, Integer> memo) {
+    private static int lastStoneWeight(
+            int[] stones, int index, int result, Map<String, Integer> memo) {
         if (index == stones.length) {
             if (result < 0) {
                 return Integer.MAX_VALUE;

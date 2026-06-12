@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/sort-array-by-parity/
- */
+/** https://leetcode.com/problems/sort-array-by-parity/ */
 public class Problem905 {
     public int[] sortArrayByParity(int[] A) {
         int[] result = new int[A.length];

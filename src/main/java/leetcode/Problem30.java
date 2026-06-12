@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/substring-with-concatenation-of-all-words/
- */
+/** https://leetcode.com/problems/substring-with-concatenation-of-all-words/ */
 public class Problem30 {
     public List<Integer> findSubstring(String s, String[] words) {
         List<Integer> result = new ArrayList<>();

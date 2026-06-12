@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/numbers-with-same-consecutive-differences/
- */
+/** https://leetcode.com/problems/numbers-with-same-consecutive-differences/ */
 public class Problem967 {
     public int[] numsSameConsecDiff(int N, int K) {
         Set<Integer> set = new HashSet<>();

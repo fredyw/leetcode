@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/play-with-chips/
- */
+/** https://leetcode.com/problems/play-with-chips/ */
 public class Problem1217 {
     public int minCostToMoveChips(int[] chips) {
         int even = 0;

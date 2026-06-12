@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/k-divisible-elements-subarrays/
- */
+/** https://leetcode.com/problems/k-divisible-elements-subarrays/ */
 class Problem2261 {
     fun countDistinct(nums: IntArray, k: Int, p: Int): Int {
         val set = mutableSetOf<String>()

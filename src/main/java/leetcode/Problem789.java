@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/escape-the-ghosts/
- */
+/** https://leetcode.com/problems/escape-the-ghosts/ */
 public class Problem789 {
     public boolean escapeGhosts(int[][] ghosts, int[] target) {
         // https://en.wikipedia.org/wiki/Taxicab_geometry
@@ -15,7 +13,7 @@ public class Problem789 {
                 ghostDistance = Math.min(ghostDistance, d);
             }
         }
-        int pacmanDistance = taxi(target, new int[]{0, 0});
+        int pacmanDistance = taxi(target, new int[] {0, 0});
         return pacmanDistance < ghostDistance;
     }
 

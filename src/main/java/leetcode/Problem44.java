@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/wildcard-matching/
- */
+/** https://leetcode.com/problems/wildcard-matching/ */
 public class Problem44 {
     public boolean isMatch(String s, String p) {
         Boolean[][] memo = new Boolean[s.length() + 1][p.length() + 1];

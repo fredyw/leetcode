@@ -4,21 +4,19 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/escape-a-large-maze/
- */
+/** https://leetcode.com/problems/escape-a-large-maze/ */
 public class Problem1036 {
     public boolean isEscapePossible(int[][] blocked, int[] source, int[] target) {
         Set<String> blockedSet = new HashSet<>();
         for (int[] b : blocked) {
             blockedSet.add(toString(b));
         }
-        return isEscapePossible(blockedSet, source, target, 1_000_000, 1_000_000) &&
-            isEscapePossible(blockedSet, target, source, 1_000_000, 1_000_000);
+        return isEscapePossible(blockedSet, source, target, 1_000_000, 1_000_000)
+                && isEscapePossible(blockedSet, target, source, 1_000_000, 1_000_000);
     }
 
-    private static boolean isEscapePossible(Set<String> blocked, int[] source,
-                                            int[] target, int maxRow, int maxCol) {
+    private static boolean isEscapePossible(
+            Set<String> blocked, int[] source, int[] target, int maxRow, int maxCol) {
         Set<String> visited = new HashSet<>();
         Stack<int[]> coordinates = new Stack<>();
         coordinates.add(source);
@@ -38,8 +36,8 @@ public class Problem1036 {
             if (visited.size() > 20000) {
                 return true;
             }
-            for (int[] a : new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}) {
-                coordinates.add(new int[]{pop[0] + a[0], pop[1] + a[1]});
+            for (int[] a : new int[][] {{0, 1}, {1, 0}, {0, -1}, {-1, 0}}) {
+                coordinates.add(new int[] {pop[0] + a[0], pop[1] + a[1]});
             }
         }
         return false;

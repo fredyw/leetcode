@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/valid-boomerang/
- */
+/** https://leetcode.com/problems/valid-boomerang/ */
 public class Problem1037 {
     public boolean isBoomerang(int[][] points) {
         // Note: slope of 2 points (x1, y1), (x2, y2)

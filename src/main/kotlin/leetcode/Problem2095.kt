@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/
- */
+/** https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/ */
 class Problem2095 {
     class ListNode(var `val`: Int) {
         var next: ListNode? = null

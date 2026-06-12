@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/shift-2d-grid/
- */
+/** https://leetcode.com/problems/shift-2d-grid/ */
 public class Problem1260 {
     public List<List<Integer>> shiftGrid(int[][] grid, int k) {
         int maxRow = grid.length;

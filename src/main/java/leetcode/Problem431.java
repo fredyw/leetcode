@@ -8,8 +8,7 @@ public class Problem431 {
         public int val;
         public List<Node> children;
 
-        public Node() {
-        }
+        public Node() {}
 
         public Node(int val) {
             this.val = val;

@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/time-needed-to-buy-tickets/
- */
+/** https://leetcode.com/problems/time-needed-to-buy-tickets/ */
 class Problem2073 {
     fun timeRequiredToBuy(tickets: IntArray, k: Int): Int {
         var answer = 0

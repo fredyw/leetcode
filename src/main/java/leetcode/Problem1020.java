@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/number-of-enclaves/
- */
+/** https://leetcode.com/problems/number-of-enclaves/ */
 public class Problem1020 {
     public int numEnclaves(int[][] A) {
         int maxRow = A.length;
@@ -29,8 +27,14 @@ public class Problem1020 {
         private boolean val;
     }
 
-    private static int numEnclaves(int[][] array, int maxRow, int maxCol, int row, int col,
-                                   boolean[][] visited, BooleanRef ignored) {
+    private static int numEnclaves(
+            int[][] array,
+            int maxRow,
+            int maxCol,
+            int row,
+            int col,
+            boolean[][] visited,
+            BooleanRef ignored) {
         if (row < 0 || row == maxRow || col < 0 || col == maxCol) {
             return 0;
         }

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/
- */
+/** https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/ */
 public class Problem714 {
     public int maxProfit(int[] prices, int fee) {
         int cash = 0;

@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
- */
+/** https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/ */
 public class Problem167 {
     public int[] twoSum(int[] numbers, int target) {
         int[] array = new int[2];

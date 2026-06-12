@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/longest-univalue-path/
- */
+/** https://leetcode.com/problems/longest-univalue-path/ */
 public class Problem687 {
     public static class TreeNode {
         int val;

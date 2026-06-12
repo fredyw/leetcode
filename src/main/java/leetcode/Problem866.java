@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/prime-palindrome/
- */
+/** https://leetcode.com/problems/prime-palindrome/ */
 public class Problem866 {
     public int primePalindrome(int N) {
         if (8 <= N && N <= 11) {

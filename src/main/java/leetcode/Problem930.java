@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/binary-subarrays-with-sum/
- */
+/** https://leetcode.com/problems/binary-subarrays-with-sum/ */
 public class Problem930 {
     public int numSubarraysWithSum(int[] A, int S) {
         int sum = 0;

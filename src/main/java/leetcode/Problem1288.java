@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/remove-covered-intervals/
- */
+/** https://leetcode.com/problems/remove-covered-intervals/ */
 public class Problem1288 {
     public int removeCoveredIntervals(int[][] intervals) {
         Set<Integer> removed = new HashSet<>();

@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/loud-and-rich/
- */
+/** https://leetcode.com/problems/loud-and-rich/ */
 public class Problem851 {
     public int[] loudAndRich(int[][] richer, int[] quiet) {
         List<Integer>[] graph = buildGraph(richer, quiet.length);
@@ -24,11 +22,8 @@ public class Problem851 {
         private int index = -1;
     }
 
-    private static void dfs(List<Integer>[] graph,
-                            int source,
-                            boolean[] visited,
-                            int[] quiet,
-                            Quietest quietest) {
+    private static void dfs(
+            List<Integer>[] graph, int source, boolean[] visited, int[] quiet, Quietest quietest) {
         if (quietest.value >= quiet[source]) {
             quietest.value = quiet[source];
             quietest.index = source;

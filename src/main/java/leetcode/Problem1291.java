@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/sequential-digits/
- */
+/** https://leetcode.com/problems/sequential-digits/ */
 public class Problem1291 {
     public List<Integer> sequentialDigits(int low, int high) {
         String next = Long.toString(low);

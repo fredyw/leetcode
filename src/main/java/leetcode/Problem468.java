@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/validate-ip-address/
- */
+/** https://leetcode.com/problems/validate-ip-address/ */
 public class Problem468 {
     public String validIPAddress(String IP) {
         String ip = IP.toLowerCase();

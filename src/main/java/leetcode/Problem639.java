@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/design-log-storage-system/
- */
+/** https://leetcode.com/problems/design-log-storage-system/ */
 public class Problem639 {
     public static class LogSystem {
         private final List<String[]> timestamps = new ArrayList<>();
@@ -23,7 +21,7 @@ public class Problem639 {
         }
 
         public void put(int id, String timestamp) {
-            String[] array = new String[]{Integer.toString(id), timestamp};
+            String[] array = new String[] {Integer.toString(id), timestamp};
             timestamps.add(array);
         }
 

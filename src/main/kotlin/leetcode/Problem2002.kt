@@ -2,9 +2,7 @@ package leetcode
 
 import kotlin.math.max
 
-/**
- * https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-subsequences/
- */
+/** https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-subsequences/ */
 class Problem2002 {
     fun maxProduct(s: String): Int {
         return maxProduct(s, 0, "", "")

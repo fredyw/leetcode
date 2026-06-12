@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/palindrome-number/
- */
+/** https://leetcode.com/problems/palindrome-number/ */
 public class Problem9 {
     public boolean isPalindrome(int x) {
         if (x < 0) {

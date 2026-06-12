@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/elimination-game/
- */
+/** https://leetcode.com/problems/elimination-game/ */
 public class Problem390 {
     public int lastRemaining(int n) {
         int first = 1;

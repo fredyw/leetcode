@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/minimum-number-of-vertices-to-reach-all-nodes/
- */
+/** https://leetcode.com/problems/minimum-number-of-vertices-to-reach-all-nodes/ */
 public class Problem1557 {
     public List<Integer> findSmallestSetOfVertices(int n, List<List<Integer>> edges) {
         Set<Integer> set = new HashSet<>();

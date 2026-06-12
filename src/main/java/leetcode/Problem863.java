@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/
- */
+/** https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/ */
 public class Problem863 {
     public static class TreeNode {
         int val;
@@ -57,9 +55,7 @@ public class Problem863 {
         return result;
     }
 
-    private static void buildGraph(TreeNode node,
-                                   TreeNode parent,
-                                   List<TreeNode>[] graph) {
+    private static void buildGraph(TreeNode node, TreeNode parent, List<TreeNode>[] graph) {
         if (node == null) {
             return;
         }

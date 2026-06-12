@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/
- */
+/** https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/ */
 public class Problem921 {
     public int minAddToMakeValid(String S) {
         int count = 0;

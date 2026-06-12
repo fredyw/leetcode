@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/daily-temperatures/
- */
+/** https://leetcode.com/problems/daily-temperatures/ */
 public class Problem739 {
     public int[] dailyTemperatures(int[] temperatures) {
         int[] result = new int[temperatures.length];

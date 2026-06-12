@@ -2,18 +2,18 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/maximum-length-of-pair-chain/
- */
+/** https://leetcode.com/problems/maximum-length-of-pair-chain/ */
 public class Problem646 {
     public int findLongestChain(int[][] pairs) {
-        Arrays.sort(pairs, (a, b) -> {
-            int cmp = Integer.compare(a[0], b[0]);
-            if (cmp == 0) {
-                return Integer.compare(a[1], b[1]);
-            }
-            return cmp;
-        });
+        Arrays.sort(
+                pairs,
+                (a, b) -> {
+                    int cmp = Integer.compare(a[0], b[0]);
+                    if (cmp == 0) {
+                        return Integer.compare(a[1], b[1]);
+                    }
+                    return cmp;
+                });
         Integer[] memo = new Integer[pairs.length];
         int max = 0;
         for (int i = 0; i < pairs.length; i++) {

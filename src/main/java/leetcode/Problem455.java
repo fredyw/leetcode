@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/assign-cookies/
- */
+/** https://leetcode.com/problems/assign-cookies/ */
 public class Problem455 {
     public int findContentChildren(int[] g, int[] s) {
         Arrays.sort(g);

@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/largest-submatrix-with-rearrangements/
- */
+/** https://leetcode.com/problems/largest-submatrix-with-rearrangements/ */
 public class Problem1727 {
     public int largestSubmatrix(int[][] matrix) {
         int maxRow = matrix.length;

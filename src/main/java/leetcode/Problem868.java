@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/binary-gap/
- */
+/** https://leetcode.com/problems/binary-gap/ */
 public class Problem868 {
     public int binaryGap(int N) {
         int n = N;

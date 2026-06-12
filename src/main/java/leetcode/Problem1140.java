@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/stone-game-ii/
- */
+/** https://leetcode.com/problems/stone-game-ii/ */
 public class Problem1140 {
     public int stoneGameII(int[] piles) {
         int totalSum = 0;
@@ -20,8 +18,11 @@ public class Problem1140 {
         int sum = 0;
         for (int i = index; i < index + (2 * m) && i < piles.length; i++) {
             sum += piles[i];
-            int value = totalSum - stoneGame(piles, Math.max(i - index + 1, m), i + 1, totalSum - sum, memo);
-            answer = Math.max(answer,  value);
+            int value =
+                    totalSum
+                            - stoneGame(
+                                    piles, Math.max(i - index + 1, m), i + 1, totalSum - sum, memo);
+            answer = Math.max(answer, value);
         }
         memo[m][index] = answer;
         return answer;

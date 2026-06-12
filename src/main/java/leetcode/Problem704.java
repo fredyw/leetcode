@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/binary-search/
- */
+/** https://leetcode.com/problems/binary-search/ */
 public class Problem704 {
     public int search(int[] nums, int target) {
         int left = 0;

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-difference-between-increasing-elements/
- */
+/** https://leetcode.com/problems/maximum-difference-between-increasing-elements/ */
 public class Problem2016 {
     public int maximumDifference(int[] nums) {
         int answer = 0;

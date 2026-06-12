@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/rotated-digits/
- */
+/** https://leetcode.com/problems/rotated-digits/ */
 public class Problem788 {
     public int rotatedDigits(int N) {
         int result = 0;

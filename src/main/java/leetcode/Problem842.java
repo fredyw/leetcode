@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/split-array-into-fibonacci-sequence/
- */
+/** https://leetcode.com/problems/split-array-into-fibonacci-sequence/ */
 public class Problem842 {
     public List<Integer> splitIntoFibonacci(String S) {
         List<Integer> answer = new ArrayList<>();
@@ -34,7 +32,8 @@ public class Problem842 {
         return answer;
     }
 
-    private static boolean splitIntoFibonacci(String s, int i, int j, int k, int l, List<Integer> answer) {
+    private static boolean splitIntoFibonacci(
+            String s, int i, int j, int k, int l, List<Integer> answer) {
         int maxLength = Integer.toString(Integer.MAX_VALUE).length();
         if (l == s.length()) {
             String sub = s.substring(k, l);
@@ -70,7 +69,8 @@ public class Problem842 {
         }
         String sumStr = Long.toString(sum);
         boolean found = false;
-        if (l + sumStr.length() <= s.length() && sumStr.equals(s.substring(l, l + sumStr.length()))) {
+        if (l + sumStr.length() <= s.length()
+                && sumStr.equals(s.substring(l, l + sumStr.length()))) {
             answer.add((int) num2);
             found = splitIntoFibonacci(s, k, l, l, l + sumStr.length(), answer);
             if (!found) {

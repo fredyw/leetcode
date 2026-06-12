@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/matchsticks-to-square/
- */
+/** https://leetcode.com/problems/matchsticks-to-square/ */
 public class Problem473 {
     public boolean makesquare(int[] nums) {
         int sum = 0;
@@ -27,12 +25,13 @@ public class Problem473 {
             int temp = nums[i];
             nums[i] = nums[j];
             nums[j] = temp;
-            i++; j--;
+            i++;
+            j--;
         }
     }
 
-    private static boolean makeSquare(int[] nums, int idx, int length1, int length2, int length3,
-                                      int length4) {
+    private static boolean makeSquare(
+            int[] nums, int idx, int length1, int length2, int length3, int length4) {
         if (length1 < 0 || length2 < 0 || length3 < 0 || length4 < 0) {
             return false;
         }
@@ -42,9 +41,9 @@ public class Problem473 {
             }
             return false;
         }
-        return makeSquare(nums, idx + 1, length1 - nums[idx], length2, length3, length4) ||
-            makeSquare(nums, idx + 1, length1, length2 - nums[idx], length3, length4) ||
-            makeSquare(nums, idx + 1, length1, length2, length3 - nums[idx], length4) ||
-            makeSquare(nums, idx + 1, length1, length2, length3, length4 - nums[idx]);
+        return makeSquare(nums, idx + 1, length1 - nums[idx], length2, length3, length4)
+                || makeSquare(nums, idx + 1, length1, length2 - nums[idx], length3, length4)
+                || makeSquare(nums, idx + 1, length1, length2, length3 - nums[idx], length4)
+                || makeSquare(nums, idx + 1, length1, length2, length3, length4 - nums[idx]);
     }
 }

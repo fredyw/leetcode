@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/two-sum/
- */
+/** https://leetcode.com/problems/two-sum/ */
 public class Problem1 {
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Set<Integer>> map = new HashMap<>();
@@ -27,8 +25,8 @@ public class Problem1 {
                 continue;
             }
             indexes.remove(i);
-            return new int[]{i, indexes.iterator().next()};
+            return new int[] {i, indexes.iterator().next()};
         }
-        return new int[]{};
+        return new int[] {};
     }
 }

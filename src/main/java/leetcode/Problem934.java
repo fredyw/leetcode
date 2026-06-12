@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.LinkedList;
 
-/**
- * https://leetcode.com/problems/shortest-bridge/
- */
+/** https://leetcode.com/problems/shortest-bridge/ */
 public class Problem934 {
     public int shortestBridge(int[][] A) {
         int maxRow = A.length;
@@ -42,8 +40,8 @@ public class Problem934 {
         }
     }
 
-    private static int distance(int maxRow, int maxCol, int row, int col,
-                                int[][] a, int[][] island1) {
+    private static int distance(
+            int maxRow, int maxCol, int row, int col, int[][] a, int[][] island1) {
         int distance = Integer.MAX_VALUE;
         boolean[][] visited = new boolean[maxRow][maxCol];
         LinkedList<RowColLevel> queue = new LinkedList<>();
@@ -86,8 +84,8 @@ public class Problem934 {
         return distance - 1;
     }
 
-    private static void traverse(int[][] a, int maxRow, int maxCol, int row, int col,
-                                 int[][] island) {
+    private static void traverse(
+            int[][] a, int maxRow, int maxCol, int row, int col, int[][] island) {
         if (row < 0 || row >= maxRow || col < 0 || col >= maxCol) {
             return;
         }

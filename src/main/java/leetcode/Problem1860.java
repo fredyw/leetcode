@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/incremental-memory-leak/
- */
+/** https://leetcode.com/problems/incremental-memory-leak/ */
 public class Problem1860 {
     public int[] memLeak(int memory1, int memory2) {
         int[] answer = new int[3];

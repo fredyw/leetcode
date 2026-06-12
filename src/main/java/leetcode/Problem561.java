@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/array-partition-i
- */
+/** https://leetcode.com/problems/array-partition-i */
 public class Problem561 {
     public int arrayPairSum(int[] nums) {
         Arrays.sort(nums);

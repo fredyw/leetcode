@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/string-without-aaa-or-bbb/
- */
+/** https://leetcode.com/problems/string-without-aaa-or-bbb/ */
 public class Problem984 {
     public String strWithout3a3b(int A, int B) {
         StringBuilder answer = new StringBuilder();

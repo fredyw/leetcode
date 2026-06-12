@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/count-submatrices-with-all-ones/
- */
+/** https://leetcode.com/problems/count-submatrices-with-all-ones/ */
 public class Problem1504 {
     public int numSubmat(int[][] mat) {
         int maxRow = mat.length;

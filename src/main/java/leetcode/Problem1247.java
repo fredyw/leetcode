@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/minimum-swaps-to-make-strings-equal/
- */
+/** https://leetcode.com/problems/minimum-swaps-to-make-strings-equal/ */
 public class Problem1247 {
     public int minimumSwap(String s1, String s2) {
         Set<Integer> x1Set = new HashSet<>();

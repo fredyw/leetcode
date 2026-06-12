@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/distribute-candies-to-people/
- */
+/** https://leetcode.com/problems/distribute-candies-to-people/ */
 public class Problem1103 {
     public int[] distributeCandies(int candies, int num_people) {
         int[] answer = new int[num_people];

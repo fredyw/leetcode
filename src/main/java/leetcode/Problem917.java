@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/reverse-only-letters/
- */
+/** https://leetcode.com/problems/reverse-only-letters/ */
 public class Problem917 {
     public String reverseOnlyLetters(String S) {
         int i = 0;

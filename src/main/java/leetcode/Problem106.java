@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
- */
+/** https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/ */
 public class Problem106 {
     public static class TreeNode {
         int val;
@@ -27,11 +25,12 @@ public class Problem106 {
         return buildTree(postorder, inOrderMap, postOrderIdx, 0, postorder.length - 1);
     }
 
-    private static TreeNode buildTree(int[] postOrder,
-                                      Map<Integer, Integer> inOrderMap,
-                                      IntRef postOrderIdx,
-                                      int startInOrderIdx,
-                                      int endInOrderIdx) {
+    private static TreeNode buildTree(
+            int[] postOrder,
+            Map<Integer, Integer> inOrderMap,
+            IntRef postOrderIdx,
+            int startInOrderIdx,
+            int endInOrderIdx) {
         if (postOrderIdx.val < 0 || startInOrderIdx > endInOrderIdx) {
             postOrderIdx.val++;
             return null;

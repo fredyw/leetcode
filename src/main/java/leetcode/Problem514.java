@@ -1,20 +1,19 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/freedom-trail/
- */
+/** https://leetcode.com/problems/freedom-trail/ */
 public class Problem514 {
     public int findRotateSteps(String ring, String key) {
         int[][] memo = new int[ring.length()][key.length()];
         for (int i = 0; i < ring.length(); i++) {
-           for (int j = 0; j < key.length(); j++) {
-               memo[i][j] = -1;
-           }
+            for (int j = 0; j < key.length(); j++) {
+                memo[i][j] = -1;
+            }
         }
         return findRotateSteps(ring, key, 0, 0, memo);
     }
 
-    private static int findRotateSteps(String ring, String key, int keyIdx, int startIdx, int[][] memo) {
+    private static int findRotateSteps(
+            String ring, String key, int keyIdx, int startIdx, int[][] memo) {
         if (keyIdx == key.length()) {
             return 0;
         }

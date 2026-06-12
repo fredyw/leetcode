@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/sort-list/
- */
+/** https://leetcode.com/problems/sort-list/ */
 public class Problem148 {
     public static class ListNode {
         int val;

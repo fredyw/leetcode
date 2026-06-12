@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/adding-spaces-to-a-string/
- */
+/** https://leetcode.com/problems/adding-spaces-to-a-string/ */
 class Problem2109 {
     fun addSpaces(s: String, spaces: IntArray): String {
         var answer = StringBuilder()

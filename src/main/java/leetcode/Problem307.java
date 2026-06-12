@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/range-sum-query-mutable/
- */
+/** https://leetcode.com/problems/range-sum-query-mutable/ */
 public class Problem307 {
     public static class NumArray {
         private final int[] binaryIndexTree;

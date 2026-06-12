@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/find-the-middle-index-in-array/
- */
+/** https://leetcode.com/problems/find-the-middle-index-in-array/ */
 public class Problem1991 {
     public int findMiddleIndex(int[] nums) {
         int totalSum = 0;

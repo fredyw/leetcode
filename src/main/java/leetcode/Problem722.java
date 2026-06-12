@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/remove-comments/
- */
+/** https://leetcode.com/problems/remove-comments/ */
 public class Problem722 {
     public List<String> removeComments(String[] source) {
         List<String> result = new ArrayList<>();

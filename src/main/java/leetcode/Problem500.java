@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/keyboard-row/
- */
+/** https://leetcode.com/problems/keyboard-row/ */
 public class Problem500 {
     public String[] findWords(String[] words) {
         List<String> result = new ArrayList<>();

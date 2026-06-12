@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/add-binary/
- */
+/** https://leetcode.com/problems/add-binary/ */
 public class Problem67 {
     public String addBinary(String a, String b) {
         int diff = Math.abs(a.length() - b.length());

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/circular-array-loop/
- */
+/** https://leetcode.com/problems/circular-array-loop/ */
 public class Problem457 {
     public boolean circularArrayLoop(int[] nums) {
         for (int i = 0; i < nums.length; i++) {

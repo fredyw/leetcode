@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/decrease-elements-to-make-array-zigzag/
- */
+/** https://leetcode.com/problems/decrease-elements-to-make-array-zigzag/ */
 public class Problem1144 {
     public int movesToMakeZigzag(int[] nums) {
         int[] nums1 = Arrays.copyOf(nums, nums.length);

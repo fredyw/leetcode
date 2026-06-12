@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/partition-to-k-equal-sum-subsets/
- */
+/** https://leetcode.com/problems/partition-to-k-equal-sum-subsets/ */
 public class Problem698 {
     public boolean canPartitionKSubsets(int[] nums, int k) {
         int sum = 0;
@@ -17,8 +15,8 @@ public class Problem698 {
         return canPartition(nums, sub, 0, k, sub, visited);
     }
 
-    private static boolean canPartition(int[] nums, int originalSub, int idx, int k, int sub,
-                                        boolean[] visited) {
+    private static boolean canPartition(
+            int[] nums, int originalSub, int idx, int k, int sub, boolean[] visited) {
         if (k == 0) {
             return true;
         }

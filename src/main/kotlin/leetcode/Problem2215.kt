@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/find-the-difference-of-two-arrays/
- */
+/** https://leetcode.com/problems/find-the-difference-of-two-arrays/ */
 class Problem2215 {
     fun findDifference(nums1: IntArray, nums2: IntArray): List<List<Int>> {
         val answer = mutableListOf<List<Int>>()

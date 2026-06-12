@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/reverse-prefix-of-word/
- */
+/** https://leetcode.com/problems/reverse-prefix-of-word/ */
 public class Problem2000 {
     public String reversePrefix(String word, char ch) {
         for (int i = 0; i < word.length(); i++) {

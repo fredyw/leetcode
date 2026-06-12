@@ -3,9 +3,7 @@ package leetcode;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-/**
- * https://leetcode.com/problems/design-a-stack-with-increment-operation/
- */
+/** https://leetcode.com/problems/design-a-stack-with-increment-operation/ */
 public class Problem1381 {
     static class CustomStack {
         private final int maxSize;

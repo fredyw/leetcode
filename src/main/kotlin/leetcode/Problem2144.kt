@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/minimum-cost-of-buying-candies-with-discount/
- */
+/** https://leetcode.com/problems/minimum-cost-of-buying-candies-with-discount/ */
 class Problem2144 {
     fun minimumCost(cost: IntArray): Int {
         var answer = 0

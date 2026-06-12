@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/license-key-formatting/
- */
+/** https://leetcode.com/problems/license-key-formatting/ */
 public class Problem482 {
     public String licenseKeyFormatting(String S, int K) {
         StringBuilder sb = new StringBuilder();

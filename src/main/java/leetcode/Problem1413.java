@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-value-to-get-positive-step-by-step-sum/
- */
+/** https://leetcode.com/problems/minimum-value-to-get-positive-step-by-step-sum/ */
 public class Problem1413 {
     public int minStartValue(int[] nums) {
         int sum = 0;

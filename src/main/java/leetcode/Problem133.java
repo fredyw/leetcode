@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/clone-graph/
- */
+/** https://leetcode.com/problems/clone-graph/ */
 public class Problem133 {
     private static class UndirectedGraphNode {
         int label;
@@ -33,8 +31,11 @@ public class Problem133 {
         return copy;
     }
 
-    private void dfs(UndirectedGraphNode source, UndirectedGraphNode copy,
-                     Set<Integer> marked, Map<Integer, UndirectedGraphNode> copyMap) {
+    private void dfs(
+            UndirectedGraphNode source,
+            UndirectedGraphNode copy,
+            Set<Integer> marked,
+            Map<Integer, UndirectedGraphNode> copyMap) {
         marked.add(source.label);
         for (UndirectedGraphNode n : source.neighbors) {
             UndirectedGraphNode nCopy = new UndirectedGraphNode(n.label);

@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/lru-cache/
- */
+/** https://leetcode.com/problems/lru-cache/ */
 public class Problem146 {
     public static class LRUCache {
         private static class Node {

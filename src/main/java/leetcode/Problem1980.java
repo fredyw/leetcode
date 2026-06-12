@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/find-unique-binary-string/
- */
+/** https://leetcode.com/problems/find-unique-binary-string/ */
 public class Problem1980 {
     public String findDifferentBinaryString(String[] nums) {
         Set<String> set = new HashSet<>();
@@ -23,7 +21,7 @@ public class Problem1980 {
             }
             return s;
         }
-        for (char c : new char[]{'0', '1'}) {
+        for (char c : new char[] {'0', '1'}) {
             char tmp = chars[index];
             chars[index] = c;
             String s = findDifferentBinaryString(nums, index + 1, chars);

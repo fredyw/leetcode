@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/array-nesting/
- */
+/** https://leetcode.com/problems/array-nesting/ */
 public class Problem565 {
     public int arrayNesting(int[] nums) {
         int max = 0;

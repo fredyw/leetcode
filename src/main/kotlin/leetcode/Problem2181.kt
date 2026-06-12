@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/merge-nodes-in-between-zeros/
- */
+/** https://leetcode.com/problems/merge-nodes-in-between-zeros/ */
 class Problem2181 {
     class ListNode(var `val`: Int) {
         var next: ListNode? = null

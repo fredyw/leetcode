@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/minimum-index-sum-of-two-lists/
- */
+/** https://leetcode.com/problems/minimum-index-sum-of-two-lists/ */
 public class Problem599 {
     public String[] findRestaurant(String[] list1, String[] list2) {
         Map<String, Integer> map = new HashMap<>();

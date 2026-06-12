@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/reshape-the-matrix/
- */
+/** https://leetcode.com/problems/reshape-the-matrix/ */
 public class Problem566 {
     public int[][] matrixReshape(int[][] nums, int r, int c) {
         int rowSize = nums.length;

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/h-index-ii/
- */
+/** https://leetcode.com/problems/h-index-ii/ */
 public class Problem275 {
     public int hIndex(int[] citations) {
         int idx = binarySearch(citations, 0, citations.length - 1);

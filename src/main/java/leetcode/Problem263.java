@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/ugly-number/
- */
+/** https://leetcode.com/problems/ugly-number/ */
 public class Problem263 {
     public boolean isUgly(int num) {
         if (num == 0) {
@@ -14,7 +12,7 @@ public class Problem263 {
         if (num == 1) {
             return true;
         }
-        int[] primes = new int[]{2, 3, 5};
+        int[] primes = new int[] {2, 3, 5};
         Set<Integer> pf = new HashSet<>();
         isUgly(num, primes, pf);
         for (int prime : primes) {

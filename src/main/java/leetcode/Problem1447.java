@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/simplified-fractions/
- */
+/** https://leetcode.com/problems/simplified-fractions/ */
 public class Problem1447 {
     public List<String> simplifiedFractions(int n) {
         List<String> answer = new ArrayList<>();

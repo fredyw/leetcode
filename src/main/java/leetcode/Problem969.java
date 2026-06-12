@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/pancake-sorting/
- */
+/** https://leetcode.com/problems/pancake-sorting/ */
 public class Problem969 {
     public List<Integer> pancakeSort(int[] A) {
         List<Integer> answer = new ArrayList<>();

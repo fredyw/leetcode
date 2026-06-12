@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/find-good-days-to-rob-the-bank/
- */
+/** https://leetcode.com/problems/find-good-days-to-rob-the-bank/ */
 class Problem2100 {
     fun goodDaysToRobBank(security: IntArray, time: Int): List<Int> {
         if (time == 0) {

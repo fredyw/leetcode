@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/recover-binary-search-tree/
- */
+/** https://leetcode.com/problems/recover-binary-search-tree/ */
 public class Problem99 {
     public static class TreeNode {
         int val;

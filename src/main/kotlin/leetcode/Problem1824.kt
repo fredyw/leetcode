@@ -2,16 +2,23 @@ package leetcode
 
 import kotlin.math.min
 
-/**
- * https://leetcode.com/problems/minimum-sideway-jumps/
- */
+/** https://leetcode.com/problems/minimum-sideway-jumps/ */
 class Problem1824 {
     fun minSideJumps(obstacles: IntArray): Int {
-        return minSideJumps(obstacles, lane = 2, index = 0,
-            memo = Array(obstacles.size) { IntArray(4) { -1 } })
+        return minSideJumps(
+            obstacles,
+            lane = 2,
+            index = 0,
+            memo = Array(obstacles.size) { IntArray(4) { -1 } },
+        )
     }
 
-    private fun minSideJumps(obstacles: IntArray, lane: Int, index: Int, memo: Array<IntArray>): Int {
+    private fun minSideJumps(
+        obstacles: IntArray,
+        lane: Int,
+        index: Int,
+        memo: Array<IntArray>,
+    ): Int {
         if (obstacles.size == index) {
             return 0
         }

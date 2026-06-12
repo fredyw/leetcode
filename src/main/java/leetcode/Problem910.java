@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/smallest-range-ii/
- */
+/** https://leetcode.com/problems/smallest-range-ii/ */
 public class Problem910 {
     public int smallestRangeII(int[] A, int K) {
         if (A.length == 1) {

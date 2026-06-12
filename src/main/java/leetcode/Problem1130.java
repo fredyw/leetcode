@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-cost-tree-from-leaf-values/
- */
+/** https://leetcode.com/problems/minimum-cost-tree-from-leaf-values/ */
 public class Problem1130 {
     public int mctFromLeafValues(int[] arr) {
         return mctFromLeafValues(arr, 0, arr.length - 1, new MaxSum[arr.length][arr.length]).sum;

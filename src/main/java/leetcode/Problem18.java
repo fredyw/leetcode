@@ -9,9 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/4sum/
- */
+/** https://leetcode.com/problems/4sum/ */
 public class Problem18 {
     private static class Indices {
         int i;

@@ -6,16 +6,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/binary-watch/
- */
+/** https://leetcode.com/problems/binary-watch/ */
 public class Problem401 {
     public List<String> readBinaryWatch(int num) {
         if (num == 0) {
             return Arrays.asList("0:00");
         }
-        int[] hours = new int[]{1, 2, 4, 8};
-        int[] minutes = new int[]{1, 2, 4, 8, 16, 32};
+        int[] hours = new int[] {1, 2, 4, 8};
+        int[] minutes = new int[] {1, 2, 4, 8, 16, 32};
 
         Set<String> result = new HashSet<>();
         for (int count = 0; count <= num; count++) {
@@ -41,8 +39,7 @@ public class Problem401 {
         return new ArrayList<>(result);
     }
 
-    private void readBinaryWatchHour(int num, int[] hours, int idx, int accu,
-                                     Set<Integer> result) {
+    private void readBinaryWatchHour(int num, int[] hours, int idx, int accu, Set<Integer> result) {
         if (accu > 11) {
             return;
         }
@@ -55,8 +52,8 @@ public class Problem401 {
         }
     }
 
-    private void readBinaryWatchMinute(int num, int[] minutes, int idx, int accu,
-                                       Set<Integer> result) {
+    private void readBinaryWatchMinute(
+            int num, int[] minutes, int idx, int accu, Set<Integer> result) {
         if (accu > 59) {
             return;
         }

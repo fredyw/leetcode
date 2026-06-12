@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/invalid-transactions/
- */
+/** https://leetcode.com/problems/invalid-transactions/ */
 public class Problem1169 {
     public List<String> invalidTransactions(String[] transactions) {
         Transaction[] trans = new Transaction[transactions.length];
@@ -25,9 +23,9 @@ public class Problem1169 {
                 invalid.add(i);
             }
             for (int j = i + 1; j < trans.length; j++) {
-                if (trans[i].name.equals(trans[j].name) &&
-                    !trans[i].city.equals(trans[j].city) &&
-                    Math.abs(trans[i].time - trans[j].time) <= 60) {
+                if (trans[i].name.equals(trans[j].name)
+                        && !trans[i].city.equals(trans[j].city)
+                        && Math.abs(trans[i].time - trans[j].time) <= 60) {
                     invalid.add(i);
                     invalid.add(j);
                 }

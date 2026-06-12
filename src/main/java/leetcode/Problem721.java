@@ -8,9 +8,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
-/**
- * https://leetcode.com/problems/accounts-merge/
- */
+/** https://leetcode.com/problems/accounts-merge/ */
 public class Problem721 {
     public List<List<String>> accountsMerge(List<List<String>> accounts) {
         Map<String, String> emailToAccount = new HashMap<>();
@@ -57,13 +55,14 @@ public class Problem721 {
             result.add(list);
         }
         return result;
-}
+    }
 
-    private static void dfs(Map<String, TreeSet<String>> graph,
-                            String source,
-                            int group,
-                            Set<String> visited,
-                            Map<Integer, TreeSet<String>> connectedComponents) {
+    private static void dfs(
+            Map<String, TreeSet<String>> graph,
+            String source,
+            int group,
+            Set<String> visited,
+            Map<Integer, TreeSet<String>> connectedComponents) {
         visited.add(source);
         if (!connectedComponents.containsKey(group)) {
             connectedComponents.put(group, new TreeSet<>());

@@ -3,9 +3,7 @@ package leetcode;
 import java.util.concurrent.Semaphore;
 import java.util.function.IntConsumer;
 
-/**
- * https://leetcode.com/problems/print-zero-even-odd/
- */
+/** https://leetcode.com/problems/print-zero-even-odd/ */
 public class Problem1116 {
     private static class ZeroEvenOdd {
         private int n;

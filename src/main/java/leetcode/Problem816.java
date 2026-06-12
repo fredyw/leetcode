@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/ambiguous-coordinates/
- */
+/** https://leetcode.com/problems/ambiguous-coordinates/ */
 public class Problem816 {
     public List<String> ambiguousCoordinates(String S) {
         List<String> result = new ArrayList<>();

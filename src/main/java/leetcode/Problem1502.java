@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/can-make-arithmetic-progression-from-sequence/
- */
+/** https://leetcode.com/problems/can-make-arithmetic-progression-from-sequence/ */
 public class Problem1502 {
     public boolean canMakeArithmeticProgression(int[] arr) {
         Arrays.sort(arr);

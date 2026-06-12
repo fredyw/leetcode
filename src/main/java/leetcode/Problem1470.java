@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/shuffle-the-array/
- */
+/** https://leetcode.com/problems/shuffle-the-array/ */
 public class Problem1470 {
     public int[] shuffle(int[] nums, int n) {
         int i = 0;

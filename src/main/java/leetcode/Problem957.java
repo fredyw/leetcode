@@ -4,9 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/prison-cells-after-n-days/
- */
+/** https://leetcode.com/problems/prison-cells-after-n-days/ */
 public class Problem957 {
     public int[] prisonAfterNDays(int[] cells, int N) {
         Map<String, Integer> cellToDay = new HashMap<>();
@@ -17,8 +15,8 @@ public class Problem957 {
             for (int j = 0; j < cells.length; j++) {
                 if (j - 1 < 0 || j + 1 == cells.length) {
                     tmp[j] = 0;
-                } else if ((cells[j - 1] == 0 && cells[j + 1] == 0) ||
-                    (cells[j - 1] == 1 && cells[j + 1] == 1)) {
+                } else if ((cells[j - 1] == 0 && cells[j + 1] == 0)
+                        || (cells[j - 1] == 1 && cells[j + 1] == 1)) {
                     tmp[j] = 1;
                 } else {
                     tmp[j] = 0;

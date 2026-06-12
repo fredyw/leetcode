@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/contains-duplicate-ii/
- */
+/** https://leetcode.com/problems/contains-duplicate-ii/ */
 public class Problem219 {
     public boolean containsNearbyDuplicate(int[] nums, int k) {
         // the key is the num value, the value is the index

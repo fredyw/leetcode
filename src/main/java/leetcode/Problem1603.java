@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/design-parking-system/
- */
+/** https://leetcode.com/problems/design-parking-system/ */
 public class Problem1603 {
     static class ParkingSystem {
         private int big;

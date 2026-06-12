@@ -1,16 +1,13 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/
- */
+/** https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/ */
 public class Problem1457 {
     public static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
 
-        TreeNode() {
-        }
+        TreeNode() {}
 
         TreeNode(int val) {
             this.val = val;

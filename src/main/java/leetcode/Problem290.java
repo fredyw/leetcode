@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/word-pattern/
- */
+/** https://leetcode.com/problems/word-pattern/ */
 public class Problem290 {
     public boolean wordPattern(String pattern, String str) {
         Map<String, Integer> map = new HashMap<>();

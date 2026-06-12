@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/find-the-difference/
- */
+/** https://leetcode.com/problems/find-the-difference/ */
 public class Problem389 {
     public char findTheDifference(String s, String t) {
         Map<Character, Integer> charCounts = new HashMap<>();

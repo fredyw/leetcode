@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/next-greater-element-iii/
- */
+/** https://leetcode.com/problems/next-greater-element-iii/ */
 public class Problem556 {
     public int nextGreaterElement(int n) {
         boolean found = false;

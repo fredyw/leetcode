@@ -1,9 +1,7 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/complex-number-multiplication/
- */
-public class Problem537  {
+/** https://leetcode.com/problems/complex-number-multiplication/ */
+public class Problem537 {
     public String complexNumberMultiply(String a, String b) {
         String[] aSplit = a.split("\\+");
         int ar = Integer.parseInt(aSplit[0]);

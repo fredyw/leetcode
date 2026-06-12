@@ -8,14 +8,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-/**
- * https://leetcode.com/problems/get-watched-videos-by-your-friends/
- */
+/** https://leetcode.com/problems/get-watched-videos-by-your-friends/ */
 public class Problem1311 {
-    public List<String> watchedVideosByFriends(List<List<String>> watchedVideos,
-                                               int[][] friends,
-                                               int id,
-                                               int level) {
+    public List<String> watchedVideosByFriends(
+            List<List<String>> watchedVideos, int[][] friends, int id, int level) {
         Map<String, Integer> countMap = new HashMap<>();
         Queue<Integer> queue = new LinkedList<>();
         queue.add(id);
@@ -39,13 +35,15 @@ public class Problem1311 {
             count++;
         }
         List<Map.Entry<String, Integer>> sorted = new ArrayList<>(countMap.entrySet());
-        Collections.sort(sorted, (a, b) -> {
-            int cmp = Integer.compare(a.getValue(), b.getValue());
-            if (cmp == 0) {
-                return a.getKey().compareTo(b.getKey());
-            }
-            return cmp;
-        });
+        Collections.sort(
+                sorted,
+                (a, b) -> {
+                    int cmp = Integer.compare(a.getValue(), b.getValue());
+                    if (cmp == 0) {
+                        return a.getKey().compareTo(b.getKey());
+                    }
+                    return cmp;
+                });
         List<String> answer = new ArrayList<>();
         for (Map.Entry<String, Integer> e : sorted) {
             answer.add(e.getKey());

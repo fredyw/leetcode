@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/find-anagram-mappings/
- */
+/** https://leetcode.com/problems/find-anagram-mappings/ */
 public class Problem760 {
     public int[] anagramMappings(int[] A, int[] B) {
         Map<Integer, LinkedList<Integer>> map = new HashMap<>();

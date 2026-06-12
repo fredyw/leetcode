@@ -8,9 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/smallest-string-with-swaps/
- */
+/** https://leetcode.com/problems/smallest-string-with-swaps/ */
 public class Problem1202 {
     public String smallestStringWithSwaps(String s, List<List<Integer>> pairs) {
         Map<Integer, Set<Integer>> graph = buildGraph(pairs);
@@ -32,10 +30,15 @@ public class Problem1202 {
         return new String(answer);
     }
 
-    private static void dfs(Map<Integer, Set<Integer>> graph, boolean[] visited,
-                            int index, String string, List<Character> chars,
-                            List<Integer> indexes) {
-        visited[index] = true;;
+    private static void dfs(
+            Map<Integer, Set<Integer>> graph,
+            boolean[] visited,
+            int index,
+            String string,
+            List<Character> chars,
+            List<Integer> indexes) {
+        visited[index] = true;
+        ;
         chars.add(string.charAt(index));
         indexes.add(index);
         for (int adjacent : graph.getOrDefault(index, Collections.emptySet())) {

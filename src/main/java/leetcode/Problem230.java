@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/kth-smallest-element-in-a-bst/
- */
+/** https://leetcode.com/problems/kth-smallest-element-in-a-bst/ */
 public class Problem230 {
     public static class TreeNode {
         int val;

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://oj.leetcod   e.com/problems/maximum-depth-of-binary-tree/
- */
+/** https://oj.leetcod e.com/problems/maximum-depth-of-binary-tree/ */
 public class Problem104 {
     public static class TreeNode {
         int val;

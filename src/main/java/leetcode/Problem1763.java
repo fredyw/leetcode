@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/longest-nice-substring/
- */
+/** https://leetcode.com/problems/longest-nice-substring/ */
 public class Problem1763 {
     public String longestNiceSubstring(String s) {
         return getLongestNiceSubstring(s).string;
@@ -30,8 +28,8 @@ public class Problem1763 {
         }
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if ((Character.isUpperCase(c) && !lower[c - 'A']) ||
-                (Character.isLowerCase(c) && !upper[c - 'a'])) {
+            if ((Character.isUpperCase(c) && !lower[c - 'A'])
+                    || (Character.isLowerCase(c) && !upper[c - 'a'])) {
                 NiceString ns1 = getLongestNiceSubstring(s.substring(0, i));
                 NiceString ns2 = getLongestNiceSubstring(s.substring(i + 1));
                 if (ns1.nice && ns2.nice) {

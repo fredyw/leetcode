@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/h-index/
- */
+/** https://leetcode.com/problems/h-index/ */
 public class Problem274 {
     public int hIndex(int[] citations) {
         Arrays.sort(citations);

@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/find-and-replace-pattern/
- */
+/** https://leetcode.com/problems/find-and-replace-pattern/ */
 public class Problem890 {
     public List<String> findAndReplacePattern(String[] words, String pattern) {
         List<String> result = new ArrayList<>();

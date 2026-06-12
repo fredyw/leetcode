@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/copy-list-with-random-pointer/
- */
+/** https://leetcode.com/problems/copy-list-with-random-pointer/ */
 public class Problem138 {
     private static class RandomListNode {
         int label;

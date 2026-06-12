@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/adding-two-negabinary-numbers/
- */
+/** https://leetcode.com/problems/adding-two-negabinary-numbers/ */
 public class Problem1073 {
     public int[] addNegabinary(int[] arr1, int[] arr2) {
         List<Integer> list = new ArrayList<>();
@@ -72,7 +70,7 @@ public class Problem1073 {
             size--;
         }
         if (size == 0) {
-            return new int[]{0};
+            return new int[] {0};
         }
         // Remove all the leading zeros.
         int[] answer = new int[size];

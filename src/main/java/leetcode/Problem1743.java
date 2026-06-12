@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/restore-the-array-from-adjacent-pairs/
- */
+/** https://leetcode.com/problems/restore-the-array-from-adjacent-pairs/ */
 public class Problem1743 {
     public int[] restoreArray(int[][] adjacentPairs) {
         int first = 0;

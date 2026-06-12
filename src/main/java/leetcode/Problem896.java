@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/monotonic-array/
- */
+/** https://leetcode.com/problems/monotonic-array/ */
 public class Problem896 {
     public boolean isMonotonic(int[] A) {
         int cmp = 0;
@@ -20,7 +18,6 @@ public class Problem896 {
                     return false;
                 }
             }
-
         }
         return true;
     }

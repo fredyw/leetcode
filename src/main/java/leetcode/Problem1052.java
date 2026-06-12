@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/grumpy-bookstore-owner/
- */
+/** https://leetcode.com/problems/grumpy-bookstore-owner/ */
 public class Problem1052 {
     public int maxSatisfied(int[] customers, int[] grumpy, int X) {
         int satisfiedSum = 0;

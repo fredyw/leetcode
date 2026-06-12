@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-xor-for-each-query/
- */
+/** https://leetcode.com/problems/maximum-xor-for-each-query/ */
 public class Problem1829 {
     public int[] getMaximumXor(int[] nums, int maximumBit) {
         int[] answer = new int[nums.length];

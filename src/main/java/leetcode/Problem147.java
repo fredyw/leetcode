@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/insertion-sort-list/
- */
+/** https://leetcode.com/problems/insertion-sort-list/ */
 public class Problem147 {
     public static class ListNode {
         int val;

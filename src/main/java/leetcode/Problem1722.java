@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/minimize-hamming-distance-after-swap-operations/
- */
+/** https://leetcode.com/problems/minimize-hamming-distance-after-swap-operations/ */
 public class Problem1722 {
     public int minimumHammingDistance(int[] source, int[] target, int[][] allowedSwaps) {
         UnionFind uf = new UnionFind(source.length);

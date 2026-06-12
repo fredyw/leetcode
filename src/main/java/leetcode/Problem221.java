@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximal-square/
- */
+/** https://leetcode.com/problems/maximal-square/ */
 public class Problem221 {
     public int maximalSquare(char[][] matrix) {
         int maxRow = matrix.length;
@@ -17,8 +15,8 @@ public class Problem221 {
         return answer * answer;
     }
 
-    private static int maximalSquare(char[][] matrix, int maxRow, int maxCol, int row, int col,
-                                     Integer[][] memo) {
+    private static int maximalSquare(
+            char[][] matrix, int maxRow, int maxCol, int row, int col, Integer[][] memo) {
         if (row < 0 || row == maxRow || col < 0 || col == maxCol) {
             return 0;
         }

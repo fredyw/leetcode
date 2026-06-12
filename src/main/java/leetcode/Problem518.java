@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/coin-change-2/
- */
+/** https://leetcode.com/problems/coin-change-2/ */
 public class Problem518 {
     public int change(int amount, int[] coins) {
         int[] dp = new int[amount + 1];

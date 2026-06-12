@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/maximal-rectangle/
- */
+/** https://leetcode.com/problems/maximal-rectangle/ */
 public class Problem85 {
     public int maximalRectangle(char[][] matrix) {
         if (matrix == null || matrix.length == 0) {

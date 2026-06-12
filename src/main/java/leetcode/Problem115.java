@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/distinct-subsequences/
- */
+/** https://leetcode.com/problems/distinct-subsequences/ */
 public class Problem115 {
     public int numDistinct(String s, String t) {
         int[][] memo = new int[s.length()][t.length()];

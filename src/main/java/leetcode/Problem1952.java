@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/three-divisors/
- */
+/** https://leetcode.com/problems/three-divisors/ */
 public class Problem1952 {
     public boolean isThree(int n) {
         if (n == 1) {

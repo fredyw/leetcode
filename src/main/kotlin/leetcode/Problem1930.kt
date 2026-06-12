@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/unique-length-3-palindromic-subsequences/
- */
+/** https://leetcode.com/problems/unique-length-3-palindromic-subsequences/ */
 class Problem1930 {
     fun countPalindromicSubsequence(s: String): Int {
         val lastIndexMap = mutableMapOf<Char, Int>()
@@ -24,6 +22,6 @@ class Problem1930 {
                 charMap[char] = mutableSetOf()
             }
         }
-        return charMap.values.map { it.size }.fold(0) {sum, size -> sum + size }
+        return charMap.values.map { it.size }.fold(0) { sum, size -> sum + size }
     }
 }

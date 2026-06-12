@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/robot-bounded-in-circle/
- */
+/** https://leetcode.com/problems/robot-bounded-in-circle/ */
 public class Problem1041 {
     public boolean isRobotBounded(String instructions) {
         Coord coord = new Coord();
@@ -71,6 +69,9 @@ public class Problem1041 {
     }
 
     private enum Direction {
-        UP, DOWN, LEFT, RIGHT
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT
     }
 }

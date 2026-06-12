@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.TreeMap;
 
-/**
- * https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/
- */
+/** https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/ */
 public class Problem1296 {
     public boolean isPossibleDivide(int[] nums, int k) {
         TreeMap<Integer, Integer> map = new TreeMap<>();

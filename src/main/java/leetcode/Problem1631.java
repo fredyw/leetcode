@@ -3,9 +3,7 @@ package leetcode;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-/**
- * https://leetcode.com/problems/path-with-minimum-effort/
- */
+/** https://leetcode.com/problems/path-with-minimum-effort/ */
 public class Problem1631 {
     public int minimumEffortPath(int[][] heights) {
         int maxRow = heights.length;
@@ -22,17 +20,21 @@ public class Problem1631 {
         queue.add(new Vertex(0, 0, diffs[0][0]));
         while (!queue.isEmpty()) {
             Vertex vertex = queue.remove();
-            for (int[] neighbor : new int[][]{{0, -1}, {0, 1}, {-1, 0}, {1, 0}}) {
+            for (int[] neighbor : new int[][] {{0, -1}, {0, 1}, {-1, 0}, {1, 0}}) {
                 int nextRow = vertex.row + neighbor[0];
                 int nextCol = vertex.col + neighbor[1];
                 if (nextRow < 0 || nextRow == maxRow || nextCol < 0 || nextCol == maxCol) {
                     continue;
                 }
                 // Get the maximum absolute difference.
-                int newDiff = Math.max(
-                    diffs[vertex.row][vertex.col],
-                    Math.abs(heights[vertex.row][vertex.col] - heights[nextRow][nextCol]));
-                if (diffs[nextRow][nextCol] == Integer.MAX_VALUE || newDiff < diffs[nextRow][nextCol]) {
+                int newDiff =
+                        Math.max(
+                                diffs[vertex.row][vertex.col],
+                                Math.abs(
+                                        heights[vertex.row][vertex.col]
+                                                - heights[nextRow][nextCol]));
+                if (diffs[nextRow][nextCol] == Integer.MAX_VALUE
+                        || newDiff < diffs[nextRow][nextCol]) {
                     diffs[nextRow][nextCol] = newDiff;
                     Vertex v = new Vertex(nextRow, nextCol, diffs[nextRow][nextCol]);
                     queue.add(v);

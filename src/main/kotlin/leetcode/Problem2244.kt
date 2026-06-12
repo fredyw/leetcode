@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/minimum-rounds-to-complete-all-tasks/
- */
+/** https://leetcode.com/problems/minimum-rounds-to-complete-all-tasks/ */
 class Problem2244 {
     fun minimumRounds(tasks: IntArray): Int {
         val map = mutableMapOf<Int, Int>()
@@ -14,13 +12,14 @@ class Problem2244 {
             if (count < 2) {
                 return -1
             }
-            answer += if (count % 3 == 0) {
-                count / 3
-            } else if (count % 3 == 1) {
-                (count / 3) - 1 + 2
-            } else { // count % 3 == 2
-                (count / 3) + 1
-            }
+            answer +=
+                if (count % 3 == 0) {
+                    count / 3
+                } else if (count % 3 == 1) {
+                    (count / 3) - 1 + 2
+                } else { // count % 3 == 2
+                    (count / 3) + 1
+                }
         }
         return answer
     }

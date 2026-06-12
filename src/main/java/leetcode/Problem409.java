@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/longest-palindrome/
- */
+/** https://leetcode.com/problems/longest-palindrome/ */
 public class Problem409 {
     public int longestPalindrome(String s) {
         Map<Character, Integer> charCount = new HashMap<>();

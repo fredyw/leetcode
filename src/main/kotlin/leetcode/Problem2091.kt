@@ -2,9 +2,7 @@ package leetcode
 
 import kotlin.math.min
 
-/**
- * https://leetcode.com/problems/removing-minimum-and-maximum-from-array/
- */
+/** https://leetcode.com/problems/removing-minimum-and-maximum-from-array/ */
 class Problem2091 {
     fun minimumDeletions(nums: IntArray): Int {
         var minIndex = 0

@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.TreeSet;
 
-/**
- * https://leetcode.com/problems/exam-room/
- */
+/** https://leetcode.com/problems/exam-room/ */
 public class Problem855 {
     private static class ExamRoom {
         private final int n;
@@ -48,7 +46,7 @@ public class Problem855 {
         }
 
         public void leave(int p) {
-           set.remove(p);
+            set.remove(p);
         }
     }
 }

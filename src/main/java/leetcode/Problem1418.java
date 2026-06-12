@@ -6,13 +6,11 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-/**
- * https://leetcode.com/problems/display-table-of-food-orders-in-a-restaurant/
- */
+/** https://leetcode.com/problems/display-table-of-food-orders-in-a-restaurant/ */
 public class Problem1418 {
     public List<List<String>> displayTable(List<List<String>> orders) {
-        TreeMap</* table */ Integer,
-            TreeMap</* food */ String, /* count */ Integer>> map = new TreeMap<>();
+        TreeMap</* table */ Integer, TreeMap</* food */ String, /* count */ Integer>> map =
+                new TreeMap<>();
         TreeSet<String> foodItems = new TreeSet<>();
         for (List<String> order : orders) {
             Integer table = Integer.valueOf(order.get(1));

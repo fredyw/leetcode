@@ -2,9 +2,7 @@ package leetcode
 
 import java.util.*
 
-/**
- * https://leetcode.com/problems/maximum-score-from-removing-substrings/
- */
+/** https://leetcode.com/problems/maximum-score-from-removing-substrings/ */
 class Problem1717 {
     fun maximumGain(s: String, x: Int, y: Int): Int {
         if (x > y) {

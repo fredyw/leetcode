@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-alternating-subsequence-sum/
- */
+/** https://leetcode.com/problems/maximum-alternating-subsequence-sum/ */
 public class Problem1911 {
     public long maxAlternatingSum(int[] nums) {
         return maxAlternatingSum(nums, 0, true, new Long[nums.length][2]);

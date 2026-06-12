@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/spiral-matrix/
- */
+/** https://leetcode.com/problems/spiral-matrix/ */
 public class Problem54 {
     public List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> answer = new ArrayList<>();
@@ -14,15 +12,14 @@ public class Problem54 {
         int up = 0;
         int down = matrix.length - 1;
         int dirIdx = 0;
-        Direction[] directions = new Direction[]{
-            Direction.RIGHT, Direction.DOWN, Direction.LEFT, Direction.UP
-        };
+        Direction[] directions =
+                new Direction[] {Direction.RIGHT, Direction.DOWN, Direction.LEFT, Direction.UP};
         while (left <= right && up <= down) {
             Direction direction = directions[dirIdx];
             switch (direction) {
                 case RIGHT:
                     for (int col = left; col <= right; col++) {
-                       answer.add(matrix[up][col]);
+                        answer.add(matrix[up][col]);
                     }
                     up++;
                     break;
@@ -52,6 +49,9 @@ public class Problem54 {
     }
 
     private enum Direction {
-        RIGHT, DOWN, LEFT, UP
+        RIGHT,
+        DOWN,
+        LEFT,
+        UP
     }
 }

@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-/**
- * https://leetcode.com/problems/task-scheduler/
- */
+/** https://leetcode.com/problems/task-scheduler/ */
 public class Problem621 {
     public int leastInterval(char[] tasks, int n) {
         int result = 0;
@@ -20,13 +18,15 @@ public class Problem621 {
                 charCountMap.put(tasks[i], charCountMap.get(tasks[i]) + 1);
             }
         }
-        PriorityQueue<CharCount> queue = new PriorityQueue<>((a, b) -> {
-            int cmp = Integer.compare(b.count, a.count);
-            if (cmp == 0) {
-                return Integer.compare(a.ch, b.ch);
-            }
-            return cmp;
-        });
+        PriorityQueue<CharCount> queue =
+                new PriorityQueue<>(
+                        (a, b) -> {
+                            int cmp = Integer.compare(b.count, a.count);
+                            if (cmp == 0) {
+                                return Integer.compare(a.ch, b.ch);
+                            }
+                            return cmp;
+                        });
         charCountMap.forEach((ch, count) -> queue.add(new CharCount(ch, count)));
         boolean[] processed = new boolean[26];
         int processedCount = 0;

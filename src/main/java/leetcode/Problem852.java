@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/peak-index-in-a-mountain-array/
- */
+/** https://leetcode.com/problems/peak-index-in-a-mountain-array/ */
 public class Problem852 {
     public int peakIndexInMountainArray(int[] A) {
         int max = 0;

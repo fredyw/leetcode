@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/consecutive-characters/
- */
+/** https://leetcode.com/problems/consecutive-characters/ */
 public class Problem1446 {
     public int maxPower(String s) {
         int answer = 1;

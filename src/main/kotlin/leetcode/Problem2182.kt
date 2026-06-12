@@ -2,9 +2,7 @@ package leetcode
 
 import java.util.PriorityQueue
 
-/**
- * https://leetcode.com/problems/construct-string-with-repeat-limit/
- */
+/** https://leetcode.com/problems/construct-string-with-repeat-limit/ */
 class Problem2182 {
     fun repeatLimitedString(s: String, repeatLimit: Int): String {
         data class CharCount(val char: Char, val count: Int)
@@ -12,7 +10,7 @@ class Problem2182 {
         for (char in s) {
             array[char - 'a']++
         }
-        val queue = PriorityQueue<CharCount> {a, b -> b.char.compareTo(a.char)}
+        val queue = PriorityQueue<CharCount> { a, b -> b.char.compareTo(a.char) }
         for (i in array.indices) {
             if (array[i] == 0) {
                 continue

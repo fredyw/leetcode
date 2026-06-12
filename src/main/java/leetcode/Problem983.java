@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-cost-for-tickets/
- */
+/** https://leetcode.com/problems/minimum-cost-for-tickets/ */
 public class Problem983 {
     public int mincostTickets(int[] days, int[] costs) {
         Integer[] memo = new Integer[days.length];

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/reverse-nodes-in-k-group/
- */
+/** https://leetcode.com/problems/reverse-nodes-in-k-group/ */
 public class Problem25 {
     public static class ListNode {
         int val;

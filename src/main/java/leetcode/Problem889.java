@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal/
- */
+/** https://leetcode.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal/ */
 public class Problem889 {
     public static class TreeNode {
         int val;
@@ -30,8 +28,13 @@ public class Problem889 {
         }
     }
 
-    private static TreeNode construct(int[] pre, int[] post, int[] preIndex, Index postIndex,
-                                      int preBeginIndex, int preEndIndex) {
+    private static TreeNode construct(
+            int[] pre,
+            int[] post,
+            int[] preIndex,
+            Index postIndex,
+            int preBeginIndex,
+            int preEndIndex) {
         if (preBeginIndex > preEndIndex) {
             postIndex.val++;
             return null;
@@ -43,11 +46,9 @@ public class Problem889 {
         TreeNode node = new TreeNode(pre[index]);
         postIndex.val--;
         int preMidIndex = preIndex[post[postIndex.val]];
-        node.right = construct(pre, post, preIndex, postIndex,
-            preMidIndex, preEndIndex);
+        node.right = construct(pre, post, preIndex, postIndex, preMidIndex, preEndIndex);
         postIndex.val--;
-        node.left = construct(pre, post, preIndex, postIndex,
-            preBeginIndex + 1, preMidIndex - 1);
+        node.left = construct(pre, post, preIndex, postIndex, preBeginIndex + 1, preMidIndex - 1);
         return node;
     }
 }

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/number-of-subarrays-with-bounded-maximum/
- */
+/** https://leetcode.com/problems/number-of-subarrays-with-bounded-maximum/ */
 public class Problem795 {
     public int numSubarrayBoundedMax(int[] A, int L, int R) {
         int result = 0;

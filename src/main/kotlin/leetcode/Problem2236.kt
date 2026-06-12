@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/root-equals-sum-of-children/
- */
+/** https://leetcode.com/problems/root-equals-sum-of-children/ */
 class Problem2236 {
     class TreeNode(var `val`: Int) {
         var left: TreeNode? = null

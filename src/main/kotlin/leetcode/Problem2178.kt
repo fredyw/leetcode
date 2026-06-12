@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/maximum-split-of-positive-even-integers/
- */
+/** https://leetcode.com/problems/maximum-split-of-positive-even-integers/ */
 class Problem2178 {
     fun maximumEvenSplit(finalSum: Long): List<Long> {
         val answer = mutableListOf<Long>()

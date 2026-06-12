@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/create-target-array-in-the-given-order/
- */
+/** https://leetcode.com/problems/create-target-array-in-the-given-order/ */
 public class Problem1389 {
     public int[] createTargetArray(int[] nums, int[] index) {
         int[] answer = new int[0];

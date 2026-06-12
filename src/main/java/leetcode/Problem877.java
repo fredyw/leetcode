@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/stone-game/
- */
+/** https://leetcode.com/problems/stone-game/ */
 public class Problem877 {
     public boolean stoneGame(int[] piles) {
         int sum = 0;

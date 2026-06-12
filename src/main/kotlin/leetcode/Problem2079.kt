@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/watering-plants/
- */
+/** https://leetcode.com/problems/watering-plants/ */
 class Problem2079 {
     fun wateringPlants(plants: IntArray, capacity: Int): Int {
         var answer = 0

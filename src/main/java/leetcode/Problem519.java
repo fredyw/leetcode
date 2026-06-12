@@ -4,9 +4,7 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/random-flip-matrix/
- */
+/** https://leetcode.com/problems/random-flip-matrix/ */
 public class Problem519 {
     private static class Solution {
         private final Random random = new Random();
@@ -29,7 +27,7 @@ public class Problem519 {
                 key = key(r, c);
             }
             set.add(key);
-            return new int[]{r, c};
+            return new int[] {r, c};
         }
 
         private String key(int row, int col) {

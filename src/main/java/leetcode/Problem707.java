@@ -1,11 +1,9 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/design-linked-list/
- */
+/** https://leetcode.com/problems/design-linked-list/ */
 public class Problem707 {
     private static class MyLinkedList {
-        private final static class Node {
+        private static final class Node {
             private final int value;
             private Node next;
 
@@ -19,12 +17,11 @@ public class Problem707 {
         private int size;
 
         /** Initialize your data structure here. */
-        public MyLinkedList() {
-        }
+        public MyLinkedList() {}
 
         /**
-         * Get the value of the index-th node in the linked list. If the index is invalid,
-         * return -1.
+         * Get the value of the index-th node in the linked list. If the index is invalid, return
+         * -1.
          */
         public int get(int index) {
             int idx = 0;
@@ -37,8 +34,8 @@ public class Problem707 {
         }
 
         /**
-         * Add a node of value val before the first element of the linked list.
-         * After the insertion, the new node will be the first node of the linked list.
+         * Add a node of value val before the first element of the linked list. After the insertion,
+         * the new node will be the first node of the linked list.
          */
         public void addAtHead(int val) {
             if (head == null) {
@@ -65,10 +62,9 @@ public class Problem707 {
         }
 
         /**
-         * Add a node of value val before the index-th node in the linked list.
-         * If index equals to the length of linked list, the node will be appended
-         * to the end of linked list. If index is greater than the length, the node
-         * will not be inserted.
+         * Add a node of value val before the index-th node in the linked list. If index equals to
+         * the length of linked list, the node will be appended to the end of linked list. If index
+         * is greater than the length, the node will not be inserted.
          */
         public void addAtIndex(int index, int val) {
             if (index == 0) {
@@ -106,7 +102,7 @@ public class Problem707 {
                 return;
             }
             int idx = 0;
-            for (Node n = head; n != null; n = n .next) {
+            for (Node n = head; n != null; n = n.next) {
                 if (idx++ == index - 1) {
                     if (n.next == tail) {
                         tail = n;

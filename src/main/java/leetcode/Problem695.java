@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/max-area-of-island/
- */
+/** https://leetcode.com/problems/max-area-of-island/ */
 public class Problem695 {
     public int maxAreaOfIsland(int[][] grid) {
         int maxRow = grid.length;
@@ -20,8 +18,8 @@ public class Problem695 {
         return max;
     }
 
-    private static int maxAreaOfIsland(int[][] grid, boolean[][] visited, int maxRow, int maxCol,
-                                       int row, int col) {
+    private static int maxAreaOfIsland(
+            int[][] grid, boolean[][] visited, int maxRow, int maxCol, int row, int col) {
         if (row < 0 || row >= maxRow || col < 0 || col >= maxCol) {
             return 0;
         }

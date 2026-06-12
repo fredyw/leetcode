@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/insert-interval/
- */
+/** https://leetcode.com/problems/insert-interval/ */
 public class Problem57 {
     public static class Interval {
         int start;
@@ -26,15 +24,19 @@ public class Problem57 {
         boolean[] overlaps = new boolean[intervals.size()];
         boolean hasOverlap = false;
         for (int i = 0; i < intervals.size(); i++) {
-            boolean a = intervals.get(i).start <= newInterval.start &&
-                newInterval.start <= intervals.get(i).end;
-            boolean b = intervals.get(i).start <= newInterval.end &&
-                newInterval.start <= intervals.get(i).end;
+            boolean a =
+                    intervals.get(i).start <= newInterval.start
+                            && newInterval.start <= intervals.get(i).end;
+            boolean b =
+                    intervals.get(i).start <= newInterval.end
+                            && newInterval.start <= intervals.get(i).end;
 
-            boolean c = newInterval.start <= intervals.get(i).start &&
-                intervals.get(i).end <= newInterval.end;
-            boolean d = newInterval.start <= intervals.get(i).end &&
-                intervals.get(i).end <= newInterval.end;
+            boolean c =
+                    newInterval.start <= intervals.get(i).start
+                            && intervals.get(i).end <= newInterval.end;
+            boolean d =
+                    newInterval.start <= intervals.get(i).end
+                            && intervals.get(i).end <= newInterval.end;
 
             overlaps[i] = a || b || c || d;
             hasOverlap |= overlaps[i];

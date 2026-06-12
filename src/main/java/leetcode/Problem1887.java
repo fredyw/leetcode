@@ -3,9 +3,7 @@ package leetcode;
 import java.util.Map;
 import java.util.TreeMap;
 
-/**
- * https://leetcode.com/problems/reduction-operations-to-make-the-array-elements-equal/
- */
+/** https://leetcode.com/problems/reduction-operations-to-make-the-array-elements-equal/ */
 public class Problem1887 {
     public int reductionOperations(int[] nums) {
         TreeMap<Integer, Integer> map = new TreeMap<>((a, b) -> Integer.compare(b, a));

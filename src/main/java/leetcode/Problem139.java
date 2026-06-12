@@ -4,9 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/word-break/
- */
+/** https://leetcode.com/problems/word-break/ */
 public class Problem139 {
     public boolean wordBreak(String s, List<String> wordDict) {
         return wordBreak(s, wordDict, new HashSet<>());

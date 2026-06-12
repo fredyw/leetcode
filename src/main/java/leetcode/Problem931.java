@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-falling-path-sum/
- */
+/** https://leetcode.com/problems/minimum-falling-path-sum/ */
 public class Problem931 {
     public int minFallingPathSum(int[][] A) {
         int maxRow = A.length;
@@ -15,8 +13,8 @@ public class Problem931 {
         return min;
     }
 
-    private static int minFaillingPathSum(int[][] a, int maxRow, int maxCol, int row, int col,
-                                          Integer[][] memo) {
+    private static int minFaillingPathSum(
+            int[][] a, int maxRow, int maxCol, int row, int col, Integer[][] memo) {
         if (row < 0 || col < 0 || row >= maxRow || col >= maxCol) {
             if (row < maxRow) {
                 return Integer.MAX_VALUE;

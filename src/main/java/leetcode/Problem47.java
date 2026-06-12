@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- * https://leetcode.com/problems/permutations-ii/
- */
+/** https://leetcode.com/problems/permutations-ii/ */
 public class Problem47 {
     public List<List<Integer>> permuteUnique(int[] nums) {
         Set<List<Integer>> permutations = new HashSet<>();
@@ -34,7 +32,9 @@ public class Problem47 {
 
     public static void main(String[] args) {
         Problem47 prob = new Problem47();
-        System.out.println(prob.permuteUnique(new int[]{1, 1, 2})); // [[1,1,2],[1,2,1],[2,1,1]]
-        System.out.println(prob.permuteUnique(new int[]{1, 2, 3})); // [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+        System.out.println(prob.permuteUnique(new int[] {1, 1, 2})); // [[1,1,2],[1,2,1],[2,1,1]]
+        System.out.println(
+                prob.permuteUnique(
+                        new int[] {1, 2, 3})); // [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
     }
 }

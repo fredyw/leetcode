@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/form-array-by-concatenating-subarrays-of-another-array/
- */
+/** https://leetcode.com/problems/form-array-by-concatenating-subarrays-of-another-array/ */
 public class Problem1764 {
     public boolean canChoose(int[][] groups, int[] nums) {
         boolean answer = true;

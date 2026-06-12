@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/binary-prefix-divisible-by-5/
- */
+/** https://leetcode.com/problems/binary-prefix-divisible-by-5/ */
 public class Problem1018 {
     public List<Boolean> prefixesDivBy5(int[] A) {
         List<Boolean> answer = new ArrayList<>();

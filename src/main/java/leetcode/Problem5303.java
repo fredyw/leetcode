@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/decrypt-string-from-alphabet-to-integer-mapping/
- */
+/** https://leetcode.com/problems/decrypt-string-from-alphabet-to-integer-mapping/ */
 public class Problem5303 {
     public String freqAlphabets(String s) {
         String answer = "";

@@ -3,15 +3,12 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/product-of-the-last-k-numbers/
- */
+/** https://leetcode.com/problems/product-of-the-last-k-numbers/ */
 public class Problem1352 {
     static class ProductOfNumbers {
         private final List<Integer> list = new ArrayList<>();
 
-        public ProductOfNumbers() {
-        }
+        public ProductOfNumbers() {}
 
         public void add(int num) {
             if (num == 0) {

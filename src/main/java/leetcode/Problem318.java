@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-product-of-word-lengths/
- */
+/** https://leetcode.com/problems/maximum-product-of-word-lengths/ */
 public class Problem318 {
     public int maxProduct(String[] words) {
         int[] set = new int[words.length];

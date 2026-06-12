@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.LinkedList;
 
-/**
- * https://leetcode.com/problems/design-circular-queue/
- */
+/** https://leetcode.com/problems/design-circular-queue/ */
 public class Problem622 {
     private static class MyCircularQueue {
         private final int size;
@@ -15,7 +13,9 @@ public class Problem622 {
             size = k;
         }
 
-        /** Insert an element into the circular queue. Return true if the operation is successful. */
+        /**
+         * Insert an element into the circular queue. Return true if the operation is successful.
+         */
         public boolean enQueue(int value) {
             if (isFull()) {
                 return false;
@@ -24,7 +24,9 @@ public class Problem622 {
             return true;
         }
 
-        /** Delete an element from the circular queue. Return true if the operation is successful. */
+        /**
+         * Delete an element from the circular queue. Return true if the operation is successful.
+         */
         public boolean deQueue() {
             if (isEmpty()) {
                 return false;

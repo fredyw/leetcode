@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/get-equal-substrings-within-budget/
- */
+/** https://leetcode.com/problems/get-equal-substrings-within-budget/ */
 public class Problem1208 {
     public int equalSubstring(String s, String t, int maxCost) {
         int size = s.length();

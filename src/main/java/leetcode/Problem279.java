@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/perfect-squares/
- */
+/** https://leetcode.com/problems/perfect-squares/ */
 public class Problem279 {
     public int numSquares(int n) {
         int x = (int) Math.sqrt(n);

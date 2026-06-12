@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/base-7/
- */
+/** https://leetcode.com/problems/base-7/ */
 public class Problem504 {
     public String convertToBase7(int num) {
         if (num == 0) {

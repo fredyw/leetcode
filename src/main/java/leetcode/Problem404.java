@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/sum-of-left-leaves/
- */
+/** https://leetcode.com/problems/sum-of-left-leaves/ */
 public class Problem404 {
     public static class TreeNode {
         int val;
@@ -28,7 +26,9 @@ public class Problem404 {
     }
 
     private enum Direction {
-        LEFT, RIGHT, CENTER
+        LEFT,
+        RIGHT,
+        CENTER
     }
 
     private void sumOfLeftLeaves(TreeNode root, Sum sum, Direction direction) {

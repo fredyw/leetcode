@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/detect-pattern-of-length-m-repeated-k-or-more-times/
- */
+/** https://leetcode.com/problems/detect-pattern-of-length-m-repeated-k-or-more-times/ */
 public class Problem1566 {
     public boolean containsPattern(int[] arr, int m, int k) {
         for (int i = 0; i <= arr.length - m; i++) {

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-score-triangulation-of-polygon/
- */
+/** https://leetcode.com/problems/minimum-score-triangulation-of-polygon/ */
 public class Problem1039 {
     public int minScoreTriangulation(int[] A) {
         Integer[][] memo = new Integer[A.length][A.length];
@@ -18,9 +16,10 @@ public class Problem1039 {
         }
         int min = Integer.MAX_VALUE;
         for (int k = i + 1; k < j; k++) {
-            int val = (minScoreTriangulation(array, i, k, memo) +
-                minScoreTriangulation(array, k, j, memo)) +
-                (array[i] * array[j] * array[k]);
+            int val =
+                    (minScoreTriangulation(array, i, k, memo)
+                                    + minScoreTriangulation(array, k, j, memo))
+                            + (array[i] * array[j] * array[k]);
             min = Math.min(min, val);
         }
         memo[i][j] = min;

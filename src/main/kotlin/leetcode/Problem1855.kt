@@ -2,9 +2,7 @@ package leetcode
 
 import kotlin.math.max
 
-/**
- * https://leetcode.com/problems/maximum-distance-between-a-pair-of-values/
- */
+/** https://leetcode.com/problems/maximum-distance-between-a-pair-of-values/ */
 class Problem1855 {
     fun maxDistance(nums1: IntArray, nums2: IntArray): Int {
         var answer = 0

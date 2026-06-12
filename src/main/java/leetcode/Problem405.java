@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/convert-a-number-to-hexadecimal/
- */
+/** https://leetcode.com/problems/convert-a-number-to-hexadecimal/ */
 public class Problem405 {
     public String toHex(int num) {
         StringBuilder result = new StringBuilder();

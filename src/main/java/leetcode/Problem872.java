@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/leaf-similar-trees/
- */
+/** https://leetcode.com/problems/leaf-similar-trees/ */
 public class Problem872 {
     public static class TreeNode {
         int val;

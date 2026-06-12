@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/smallest-range-i/description/
- */
+/** https://leetcode.com/problems/smallest-range-i/description/ */
 public class Problem908 {
     public int smallestRangeI(int[] A, int K) {
         Arrays.sort(A);

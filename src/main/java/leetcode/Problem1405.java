@@ -2,13 +2,11 @@ package leetcode;
 
 import java.util.PriorityQueue;
 
-/**
- * https://leetcode.com/problems/longest-happy-string/
- */
+/** https://leetcode.com/problems/longest-happy-string/ */
 public class Problem1405 {
     public String longestDiverseString(int a, int b, int c) {
-        PriorityQueue<CharCount> queue = new PriorityQueue<>(
-            (e1, e2) -> Integer.compare(e2.count, e1.count));
+        PriorityQueue<CharCount> queue =
+                new PriorityQueue<>((e1, e2) -> Integer.compare(e2.count, e1.count));
         if (a > 0) {
             queue.add(new CharCount('a', a));
         }

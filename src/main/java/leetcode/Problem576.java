@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/out-of-boundary-paths/
- */
+/** https://leetcode.com/problems/out-of-boundary-paths/ */
 public class Problem576 {
     public int findPaths(int m, int n, int N, int i, int j) {
         int[][] grid = new int[m][n];
@@ -10,8 +8,8 @@ public class Problem576 {
         return (int) findPaths(grid, m, n, i, j, N, memo);
     }
 
-    private static long findPaths(int[][] grid, int maxRow, int maxCol, int row, int col, int n,
-                                  Long[][][] memo) {
+    private static long findPaths(
+            int[][] grid, int maxRow, int maxCol, int row, int col, int n, Long[][][] memo) {
         if (row < 0 || row >= maxRow || col < 0 || col >= maxCol) {
             return 1;
         }

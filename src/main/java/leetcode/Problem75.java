@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/sort-colors/
- */
+/** https://leetcode.com/problems/sort-colors/ */
 public class Problem75 {
     public void sortColors(int[] nums) {
         // using counting sort

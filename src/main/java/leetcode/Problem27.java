@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/remove-element/
- */
+/** https://leetcode.com/problems/remove-element/ */
 public class Problem27 {
     public int removeElement(int[] A, int elem) {
         int idx = A.length - 1;

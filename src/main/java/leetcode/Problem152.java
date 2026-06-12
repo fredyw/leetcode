@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-product-subarray/
- */
+/** https://leetcode.com/problems/maximum-product-subarray/ */
 public class Problem152 {
     public int maxProduct(int[] nums) {
         int answer = nums[0];

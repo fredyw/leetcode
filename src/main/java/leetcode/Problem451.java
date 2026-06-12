@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-/**
- * https://leetcode.com/problems/sort-characters-by-frequency/
- */
+/** https://leetcode.com/problems/sort-characters-by-frequency/ */
 public class Problem451 {
     public String frequencySort(String s) {
         Map<Character, Integer> map = new HashMap<>();

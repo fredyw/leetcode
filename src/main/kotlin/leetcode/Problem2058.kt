@@ -8,7 +8,7 @@ import kotlin.math.min
  */
 class Problem2058 {
     class ListNode(var `val`: Int) {
-         var next: ListNode? = null
+        var next: ListNode? = null
     }
 
     fun nodesBetweenCriticalPoints(head: ListNode?): IntArray {
@@ -29,10 +29,10 @@ class Problem2058 {
                 found = true
             }
             if (found && positions.size >= 2) {
-                min = if (min == -1) position - positions[positions.size - 2]
+                min =
+                    if (min == -1) position - positions[positions.size - 2]
                     else min(min, position - positions[positions.size - 2])
-                max = if (max == -1) position - positions[0]
-                    else max(max, position - positions[0])
+                max = if (max == -1) position - positions[0] else max(max, position - positions[0])
             }
             previous = current
             current = next

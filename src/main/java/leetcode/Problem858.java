@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/mirror-reflection/
- */
+/** https://leetcode.com/problems/mirror-reflection/ */
 public class Problem858 {
     public int mirrorReflection(int p, int q) {
         if (q == 0) {

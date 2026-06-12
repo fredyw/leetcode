@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/count-number-of-pairs-with-absolute-difference-k/
- */
+/** https://leetcode.com/problems/count-number-of-pairs-with-absolute-difference-k/ */
 public class Problem2006 {
     public int countKDifference(int[] nums, int k) {
         Map</* num */ Integer, /* count */ Integer> map = new HashMap<>();

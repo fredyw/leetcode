@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/powerful-integers/
- */
+/** https://leetcode.com/problems/powerful-integers/ */
 public class Problem970 {
     public List<Integer> powerfulIntegers(int x, int y, int bound) {
         Set<Integer> set = new HashSet<>();

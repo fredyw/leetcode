@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/132-pattern/
- */
+/** https://leetcode.com/problems/132-pattern/ */
 public class Problem456 {
     public boolean find132pattern(int[] nums) {
         int[] ones = new int[nums.length];

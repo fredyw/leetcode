@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/valid-triangle-number/
- */
+/** https://leetcode.com/problems/valid-triangle-number/ */
 public class Problem611 {
     public int triangleNumber(int[] nums) {
         int result = 0;

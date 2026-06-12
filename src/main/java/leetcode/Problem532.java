@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/k-diff-pairs-in-an-array/
- */
+/** https://leetcode.com/problems/k-diff-pairs-in-an-array/ */
 public class Problem532 {
     public int findPairs(int[] nums, int k) {
         if (k < 0) {

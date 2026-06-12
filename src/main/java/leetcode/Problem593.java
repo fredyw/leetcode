@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/valid-square/
- */
+/** https://leetcode.com/problems/valid-square/ */
 public class Problem593 {
     public boolean validSquare(int[] p1, int[] p2, int[] p3, int[] p4) {
         double d1 = distance(p1, p2);
@@ -23,7 +21,7 @@ public class Problem593 {
             }
             return toInt(d1) == toInt(d4) && toInt(d1) == toInt(d5);
         } else if (d1 == d3) {
-             // hypotenuse: d2
+            // hypotenuse: d2
             double d4 = distance(p2, p3);
             if (!isRightAngled(d1, d4, d2)) {
                 return false;

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/detect-capital/
- */
+/** https://leetcode.com/problems/detect-capital/ */
 public class Problem520 {
     public boolean detectCapitalUse(String word) {
         if (word.length() == 1) {
@@ -12,9 +10,15 @@ public class Problem520 {
         boolean allUpperCase = false;
         boolean pascalCase = false;
         int i = 0;
-        if (word.charAt(i) >= 'A' && word.charAt(i) <= 'Z' && word.charAt(i + 1) >= 'A' && word.charAt(i + 1) <= 'Z') {
+        if (word.charAt(i) >= 'A'
+                && word.charAt(i) <= 'Z'
+                && word.charAt(i + 1) >= 'A'
+                && word.charAt(i + 1) <= 'Z') {
             allUpperCase = true;
-        } else if (word.charAt(i) >= 'A' && word.charAt(i) <= 'Z' && word.charAt(i + 1) >= 'A' && word.charAt(i + 1) <= 'z') {
+        } else if (word.charAt(i) >= 'A'
+                && word.charAt(i) <= 'Z'
+                && word.charAt(i + 1) >= 'A'
+                && word.charAt(i + 1) <= 'z') {
             pascalCase = true;
         } else {
             allLowerCase = true;

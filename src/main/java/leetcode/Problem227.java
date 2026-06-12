@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.ArrayDeque;
 
-/**
- * https://leetcode.com/problems/basic-calculator-ii/
- */
+/** https://leetcode.com/problems/basic-calculator-ii/ */
 public class Problem227 {
     public int calculate(String s) {
         String expr = s.replaceAll("\\s", "");

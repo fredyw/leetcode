@@ -3,18 +3,16 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/cheapest-flights-within-k-stops/
- */
+/** https://leetcode.com/problems/cheapest-flights-within-k-stops/ */
 public class Problem787 {
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
         List<Edge>[] graph = buildGraph(flights);
         int price = findCheapestPrice(graph, src, dst, K + 1, new Integer[100][K + 2]);
-        return price == Integer.MAX_VALUE ? - 1 : price;
+        return price == Integer.MAX_VALUE ? -1 : price;
     }
 
-    private static int findCheapestPrice(List<Edge>[] graph, int src, int dst, int k,
-                                         Integer[][] memo) {
+    private static int findCheapestPrice(
+            List<Edge>[] graph, int src, int dst, int k, Integer[][] memo) {
         if (k < 0) {
             return Integer.MAX_VALUE;
         }

@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/number-of-good-ways-to-split-a-string/
- */
+/** https://leetcode.com/problems/number-of-good-ways-to-split-a-string/ */
 public class Problem1525 {
     public int numSplits(String s) {
         int answer = 0;

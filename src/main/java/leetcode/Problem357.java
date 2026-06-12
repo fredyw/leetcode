@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/count-numbers-with-unique-digits/
- */
+/** https://leetcode.com/problems/count-numbers-with-unique-digits/ */
 public class Problem357 {
     public int countNumbersWithUniqueDigits(int n) {
         return countNumbersWithUniqueDigits(n, 0, new boolean[10]);

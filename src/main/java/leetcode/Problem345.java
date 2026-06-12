@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/reverse-vowels-of-a-string/
- */
+/** https://leetcode.com/problems/reverse-vowels-of-a-string/ */
 public class Problem345 {
     public String reverseVowels(String s) {
         char[] chars = s.toCharArray();
@@ -41,7 +39,7 @@ public class Problem345 {
     }
 
     private boolean isVowel(char c) {
-        return (c == 'a' || c == 'i' || c == 'u' || c == 'e' || c == 'o' ||
-            c == 'A' || c == 'I' || c == 'U' || c == 'E' || c == 'O');
+        return (c == 'a' || c == 'i' || c == 'u' || c == 'e' || c == 'o' || c == 'A' || c == 'I'
+                || c == 'U' || c == 'E' || c == 'O');
     }
 }

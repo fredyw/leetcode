@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/find-words-that-can-be-formed-by-characters/
- */
+/** https://leetcode.com/problems/find-words-that-can-be-formed-by-characters/ */
 public class Problem1160 {
     public int countCharacters(String[] words, String chars) {
         int answer = 0;
@@ -30,7 +28,7 @@ public class Problem1160 {
     private static int[] counts(String chars) {
         int[] counts = new int[26];
         for (char c : chars.toCharArray()) {
-           counts[c - 'a']++;
+            counts[c - 'a']++;
         }
         return counts;
     }

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/interleaving-string/
- */
+/** https://leetcode.com/problems/interleaving-string/ */
 public class Problem97 {
     public boolean isInterleave(String s1, String s2, String s3) {
         if (s1.length() + s2.length() != s3.length()) {
@@ -15,8 +13,8 @@ public class Problem97 {
         return isInterleave(s1, s2, s3, 0, 0, 0, memo);
     }
 
-    private static boolean isInterleave(String s1, String s2, String s3, int i, int j, int k,
-                                        int[][][] memo) {
+    private static boolean isInterleave(
+            String s1, String s2, String s3, int i, int j, int k, int[][][] memo) {
         if (i == s1.length() && j == s2.length() && k == s3.length()) {
             return true;
         }

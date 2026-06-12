@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/smallest-string-with-a-given-numeric-value/
- */
+/** https://leetcode.com/problems/smallest-string-with-a-given-numeric-value/ */
 public class Problem1663 {
     public String getSmallestString(int n, int k) {
         char[] chars = new char[n];

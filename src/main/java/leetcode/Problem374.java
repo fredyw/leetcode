@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/guess-number-higher-or-lower/
- */
+/** https://leetcode.com/problems/guess-number-higher-or-lower/ */
 public class Problem374 {
     // test case
     private static int guess(int num) {

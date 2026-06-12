@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/largest-substring-between-two-equal-characters/
- */
+/** https://leetcode.com/problems/largest-substring-between-two-equal-characters/ */
 public class Problem1624 {
     public int maxLengthBetweenEqualCharacters(String s) {
         int[] indexes = new int[26];

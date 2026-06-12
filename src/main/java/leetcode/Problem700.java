@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/search-in-a-binary-search-tree/
- */
+/** https://leetcode.com/problems/search-in-a-binary-search-tree/ */
 public class Problem700 {
     public static class TreeNode {
         int val;

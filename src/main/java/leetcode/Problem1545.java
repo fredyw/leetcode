@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/find-kth-bit-in-nth-binary-string/
- */
+/** https://leetcode.com/problems/find-kth-bit-in-nth-binary-string/ */
 public class Problem1545 {
     public char findKthBit(int n, int k) {
         String s = "0";

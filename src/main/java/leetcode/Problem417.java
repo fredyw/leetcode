@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/pacific-atlantic-water-flow/
- */
+/** https://leetcode.com/problems/pacific-atlantic-water-flow/ */
 public class Problem417 {
     public List<int[]> pacificAtlantic(int[][] matrix) {
         List<int[]> answer = new ArrayList<>();
@@ -14,10 +12,10 @@ public class Problem417 {
         for (int i = 0; i < maxRow; i++) {
             for (int j = 0; j < maxCol; j++) {
                 boolean[][] visited = new boolean[maxRow][maxCol];
-                Ocean ocean = pacificAtlantic(matrix, maxRow, maxCol, i, j,
-                    Integer.MAX_VALUE, visited);
+                Ocean ocean =
+                        pacificAtlantic(matrix, maxRow, maxCol, i, j, Integer.MAX_VALUE, visited);
                 if (ocean.pacific && ocean.atlantic) {
-                    answer.add(new int[]{i, j});
+                    answer.add(new int[] {i, j});
                 }
             }
         }
@@ -29,8 +27,14 @@ public class Problem417 {
         private boolean atlantic;
     }
 
-    private static Ocean pacificAtlantic(int[][] matrix, int maxRow, int maxCol,
-                                         int row, int col, int previous, boolean[][] visited) {
+    private static Ocean pacificAtlantic(
+            int[][] matrix,
+            int maxRow,
+            int maxCol,
+            int row,
+            int col,
+            int previous,
+            boolean[][] visited) {
         if (row < 0 || col < 0) {
             Ocean ocean = new Ocean();
             ocean.pacific = true;

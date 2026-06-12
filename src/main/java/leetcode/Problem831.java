@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/masking-personal-information/
- */
+/** https://leetcode.com/problems/masking-personal-information/ */
 public class Problem831 {
     public String maskPII(String S) {
         if (isEmail(S)) {

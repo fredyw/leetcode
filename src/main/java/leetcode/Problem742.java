@@ -14,8 +14,7 @@ public class Problem742 {
         TreeNode left;
         TreeNode right;
 
-        TreeNode() {
-        }
+        TreeNode() {}
 
         TreeNode(int val) {
             this.val = val;
@@ -42,10 +41,13 @@ public class Problem742 {
         int node;
     }
 
-    private static void findClosestLeaf(Map<Integer, List<Integer>> graph,
-                                        Set<Integer> leaves,
-                                        Set<Integer> visited, int k, int length,
-                                        Answer answer) {
+    private static void findClosestLeaf(
+            Map<Integer, List<Integer>> graph,
+            Set<Integer> leaves,
+            Set<Integer> visited,
+            int k,
+            int length,
+            Answer answer) {
         if (leaves.contains(k)) {
             if (answer.node == 0) {
                 answer.length = length;
@@ -65,8 +67,8 @@ public class Problem742 {
         }
     }
 
-    private static void buildGraph(TreeNode root, Map<Integer, List<Integer>> graph,
-                                   Set<Integer> leaves) {
+    private static void buildGraph(
+            TreeNode root, Map<Integer, List<Integer>> graph, Set<Integer> leaves) {
         if (root == null) {
             return;
         }

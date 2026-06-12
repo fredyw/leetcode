@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/open-the-lock/description/
- */
+/** https://leetcode.com/problems/open-the-lock/description/ */
 public class Problem753 {
     public int openLock(String[] deadends, String target) {
         Set<String> deads = new HashSet<>();
@@ -54,13 +52,15 @@ public class Problem753 {
             if (n1 < 0) {
                 n1 = 9;
             }
-            neighbors.add(new NodeDepth(
-                nodeDepth.node.substring(0, i) + n1 + nodeDepth.node.substring(i + 1),
-                nodeDepth.level + 1));
+            neighbors.add(
+                    new NodeDepth(
+                            nodeDepth.node.substring(0, i) + n1 + nodeDepth.node.substring(i + 1),
+                            nodeDepth.level + 1));
             int n2 = (nodeDepth.node.charAt(i) - '0' + 1) % 10;
-            neighbors.add(new NodeDepth(
-                nodeDepth.node.substring(0, i) + n2 + nodeDepth.node.substring(i + 1),
-                nodeDepth.level + 1));
+            neighbors.add(
+                    new NodeDepth(
+                            nodeDepth.node.substring(0, i) + n2 + nodeDepth.node.substring(i + 1),
+                            nodeDepth.level + 1));
         }
         return neighbors;
     }

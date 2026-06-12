@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/2-keys-keyboard/
- */
+/** https://leetcode.com/problems/2-keys-keyboard/ */
 public class Problem650 {
     public int minSteps(int n) {
         Integer[][] memo = new Integer[n][n];

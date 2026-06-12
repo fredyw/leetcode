@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/shortest-unsorted-continuous-subarray/
- */
+/** https://leetcode.com/problems/shortest-unsorted-continuous-subarray/ */
 public class Problem581 {
     public int findUnsortedSubarray(int[] nums) {
         int[] sorted = Arrays.copyOf(nums, nums.length);

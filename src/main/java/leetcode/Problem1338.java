@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/reduce-array-size-to-the-half/
- */
+/** https://leetcode.com/problems/reduce-array-size-to-the-half/ */
 public class Problem1338 {
     public int minSetSize(int[] arr) {
         Map<Integer, Integer> map = new HashMap<>();

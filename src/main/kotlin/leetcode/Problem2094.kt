@@ -2,9 +2,7 @@ package leetcode
 
 import java.util.*
 
-/**
- * https://leetcode.com/problems/finding-3-digit-even-numbers/
- */
+/** https://leetcode.com/problems/finding-3-digit-even-numbers/ */
 class Problem2094 {
     fun findEvenNumbers(digits: IntArray): IntArray {
         val answer = TreeSet<Int>()

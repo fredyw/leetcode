@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/maximum-nesting-depth-of-two-valid-parentheses-strings/
- */
+/** https://leetcode.com/problems/maximum-nesting-depth-of-two-valid-parentheses-strings/ */
 public class Problem1111 {
     public int[] maxDepthAfterSplit(String seq) {
         int[] answer = new int[seq.length()];

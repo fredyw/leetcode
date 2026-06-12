@@ -3,15 +3,17 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/unique-morse-code-words/
- */
+/** https://leetcode.com/problems/unique-morse-code-words/ */
 public class Problem804 {
     public int uniqueMorseRepresentations(String[] words) {
-        String[] morse = new String[]{
-            ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..",
-            "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-",
-            "-.--", "--.."};
+        String[] morse =
+                new String[] {
+                    ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-",
+                            ".-..",
+                    "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--",
+                            "-..-",
+                    "-.--", "--.."
+                };
         Set<String> set = new HashSet<>();
         for (String word : words) {
             StringBuilder sb = new StringBuilder();

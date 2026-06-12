@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/remove-sub-folders-from-the-filesystem/
- */
+/** https://leetcode.com/problems/remove-sub-folders-from-the-filesystem/ */
 public class Problem1233 {
     public List<String> removeSubfolders(String[] folder) {
         Set<String> answer = new HashSet<>();

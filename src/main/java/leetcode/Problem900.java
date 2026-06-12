@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/rle-iterator/
- */
+/** https://leetcode.com/problems/rle-iterator/ */
 public class Problem900 {
     private static class RLEIterator {
         private final int[] a;

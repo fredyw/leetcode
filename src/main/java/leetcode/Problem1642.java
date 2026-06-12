@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.PriorityQueue;
 
-/**
- * https://leetcode.com/problems/furthest-building-you-can-reach/
- */
+/** https://leetcode.com/problems/furthest-building-you-can-reach/ */
 public class Problem1642 {
     public int furthestBuilding(int[] heights, int bricks, int ladders) {
         PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> Integer.compare(b, a));

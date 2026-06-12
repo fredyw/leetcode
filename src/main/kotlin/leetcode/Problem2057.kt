@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/smallest-index-with-equal-value/
- */
+/** https://leetcode.com/problems/smallest-index-with-equal-value/ */
 class Problem2057 {
     fun smallestEqual(nums: IntArray): Int {
         for ((index, num) in nums.withIndex()) {

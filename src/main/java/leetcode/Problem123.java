@@ -1,15 +1,12 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
- */
+/** https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/ */
 public class Problem123 {
     public int maxProfit(int[] prices) {
         return maxProfit(prices, 0, 1, new Integer[prices.length][5]);
     }
 
-    private static int maxProfit(int[] prices, int i, int count,
-                                 Integer[][] memo) {
+    private static int maxProfit(int[] prices, int i, int count, Integer[][] memo) {
         if (i >= prices.length || count > 4) {
             return 0;
         }

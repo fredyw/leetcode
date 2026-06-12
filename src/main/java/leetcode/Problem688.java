@@ -1,16 +1,13 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/knight-probability-in-chessboard/
- */
+/** https://leetcode.com/problems/knight-probability-in-chessboard/ */
 public class Problem688 {
     public double knightProbability(int N, int K, int r, int c) {
         Double[][][] memo = new Double[K + 1][N][N];
         return knightProbability(N, K, r, c, memo);
     }
 
-    private static double knightProbability(int n, int k, int row, int col,
-                                            Double[][][] memo) {
+    private static double knightProbability(int n, int k, int row, int col, Double[][][] memo) {
         if (row < 0 || row >= n || col < 0 || col >= n) {
             return 0;
         }

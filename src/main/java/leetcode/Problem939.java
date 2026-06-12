@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/minimum-area-rectangle/
- */
+/** https://leetcode.com/problems/minimum-area-rectangle/ */
 public class Problem939 {
     public int minAreaRect(int[][] points) {
         Set<String> pointSet = new HashSet<>();
@@ -43,10 +41,12 @@ public class Problem939 {
         return area == Integer.MAX_VALUE ? 0 : area;
     }
 
-    private static int minAreaRect(int x, int y,
-                                   Set<String> pointSet,
-                                   Map<Integer, List<int[]>> xMap,
-                                   Map<Integer, List<int[]>> yMap) {
+    private static int minAreaRect(
+            int x,
+            int y,
+            Set<String> pointSet,
+            Map<Integer, List<int[]>> xMap,
+            Map<Integer, List<int[]>> yMap) {
         List<int[]> xPoints = xMap.get(x);
         if (xPoints == null) {
             return Integer.MAX_VALUE;
@@ -61,18 +61,20 @@ public class Problem939 {
                 continue;
             }
             for (int[] yPoint : yPoints) {
-                if ((yPoint[0] == x && yPoint[1] == y) ||
-                    (yPoint[0] == xPoint[0] && yPoint[1] == xPoint[1])) {
+                if ((yPoint[0] == x && yPoint[1] == y)
+                        || (yPoint[0] == xPoint[0] && yPoint[1] == xPoint[1])) {
                     continue;
                 }
-                if (!pointSet.contains(key(yPoint[0], xPoint[1])) ||
-                    (yPoint[0] == x && xPoint[1] == y) ||
-                    (yPoint[0] == xPoint[0] && xPoint[1] == xPoint[1]) ||
-                    (yPoint[0] == yPoint[0] && xPoint[1] == yPoint[1])) {
+                if (!pointSet.contains(key(yPoint[0], xPoint[1]))
+                        || (yPoint[0] == x && xPoint[1] == y)
+                        || (yPoint[0] == xPoint[0] && xPoint[1] == xPoint[1])
+                        || (yPoint[0] == yPoint[0] && xPoint[1] == yPoint[1])) {
                     continue;
                 }
-                area = Math.min(area,
-                    Math.abs(xPoint[0] - yPoint[0]) * Math.abs(xPoint[1] - yPoint[1]));
+                area =
+                        Math.min(
+                                area,
+                                Math.abs(xPoint[0] - yPoint[0]) * Math.abs(xPoint[1] - yPoint[1]));
             }
         }
         return area;

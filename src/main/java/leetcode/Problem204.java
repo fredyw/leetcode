@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/count-primes/
- */
+/** https://leetcode.com/problems/count-primes/ */
 public class Problem204 {
     public int countPrimes(int n) {
         if (n <= 2) {

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/custom-sort-string/
- */
+/** https://leetcode.com/problems/custom-sort-string/ */
 public class Problem791 {
     public String customSortString(String S, String T) {
         int[] counts = new int[26];

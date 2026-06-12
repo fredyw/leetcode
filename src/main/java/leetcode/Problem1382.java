@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/balance-a-binary-search-tree/
- */
+/** https://leetcode.com/problems/balance-a-binary-search-tree/ */
 public class Problem1382 {
     public static class TreeNode {
         int val;

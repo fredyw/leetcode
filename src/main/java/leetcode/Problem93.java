@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/restore-ip-addresses/
- */
+/** https://leetcode.com/problems/restore-ip-addresses/ */
 public class Problem93 {
     public List<String> restoreIpAddresses(String s) {
         List<String> result = new ArrayList<>();
@@ -13,8 +11,8 @@ public class Problem93 {
         return result;
     }
 
-    public void restoreIpAddresses(String s, String accu, int nLength, int nSegment,
-                                   List<String> result) {
+    public void restoreIpAddresses(
+            String s, String accu, int nLength, int nSegment, List<String> result) {
         if (nSegment == 5) {
             result.add(accu);
             return;

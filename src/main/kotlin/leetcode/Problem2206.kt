@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/divide-array-into-equal-pairs/
- */
+/** https://leetcode.com/problems/divide-array-into-equal-pairs/ */
 class Problem2206 {
     fun divideArray(nums: IntArray): Boolean {
         val map = mutableMapOf<Int, Int>()

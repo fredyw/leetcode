@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/find-largest-value-in-each-tree-row/
- */
+/** https://leetcode.com/problems/find-largest-value-in-each-tree-row/ */
 public class Problem515 {
     public static class TreeNode {
         int val;
@@ -29,8 +27,7 @@ public class Problem515 {
         return result;
     }
 
-    private static void largestValues(TreeNode node, int level,
-                                      Map<Integer, Integer> map) {
+    private static void largestValues(TreeNode node, int level, Map<Integer, Integer> map) {
         if (node == null) {
             return;
         }

@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/replace-words/
- */
+/** https://leetcode.com/problems/replace-words/ */
 public class Problem648 {
     public String replaceWords(List<String> dict, String sentence) {
         Trie trie = new Trie();

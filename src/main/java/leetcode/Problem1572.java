@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/matrix-diagonal-sum/
- */
+/** https://leetcode.com/problems/matrix-diagonal-sum/ */
 public class Problem1572 {
     public int diagonalSum(int[][] mat) {
         int answer = 0;

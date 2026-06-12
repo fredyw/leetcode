@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-/**
- * https://leetcode.com/problems/brace-expansion-ii/
- */
+/** https://leetcode.com/problems/brace-expansion-ii/ */
 public class Problem1096 {
     public List<String> braceExpansionII(String expression) {
         List<List<List<String>>> groups = new ArrayList<>();
@@ -25,8 +23,8 @@ public class Problem1096 {
             } else if (c == '}') {
                 level--;
                 if (level == 0) {
-                    groups.get(groups.size() - 1).add(
-                        braceExpansionII(expression.substring(start, i)));
+                    groups.get(groups.size() - 1)
+                            .add(braceExpansionII(expression.substring(start, i)));
                 }
             } else if (c == ',' && level == 0) {
                 groups.add(new ArrayList<>());

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/number-of-students-doing-homework-at-a-given-time/
- */
+/** https://leetcode.com/problems/number-of-students-doing-homework-at-a-given-time/ */
 public class Problem1450 {
     public int busyStudent(int[] startTime, int[] endTime, int queryTime) {
         int answer = 0;

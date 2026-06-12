@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/n-th-tribonacci-number/
- */
+/** https://leetcode.com/problems/n-th-tribonacci-number/ */
 public class Problem1137 {
     public int tribonacci(int n) {
         return tribonacci(n, new Integer[n + 1]);

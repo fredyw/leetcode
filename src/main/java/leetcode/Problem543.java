@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/diameter-of-binary-tree/
- */
+/** https://leetcode.com/problems/diameter-of-binary-tree/ */
 public class Problem543 {
     public static class TreeNode {
         int val;

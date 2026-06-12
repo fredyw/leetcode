@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/valid-palindrome-ii/
- */
+/** https://leetcode.com/problems/valid-palindrome-ii/ */
 public class Problem680 {
     public boolean validPalindrome(String s) {
         boolean found = true;

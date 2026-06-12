@@ -3,9 +3,7 @@ package leetcode;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/
- */
+/** https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/ */
 public class Problem524 {
     public String findLongestWord(String s, List<String> d) {
         String longest = "";

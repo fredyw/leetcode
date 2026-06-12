@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/find-pivot-index/description/
- */
+/** https://leetcode.com/problems/find-pivot-index/description/ */
 public class Problem724 {
     public int pivotIndex(int[] nums) {
         int totalSum = 0;

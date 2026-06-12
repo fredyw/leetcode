@@ -3,9 +3,7 @@ package leetcode;
 import java.util.List;
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/exclusive-time-of-functions/
- */
+/** https://leetcode.com/problems/exclusive-time-of-functions/ */
 public class Problem636 {
     public int[] exclusiveTime(int n, List<String> logs) {
         int[] result = new int[n];

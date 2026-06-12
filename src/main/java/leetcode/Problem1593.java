@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/split-a-string-into-the-max-number-of-unique-substrings/
- */
+/** https://leetcode.com/problems/split-a-string-into-the-max-number-of-unique-substrings/ */
 public class Problem1593 {
     public int maxUniqueSplit(String s) {
         return maxUniqueSplit(s, 0, new HashSet<>());

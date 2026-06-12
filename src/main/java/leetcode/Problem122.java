@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
- */
+/** https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/ */
 public class Problem122 {
     public int maxProfit(int[] prices) {
         int answer = 0;
@@ -12,7 +10,7 @@ public class Problem122 {
                 i++;
             }
             int buy = prices[i];
-            while (i < prices.length - 1&& prices[i] <= prices[i + 1]) {
+            while (i < prices.length - 1 && prices[i] <= prices[i + 1]) {
                 i++;
             }
             int sell = prices[i];

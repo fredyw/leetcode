@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/count-number-of-maximum-bitwise-or-subsets/
- */
+/** https://leetcode.com/problems/count-number-of-maximum-bitwise-or-subsets/ */
 class Problem2044 {
     fun countMaxOrSubsets(nums: IntArray): Int {
         var max = 0
@@ -16,7 +14,13 @@ class Problem2044 {
         return answer
     }
 
-    private fun countMaxOrSubsets(nums: IntArray, max: Int, index: Int, skipped: Boolean, accu: Int): Int {
+    private fun countMaxOrSubsets(
+        nums: IntArray,
+        max: Int,
+        index: Int,
+        skipped: Boolean,
+        accu: Int,
+    ): Int {
         if (index == nums.size) {
             return if (!skipped && accu == max) 1 else 0
         }

@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/bulls-and-cows/
- */
+/** https://leetcode.com/problems/bulls-and-cows/ */
 public class Problem299 {
     public String getHint(String secret, String guess) {
         Set<String> idxChars = new HashSet<>();

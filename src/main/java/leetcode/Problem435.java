@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/non-overlapping-intervals/
- */
+/** https://leetcode.com/problems/non-overlapping-intervals/ */
 public class Problem435 {
     public static class Interval {
         int start;
@@ -22,13 +20,15 @@ public class Problem435 {
     }
 
     public int eraseOverlapIntervals(Interval[] intervals) {
-        Arrays.sort(intervals, (a, b) -> {
-            int cmp = Integer.compare(a.start, b.start);
-            if (cmp == 0) {
-                return Integer.compare(a.start, b.start);
-            }
-            return cmp;
-        });
+        Arrays.sort(
+                intervals,
+                (a, b) -> {
+                    int cmp = Integer.compare(a.start, b.start);
+                    if (cmp == 0) {
+                        return Integer.compare(a.start, b.start);
+                    }
+                    return cmp;
+                });
         int result = 0;
         int i = 0;
         int j = i + 1;

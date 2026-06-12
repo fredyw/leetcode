@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/replace-all-s-to-avoid-consecutive-repeating-characters/
- */
+/** https://leetcode.com/problems/replace-all-s-to-avoid-consecutive-repeating-characters/ */
 public class Problem1576 {
     public String modifyString(String s) {
         StringBuilder answer = new StringBuilder();

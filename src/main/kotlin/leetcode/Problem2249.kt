@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/count-lattice-points-inside-a-circle/
- */
+/** https://leetcode.com/problems/count-lattice-points-inside-a-circle/ */
 class Problem2249 {
     fun countLatticePoints(circles: Array<IntArray>): Int {
         data class Point(val x: Int, val y: Int)

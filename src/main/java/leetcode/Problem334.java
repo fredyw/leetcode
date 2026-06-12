@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/increasing-triplet-subsequence/
- */
+/** https://leetcode.com/problems/increasing-triplet-subsequence/ */
 public class Problem334 {
     public boolean increasingTriplet(int[] nums) {
         int min = Integer.MAX_VALUE;

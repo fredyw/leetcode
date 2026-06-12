@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/remove-duplicates-from-sorted-list/
- */
+/** https://leetcode.com/problems/remove-duplicates-from-sorted-list/ */
 public class Problem83 {
     public static class ListNode {
         int val;

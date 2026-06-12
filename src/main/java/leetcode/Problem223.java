@@ -4,9 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/rectangle-area/
- */
+/** https://leetcode.com/problems/rectangle-area/ */
 public class Problem223 {
     public int computeArea(int A, int B, int C, int D, int E, int F, int G, int H) {
         int area1 = computeArea(A, B, C, D);
@@ -15,9 +13,10 @@ public class Problem223 {
         Intersection yIntersection = getIntersection(B, D, F, H);
         int intersectedArea = 0;
         if (xIntersection.intersected && yIntersection.intersected) {
-            intersectedArea = computeArea(
-                xIntersection.a, yIntersection.a,
-                xIntersection.b, yIntersection.b);
+            intersectedArea =
+                    computeArea(
+                            xIntersection.a, yIntersection.a,
+                            xIntersection.b, yIntersection.b);
         }
         return area1 + area2 - intersectedArea;
     }

@@ -3,9 +3,7 @@ package leetcode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
- * https://leetcode.com/problems/check-completeness-of-a-binary-tree/
- */
+/** https://leetcode.com/problems/check-completeness-of-a-binary-tree/ */
 public class Problem958 {
     public static class TreeNode {
         int val;

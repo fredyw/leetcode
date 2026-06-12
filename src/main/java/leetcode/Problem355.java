@@ -8,9 +8,7 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/design-twitter/
- */
+/** https://leetcode.com/problems/design-twitter/ */
 public class Problem355 {
     private static class Twitter {
         // key -> follower
@@ -37,8 +35,7 @@ public class Problem355 {
         }
 
         /** Initialize your data structure here. */
-        public Twitter() {
-        }
+        public Twitter() {}
 
         /** Compose a new tweet. */
         public void postTweet(int userId, int tweetId) {
@@ -47,9 +44,9 @@ public class Problem355 {
         }
 
         /**
-         * Retrieve the 10 most recent tweet ids in the user's news feed.
-         * Each item in the news feed must be posted by users who the user followed or by the user herself.
-         * Tweets must be ordered from most recent to least recent.
+         * Retrieve the 10 most recent tweet ids in the user's news feed. Each item in the news feed
+         * must be posted by users who the user followed or by the user herself. Tweets must be
+         * ordered from most recent to least recent.
          */
         public List<Integer> getNewsFeed(int userId) {
             List<Integer> newsFeed = new ArrayList<>();

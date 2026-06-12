@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/lowest-common-ancestor-of-deepest-leaves/
- */
+/** https://leetcode.com/problems/lowest-common-ancestor-of-deepest-leaves/ */
 public class Problem1123 {
     public static class TreeNode {
         int val;

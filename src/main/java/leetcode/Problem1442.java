@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/count-triplets-that-can-form-two-arrays-of-equal-xor/
- */
+/** https://leetcode.com/problems/count-triplets-that-can-form-two-arrays-of-equal-xor/ */
 public class Problem1442 {
     public int countTriplets(int[] arr) {
         int[] xor = new int[arr.length + 1];

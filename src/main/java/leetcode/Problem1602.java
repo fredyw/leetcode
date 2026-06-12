@@ -9,8 +9,7 @@ public class Problem1602 {
         TreeNode left;
         TreeNode right;
 
-        TreeNode() {
-        }
+        TreeNode() {}
 
         TreeNode(int val) {
             this.val = val;

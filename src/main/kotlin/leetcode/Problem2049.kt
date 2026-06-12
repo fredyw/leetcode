@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/count-nodes-with-the-highest-score/
- */
+/** https://leetcode.com/problems/count-nodes-with-the-highest-score/ */
 class Problem2049 {
     fun countHighestScoreNodes(parents: IntArray): Int {
         val root = buildTree(parents)
@@ -11,10 +9,10 @@ class Problem2049 {
         var answer = 0
         var maxScore = 0L
         for ((score, count) in scores) {
-           if (score > maxScore) {
-               maxScore = score
-               answer = count
-           }
+            if (score > maxScore) {
+                maxScore = score
+                answer = count
+            }
         }
         return answer
     }
@@ -46,7 +44,8 @@ class Problem2049 {
         }
         val left = countHighestScore(n, root.left, scores) + 1
         val right = countHighestScore(n, root.right, scores) + 1
-        val score = (if (left == 0L) 1 else left) *
+        val score =
+            (if (left == 0L) 1 else left) *
                 (if (right == 0L) 1 else right) *
                 (if (n - (left + right + 1) == 0L) 1 else n - (left + right + 1))
         scores[score] = (scores[score] ?: 0) + 1

@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/count-items-matching-a-rule/
- */
+/** https://leetcode.com/problems/count-items-matching-a-rule/ */
 public class Problem1773 {
     public int countMatches(List<List<String>> items, String ruleKey, String ruleValue) {
         Map<String, Integer> typeCount = new HashMap<>();

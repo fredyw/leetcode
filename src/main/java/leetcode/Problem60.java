@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/permutation-sequence/
- */
+/** https://leetcode.com/problems/permutation-sequence/ */
 public class Problem60 {
     public String getPermutation(int n, int k) {
         int[] factorials = new int[n];

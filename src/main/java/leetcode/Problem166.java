@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/fraction-to-recurring-decimal/
- */
+/** https://leetcode.com/problems/fraction-to-recurring-decimal/ */
 public class Problem166 {
     public String fractionToDecimal(int numerator, int denominator) {
         StringBuilder sb = new StringBuilder();

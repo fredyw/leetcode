@@ -2,9 +2,7 @@ package leetcode
 
 import kotlin.math.abs
 
-/**
- * https://leetcode.com/problems/minimum-operations-to-make-a-uni-value-grid/
- */
+/** https://leetcode.com/problems/minimum-operations-to-make-a-uni-value-grid/ */
 class Problem2033 {
     fun minOperations(grid: Array<IntArray>, x: Int): Int {
         val array = IntArray(grid.size * grid[0].size)

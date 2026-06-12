@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/binary-tree-paths/
- */
+/** https://leetcode.com/problems/binary-tree-paths/ */
 public class Problem257 {
     public static class TreeNode {
         int val;

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/counting-bits/
- */
+/** https://leetcode.com/problems/counting-bits/ */
 public class Problem338 {
     public int[] countBits(int num) {
         int[] result = new int[num + 1];

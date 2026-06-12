@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/number-of-digit-one/
- */
+/** https://leetcode.com/problems/number-of-digit-one/ */
 public class Problem233 {
     public int countDigitOne(int n) {
         if (n <= 0) {

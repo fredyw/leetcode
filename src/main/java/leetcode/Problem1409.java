@@ -3,9 +3,7 @@ package leetcode;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-/**
- * https://leetcode.com/problems/queries-on-a-permutation-with-key/
- */
+/** https://leetcode.com/problems/queries-on-a-permutation-with-key/ */
 public class Problem1409 {
     public int[] processQueries(int[] queries, int m) {
         LinkedList<Integer> list = new LinkedList<>();

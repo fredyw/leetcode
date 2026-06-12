@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/sum-of-subarray-minimums/
- */
+/** https://leetcode.com/problems/sum-of-subarray-minimums/ */
 public class Problem907 {
     public int sumSubarrayMins(int[] A) {
         Stack<IndexValue> left = new Stack<>();

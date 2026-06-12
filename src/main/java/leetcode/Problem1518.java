@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/water-bottles/
- */
+/** https://leetcode.com/problems/water-bottles/ */
 public class Problem1518 {
     public int numWaterBottles(int numBottles, int numExchange) {
         int answer = 0;

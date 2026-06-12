@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/maximum-product-of-three-numbers/
- */
+/** https://leetcode.com/problems/maximum-product-of-three-numbers/ */
 public class Problem628 {
     public int maximumProduct(int[] nums) {
         Arrays.sort(nums);

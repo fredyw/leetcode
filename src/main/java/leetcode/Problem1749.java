@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-absolute-sum-of-any-subarray/
- */
+/** https://leetcode.com/problems/maximum-absolute-sum-of-any-subarray/ */
 public class Problem1749 {
     public int maxAbsoluteSum(int[] nums) {
         int max = nums[0];

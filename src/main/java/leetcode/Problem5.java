@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/longest-palindromic-substring/
- */
+/** https://leetcode.com/problems/longest-palindromic-substring/ */
 public class Problem5 {
     public String longestPalindrome(String s) {
         String[][] memo = new String[s.length() + 1][s.length() + 1];

@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/permutation-in-string/
- */
+/** https://leetcode.com/problems/permutation-in-string/ */
 public class Problem567 {
     public boolean checkInclusion(String s1, String s2) {
         int[] counts1 = charCount(s1);

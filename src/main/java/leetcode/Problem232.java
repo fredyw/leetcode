@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/implement-queue-using-stacks/
- */
+/** https://leetcode.com/problems/implement-queue-using-stacks/ */
 public class Problem232 {
     static class MyQueue {
         private Stack<Integer> stack1 = new Stack<>();

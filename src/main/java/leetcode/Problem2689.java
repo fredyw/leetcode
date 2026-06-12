@@ -8,8 +8,7 @@ public class Problem2689 {
         RopeTreeNode left;
         RopeTreeNode right;
 
-        RopeTreeNode() {
-        }
+        RopeTreeNode() {}
 
         RopeTreeNode(String val) {
             this.len = 0;

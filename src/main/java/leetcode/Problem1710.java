@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/maximum-units-on-a-truck/
- */
+/** https://leetcode.com/problems/maximum-units-on-a-truck/ */
 public class Problem1710 {
     public int maximumUnits(int[][] boxTypes, int truckSize) {
         Arrays.sort(boxTypes, (a, b) -> Integer.compare(b[1], a[1]));

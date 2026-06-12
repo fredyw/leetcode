@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-time-to-type-word-using-special-typewriter/
- */
+/** https://leetcode.com/problems/minimum-time-to-type-word-using-special-typewriter/ */
 public class Problem1974 {
     public int minTimeToType(String word) {
         int answer = 0;

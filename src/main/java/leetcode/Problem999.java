@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/available-captures-for-rook/
- */
+/** https://leetcode.com/problems/available-captures-for-rook/ */
 public class Problem999 {
     public int numRookCaptures(char[][] board) {
         int answer = 0;

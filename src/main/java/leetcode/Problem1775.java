@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/equal-sum-arrays-with-minimum-number-of-operations/
- */
+/** https://leetcode.com/problems/equal-sum-arrays-with-minimum-number-of-operations/ */
 public class Problem1775 {
     public int minOperations(int[] nums1, int[] nums2) {
         if (nums1.length < nums2.length && 6 * nums1.length < nums2.length) {

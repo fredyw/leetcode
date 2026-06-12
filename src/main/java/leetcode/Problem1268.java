@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/search-suggestions-system/
- */
+/** https://leetcode.com/problems/search-suggestions-system/ */
 public class Problem1268 {
     public List<List<String>> suggestedProducts(String[] products, String searchWord) {
         Node root = new Node(' '); // dummy root

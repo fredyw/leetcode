@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/alphabet-board-path/
- */
+/** https://leetcode.com/problems/alphabet-board-path/ */
 public class Problem1138 {
     public String alphabetBoardPath(String target) {
         String answer = "";
@@ -27,7 +25,7 @@ public class Problem1138 {
     }
 
     private static String buildPath(int row, int col, boolean isZ) {
-        String path  = "";
+        String path = "";
         if (row < 0) {
             for (int i = row; i < 0; i++) {
                 path += "U";

@@ -5,9 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-/**
- * https://leetcode.com/problems/maximum-width-of-binary-tree/
- */
+/** https://leetcode.com/problems/maximum-width-of-binary-tree/ */
 public class Problem662 {
     public static class TreeNode {
         int val;
@@ -35,11 +33,17 @@ public class Problem662 {
             tmp.add(current.position);
             if (current.node != null) {
                 if (current.node.left != null) {
-                    NodeLevel n = new NodeLevel(current.level + 1, current.node.left, 2 * current.position);
+                    NodeLevel n =
+                            new NodeLevel(
+                                    current.level + 1, current.node.left, 2 * current.position);
                     queue.add(n);
                 }
                 if (current.node.right != null) {
-                    NodeLevel n = new NodeLevel(current.level + 1, current.node.right, (2 * current.position) + 1);
+                    NodeLevel n =
+                            new NodeLevel(
+                                    current.level + 1,
+                                    current.node.right,
+                                    (2 * current.position) + 1);
                     queue.add(n);
                 }
             }

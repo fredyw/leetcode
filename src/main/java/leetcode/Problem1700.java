@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.LinkedList;
 
-/**
- * https://leetcode.com/problems/number-of-students-unable-to-eat-lunch/
- */
+/** https://leetcode.com/problems/number-of-students-unable-to-eat-lunch/ */
 public class Problem1700 {
     public int countStudents(int[] students, int[] sandwiches) {
         LinkedList<Integer> studentList = new LinkedList<>();
@@ -20,8 +18,8 @@ public class Problem1700 {
         }
         int index = 0;
         while (index < sandwiches.length) {
-            if ((zeroCount == 0 && sandwiches[index] == 0) ||
-                (oneCount == 0 && sandwiches[index] == 1)) {
+            if ((zeroCount == 0 && sandwiches[index] == 0)
+                    || (oneCount == 0 && sandwiches[index] == 1)) {
                 break;
             }
             if (studentList.peekFirst() == sandwiches[index]) {

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/construct-the-rectangle/
- */
+/** https://leetcode.com/problems/construct-the-rectangle/ */
 public class Problem492 {
     public int[] constructRectangle(int area) {
         int[] result = new int[2];

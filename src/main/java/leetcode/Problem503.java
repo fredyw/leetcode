@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/next-greater-element-ii/
- */
+/** https://leetcode.com/problems/next-greater-element-ii/ */
 public class Problem503 {
     public int[] nextGreaterElements(int[] nums) {
         int max = Integer.MIN_VALUE;

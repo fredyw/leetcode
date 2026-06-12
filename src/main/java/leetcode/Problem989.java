@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/add-to-array-form-of-integer/
- */
+/** https://leetcode.com/problems/add-to-array-form-of-integer/ */
 public class Problem989 {
     public List<Integer> addToArrayForm(int[] A, int K) {
         String kStr = Integer.toString(K);
@@ -19,7 +17,8 @@ public class Problem989 {
         int j = k.length - 1;
         int carry = 0;
         while (i >= 0 && j >= 0) {
-            int sum = A[i] + k[j] + carry;;
+            int sum = A[i] + k[j] + carry;
+            ;
             if (sum >= 10) {
                 carry = 1;
             } else {

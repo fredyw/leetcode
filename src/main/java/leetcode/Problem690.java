@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/employee-importance/
- */
+/** https://leetcode.com/problems/employee-importance/ */
 public class Problem690 {
     private static class Employee {
         // It's the unique id of each node;
@@ -46,8 +44,11 @@ public class Problem690 {
         return getImportance(adjList, id, nodeMap, new HashSet<>());
     }
 
-    private static int getImportance(Map<Integer, List<Node>> adjList, int id,
-                                     Map<Integer, Node> nodeMap, Set<Integer> visited) {
+    private static int getImportance(
+            Map<Integer, List<Node>> adjList,
+            int id,
+            Map<Integer, Node> nodeMap,
+            Set<Integer> visited) {
         if (visited.contains(id)) {
             return 0;
         }

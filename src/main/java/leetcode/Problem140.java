@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/word-break-ii/
- */
+/** https://leetcode.com/problems/word-break-ii/ */
 public class Problem140 {
     public List<String> wordBreak(String s, List<String> wordDict) {
         Set<String> words = new HashSet<>();
@@ -19,7 +17,8 @@ public class Problem140 {
         return wordBreak(s, words, new HashMap<>());
     }
 
-    private static List<String> wordBreak(String s, Set<String> words, Map<String, List<String>> memo) {
+    private static List<String> wordBreak(
+            String s, Set<String> words, Map<String, List<String>> memo) {
         List<String> result = new ArrayList<>();
         if (s == null || s.isEmpty()) {
             return result;

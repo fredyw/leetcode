@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/new-21-game/
- */
+/** https://leetcode.com/problems/new-21-game/ */
 public class Problem837 {
     public double new21Game(int N, int K, int W) {
         Double[] memo = new Double[N + 1];

@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.concurrent.Semaphore;
 
-/**
- * https://leetcode.com/problems/print-foobar-alternately/
- */
+/** https://leetcode.com/problems/print-foobar-alternately/ */
 public class Problem1115 {
     private static class FooBar {
         private int n;

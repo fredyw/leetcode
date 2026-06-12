@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/count-largest-group/
- */
+/** https://leetcode.com/problems/count-largest-group/ */
 public class Problem1399 {
     public int countLargestGroup(int n) {
         int max = 0;

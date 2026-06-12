@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/longest-well-performing-interval/
- */
+/** https://leetcode.com/problems/longest-well-performing-interval/ */
 public class Problem1124 {
     public int longestWPI(int[] hours) {
         int[] sums = new int[hours.length + 1];

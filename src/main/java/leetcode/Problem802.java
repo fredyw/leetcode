@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/find-eventual-safe-states/
- */
+/** https://leetcode.com/problems/find-eventual-safe-states/ */
 public class Problem802 {
     public List<Integer> eventualSafeNodes(int[][] graph) {
         boolean[] onStack = new boolean[graph.length];
@@ -20,8 +18,8 @@ public class Problem802 {
         return result;
     }
 
-    private static boolean hasCycle(int[][] graph, int source, boolean[] visited,
-                                    boolean[] onStack) {
+    private static boolean hasCycle(
+            int[][] graph, int source, boolean[] visited, boolean[] onStack) {
         visited[source] = true;
         onStack[source] = true;
         for (int neighbor : graph[source]) {

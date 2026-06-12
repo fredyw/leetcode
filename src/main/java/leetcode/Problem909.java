@@ -3,9 +3,7 @@ package leetcode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
- * https://leetcode.com/problems/snakes-and-ladders/
- */
+/** https://leetcode.com/problems/snakes-and-ladders/ */
 public class Problem909 {
     public int snakesAndLadders(int[][] board) {
         int[] b = new int[(board.length * board.length) + 1];

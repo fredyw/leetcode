@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/max-consecutive-ones-iii/
- */
+/** https://leetcode.com/problems/max-consecutive-ones-iii/ */
 public class Problem1004 {
     public int longestOnes(int[] A, int K) {
         int answer = 0;

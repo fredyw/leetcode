@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/check-if-all-characters-have-equal-number-of-occurrences/
- */
+/** https://leetcode.com/problems/check-if-all-characters-have-equal-number-of-occurrences/ */
 public class Problem1941 {
     public boolean areOccurrencesEqual(String s) {
         Map<Character, Integer> map = new HashMap<>();

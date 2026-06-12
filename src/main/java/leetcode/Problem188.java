@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/
- */
+/** https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/ */
 public class Problem188 {
     public int maxProfit(int k, int[] prices) {
         // the k can be ridiculously high.
@@ -23,8 +21,7 @@ public class Problem188 {
         return profit;
     }
 
-    private static int maxProfit(int k, int[] prices, int index, boolean buy,
-                                 Integer[][][] memo) {
+    private static int maxProfit(int k, int[] prices, int index, boolean buy, Integer[][][] memo) {
         if (k == 0 || prices.length == index) {
             return 0;
         }

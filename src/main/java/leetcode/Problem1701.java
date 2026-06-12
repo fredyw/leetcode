@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/average-waiting-time/
- */
+/** https://leetcode.com/problems/average-waiting-time/ */
 public class Problem1701 {
     public double averageWaitingTime(int[][] customers) {
         double answer = 0;
@@ -20,4 +18,3 @@ public class Problem1701 {
         return answer / customers.length;
     }
 }
-

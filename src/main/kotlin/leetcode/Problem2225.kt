@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/find-players-with-zero-or-one-losses/
- */
+/** https://leetcode.com/problems/find-players-with-zero-or-one-losses/ */
 class Problem2225 {
     fun findWinners(matches: Array<IntArray>): List<List<Int>> {
         val winners = mutableSetOf<Int>()

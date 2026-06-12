@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/lexicographically-smallest-string-after-applying-operations/
- */
+/** https://leetcode.com/problems/lexicographically-smallest-string-after-applying-operations/ */
 public class Problem1625 {
     public String findLexSmallestString(String s, int a, int b) {
         StringRef answer = new StringRef();
@@ -17,8 +15,8 @@ public class Problem1625 {
         private String val;
     }
 
-    private static void findLexSmallestString(String s, int a, int b, Set<String> visited,
-                                              StringRef minString) {
+    private static void findLexSmallestString(
+            String s, int a, int b, Set<String> visited, StringRef minString) {
         if (visited.contains(s)) {
             return;
         }

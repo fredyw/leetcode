@@ -3,13 +3,12 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/encode-and-decode-tinyurl/
- */
+/** https://leetcode.com/problems/encode-and-decode-tinyurl/ */
 public class Problem535 {
     public static class Codec {
         private static final String PREFIX_URL = "http://tinyurl.com/";
-        private static final String ALPHANUMERIC = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        private static final String ALPHANUMERIC =
+                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         private final Map<Integer, String> map = new HashMap<>();
         private int id;
 
@@ -34,7 +33,9 @@ public class Problem535 {
             String url = shortUrl.substring(PREFIX_URL.length());
             int key = 0;
             for (int i = url.length() - 1; i >= 0; i--) {
-                key += ALPHANUMERIC.indexOf(url.charAt(i)) * (int) Math.pow(ALPHANUMERIC.length(), i);
+                key +=
+                        ALPHANUMERIC.indexOf(url.charAt(i))
+                                * (int) Math.pow(ALPHANUMERIC.length(), i);
             }
             return map.get(key);
         }

@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/find-positive-integer-solution-for-a-given-equation/
- */
+/** https://leetcode.com/problems/find-positive-integer-solution-for-a-given-equation/ */
 public class Problem1237 {
     interface CustomFunction {
         // Returns f(x, y) for any given positive integers x and y.

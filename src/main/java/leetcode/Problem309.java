@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
- */
+/** https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/ */
 public class Problem309 {
     public int maxProfit(int[] prices) {
         if (prices.length <= 1) {

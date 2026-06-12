@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/x-of-a-kind-in-a-deck-of-cards/
- */
+/** https://leetcode.com/problems/x-of-a-kind-in-a-deck-of-cards/ */
 public class Problem914 {
     public boolean hasGroupsSizeX(int[] deck) {
         Map<Integer, Integer> map = new HashMap<>();

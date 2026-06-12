@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/design-an-ordered-stream/
- */
+/** https://leetcode.com/problems/design-an-ordered-stream/ */
 public class Problem1656 {
     static class OrderedStream {
         private final String[] strings;

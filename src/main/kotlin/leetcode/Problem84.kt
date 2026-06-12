@@ -3,9 +3,7 @@ package leetcode
 import java.util.*
 import kotlin.math.max
 
-/**
- * https://leetcode.com/problems/largest-rectangle-in-histogram/
- */
+/** https://leetcode.com/problems/largest-rectangle-in-histogram/ */
 class Problem84 {
     fun largestRectangleArea(heights: IntArray): Int {
         var answer = 0

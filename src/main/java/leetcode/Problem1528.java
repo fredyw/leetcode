@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/shuffle-string/
- */
+/** https://leetcode.com/problems/shuffle-string/ */
 public class Problem1528 {
     public String restoreString(String s, int[] indices) {
         char[] answer = new char[s.length()];

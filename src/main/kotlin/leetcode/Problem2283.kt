@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/check-if-number-has-equal-digit-count-and-digit-value/
- */
+/** https://leetcode.com/problems/check-if-number-has-equal-digit-count-and-digit-value/ */
 class Problem2283 {
     fun digitCount(num: String): Boolean {
         val counts = IntArray(10)

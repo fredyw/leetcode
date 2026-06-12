@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.PriorityQueue;
 
-/**
- * https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
- */
+/** https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/ */
 public class Problem378 {
     public int kthSmallest(int[][] matrix, int k) {
         PriorityQueue<Integer> queue = new PriorityQueue<>();

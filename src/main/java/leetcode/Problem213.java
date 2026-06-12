@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/house-robber-ii/
- */
+/** https://leetcode.com/problems/house-robber-ii/ */
 public class Problem213 {
     public int rob(int[] nums) {
         int answer = 0;

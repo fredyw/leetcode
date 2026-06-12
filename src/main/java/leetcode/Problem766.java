@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/toeplitz-matrix/
- */
+/** https://leetcode.com/problems/toeplitz-matrix/ */
 public class Problem766 {
     public boolean isToeplitzMatrix(int[][] matrix) {
         int numRows = matrix.length;
@@ -27,7 +25,8 @@ public class Problem766 {
         return true;
     }
 
-    private static boolean isSameDiagonal(int[][] matrix, int row, int col, int numRows, int numCols) {
+    private static boolean isSameDiagonal(
+            int[][] matrix, int row, int col, int numRows, int numCols) {
         int a = -1;
         for (int r = row, c = col; r < numRows && c < numCols; r++, c++) {
             if (a == -1) {

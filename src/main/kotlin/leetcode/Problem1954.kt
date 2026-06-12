@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/minimum-garden-perimeter-to-collect-enough-apples/
- */
+/** https://leetcode.com/problems/minimum-garden-perimeter-to-collect-enough-apples/ */
 class Problem1954 {
     fun minimumPerimeter(neededApples: Long): Long {
         var answer = 0L

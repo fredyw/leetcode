@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/count-sorted-vowel-strings/
- */
+/** https://leetcode.com/problems/count-sorted-vowel-strings/ */
 public class Problem1641 {
     public int countVowelStrings(int n) {
         int answer = 0;

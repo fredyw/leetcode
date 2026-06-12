@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/cells-with-odd-values-in-a-matrix/
- */
+/** https://leetcode.com/problems/cells-with-odd-values-in-a-matrix/ */
 public class Problem1252 {
     public int oddCells(int n, int m, int[][] indices) {
         int[][] matrix = new int[n][m];

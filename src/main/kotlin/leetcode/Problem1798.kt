@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/maximum-number-of-consecutive-values-you-can-make/
- */
+/** https://leetcode.com/problems/maximum-number-of-consecutive-values-you-can-make/ */
 class Problem1798 {
     fun getMaximumConsecutive(coins: IntArray): Int {
         coins.sort()

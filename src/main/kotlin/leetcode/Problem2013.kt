@@ -2,9 +2,7 @@ package leetcode
 
 import kotlin.math.abs
 
-/**
- * https://leetcode.com/problems/detect-squares/
- */
+/** https://leetcode.com/problems/detect-squares/ */
 class Problem2013 {
     class DetectSquares() {
         private val map = mutableMapOf<Int, MutableMap<Int, Int>>()

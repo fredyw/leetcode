@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-sum-of-two-non-overlapping-subarrays/
- */
+/** https://leetcode.com/problems/maximum-sum-of-two-non-overlapping-subarrays/ */
 public class Problem1031 {
     public int maxSumTwoNoOverlap(int[] A, int L, int M) {
         int answer = 0;

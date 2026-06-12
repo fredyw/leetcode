@@ -8,9 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/minimum-height-trees/
- */
+/** https://leetcode.com/problems/minimum-height-trees/ */
 public class Problem310 {
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
         if (n <= 1) {

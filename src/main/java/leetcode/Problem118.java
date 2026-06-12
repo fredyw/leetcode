@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/pascals-triangle/
- */
+/** https://leetcode.com/problems/pascals-triangle/ */
 public class Problem118 {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> result = new ArrayList<>();
@@ -23,8 +21,8 @@ public class Problem118 {
         if (n == numRows) {
             return;
         }
-        List<Integer> prevList = (result.size() == 0) ?
-            new ArrayList<>() : result.get(result.size() - 1);
+        List<Integer> prevList =
+                (result.size() == 0) ? new ArrayList<>() : result.get(result.size() - 1);
         List<Integer> currentList = new ArrayList<>();
         currentList.add(1);
         for (int i = 0; i < prevList.size() - 1; i++) {

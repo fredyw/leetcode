@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/find-common-characters/
- */
+/** https://leetcode.com/problems/find-common-characters/ */
 public class Problem1002 {
     public List<String> commonChars(String[] A) {
         int[][] counts = new int[A.length][26];

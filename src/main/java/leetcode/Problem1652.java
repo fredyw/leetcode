@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/defuse-the-bomb/
- */
+/** https://leetcode.com/problems/defuse-the-bomb/ */
 public class Problem1652 {
     public int[] decrypt(int[] code, int k) {
         int[] answer = new int[code.length];
@@ -42,8 +40,8 @@ public class Problem1652 {
     }
 
     private static int getValue(int[] sums, int start, int end) {
-        return end > start ?
-            sums[end] - sums[start] :
-            sums[sums.length - 1] - sums[start] + sums[end];
+        return end > start
+                ? sums[end] - sums[start]
+                : sums[sums.length - 1] - sums[start] + sums[end];
     }
 }

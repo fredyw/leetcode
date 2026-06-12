@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/find-elements-in-a-contaminated-binary-tree/
- */
+/** https://leetcode.com/problems/find-elements-in-a-contaminated-binary-tree/ */
 public class Problem1261 {
     private static class TreeNode {
         int val;

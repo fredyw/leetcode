@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/trim-a-binary-search-tree/
- */
+/** https://leetcode.com/problems/trim-a-binary-search-tree/ */
 public class Problem669 {
     public static class TreeNode {
         int val;

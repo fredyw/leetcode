@@ -7,9 +7,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * https://leetcode.com/problems/find-duplicate-file-in-system/
- */
+/** https://leetcode.com/problems/find-duplicate-file-in-system/ */
 public class Problem609 {
     public List<List<String>> findDuplicate(String[] paths) {
         Map<String, List<String>> map = new HashMap<>();

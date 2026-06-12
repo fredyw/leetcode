@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/minimum-difference-between-highest-and-lowest-of-k-scores/
- */
+/** https://leetcode.com/problems/minimum-difference-between-highest-and-lowest-of-k-scores/ */
 public class Problem1984 {
     public int minimumDifference(int[] nums, int k) {
         int answer = 0;

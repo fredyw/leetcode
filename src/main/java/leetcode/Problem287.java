@@ -2,9 +2,7 @@ package leetcode;
 
 import java.math.BigInteger;
 
-/**
- * https://leetcode.com/problems/find-the-duplicate-number/
- */
+/** https://leetcode.com/problems/find-the-duplicate-number/ */
 public class Problem287 {
     public int findDuplicate(int[] nums) {
         BigInteger lookup = new BigInteger("0");

@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/binary-tree-preorder-traversal/
- */
+/** https://leetcode.com/problems/binary-tree-preorder-traversal/ */
 public class Problem144 {
     public static class TreeNode {
         int val;

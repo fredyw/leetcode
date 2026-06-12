@@ -2,9 +2,7 @@ package leetcode
 
 import java.util.*
 
-/**
- * https://leetcode.com/problems/describe-the-painting/
- */
+/** https://leetcode.com/problems/describe-the-painting/ */
 class Problem1943 {
     fun splitPainting(segments: Array<IntArray>): List<List<Long>> {
         val map = TreeMap<Long, Long>()

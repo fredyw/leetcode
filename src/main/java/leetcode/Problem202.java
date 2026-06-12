@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/happy-number/
- */
+/** https://leetcode.com/problems/happy-number/ */
 public class Problem202 {
     public boolean isHappy(int n) {
         Set<Integer> set = new HashSet<>();

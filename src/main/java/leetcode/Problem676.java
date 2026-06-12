@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/implement-magic-dictionary/
- */
+/** https://leetcode.com/problems/implement-magic-dictionary/ */
 public class Problem676 {
     static class MagicDictionary {
         private static class Node {
@@ -23,8 +21,7 @@ public class Problem676 {
         private final Node root = new Node(' ');
 
         /** Initialize your data structure here. */
-        public MagicDictionary() {
-        }
+        public MagicDictionary() {}
 
         /** Build a dictionary through a list of words */
         public void buildDict(String[] dict) {
@@ -49,12 +46,16 @@ public class Problem676 {
             return n;
         }
 
-        /** Returns if there is any word in the trie that equals to the given word after modifying exactly one character */
+        /**
+         * Returns if there is any word in the trie that equals to the given word after modifying
+         * exactly one character
+         */
         public boolean search(String word) {
             return search(word, 0, root, true, true);
         }
 
-        private static boolean search(String word, int idx, Node node, boolean same, boolean allSame) {
+        private static boolean search(
+                String word, int idx, Node node, boolean same, boolean allSame) {
             if (idx == word.length()) {
                 return false;
             }

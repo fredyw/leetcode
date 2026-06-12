@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/count-binary-substrings/
- */
+/** https://leetcode.com/problems/count-binary-substrings/ */
 public class Problem696 {
     public int countBinarySubstrings(String s) {
         List<CharCount> list = new ArrayList<>();

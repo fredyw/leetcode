@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/rotate-list/
- */
+/** https://leetcode.com/problems/rotate-list/ */
 public class Problem61 {
     public static class ListNode {
         int val;

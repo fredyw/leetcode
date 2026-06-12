@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/rotate-array/
- */
+/** https://leetcode.com/problems/rotate-array/ */
 public class Problem189 {
     public void rotate(int[] nums, int k) {
         if (nums.length <= 1) {

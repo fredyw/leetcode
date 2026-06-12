@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/k-th-symbol-in-grammar/
- */
+/** https://leetcode.com/problems/k-th-symbol-in-grammar/ */
 public class Problem779 {
     public int kthGrammar(int N, int K) {
         int[] cols = new int[N];

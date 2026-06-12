@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/goat-latin/
- */
+/** https://leetcode.com/problems/goat-latin/ */
 public class Problem824 {
     public String toGoatLatin(String S) {
         StringBuilder result = new StringBuilder();
@@ -26,7 +24,7 @@ public class Problem824 {
     }
 
     private static boolean isVowel(char c) {
-        return c == 'a' || c == 'i' || c == 'u' || c == 'e' || c == 'o' ||
-            c == 'A' || c == 'I' || c == 'U' || c == 'E' || c == 'O';
+        return c == 'a' || c == 'i' || c == 'u' || c == 'e' || c == 'o' || c == 'A' || c == 'I'
+                || c == 'U' || c == 'E' || c == 'O';
     }
 }

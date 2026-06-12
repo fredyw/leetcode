@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/rotating-the-box/
- */
+/** https://leetcode.com/problems/rotating-the-box/ */
 public class Problem1861 {
     public char[][] rotateTheBox(char[][] box) {
         int maxRow = box.length;

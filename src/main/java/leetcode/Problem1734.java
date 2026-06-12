@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/decode-xored-permutation/
- */
+/** https://leetcode.com/problems/decode-xored-permutation/ */
 public class Problem1734 {
     public int[] decode(int[] encoded) {
         int a = 0;

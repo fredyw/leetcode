@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/swap-adjacent-in-lr-string/
- */
+/** https://leetcode.com/problems/swap-adjacent-in-lr-string/ */
 public class Problem777 {
     public boolean canTransform(String start, String end) {
         char[] s = start.toCharArray();

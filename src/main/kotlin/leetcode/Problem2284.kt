@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/sender-with-largest-word-count/
- */
+/** https://leetcode.com/problems/sender-with-largest-word-count/ */
 class Problem2284 {
     fun largestWordCount(messages: Array<String>, senders: Array<String>): String {
         var answer = ""

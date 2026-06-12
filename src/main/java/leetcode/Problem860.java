@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/lemonade-change/
- */
+/** https://leetcode.com/problems/lemonade-change/ */
 public class Problem860 {
     public boolean lemonadeChange(int[] bills) {
         // 0: count of 5

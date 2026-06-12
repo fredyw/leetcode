@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/brick-wall/
- */
+/** https://leetcode.com/problems/brick-wall/ */
 public class Problem554 {
     public int leastBricks(List<List<Integer>> wall) {
         int max = 0;

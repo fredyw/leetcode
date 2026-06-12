@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.TreeSet;
 
-/**
- * https://leetcode.com/problems/contains-duplicate-iii/
- */
+/** https://leetcode.com/problems/contains-duplicate-iii/ */
 public class Problem220 {
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
         if (k <= 0 || t < 0 || nums.length <= 1) {

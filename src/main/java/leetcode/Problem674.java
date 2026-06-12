@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/longest-continuous-increasing-subsequence/
- */
+/** https://leetcode.com/problems/longest-continuous-increasing-subsequence/ */
 public class Problem674 {
     public int findLengthOfLCIS(int[] nums) {
         if (nums.length == 0) {

@@ -5,13 +5,11 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/most-common-word/
- */
+/** https://leetcode.com/problems/most-common-word/ */
 public class Problem819 {
     public String mostCommonWord(String paragraph, String[] banned) {
         Set<String> bannedWords = new HashSet<>();
-        for (String b :banned) {
+        for (String b : banned) {
             bannedWords.add(b);
         }
         String[] words = paragraph.split("\\s+|!|\\?|'|,|;|\\.");

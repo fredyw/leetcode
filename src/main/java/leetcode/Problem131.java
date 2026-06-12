@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/palindrome-partitioning/
- */
+/** https://leetcode.com/problems/palindrome-partitioning/ */
 public class Problem131 {
     public List<List<String>> partition(String s) {
         List<List<String>> answer = new ArrayList<>();
@@ -13,7 +11,8 @@ public class Problem131 {
         return answer;
     }
 
-    private static void partition(String s, int index, List<String> accu, List<List<String>> answer) {
+    private static void partition(
+            String s, int index, List<String> accu, List<List<String>> answer) {
         if (s.length() == index) {
             answer.add(new ArrayList<>(accu));
             return;

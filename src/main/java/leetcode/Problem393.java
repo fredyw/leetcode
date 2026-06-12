@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/utf-8-validation/
- */
+/** https://leetcode.com/problems/utf-8-validation/ */
 public class Problem393 {
     public boolean validUtf8(int[] data) {
         int i = 0;

@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/destination-city/
- */
+/** https://leetcode.com/problems/destination-city/ */
 public class Problem1436 {
     public String destCity(List<List<String>> paths) {
         Map<String, String> map = new HashMap<>();

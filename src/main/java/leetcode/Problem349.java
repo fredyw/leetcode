@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/intersection-of-two-arrays/
- */
+/** https://leetcode.com/problems/intersection-of-two-arrays/ */
 public class Problem349 {
     public int[] intersection(int[] nums1, int[] nums2) {
         Set<Integer> set = new HashSet<>();

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/jump-game/
- */
+/** https://leetcode.com/problems/jump-game/ */
 public class Problem55 {
     public boolean canJump(int[] nums) {
         if (nums.length == 0) {

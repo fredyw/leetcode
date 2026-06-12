@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/
- */
+/** https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/ */
 public class Problem154 {
     public int findMin(int[] nums) {
         return findMin(nums, 0, nums.length - 1);

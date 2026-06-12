@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/student-attendance-record-i/
- */
+/** https://leetcode.com/problems/student-attendance-record-i/ */
 public class Problem551 {
     public boolean checkRecord(String s) {
         int countA = 0;

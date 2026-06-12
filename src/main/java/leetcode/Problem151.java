@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/reverse-words-in-a-string/
- */
+/** https://leetcode.com/problems/reverse-words-in-a-string/ */
 public class Problem151 {
     public String reverseWords(String s) {
         String[] strs = s.trim().split("\\s+");

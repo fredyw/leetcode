@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/factorial-trailing-zeroes/
- */
+/** https://leetcode.com/problems/factorial-trailing-zeroes/ */
 public class Problem172 {
     public int trailingZeroes(int n) {
         int result = 0;

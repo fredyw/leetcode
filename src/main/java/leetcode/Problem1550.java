@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/three-consecutive-odds/
- */
+/** https://leetcode.com/problems/three-consecutive-odds/ */
 public class Problem1550 {
     public boolean threeConsecutiveOdds(int[] arr) {
         int count = 0;

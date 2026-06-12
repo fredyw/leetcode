@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-deletion-cost-to-avoid-repeating-letters/
- */
+/** https://leetcode.com/problems/minimum-deletion-cost-to-avoid-repeating-letters/ */
 public class Problem1578 {
     public int minCost(String s, int[] cost) {
         int answer = 0;

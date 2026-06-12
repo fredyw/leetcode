@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/prime-arrangements/
- */
+/** https://leetcode.com/problems/prime-arrangements/ */
 public class Problem1175 {
     public int numPrimeArrangements(int n) {
         boolean[] primes = new boolean[n + 1];

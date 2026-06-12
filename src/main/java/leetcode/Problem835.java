@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/image-overlap/
- */
+/** https://leetcode.com/problems/image-overlap/ */
 public class Problem835 {
     public int largestOverlap(int[][] A, int[][] B) {
         int maxRow = A.length;
@@ -14,7 +12,7 @@ public class Problem835 {
         for (int row = 0; row < maxRow; row++) {
             for (int col = 0; col < maxCol; col++) {
                 if (A[row][col] == 1) {
-                    list.add(new int[]{row, col});
+                    list.add(new int[] {row, col});
                 }
             }
         }

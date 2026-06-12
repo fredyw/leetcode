@@ -2,9 +2,7 @@ package leetcode
 
 import java.util.*
 
-/**
- * https://leetcode.com/problems/find-the-most-competitive-subsequence/
- */
+/** https://leetcode.com/problems/find-the-most-competitive-subsequence/ */
 class Problem1673 {
     fun mostCompetitive(nums: IntArray, k: Int): IntArray {
         val stack = Stack<Int>()

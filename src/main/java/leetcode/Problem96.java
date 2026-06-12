@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/unique-binary-search-trees/
- */
+/** https://leetcode.com/problems/unique-binary-search-trees/ */
 public class Problem96 {
     /*
      * http://en.wikipedia.org/wiki/Catalan_number

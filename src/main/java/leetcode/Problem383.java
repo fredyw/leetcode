@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/ransom-note/
- */
+/** https://leetcode.com/problems/ransom-note/ */
 public class Problem383 {
     public boolean canConstruct(String ransomNote, String magazine) {
         Map<Character, Integer> charCount = new HashMap<>();

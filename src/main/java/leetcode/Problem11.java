@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/container-with-most-water/
- */
+/** https://leetcode.com/problems/container-with-most-water/ */
 public class Problem11 {
     public int maxArea(int[] height) {
         int answer = 0;

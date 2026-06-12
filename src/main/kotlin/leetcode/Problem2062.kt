@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/count-vowel-substrings-of-a-string/
- */
+/** https://leetcode.com/problems/count-vowel-substrings-of-a-string/ */
 class Problem2062 {
     fun countVowelSubstrings(word: String): Int {
         var answer = 0

@@ -9,8 +9,7 @@ public class Problem2674 {
         int val;
         ListNode next;
 
-        ListNode() {
-        }
+        ListNode() {}
 
         ListNode(int val) {
             this.val = val;
@@ -38,6 +37,6 @@ public class Problem2674 {
         }
         var second = nodes.get((int) Math.ceil((double) nodes.size() / 2));
         nodes.getLast().next = second;
-        return new ListNode[]{first, second};
+        return new ListNode[] {first, second};
     }
 }

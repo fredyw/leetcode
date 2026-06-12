@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/get-maximum-in-generated-array/
- */
+/** https://leetcode.com/problems/get-maximum-in-generated-array/ */
 public class Problem1646 {
     public int getMaximumGenerated(int n) {
         int answer = 0;

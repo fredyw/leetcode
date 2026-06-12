@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/longest-arithmetic-subsequence-of-given-difference/
- */
+/** https://leetcode.com/problems/longest-arithmetic-subsequence-of-given-difference/ */
 public class Problem1218 {
     public int longestSubsequence(int[] arr, int difference) {
         int answer = 0;

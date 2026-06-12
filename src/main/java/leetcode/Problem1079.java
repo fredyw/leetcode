@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/letter-tile-possibilities/
- */
+/** https://leetcode.com/problems/letter-tile-possibilities/ */
 public class Problem1079 {
     public int numTilePossibilities(String tiles) {
         Set<String> set = new HashSet<>();
@@ -13,8 +11,8 @@ public class Problem1079 {
         return set.size();
     }
 
-    private static void numTilePossibilities(String tiles, String accu, boolean[] visited,
-                                            Set<String> set) {
+    private static void numTilePossibilities(
+            String tiles, String accu, boolean[] visited, Set<String> set) {
         if (accu.length() == tiles.length()) {
             return;
         }

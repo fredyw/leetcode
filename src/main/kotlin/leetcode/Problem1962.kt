@@ -1,12 +1,10 @@
 package leetcode
 
-import java.util.PriorityQueue
 import java.util.Comparator
+import java.util.PriorityQueue
 import kotlin.math.ceil
 
-/**
- * https://leetcode.com/problems/remove-stones-to-minimize-the-total/
- */
+/** https://leetcode.com/problems/remove-stones-to-minimize-the-total/ */
 class Problem1962 {
     fun minStoneSum(piles: IntArray, k: Int): Int {
         val queue = PriorityQueue(Comparator<Int> { a, b -> b.compareTo(a) })

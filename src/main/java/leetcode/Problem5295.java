@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero
- */
+/** https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero */
 public class Problem5295 {
     public int[] sumZero(int n) {
         int[] answer = new int[n];

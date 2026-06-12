@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/short-encoding-of-words/
- */
+/** https://leetcode.com/problems/short-encoding-of-words/ */
 public class Problem820 {
     public int minimumLengthEncoding(String[] words) {
         Node[] nodes = new Node[26];

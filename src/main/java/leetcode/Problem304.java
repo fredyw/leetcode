@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/range-sum-query-2d-immutable/
- */
+/** https://leetcode.com/problems/range-sum-query-2d-immutable/ */
 public class Problem304 {
     public static class NumMatrix {
         private int[][] matrix;

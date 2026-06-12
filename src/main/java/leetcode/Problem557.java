@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/reverse-words-in-a-string-iii/
- */
+/** https://leetcode.com/problems/reverse-words-in-a-string-iii/ */
 public class Problem557 {
     public String reverseWords(String s) {
         StringBuilder sb = new StringBuilder();

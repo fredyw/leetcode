@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/n-repeated-element-in-size-2n-array/
- */
+/** https://leetcode.com/problems/n-repeated-element-in-size-2n-array/ */
 public class Problem961 {
     public int repeatedNTimes(int[] A) {
         int n = A.length / 2;

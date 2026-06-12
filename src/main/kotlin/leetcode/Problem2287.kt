@@ -2,9 +2,7 @@ package leetcode
 
 import kotlin.math.min
 
-/**
- * https://leetcode.com/problems/rearrange-characters-to-make-target-string/
- */
+/** https://leetcode.com/problems/rearrange-characters-to-make-target-string/ */
 class Problem2287 {
     fun rearrangeCharacters(s: String, target: String): Int {
         val sCounts = IntArray(26)

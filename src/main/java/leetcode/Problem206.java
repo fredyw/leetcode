@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/reverse-linked-list/
- */
+/** https://leetcode.com/problems/reverse-linked-list/ */
 public class Problem206 {
     public static class ListNode {
         int val;

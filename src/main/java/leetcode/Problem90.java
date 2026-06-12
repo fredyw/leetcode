@@ -6,9 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/subsets-ii/
- */
+/** https://leetcode.com/problems/subsets-ii/ */
 public class Problem90 {
     public List<List<Integer>> subsetsWithDup(int[] nums) {
         Set<List<Integer>> sets = new HashSet<>();
@@ -16,7 +14,8 @@ public class Problem90 {
         return new ArrayList<>(sets);
     }
 
-    private static void subsetsWithDup(int[] nums, int index, List<Integer> accu, Set<List<Integer>> result) {
+    private static void subsetsWithDup(
+            int[] nums, int index, List<Integer> accu, Set<List<Integer>> result) {
         List<Integer> tmp = new ArrayList<>(accu);
         Collections.sort(tmp);
         result.add(tmp);

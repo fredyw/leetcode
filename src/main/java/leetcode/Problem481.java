@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/magical-string/
- */
+/** https://leetcode.com/problems/magical-string/ */
 public class Problem481 {
     public int magicalString(int n) {
         if (n <= 0) {

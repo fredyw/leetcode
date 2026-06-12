@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/is-subsequence/
- */
+/** https://leetcode.com/problems/is-subsequence/ */
 public class Problem392 {
     public boolean isSubsequence(String s, String t) {
         int idx = 0;

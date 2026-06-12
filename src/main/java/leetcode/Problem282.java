@@ -6,9 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/expression-add-operators/
- */
+/** https://leetcode.com/problems/expression-add-operators/ */
 public class Problem282 {
     public List<String> addOperators(String num, int target) {
         List<String> answer = new ArrayList<>();
@@ -30,7 +28,7 @@ public class Problem282 {
         }
         Set<String> answer = new HashSet<>();
         char c = num.charAt(idx);
-        for (String op : new String[]{"+", "-", "*"}) {
+        for (String op : new String[] {"+", "-", "*"}) {
             Set<String> strings = getExpressions(num, idx + 1, memo);
             if (strings.isEmpty()) {
                 answer.add("" + c);

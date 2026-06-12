@@ -2,9 +2,7 @@ package leetcode;
 
 import java.math.BigInteger;
 
-/**
- * https://leetcode.com/problems/add-two-numbers-ii/
- */
+/** https://leetcode.com/problems/add-two-numbers-ii/ */
 public class Problem445 {
     public static class ListNode {
         int val;

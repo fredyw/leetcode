@@ -3,9 +3,7 @@ package leetcode;
 import java.util.Arrays;
 import java.util.Random;
 
-/**
- * https://leetcode.com/problems/shuffle-an-array/
- */
+/** https://leetcode.com/problems/shuffle-an-array/ */
 public class Problem384 {
     public static class Solution {
         private final int[] nums;

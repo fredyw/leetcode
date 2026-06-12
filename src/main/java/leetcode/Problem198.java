@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/house-robber/
- */
+/** https://leetcode.com/problems/house-robber/ */
 public class Problem198 {
     public int rob(int[] num) {
         Integer[][] memo = new Integer[num.length][2];

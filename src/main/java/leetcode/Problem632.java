@@ -3,9 +3,7 @@ package leetcode;
 import java.util.List;
 import java.util.PriorityQueue;
 
-/**
- * https://leetcode.com/problems/smallest-range/
- */
+/** https://leetcode.com/problems/smallest-range/ */
 public class Problem632 {
     public int[] smallestRange(List<List<Integer>> nums) {
         int minx = 0;
@@ -13,7 +11,8 @@ public class Problem632 {
         int max = Integer.MIN_VALUE;
         int[] next = new int[nums.size()];
         boolean flag = true;
-        PriorityQueue<Integer> minQueue = new PriorityQueue<>((i, j) -> nums.get(i).get(next[i]) - nums.get(j).get(next[j]));
+        PriorityQueue<Integer> minQueue =
+                new PriorityQueue<>((i, j) -> nums.get(i).get(next[i]) - nums.get(j).get(next[j]));
         for (int i = 0; i < nums.size(); i++) {
             minQueue.offer(i);
             max = Math.max(max, nums.get(i).get(0));
@@ -34,6 +33,6 @@ public class Problem632 {
                 max = Math.max(max, nums.get(mini).get(next[mini]));
             }
         }
-        return new int[]{minx, miny};
+        return new int[] {minx, miny};
     }
 }

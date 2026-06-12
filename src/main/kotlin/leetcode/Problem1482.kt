@@ -3,9 +3,7 @@ package leetcode
 import kotlin.math.max
 import kotlin.math.min
 
-/**
- * https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/
- */
+/** https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/ */
 class Problem1482 {
     fun minDays(bloomDay: IntArray, m: Int, k: Int): Int {
         if (bloomDay.size < m * k) {

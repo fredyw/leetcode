@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/fizz-buzz/
- */
+/** https://leetcode.com/problems/fizz-buzz/ */
 public class Problem412 {
     public List<String> fizzBuzz(int n) {
         List<String> result = new ArrayList<>();

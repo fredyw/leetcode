@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/search-a-2d-matrix-ii/
- */
+/** https://leetcode.com/problems/search-a-2d-matrix-ii/ */
 public class Problem240 {
     public boolean searchMatrix(int[][] matrix, int target) {
         for (int[] a : matrix) {

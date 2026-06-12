@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/edit-distance/
- */
+/** https://leetcode.com/problems/edit-distance/ */
 public class Problem72 {
     public int minDistance(String word1, String word2) {
         Integer[][] memo = new Integer[word1.length() + 1][word2.length() + 1];

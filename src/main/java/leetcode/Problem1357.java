@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/apply-discount-every-n-orders/
- */
+/** https://leetcode.com/problems/apply-discount-every-n-orders/ */
 public class Problem1357 {
     private static class Cashier {
         private final int n;

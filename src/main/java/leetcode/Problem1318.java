@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c/
- */
+/** https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c/ */
 public class Problem1318 {
     public int minFlips(int a, int b, int c) {
         int answer = 0;

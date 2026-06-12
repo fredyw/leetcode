@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/split-linked-list-in-parts/
- */
+/** https://leetcode.com/problems/split-linked-list-in-parts/ */
 public class Problem725 {
     public static class ListNode {
         int val;

@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.TreeSet;
 
-/**
- * https://leetcode.com/problems/dota2-senate/
- */
+/** https://leetcode.com/problems/dota2-senate/ */
 public class Problem649 {
     public String predictPartyVictory(String senate) {
         char[] chars = senate.toCharArray();

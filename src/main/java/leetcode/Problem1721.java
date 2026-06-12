@@ -3,16 +3,13 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/swapping-nodes-in-a-linked-list/
- */
+/** https://leetcode.com/problems/swapping-nodes-in-a-linked-list/ */
 public class Problem1721 {
     public static class ListNode {
         int val;
         ListNode next;
 
-        ListNode() {
-        }
+        ListNode() {}
 
         ListNode(int val) {
             this.val = val;

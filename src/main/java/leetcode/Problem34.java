@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
- */
+/** https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/ */
 public class Problem34 {
     public int[] searchRange(int[] nums, int target) {
         int lo = 0;

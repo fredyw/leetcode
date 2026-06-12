@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/
- */
+/** https://leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/ */
 public class Problem1779 {
     public int nearestValidPoint(int x, int y, int[][] points) {
         int answer = -1;

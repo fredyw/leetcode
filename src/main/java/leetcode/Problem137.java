@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/single-number-ii/
- */
+/** https://leetcode.com/problems/single-number-ii/ */
 public class Problem137 {
     public int singleNumber(int[] A) {
         Map<Integer, Integer> map = new HashMap<>();

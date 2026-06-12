@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/special-positions-in-a-binary-matrix/
- */
+/** https://leetcode.com/problems/special-positions-in-a-binary-matrix/ */
 public class Problem1582 {
     public int numSpecial(int[][] mat) {
         int answer = 0;

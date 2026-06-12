@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/latest-time-by-replacing-hidden-digits/
- */
+/** https://leetcode.com/problems/latest-time-by-replacing-hidden-digits/ */
 public class Problem1736 {
     public String maximumTime(String time) {
         StringBuilder answer = new StringBuilder();

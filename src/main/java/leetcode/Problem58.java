@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/length-of-last-word/
- */
+/** https://leetcode.com/problems/length-of-last-word/ */
 public class Problem58 {
     public int lengthOfLastWord(String s) {
         int idx = s.length() - 1;

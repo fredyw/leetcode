@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-binary-tree-ii/
- */
+/** https://leetcode.com/problems/maximum-binary-tree-ii/ */
 public class Problem998 {
     public static class TreeNode {
         int val;
@@ -19,7 +17,7 @@ public class Problem998 {
             return new TreeNode(val);
         }
         if (root.val < val) {
-            TreeNode node  = new TreeNode(val);
+            TreeNode node = new TreeNode(val);
             node.left = root;
             return node;
         }

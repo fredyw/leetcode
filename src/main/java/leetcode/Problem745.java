@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/prefix-and-suffix-search/
- */
+/** https://leetcode.com/problems/prefix-and-suffix-search/ */
 public class Problem745 {
     static class WordFilter {
         private final Node[] nodes = new Node[27]; // extra one char for separator

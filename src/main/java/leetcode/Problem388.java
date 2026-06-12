@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/longest-absolute-file-path/
- */
+/** https://leetcode.com/problems/longest-absolute-file-path/ */
 public class Problem388 {
     public int lengthLongestPath(String input) {
         String[] split = input.split("\\n");

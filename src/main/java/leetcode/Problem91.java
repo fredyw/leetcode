@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/decode-ways/
- */
+/** https://leetcode.com/problems/decode-ways/ */
 public class Problem91 {
     public int numDecodings(String s) {
         Integer[] memo = new Integer[s.length()];

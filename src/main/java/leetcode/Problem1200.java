@@ -6,9 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/minimum-absolute-difference/
- */
+/** https://leetcode.com/problems/minimum-absolute-difference/ */
 public class Problem1200 {
     public List<List<Integer>> minimumAbsDifference(int[] arr) {
         Arrays.sort(arr);

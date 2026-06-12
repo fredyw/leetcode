@@ -3,9 +3,7 @@ package leetcode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
- * https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
- */
+/** https://leetcode.com/problems/serialize-and-deserialize-binary-tree/ */
 public class Problem297 {
     public static class TreeNode {
         int val;

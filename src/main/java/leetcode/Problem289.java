@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/game-of-life/
- */
+/** https://leetcode.com/problems/game-of-life/ */
 public class Problem289 {
     public void gameOfLife(int[][] board) {
         int[][] original = new int[board.length][];

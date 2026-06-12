@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/generate-parentheses/
- */
+/** https://leetcode.com/problems/generate-parentheses/ */
 public class Problem22 {
     public List<String> generateParenthesis(int n) {
         List<String> result = new ArrayList<>();
@@ -15,8 +13,7 @@ public class Problem22 {
         return result;
     }
 
-    private void generateParenthesis(int n, int open, int close,
-                                     String accu, List<String> result) {
+    private void generateParenthesis(int n, int open, int close, String accu, List<String> result) {
         if (close == n) {
             result.add(accu);
             return;

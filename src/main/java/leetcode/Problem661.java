@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/image-smoother/
- */
+/** https://leetcode.com/problems/image-smoother/ */
 public class Problem661 {
     public int[][] imageSmoother(int[][] M) {
         int maxRow = M.length;

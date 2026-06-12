@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/number-of-good-pairs/
- */
+/** https://leetcode.com/problems/number-of-good-pairs/ */
 public class Problem1512 {
     public int numIdenticalPairs(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();

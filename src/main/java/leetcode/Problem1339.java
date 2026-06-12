@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-product-of-splitted-binary-tree/
- */
+/** https://leetcode.com/problems/maximum-product-of-splitted-binary-tree/ */
 public class Problem1339 {
     public static class TreeNode {
         int val;

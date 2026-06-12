@@ -7,9 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/3sum-with-multiplicity/
- */
+/** https://leetcode.com/problems/3sum-with-multiplicity/ */
 public class Problem923 {
     public int threeSumMulti(int[] A, int target) {
         Arrays.sort(A);

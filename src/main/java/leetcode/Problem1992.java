@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/find-all-groups-of-farmland/
- */
+/** https://leetcode.com/problems/find-all-groups-of-farmland/ */
 public class Problem1992 {
     public int[][] findFarmland(int[][] land) {
         List<int[]> farmlands = new ArrayList<>();
@@ -19,7 +17,7 @@ public class Problem1992 {
                 }
                 BottomRight bottomRight = new BottomRight();
                 findFarmland(land, maxRow, maxCol, i, j, visited, bottomRight);
-                farmlands.add(new int[]{i, j, bottomRight.row, bottomRight.col});
+                farmlands.add(new int[] {i, j, bottomRight.row, bottomRight.col});
             }
         }
         int[][] answer = new int[farmlands.size()][4];
@@ -34,9 +32,14 @@ public class Problem1992 {
         private int col;
     }
 
-    private static void findFarmland(int[][] land, int maxRow, int maxCol,
-                                     int row, int col, boolean[][] visited,
-                                     BottomRight bottomRight) {
+    private static void findFarmland(
+            int[][] land,
+            int maxRow,
+            int maxCol,
+            int row,
+            int col,
+            boolean[][] visited,
+            BottomRight bottomRight) {
         if (row < 0 || row == maxRow || col < 0 || col == maxCol) {
             return;
         }

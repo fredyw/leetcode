@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/min-stack/
- */
+/** https://leetcode.com/problems/min-stack/ */
 public class Problem155 {
     public static class MinStack {
         Stack<Integer> stack = new Stack<>();

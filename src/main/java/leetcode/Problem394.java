@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/decode-string/
- */
+/** https://leetcode.com/problems/decode-string/ */
 public class Problem394 {
     public String decodeString(String s) {
         Stack<String> strings = new Stack<>();

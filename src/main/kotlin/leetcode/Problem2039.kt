@@ -3,9 +3,7 @@ package leetcode
 import java.lang.Integer.max
 import java.util.*
 
-/**
- * https://leetcode.com/problems/the-time-when-the-network-becomes-idle/
- */
+/** https://leetcode.com/problems/the-time-when-the-network-becomes-idle/ */
 class Problem2039 {
     fun networkBecomesIdle(edges: Array<IntArray>, patience: IntArray): Int {
         val adjList = buildAdjList(edges)

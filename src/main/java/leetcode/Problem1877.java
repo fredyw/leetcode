@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/minimize-maximum-pair-sum-in-array/
- */
+/** https://leetcode.com/problems/minimize-maximum-pair-sum-in-array/ */
 public class Problem1877 {
     public int minPairSum(int[] nums) {
         Arrays.sort(nums);

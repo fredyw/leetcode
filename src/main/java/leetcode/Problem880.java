@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/decoded-string-at-index/
- */
+/** https://leetcode.com/problems/decoded-string-at-index/ */
 public class Problem880 {
     public String decodeAtIndex(String S, int K) {
         long size = 0;

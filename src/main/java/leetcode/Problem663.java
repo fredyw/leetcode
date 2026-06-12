@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/equal-tree-partition/
- */
+/** https://leetcode.com/problems/equal-tree-partition/ */
 public class Problem663 {
     public static class TreeNode {
         int val;

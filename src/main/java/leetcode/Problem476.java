@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/number-complement/
- */
+/** https://leetcode.com/problems/number-complement/ */
 public class Problem476 {
     public int findComplement(int num) {
         if (num == 0) {

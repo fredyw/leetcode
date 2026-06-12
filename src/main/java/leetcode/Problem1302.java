@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/deepest-leaves-sum/
- */
+/** https://leetcode.com/problems/deepest-leaves-sum/ */
 public class Problem1302 {
     public static class TreeNode {
         int val;
@@ -28,8 +26,8 @@ public class Problem1302 {
         private int value;
     }
 
-    private static void deepestLeavesSum(TreeNode root, int level, IntRef maxLevel,
-                                         Map<Integer, Integer> levelSum) {
+    private static void deepestLeavesSum(
+            TreeNode root, int level, IntRef maxLevel, Map<Integer, Integer> levelSum) {
         if (root == null) {
             return;
         }

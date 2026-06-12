@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/domino-and-tromino-tiling/
- */
+/** https://leetcode.com/problems/domino-and-tromino-tiling/ */
 public class Problem790 {
     public int numTilings(int N) {
         long[] a = new long[1001];

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/search-in-rotated-sorted-array/
- */
+/** https://leetcode.com/problems/search-in-rotated-sorted-array/ */
 public class Problem33 {
     public int search(int[] nums, int target) {
         if (nums.length == 0) {

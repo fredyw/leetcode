@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/find-kth-largest-xor-coordinate-value/
- */
+/** https://leetcode.com/problems/find-kth-largest-xor-coordinate-value/ */
 public class Problem1738 {
     public int kthLargestValue(int[][] matrix, int k) {
         int maxRow = matrix.length;

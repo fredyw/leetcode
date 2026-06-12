@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/score-after-flipping-matrix/
- */
+/** https://leetcode.com/problems/score-after-flipping-matrix/ */
 public class Problem861 {
     public int matrixScore(int[][] A) {
         int nRow = A.length;

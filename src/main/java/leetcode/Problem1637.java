@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/widest-vertical-area-between-two-points-containing-no-points/
- */
+/** https://leetcode.com/problems/widest-vertical-area-between-two-points-containing-no-points/ */
 public class Problem1637 {
     public int maxWidthOfVerticalArea(int[][] points) {
         int[] x = new int[points.length];

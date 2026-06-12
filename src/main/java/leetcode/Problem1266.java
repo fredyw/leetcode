@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-time-visiting-all-points/
- */
+/** https://leetcode.com/problems/minimum-time-visiting-all-points/ */
 public class Problem1266 {
     public int minTimeToVisitAllPoints(int[][] points) {
         int answer = 0;

@@ -4,9 +4,7 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-/**
- * https://leetcode.com/problems/remove-duplicate-letters/
- */
+/** https://leetcode.com/problems/remove-duplicate-letters/ */
 public class Problem316 {
     public String removeDuplicateLetters(String s) {
         StringBuilder sb = new StringBuilder();

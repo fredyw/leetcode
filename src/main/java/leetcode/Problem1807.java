@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/evaluate-the-bracket-pairs-of-a-string/
- */
+/** https://leetcode.com/problems/evaluate-the-bracket-pairs-of-a-string/ */
 public class Problem1807 {
     public String evaluate(String s, List<List<String>> knowledge) {
         Map<String, String> map = new HashMap<>();

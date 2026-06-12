@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/max-difference-you-can-get-from-changing-an-integer/
- */
+/** https://leetcode.com/problems/max-difference-you-can-get-from-changing-an-integer/ */
 public class Problem1432 {
     public int maxDiff(int num) {
         String s = Integer.toString(num);

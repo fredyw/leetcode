@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/word-search/
- */
+/** https://leetcode.com/problems/word-search/ */
 public class Problem79 {
     public boolean exist(char[][] board, String word) {
         int maxRow = board.length;
@@ -18,8 +16,15 @@ public class Problem79 {
         return false;
     }
 
-    private static boolean exist(char[][] board, String word, int maxRow, int maxCol,
-                                 int idx, int row, int col, boolean[][] visited) {
+    private static boolean exist(
+            char[][] board,
+            String word,
+            int maxRow,
+            int maxCol,
+            int idx,
+            int row,
+            int col,
+            boolean[][] visited) {
         if (idx == word.length()) {
             return true;
         }

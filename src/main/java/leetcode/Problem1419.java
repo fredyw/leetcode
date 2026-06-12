@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-number-of-frogs-croaking/
- */
+/** https://leetcode.com/problems/minimum-number-of-frogs-croaking/ */
 public class Problem1419 {
     public int minNumberOfFrogs(String croakOfFrogs) {
         int answer = 0;

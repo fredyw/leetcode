@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/linked-list-in-binary-tree/
- */
+/** https://leetcode.com/problems/linked-list-in-binary-tree/ */
 public class Problem1367 {
     public static class ListNode {
         int val;

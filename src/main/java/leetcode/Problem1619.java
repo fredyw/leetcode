@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/mean-of-array-after-removing-some-elements/
- */
+/** https://leetcode.com/problems/mean-of-array-after-removing-some-elements/ */
 public class Problem1619 {
     public double trimMean(int[] arr) {
         Arrays.sort(arr);

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/queries-on-number-of-points-inside-a-circle/
- */
+/** https://leetcode.com/problems/queries-on-number-of-points-inside-a-circle/ */
 public class Problem1828 {
     public int[] countPoints(int[][] points, int[][] queries) {
         int[] answer = new int[queries.length];

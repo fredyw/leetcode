@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/xor-queries-of-a-subarray/
- */
+/** https://leetcode.com/problems/xor-queries-of-a-subarray/ */
 public class Problem1310 {
     public int[] xorQueries(int[] arr, int[][] queries) {
         int[] answer = new int[queries.length];

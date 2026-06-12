@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/buddy-strings/
- */
+/** https://leetcode.com/problems/buddy-strings/ */
 public class Problem859 {
     public boolean buddyStrings(String A, String B) {
         if (A.length() != B.length()) {
@@ -33,7 +31,6 @@ public class Problem859 {
         if (count == 0) {
             return hasDuplicate;
         }
-        return (A.charAt(idx1) == B.charAt(idx2) &&
-            A.charAt(idx2) == B.charAt(idx1));
+        return (A.charAt(idx1) == B.charAt(idx2) && A.charAt(idx2) == B.charAt(idx1));
     }
 }

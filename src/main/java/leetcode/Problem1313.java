@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/decompress-run-length-encoded-list/
- */
+/** https://leetcode.com/problems/decompress-run-length-encoded-list/ */
 public class Problem1313 {
     public int[] decompressRLElist(int[] nums) {
         List<Integer> decompresssed = new ArrayList<>();

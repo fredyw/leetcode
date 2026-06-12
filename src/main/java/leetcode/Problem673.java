@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/number-of-longest-increasing-subsequence/
- */
+/** https://leetcode.com/problems/number-of-longest-increasing-subsequence/ */
 public class Problem673 {
     public int findNumberOfLIS(int[] nums) {
         if (nums.length == 0) {

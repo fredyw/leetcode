@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/binary-trees-with-factors/
- */
+/** https://leetcode.com/problems/binary-trees-with-factors/ */
 public class Problem823 {
     public int numFactoredBinaryTrees(int[] A) {
         Set<Integer> set = new HashSet<>();
@@ -22,8 +20,8 @@ public class Problem823 {
         return (int) (answer);
     }
 
-    private static long numFactoredBinaryTrees(Set<Integer> set, int root,
-                                               Map<Integer, Long> memo) {
+    private static long numFactoredBinaryTrees(
+            Set<Integer> set, int root, Map<Integer, Long> memo) {
         if (memo.containsKey(root)) {
             return memo.get(root);
         }

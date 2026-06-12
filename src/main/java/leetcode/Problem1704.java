@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/determine-if-string-halves-are-alike/
- */
+/** https://leetcode.com/problems/determine-if-string-halves-are-alike/ */
 public class Problem1704 {
     public boolean halvesAreAlike(String s) {
         int leftCount = 0;
@@ -21,7 +19,7 @@ public class Problem1704 {
     }
 
     private static boolean isVowel(char c) {
-        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' ||
-            c == 'E' || c == 'I' || c == 'O' || c == 'U';
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E'
+                || c == 'I' || c == 'O' || c == 'U';
     }
 }

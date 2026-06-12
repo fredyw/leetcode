@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/arithmetic-slices/
- */
+/** https://leetcode.com/problems/arithmetic-slices/ */
 public class Problem413 {
     public int numberOfArithmeticSlices(int[] A) {
         List<Integer> lengths = new ArrayList<>();

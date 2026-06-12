@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/maximum-swap/
- */
+/** https://leetcode.com/problems/maximum-swap/ */
 public class Problem670 {
     public int maximumSwap(int num) {
         String str = Integer.toString(num);

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/replace-all-digits-with-characters/
- */
+/** https://leetcode.com/problems/replace-all-digits-with-characters/ */
 public class Problem1844 {
     public String replaceDigits(String s) {
         StringBuilder answer = new StringBuilder();

@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/circular-permutation-in-binary-representation/
- */
+/** https://leetcode.com/problems/circular-permutation-in-binary-representation/ */
 public class Problem1238 {
     public List<Integer> circularPermutation(int n, int start) {
         List<Integer> answer = new ArrayList<>();

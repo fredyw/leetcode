@@ -4,17 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/maximum-frequency-stack/
- */
+/** https://leetcode.com/problems/maximum-frequency-stack/ */
 public class Problem895 {
     private static class FreqStack {
         private final Map<Integer /*number*/, Integer /*count*/> numCounts = new HashMap<>();
         private final Map<Integer /*count*/, Stack<Integer>> countStack = new HashMap<>();
         private int maxCount = 0;
 
-        public FreqStack() {
-        }
+        public FreqStack() {}
 
         public void push(int x) {
             int count;

@@ -17,8 +17,14 @@ public class Problem1682 {
         }
 
         private static int evaluate(TreeNode root) {
-            var left = (root.left.isOperator()) ? evaluate(root.left) : Integer.parseInt(root.left.val);
-            var right = (root.right.isOperator()) ? evaluate(root.right) : Integer.parseInt(root.right.val);
+            var left =
+                    (root.left.isOperator())
+                            ? evaluate(root.left)
+                            : Integer.parseInt(root.left.val);
+            var right =
+                    (root.right.isOperator())
+                            ? evaluate(root.right)
+                            : Integer.parseInt(root.right.val);
             return switch (root.val) {
                 case "+" -> left + right;
                 case "-" -> left - right;

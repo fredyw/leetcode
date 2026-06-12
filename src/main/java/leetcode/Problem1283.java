@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/
- */
+/** https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/ */
 public class Problem1283 {
     public int smallestDivisor(int[] nums, int threshold) {
         int answer = 0;
@@ -27,7 +25,6 @@ public class Problem1283 {
                     answer = Math.min(answer, mid);
                 }
             }
-
         }
         return answer;
     }

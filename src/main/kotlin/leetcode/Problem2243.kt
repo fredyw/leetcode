@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/calculate-digit-sum-of-a-string/
- */
+/** https://leetcode.com/problems/calculate-digit-sum-of-a-string/ */
 class Problem2243 {
     fun digitSum(s: String, k: Int): String {
         var answer = s
@@ -11,11 +9,12 @@ class Problem2243 {
             var tmp = answer
             answer = ""
             while (i < tmp.length) {
-                val group = if (i + k > tmp.length) {
-                    tmp.substring(i)
-                } else {
-                    tmp.substring(i, i + k)
-                }
+                val group =
+                    if (i + k > tmp.length) {
+                        tmp.substring(i)
+                    } else {
+                        tmp.substring(i, i + k)
+                    }
                 answer += sum(group).toString()
                 i += k
             }

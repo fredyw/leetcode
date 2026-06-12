@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/validate-stack-sequences/
- */
+/** https://leetcode.com/problems/validate-stack-sequences/ */
 public class Problem946 {
     public boolean validateStackSequences(int[] pushed, int[] popped) {
         if (pushed.length == 0 || popped.length == 0) {

@@ -3,9 +3,7 @@ package leetcode;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
-/**
- * https://leetcode.com/problems/hand-of-straights/
- */
+/** https://leetcode.com/problems/hand-of-straights/ */
 public class Problem846 {
     public boolean isNStraightHand(int[] hand, int W) {
         TreeMap<Integer, Integer> map = new TreeMap<>();

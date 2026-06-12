@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/find-all-duplicates-in-an-array/
- */
+/** https://leetcode.com/problems/find-all-duplicates-in-an-array/ */
 public class Problem442 {
     public List<Integer> findDuplicates(int[] nums) {
         List<Integer> result = new ArrayList<>();

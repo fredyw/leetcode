@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/longer-contiguous-segments-of-ones-than-zeros/
- */
+/** https://leetcode.com/problems/longer-contiguous-segments-of-ones-than-zeros/ */
 public class Problem1869 {
     public boolean checkZeroOnes(String s) {
         int maxZeroCount = 0;

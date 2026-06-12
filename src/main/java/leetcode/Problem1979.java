@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/find-greatest-common-divisor-of-array/
- */
+/** https://leetcode.com/problems/find-greatest-common-divisor-of-array/ */
 public class Problem1979 {
     public int findGCD(int[] nums) {
         int max = Integer.MIN_VALUE;

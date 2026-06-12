@@ -1,16 +1,13 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/count-good-nodes-in-binary-tree/
- */
+/** https://leetcode.com/problems/count-good-nodes-in-binary-tree/ */
 public class Problem1448 {
     public static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
 
-        TreeNode() {
-        }
+        TreeNode() {}
 
         TreeNode(int val) {
             this.val = val;
@@ -32,7 +29,8 @@ public class Problem1448 {
             return 0;
         }
         int val = root.val >= max ? 1 : 0;
-        return goodNodes(root.left, Math.max(max, root.val)) +
-            goodNodes(root.right,  Math.max(max, root.val)) + val;
+        return goodNodes(root.left, Math.max(max, root.val))
+                + goodNodes(root.right, Math.max(max, root.val))
+                + val;
     }
 }

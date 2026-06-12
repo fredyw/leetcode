@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/throne-inheritance/
- */
+/** https://leetcode.com/problems/throne-inheritance/ */
 public class Problem1600 {
     static class ThroneInheritance {
         private static class Node {

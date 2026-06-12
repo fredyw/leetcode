@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/remove-linked-list-elements/
- */
+/** https://leetcode.com/problems/remove-linked-list-elements/ */
 public class Problem203 {
     public static class ListNode {
         int val;

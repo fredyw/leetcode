@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/lexicographical-numbers/
- */
+/** https://leetcode.com/problems/lexicographical-numbers/ */
 public class Problem386 {
     public List<Integer> lexicalOrder(int n) {
         List<Integer> result = new ArrayList<>();

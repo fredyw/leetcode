@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.TreeSet;
 
-/**
- * https://leetcode.com/problems/find-the-distance-value-between-two-arrays/
- */
+/** https://leetcode.com/problems/find-the-distance-value-between-two-arrays/ */
 public class Problem1385 {
     public int findTheDistanceValue(int[] arr1, int[] arr2, int d) {
         TreeSet<Integer> set = new TreeSet<>();

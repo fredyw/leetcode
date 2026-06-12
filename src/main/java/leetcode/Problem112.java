@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/path-sum/
- */
+/** https://leetcode.com/problems/path-sum/ */
 public class Problem112 {
     public static class TreeNode {
         int val;
@@ -29,10 +27,18 @@ public class Problem112 {
                 return false;
             }
         }
-        boolean found1 = hasPathSum(node.left, sum, accu + node.val,
-            !(node.left != null || node.right != null));
-        boolean found2 = hasPathSum(node.right, sum, accu + node.val,
-            !(node.left != null || node.right != null));
+        boolean found1 =
+                hasPathSum(
+                        node.left,
+                        sum,
+                        accu + node.val,
+                        !(node.left != null || node.right != null));
+        boolean found2 =
+                hasPathSum(
+                        node.right,
+                        sum,
+                        accu + node.val,
+                        !(node.left != null || node.right != null));
         return found1 || found2;
     }
 }

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/merge-triplets-to-form-target-triplet/
- */
+/** https://leetcode.com/problems/merge-triplets-to-form-target-triplet/ */
 public class Problem1899 {
     public boolean mergeTriplets(int[][] triplets, int[] target) {
         boolean[] valid = new boolean[3];

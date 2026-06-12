@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/water-and-jug-problem/
- */
+/** https://leetcode.com/problems/water-and-jug-problem/ */
 public class Problem365 {
     public boolean canMeasureWater(int x, int y, int z) {
         // http://www.math.tamu.edu/~dallen/hollywood/diehard/diehard.htm

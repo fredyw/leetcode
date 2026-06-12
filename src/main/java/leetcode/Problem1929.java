@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/concatenation-of-array/
- */
+/** https://leetcode.com/problems/concatenation-of-array/ */
 public class Problem1929 {
     public int[] getConcatenation(int[] nums) {
         int[] answer = new int[nums.length * 2];

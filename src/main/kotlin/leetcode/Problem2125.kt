@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/number-of-laser-beams-in-a-bank/
- */
+/** https://leetcode.com/problems/number-of-laser-beams-in-a-bank/ */
 class Problem2125 {
     fun numberOfBeams(bank: Array<String>): Int {
         var answer = 0

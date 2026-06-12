@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/finding-the-users-active-minutes/
- */
+/** https://leetcode.com/problems/finding-the-users-active-minutes/ */
 public class Problem1817 {
     public int[] findingUsersActiveMinutes(int[][] logs, int k) {
         int[] answer = new int[k];

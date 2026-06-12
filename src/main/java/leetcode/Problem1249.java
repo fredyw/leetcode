@@ -4,9 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/
- */
+/** https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/ */
 public class Problem1249 {
     public String minRemoveToMakeValid(String s) {
         Stack<Integer> stack = new Stack<>();

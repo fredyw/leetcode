@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/beautiful-arrangement-ii/
- */
+/** https://leetcode.com/problems/beautiful-arrangement-ii/ */
 public class Problem667 {
     public int[] constructArray(int n, int k) {
         int[] result = new int[n];

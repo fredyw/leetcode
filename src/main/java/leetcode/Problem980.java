@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/unique-paths-iii/
- */
+/** https://leetcode.com/problems/unique-paths-iii/ */
 public class Problem980 {
     public int uniquePathsIII(int[][] grid) {
         int maxRow = grid.length;
@@ -25,8 +23,8 @@ public class Problem980 {
         return uniquePaths(grid, maxRow, maxCol, row, col, steps - 1);
     }
 
-    private static int uniquePaths(int[][] grid, int maxRow, int maxCol, int row, int col,
-                                   int steps) {
+    private static int uniquePaths(
+            int[][] grid, int maxRow, int maxCol, int row, int col, int steps) {
         if (row < 0 || row == maxRow || col < 0 || col == maxCol) {
             return 0;
         }

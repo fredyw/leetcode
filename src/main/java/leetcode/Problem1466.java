@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/
- */
+/** https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/ */
 public class Problem1466 {
     public int minReorder(int n, int[][] connections) {
         List<Integer>[] graph = new List[n];
@@ -28,8 +26,8 @@ public class Problem1466 {
         return minReorder(graph, new boolean[n], direction, 0);
     }
 
-    private static int minReorder(List<Integer>[] graph, boolean[] visited,
-                                  Set[] direction, int node) {
+    private static int minReorder(
+            List<Integer>[] graph, boolean[] visited, Set[] direction, int node) {
         int count = 0;
         visited[node] = true;
         for (int neighbor : graph[node]) {

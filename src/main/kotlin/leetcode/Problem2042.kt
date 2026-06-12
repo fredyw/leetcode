@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/check-if-numbers-are-ascending-in-a-sentence/
- */
+/** https://leetcode.com/problems/check-if-numbers-are-ascending-in-a-sentence/ */
 class Problem2042 {
     fun areNumbersAscending(s: String): Boolean {
         val words = s.split(" ")

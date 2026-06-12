@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.PriorityQueue;
 
-/**
- * https://leetcode.com/problems/kth-largest-element-in-a-stream/
- */
+/** https://leetcode.com/problems/kth-largest-element-in-a-stream/ */
 public class Problem703 {
     private static class KthLargest {
         private final PriorityQueue<Integer> queue = new PriorityQueue<>();

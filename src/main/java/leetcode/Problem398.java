@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-/**
- * https://leetcode.com/problems/random-pick-index/
- */
+/** https://leetcode.com/problems/random-pick-index/ */
 public class Problem398 {
     public static class Solution {
         private final Map<Integer, List<Integer>> map = new HashMap<>();

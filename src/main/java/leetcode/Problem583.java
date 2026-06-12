@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/delete-operation-for-two-strings/
- */
+/** https://leetcode.com/problems/delete-operation-for-two-strings/ */
 public class Problem583 {
     public int minDistance(String word1, String word2) {
         int[][] memo = new int[word1.length() + 1][word2.length() + 1];

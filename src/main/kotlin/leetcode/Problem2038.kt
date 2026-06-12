@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/remove-colored-pieces-if-both-neighbors-are-the-same-color/
- */
+/** https://leetcode.com/problems/remove-colored-pieces-if-both-neighbors-are-the-same-color/ */
 class Problem2038 {
     fun winnerOfGame(colors: String): Boolean {
         var alice = true

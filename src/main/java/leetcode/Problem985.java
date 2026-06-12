@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/sum-of-even-numbers-after-queries/
- */
+/** https://leetcode.com/problems/sum-of-even-numbers-after-queries/ */
 public class Problem985 {
     public int[] sumEvenAfterQueries(int[] A, int[][] queries) {
         int sum = 0;
@@ -19,7 +17,7 @@ public class Problem985 {
                 sum -= A[index];
             }
             A[index] += val;
-            if (A[index] %2 == 0) {
+            if (A[index] % 2 == 0) {
                 sum += A[index];
             }
             answer[i] = sum;

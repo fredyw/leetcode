@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/watering-plants-ii/
- */
+/** https://leetcode.com/problems/watering-plants-ii/ */
 class Problem2105 {
     fun minimumRefill(plants: IntArray, capacityA: Int, capacityB: Int): Int {
         var answer = 0

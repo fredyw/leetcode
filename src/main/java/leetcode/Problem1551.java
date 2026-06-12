@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-operations-to-make-array-equal/
- */
+/** https://leetcode.com/problems/minimum-operations-to-make-array-equal/ */
 public class Problem1551 {
     public int minOperations(int n) {
         int answer = 0;

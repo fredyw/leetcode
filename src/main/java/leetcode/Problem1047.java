@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/
- */
+/** https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/ */
 public class Problem1047 {
     public String removeDuplicates(String S) {
         Stack<Character> stack = new Stack<>();

@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/find-duplicate-subtrees/
- */
+/** https://leetcode.com/problems/find-duplicate-subtrees/ */
 public class Problem652 {
     public static class TreeNode {
         int val;
@@ -40,7 +38,8 @@ public class Problem652 {
         }
     }
 
-    private static NodeString build(TreeNode node, Map<String, List<NodeString>> map, List<TreeNode> result) {
+    private static NodeString build(
+            TreeNode node, Map<String, List<NodeString>> map, List<TreeNode> result) {
         if (node == null) {
             return new NodeString(node, "");
         }

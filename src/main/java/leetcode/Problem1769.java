@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/minimum-number-of-operations-to-move-all-balls-to-each-box/
- */
+/** https://leetcode.com/problems/minimum-number-of-operations-to-move-all-balls-to-each-box/ */
 public class Problem1769 {
     public int[] minOperations(String boxes) {
         int[] answer = new int[boxes.length()];

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/sum-of-all-odd-length-subarrays/
- */
+/** https://leetcode.com/problems/sum-of-all-odd-length-subarrays/ */
 public class Problem1588 {
     public int sumOddLengthSubarrays(int[] arr) {
         int[] prefixSum = new int[arr.length];

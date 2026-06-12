@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
- */
+/** https://leetcode.com/problems/search-in-rotated-sorted-array-ii/ */
 public class Problem81 {
     public boolean search(int[] nums, int target) {
         int prev = 0;

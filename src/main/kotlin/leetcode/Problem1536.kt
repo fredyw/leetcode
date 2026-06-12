@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/minimum-swaps-to-arrange-a-binary-grid/
- */
+/** https://leetcode.com/problems/minimum-swaps-to-arrange-a-binary-grid/ */
 class Problem1536 {
     fun minSwaps(grid: Array<IntArray>): Int {
         val zeroCounts = IntArray(grid.size)

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/smallest-string-starting-from-leaf/
- */
+/** https://leetcode.com/problems/smallest-string-starting-from-leaf/ */
 public class Problem988 {
     public static class TreeNode {
         int val;

@@ -8,9 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-/**
- * https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
- */
+/** https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/ */
 public class Problem103 {
     public static class TreeNode {
         int val;

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/product-of-array-except-self/
- */
+/** https://leetcode.com/problems/product-of-array-except-self/ */
 public class Problem238 {
     public int[] productExceptSelf(int[] nums) {
         int[] output = new int[nums.length];

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/calculate-money-in-leetcode-bank/
- */
+/** https://leetcode.com/problems/calculate-money-in-leetcode-bank/ */
 public class Problem1716 {
     public int totalMoney(int n) {
         int answer = 0;

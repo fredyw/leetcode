@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/uncommon-words-from-two-sentences/
- */
+/** https://leetcode.com/problems/uncommon-words-from-two-sentences/ */
 public class Problem884 {
     public String[] uncommonFromSentences(String A, String B) {
         Map<String, Integer> map = new HashMap<>();

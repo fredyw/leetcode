@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/find-the-winner-of-the-circular-game/
- */
+/** https://leetcode.com/problems/find-the-winner-of-the-circular-game/ */
 public class Problem1823 {
     public int findTheWinner(int n, int k) {
         List<Integer> list = new ArrayList<>();

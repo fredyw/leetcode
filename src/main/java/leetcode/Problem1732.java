@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/find-the-highest-altitude/
- */
+/** https://leetcode.com/problems/find-the-highest-altitude/ */
 public class Problem1732 {
     public int largestAltitude(int[] gain) {
         int answer = 0;

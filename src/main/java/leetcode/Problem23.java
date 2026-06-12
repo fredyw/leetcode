@@ -3,9 +3,7 @@ package leetcode;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-/**
- * https://leetcode.com/problems/merge-k-sorted-lists/
- */
+/** https://leetcode.com/problems/merge-k-sorted-lists/ */
 public class Problem23 {
     public static class ListNode {
         int val;

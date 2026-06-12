@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/shortest-palindrome/
- */
+/** https://leetcode.com/problems/shortest-palindrome/ */
 public class Problem214 {
     public String shortestPalindrome(String s) {
         String reversed = new StringBuilder(s).reverse().toString();

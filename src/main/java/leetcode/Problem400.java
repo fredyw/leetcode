@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/nth-digit/
- */
+/** https://leetcode.com/problems/nth-digit/ */
 public class Problem400 {
     public int findNthDigit(int n) {
         List<Range> ranges = new ArrayList<>();

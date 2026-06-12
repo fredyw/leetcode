@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/valid-palindrome/
- */
+/** https://leetcode.com/problems/valid-palindrome/ */
 public class Problem125 {
     public boolean isPalindrome(String s) {
         char[] chars = s.toLowerCase().toCharArray();

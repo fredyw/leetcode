@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/
- */
+/** https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/ */
 public class Problem1008 {
     public static class TreeNode {
         int val;

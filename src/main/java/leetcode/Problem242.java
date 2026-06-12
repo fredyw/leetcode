@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/valid-anagram/
- */
+/** https://leetcode.com/problems/valid-anagram/ */
 public class Problem242 {
     public boolean isAnagram(String s, String t) {
         int[] counts = new int[26];

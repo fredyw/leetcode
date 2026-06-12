@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/check-if-one-string-swap-can-make-strings-equal/
- */
+/** https://leetcode.com/problems/check-if-one-string-swap-can-make-strings-equal/ */
 public class Problem1790 {
     public boolean areAlmostEqual(String s1, String s2) {
         int count = 0;

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/intersection-of-two-linked-lists/
- */
+/** https://leetcode.com/problems/intersection-of-two-linked-lists/ */
 public class Problem160 {
     public static class ListNode {
         int val;

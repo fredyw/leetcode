@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/non-decreasing-array/
- */
+/** https://leetcode.com/problems/non-decreasing-array/ */
 public class Problem665 {
     public boolean checkPossibility(int[] nums) {
         if (nums.length == 1) {

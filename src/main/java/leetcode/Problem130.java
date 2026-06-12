@@ -5,9 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-/**
- * https://leetcode.com/problems/surrounded-regions/
- */
+/** https://leetcode.com/problems/surrounded-regions/ */
 public class Problem130 {
     public void solve(char[][] board) {
         if (board.length == 0) {
@@ -20,8 +18,8 @@ public class Problem130 {
                     continue;
                 }
                 if (board[row][col] == 'O') {
-                    Result result = solve(board, visited, board.length, board[row].length,
-                        row, col);
+                    Result result =
+                            solve(board, visited, board.length, board[row].length, row, col);
                     if (result.surrounded) {
                         for (RowCol rc : result.rowCols) {
                             board[rc.row][rc.col] = 'X';
@@ -49,15 +47,14 @@ public class Problem130 {
         private final List<RowCol> rowCols = new ArrayList<>();
     }
 
-    private Result solve(char[][] board, boolean[][] visited, int maxRow, int maxCol,
-                         int row, int col) {
+    private Result solve(
+            char[][] board, boolean[][] visited, int maxRow, int maxCol, int row, int col) {
         Result result = new Result();
         Queue<RowCol> rowCols = new LinkedList<>();
         rowCols.add(new RowCol(row, col));
         while (!rowCols.isEmpty()) {
             RowCol rc = rowCols.remove();
-            if (rc.row < 0 || rc.row >= maxRow ||
-                rc.col < 0 || rc.col >= maxCol) {
+            if (rc.row < 0 || rc.row >= maxRow || rc.col < 0 || rc.col >= maxCol) {
                 continue;
             }
             if (visited[rc.row][rc.col]) {

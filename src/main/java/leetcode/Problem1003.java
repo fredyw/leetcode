@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Stack;
 
-/**
- * https://leetcode.com/problems/check-if-word-is-valid-after-substitutions/
- */
+/** https://leetcode.com/problems/check-if-word-is-valid-after-substitutions/ */
 public class Problem1003 {
     public boolean isValid(String S) {
         Stack<Character> stack = new Stack<>();

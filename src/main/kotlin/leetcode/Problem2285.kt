@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/maximum-total-importance-of-roads/
- */
+/** https://leetcode.com/problems/maximum-total-importance-of-roads/ */
 class Problem2285 {
     fun maximumImportance(n: Int, roads: Array<IntArray>): Long {
         val roadToCount = mutableMapOf<Int, Int>()

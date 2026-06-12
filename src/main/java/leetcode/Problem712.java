@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/
- */
+/** https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/ */
 public class Problem712 {
     public int minimumDeleteSum(String s1, String s2) {
         Integer[][] memo = new Integer[s1.length() + 1][s2.length() + 1];

@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/merge-strings-alternately/
- */
+/** https://leetcode.com/problems/merge-strings-alternately/ */
 public class Problem1768 {
     public String mergeAlternately(String word1, String word2) {
         StringBuilder answer = new StringBuilder();

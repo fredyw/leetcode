@@ -6,9 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/queens-that-can-attack-the-king/
- */
+/** https://leetcode.com/problems/queens-that-can-attack-the-king/ */
 public class Problem1222 {
     public List<List<Integer>> queensAttacktheKing(int[][] queens, int[] king) {
         List<List<Integer>> answer = new ArrayList<>();
@@ -24,7 +22,8 @@ public class Problem1222 {
         return answer;
     }
 
-    private static boolean canAttack(int[] queen, int[] king, int maxRow, int maxCol, Set<String> queens) {
+    private static boolean canAttack(
+            int[] queen, int[] king, int maxRow, int maxCol, Set<String> queens) {
         // top
         for (int row = queen[0] - 1, col = queen[1]; row >= 0; row--) {
             if (queens.contains(row + "," + col)) {
@@ -53,7 +52,9 @@ public class Problem1222 {
             }
         }
         // bottom right
-        for (int row = queen[0] + 1, col = queen[1] + 1; row < maxRow && col < maxCol; row++, col++) {
+        for (int row = queen[0] + 1, col = queen[1] + 1;
+                row < maxRow && col < maxCol;
+                row++, col++) {
             if (queens.contains(row + "," + col)) {
                 break;
             }

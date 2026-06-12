@@ -3,9 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * https://leetcode.com/problems/course-schedule/
- */
+/** https://leetcode.com/problems/course-schedule/ */
 public class Problem207 {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         List[] graph = new List[numCourses];

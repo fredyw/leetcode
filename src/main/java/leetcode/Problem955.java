@@ -2,9 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-/**
- * https://leetcode.com/problems/delete-columns-to-make-sorted-ii/
- */
+/** https://leetcode.com/problems/delete-columns-to-make-sorted-ii/ */
 public class Problem955 {
     public int minDeletionSize(String[] A) {
         int n = A[0].length();

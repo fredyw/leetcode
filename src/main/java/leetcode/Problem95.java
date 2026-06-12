@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
-/**
- * https://leetcode.com/problems/unique-binary-search-trees-ii/
- */
+/** https://leetcode.com/problems/unique-binary-search-trees-ii/ */
 public class Problem95 {
     public static class TreeNode {
         int val;
@@ -41,8 +39,8 @@ public class Problem95 {
         return result;
     }
 
-    private void generate(List<Integer> numbers, TreeNode root, Set<String> treeNodes,
-                          List<TreeNode> result) {
+    private void generate(
+            List<Integer> numbers, TreeNode root, Set<String> treeNodes, List<TreeNode> result) {
         if (numbers.size() == 0) {
             String str = toString(root);
             if (!treeNodes.contains(str)) {

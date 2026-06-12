@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/add-one-row-to-tree/
- */
+/** https://leetcode.com/problems/add-one-row-to-tree/ */
 public class Problem623 {
     public static class TreeNode {
         int val;

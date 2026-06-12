@@ -3,9 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * https://leetcode.com/problems/replace-the-substring-for-balanced-string/
- */
+/** https://leetcode.com/problems/replace-the-substring-for-balanced-string/ */
 public class Problem1234 {
     public int balancedString(String s) {
         Map<Character, Integer> count = new HashMap<>();
@@ -23,8 +21,10 @@ public class Problem1234 {
         int min = arr.length;
         out:
         while (right <= arr.length) {
-            while (count.get('Q') > need || count.get('W') > need ||
-                count.get('E') > need || count.get('R') > need) {
+            while (count.get('Q') > need
+                    || count.get('W') > need
+                    || count.get('E') > need
+                    || count.get('R') > need) {
                 if (right >= arr.length) {
                     break out;
                 }

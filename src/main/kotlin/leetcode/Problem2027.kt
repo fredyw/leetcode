@@ -1,8 +1,6 @@
 package leetcode
 
-/**
- * https://leetcode.com/problems/minimum-moves-to-convert-string/
- */
+/** https://leetcode.com/problems/minimum-moves-to-convert-string/ */
 class Problem2027 {
     fun minimumMoves(s: String): Int {
         var answer = 0

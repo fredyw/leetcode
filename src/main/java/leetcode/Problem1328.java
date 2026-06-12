@@ -1,8 +1,6 @@
 package leetcode;
 
-/**
- * https://leetcode.com/problems/break-a-palindrome/
- */
+/** https://leetcode.com/problems/break-a-palindrome/ */
 public class Problem1328 {
     public String breakPalindrome(String palindrome) {
         if (!isPalindrome(palindrome) || palindrome.length() == 1) {
@@ -27,7 +25,8 @@ public class Problem1328 {
             }
         }
         if (!replaced) {
-            answer[answer.length - 1] = (char) (answer[answer.length - 1] + 1); // must be the last one
+            answer[answer.length - 1] =
+                    (char) (answer[answer.length - 1] + 1); // must be the last one
         }
         return new String(answer);
     }
