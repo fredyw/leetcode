@@ -1,9 +1,11 @@
 #!/bin/bash
-
 set -e
 
-# Resolve script directory to allow running it from anywhere.
+# Resolve script directory to allow running it from anywhere
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Suppress JDK native access warnings in the Gradle client launcher
+export GRADLE_OPTS="--enable-native-access=ALL-UNNAMED"
 
 echo "Formatting Java and Kotlin..."
 "$DIR/gradlew" -p "$DIR" spotlessApply
