@@ -1,11 +1,23 @@
 -- https://leetcode.com/problems/capital-gainloss/
-with buy_stocks as (select stock_name, sum(price) as total_buy_price
-                    from stocks
-                    where operation = 'Buy'
-                    group by stock_name),
-     sell_stocks as (select stock_name, sum(price) as total_sell_price
-                     from stocks
-                     where operation = 'Sell'
-                     group by stock_name)
-select b.stock_name, total_sell_price - total_buy_price as capital_gain_loss
-from buy_stocks b join sell_stocks s on b.stock_name = s.stock_name;
+WITH buy_stocks AS (
+    SELECT
+        stock_name,
+        SUM(price) AS total_buy_price
+    FROM stocks
+    WHERE operation = 'Buy'
+    GROUP BY stock_name
+),
+
+sell_stocks AS (
+    SELECT
+        stock_name,
+        SUM(price) AS total_sell_price
+    FROM stocks
+    WHERE operation = 'Sell'
+    GROUP BY stock_name
+)
+
+SELECT
+    b.stock_name,
+    total_sell_price - total_buy_price AS capital_gain_loss
+FROM buy_stocks b JOIN sell_stocks s ON b.stock_name = s.stock_name;

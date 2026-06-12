@@ -1,12 +1,18 @@
 -- https://leetcode.com/problems/count-apples-and-oranges/description/
-with t as (
-    select apple_count, orange_count
-    from Boxes
-    where chest_id is null
-    union all
-    select (b.apple_count + c.apple_count) as apple_count,
-           (b.orange_count + c.orange_count) as orange_count
-    from Boxes b join Chests c on b.chest_id = c.chest_id
+WITH t AS (
+    SELECT
+        apple_count,
+        orange_count
+    FROM Boxes
+    WHERE chest_id IS null
+    UNION ALL
+    SELECT
+        (b.apple_count + c.apple_count) AS apple_count,
+        (b.orange_count + c.orange_count) AS orange_count
+    FROM Boxes b JOIN Chests c ON b.chest_id = c.chest_id
 )
-select sum(apple_count) as apple_count, sum(orange_count) as orange_count
-from t;
+
+SELECT
+    SUM(apple_count) AS apple_count,
+    SUM(orange_count) AS orange_count
+FROM t;

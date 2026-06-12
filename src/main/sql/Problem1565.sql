@@ -1,7 +1,8 @@
 -- https://leetcode.com/problems/unique-orders-and-customers-per-month/description/
-select to_char(order_date, 'YYYY-MM') as month,
-       count(*) as order_count,
-       count(distinct customer_id) as customer_count
-from Orders
-where invoice > 20
-group by month;
+SELECT
+    TO_CHAR(order_date, 'YYYY-MM') AS month,
+    COUNT(*) AS order_count,
+    COUNT(DISTINCT customer_id) AS customer_count
+FROM Orders
+WHERE invoice > 20
+GROUP BY month;

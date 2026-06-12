@@ -1,8 +1,10 @@
 -- https://leetcode.com/problems/exchange-seats/
-select (case
-        when mod(id, 2) != 0 and cnt.c != id then id + 1
-        when mod(id, 2) != 0 and cnt.c = id then id
-        else id - 1
-        end) as id, student
-from seat, (select count(*) as c from seat) as cnt
-order by id;
+SELECT
+    (CASE
+        WHEN MOD(id, 2) != 0 AND cnt.c != id THEN id + 1
+        WHEN MOD(id, 2) != 0 AND cnt.c = id THEN id
+        ELSE id - 1
+    END) AS id,
+    student
+FROM seat, (SELECT COUNT(*) AS c FROM seat) AS cnt
+ORDER BY id;

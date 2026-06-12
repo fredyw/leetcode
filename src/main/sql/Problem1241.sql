@@ -1,14 +1,21 @@
 -- https://leetcode.com/problems/number-of-comments-per-post/description/
-with posts as (
-    select distinct sub_id
-    from Submissions
-    where parent_id is null
-), comments as (
-    select distinct sub_id, parent_id
-    from Submissions
-    where parent_id is not null
+WITH posts AS (
+    SELECT DISTINCT sub_id
+    FROM Submissions
+    WHERE parent_id IS null
+),
+
+comments AS (
+    SELECT DISTINCT
+        sub_id,
+        parent_id
+    FROM Submissions
+    WHERE parent_id IS NOT null
 )
-select p.sub_id as post_id, count(c.sub_id) as number_of_comments
-from posts p left join comments c on p.sub_id = c.parent_id
-group by post_id
-order by post_id;
+
+SELECT
+    p.sub_id AS post_id,
+    COUNT(c.sub_id) AS number_of_comments
+FROM posts p LEFT JOIN comments c ON p.sub_id = c.parent_id
+GROUP BY post_id
+ORDER BY post_id;

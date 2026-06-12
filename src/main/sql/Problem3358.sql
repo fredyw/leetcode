@@ -1,5 +1,9 @@
 -- https://leetcode.com/problems/books-with-null-ratings/description/
-select book_id, title, author, published_year
-from books
-where rating is null
-order by book_id;
+SELECT
+    book_id,
+    title,
+    author,
+    published_year
+FROM books
+WHERE rating IS null
+ORDER BY book_id;

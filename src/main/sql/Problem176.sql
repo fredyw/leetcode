@@ -1,4 +1,4 @@
 -- https://leetcode.com/problems/second-highest-salary/
-select max(Salary) as SecondHighestSalary
-from Employee
-where Salary < (select max(Salary) from Employee);
+SELECT MAX(Salary) AS SecondHighestSalary
+FROM Employee
+WHERE Salary < (SELECT MAX(Salary) FROM Employee);

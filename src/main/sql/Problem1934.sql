@@ -1,5 +1,7 @@
 -- https://leetcode.com/problems/confirmation-rate/
-select s.user_id,
-       ifnull(round(sum(c.action='confirmed') / count(c.action), 2), 0) as confirmation_rate
-from signups s left join confirmations c on s.user_id = c.user_id
-group by s.user_id;
+SELECT
+    s.user_id,
+    COALESCE(ROUND(SUM(c.action = 'confirmed') / COUNT(c.action), 2), 0)
+        AS confirmation_rate
+FROM signups s LEFT JOIN confirmations c ON s.user_id = c.user_id
+GROUP BY s.user_id;

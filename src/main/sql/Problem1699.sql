@@ -1,11 +1,16 @@
 -- https://leetcode.com/problems/number-of-calls-between-two-persons/description/
-with t as (
-    select
-        case when from_id < to_id then from_id else to_id end as person1,
-        case when from_id > to_id then from_id else to_id end as person2,
+WITH t AS (
+    SELECT
+        CASE WHEN from_id < to_id THEN from_id ELSE to_id END AS person1,
+        CASE WHEN from_id > to_id THEN from_id ELSE to_id END AS person2,
         duration
-    from Calls
+    FROM Calls
 )
-select person1, person2, count(*) as call_count, sum(duration) as total_duration
-from t
-group by person1, person2;
+
+SELECT
+    person1,
+    person2,
+    COUNT(*) AS call_count,
+    SUM(duration) AS total_duration
+FROM t
+GROUP BY person1, person2;

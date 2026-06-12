@@ -1,21 +1,28 @@
 -- https://leetcode.com/problems/number-of-trusted-contacts-of-a-customer/description/
-with total_contacts as (
-    select user_id, count(*) as contacts_cnt
-    from Contacts
-    group by user_id
+WITH total_contacts AS (
+    SELECT
+        user_id,
+        COUNT(*) AS contacts_cnt
+    FROM Contacts
+    GROUP BY user_id
 ),
-trusted_contacts as (
-    select co.user_id, count(cu.email) as trusted_contacts_cnt
-    from Contacts co left join Customers cu on co.contact_email = cu.email
-    group by co.user_id
+
+trusted_contacts AS (
+    SELECT
+        co.user_id,
+        COUNT(cu.email) AS trusted_contacts_cnt
+    FROM Contacts co LEFT JOIN Customers cu ON co.contact_email = cu.email
+    GROUP BY co.user_id
 )
-select i.invoice_id,
-       cu.customer_name,
-       i.price,
-       coalesce(tco.contacts_cnt, 0) as contacts_cnt,
-       coalesce(ttr.trusted_contacts_cnt, 0) as trusted_contacts_cnt
-from Invoices i
-     join Customers cu on i.user_id = cu.customer_id
-     left join total_contacts tco on cu.customer_id = tco.user_id
-     left join trusted_contacts ttr on cu.customer_id = ttr.user_id
-order by i.invoice_id;
+
+SELECT
+    i.invoice_id,
+    cu.customer_name,
+    i.price,
+    COALESCE(tco.contacts_cnt, 0) AS contacts_cnt,
+    COALESCE(ttr.trusted_contacts_cnt, 0) AS trusted_contacts_cnt
+FROM Invoices i
+JOIN Customers cu ON i.user_id = cu.customer_id
+LEFT JOIN total_contacts tco ON cu.customer_id = tco.user_id
+LEFT JOIN trusted_contacts ttr ON cu.customer_id = ttr.user_id
+ORDER BY i.invoice_id;

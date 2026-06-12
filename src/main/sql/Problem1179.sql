@@ -1,16 +1,28 @@
 -- https://leetcode.com/problems/reformat-department-table/
-select d.id,
-       sum((case when d.month = 'Jan' then d.revenue else null end)) as Jan_Revenue,
-       sum((case when d.month = 'Feb' then d.revenue else null end)) as Feb_Revenue,
-       sum((case when d.month = 'Mar' then d.revenue else null end)) as Mar_Revenue,
-       sum((case when d.month = 'Apr' then d.revenue else null end)) as Apr_Revenue,
-       sum((case when d.month = 'May' then d.revenue else null end)) as May_Revenue,
-       sum((case when d.month = 'Jun' then d.revenue else null end)) as Jun_Revenue,
-       sum((case when d.month = 'Jul' then d.revenue else null end)) as Jul_Revenue,
-       sum((case when d.month = 'Aug' then d.revenue else null end)) as Aug_Revenue,
-       sum((case when d.month = 'Sep' then d.revenue else null end)) as Sep_Revenue,
-       sum((case when d.month = 'Oct' then d.revenue else null end)) as Oct_Revenue,
-       sum((case when d.month = 'Nov' then d.revenue else null end)) as Nov_Revenue,
-       sum((case when d.month = 'Dec' then d.revenue else null end)) as Dec_Revenue
-from Department d
-group by d.id;
+SELECT
+    d.id,
+    SUM((CASE WHEN d.month = 'Jan' THEN d.revenue ELSE null END))
+        AS Jan_Revenue,
+    SUM((CASE WHEN d.month = 'Feb' THEN d.revenue ELSE null END))
+        AS Feb_Revenue,
+    SUM((CASE WHEN d.month = 'Mar' THEN d.revenue ELSE null END))
+        AS Mar_Revenue,
+    SUM((CASE WHEN d.month = 'Apr' THEN d.revenue ELSE null END))
+        AS Apr_Revenue,
+    SUM((CASE WHEN d.month = 'May' THEN d.revenue ELSE null END))
+        AS May_Revenue,
+    SUM((CASE WHEN d.month = 'Jun' THEN d.revenue ELSE null END))
+        AS Jun_Revenue,
+    SUM((CASE WHEN d.month = 'Jul' THEN d.revenue ELSE null END))
+        AS Jul_Revenue,
+    SUM((CASE WHEN d.month = 'Aug' THEN d.revenue ELSE null END))
+        AS Aug_Revenue,
+    SUM((CASE WHEN d.month = 'Sep' THEN d.revenue ELSE null END))
+        AS Sep_Revenue,
+    SUM((CASE WHEN d.month = 'Oct' THEN d.revenue ELSE null END))
+        AS Oct_Revenue,
+    SUM((CASE WHEN d.month = 'Nov' THEN d.revenue ELSE null END))
+        AS Nov_Revenue,
+    SUM((CASE WHEN d.month = 'Dec' THEN d.revenue ELSE null END)) AS Dec_Revenue
+FROM Department d
+GROUP BY d.id;

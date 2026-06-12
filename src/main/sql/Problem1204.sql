@@ -1,10 +1,14 @@
 -- https://leetcode.com/problems/last-person-to-fit-in-the-bus/
-with cummulative_weight as (
-    select turn, person_name, sum(weight) over (order by turn) as total_weight
-    from queue
-    order by turn
+WITH cummulative_weight AS (
+    SELECT
+        turn,
+        person_name,
+        SUM(weight) OVER (ORDER BY turn) AS total_weight
+    FROM queue
+    ORDER BY turn
 )
-select person_name
-from cummulative_weight
-where total_weight <= 1000
-order by turn desc limit 1;
+
+SELECT person_name
+FROM cummulative_weight
+WHERE total_weight <= 1000
+ORDER BY turn DESC LIMIT 1;

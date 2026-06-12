@@ -1,4 +1,8 @@
 -- https://leetcode.com/problems/find-users-with-valid-e-mails/description/
-select user_id, name, mail
-from Users
-where regexp_like(mail, '^[:alpha:][[:alnum:]|\\-._]*@leetcode\\.com$', 'i') = 1;
+SELECT
+    user_id,
+    name,
+    mail
+FROM Users
+WHERE
+    REGEXP_LIKE(mail, '^[:alpha:][[:alnum:]|\\-._]*@leetcode\\.com$', 'i') = 1;

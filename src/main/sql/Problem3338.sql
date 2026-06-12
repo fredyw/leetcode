@@ -14,14 +14,17 @@
 --      on e.dept = s.dept and e.salary = s.second_highest_salary
 -- order by e.emp_id;
 
-with ranked_salary as (
-    select
+WITH ranked_salary AS (
+    SELECT
         emp_id,
         dept,
-        dense_rank() over (partition by dept order by salary desc) as rank
-    from employees
+        DENSE_RANK() OVER (PARTITION BY dept ORDER BY salary DESC) AS rank
+    FROM employees
 )
-select emp_id, dept
-from ranked_salary
-where rank = 2
-order by emp_id;
+
+SELECT
+    emp_id,
+    dept
+FROM ranked_salary
+WHERE rank = 2
+ORDER BY emp_id;

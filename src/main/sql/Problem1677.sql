@@ -1,10 +1,11 @@
 -- https://leetcode.com/problems/products-worth-over-invoices/description/
-select p.name,
-       coalesce(sum(i.rest), 0) as rest,
-       coalesce(sum(i.paid), 0) as paid,
-       coalesce(sum(i.canceled), 0) as canceled,
-       coalesce(sum(i.refunded), 0) as refunded
-from Product p left join Invoice i
-     on p.product_id = i.product_id
-group by p.name
-order by p.name;
+SELECT
+    p.name,
+    COALESCE(SUM(i.rest), 0) AS rest,
+    COALESCE(SUM(i.paid), 0) AS paid,
+    COALESCE(SUM(i.canceled), 0) AS canceled,
+    COALESCE(SUM(i.refunded), 0) AS refunded
+FROM Product p LEFT JOIN Invoice i
+    ON p.product_id = i.product_id
+GROUP BY p.name
+ORDER BY p.name;

@@ -1,3 +1,4 @@
 -- https://leetcode.com/problems/class-performance/description/
-select (select max(assignment1 + assignment2 + assignment3) from Scores) -
-       (select min(assignment1 + assignment2 + assignment3) from Scores) as difference_in_score;
+SELECT
+    (SELECT MAX(assignment1 + assignment2 + assignment3) FROM Scores)
+    - (SELECT MIN(assignment1 + assignment2 + assignment3) FROM Scores) AS difference_in_score;

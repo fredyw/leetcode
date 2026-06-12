@@ -1,13 +1,20 @@
 -- https://leetcode.com/problems/immediate-food-delivery-i/description/
-with immediate_orders as (
-    select cast(count(*) as decimal) as count
-    from Delivery
-    where order_date = customer_pref_delivery_date
-), total_orders as (
-    select cast(count(*) as decimal) as count
-    from Delivery
+WITH immediate_orders AS (
+    SELECT CAST(COUNT(*) AS decimal) AS count
+    FROM Delivery
+    WHERE order_date = customer_pref_delivery_date
+),
+
+total_orders AS (
+    SELECT CAST(COUNT(*) AS decimal) AS count
+    FROM Delivery
 )
-select round(
-    ((select count from immediate_orders) / (select count from total_orders) * 100),
+
+SELECT ROUND(
+    (
+        (SELECT count FROM immediate_orders
+        ) / (SELECT count FROM total_orders
+        ) * 100
+    ),
     2
-) as immediate_percentage;
+) AS immediate_percentage;

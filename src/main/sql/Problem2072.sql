@@ -1,18 +1,23 @@
 -- https://leetcode.com/problems/the-winner-university/description/
-with new_york_excellent as (
-    select count(*) as count
-    from NewYork
-    where score >= 90
-), california_excellent as (
-    select count(*) as count
-    from California
-    where score >= 90
+WITH new_york_excellent AS (
+    SELECT COUNT(*) AS count
+    FROM NewYork
+    WHERE score >= 90
+),
+
+california_excellent AS (
+    SELECT COUNT(*) AS count
+    FROM California
+    WHERE score >= 90
 )
-select
-    case
-        when (select count from new_york_excellent) >
-             (select count from california_excellent) then 'New York University'
-        when (select count from new_york_excellent) <
-             (select count from california_excellent) then 'California University'
-        else 'No Winner'
-    end as winner;
+
+SELECT
+    CASE
+        WHEN
+            (SELECT count FROM new_york_excellent)
+            > (SELECT count FROM california_excellent) THEN 'New York University'
+        WHEN
+            (SELECT count FROM new_york_excellent)
+            < (SELECT count FROM california_excellent) THEN 'California University'
+        ELSE 'No Winner'
+    END AS winner;

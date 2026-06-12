@@ -1,7 +1,8 @@
 -- https://leetcode.com/problems/running-total-for-different-genders/
-select gender,
-       day,
-       sum(score_points) over (partition by gender order by day) as total
-from Scores
-group by gender, day, score_points
-order by gender, day;
+SELECT
+    gender,
+    day,
+    SUM(score_points) OVER (PARTITION BY gender ORDER BY day) AS total
+FROM Scores
+GROUP BY gender, day, score_points
+ORDER BY gender, day;

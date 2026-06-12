@@ -1,7 +1,8 @@
 -- https://leetcode.com/problems/friendly-movies-streamed-last-month/description/
-select distinct c.title
-from TVProgram t join Content c
-     on t.content_id = c.content_id
-where c.kids_content = 'Y'
-      and c.content_type = 'Movies'
-      and t.program_date >= '2020-06-01' and t.program_date < '2020-07-01';
+SELECT DISTINCT c.title
+FROM TVProgram t JOIN Content c
+    ON t.content_id = c.content_id
+WHERE
+    c.kids_content = 'Y'
+    AND c.content_type = 'Movies'
+    AND t.program_date >= '2020-06-01' AND t.program_date < '2020-07-01';

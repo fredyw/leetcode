@@ -1,10 +1,13 @@
 -- https://leetcode.com/problems/sales-analysis-i/description/
-with aggregated_sales as (
-    select seller_id, sum(price) as total_price
-    from Sales
-    group by seller_id
+WITH aggregated_sales AS (
+    SELECT
+        seller_id,
+        SUM(price) AS total_price
+    FROM Sales
+    GROUP BY seller_id
 )
-select seller_id
-from aggregated_sales
-where total_price = (select max(total_price) from aggregated_sales)
-group by seller_id;
+
+SELECT seller_id
+FROM aggregated_sales
+WHERE total_price = (SELECT MAX(total_price) FROM aggregated_sales)
+GROUP BY seller_id;

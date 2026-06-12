@@ -1,5 +1,7 @@
 -- https://leetcode.com/problems/the-latest-login-in-2020/
-select user_id, max(time_stamp) as last_stamp
-from logins
-where year(time_stamp) = 2020
-group by user_id;
+SELECT
+    user_id,
+    MAX(time_stamp) AS last_stamp
+FROM logins
+WHERE YEAR(time_stamp) = 2020
+GROUP BY user_id;

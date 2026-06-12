@@ -17,14 +17,21 @@
 -- where position = 'Manager' and dep_id in (select dep_id from largest_dep)
 -- order by dep_id;
 
-with largest_dep as (
-    select dep_id, rank() over (order by count(*) desc) as rank
-    from Employees
-    group by dep_id
+WITH largest_dep AS (
+    SELECT
+        dep_id,
+        RANK() OVER (ORDER BY COUNT(*) DESC) AS rank
+    FROM Employees
+    GROUP BY dep_id
 )
-select emp_name as manager_name, dep_id
-from Employees
-where position = 'Manager' and dep_id in (
-    select dep_id from largest_dep where rank = 1
-)
-order by dep_id;
+
+SELECT
+    emp_name AS manager_name,
+    dep_id
+FROM Employees
+WHERE
+    position = 'Manager' AND dep_id IN (
+        SELECT dep_id FROM largest_dep
+        WHERE rank = 1
+    )
+ORDER BY dep_id;

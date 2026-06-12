@@ -19,8 +19,14 @@
 --     select customer_id from customer_with_order_0_and_1
 -- );
 
-select order_id, customer_id, order_type
-from Orders
-where order_type = 0
-      or (order_type = 1 and customer_id not in (
-	      select customer_id from orders where order_type = 0));
+SELECT
+    order_id,
+    customer_id,
+    order_type
+FROM Orders
+WHERE
+    order_type = 0
+    OR (order_type = 1 AND customer_id NOT IN (
+        SELECT customer_id FROM orders
+        WHERE order_type = 0
+    ));

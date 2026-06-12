@@ -1,4 +1,6 @@
 -- https://leetcode.com/problems/students-with-invalid-departments/description/
-select id, name
-from Students
-where department_id not in (select id from Departments);
+SELECT
+    id,
+    name
+FROM Students
+WHERE department_id NOT IN (SELECT id FROM Departments);

@@ -1,5 +1,5 @@
 -- https://leetcode.com/problems/low-quality-problems/description/
-select problem_id
-from Problems
-where (likes / (cast(likes as float) + cast(dislikes as float))) * 100 < 60
-order by problem_id asc;
+SELECT problem_id
+FROM Problems
+WHERE (likes / (CAST(likes AS float) + CAST(dislikes AS float))) * 100 < 60
+ORDER BY problem_id ASC;

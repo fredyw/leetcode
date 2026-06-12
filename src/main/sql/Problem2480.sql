@@ -1,5 +1,8 @@
 -- https://leetcode.com/problems/form-a-chemical-bond/description/
-select e1.symbol as metal, e2.symbol as nonmetal
-from Elements e1 cross join Elements e2
-where (e1.type = 'Metal' and e2.type = 'Nonmetal') or
-      (e2.type = 'Nonmetal' and e2.type = 'Metal');
+SELECT
+    e1.symbol AS metal,
+    e2.symbol AS nonmetal
+FROM Elements e1 CROSS JOIN Elements e2
+WHERE
+    (e1.type = 'Metal' AND e2.type = 'Nonmetal')
+    OR (e2.type = 'Nonmetal' AND e2.type = 'Metal');

@@ -1,14 +1,22 @@
 -- https://leetcode.com/problems/ads-performance/
-select
+SELECT
     ad_id,
-    case
-        when sum(case when action = 'Clicked' then 1 else 0 end) +
-             sum(case when action = 'Viewed' then 1 else 0 end) = 0 then 0
-        else round(
-            cast(sum(case when action = 'Clicked' then 1 else 0 end) as decimal) /
-            (cast(sum(case when action = 'Clicked' then 1 else 0 end) as decimal) +
-             cast(sum(case when action = 'Viewed' then 1 else 0 end) as decimal)) * 100, 2)
-    end as ctr
-from Ads
-group by ad_id
-order by ctr desc, ad_id asc;
+    CASE
+        WHEN
+            SUM(CASE WHEN action = 'Clicked' THEN 1 ELSE 0 END)
+            + SUM(CASE WHEN action = 'Viewed' THEN 1 ELSE 0 END) = 0 THEN 0
+        ELSE ROUND(
+            CAST(SUM(CASE WHEN action = 'Clicked' THEN 1 ELSE 0 END) AS decimal)
+            / (
+                CAST(
+                    SUM(
+                        CASE WHEN action = 'Clicked' THEN 1 ELSE 0 END
+                    ) AS decimal
+                )
+                + CAST(SUM(CASE WHEN action = 'Viewed' THEN 1 ELSE 0 END) AS decimal)
+            ) * 100, 2
+        )
+    END AS ctr
+FROM Ads
+GROUP BY ad_id
+ORDER BY ctr DESC, ad_id ASC;

@@ -1,10 +1,11 @@
 -- https://leetcode.com/problems/dna-pattern-recognition/description/
-select sample_id,
-       dna_sequence,
-       species,
-       case when dna_sequence ~ '^ATG' then 1 else 0 end as has_start,
-       case when dna_sequence ~ '(TAA|TAG|TGA)$' then 1 else 0 end as has_stop,
-       case when dna_sequence ~ '(ATAT)+' then 1 else 0 end as has_atat,
-       case when dna_sequence ~ 'GGG+' then 1 else 0 end as has_ggg
-from Samples
-order by sample_id;
+SELECT
+    sample_id,
+    dna_sequence,
+    species,
+    CASE WHEN dna_sequence ~ '^ATG' THEN 1 ELSE 0 END AS has_start,
+    CASE WHEN dna_sequence ~ '(TAA|TAG|TGA)$' THEN 1 ELSE 0 END AS has_stop,
+    CASE WHEN dna_sequence ~ '(ATAT)+' THEN 1 ELSE 0 END AS has_atat,
+    CASE WHEN dna_sequence ~ 'GGG+' THEN 1 ELSE 0 END AS has_ggg
+FROM Samples
+ORDER BY sample_id;

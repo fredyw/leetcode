@@ -1,7 +1,8 @@
 -- https://leetcode.com/problems/fix-product-name-format/
-select lower(trim(product_name)) as product_name,
-       date_format(sale_date, '%Y-%m') as sale_date,
-       count(*) as total
-from Sales
-group by 1, 2
-order by 1, 2;
+SELECT
+    LOWER(TRIM(product_name)) AS product_name,
+    DATE_FORMAT(sale_date, '%Y-%m') AS sale_date,
+    COUNT(*) AS total
+FROM Sales
+GROUP BY 1, 2
+ORDER BY 1, 2;

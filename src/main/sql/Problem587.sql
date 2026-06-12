@@ -1,19 +1,27 @@
 -- https://leetcode.com/problems/friend-requests-i-overall-acceptance-rate/description/
-with request_sent_count as (
-    select cast(count(*) as decimal) as count from (
-        select distinct sender_id, send_to_id
-        from FriendRequest
+WITH request_sent_count AS (
+    SELECT CAST(COUNT(*) AS decimal) AS count FROM (
+        SELECT DISTINCT
+            sender_id,
+            send_to_id
+        FROM FriendRequest
     )
 ),
-request_accepted_count as (
-    select cast(count(*) as decimal) as count from (
-        select distinct requester_id, accepter_id
-        from RequestAccepted
+
+request_accepted_count AS (
+    SELECT CAST(COUNT(*) AS decimal) AS count FROM (
+        SELECT DISTINCT
+            requester_id,
+            accepter_id
+        FROM RequestAccepted
     )
 )
-select
-    case
-        when (select count from request_sent_count) = 0 then 0.0
-        else round((select count from request_accepted_count) /
-                   (select count from request_sent_count), 2)
-    end as accept_rate;
+
+SELECT
+    CASE
+        WHEN (SELECT count FROM request_sent_count) = 0 THEN 0.0
+        ELSE ROUND(
+            (SELECT count FROM request_accepted_count)
+            / (SELECT count FROM request_sent_count), 2
+        )
+    END AS accept_rate;

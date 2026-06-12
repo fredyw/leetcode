@@ -1,12 +1,13 @@
 -- https://leetcode.com/problems/get-highest-answer-rate-question/description/
-select t.question_id as survey_log 
-from (
-    select question_id,
-           sum(case when answer_id is not null then 1 else 0 end) /
-           count(distinct question_id) as answer
-    from SurveyLog
-    where action = 'answer'
-    group by question_id
+SELECT t.question_id AS survey_log
+FROM (
+    SELECT
+        question_id,
+        SUM(CASE WHEN answer_id IS NOT null THEN 1 ELSE 0 END)
+        / COUNT(DISTINCT question_id) AS answer
+    FROM SurveyLog
+    WHERE action = 'answer'
+    GROUP BY question_id
 ) t
-order by t.answer desc
-limit 1;
+ORDER BY t.answer DESC
+LIMIT 1;

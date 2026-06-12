@@ -1,6 +1,8 @@
 -- https://leetcode.com/problems/the-users-that-are-eligible-for-discount/
-create or replace function getUserIDs(startDate date, endDate date, minAmount int)
-returns table (user_id int) as $$
+CREATE OR REPLACE FUNCTION GETUSERIDS(
+    startDate date, endDate date, minAmount int
+)
+RETURNS TABLE (user_id int) AS $$
 begin
     return query (
         select distinct p.user_id
@@ -10,4 +12,4 @@ begin
         order by p.user_id
     );
 end;
-$$ language plpgsql;
+$$ LANGUAGE plpgsql;

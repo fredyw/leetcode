@@ -1,11 +1,14 @@
 -- https://leetcode.com/problems/maximum-transaction-each-day/description/
-with max_amount as (
-    select day::date as day, max(amount) as max_amount
-    from Transactions
-    group by day::date
+WITH max_amount AS (
+    SELECT
+        day::date AS day,
+        MAX(amount) AS max_amount
+    FROM Transactions
+    GROUP BY day::date
 )
-select t.transaction_id
-from Transactions t join max_amount m
-     on t.day::date = m.day
-where t.amount = m.max_amount
-order by t.transaction_id;
+
+SELECT t.transaction_id
+FROM Transactions t JOIN max_amount m
+    ON t.day::date = m.day
+WHERE t.amount = m.max_amount
+ORDER BY t.transaction_id;

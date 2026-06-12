@@ -1,8 +1,9 @@
 -- https://leetcode.com/problems/friday-purchases-i/description/
-select ceil(extract(day from purchase_date) / 7) as week_of_month,
-       purchase_date,
-       sum(amount_spend) as total_amount
-from Purchases
-where extract(dow from purchase_date) = 5
-group by week_of_month, purchase_date
-order by week_of_month;
+SELECT
+    CEIL(EXTRACT(DAY FROM purchase_date) / 7) AS week_of_month,
+    purchase_date,
+    SUM(amount_spend) AS total_amount
+FROM Purchases
+WHERE EXTRACT(DOW FROM purchase_date) = 5
+GROUP BY week_of_month, purchase_date
+ORDER BY week_of_month;

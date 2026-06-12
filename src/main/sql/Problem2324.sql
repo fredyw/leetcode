@@ -1,16 +1,26 @@
 -- https://leetcode.com/problems/product-sales-analysis-iv/description/
-with product_totals as (
-    select s.user_id, p.product_id, sum(s.quantity * p.price) as total_price
-    from sales s join product p on s.product_id = p.product_id
-    group by s.user_id, p.product_id
+WITH product_totals AS (
+    SELECT
+        s.user_id,
+        p.product_id,
+        SUM(s.quantity * p.price) AS total_price
+    FROM sales s JOIN product p ON s.product_id = p.product_id
+    GROUP BY s.user_id, p.product_id
 ),
- ranked_totals as (
-     select user_id,
-            product_id,
-            total_price,
-            dense_rank() over(partition by user_id order by total_price desc) as rnk
-     from product_totals
- )
-select user_id, product_id
-from ranked_totals
-where rnk = 1;
+
+ranked_totals AS (
+    SELECT
+        user_id,
+        product_id,
+        total_price,
+        DENSE_RANK()
+            OVER (PARTITION BY user_id ORDER BY total_price DESC)
+            AS rnk
+    FROM product_totals
+)
+
+SELECT
+    user_id,
+    product_id
+FROM ranked_totals
+WHERE rnk = 1;

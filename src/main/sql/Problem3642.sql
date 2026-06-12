@@ -1,17 +1,46 @@
 -- https://leetcode.com/problems/find-books-with-polarized-opinions/description/
-select b.book_id,
-       b.title,
-       b.author,
-       b.genre,
-       b.pages,
-       max(s.session_rating) - min(s.session_rating) as rating_spread,
-       round(sum(case when s.session_rating <= 2 or s.session_rating >= 4 then 1 else 0 end) * 1.0 /
-             count(*), 2) as polarization_score
-from books b join reading_sessions s on b.book_id = s.book_id
-where exists (select 1 from reading_sessions where book_id = s.book_id and session_rating <= 2)
-  and exists (select 1 from reading_sessions where book_id = s.book_id and session_rating >= 4)
-group by b.book_id
-having count(*) >= 5
-   and round(sum(case when s.session_rating <= 2 or s.session_rating >= 4 then 1 else 0 end) * 1.0 /
-             count(*), 2) >= 0.6
-order by polarization_score desc, b.title desc;
+SELECT
+    b.book_id,
+    b.title,
+    b.author,
+    b.genre,
+    b.pages,
+    MAX(s.session_rating) - MIN(s.session_rating) AS rating_spread,
+    ROUND(
+        SUM(
+            CASE
+                WHEN
+                    s.session_rating <= 2 OR s.session_rating >= 4
+                    THEN 1
+                ELSE 0
+            END
+        )
+        * 1.0
+        / COUNT(*), 2
+    ) AS polarization_score
+FROM books b JOIN reading_sessions s ON b.book_id = s.book_id
+WHERE
+    EXISTS (
+        SELECT 1 FROM reading_sessions
+        WHERE book_id = s.book_id AND session_rating <= 2
+    )
+    AND EXISTS (
+        SELECT 1 FROM reading_sessions
+        WHERE book_id = s.book_id AND session_rating >= 4
+    )
+GROUP BY b.book_id
+HAVING
+    COUNT(*) >= 5
+    AND ROUND(
+        SUM(
+            CASE
+                WHEN
+                    s.session_rating <= 2 OR s.session_rating >= 4
+                    THEN 1
+                ELSE 0
+            END
+        )
+        * 1.0
+        / COUNT(*), 2
+    ) >= 0.6
+ORDER BY polarization_score DESC, b.title DESC;

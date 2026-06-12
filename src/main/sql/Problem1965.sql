@@ -1,12 +1,16 @@
 -- https://leetcode.com/problems/employees-with-missing-information/
-with u as (
-    select employee_id from employees
-    union
-    select employee_id from salaries
+WITH u AS (
+    SELECT employee_id FROM employees
+    UNION
+    SELECT employee_id FROM salaries
 )
-select u.employee_id
-from u
-where u.employee_id not in (select e.employee_id
-                            from employees e join salaries s
-                            on (e.employee_id = s.employee_id))
-order by u.employee_id;
+
+SELECT u.employee_id
+FROM u
+WHERE
+    u.employee_id NOT IN (
+        SELECT e.employee_id
+        FROM employees e JOIN salaries s
+            ON (e.employee_id = s.employee_id)
+    )
+ORDER BY u.employee_id;

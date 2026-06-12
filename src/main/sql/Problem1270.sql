@@ -1,12 +1,13 @@
 -- https://leetcode.com/problems/all-people-report-to-the-given-manager/
-with recursive Subordinates as (
-    select employee_id
-    from Employees
-    where manager_id = 1 and employee_id != 1
-    union all
-    select e.employee_id
-    from Subordinates s join Employees e
-         on s.employee_id = e.manager_id
+WITH RECURSIVE Subordinates AS (
+    SELECT employee_id
+    FROM Employees
+    WHERE manager_id = 1 AND employee_id != 1
+    UNION ALL
+    SELECT e.employee_id
+    FROM Subordinates s JOIN Employees e
+        ON s.employee_id = e.manager_id
 )
-select employee_id
-from Subordinates;
+
+SELECT employee_id
+FROM Subordinates;

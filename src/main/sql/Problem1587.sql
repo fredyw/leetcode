@@ -1,5 +1,7 @@
 -- https://leetcode.com/problems/bank-account-summary-ii/
-select name, sum(amount) as balance
-from users u join transactions t on u.account = t.account
-group by name
-having sum(amount) > 10000;
+SELECT
+    name,
+    SUM(amount) AS balance
+FROM users u JOIN transactions t ON u.account = t.account
+GROUP BY name
+HAVING SUM(amount) > 10000;

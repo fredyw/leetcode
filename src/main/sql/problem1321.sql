@@ -1,10 +1,14 @@
 -- https://leetcode.com/problems/restaurant-growth/
-select employee_id, department_id
-from Employee
-where primary_flag = 'Y'
-group by employee_id
-union
-select employee_id, department_id
-from Employee
-group by employee_id
-having count(employee_id) = 1;
+SELECT
+    employee_id,
+    department_id
+FROM Employee
+WHERE primary_flag = 'Y'
+GROUP BY employee_id
+UNION
+SELECT
+    employee_id,
+    department_id
+FROM Employee
+GROUP BY employee_id
+HAVING COUNT(employee_id) = 1;

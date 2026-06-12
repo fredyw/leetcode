@@ -1,3 +1,3 @@
 -- https://leetcode.com/problems/convert-date-format/description/
-select to_char(day, 'FMDay, FMMonth FMDD, YYYY') as day
-from Days;
+SELECT TO_CHAR(day, 'FMDay, FMMonth FMDD, YYYY') AS day
+FROM Days;

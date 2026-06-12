@@ -1,10 +1,11 @@
 -- https://leetcode.com/problems/biggest-single-number/
-with single_numbers as (
-    select num
-    from MyNumbers
-    group by num
-    having count(num) = 1
-    order by num desc
+WITH single_numbers AS (
+    SELECT num
+    FROM MyNumbers
+    GROUP BY num
+    HAVING COUNT(num) = 1
+    ORDER BY num DESC
 )
-select max(num) as num
-from single_numbers;
+
+SELECT MAX(num) AS num
+FROM single_numbers;

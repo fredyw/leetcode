@@ -1,5 +1,7 @@
 -- https://leetcode.com/problems/find-followers-count/
-select user_id, count(*) as followers_count
-from followers
-group by user_id
-order by user_id;
+SELECT
+    user_id,
+    COUNT(*) AS followers_count
+FROM followers
+GROUP BY user_id
+ORDER BY user_id;

@@ -1,4 +1,6 @@
 -- https://leetcode.com/problems/employee-bonus/description/
-select e.name, b.bonus
-from Employee e left join Bonus b on e.empid = b.empid
-where b.bonus is null or b.bonus < 1000;
+SELECT
+    e.name,
+    b.bonus
+FROM Employee e LEFT JOIN Bonus b ON e.empid = b.empid
+WHERE b.bonus IS null OR b.bonus < 1000;

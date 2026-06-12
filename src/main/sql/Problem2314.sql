@@ -1,12 +1,17 @@
 -- https://leetcode.com/problems/the-first-day-of-the-maximum-recorded-degree-in-each-city/
-with t as (
-    select city_id,
-           day,
-           degree,
-           rank() over (partition by city_id order by degree desc, day asc) as rnk
-    from Weather
+WITH t AS (
+    SELECT
+        city_id,
+        day,
+        degree,
+        RANK() OVER (PARTITION BY city_id ORDER BY degree DESC, day ASC) AS rnk
+    FROM Weather
 )
-select city_id, day, degree
-from t
-where rnk = 1
-order by city_id;
+
+SELECT
+    city_id,
+    day,
+    degree
+FROM t
+WHERE rnk = 1
+ORDER BY city_id;

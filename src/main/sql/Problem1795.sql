@@ -1,8 +1,25 @@
 -- https://leetcode.com/problems/rearrange-products-table/
-select p.product_id, p.store, p.price
-from (select product_id, 'store1' as store, store1 as price from products
-      union all
-      select product_id, 'store2' as store, store2 as price from products
-      union all
-      select product_id, 'store3' as store, store3 as price from products) as p
-where p.price is not null;
+SELECT
+    p.product_id,
+    p.store,
+    p.price
+FROM (
+    SELECT
+        product_id,
+        'store1' AS store,
+        store1 AS price
+    FROM products
+    UNION ALL
+    SELECT
+        product_id,
+        'store2' AS store,
+        store2 AS price
+    FROM products
+    UNION ALL
+    SELECT
+        product_id,
+        'store3' AS store,
+        store3 AS price
+    FROM products
+) AS p
+WHERE p.price IS NOT null;

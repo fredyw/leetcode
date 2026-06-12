@@ -1,4 +1,7 @@
 -- https://leetcode.com/problems/patients-with-a-condition/
-select patient_id, patient_name, conditions
-from patients
-where regexp_like(conditions, '(^D| D)IAB1');
+SELECT
+    patient_id,
+    patient_name,
+    conditions
+FROM patients
+WHERE REGEXP_LIKE(conditions, '(^D| D)IAB1');

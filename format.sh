@@ -1,6 +1,17 @@
 #!/bin/bash
 
-set -ueo pipefail
+set -e
 
-./gradlew spotlessApply
-cargo fmt --manifest-path src/main/rust/Cargo.toml
+# Resolve script directory to allow running it from anywhere.
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+echo "Formatting Java and Kotlin..."
+"$DIR/gradlew" -p "$DIR" spotlessApply
+
+echo "Formatting Rust..."
+cargo fmt --manifest-path "$DIR/src/main/rust/Cargo.toml"
+
+echo "Formatting SQL..."
+uvx sqlfluff format "$DIR/src/main/sql" --dialect postgres || true
+
+echo "All code formatted successfully!"

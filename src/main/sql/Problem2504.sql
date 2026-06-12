@@ -1,5 +1,6 @@
 -- https://leetcode.com/problems/concatenate-the-name-and-the-profession/
-select person_id,
-       name || '(' || substring(profession, 1, 1) || ')' as name
-from Person
-order by person_id desc;
+SELECT
+    person_id,
+    name || '(' || SUBSTRING(profession, 1, 1) || ')' AS name
+FROM Person
+ORDER BY person_id DESC;

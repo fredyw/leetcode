@@ -1,7 +1,10 @@
 -- https://leetcode.com/problems/market-analysis-i/
-select u.user_id as buyer_id,
-       u.join_date,
-       count(o.order_date) as orders_in_2019
-from users u left join orders o on u.user_id = o.buyer_id
-    and o.order_date between '2019-01-01' and '2019-12-31'
-group by u.user_id;
+SELECT
+    u.user_id AS buyer_id,
+    u.join_date,
+    COUNT(o.order_date) AS orders_in_2019
+FROM users u LEFT JOIN orders o
+    ON
+        u.user_id = o.buyer_id
+        AND o.order_date BETWEEN '2019-01-01' AND '2019-12-31'
+GROUP BY u.user_id;

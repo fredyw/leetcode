@@ -1,17 +1,23 @@
 -- https://leetcode.com/problems/find-users-with-high-token-usage/description/
-with user_stats as (
-    select user_id, count(*) as prompt_count, avg(tokens) as avg_tokens
-    from prompts
-    group by user_id
+WITH user_stats AS (
+    SELECT
+        user_id,
+        COUNT(*) AS prompt_count,
+        AVG(tokens) AS avg_tokens
+    FROM prompts
+    GROUP BY user_id
 )
-select user_id,
-       prompt_count,
-       round(avg_tokens, 2) as avg_tokens
-from user_stats us
-where prompt_count >= 3
-    and exists (
-        select 1
-        from prompts p
-        where p.user_id = us.user_id and p.tokens > us.avg_tokens
+
+SELECT
+    user_id,
+    prompt_count,
+    ROUND(avg_tokens, 2) AS avg_tokens
+FROM user_stats us
+WHERE
+    prompt_count >= 3
+    AND EXISTS (
+        SELECT 1
+        FROM prompts p
+        WHERE p.user_id = us.user_id AND p.tokens > us.avg_tokens
     )
-order by avg_tokens desc, user_id asc;
+ORDER BY avg_tokens DESC, user_id ASC;

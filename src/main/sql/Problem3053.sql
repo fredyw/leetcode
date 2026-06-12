@@ -1,12 +1,13 @@
 -- https://leetcode.com/problems/classifying-triangles-by-lengths/
-select
-    case
-        when A + B > C and A + C > B and B + C > A then
-            case
-                when A = B and B = C and A = C then 'Equilateral'
-                when A != B and B != C and A != C then 'Scalene'
-                else 'Isosceles'
-            end
-        else 'Not A Triangle'
-    end as triangle_type
-from Triangles;
+SELECT
+    CASE
+        WHEN A + B > C AND A + C > B AND B + C > A
+            THEN
+                CASE
+                    WHEN A = B AND B = C AND A = C THEN 'Equilateral'
+                    WHEN A != B AND B != C AND A != C THEN 'Scalene'
+                    ELSE 'Isosceles'
+                END
+        ELSE 'Not A Triangle'
+    END AS triangle_type
+FROM Triangles;

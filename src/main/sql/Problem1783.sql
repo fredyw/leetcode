@@ -1,15 +1,20 @@
 -- https://leetcode.com/problems/grand-slam-titles/
-with grand_slams_won as (
-    select
+WITH grand_slams_won AS (
+    SELECT
         player_id,
         player_name,
-        (select sum(case when Wimbledon = player_id then 1 else 0 end) +
-                sum(case when Fr_open = player_id then 1 else 0 end) +
-                sum(case when US_open = player_id then 1 else 0 end) +
-                sum(case when AU_open = player_id then 1 else 0 end)
-         from Championships) as grand_slams_count
-    from Players
+        (SELECT
+            SUM(CASE WHEN Wimbledon = player_id THEN 1 ELSE 0 END)
+            + SUM(CASE WHEN Fr_open = player_id THEN 1 ELSE 0 END)
+            + SUM(CASE WHEN US_open = player_id THEN 1 ELSE 0 END)
+            + SUM(CASE WHEN AU_open = player_id THEN 1 ELSE 0 END)
+        FROM Championships) AS grand_slams_count
+    FROM Players
 )
-select player_id, player_name, grand_slams_count
-from grand_slams_won
-where grand_slams_count > 0;
+
+SELECT
+    player_id,
+    player_name,
+    grand_slams_count
+FROM grand_slams_won
+WHERE grand_slams_count > 0;
