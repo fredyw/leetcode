@@ -30,11 +30,7 @@ pub fn parse_bool_expr(expression: String) -> bool {
             }
             *i += 1;
         }
-        if op == '!' {
-            !result
-        } else {
-            result
-        }
+        if op == '!' { !result } else { result }
     }
 
     let expression: Vec<char> = expression.chars().collect();

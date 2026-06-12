@@ -1,11 +1,7 @@
 // https://leetcode.com/problems/check-if-move-is-legal/
 pub fn check_move(board: Vec<Vec<char>>, r_move: i32, c_move: i32, color: char) -> bool {
     fn opposite(c: char) -> char {
-        if c == 'W' {
-            'B'
-        } else {
-            'W'
-        }
+        if c == 'W' { 'B' } else { 'W' }
     }
 
     fn check(

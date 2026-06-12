@@ -14,11 +14,7 @@ pub fn has_special_substring(s: String, k: i32) -> bool {
         }
         i += 1;
     }
-    if len == k {
-        true
-    } else {
-        false
-    }
+    if len == k { true } else { false }
 }
 
 fn main() {

@@ -1,10 +1,6 @@
 // https://leetcode.com/problems/count-commas-in-range/description/
 pub fn count_commas(n: i32) -> i32 {
-    if n < 1000 {
-        0
-    } else {
-        n - 1000 + 1
-    }
+    if n < 1000 { 0 } else { n - 1000 + 1 }
 }
 
 fn main() {

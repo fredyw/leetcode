@@ -24,10 +24,10 @@ pub fn max_two_events(mut events: Vec<Vec<i32>>) -> i32 {
         let end_time = &events[i][1];
         let value = &events[i][2];
         while !heap.is_empty() {
-            if heap.peek().unwrap().0 .0 >= *start_time {
+            if heap.peek().unwrap().0.0 >= *start_time {
                 break;
             }
-            max = cmp::max(max, heap.pop().unwrap().1 .0);
+            max = cmp::max(max, heap.pop().unwrap().1.0);
         }
         answer = cmp::max(answer, max + value);
         heap.push((Reverse(*end_time), Reverse(*value)));

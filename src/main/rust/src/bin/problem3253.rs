@@ -32,11 +32,7 @@ pub fn minimum_cost(target: String, words: Vec<String>, costs: Vec<i32>) -> i32 
         0,
         &mut vec![-1; target.len()],
     );
-    if answer == i32::MAX {
-        -1
-    } else {
-        answer
-    }
+    if answer == i32::MAX { -1 } else { answer }
 }
 
 fn main() {

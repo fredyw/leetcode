@@ -27,11 +27,7 @@ pub fn max_price(mut items: Vec<Vec<i32>>, mut capacity: i32) -> f64 {
             capacity = 0.0;
         }
     }
-    if capacity > 0.0 {
-        -1.0
-    } else {
-        answer
-    }
+    if capacity > 0.0 { -1.0 } else { answer }
 }
 
 fn main() {

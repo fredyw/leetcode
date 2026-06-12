@@ -39,11 +39,7 @@ pub fn nearest_exit(maze: Vec<Vec<char>>, entrance: Vec<i32>) -> i32 {
         }
         answer += 1;
     }
-    if !found_exit {
-        -1
-    } else {
-        answer
-    }
+    if !found_exit { -1 } else { answer }
 }
 
 fn main() {

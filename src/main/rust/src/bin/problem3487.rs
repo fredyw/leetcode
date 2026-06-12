@@ -19,11 +19,7 @@ pub fn max_sum(nums: Vec<i32>) -> i32 {
         }
         set.insert(*num);
     }
-    if all_negative {
-        max
-    } else {
-        answer
-    }
+    if all_negative { max } else { answer }
 }
 
 fn main() {

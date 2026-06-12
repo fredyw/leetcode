@@ -47,11 +47,7 @@ pub fn minimum_distance(n: i32, edges: Vec<Vec<i32>>, s: i32, marked: Vec<i32>) 
             answer = answer.min(n.unwrap());
         }
     }
-    if answer == i32::MAX {
-        -1
-    } else {
-        answer
-    }
+    if answer == i32::MAX { -1 } else { answer }
 }
 
 fn main() {

@@ -23,11 +23,7 @@ pub fn remove_ones(grid: Vec<Vec<i32>>) -> i32 {
                 changed_cols[col] = false;
             }
         }
-        if min == i32::MAX {
-            0
-        } else {
-            min
-        }
+        if min == i32::MAX { 0 } else { min }
     }
 
     let num_rows = grid.len();

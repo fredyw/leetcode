@@ -6,11 +6,7 @@ struct DataStream {
 
 impl DataStream {
     fn new(value: i32, k: i32) -> Self {
-        DataStream {
-            value,
-            k,
-            count: 0,
-        }
+        DataStream { value, k, count: 0 }
     }
 
     fn consec(&mut self, num: i32) -> bool {
@@ -30,7 +26,7 @@ fn main() {
     println!("{}", data_stream.consec(4)); // true
     println!("{}", data_stream.consec(3)); // false
 
-    let mut data_stream  = DataStream::new(1, 2);
+    let mut data_stream = DataStream::new(1, 2);
     println!("{}", data_stream.consec(1)); // false
     println!("{}", data_stream.consec(2)); // false
     println!("{}", data_stream.consec(1)); // false

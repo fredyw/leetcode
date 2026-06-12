@@ -25,17 +25,9 @@ pub fn shortest_superstring(s1: String, s2: String) -> String {
     if string1.is_empty() && string2.is_empty() {
         format!("{}{}", s1, s2)
     } else if string1.len() < string2.len() {
-        if string1.is_empty() {
-            string2
-        } else {
-            string1
-        }
+        if string1.is_empty() { string2 } else { string1 }
     } else {
-        if string2.is_empty() {
-            string1
-        } else {
-            string2
-        }
+        if string2.is_empty() { string1 } else { string2 }
     }
 }
 

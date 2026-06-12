@@ -1,11 +1,7 @@
 // https://leetcode.com/problems/number-of-self-divisible-permutations/description/
 pub fn self_divisible_permutation_count(n: i32) -> i32 {
     fn gcd(a: i32, b: i32) -> i32 {
-        if b == 0 {
-            a
-        } else {
-            gcd(b, a % b)
-        }
+        if b == 0 { a } else { gcd(b, a % b) }
     }
 
     fn self_divisible_permutation_count(nums: &mut Vec<i32>, index: usize) -> i32 {

@@ -1,11 +1,7 @@
 // https://leetcode.com/problems/minimum-split-into-subarrays-with-gcd-greater-than-one/
 pub fn minimum_splits(nums: Vec<i32>) -> i32 {
     fn gcd(a: i32, b: i32) -> i32 {
-        if b == 0 {
-            a
-        } else {
-            gcd(b, a % b)
-        }
+        if b == 0 { a } else { gcd(b, a % b) }
     }
 
     let mut answer = 1;

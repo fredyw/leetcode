@@ -28,11 +28,7 @@ pub fn valid_subarray_split(nums: Vec<i32>) -> i32 {
     }
 
     let answer = valid_subarray_split(&nums, 0, &mut vec![-1; nums.len()]);
-    if answer == i32::MAX {
-        -1
-    } else {
-        answer
-    }
+    if answer == i32::MAX { -1 } else { answer }
 }
 
 fn main() {

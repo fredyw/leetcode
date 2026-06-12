@@ -13,11 +13,7 @@ pub fn min_deletion(nums: Vec<i32>) -> i32 {
         }
         i += 1;
     }
-    if count % 2 == 0 {
-        answer
-    } else {
-        answer + 1
-    }
+    if count % 2 == 0 { answer } else { answer + 1 }
 }
 
 fn main() {

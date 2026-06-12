@@ -10,11 +10,7 @@ pub fn minimum_sum(nums: Vec<i32>) -> i32 {
             }
         }
     }
-    if answer == i32::MAX {
-        -1
-    } else {
-        answer
-    }
+    if answer == i32::MAX { -1 } else { answer }
 }
 
 fn main() {

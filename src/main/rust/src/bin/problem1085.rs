@@ -7,11 +7,7 @@ pub fn sum_of_digits(nums: Vec<i32>) -> i32 {
         sum += n % 10;
         n /= 10;
     }
-    if sum % 2 == 0 {
-        1
-    } else {
-        0
-    }
+    if sum % 2 == 0 { 1 } else { 0 }
 }
 
 fn main() {

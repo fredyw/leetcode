@@ -1,11 +1,7 @@
 // https://leetcode.com/problems/gcd-of-odd-and-even-sums/description/
 pub fn gcd_of_odd_even_sums(n: i32) -> i32 {
     fn gcd(a: i32, b: i32) -> i32 {
-        if b == 0 {
-            a
-        } else {
-            gcd(b, a % b)
-        }
+        if b == 0 { a } else { gcd(b, a % b) }
     }
 
     let mut sum_odd = 0;

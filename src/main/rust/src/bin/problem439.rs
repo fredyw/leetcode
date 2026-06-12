@@ -18,11 +18,7 @@ pub fn parse_ternary(expression: String) -> String {
         } else {
             parse_ternary(expression, index)
         };
-        if cond == 'T' {
-            if_expr
-        } else {
-            else_expr
-        }
+        if cond == 'T' { if_expr } else { else_expr }
     }
 
     let expression: Vec<char> = expression.chars().collect();

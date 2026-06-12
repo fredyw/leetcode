@@ -33,11 +33,7 @@ pub fn minimum_beautiful_substrings(s: String) -> i32 {
 
     let chars: Vec<char> = s.chars().into_iter().collect();
     let min = minimum_beautiful_substrings(&chars, 0, 0);
-    if min == i32::MAX {
-        -1
-    } else {
-        min
-    }
+    if min == i32::MAX { -1 } else { min }
 }
 
 fn main() {

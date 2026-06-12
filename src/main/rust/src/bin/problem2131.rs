@@ -31,11 +31,7 @@ pub fn longest_palindrome(words: Vec<String>) -> i32 {
             }
         }
     }
-    if has_odd {
-        answer + 2
-    } else {
-        answer
-    }
+    if has_odd { answer + 2 } else { answer }
 }
 
 fn main() {

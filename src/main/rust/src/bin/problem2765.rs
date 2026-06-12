@@ -26,11 +26,7 @@ pub fn alternating_subarray(nums: Vec<i32>) -> i32 {
         answer = answer.max(length);
         i += 1;
     }
-    if answer < 2 {
-        -1
-    } else {
-        answer
-    }
+    if answer < 2 { -1 } else { answer }
 }
 
 fn main() {

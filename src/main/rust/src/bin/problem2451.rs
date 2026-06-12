@@ -15,8 +15,8 @@ pub fn odd_string(words: Vec<String>) -> String {
         entry.1 += 1;
     }
     map.into_iter()
-        .filter(|e| e.1 .1 == 1)
-        .map(|e| e.1 .0)
+        .filter(|e| e.1.1 == 1)
+        .map(|e| e.1.0)
         .last()
         .unwrap()
 }

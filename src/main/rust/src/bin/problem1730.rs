@@ -44,11 +44,7 @@ pub fn get_food(grid: Vec<Vec<char>>) -> i32 {
         }
         length += 1;
     }
-    if answer == i32::MAX {
-        -1
-    } else {
-        answer
-    }
+    if answer == i32::MAX { -1 } else { answer }
 }
 
 fn main() {

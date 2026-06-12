@@ -27,11 +27,7 @@ pub fn min_speed_on_time(dist: Vec<i32>, hour: f64) -> i32 {
             start = mid + 1;
         }
     }
-    if answer == i32::MAX {
-        -1
-    } else {
-        answer
-    }
+    if answer == i32::MAX { -1 } else { answer }
 }
 
 fn main() {

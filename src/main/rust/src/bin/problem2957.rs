@@ -1,11 +1,7 @@
 // https://leetcode.com/problems/remove-adjacent-almost-equal-characters/description/
 pub fn remove_almost_equal_characters(word: String) -> i32 {
     fn diff(a: u8, b: u8) -> u8 {
-        if a > b {
-            a - b
-        } else {
-            b - a
-        }
+        if a > b { a - b } else { b - a }
     }
 
     let mut answer = 0;

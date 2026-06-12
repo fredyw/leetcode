@@ -1,11 +1,7 @@
 // https://leetcode.com/problems/make-a-square-with-the-same-color/description/
 pub fn can_make_square(grid: Vec<Vec<char>>) -> bool {
     fn count_white(grid: &Vec<Vec<char>>, row: usize, col: usize) -> u32 {
-        if grid[row][col] == 'W' {
-            1
-        } else {
-            0
-        }
+        if grid[row][col] == 'W' { 1 } else { 0 }
     }
 
     fn can_make_square(grid: &Vec<Vec<char>>, row: usize, col: usize) -> bool {

@@ -1,11 +1,7 @@
 // https://leetcode.com/problems/maximum-subarray-with-equal-products/description/
 pub fn max_length(nums: Vec<i32>) -> i32 {
     fn gcd(a: i32, b: i32) -> i32 {
-        if b == 0 {
-            a
-        } else {
-            gcd(b, a % b)
-        }
+        if b == 0 { a } else { gcd(b, a % b) }
     }
 
     fn gcd_arr(nums: &[i32]) -> i32 {

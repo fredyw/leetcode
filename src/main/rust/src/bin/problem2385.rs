@@ -60,11 +60,7 @@ pub fn amount_of_time(root: Option<Rc<RefCell<TreeNode>>>, start: i32) -> i32 {
             }
         }
     }
-    if answer > 0 {
-        answer - 1
-    } else {
-        0
-    }
+    if answer > 0 { answer - 1 } else { 0 }
 }
 
 fn main() {

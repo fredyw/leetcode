@@ -19,11 +19,7 @@ pub fn minimum_distance(nums: Vec<i32>) -> i32 {
             answer = answer.min(distance);
         }
     }
-    if answer == i32::MAX {
-        -1
-    } else {
-        answer
-    }
+    if answer == i32::MAX { -1 } else { answer }
 }
 
 fn main() {
