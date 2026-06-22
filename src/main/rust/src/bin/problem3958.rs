@@ -1,6 +1,7 @@
 // https://leetcode.com/problems/minimum-cost-to-split-into-ones-ii/description/
 pub fn min_cost(n: i32) -> i64 {
-    todo!()
+    let n = n as i64;
+    n * (n - 1) / 2
 }
 
 fn main() {
