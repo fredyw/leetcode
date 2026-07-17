@@ -1,4 +1,4 @@
-use std::collections::HashSet;
+use std::collections::HashMap;
 
 // https://leetcode.com/problems/path-existence-queries-in-a-graph-i/description/
 pub fn path_existence_queries(
@@ -10,35 +10,24 @@ pub fn path_existence_queries(
     if n == 1 {
         return vec![true; queries.len()];
     }
-    let mut connected: Vec<HashSet<usize>> = vec![];
-    let mut set = HashSet::new();
+    let mut group = 0;
+    let mut connected: HashMap<usize, i32> = HashMap::new();
     for i in 0..nums.len() - 1 {
         if (nums[i] - nums[i + 1]).abs() <= max_diff {
-            set.insert(i);
-            set.insert(i + 1);
+            connected.insert(i, group);
+            connected.insert(i + 1, group);
         } else {
-            set.insert(i);
-            connected.push(set);
-            set = HashSet::new();
+            connected.insert(i, group);
+            group += 1;
             if i + 1 == nums.len() - 1 {
-                set.insert(i + 1);
+                connected.insert(i + 1, group);
             }
         }
-    }
-    if !set.is_empty() {
-        connected.push(set);
     }
     let mut answer = Vec::new();
     for query in queries {
         let (u, v) = (query[0] as usize, query[1] as usize);
-        let mut is_connected = false;
-        for conn in &connected {
-            is_connected = conn.contains(&u) && conn.contains(&v);
-            if is_connected {
-                break;
-            }
-        }
-        answer.push(is_connected);
+        answer.push(connected.get(&u).unwrap() == connected.get(&v).unwrap());
     }
     answer
 }
