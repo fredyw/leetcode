@@ -2,11 +2,14 @@ use std::collections::HashSet;
 
 // https://leetcode.com/problems/path-existence-queries-in-a-graph-i/description/
 pub fn path_existence_queries(
-    _n: i32,
+    n: i32,
     nums: Vec<i32>,
     max_diff: i32,
     queries: Vec<Vec<i32>>,
 ) -> Vec<bool> {
+    if n == 1 {
+        return vec![true; queries.len()];
+    }
     let mut connected: Vec<HashSet<usize>> = vec![];
     let mut set = HashSet::new();
     for i in 0..nums.len() - 1 {
@@ -22,6 +25,7 @@ pub fn path_existence_queries(
     if !set.is_empty() {
         connected.push(set);
     }
+    println!("{:?}", connected);
     let mut answer = Vec::new();
     for query in queries {
         let (u, v) = (query[0] as usize, query[1] as usize);
@@ -51,8 +55,12 @@ fn main() {
     //         vec![vec![0, 1], vec![0, 2], vec![1, 3], vec![2, 3]]
     //     )
     // ); // [false,false,true,true]
+    // println!(
+    //     "{:?}",
+    //     path_existence_queries(1, vec![10], 1, vec![vec![0, 0]])
+    // ); // [true]
     println!(
         "{:?}",
-        path_existence_queries(1, vec![10], 1, vec![vec![0, 0]])
+        path_existence_queries(2, vec![25868, 59061], 0, vec![vec![1, 1]])
     ); // [true]
 }
