@@ -22,7 +22,30 @@ impl TreeNode {
 
 // https://leetcode.com/problems/count-dominant-nodes-in-a-binary-tree/description/
 pub fn count_dominant_nodes(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
-    todo!()
+    fn count_dominant_nodes(root: &Option<Rc<RefCell<TreeNode>>>, dominant: &mut i32) -> i32 {
+        if let Some(root) = root {
+            let left = root.as_ref().borrow().left.clone();
+            let right = root.as_ref().borrow().right.clone();
+            let val = root.as_ref().borrow().val;
+            if left.is_none() && right.is_none() {
+                *dominant += 1;
+                return val;
+            }
+            let left_val = count_dominant_nodes(&left, dominant);
+            let right_val = count_dominant_nodes(&right, dominant);
+            let max_val = left_val.max(right_val).max(val);
+            if max_val == val {
+                *dominant += 1;
+            }
+            max_val
+        } else {
+            0
+        }
+    }
+
+    let mut answer = 0;
+    count_dominant_nodes(&root, &mut answer);
+    answer
 }
 
 fn create_node(value: i32) -> Option<Rc<RefCell<TreeNode>>> {
