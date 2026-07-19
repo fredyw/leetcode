@@ -9,17 +9,17 @@ pub fn can_reach(start: Vec<i32>, target: Vec<i32>) -> bool {
         visited: &mut Vec<Vec<bool>>,
     ) -> bool {
         if start_x < 0
-            || start_x > 8
+            || start_x >= 8
             || start_y < 0
-            || start_y > 8
-            || visited[start_y as usize][start_x as usize]
+            || start_y >= 8
+            || visited[start_x as usize][start_y as usize]
         {
             return false;
         }
         if start_x == target_x && start_y == target_y {
             return count % 2 == 0;
         }
-        visited[start_y as usize][start_x as usize] = true;
+        visited[start_x as usize][start_y as usize] = true;
         let a = can_reach(
             start_x - 2,
             start_y - 1,
