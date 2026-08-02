@@ -7,7 +7,9 @@ pub fn max_pair_strength(nums: Vec<i32>) -> i64 {
     let mut answer = 0;
     for i in 0..nums.len() {
         for j in i + 1..nums.len() {
-            answer = answer.max((nums[i] * nums[j]) as i64) / (gcd(nums[i], nums[j]) as i64).pow(2);
+            let strength =
+                (nums[i] as i64 * nums[j] as i64) / (gcd(nums[i], nums[j]) as i64).pow(2);
+            answer = answer.max(strength);
         }
     }
     answer
