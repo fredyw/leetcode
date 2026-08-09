@@ -1,5 +1,3 @@
-use std::collections::HashSet;
-
 // https://leetcode.com/problems/remove-methods-from-project/description/
 pub fn remaining_methods(n: i32, k: i32, invocations: Vec<Vec<i32>>) -> Vec<i32> {
     fn dfs(adj_list: &Vec<Vec<usize>>, visited: &mut Vec<bool>, node: usize) {
@@ -17,8 +15,19 @@ pub fn remaining_methods(n: i32, k: i32, invocations: Vec<Vec<i32>>) -> Vec<i32>
     }
     let mut suspicious = vec![false; n as usize];
     dfs(&adj_list, &mut suspicious, k as usize);
-    println!("{:?}", suspicious);
-    vec![]
+    let mut answer = vec![];
+    for i in 0..n as usize {
+        if suspicious[i] {
+            continue;
+        }
+        for node in &adj_list[i] {
+            if suspicious[*node] {
+                return (0..n).collect();
+            }
+        }
+        answer.push(i as i32);
+    }
+    answer
 }
 
 fn main() {
