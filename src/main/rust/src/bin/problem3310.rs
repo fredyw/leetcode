@@ -16,4 +16,8 @@ fn main() {
         "{:?}",
         remaining_methods(3, 2, vec![vec![1, 2], vec![0, 1], vec![2, 0]])
     ); // []
+    println!(
+        "{:?}",
+        remaining_methods(4, 0, vec![vec![1, 2], vec![0, 1], vec![3, 2]])
+    ); // [0,1,2,3]
 }
