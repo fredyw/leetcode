@@ -1,6 +1,18 @@
 // https://leetcode.com/problems/minimum-total-price-after-applying-discounts/description/
-pub fn min_price(prices: Vec<i32>, discounts: Vec<i32>) -> f64 {
-    todo!()
+pub fn min_price(mut prices: Vec<i32>, mut discounts: Vec<i32>) -> f64 {
+    prices.sort_unstable_by(|a, b| b.cmp(a));
+    discounts.sort_unstable_by(|a, b| b.cmp(a));
+    let mut answer: f64 = 0.0;
+    let mut j = 0;
+    for i in 0..prices.len() {
+        if j < discounts.len() {
+            answer += (prices[i] * (100 - discounts[j])) as f64 / 100.0;
+        } else {
+            answer += prices[i] as f64;
+        }
+        j += 1;
+    }
+    answer
 }
 
 fn main() {
