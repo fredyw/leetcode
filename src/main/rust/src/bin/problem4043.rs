@@ -1,14 +1,20 @@
 // https://leetcode.com/problems/count-rotations-with-exactly-k-equal-adjacent-pairs/description/
 pub fn count_rotations(s: String, k: i32) -> i32 {
-    let chars: Vec<char> = s.chars().collect();
-    let mut answer = 0;
-    for i in 0..chars.len() {
-        let mut score = 0;
-        for j in i..(i + chars.len() - 1) {
-            if chars[j % chars.len()] == chars[(j + 1) % chars.len()] {
-                score += 1;
-            }
+    let bytes = s.as_bytes();
+    let n = bytes.len();
+    let mut total_matches = 0;
+    for i in 0..n {
+        if bytes[i] == bytes[(i + 1) % n] {
+            total_matches += 1;
         }
+    }
+    let mut answer = 0;
+    for i in 0..n {
+        let score = if bytes[(i + n - 1) % n] == bytes[i] {
+            total_matches - 1
+        } else {
+            total_matches
+        };
         if score == k {
             answer += 1;
         }
