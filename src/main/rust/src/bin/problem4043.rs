@@ -6,4 +6,6 @@ pub fn count_rotations(s: String, k: i32) -> i32 {
 fn main() {
     println!("{}", count_rotations("aab".to_string(), 1)); // 2
     println!("{}", count_rotations("abca".to_string(), 0)); // 1
+    println!("{}", count_rotations("aaaa".to_string(), 0)); // 0
+    println!("{}", count_rotations("aabbcc".to_string(), 1)); // 0
 }
