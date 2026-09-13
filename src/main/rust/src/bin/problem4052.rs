@@ -5,19 +5,23 @@ pub fn cyclic_shift(
     row_shift: Vec<i32>,
     col_shift: Vec<i32>,
 ) -> Vec<Vec<i32>> {
-    for (i, &shift) in row_shift.iter().enumerate() {
-        let cloned_rows = (&grid[i]).clone();
-        let mut_rows = &mut grid[i];
+    let n = n as usize;
+    for (row, &shift) in row_shift.iter().enumerate() {
+        let cloned_rows = (&grid[row]).clone();
         for col in 0..n {
-            let col = col as usize;
-            mut_rows[col] = cloned_rows[(col + shift as usize) % n as usize];
+            let col = col;
+            grid[row][col] = cloned_rows[(col + shift as usize) % n];
         }
     }
-    // for (i, &shift) in col_shift.iter().enumerate() {
-    //     for col in 0..n {
-    //         let col = col as usize;
-    //     }
-    // }
+    for (col, &shift) in col_shift.iter().enumerate() {
+        let mut cloned_rows: Vec<i32> = vec![];
+        for row in 0..n {
+            cloned_rows.push(grid[row][col]);
+        }
+        for row in 0..n {
+            grid[row][col] = cloned_rows[(row + shift as usize) % n];
+        }
+    }
     grid
 }
 
