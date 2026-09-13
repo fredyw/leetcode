@@ -13,14 +13,18 @@ pub fn cyclic_shift(
             mut_rows[col] = cloned_rows[(col + shift as usize) % n as usize];
         }
     }
-    for (i, &shift) in col_shift.iter().enumerate() {}
+    // for (i, &shift) in col_shift.iter().enumerate() {
+    //     for col in 0..n {
+    //         let col = col as usize;
+    //     }
+    // }
     grid
 }
 
 fn main() {
     println!(
         "{:?}",
-        cyclic_shift(3, vec![vec![1, 2], vec![3, 4]], vec![1, 0], vec![0, 1])
+        cyclic_shift(2, vec![vec![1, 2], vec![3, 4]], vec![1, 0], vec![0, 1])
     ); // [[2,4],[3,1]]
     println!(
         "{:?}",
