@@ -1,6 +1,14 @@
 // https://leetcode.com/problems/number-of-intersecting-interval-pairs-i/description/
 pub fn count_intersecting_intervals(intervals: Vec<Vec<i32>>) -> i32 {
-    todo!()
+    let mut answer = 0;
+    for i in 0..intervals.len() {
+        for j in i + 1..intervals.len() {
+            if intervals[i][0] <= intervals[j][1] && intervals[i][1] >= intervals[j][0] {
+                answer += 1;
+            }
+        }
+    }
+    answer
 }
 
 fn main() {
