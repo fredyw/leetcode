@@ -1,6 +1,20 @@
+use std::collections::BTreeMap;
+
 // https://leetcode.com/problems/rearrange-array-by-removing-distinct-values/description/
 pub fn rearrange_array(nums: Vec<i32>) -> Vec<i32> {
-    todo!()
+    let mut map: BTreeMap<i32, i32> = BTreeMap::new();
+    for num in nums {
+        *map.entry(num).or_insert(0) += 1;
+    }
+    let mut answer: Vec<i32> = Vec::new();
+    while !map.is_empty() {
+        map.retain(|&num, count| {
+            answer.push(num);
+            *count -= 1;
+            *count > 0
+        });
+    }
+    answer
 }
 
 fn main() {
